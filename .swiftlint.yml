@@ -1,0 +1,8 @@
+excluded:
+  - Carthage
+  - Pods
+  - Duiet/Sources/Common/R.generated.swift
+
+disabled_rules:
+  - identifier_name
+  - force_try	

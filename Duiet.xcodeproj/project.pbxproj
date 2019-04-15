@@ -1,0 +1,856 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0641AD232264A1BA00CEDAE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0641AD222264A1BA00CEDAE7 /* AppDelegate.swift */; };
+		0641AD252264A1BA00CEDAE7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0641AD242264A1BA00CEDAE7 /* ViewController.swift */; };
+		0641AD282264A1BA00CEDAE7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0641AD262264A1BA00CEDAE7 /* Main.storyboard */; };
+		0641AD2A2264A1BC00CEDAE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0641AD292264A1BC00CEDAE7 /* Assets.xcassets */; };
+		0641AD2D2264A1BC00CEDAE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0641AD2B2264A1BC00CEDAE7 /* LaunchScreen.storyboard */; };
+		0641AD382264A1BC00CEDAE7 /* DuietTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0641AD372264A1BC00CEDAE7 /* DuietTests.swift */; };
+		0641AD432264A1BC00CEDAE7 /* DuietUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0641AD422264A1BC00CEDAE7 /* DuietUITests.swift */; };
+		0641AD512264A7C900CEDAE7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0641AD502264A7C900CEDAE7 /* GoogleService-Info.plist */; };
+		0641AD592264ACB800CEDAE7 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0641AD572264ACB800CEDAE7 /* RxCocoa.framework */; };
+		0641AD5A2264ACB800CEDAE7 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0641AD582264ACB800CEDAE7 /* RxSwift.framework */; };
+		3D663033B554173C7AFF58FC /* Pods_Duiet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6911E39E3468EB910D0358F5 /* Pods_Duiet.framework */; };
+		8AFA7421A93B1AAF33698633 /* Pods_DuietTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B35F720B676F45DF7C30A993 /* Pods_DuietTests.framework */; };
+		D73436F20B6C69548E947136 /* Pods_DuietUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 006839574F440A78C2631C92 /* Pods_DuietUITests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0641AD342264A1BC00CEDAE7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0641AD172264A1BA00CEDAE7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0641AD1E2264A1BA00CEDAE7;
+			remoteInfo = Duiet;
+		};
+		0641AD3F2264A1BC00CEDAE7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0641AD172264A1BA00CEDAE7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0641AD1E2264A1BA00CEDAE7;
+			remoteInfo = Duiet;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		006839574F440A78C2631C92 /* Pods_DuietUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DuietUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0641AD1F2264A1BA00CEDAE7 /* Duiet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Duiet.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0641AD222264A1BA00CEDAE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0641AD242264A1BA00CEDAE7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0641AD272264A1BA00CEDAE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0641AD292264A1BC00CEDAE7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0641AD2C2264A1BC00CEDAE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0641AD2E2264A1BC00CEDAE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0641AD332264A1BC00CEDAE7 /* DuietTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DuietTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0641AD372264A1BC00CEDAE7 /* DuietTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuietTests.swift; sourceTree = "<group>"; };
+		0641AD392264A1BC00CEDAE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0641AD3E2264A1BC00CEDAE7 /* DuietUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DuietUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0641AD422264A1BC00CEDAE7 /* DuietUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuietUITests.swift; sourceTree = "<group>"; };
+		0641AD442264A1BC00CEDAE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0641AD502264A7C900CEDAE7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0641AD572264ACB800CEDAE7 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		0641AD582264ACB800CEDAE7 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		1D64453EF3A64E5B58A308B8 /* Pods-Duiet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Duiet.debug.xcconfig"; path = "Target Support Files/Pods-Duiet/Pods-Duiet.debug.xcconfig"; sourceTree = "<group>"; };
+		6911E39E3468EB910D0358F5 /* Pods_Duiet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Duiet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CD1E0F4DE960D419C98FCDE /* Pods-DuietUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DuietUITests.release.xcconfig"; path = "Target Support Files/Pods-DuietUITests/Pods-DuietUITests.release.xcconfig"; sourceTree = "<group>"; };
+		B35F720B676F45DF7C30A993 /* Pods_DuietTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DuietTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6DEA4663663C3FEDB166E8A /* Pods-Duiet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Duiet.release.xcconfig"; path = "Target Support Files/Pods-Duiet/Pods-Duiet.release.xcconfig"; sourceTree = "<group>"; };
+		E803A0BA436FFC81EF962205 /* Pods-DuietTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DuietTests.debug.xcconfig"; path = "Target Support Files/Pods-DuietTests/Pods-DuietTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F6E8052EFFD4F90F99EBA2E7 /* Pods-DuietUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DuietUITests.debug.xcconfig"; path = "Target Support Files/Pods-DuietUITests/Pods-DuietUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		FD570F6C5F4FDE5BC683E1B6 /* Pods-DuietTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DuietTests.release.xcconfig"; path = "Target Support Files/Pods-DuietTests/Pods-DuietTests.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0641AD1C2264A1BA00CEDAE7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0641AD592264ACB800CEDAE7 /* RxCocoa.framework in Frameworks */,
+				0641AD5A2264ACB800CEDAE7 /* RxSwift.framework in Frameworks */,
+				3D663033B554173C7AFF58FC /* Pods_Duiet.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0641AD302264A1BC00CEDAE7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8AFA7421A93B1AAF33698633 /* Pods_DuietTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0641AD3B2264A1BC00CEDAE7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D73436F20B6C69548E947136 /* Pods_DuietUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0641AD162264A1BA00CEDAE7 = {
+			isa = PBXGroup;
+			children = (
+				0641AD212264A1BA00CEDAE7 /* Duiet */,
+				0641AD362264A1BC00CEDAE7 /* DuietTests */,
+				0641AD412264A1BC00CEDAE7 /* DuietUITests */,
+				0641AD202264A1BA00CEDAE7 /* Products */,
+				C78977283BBF1E6AD6DF25DA /* Pods */,
+				4B312EFBEE0174A408F8814E /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		0641AD202264A1BA00CEDAE7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0641AD1F2264A1BA00CEDAE7 /* Duiet.app */,
+				0641AD332264A1BC00CEDAE7 /* DuietTests.xctest */,
+				0641AD3E2264A1BC00CEDAE7 /* DuietUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0641AD212264A1BA00CEDAE7 /* Duiet */ = {
+			isa = PBXGroup;
+			children = (
+				0641AD5B2264AD2E00CEDAE7 /* Resources */,
+				0641AD5C2264AD3600CEDAE7 /* Sources */,
+			);
+			path = Duiet;
+			sourceTree = "<group>";
+		};
+		0641AD362264A1BC00CEDAE7 /* DuietTests */ = {
+			isa = PBXGroup;
+			children = (
+				0641AD372264A1BC00CEDAE7 /* DuietTests.swift */,
+				0641AD392264A1BC00CEDAE7 /* Info.plist */,
+			);
+			path = DuietTests;
+			sourceTree = "<group>";
+		};
+		0641AD412264A1BC00CEDAE7 /* DuietUITests */ = {
+			isa = PBXGroup;
+			children = (
+				0641AD422264A1BC00CEDAE7 /* DuietUITests.swift */,
+				0641AD442264A1BC00CEDAE7 /* Info.plist */,
+			);
+			path = DuietUITests;
+			sourceTree = "<group>";
+		};
+		0641AD5B2264AD2E00CEDAE7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0641AD292264A1BC00CEDAE7 /* Assets.xcassets */,
+				0641AD2B2264A1BC00CEDAE7 /* LaunchScreen.storyboard */,
+				0641AD2E2264A1BC00CEDAE7 /* Info.plist */,
+				0641AD502264A7C900CEDAE7 /* GoogleService-Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		0641AD5C2264AD3600CEDAE7 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				0641AD5D2264AD4300CEDAE7 /* Common */,
+				0641AD5E2264AD4900CEDAE7 /* UI */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		0641AD5D2264AD4300CEDAE7 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				0641AD5F2264ADB000CEDAE7 /* Extension */,
+				0641AD222264A1BA00CEDAE7 /* AppDelegate.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		0641AD5E2264AD4900CEDAE7 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				0641AD602264ADC100CEDAE7 /* Common */,
+				0641AD242264A1BA00CEDAE7 /* ViewController.swift */,
+				0641AD262264A1BA00CEDAE7 /* Main.storyboard */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		0641AD5F2264ADB000CEDAE7 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		0641AD602264ADC100CEDAE7 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		4B312EFBEE0174A408F8814E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0641AD572264ACB800CEDAE7 /* RxCocoa.framework */,
+				0641AD582264ACB800CEDAE7 /* RxSwift.framework */,
+				6911E39E3468EB910D0358F5 /* Pods_Duiet.framework */,
+				B35F720B676F45DF7C30A993 /* Pods_DuietTests.framework */,
+				006839574F440A78C2631C92 /* Pods_DuietUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C78977283BBF1E6AD6DF25DA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1D64453EF3A64E5B58A308B8 /* Pods-Duiet.debug.xcconfig */,
+				D6DEA4663663C3FEDB166E8A /* Pods-Duiet.release.xcconfig */,
+				E803A0BA436FFC81EF962205 /* Pods-DuietTests.debug.xcconfig */,
+				FD570F6C5F4FDE5BC683E1B6 /* Pods-DuietTests.release.xcconfig */,
+				F6E8052EFFD4F90F99EBA2E7 /* Pods-DuietUITests.debug.xcconfig */,
+				8CD1E0F4DE960D419C98FCDE /* Pods-DuietUITests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0641AD1E2264A1BA00CEDAE7 /* Duiet */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0641AD472264A1BC00CEDAE7 /* Build configuration list for PBXNativeTarget "Duiet" */;
+			buildPhases = (
+				0A9D16FD77AB56746511B8F2 /* [CP] Check Pods Manifest.lock */,
+				0641AD522264A86400CEDAE7 /* R.swift */,
+				0641AD532264A87D00CEDAE7 /* Carthage */,
+				0641AD542264A89500CEDAE7 /* SwiftLint */,
+				0641AD1B2264A1BA00CEDAE7 /* Sources */,
+				0641AD1C2264A1BA00CEDAE7 /* Frameworks */,
+				0641AD1D2264A1BA00CEDAE7 /* Resources */,
+				8555E173F9D24B1CB83CE54C /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Duiet;
+			productName = Duiet;
+			productReference = 0641AD1F2264A1BA00CEDAE7 /* Duiet.app */;
+			productType = "com.apple.product-type.application";
+		};
+		0641AD322264A1BC00CEDAE7 /* DuietTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0641AD4A2264A1BC00CEDAE7 /* Build configuration list for PBXNativeTarget "DuietTests" */;
+			buildPhases = (
+				B3436BD541DF49D9465DC313 /* [CP] Check Pods Manifest.lock */,
+				0641AD2F2264A1BC00CEDAE7 /* Sources */,
+				0641AD302264A1BC00CEDAE7 /* Frameworks */,
+				0641AD312264A1BC00CEDAE7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0641AD352264A1BC00CEDAE7 /* PBXTargetDependency */,
+			);
+			name = DuietTests;
+			productName = DuietTests;
+			productReference = 0641AD332264A1BC00CEDAE7 /* DuietTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		0641AD3D2264A1BC00CEDAE7 /* DuietUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0641AD4D2264A1BC00CEDAE7 /* Build configuration list for PBXNativeTarget "DuietUITests" */;
+			buildPhases = (
+				4D320989BC162E207B2E4422 /* [CP] Check Pods Manifest.lock */,
+				0641AD3A2264A1BC00CEDAE7 /* Sources */,
+				0641AD3B2264A1BC00CEDAE7 /* Frameworks */,
+				0641AD3C2264A1BC00CEDAE7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0641AD402264A1BC00CEDAE7 /* PBXTargetDependency */,
+			);
+			name = DuietUITests;
+			productName = DuietUITests;
+			productReference = 0641AD3E2264A1BC00CEDAE7 /* DuietUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0641AD172264A1BA00CEDAE7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1020;
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = duiet;
+				TargetAttributes = {
+					0641AD1E2264A1BA00CEDAE7 = {
+						CreatedOnToolsVersion = 10.2;
+					};
+					0641AD322264A1BC00CEDAE7 = {
+						CreatedOnToolsVersion = 10.2;
+						TestTargetID = 0641AD1E2264A1BA00CEDAE7;
+					};
+					0641AD3D2264A1BC00CEDAE7 = {
+						CreatedOnToolsVersion = 10.2;
+						TestTargetID = 0641AD1E2264A1BA00CEDAE7;
+					};
+				};
+			};
+			buildConfigurationList = 0641AD1A2264A1BA00CEDAE7 /* Build configuration list for PBXProject "Duiet" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0641AD162264A1BA00CEDAE7;
+			productRefGroup = 0641AD202264A1BA00CEDAE7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0641AD1E2264A1BA00CEDAE7 /* Duiet */,
+				0641AD322264A1BC00CEDAE7 /* DuietTests */,
+				0641AD3D2264A1BC00CEDAE7 /* DuietUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0641AD1D2264A1BA00CEDAE7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0641AD2D2264A1BC00CEDAE7 /* LaunchScreen.storyboard in Resources */,
+				0641AD512264A7C900CEDAE7 /* GoogleService-Info.plist in Resources */,
+				0641AD2A2264A1BC00CEDAE7 /* Assets.xcassets in Resources */,
+				0641AD282264A1BA00CEDAE7 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0641AD312264A1BC00CEDAE7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0641AD3C2264A1BC00CEDAE7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0641AD522264A86400CEDAE7 /* R.swift */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$TEMP_DIR/rswift-lastrun",
+			);
+			name = R.swift;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/Duiet/Sources/Common/R.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate $SRCROOT/Duiet/Sources/Common/R.generated.swift\n";
+		};
+		0641AD532264A87D00CEDAE7 /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"$(SRCROOT)/carthage_input.xcfilelist",
+			);
+			inputPaths = (
+			);
+			name = Carthage;
+			outputFileListPaths = (
+				"$(SRCROOT)/carthage_output.xcfilelist",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+		0641AD542264A89500CEDAE7 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+		0A9D16FD77AB56746511B8F2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Duiet-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4D320989BC162E207B2E4422 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DuietUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8555E173F9D24B1CB83CE54C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Duiet/Pods-Duiet-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Duiet/Pods-Duiet-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Duiet/Pods-Duiet-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B3436BD541DF49D9465DC313 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DuietTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0641AD1B2264A1BA00CEDAE7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0641AD252264A1BA00CEDAE7 /* ViewController.swift in Sources */,
+				0641AD232264A1BA00CEDAE7 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0641AD2F2264A1BC00CEDAE7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0641AD382264A1BC00CEDAE7 /* DuietTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0641AD3A2264A1BC00CEDAE7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0641AD432264A1BC00CEDAE7 /* DuietUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0641AD352264A1BC00CEDAE7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0641AD1E2264A1BA00CEDAE7 /* Duiet */;
+			targetProxy = 0641AD342264A1BC00CEDAE7 /* PBXContainerItemProxy */;
+		};
+		0641AD402264A1BC00CEDAE7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0641AD1E2264A1BA00CEDAE7 /* Duiet */;
+			targetProxy = 0641AD3F2264A1BC00CEDAE7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		0641AD262264A1BA00CEDAE7 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0641AD272264A1BA00CEDAE7 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		0641AD2B2264A1BC00CEDAE7 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0641AD2C2264A1BC00CEDAE7 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0641AD452264A1BC00CEDAE7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		0641AD462264A1BC00CEDAE7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0641AD482264A1BC00CEDAE7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1D64453EF3A64E5B58A308B8 /* Pods-Duiet.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6MU2DV3MZ5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = Duiet/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.catelina777.duiet;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0641AD492264A1BC00CEDAE7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D6DEA4663663C3FEDB166E8A /* Pods-Duiet.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6MU2DV3MZ5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = Duiet/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.catelina777.duiet;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		0641AD4B2264A1BC00CEDAE7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E803A0BA436FFC81EF962205 /* Pods-DuietTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7VNM74C3K4;
+				INFOPLIST_FILE = DuietTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.duiet.DuietTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Duiet.app/Duiet";
+			};
+			name = Debug;
+		};
+		0641AD4C2264A1BC00CEDAE7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FD570F6C5F4FDE5BC683E1B6 /* Pods-DuietTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7VNM74C3K4;
+				INFOPLIST_FILE = DuietTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.duiet.DuietTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Duiet.app/Duiet";
+			};
+			name = Release;
+		};
+		0641AD4E2264A1BC00CEDAE7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F6E8052EFFD4F90F99EBA2E7 /* Pods-DuietUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7VNM74C3K4;
+				INFOPLIST_FILE = DuietUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.duiet.DuietUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Duiet;
+			};
+			name = Debug;
+		};
+		0641AD4F2264A1BC00CEDAE7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8CD1E0F4DE960D419C98FCDE /* Pods-DuietUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7VNM74C3K4;
+				INFOPLIST_FILE = DuietUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.duiet.DuietUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Duiet;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0641AD1A2264A1BA00CEDAE7 /* Build configuration list for PBXProject "Duiet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0641AD452264A1BC00CEDAE7 /* Debug */,
+				0641AD462264A1BC00CEDAE7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0641AD472264A1BC00CEDAE7 /* Build configuration list for PBXNativeTarget "Duiet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0641AD482264A1BC00CEDAE7 /* Debug */,
+				0641AD492264A1BC00CEDAE7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0641AD4A2264A1BC00CEDAE7 /* Build configuration list for PBXNativeTarget "DuietTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0641AD4B2264A1BC00CEDAE7 /* Debug */,
+				0641AD4C2264A1BC00CEDAE7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0641AD4D2264A1BC00CEDAE7 /* Build configuration list for PBXNativeTarget "DuietUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0641AD4E2264A1BC00CEDAE7 /* Debug */,
+				0641AD4F2264A1BC00CEDAE7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0641AD172264A1BA00CEDAE7 /* Project object */;
+}
