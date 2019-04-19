@@ -34,6 +34,8 @@
 		0622EA40226A2A4600E87F22 /* SelectActivityLevelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0622EA3C226A2A4600E87F22 /* SelectActivityLevelViewModel.swift */; };
 		0622EA44226A2A5A00E87F22 /* ActivityLevelViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0622EA42226A2A5A00E87F22 /* ActivityLevelViewCell.swift */; };
 		0622EA45226A2A5A00E87F22 /* ActivityLevelViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0622EA43226A2A5A00E87F22 /* ActivityLevelViewCell.xib */; };
+		0622EA47226A2AB900E87F22 /* PublishRelay.extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0622EA46226A2AB900E87F22 /* PublishRelay.extension.swift */; };
+		0622EA49226A2AC000E87F22 /* BehaviorRelay.extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0622EA48226A2AC000E87F22 /* BehaviorRelay.extension.swift */; };
 		0641AD232264A1BA00CEDAE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0641AD222264A1BA00CEDAE7 /* AppDelegate.swift */; };
 		0641AD2A2264A1BC00CEDAE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0641AD292264A1BC00CEDAE7 /* Assets.xcassets */; };
 		0641AD2D2264A1BC00CEDAE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0641AD2B2264A1BC00CEDAE7 /* LaunchScreen.storyboard */; };
@@ -93,6 +95,8 @@
 		0622EA3C226A2A4600E87F22 /* SelectActivityLevelViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectActivityLevelViewModel.swift; sourceTree = "<group>"; };
 		0622EA42226A2A5A00E87F22 /* ActivityLevelViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityLevelViewCell.swift; sourceTree = "<group>"; };
 		0622EA43226A2A5A00E87F22 /* ActivityLevelViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityLevelViewCell.xib; sourceTree = "<group>"; };
+		0622EA46226A2AB900E87F22 /* PublishRelay.extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublishRelay.extension.swift; sourceTree = "<group>"; };
+		0622EA48226A2AC000E87F22 /* BehaviorRelay.extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BehaviorRelay.extension.swift; sourceTree = "<group>"; };
 		0641AD1F2264A1BA00CEDAE7 /* Duiet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Duiet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0641AD222264A1BA00CEDAE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0641AD292264A1BC00CEDAE7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -340,6 +344,8 @@
 		0641AD5F2264ADB000CEDAE7 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				0622EA46226A2AB900E87F22 /* PublishRelay.extension.swift */,
+				0622EA48226A2AC000E87F22 /* BehaviorRelay.extension.swift */,
 				0622EA2A226A21A400E87F22 /* UIButton.extension.swift */,
 				0622EA07226A1EF200E87F22 /* NSObjectProtocol.extension.swift */,
 			);
@@ -680,9 +686,11 @@
 				0622EA3F226A2A4600E87F22 /* SelectActivityLevelViewDataSource.swift in Sources */,
 				0622EA19226A209F00E87F22 /* InputGenderViewCell.swift in Sources */,
 				0622EA3D226A2A4600E87F22 /* SelectActivityLevelViewController.swift in Sources */,
+				0622EA47226A2AB900E87F22 /* PublishRelay.extension.swift in Sources */,
 				0622EA2B226A21A400E87F22 /* UIButton.extension.swift in Sources */,
 				0622EA04226A1DFC00E87F22 /* FillInformationViewDataSource.swift in Sources */,
 				0622EA27226A20CE00E87F22 /* RxTableViewCell.swift in Sources */,
+				0622EA49226A2AC000E87F22 /* BehaviorRelay.extension.swift in Sources */,
 				0622EA21226A20AC00E87F22 /* InputActivityLevelViewCell.swift in Sources */,
 				0622EA08226A1EF200E87F22 /* NSObjectProtocol.extension.swift in Sources */,
 				0641AD232264A1BA00CEDAE7 /* AppDelegate.swift in Sources */,
