@@ -13,6 +13,15 @@
 		0622EA04226A1DFC00E87F22 /* FillInformationViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0622EA03226A1DFC00E87F22 /* FillInformationViewDataSource.swift */; };
 		0622EA06226A1E0100E87F22 /* FillInformationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0622EA05226A1E0100E87F22 /* FillInformationViewModel.swift */; };
 		0622EA08226A1EF200E87F22 /* NSObjectProtocol.extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0622EA07226A1EF200E87F22 /* NSObjectProtocol.extension.swift */; };
+		0622EA18226A209F00E87F22 /* InputGenderViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0622EA16226A209E00E87F22 /* InputGenderViewCell.xib */; };
+		0622EA19226A209F00E87F22 /* InputGenderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0622EA17226A209E00E87F22 /* InputGenderViewCell.swift */; };
+		0622EA1C226A20A500E87F22 /* InputNumberViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0622EA1A226A20A500E87F22 /* InputNumberViewCell.xib */; };
+		0622EA1D226A20A500E87F22 /* InputNumberViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0622EA1B226A20A500E87F22 /* InputNumberViewCell.swift */; };
+		0622EA20226A20AC00E87F22 /* InputActivityLevelViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0622EA1E226A20AC00E87F22 /* InputActivityLevelViewCell.xib */; };
+		0622EA21226A20AC00E87F22 /* InputActivityLevelViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0622EA1F226A20AC00E87F22 /* InputActivityLevelViewCell.swift */; };
+		0622EA24226A20B300E87F22 /* CompleteButtonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0622EA22226A20B300E87F22 /* CompleteButtonViewCell.swift */; };
+		0622EA25226A20B300E87F22 /* CompleteButtonViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0622EA23226A20B300E87F22 /* CompleteButtonViewCell.xib */; };
+		0622EA27226A20CE00E87F22 /* RxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0622EA26226A20CE00E87F22 /* RxTableViewCell.swift */; };
 		0641AD232264A1BA00CEDAE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0641AD222264A1BA00CEDAE7 /* AppDelegate.swift */; };
 		0641AD2A2264A1BC00CEDAE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0641AD292264A1BC00CEDAE7 /* Assets.xcassets */; };
 		0641AD2D2264A1BC00CEDAE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0641AD2B2264A1BC00CEDAE7 /* LaunchScreen.storyboard */; };
@@ -51,6 +60,15 @@
 		0622EA03226A1DFC00E87F22 /* FillInformationViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FillInformationViewDataSource.swift; sourceTree = "<group>"; };
 		0622EA05226A1E0100E87F22 /* FillInformationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FillInformationViewModel.swift; sourceTree = "<group>"; };
 		0622EA07226A1EF200E87F22 /* NSObjectProtocol.extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSObjectProtocol.extension.swift; sourceTree = "<group>"; };
+		0622EA16226A209E00E87F22 /* InputGenderViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InputGenderViewCell.xib; sourceTree = "<group>"; };
+		0622EA17226A209E00E87F22 /* InputGenderViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputGenderViewCell.swift; sourceTree = "<group>"; };
+		0622EA1A226A20A500E87F22 /* InputNumberViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InputNumberViewCell.xib; sourceTree = "<group>"; };
+		0622EA1B226A20A500E87F22 /* InputNumberViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputNumberViewCell.swift; sourceTree = "<group>"; };
+		0622EA1E226A20AC00E87F22 /* InputActivityLevelViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InputActivityLevelViewCell.xib; sourceTree = "<group>"; };
+		0622EA1F226A20AC00E87F22 /* InputActivityLevelViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputActivityLevelViewCell.swift; sourceTree = "<group>"; };
+		0622EA22226A20B300E87F22 /* CompleteButtonViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompleteButtonViewCell.swift; sourceTree = "<group>"; };
+		0622EA23226A20B300E87F22 /* CompleteButtonViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CompleteButtonViewCell.xib; sourceTree = "<group>"; };
+		0622EA26226A20CE00E87F22 /* RxTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxTableViewCell.swift; sourceTree = "<group>"; };
 		0641AD1F2264A1BA00CEDAE7 /* Duiet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Duiet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0641AD222264A1BA00CEDAE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0641AD292264A1BC00CEDAE7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -108,6 +126,7 @@
 		0622E9FB226A1B3500E87F22 /* FillInformation */ = {
 			isa = PBXGroup;
 			children = (
+				0622EA09226A203900E87F22 /* Cells */,
 				0622E9FC226A1B6B00E87F22 /* FillInformationViewController.xib */,
 				0622EA01226A1DE800E87F22 /* FillInformationViewController.swift */,
 				0622EA05226A1E0100E87F22 /* FillInformationViewModel.swift */,
@@ -122,6 +141,53 @@
 				0622E9FF226A1C7D00E87F22 /* NavigationBarCustomizable.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		0622EA09226A203900E87F22 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				0622EA12226A206800E87F22 /* InputGenderViewCell */,
+				0622EA15226A207F00E87F22 /* InputNumberViewCell */,
+				0622EA14226A207B00E87F22 /* InputActivityLevelViewCell */,
+				0622EA13226A207400E87F22 /* CompleteButtonViewCell */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		0622EA12226A206800E87F22 /* InputGenderViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				0622EA17226A209E00E87F22 /* InputGenderViewCell.swift */,
+				0622EA16226A209E00E87F22 /* InputGenderViewCell.xib */,
+			);
+			path = InputGenderViewCell;
+			sourceTree = "<group>";
+		};
+		0622EA13226A207400E87F22 /* CompleteButtonViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				0622EA22226A20B300E87F22 /* CompleteButtonViewCell.swift */,
+				0622EA23226A20B300E87F22 /* CompleteButtonViewCell.xib */,
+			);
+			path = CompleteButtonViewCell;
+			sourceTree = "<group>";
+		};
+		0622EA14226A207B00E87F22 /* InputActivityLevelViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				0622EA1F226A20AC00E87F22 /* InputActivityLevelViewCell.swift */,
+				0622EA1E226A20AC00E87F22 /* InputActivityLevelViewCell.xib */,
+			);
+			path = InputActivityLevelViewCell;
+			sourceTree = "<group>";
+		};
+		0622EA15226A207F00E87F22 /* InputNumberViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				0622EA1B226A20A500E87F22 /* InputNumberViewCell.swift */,
+				0622EA1A226A20A500E87F22 /* InputNumberViewCell.xib */,
+			);
+			path = InputNumberViewCell;
 			sourceTree = "<group>";
 		};
 		0641AD162264A1BA00CEDAE7 = {
@@ -223,6 +289,7 @@
 		0641AD602264ADC100CEDAE7 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				0622EA26226A20CE00E87F22 /* RxTableViewCell.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -363,8 +430,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0622EA1C226A20A500E87F22 /* InputNumberViewCell.xib in Resources */,
 				0641AD2D2264A1BC00CEDAE7 /* LaunchScreen.storyboard in Resources */,
 				0641AD512264A7C900CEDAE7 /* GoogleService-Info.plist in Resources */,
+				0622EA25226A20B300E87F22 /* CompleteButtonViewCell.xib in Resources */,
+				0622EA18226A209F00E87F22 /* InputGenderViewCell.xib in Resources */,
+				0622EA20226A20AC00E87F22 /* InputActivityLevelViewCell.xib in Resources */,
 				0622E9FD226A1B6B00E87F22 /* FillInformationViewController.xib in Resources */,
 				0641AD2A2264A1BC00CEDAE7 /* Assets.xcassets in Resources */,
 			);
@@ -535,8 +606,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0622EA1D226A20A500E87F22 /* InputNumberViewCell.swift in Sources */,
+				0622EA24226A20B300E87F22 /* CompleteButtonViewCell.swift in Sources */,
 				0622EA02226A1DE800E87F22 /* FillInformationViewController.swift in Sources */,
+				0622EA19226A209F00E87F22 /* InputGenderViewCell.swift in Sources */,
 				0622EA04226A1DFC00E87F22 /* FillInformationViewDataSource.swift in Sources */,
+				0622EA27226A20CE00E87F22 /* RxTableViewCell.swift in Sources */,
+				0622EA21226A20AC00E87F22 /* InputActivityLevelViewCell.swift in Sources */,
 				0622EA08226A1EF200E87F22 /* NSObjectProtocol.extension.swift in Sources */,
 				0641AD232264A1BA00CEDAE7 /* AppDelegate.swift in Sources */,
 				0622EA00226A1C7D00E87F22 /* NavigationBarCustomizable.swift in Sources */,
