@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0622E9FD226A1B6B00E87F22 /* FillInformationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0622E9FC226A1B6B00E87F22 /* FillInformationViewController.xib */; };
 		0641AD232264A1BA00CEDAE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0641AD222264A1BA00CEDAE7 /* AppDelegate.swift */; };
 		0641AD2A2264A1BC00CEDAE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0641AD292264A1BC00CEDAE7 /* Assets.xcassets */; };
 		0641AD2D2264A1BC00CEDAE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0641AD2B2264A1BC00CEDAE7 /* LaunchScreen.storyboard */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		006839574F440A78C2631C92 /* Pods_DuietUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DuietUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0622E9FC226A1B6B00E87F22 /* FillInformationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FillInformationViewController.xib; sourceTree = "<group>"; };
 		0641AD1F2264A1BA00CEDAE7 /* Duiet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Duiet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0641AD222264A1BA00CEDAE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0641AD292264A1BC00CEDAE7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -93,6 +95,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0622E9FB226A1B3500E87F22 /* FillInformation */ = {
+			isa = PBXGroup;
+			children = (
+				0622E9FC226A1B6B00E87F22 /* FillInformationViewController.xib */,
+			);
+			path = FillInformation;
+			sourceTree = "<group>";
+		};
 		0641AD162264A1BA00CEDAE7 = {
 			isa = PBXGroup;
 			children = (
@@ -175,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				0641AD602264ADC100CEDAE7 /* Common */,
+				0622E9FB226A1B3500E87F22 /* FillInformation */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -331,6 +342,7 @@
 			files = (
 				0641AD2D2264A1BC00CEDAE7 /* LaunchScreen.storyboard in Resources */,
 				0641AD512264A7C900CEDAE7 /* GoogleService-Info.plist in Resources */,
+				0622E9FD226A1B6B00E87F22 /* FillInformationViewController.xib in Resources */,
 				0641AD2A2264A1BC00CEDAE7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
