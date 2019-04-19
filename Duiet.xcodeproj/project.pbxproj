@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0622E9FD226A1B6B00E87F22 /* FillInformationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0622E9FC226A1B6B00E87F22 /* FillInformationViewController.xib */; };
 		0622EA00226A1C7D00E87F22 /* NavigationBarCustomizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0622E9FF226A1C7D00E87F22 /* NavigationBarCustomizable.swift */; };
+		0622EA08226A1EF200E87F22 /* NSObjectProtocol.extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0622EA07226A1EF200E87F22 /* NSObjectProtocol.extension.swift */; };
 		0641AD232264A1BA00CEDAE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0641AD222264A1BA00CEDAE7 /* AppDelegate.swift */; };
 		0641AD2A2264A1BC00CEDAE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0641AD292264A1BC00CEDAE7 /* Assets.xcassets */; };
 		0641AD2D2264A1BC00CEDAE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0641AD2B2264A1BC00CEDAE7 /* LaunchScreen.storyboard */; };
@@ -43,6 +44,7 @@
 		006839574F440A78C2631C92 /* Pods_DuietUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DuietUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0622E9FC226A1B6B00E87F22 /* FillInformationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FillInformationViewController.xib; sourceTree = "<group>"; };
 		0622E9FF226A1C7D00E87F22 /* NavigationBarCustomizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBarCustomizable.swift; sourceTree = "<group>"; };
+		0622EA07226A1EF200E87F22 /* NSObjectProtocol.extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSObjectProtocol.extension.swift; sourceTree = "<group>"; };
 		0641AD1F2264A1BA00CEDAE7 /* Duiet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Duiet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0641AD222264A1BA00CEDAE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0641AD292264A1BC00CEDAE7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 		0641AD5F2264ADB000CEDAE7 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				0622EA07226A1EF200E87F22 /* NSObjectProtocol.extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -523,6 +526,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0622EA08226A1EF200E87F22 /* NSObjectProtocol.extension.swift in Sources */,
 				0641AD232264A1BA00CEDAE7 /* AppDelegate.swift in Sources */,
 				0622EA00226A1C7D00E87F22 /* NavigationBarCustomizable.swift in Sources */,
 			);
