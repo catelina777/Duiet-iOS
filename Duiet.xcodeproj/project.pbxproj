@@ -23,6 +23,7 @@
 		0622EA25226A20B300E87F22 /* CompleteButtonViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0622EA23226A20B300E87F22 /* CompleteButtonViewCell.xib */; };
 		0622EA27226A20CE00E87F22 /* RxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0622EA26226A20CE00E87F22 /* RxTableViewCell.swift */; };
 		0622EA29226A213B00E87F22 /* MyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0622EA28226A213B00E87F22 /* MyTextField.swift */; };
+		0622EA2B226A21A400E87F22 /* UIButton.extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0622EA2A226A21A400E87F22 /* UIButton.extension.swift */; };
 		0641AD232264A1BA00CEDAE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0641AD222264A1BA00CEDAE7 /* AppDelegate.swift */; };
 		0641AD2A2264A1BC00CEDAE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0641AD292264A1BC00CEDAE7 /* Assets.xcassets */; };
 		0641AD2D2264A1BC00CEDAE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0641AD2B2264A1BC00CEDAE7 /* LaunchScreen.storyboard */; };
@@ -71,6 +72,7 @@
 		0622EA23226A20B300E87F22 /* CompleteButtonViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CompleteButtonViewCell.xib; sourceTree = "<group>"; };
 		0622EA26226A20CE00E87F22 /* RxTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxTableViewCell.swift; sourceTree = "<group>"; };
 		0622EA28226A213B00E87F22 /* MyTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTextField.swift; sourceTree = "<group>"; };
+		0622EA2A226A21A400E87F22 /* UIButton.extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton.extension.swift; sourceTree = "<group>"; };
 		0641AD1F2264A1BA00CEDAE7 /* Duiet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Duiet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0641AD222264A1BA00CEDAE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0641AD292264A1BC00CEDAE7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 		0641AD5F2264ADB000CEDAE7 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				0622EA2A226A21A400E87F22 /* UIButton.extension.swift */,
 				0622EA07226A1EF200E87F22 /* NSObjectProtocol.extension.swift */,
 			);
 			path = Extension;
@@ -614,6 +617,7 @@
 				0622EA02226A1DE800E87F22 /* FillInformationViewController.swift in Sources */,
 				0622EA29226A213B00E87F22 /* MyTextField.swift in Sources */,
 				0622EA19226A209F00E87F22 /* InputGenderViewCell.swift in Sources */,
+				0622EA2B226A21A400E87F22 /* UIButton.extension.swift in Sources */,
 				0622EA04226A1DFC00E87F22 /* FillInformationViewDataSource.swift in Sources */,
 				0622EA27226A20CE00E87F22 /* RxTableViewCell.swift in Sources */,
 				0622EA21226A20AC00E87F22 /* InputActivityLevelViewCell.swift in Sources */,
