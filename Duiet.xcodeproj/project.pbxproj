@@ -25,6 +25,8 @@
 		0622EA29226A213B00E87F22 /* MyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0622EA28226A213B00E87F22 /* MyTextField.swift */; };
 		0622EA2B226A21A400E87F22 /* UIButton.extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0622EA2A226A21A400E87F22 /* UIButton.extension.swift */; };
 		0622EA30226A251500E87F22 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0622EA2F226A251500E87F22 /* R.generated.swift */; };
+		0622EA34226A283A00E87F22 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0622EA2D226A239300E87F22 /* Montserrat-Bold.ttf */; };
+		0622EA35226A283A00E87F22 /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0622EA2E226A239900E87F22 /* Montserrat-ExtraBold.ttf */; };
 		0641AD232264A1BA00CEDAE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0641AD222264A1BA00CEDAE7 /* AppDelegate.swift */; };
 		0641AD2A2264A1BC00CEDAE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0641AD292264A1BC00CEDAE7 /* Assets.xcassets */; };
 		0641AD2D2264A1BC00CEDAE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0641AD2B2264A1BC00CEDAE7 /* LaunchScreen.storyboard */; };
@@ -451,6 +453,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0622EA34226A283A00E87F22 /* Montserrat-Bold.ttf in Resources */,
+				0622EA35226A283A00E87F22 /* Montserrat-ExtraBold.ttf in Resources */,
 				0622EA1C226A20A500E87F22 /* InputNumberViewCell.xib in Resources */,
 				0641AD2D2264A1BC00CEDAE7 /* LaunchScreen.storyboard in Resources */,
 				0641AD512264A7C900CEDAE7 /* GoogleService-Info.plist in Resources */,
