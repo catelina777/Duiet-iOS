@@ -32,18 +32,18 @@ final class FillInformationViewController: UIViewController, NavigationBarCustom
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource.configure(with: tableView)
-        configureNavigationBar(with: "Fill Information")
+        configureNavigationBar(with: viewModel.title)
 
-        viewModel.output.showActivityLevel
-            .bind(to: showActivityLevel)
+        viewModel.output.didTapComplete
+            .bind(to: showMain)
             .disposed(by: disposeBag)
     }
 
-    private var showActivityLevel: Binder<Void> {
-        return Binder(self) { me, activityLevel in
-            let vc = SelectActivityLevelViewController(fillInformationOutput: me.viewModel.output.activityLevel,
-                                                       fillInformationInput: me.viewModel.input.activityLevel)
-            me.navigationController?.pushViewController(vc, animated: true)
+    private var showMain: Binder<Void> {
+        return Binder(self) { _, _ in
+//            let vc = TodayViewController()
+//            let nc = UINavigationController(rootViewController: vc)
+//            me.present(nc, animated: true, completion: nil)
         }
     }
 }

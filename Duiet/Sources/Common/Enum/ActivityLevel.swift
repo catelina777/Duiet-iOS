@@ -13,17 +13,20 @@ enum ActivityLevel {
     case lightly
     case moderately
     case veryActive
+    case none
 
-    var text: String {
+    var text: String? {
         switch self {
         case .sedentary:
-            return "Sedentary"
+            return "No exercise"
         case .lightly:
             return "Lightly"
         case .moderately:
             return "Moderately"
         case .veryActive:
             return "Very Active"
+        case .none:
+            return nil
         }
     }
 
@@ -37,6 +40,8 @@ enum ActivityLevel {
             return "Moderately exercise 3-5 days/week"
         case .veryActive:
             return "Hard exercise 6-7 days/week"
+        case .none:
+            return "Please Pick from these"
         }
     }
 
@@ -50,21 +55,23 @@ enum ActivityLevel {
             return 1.55
         case .veryActive:
             return 1.725
+        case .none:
+            return 0
         }
     }
 
-    static func getType(with indexPath: IndexPath) -> ActivityLevel {
-        switch indexPath.row {
-        case 0:
-            return .sedentary
+    static func getType(with row: Int) -> ActivityLevel {
+        switch row {
         case 1:
-            return .lightly
+            return .sedentary
         case 2:
-            return .moderately
+            return .lightly
         case 3:
+            return .moderately
+        case 4:
             return .veryActive
         default:
-            return .sedentary
+            return .none
         }
     }
 }

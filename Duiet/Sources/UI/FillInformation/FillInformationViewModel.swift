@@ -12,8 +12,23 @@ import RxCocoa
 
 final class FillInformationViewModel {
 
+    let title = "Fill Information"
+    let rowCounts = 5
+
     let input: Input
     let output: Output
+
+    private(set) lazy var heightList: [Double] = {
+        let list = [Double].init(repeating: 0, count: 215)
+        return list.enumerated().map { Double($0.offset) * 0.5 + 100 }
+    }()
+
+    private(set) lazy var weightList: [Double] = {
+        let list = [Double].init(repeating: 0, count: 150)
+        return list.enumerated().map { Double($0.offset) * 0.5 + 20 }
+    }()
+
+    let activityTypes: [ActivityLevel] = [.none, .sedentary, .lightly, .moderately, .veryActive]
 
     private let disposeBag = DisposeBag()
 
@@ -21,21 +36,25 @@ final class FillInformationViewModel {
         let _gender = BehaviorRelay<Bool?>(value: nil)
         let _height = BehaviorRelay<Double?>(value: nil)
         let _weight = BehaviorRelay<Double?>(value: nil)
-        let _activityInputLevel = BehaviorRelay<ActivityLevel?>(value: nil)
-        let _selectedIndexPath = PublishRelay<IndexPath>()
+        let _activityLevel = BehaviorRelay<ActivityLevel>(value: .none)
+        let _completeButtonTap = PublishRelay<Void>()
 
         self.input = Input(gender: _gender.asObserver(),
                            height: _height.asObserver(),
                            weight: _weight.asObserver(),
-                           activityLevel: _activityInputLevel.asObserver(),
-                           selectedIndexPath: _selectedIndexPath.asObserver())
+                           activityLevel: _activityLevel.asObserver(),
+                           completeButtonTap: _completeButtonTap.asObserver())
 
-        let activityOutputLevel = BehaviorRelay<ActivityLevel?>(value: nil)
-        let showActivityLevel = _selectedIndexPath
-            .filter { $0.row == 3 }
-            .map { _ in () }
-        self.output = Output(showActivityLevel: showActivityLevel,
-                             activityLevel: activityOutputLevel.asObservable())
+        let isValidateComplete = Observable
+            .combineLatest(_gender, _height, _weight, _activityLevel) { v1, v2, v3, v4 -> Bool in
+                return (v1 != nil) && (v2 != nil) && (v3 != nil) && (v4 != .none)
+            }
+            .distinctUntilChanged()
+
+        let completeButtonTap = _completeButtonTap
+
+        self.output = Output(isValidateComplete: isValidateComplete,
+                             didTapComplete: completeButtonTap.asObservable())
     }
 }
 
@@ -45,12 +64,12 @@ extension FillInformationViewModel {
         let gender: AnyObserver<Bool?>
         let height: AnyObserver<Double?>
         let weight: AnyObserver<Double?>
-        let activityLevel: AnyObserver<ActivityLevel?>
-        let selectedIndexPath: AnyObserver<IndexPath>
+        let activityLevel: AnyObserver<ActivityLevel>
+        let completeButtonTap: AnyObserver<Void>
     }
 
     struct Output {
-        let showActivityLevel: Observable<Void>
-        let activityLevel: Observable<ActivityLevel?>
+        let isValidateComplete: Observable<Bool>
+        let didTapComplete: Observable<Void>
     }
 }

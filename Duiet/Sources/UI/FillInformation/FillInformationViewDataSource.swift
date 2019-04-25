@@ -31,7 +31,7 @@ class FillInformationViewDataSource: NSObject {
 
 extension FillInformationViewDataSource: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return viewModel.rowCounts
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -49,33 +49,35 @@ extension FillInformationViewDataSource: UITableViewDataSource {
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.inputNumberViewCell,
                                                      for: indexPath)!
-            cell.textField.rx.text.orEmpty
-                .map { Double($0) }
-                .bind(to: viewModel.input.height)
-                .disposed(by: cell.disposeBag)
-            cell.configure(with: .height)
+            cell.configure(with: viewModel, type: .height)
             return cell
 
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.inputNumberViewCell,
                                                      for: indexPath)!
-            cell.textField.rx.text.orEmpty
-                .map { Double($0) }
-                .bind(to: viewModel.input.weight)
-                .disposed(by: cell.disposeBag)
-            cell.configure(with: .weight)
+            cell.configure(with: viewModel, type: .weight)
             return cell
 
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.inputActivityLevelViewCell,
                                                      for: indexPath)!
             cell.configure(with: .activityLevel)
+            cell.configure(with: viewModel)
             return cell
 
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.completeButtonViewCell,
                                                      for: indexPath)!
+
+            viewModel.output.isValidateComplete
+                .bind(to: cell.isComplete)
+                .disposed(by: cell.disposeBag)
+
+            cell.completeButton.rx.tap
+                .bind(to: viewModel.input.completeButtonTap)
+                .disposed(by: cell.disposeBag)
             return cell
+
         default:
             let cell = UITableViewCell()
             return cell
@@ -83,10 +85,4 @@ extension FillInformationViewDataSource: UITableViewDataSource {
     }
 }
 
-extension FillInformationViewDataSource: UITableViewDelegate {
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: false)
-        viewModel.input.selectedIndexPath.onNext(indexPath)
-    }
-}
+extension FillInformationViewDataSource: UITableViewDelegate {}

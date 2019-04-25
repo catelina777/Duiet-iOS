@@ -7,21 +7,23 @@
 //
 
 import UIKit
+import RxSwift
 
-final class InputActivityLevelViewCell: RxTableViewCell {
+final class InputActivityLevelViewCell: InputPickerViewCell {
 
-    @IBOutlet weak var titleLabel: UILabel!
+    func configure(with viewModel: FillInformationViewModel) {
+        Observable.just(viewModel.activityTypes.map { $0.description })
+            .bind(to: pickerView.rx.itemTitles) { $1 }
+            .disposed(by: disposeBag)
 
-    @IBOutlet weak var textField: MyTextField! {
-        didSet {
-            textField.font = R.font.montserratExtraBold(size: 24)
-            textField.layer.cornerRadius = 10
-            textField.layer.masksToBounds = true
-            textField.isEnabled = false
-        }
-    }
+        pickerView.rx.itemSelected
+            .map { ActivityLevel.getType(with: $0.row) }
+            .bind(to: viewModel.input.activityLevel)
+            .disposed(by: disposeBag)
 
-    func configure(with cellType: CellType) {
-        titleLabel.text = cellType.rawValue
+        pickerView.rx.itemSelected
+            .map { ActivityLevel.getType(with: $0.row).text }
+            .bind(to: textField.rx.text)
+            .disposed(by: disposeBag)
     }
 }
