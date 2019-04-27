@@ -18,9 +18,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
 
-        let vc = WalkthroughViewController()
+        let key = "isLaunchedBefore"
+        let isLaunchedBefore = UserDefaults.standard.bool(forKey: key)
+
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = vc
+
+        switch isLaunchedBefore {
+        case false:
+            UserDefaults.standard.set(true, forKey: key)
+            let vc = WalkthroughViewController()
+            window?.rootViewController = vc
+            print("is first launch 🍻🍻🍻")
+        case true:
+            let vc = FillInformationViewController()
+            window?.rootViewController = vc
+            print("is not first launch 🍣🍣🍣")
+        }
+
         window?.makeKeyAndVisible()
         return true
     }
