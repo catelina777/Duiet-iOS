@@ -22,6 +22,7 @@ class FillInformationViewDataSource: NSObject {
         tableView.delegate = self
         tableView.rowHeight = 140
         tableView.keyboardDismissMode = .onDrag
+        tableView.register(R.nib.showTDEEViewCell)
         tableView.register(R.nib.inputNumberViewCell)
         tableView.register(R.nib.inputGenderViewCell)
         tableView.register(R.nib.inputActivityLevelViewCell)
@@ -49,23 +50,35 @@ extension FillInformationViewDataSource: UITableViewDataSource {
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.inputNumberViewCell,
                                                      for: indexPath)!
-            cell.configure(with: viewModel, type: .height)
+            cell.configure(with: viewModel, type: .age)
             return cell
 
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.inputNumberViewCell,
                                                      for: indexPath)!
-            cell.configure(with: viewModel, type: .weight)
+            cell.configure(with: viewModel, type: .height)
             return cell
 
         case 3:
+            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.inputNumberViewCell,
+                                                     for: indexPath)!
+            cell.configure(with: viewModel, type: .weight)
+            return cell
+
+        case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.inputActivityLevelViewCell,
                                                      for: indexPath)!
             cell.configure(with: .activityLevel)
             cell.configure(with: viewModel)
             return cell
 
-        case 4:
+        case 5:
+            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.showTDEEViewCell,
+                                                     for: indexPath)!
+            cell.configure(with: viewModel)
+            return cell
+
+        case 6:
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.completeButtonViewCell,
                                                      for: indexPath)!
 

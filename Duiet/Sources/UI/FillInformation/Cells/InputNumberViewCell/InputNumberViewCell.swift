@@ -56,5 +56,27 @@ final class InputNumberViewCell: InputPickerViewCell {
                 .bind(to: textField.rx.text)
                 .disposed(by: disposeBag)
         }
+
+        if type == .age {
+            let list = viewModel.ageList
+            let unit = " years old"
+            let defaultRow = 30
+
+            Observable.just(list.map { String($0) })
+                .bind(to: pickerView.rx.itemTitles) { $1 }
+                .disposed(by: disposeBag)
+
+            pickerView.selectRow(defaultRow, inComponent: 0, animated: true)
+
+            pickerView.rx.itemSelected
+                .map { list[$0.row] }
+                .bind(to: viewModel.input.age)
+                .disposed(by: disposeBag)
+
+            pickerView.rx.itemSelected
+                .map { String(list[$0.row]) + unit }
+                .bind(to: textField.rx.text)
+                .disposed(by: disposeBag)
+        }
     }
 }
