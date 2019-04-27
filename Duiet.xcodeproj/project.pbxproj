@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		061F278D22733D9800FDCB17 /* WalkthroughViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 061F278C22733D9800FDCB17 /* WalkthroughViewController.xib */; };
+		061F278F22733DA100FDCB17 /* WalkthroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061F278E22733DA100FDCB17 /* WalkthroughViewController.swift */; };
+		061F279122733DAD00FDCB17 /* WalkthroughViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061F279022733DAD00FDCB17 /* WalkthroughViewModel.swift */; };
+		061F279C22735BD900FDCB17 /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 061F279B22735BD900FDCB17 /* Icons.xcassets */; };
 		0622E9FD226A1B6B00E87F22 /* FillInformationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0622E9FC226A1B6B00E87F22 /* FillInformationViewController.xib */; };
 		0622EA00226A1C7D00E87F22 /* NavigationBarCustomizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0622E9FF226A1C7D00E87F22 /* NavigationBarCustomizable.swift */; };
 		0622EA02226A1DE800E87F22 /* FillInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0622EA01226A1DE800E87F22 /* FillInformationViewController.swift */; };
@@ -22,6 +26,7 @@
 		0622EA37226A29D600E87F22 /* ActivityLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0622EA36226A29D600E87F22 /* ActivityLevel.swift */; };
 		0622EA47226A2AB900E87F22 /* PublishRelay.extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0622EA46226A2AB900E87F22 /* PublishRelay.extension.swift */; };
 		0622EA49226A2AC000E87F22 /* BehaviorRelay.extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0622EA48226A2AC000E87F22 /* BehaviorRelay.extension.swift */; };
+		0630D49422742FE800224EC9 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0630D49322742FD400224EC9 /* Montserrat-Regular.ttf */; };
 		0641AD232264A1BA00CEDAE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0641AD222264A1BA00CEDAE7 /* AppDelegate.swift */; };
 		0641AD2A2264A1BC00CEDAE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0641AD292264A1BC00CEDAE7 /* Assets.xcassets */; };
 		0641AD2D2264A1BC00CEDAE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0641AD2B2264A1BC00CEDAE7 /* LaunchScreen.storyboard */; };
@@ -63,6 +68,10 @@
 
 /* Begin PBXFileReference section */
 		006839574F440A78C2631C92 /* Pods_DuietUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DuietUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		061F278C22733D9800FDCB17 /* WalkthroughViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalkthroughViewController.xib; sourceTree = "<group>"; };
+		061F278E22733DA100FDCB17 /* WalkthroughViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughViewController.swift; sourceTree = "<group>"; };
+		061F279022733DAD00FDCB17 /* WalkthroughViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughViewModel.swift; sourceTree = "<group>"; };
+		061F279B22735BD900FDCB17 /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
 		0622E9FC226A1B6B00E87F22 /* FillInformationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FillInformationViewController.xib; sourceTree = "<group>"; };
 		0622E9FF226A1C7D00E87F22 /* NavigationBarCustomizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBarCustomizable.swift; sourceTree = "<group>"; };
 		0622EA01226A1DE800E87F22 /* FillInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FillInformationViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +87,7 @@
 		0622EA36226A29D600E87F22 /* ActivityLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityLevel.swift; sourceTree = "<group>"; };
 		0622EA46226A2AB900E87F22 /* PublishRelay.extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublishRelay.extension.swift; sourceTree = "<group>"; };
 		0622EA48226A2AC000E87F22 /* BehaviorRelay.extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BehaviorRelay.extension.swift; sourceTree = "<group>"; };
+		0630D49322742FD400224EC9 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		0641AD1F2264A1BA00CEDAE7 /* Duiet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Duiet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0641AD222264A1BA00CEDAE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0641AD292264A1BC00CEDAE7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -164,6 +174,7 @@
 		0622EA2C226A237C00E87F22 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				0630D49322742FD400224EC9 /* Montserrat-Regular.ttf */,
 				0622EA2D226A239300E87F22 /* Montserrat-Bold.ttf */,
 				0622EA2E226A239900E87F22 /* Montserrat-ExtraBold.ttf */,
 			);
@@ -224,6 +235,7 @@
 			children = (
 				0622EA2C226A237C00E87F22 /* Fonts */,
 				0641AD292264A1BC00CEDAE7 /* Assets.xcassets */,
+				061F279B22735BD900FDCB17 /* Icons.xcassets */,
 				0641AD2B2264A1BC00CEDAE7 /* LaunchScreen.storyboard */,
 				0641AD2E2264A1BC00CEDAE7 /* Info.plist */,
 				0641AD502264A7C900CEDAE7 /* GoogleService-Info.plist */,
@@ -257,6 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				0641AD602264ADC100CEDAE7 /* Common */,
+				06516ABB2272D5520092DE3B /* Walkthrough */,
 				0622E9FB226A1B3500E87F22 /* FillInformation */,
 			);
 			path = UI;
@@ -279,6 +292,16 @@
 				0622EA26226A20CE00E87F22 /* RxTableViewCell.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		06516ABB2272D5520092DE3B /* Walkthrough */ = {
+			isa = PBXGroup;
+			children = (
+				061F278E22733DA100FDCB17 /* WalkthroughViewController.swift */,
+				061F279022733DAD00FDCB17 /* WalkthroughViewModel.swift */,
+				061F278C22733D9800FDCB17 /* WalkthroughViewController.xib */,
+			);
+			path = Walkthrough;
 			sourceTree = "<group>";
 		};
 		06B2FCF0227221980078C7F1 /* Enum */ = {
@@ -473,10 +496,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0630D49422742FE800224EC9 /* Montserrat-Regular.ttf in Resources */,
 				0622EA34226A283A00E87F22 /* Montserrat-Bold.ttf in Resources */,
 				0622EA35226A283A00E87F22 /* Montserrat-ExtraBold.ttf in Resources */,
 				0641AD2D2264A1BC00CEDAE7 /* LaunchScreen.storyboard in Resources */,
+				061F279C22735BD900FDCB17 /* Icons.xcassets in Resources */,
 				0641AD512264A7C900CEDAE7 /* GoogleService-Info.plist in Resources */,
+				061F278D22733D9800FDCB17 /* WalkthroughViewController.xib in Resources */,
 				06B2FD04227222600078C7F1 /* InputActivityLevelViewCell.xib in Resources */,
 				06B2FD09227222670078C7F1 /* CompleteButtonViewCell.xib in Resources */,
 				06B2FD012272225A0078C7F1 /* InputNumberViewCell.xib in Resources */,
@@ -658,6 +684,7 @@
 				06B2FCFC227222530078C7F1 /* InputGenderViewCell.swift in Sources */,
 				0622EA47226A2AB900E87F22 /* PublishRelay.extension.swift in Sources */,
 				0622EA2B226A21A400E87F22 /* UIButton.extension.swift in Sources */,
+				061F278F22733DA100FDCB17 /* WalkthroughViewController.swift in Sources */,
 				06B2FD05227222600078C7F1 /* InputActivityLevelViewCell.swift in Sources */,
 				0622EA04226A1DFC00E87F22 /* FillInformationViewDataSource.swift in Sources */,
 				06B2FD002272225A0078C7F1 /* InputNumberViewCell.swift in Sources */,
@@ -667,6 +694,7 @@
 				0641AD232264A1BA00CEDAE7 /* AppDelegate.swift in Sources */,
 				0622EA00226A1C7D00E87F22 /* NavigationBarCustomizable.swift in Sources */,
 				06B2FD08227222670078C7F1 /* CompleteButtonViewCell.swift in Sources */,
+				061F279122733DAD00FDCB17 /* WalkthroughViewModel.swift in Sources */,
 				0622EA06226A1E0100E87F22 /* FillInformationViewModel.swift in Sources */,
 				0622EA37226A29D600E87F22 /* ActivityLevel.swift in Sources */,
 			);
