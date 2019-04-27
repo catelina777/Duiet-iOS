@@ -29,6 +29,7 @@
 		0630D49422742FE800224EC9 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0630D49322742FD400224EC9 /* Montserrat-Regular.ttf */; };
 		0630D497227490B200224EC9 /* ShowTDEEViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630D496227490B200224EC9 /* ShowTDEEViewCell.swift */; };
 		0630D499227490B900224EC9 /* ShowTDEEViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0630D498227490B900224EC9 /* ShowTDEEViewCell.xib */; };
+		0630D49B227495EB00224EC9 /* CellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630D49A227495EB00224EC9 /* CellType.swift */; };
 		0641AD232264A1BA00CEDAE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0641AD222264A1BA00CEDAE7 /* AppDelegate.swift */; };
 		0641AD2A2264A1BC00CEDAE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0641AD292264A1BC00CEDAE7 /* Assets.xcassets */; };
 		0641AD2D2264A1BC00CEDAE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0641AD2B2264A1BC00CEDAE7 /* LaunchScreen.storyboard */; };
@@ -92,6 +93,7 @@
 		0630D49322742FD400224EC9 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		0630D496227490B200224EC9 /* ShowTDEEViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTDEEViewCell.swift; sourceTree = "<group>"; };
 		0630D498227490B900224EC9 /* ShowTDEEViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowTDEEViewCell.xib; sourceTree = "<group>"; };
+		0630D49A227495EB00224EC9 /* CellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellType.swift; sourceTree = "<group>"; };
 		0641AD1F2264A1BA00CEDAE7 /* Duiet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Duiet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0641AD222264A1BA00CEDAE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0641AD292264A1BC00CEDAE7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -321,6 +323,7 @@
 			isa = PBXGroup;
 			children = (
 				0622EA36226A29D600E87F22 /* ActivityLevel.swift */,
+				0630D49A227495EB00224EC9 /* CellType.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -709,6 +712,7 @@
 				0641AD232264A1BA00CEDAE7 /* AppDelegate.swift in Sources */,
 				0622EA00226A1C7D00E87F22 /* NavigationBarCustomizable.swift in Sources */,
 				06B2FD08227222670078C7F1 /* CompleteButtonViewCell.swift in Sources */,
+				0630D49B227495EB00224EC9 /* CellType.swift in Sources */,
 				061F279122733DAD00FDCB17 /* WalkthroughViewModel.swift in Sources */,
 				0622EA06226A1E0100E87F22 /* FillInformationViewModel.swift in Sources */,
 				0630D497227490B200224EC9 /* ShowTDEEViewCell.swift in Sources */,
