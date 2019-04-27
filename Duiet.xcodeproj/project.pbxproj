@@ -27,6 +27,8 @@
 		0622EA47226A2AB900E87F22 /* PublishRelay.extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0622EA46226A2AB900E87F22 /* PublishRelay.extension.swift */; };
 		0622EA49226A2AC000E87F22 /* BehaviorRelay.extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0622EA48226A2AC000E87F22 /* BehaviorRelay.extension.swift */; };
 		0630D49422742FE800224EC9 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0630D49322742FD400224EC9 /* Montserrat-Regular.ttf */; };
+		0630D497227490B200224EC9 /* ShowTDEEViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630D496227490B200224EC9 /* ShowTDEEViewCell.swift */; };
+		0630D499227490B900224EC9 /* ShowTDEEViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0630D498227490B900224EC9 /* ShowTDEEViewCell.xib */; };
 		0641AD232264A1BA00CEDAE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0641AD222264A1BA00CEDAE7 /* AppDelegate.swift */; };
 		0641AD2A2264A1BC00CEDAE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0641AD292264A1BC00CEDAE7 /* Assets.xcassets */; };
 		0641AD2D2264A1BC00CEDAE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0641AD2B2264A1BC00CEDAE7 /* LaunchScreen.storyboard */; };
@@ -88,6 +90,8 @@
 		0622EA46226A2AB900E87F22 /* PublishRelay.extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublishRelay.extension.swift; sourceTree = "<group>"; };
 		0622EA48226A2AC000E87F22 /* BehaviorRelay.extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BehaviorRelay.extension.swift; sourceTree = "<group>"; };
 		0630D49322742FD400224EC9 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		0630D496227490B200224EC9 /* ShowTDEEViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTDEEViewCell.swift; sourceTree = "<group>"; };
+		0630D498227490B900224EC9 /* ShowTDEEViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowTDEEViewCell.xib; sourceTree = "<group>"; };
 		0641AD1F2264A1BA00CEDAE7 /* Duiet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Duiet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0641AD222264A1BA00CEDAE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0641AD292264A1BC00CEDAE7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -179,6 +183,15 @@
 				0622EA2E226A239900E87F22 /* Montserrat-ExtraBold.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		0630D4952274909300224EC9 /* ShowTDEEViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				0630D496227490B200224EC9 /* ShowTDEEViewCell.swift */,
+				0630D498227490B900224EC9 /* ShowTDEEViewCell.xib */,
+			);
+			path = ShowTDEEViewCell;
 			sourceTree = "<group>";
 		};
 		0641AD162264A1BA00CEDAE7 = {
@@ -319,6 +332,7 @@
 				06B2FCF6227222070078C7F1 /* InputGenderViewCell */,
 				06B2FCF72272221E0078C7F1 /* InputNumberViewCell */,
 				06B2FCF8227222270078C7F1 /* InputActivityLevelViewCell */,
+				0630D4952274909300224EC9 /* ShowTDEEViewCell */,
 				06B2FCF92272222F0078C7F1 /* CompleteButtonViewCell */,
 			);
 			path = Cells;
@@ -505,6 +519,7 @@
 				061F278D22733D9800FDCB17 /* WalkthroughViewController.xib in Resources */,
 				06B2FD04227222600078C7F1 /* InputActivityLevelViewCell.xib in Resources */,
 				06B2FD09227222670078C7F1 /* CompleteButtonViewCell.xib in Resources */,
+				0630D499227490B900224EC9 /* ShowTDEEViewCell.xib in Resources */,
 				06B2FD012272225A0078C7F1 /* InputNumberViewCell.xib in Resources */,
 				06B2FCFD227222530078C7F1 /* InputGenderViewCell.xib in Resources */,
 				0622E9FD226A1B6B00E87F22 /* FillInformationViewController.xib in Resources */,
@@ -696,6 +711,7 @@
 				06B2FD08227222670078C7F1 /* CompleteButtonViewCell.swift in Sources */,
 				061F279122733DAD00FDCB17 /* WalkthroughViewModel.swift in Sources */,
 				0622EA06226A1E0100E87F22 /* FillInformationViewModel.swift in Sources */,
+				0630D497227490B200224EC9 /* ShowTDEEViewCell.swift in Sources */,
 				0622EA37226A29D600E87F22 /* ActivityLevel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
