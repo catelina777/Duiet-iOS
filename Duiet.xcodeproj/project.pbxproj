@@ -349,8 +349,8 @@
 			children = (
 				069AD431227722D90075E711 /* Cells */,
 				069AD427227722490075E711 /* TodayViewController.swift */,
-				069AD426227722490075E711 /* TodayViewDataSource.swift */,
 				069AD4282277224A0075E711 /* TodayViewModel.swift */,
+				069AD426227722490075E711 /* TodayViewDataSource.swift */,
 				069AD425227722490075E711 /* TodayViewController.xib */,
 			);
 			path = Today;
@@ -359,10 +359,18 @@
 		069AD431227722D90075E711 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				069AD43D227731730075E711 /* MealCard */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		069AD43D227731730075E711 /* MealCard */ = {
+			isa = PBXGroup;
+			children = (
 				069AD432227722E50075E711 /* MealCardViewCell.swift */,
 				069AD4382277246A0075E711 /* MealCardViewCell.xib */,
 			);
-			path = Cells;
+			path = MealCard;
 			sourceTree = "<group>";
 		};
 		06B2FCF0227221980078C7F1 /* Enum */ = {
