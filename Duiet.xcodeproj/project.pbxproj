@@ -38,6 +38,18 @@
 		0641AD512264A7C900CEDAE7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0641AD502264A7C900CEDAE7 /* GoogleService-Info.plist */; };
 		0641AD592264ACB800CEDAE7 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0641AD572264ACB800CEDAE7 /* RxCocoa.framework */; };
 		0641AD5A2264ACB800CEDAE7 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0641AD582264ACB800CEDAE7 /* RxSwift.framework */; };
+		069AD4292277224A0075E711 /* TodayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 069AD425227722490075E711 /* TodayViewController.xib */; };
+		069AD42A2277224A0075E711 /* TodayViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069AD426227722490075E711 /* TodayViewDataSource.swift */; };
+		069AD42B2277224A0075E711 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069AD427227722490075E711 /* TodayViewController.swift */; };
+		069AD42C2277224A0075E711 /* TodayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069AD4282277224A0075E711 /* TodayViewModel.swift */; };
+		069AD42E227722AC0075E711 /* UIImagePickerController+RxCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069AD42D227722AC0075E711 /* UIImagePickerController+RxCreate.swift */; };
+		069AD430227722B50075E711 /* RxImagePickerDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069AD42F227722B50075E711 /* RxImagePickerDelegateProxy.swift */; };
+		069AD434227722E50075E711 /* MealCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069AD432227722E50075E711 /* MealCardViewCell.swift */; };
+		069AD437227723100075E711 /* RxCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069AD436227723100075E711 /* RxCollectionViewCell.swift */; };
+		069AD4392277246A0075E711 /* MealCardViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 069AD4382277246A0075E711 /* MealCardViewCell.xib */; };
+		069AD43C227728050075E711 /* Placeholder.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 069AD43B227728050075E711 /* Placeholder.xcassets */; };
+		069AD440227731EE0075E711 /* ProgressCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069AD43F227731EE0075E711 /* ProgressCardViewCell.swift */; };
+		069AD442227731FB0075E711 /* ProgressCardViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 069AD441227731FB0075E711 /* ProgressCardViewCell.xib */; };
 		06B2FCF5227222010078C7F1 /* InputPickerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B2FCF4227222010078C7F1 /* InputPickerViewCell.swift */; };
 		06B2FCFC227222530078C7F1 /* InputGenderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B2FCFA227222530078C7F1 /* InputGenderViewCell.swift */; };
 		06B2FCFD227222530078C7F1 /* InputGenderViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06B2FCFB227222530078C7F1 /* InputGenderViewCell.xib */; };
@@ -108,6 +120,18 @@
 		0641AD502264A7C900CEDAE7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0641AD572264ACB800CEDAE7 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		0641AD582264ACB800CEDAE7 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		069AD425227722490075E711 /* TodayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TodayViewController.xib; sourceTree = "<group>"; };
+		069AD426227722490075E711 /* TodayViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayViewDataSource.swift; sourceTree = "<group>"; };
+		069AD427227722490075E711 /* TodayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		069AD4282277224A0075E711 /* TodayViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayViewModel.swift; sourceTree = "<group>"; };
+		069AD42D227722AC0075E711 /* UIImagePickerController+RxCreate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImagePickerController+RxCreate.swift"; sourceTree = "<group>"; };
+		069AD42F227722B50075E711 /* RxImagePickerDelegateProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxImagePickerDelegateProxy.swift; sourceTree = "<group>"; };
+		069AD432227722E50075E711 /* MealCardViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealCardViewCell.swift; sourceTree = "<group>"; };
+		069AD436227723100075E711 /* RxCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxCollectionViewCell.swift; sourceTree = "<group>"; };
+		069AD4382277246A0075E711 /* MealCardViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MealCardViewCell.xib; sourceTree = "<group>"; };
+		069AD43B227728050075E711 /* Placeholder.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Placeholder.xcassets; sourceTree = "<group>"; };
+		069AD43F227731EE0075E711 /* ProgressCardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCardViewCell.swift; sourceTree = "<group>"; };
+		069AD441227731FB0075E711 /* ProgressCardViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProgressCardViewCell.xib; sourceTree = "<group>"; };
 		06B2FCF4227222010078C7F1 /* InputPickerViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputPickerViewCell.swift; sourceTree = "<group>"; };
 		06B2FCFA227222530078C7F1 /* InputGenderViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputGenderViewCell.swift; sourceTree = "<group>"; };
 		06B2FCFB227222530078C7F1 /* InputGenderViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InputGenderViewCell.xib; sourceTree = "<group>"; };
@@ -251,6 +275,7 @@
 				0622EA2C226A237C00E87F22 /* Fonts */,
 				0641AD292264A1BC00CEDAE7 /* Assets.xcassets */,
 				061F279B22735BD900FDCB17 /* Icons.xcassets */,
+				069AD43B227728050075E711 /* Placeholder.xcassets */,
 				0641AD2B2264A1BC00CEDAE7 /* LaunchScreen.storyboard */,
 				0641AD2E2264A1BC00CEDAE7 /* Info.plist */,
 				0641AD502264A7C900CEDAE7 /* GoogleService-Info.plist */,
@@ -273,6 +298,7 @@
 				06B2FCF0227221980078C7F1 /* Enum */,
 				0622E9FE226A1C5700E87F22 /* Protocol */,
 				0641AD5F2264ADB000CEDAE7 /* Extension */,
+				069AD42F227722B50075E711 /* RxImagePickerDelegateProxy.swift */,
 				0622EA28226A213B00E87F22 /* MyTextField.swift */,
 				0622EA2F226A251500E87F22 /* R.generated.swift */,
 				0641AD222264A1BA00CEDAE7 /* AppDelegate.swift */,
@@ -286,6 +312,7 @@
 				0641AD602264ADC100CEDAE7 /* Common */,
 				06516ABB2272D5520092DE3B /* Walkthrough */,
 				0622E9FB226A1B3500E87F22 /* FillInformation */,
+				069AD424227720700075E711 /* Today */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -297,6 +324,7 @@
 				0622EA48226A2AC000E87F22 /* BehaviorRelay.extension.swift */,
 				0622EA2A226A21A400E87F22 /* UIButton.extension.swift */,
 				0622EA07226A1EF200E87F22 /* NSObjectProtocol.extension.swift */,
+				069AD42D227722AC0075E711 /* UIImagePickerController+RxCreate.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -305,6 +333,7 @@
 			isa = PBXGroup;
 			children = (
 				0622EA26226A20CE00E87F22 /* RxTableViewCell.swift */,
+				069AD436227723100075E711 /* RxCollectionViewCell.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -317,6 +346,45 @@
 				061F278C22733D9800FDCB17 /* WalkthroughViewController.xib */,
 			);
 			path = Walkthrough;
+			sourceTree = "<group>";
+		};
+		069AD424227720700075E711 /* Today */ = {
+			isa = PBXGroup;
+			children = (
+				069AD431227722D90075E711 /* Cells */,
+				069AD427227722490075E711 /* TodayViewController.swift */,
+				069AD4282277224A0075E711 /* TodayViewModel.swift */,
+				069AD426227722490075E711 /* TodayViewDataSource.swift */,
+				069AD425227722490075E711 /* TodayViewController.xib */,
+			);
+			path = Today;
+			sourceTree = "<group>";
+		};
+		069AD431227722D90075E711 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				069AD43E227731AF0075E711 /* ProgressCard */,
+				069AD43D227731730075E711 /* MealCard */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		069AD43D227731730075E711 /* MealCard */ = {
+			isa = PBXGroup;
+			children = (
+				069AD432227722E50075E711 /* MealCardViewCell.swift */,
+				069AD4382277246A0075E711 /* MealCardViewCell.xib */,
+			);
+			path = MealCard;
+			sourceTree = "<group>";
+		};
+		069AD43E227731AF0075E711 /* ProgressCard */ = {
+			isa = PBXGroup;
+			children = (
+				069AD43F227731EE0075E711 /* ProgressCardViewCell.swift */,
+				069AD441227731FB0075E711 /* ProgressCardViewCell.xib */,
+			);
+			path = ProgressCard;
 			sourceTree = "<group>";
 		};
 		06B2FCF0227221980078C7F1 /* Enum */ = {
@@ -518,15 +586,19 @@
 				0622EA35226A283A00E87F22 /* Montserrat-ExtraBold.ttf in Resources */,
 				0641AD2D2264A1BC00CEDAE7 /* LaunchScreen.storyboard in Resources */,
 				061F279C22735BD900FDCB17 /* Icons.xcassets in Resources */,
+				069AD4292277224A0075E711 /* TodayViewController.xib in Resources */,
 				0641AD512264A7C900CEDAE7 /* GoogleService-Info.plist in Resources */,
+				069AD442227731FB0075E711 /* ProgressCardViewCell.xib in Resources */,
 				061F278D22733D9800FDCB17 /* WalkthroughViewController.xib in Resources */,
 				06B2FD04227222600078C7F1 /* InputActivityLevelViewCell.xib in Resources */,
+				069AD4392277246A0075E711 /* MealCardViewCell.xib in Resources */,
 				06B2FD09227222670078C7F1 /* CompleteButtonViewCell.xib in Resources */,
 				0630D499227490B900224EC9 /* ShowTDEEViewCell.xib in Resources */,
 				06B2FD012272225A0078C7F1 /* InputNumberViewCell.xib in Resources */,
 				06B2FCFD227222530078C7F1 /* InputGenderViewCell.xib in Resources */,
 				0622E9FD226A1B6B00E87F22 /* FillInformationViewController.xib in Resources */,
 				0641AD2A2264A1BC00CEDAE7 /* Assets.xcassets in Resources */,
+				069AD43C227728050075E711 /* Placeholder.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -695,10 +767,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				069AD430227722B50075E711 /* RxImagePickerDelegateProxy.swift in Sources */,
 				0622EA30226A251500E87F22 /* R.generated.swift in Sources */,
 				0622EA02226A1DE800E87F22 /* FillInformationViewController.swift in Sources */,
 				0622EA29226A213B00E87F22 /* MyTextField.swift in Sources */,
 				06B2FCF5227222010078C7F1 /* InputPickerViewCell.swift in Sources */,
+				069AD42A2277224A0075E711 /* TodayViewDataSource.swift in Sources */,
 				06B2FCFC227222530078C7F1 /* InputGenderViewCell.swift in Sources */,
 				0622EA47226A2AB900E87F22 /* PublishRelay.extension.swift in Sources */,
 				0622EA2B226A21A400E87F22 /* UIButton.extension.swift in Sources */,
@@ -706,14 +780,20 @@
 				06B2FD05227222600078C7F1 /* InputActivityLevelViewCell.swift in Sources */,
 				0622EA04226A1DFC00E87F22 /* FillInformationViewDataSource.swift in Sources */,
 				06B2FD002272225A0078C7F1 /* InputNumberViewCell.swift in Sources */,
+				069AD42C2277224A0075E711 /* TodayViewModel.swift in Sources */,
+				069AD42E227722AC0075E711 /* UIImagePickerController+RxCreate.swift in Sources */,
 				0622EA27226A20CE00E87F22 /* RxTableViewCell.swift in Sources */,
 				0622EA49226A2AC000E87F22 /* BehaviorRelay.extension.swift in Sources */,
 				0622EA08226A1EF200E87F22 /* NSObjectProtocol.extension.swift in Sources */,
 				0641AD232264A1BA00CEDAE7 /* AppDelegate.swift in Sources */,
+				069AD440227731EE0075E711 /* ProgressCardViewCell.swift in Sources */,
+				069AD437227723100075E711 /* RxCollectionViewCell.swift in Sources */,
 				0622EA00226A1C7D00E87F22 /* NavigationBarCustomizable.swift in Sources */,
 				06B2FD08227222670078C7F1 /* CompleteButtonViewCell.swift in Sources */,
+				069AD434227722E50075E711 /* MealCardViewCell.swift in Sources */,
 				0630D49B227495EB00224EC9 /* CellType.swift in Sources */,
 				061F279122733DAD00FDCB17 /* WalkthroughViewModel.swift in Sources */,
+				069AD42B2277224A0075E711 /* TodayViewController.swift in Sources */,
 				0622EA06226A1E0100E87F22 /* FillInformationViewModel.swift in Sources */,
 				0630D497227490B200224EC9 /* ShowTDEEViewCell.swift in Sources */,
 				0622EA37226A29D600E87F22 /* ActivityLevel.swift in Sources */,
@@ -891,6 +971,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = Duiet/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -914,6 +995,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = Duiet/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
