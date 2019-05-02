@@ -21,6 +21,7 @@ final class TodayViewDataSource: NSObject {
     func configure(with collectionView: UICollectionView) {
         collectionView.dataSource = self
         collectionView.delegate = self
+        collectionView.register(R.nib.progressCardViewCell)
         collectionView.register(R.nib.mealCardViewCell)
     }
 }
@@ -31,9 +32,17 @@ extension TodayViewDataSource: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.mealCardViewCell,
-                                                      for: indexPath)!
-        return cell
+
+        switch indexPath.row {
+        case 0:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.progressCardVIewCell,
+                                                          for: indexPath)!
+            return cell
+        default:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.mealCardViewCell,
+                                                          for: indexPath)!
+            return cell
+        }
     }
 }
 
@@ -44,11 +53,20 @@ extension TodayViewDataSource: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.frame.width
-        let height = width * 0.985
-        let size = CGSize(width: width,
-                          height: height)
-        return size
+
+        switch indexPath.row {
+        case 0:
+            let width = collectionView.frame.width
+            let height = width * 0.5
+            let size = CGSize(width: width, height: height)
+            return size
+        default:
+            let width = collectionView.frame.width
+            let height = width * 0.985
+            let size = CGSize(width: width,
+                              height: height)
+            return size
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView,

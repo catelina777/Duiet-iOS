@@ -72,20 +72,4 @@ class RoundedCardWrapperView: UIView {
     }
 }
 
-final class MealCardViewCell: RxCollectionViewCell {
-
-    var isAwaken = false
-
-    func configure() {
-        if !isAwaken {
-            isAwaken = true
-            let margin: CGFloat = 0.05
-            let x = frame.width * margin
-            let width = frame.width * (1 - margin * 2)
-            let cardFrame = CGRect(x: x, y: 0, width: width, height: width)
-            let wrrapedCardView = RoundedCardWrapperView(frame: cardFrame)
-            addSubview(wrrapedCardView)
-            print("awaken➕➕➕")
-        }
-    }
-}
+final class MealCardViewCell: RxCollectionViewCell {}
