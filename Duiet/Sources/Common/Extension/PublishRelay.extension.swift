@@ -6,11 +6,11 @@
 //  Copyright © 2019 duiet. All rights reserved.
 //
 
-import RxCocoa
 import RxSwift
+import RxRelay
 
 extension PublishRelay {
-    func asObserver() -> AnyObserver<E> {
+    func asObserver() -> AnyObserver<Element> {
         return AnyObserver { $0.element.map(self.accept) }
     }
 }
