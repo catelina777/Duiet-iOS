@@ -59,6 +59,8 @@
 		06B2FD05227222600078C7F1 /* InputActivityLevelViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B2FD03227222600078C7F1 /* InputActivityLevelViewCell.swift */; };
 		06B2FD08227222670078C7F1 /* CompleteButtonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B2FD06227222670078C7F1 /* CompleteButtonViewCell.swift */; };
 		06B2FD09227222670078C7F1 /* CompleteButtonViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06B2FD07227222670078C7F1 /* CompleteButtonViewCell.xib */; };
+		06F615D3227AF5C40074089B /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06F615D2227AF5C40074089B /* RxRelay.framework */; };
+		06F615D1227AF1080074089B /* Splash.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06F615D0227AF1080074089B /* Splash.xcassets */; };
 		3D663033B554173C7AFF58FC /* Pods_Duiet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6911E39E3468EB910D0358F5 /* Pods_Duiet.framework */; };
 		8AFA7421A93B1AAF33698633 /* Pods_DuietTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B35F720B676F45DF7C30A993 /* Pods_DuietTests.framework */; };
 		D73436F20B6C69548E947136 /* Pods_DuietUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 006839574F440A78C2631C92 /* Pods_DuietUITests.framework */; };
@@ -141,6 +143,8 @@
 		06B2FD03227222600078C7F1 /* InputActivityLevelViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputActivityLevelViewCell.swift; sourceTree = "<group>"; };
 		06B2FD06227222670078C7F1 /* CompleteButtonViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompleteButtonViewCell.swift; sourceTree = "<group>"; };
 		06B2FD07227222670078C7F1 /* CompleteButtonViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CompleteButtonViewCell.xib; sourceTree = "<group>"; };
+		06F615D2227AF5C40074089B /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
+		06F615D0227AF1080074089B /* Splash.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Splash.xcassets; sourceTree = "<group>"; };
 		1D64453EF3A64E5B58A308B8 /* Pods-Duiet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Duiet.debug.xcconfig"; path = "Target Support Files/Pods-Duiet/Pods-Duiet.debug.xcconfig"; sourceTree = "<group>"; };
 		6911E39E3468EB910D0358F5 /* Pods_Duiet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Duiet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CD1E0F4DE960D419C98FCDE /* Pods-DuietUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DuietUITests.release.xcconfig"; path = "Target Support Files/Pods-DuietUITests/Pods-DuietUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -156,6 +160,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06F615D3227AF5C40074089B /* RxRelay.framework in Frameworks */,
 				0641AD592264ACB800CEDAE7 /* RxCocoa.framework in Frameworks */,
 				0641AD5A2264ACB800CEDAE7 /* RxSwift.framework in Frameworks */,
 				3D663033B554173C7AFF58FC /* Pods_Duiet.framework in Frameworks */,
@@ -276,6 +281,7 @@
 				0641AD292264A1BC00CEDAE7 /* Assets.xcassets */,
 				061F279B22735BD900FDCB17 /* Icons.xcassets */,
 				069AD43B227728050075E711 /* Placeholder.xcassets */,
+				06F615D0227AF1080074089B /* Splash.xcassets */,
 				0641AD2B2264A1BC00CEDAE7 /* LaunchScreen.storyboard */,
 				0641AD2E2264A1BC00CEDAE7 /* Info.plist */,
 				0641AD502264A7C900CEDAE7 /* GoogleService-Info.plist */,
@@ -448,6 +454,7 @@
 		4B312EFBEE0174A408F8814E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				06F615D2227AF5C40074089B /* RxRelay.framework */,
 				0641AD572264ACB800CEDAE7 /* RxCocoa.framework */,
 				0641AD582264ACB800CEDAE7 /* RxSwift.framework */,
 				6911E39E3468EB910D0358F5 /* Pods_Duiet.framework */,
@@ -591,6 +598,7 @@
 				069AD442227731FB0075E711 /* ProgressCardViewCell.xib in Resources */,
 				061F278D22733D9800FDCB17 /* WalkthroughViewController.xib in Resources */,
 				06B2FD04227222600078C7F1 /* InputActivityLevelViewCell.xib in Resources */,
+				06F615D1227AF1080074089B /* Splash.xcassets in Resources */,
 				069AD4392277246A0075E711 /* MealCardViewCell.xib in Resources */,
 				06B2FD09227222670078C7F1 /* CompleteButtonViewCell.xib in Resources */,
 				0630D499227490B900224EC9 /* ShowTDEEViewCell.xib in Resources */,
