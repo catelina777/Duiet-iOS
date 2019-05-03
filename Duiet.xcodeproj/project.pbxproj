@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		060A797C227C921800F02B30 /* PryntTrimmerView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 060A7979227C921800F02B30 /* PryntTrimmerView.framework */; };
+		060A797D227C921800F02B30 /* Stevia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 060A797A227C921800F02B30 /* Stevia.framework */; };
+		060A797E227C921800F02B30 /* YPImagePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 060A797B227C921800F02B30 /* YPImagePicker.framework */; };
+		060A7982227C967100F02B30 /* RxYPImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A7981227C967100F02B30 /* RxYPImagePicker.swift */; };
 		061F278D22733D9800FDCB17 /* WalkthroughViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 061F278C22733D9800FDCB17 /* WalkthroughViewController.xib */; };
 		061F278F22733DA100FDCB17 /* WalkthroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061F278E22733DA100FDCB17 /* WalkthroughViewController.swift */; };
 		061F279122733DAD00FDCB17 /* WalkthroughViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061F279022733DAD00FDCB17 /* WalkthroughViewModel.swift */; };
@@ -42,8 +46,6 @@
 		069AD42A2277224A0075E711 /* TodayViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069AD426227722490075E711 /* TodayViewDataSource.swift */; };
 		069AD42B2277224A0075E711 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069AD427227722490075E711 /* TodayViewController.swift */; };
 		069AD42C2277224A0075E711 /* TodayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069AD4282277224A0075E711 /* TodayViewModel.swift */; };
-		069AD42E227722AC0075E711 /* UIImagePickerController+RxCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069AD42D227722AC0075E711 /* UIImagePickerController+RxCreate.swift */; };
-		069AD430227722B50075E711 /* RxImagePickerDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069AD42F227722B50075E711 /* RxImagePickerDelegateProxy.swift */; };
 		069AD434227722E50075E711 /* MealCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069AD432227722E50075E711 /* MealCardViewCell.swift */; };
 		069AD437227723100075E711 /* RxCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069AD436227723100075E711 /* RxCollectionViewCell.swift */; };
 		069AD4392277246A0075E711 /* MealCardViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 069AD4382277246A0075E711 /* MealCardViewCell.xib */; };
@@ -59,8 +61,8 @@
 		06B2FD05227222600078C7F1 /* InputActivityLevelViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B2FD03227222600078C7F1 /* InputActivityLevelViewCell.swift */; };
 		06B2FD08227222670078C7F1 /* CompleteButtonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B2FD06227222670078C7F1 /* CompleteButtonViewCell.swift */; };
 		06B2FD09227222670078C7F1 /* CompleteButtonViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06B2FD07227222670078C7F1 /* CompleteButtonViewCell.xib */; };
-		06F615D3227AF5C40074089B /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06F615D2227AF5C40074089B /* RxRelay.framework */; };
 		06F615D1227AF1080074089B /* Splash.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06F615D0227AF1080074089B /* Splash.xcassets */; };
+		06F615D3227AF5C40074089B /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06F615D2227AF5C40074089B /* RxRelay.framework */; };
 		3D663033B554173C7AFF58FC /* Pods_Duiet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6911E39E3468EB910D0358F5 /* Pods_Duiet.framework */; };
 		8AFA7421A93B1AAF33698633 /* Pods_DuietTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B35F720B676F45DF7C30A993 /* Pods_DuietTests.framework */; };
 		D73436F20B6C69548E947136 /* Pods_DuietUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 006839574F440A78C2631C92 /* Pods_DuietUITests.framework */; };
@@ -85,6 +87,10 @@
 
 /* Begin PBXFileReference section */
 		006839574F440A78C2631C92 /* Pods_DuietUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DuietUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		060A7979227C921800F02B30 /* PryntTrimmerView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PryntTrimmerView.framework; path = Carthage/Build/iOS/PryntTrimmerView.framework; sourceTree = "<group>"; };
+		060A797A227C921800F02B30 /* Stevia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stevia.framework; path = Carthage/Build/iOS/Stevia.framework; sourceTree = "<group>"; };
+		060A797B227C921800F02B30 /* YPImagePicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YPImagePicker.framework; path = Carthage/Build/iOS/YPImagePicker.framework; sourceTree = "<group>"; };
+		060A7981227C967100F02B30 /* RxYPImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxYPImagePicker.swift; sourceTree = "<group>"; };
 		061F278C22733D9800FDCB17 /* WalkthroughViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalkthroughViewController.xib; sourceTree = "<group>"; };
 		061F278E22733DA100FDCB17 /* WalkthroughViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughViewController.swift; sourceTree = "<group>"; };
 		061F279022733DAD00FDCB17 /* WalkthroughViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughViewModel.swift; sourceTree = "<group>"; };
@@ -126,8 +132,6 @@
 		069AD426227722490075E711 /* TodayViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayViewDataSource.swift; sourceTree = "<group>"; };
 		069AD427227722490075E711 /* TodayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		069AD4282277224A0075E711 /* TodayViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayViewModel.swift; sourceTree = "<group>"; };
-		069AD42D227722AC0075E711 /* UIImagePickerController+RxCreate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImagePickerController+RxCreate.swift"; sourceTree = "<group>"; };
-		069AD42F227722B50075E711 /* RxImagePickerDelegateProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxImagePickerDelegateProxy.swift; sourceTree = "<group>"; };
 		069AD432227722E50075E711 /* MealCardViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealCardViewCell.swift; sourceTree = "<group>"; };
 		069AD436227723100075E711 /* RxCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxCollectionViewCell.swift; sourceTree = "<group>"; };
 		069AD4382277246A0075E711 /* MealCardViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MealCardViewCell.xib; sourceTree = "<group>"; };
@@ -143,8 +147,8 @@
 		06B2FD03227222600078C7F1 /* InputActivityLevelViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputActivityLevelViewCell.swift; sourceTree = "<group>"; };
 		06B2FD06227222670078C7F1 /* CompleteButtonViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompleteButtonViewCell.swift; sourceTree = "<group>"; };
 		06B2FD07227222670078C7F1 /* CompleteButtonViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CompleteButtonViewCell.xib; sourceTree = "<group>"; };
-		06F615D2227AF5C40074089B /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
 		06F615D0227AF1080074089B /* Splash.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Splash.xcassets; sourceTree = "<group>"; };
+		06F615D2227AF5C40074089B /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
 		1D64453EF3A64E5B58A308B8 /* Pods-Duiet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Duiet.debug.xcconfig"; path = "Target Support Files/Pods-Duiet/Pods-Duiet.debug.xcconfig"; sourceTree = "<group>"; };
 		6911E39E3468EB910D0358F5 /* Pods_Duiet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Duiet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CD1E0F4DE960D419C98FCDE /* Pods-DuietUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DuietUITests.release.xcconfig"; path = "Target Support Files/Pods-DuietUITests/Pods-DuietUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -160,6 +164,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				060A797C227C921800F02B30 /* PryntTrimmerView.framework in Frameworks */,
+				060A797D227C921800F02B30 /* Stevia.framework in Frameworks */,
+				060A797E227C921800F02B30 /* YPImagePicker.framework in Frameworks */,
 				06F615D3227AF5C40074089B /* RxRelay.framework in Frameworks */,
 				0641AD592264ACB800CEDAE7 /* RxCocoa.framework in Frameworks */,
 				0641AD5A2264ACB800CEDAE7 /* RxSwift.framework in Frameworks */,
@@ -186,6 +193,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		060A7983227C968000F02B30 /* Rx */ = {
+			isa = PBXGroup;
+			children = (
+				0622EA46226A2AB900E87F22 /* PublishRelay.extension.swift */,
+				0622EA48226A2AC000E87F22 /* BehaviorRelay.extension.swift */,
+				060A7981227C967100F02B30 /* RxYPImagePicker.swift */,
+			);
+			path = Rx;
+			sourceTree = "<group>";
+		};
 		0622E9FB226A1B3500E87F22 /* FillInformation */ = {
 			isa = PBXGroup;
 			children = (
@@ -304,7 +321,7 @@
 				06B2FCF0227221980078C7F1 /* Enum */,
 				0622E9FE226A1C5700E87F22 /* Protocol */,
 				0641AD5F2264ADB000CEDAE7 /* Extension */,
-				069AD42F227722B50075E711 /* RxImagePickerDelegateProxy.swift */,
+				060A7983227C968000F02B30 /* Rx */,
 				0622EA28226A213B00E87F22 /* MyTextField.swift */,
 				0622EA2F226A251500E87F22 /* R.generated.swift */,
 				0641AD222264A1BA00CEDAE7 /* AppDelegate.swift */,
@@ -326,11 +343,8 @@
 		0641AD5F2264ADB000CEDAE7 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				0622EA46226A2AB900E87F22 /* PublishRelay.extension.swift */,
-				0622EA48226A2AC000E87F22 /* BehaviorRelay.extension.swift */,
 				0622EA2A226A21A400E87F22 /* UIButton.extension.swift */,
 				0622EA07226A1EF200E87F22 /* NSObjectProtocol.extension.swift */,
-				069AD42D227722AC0075E711 /* UIImagePickerController+RxCreate.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -454,6 +468,9 @@
 		4B312EFBEE0174A408F8814E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				060A7979227C921800F02B30 /* PryntTrimmerView.framework */,
+				060A797A227C921800F02B30 /* Stevia.framework */,
+				060A797B227C921800F02B30 /* YPImagePicker.framework */,
 				06F615D2227AF5C40074089B /* RxRelay.framework */,
 				0641AD572264ACB800CEDAE7 /* RxCocoa.framework */,
 				0641AD582264ACB800CEDAE7 /* RxSwift.framework */,
@@ -775,7 +792,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				069AD430227722B50075E711 /* RxImagePickerDelegateProxy.swift in Sources */,
 				0622EA30226A251500E87F22 /* R.generated.swift in Sources */,
 				0622EA02226A1DE800E87F22 /* FillInformationViewController.swift in Sources */,
 				0622EA29226A213B00E87F22 /* MyTextField.swift in Sources */,
@@ -788,8 +804,8 @@
 				06B2FD05227222600078C7F1 /* InputActivityLevelViewCell.swift in Sources */,
 				0622EA04226A1DFC00E87F22 /* FillInformationViewDataSource.swift in Sources */,
 				06B2FD002272225A0078C7F1 /* InputNumberViewCell.swift in Sources */,
+				060A7982227C967100F02B30 /* RxYPImagePicker.swift in Sources */,
 				069AD42C2277224A0075E711 /* TodayViewModel.swift in Sources */,
-				069AD42E227722AC0075E711 /* UIImagePickerController+RxCreate.swift in Sources */,
 				0622EA27226A20CE00E87F22 /* RxTableViewCell.swift in Sources */,
 				0622EA49226A2AC000E87F22 /* BehaviorRelay.extension.swift in Sources */,
 				0622EA08226A1EF200E87F22 /* NSObjectProtocol.extension.swift in Sources */,

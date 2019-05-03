@@ -47,10 +47,6 @@ final class TodayViewController: UIViewController, NavigationBarCustomizable {
             .bind(to: viewModel.input.addButtonTap)
             .disposed(by: disposeBag)
 
-        viewModel.output.pickedImage
-            .bind(to: showDetail)
-            .disposed(by: disposeBag)
-
         viewModel.output.showDetail
             .bind(to: showDetail)
             .disposed(by: disposeBag)
