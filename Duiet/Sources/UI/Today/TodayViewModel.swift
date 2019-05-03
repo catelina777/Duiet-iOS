@@ -30,22 +30,18 @@ final class TodayViewModel {
 
         let pickedImage = _addButtonTap
             .flatMapLatest { vc in
-                return UIImagePickerController.rx.create(vc) { picker in
-                    picker.sourceType = .photoLibrary
-                    picker.allowsEditing = false
-                }
-                .flatMap { $0.rx.didFinishPickingMediaWithInfo }
-                .take(1)
+                return RxYPImagePicker.rx
+                    .create(vc)
+                    .flatMap { $0.pickedImage }
+                    .take(1)
             }
-            .map { $0[UIImagePickerController.InfoKey.originalImage.rawValue] as? UIImage }
-            .share(replay: 1, scope: .whileConnected)
+            .share()
 
         let showDetail = _viewDidAppear
             .map { true }
             .withLatestFrom(pickedImage)
 
-        output = Output(pickedImage: pickedImage,
-                        showDetail: showDetail)
+        output = Output(showDetail: showDetail)
     }
 }
 
@@ -56,7 +52,6 @@ extension TodayViewModel {
         let addButtonTap: AnyObserver<TodayViewController>
     }
     struct Output {
-        let pickedImage: Observable<UIImage?>
         let showDetail: Observable<UIImage?>
     }
 }
