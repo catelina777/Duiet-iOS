@@ -47,10 +47,6 @@ final class TodayViewController: UIViewController, NavigationBarCustomizable {
             .bind(to: viewModel.input.addButtonTap)
             .disposed(by: disposeBag)
 
-        viewModel.output.pickedImage
-            .bind(to: showDetail)
-            .disposed(by: disposeBag)
-
         viewModel.output.showDetail
             .bind(to: showDetail)
             .disposed(by: disposeBag)
@@ -58,8 +54,8 @@ final class TodayViewController: UIViewController, NavigationBarCustomizable {
 
     private var showDetail: Binder<UIImage?> {
         return Binder(self) { me, image in
-            print("go to detail view!!!")
-            let vc = DetailViewController(mealImage: image)
+            print("go to input meal view!!!")
+            let vc = InputMealViewController(mealImage: image)
             me.present(vc, animated: true, completion: nil)
             print("gone ✌️✌️✌️")
         }
