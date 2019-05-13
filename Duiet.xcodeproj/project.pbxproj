@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0603293D227F3C22009A67A4 /* InputMealCalorieViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0603293C227F3C22009A67A4 /* InputMealCalorieViewCell.xib */; };
+		0603293F227F3C37009A67A4 /* InputMealCalorieViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0603293E227F3C37009A67A4 /* InputMealCalorieViewCell.swift */; };
 		060A797C227C921800F02B30 /* PryntTrimmerView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 060A7979227C921800F02B30 /* PryntTrimmerView.framework */; };
 		060A797D227C921800F02B30 /* Stevia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 060A797A227C921800F02B30 /* Stevia.framework */; };
 		060A797E227C921800F02B30 /* YPImagePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 060A797B227C921800F02B30 /* YPImagePicker.framework */; };
@@ -34,6 +36,11 @@
 		0630D497227490B200224EC9 /* ShowTDEEViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630D496227490B200224EC9 /* ShowTDEEViewCell.swift */; };
 		0630D499227490B900224EC9 /* ShowTDEEViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0630D498227490B900224EC9 /* ShowTDEEViewCell.xib */; };
 		0630D49B227495EB00224EC9 /* CellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630D49A227495EB00224EC9 /* CellType.swift */; };
+		063FCBBF227D8164007C191F /* InputMealViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 063FCBBB227D8164007C191F /* InputMealViewController.xib */; };
+		063FCBC0227D8164007C191F /* InputMealDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063FCBBC227D8164007C191F /* InputMealDataSource.swift */; };
+		063FCBC1227D8164007C191F /* InputMealViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063FCBBD227D8164007C191F /* InputMealViewModel.swift */; };
+		063FCBC2227D8164007C191F /* InputMealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063FCBBE227D8164007C191F /* InputMealViewController.swift */; };
+		063FCBC7227DCDBA007C191F /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063FCBC6227DCDBA007C191F /* PhotoManager.swift */; };
 		0641AD232264A1BA00CEDAE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0641AD222264A1BA00CEDAE7 /* AppDelegate.swift */; };
 		0641AD2A2264A1BC00CEDAE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0641AD292264A1BC00CEDAE7 /* Assets.xcassets */; };
 		0641AD2D2264A1BC00CEDAE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0641AD2B2264A1BC00CEDAE7 /* LaunchScreen.storyboard */; };
@@ -42,6 +49,9 @@
 		0641AD512264A7C900CEDAE7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0641AD502264A7C900CEDAE7 /* GoogleService-Info.plist */; };
 		0641AD592264ACB800CEDAE7 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0641AD572264ACB800CEDAE7 /* RxCocoa.framework */; };
 		0641AD5A2264ACB800CEDAE7 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0641AD582264ACB800CEDAE7 /* RxSwift.framework */; };
+		06932AC422801A9400CFA05C /* MealLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06932AC322801A9400CFA05C /* MealLabel.swift */; };
+		06932AC622801AC500CFA05C /* MealLabelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06932AC522801AC500CFA05C /* MealLabelView.xib */; };
+		06932AC822801AEB00CFA05C /* MealLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06932AC722801AEB00CFA05C /* MealLabelView.swift */; };
 		069AD4292277224A0075E711 /* TodayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 069AD425227722490075E711 /* TodayViewController.xib */; };
 		069AD42A2277224A0075E711 /* TodayViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069AD426227722490075E711 /* TodayViewDataSource.swift */; };
 		069AD42B2277224A0075E711 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069AD427227722490075E711 /* TodayViewController.swift */; };
@@ -64,6 +74,8 @@
 		06F615D1227AF1080074089B /* Splash.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06F615D0227AF1080074089B /* Splash.xcassets */; };
 		06F615D3227AF5C40074089B /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06F615D2227AF5C40074089B /* RxRelay.framework */; };
 		3D663033B554173C7AFF58FC /* Pods_Duiet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6911E39E3468EB910D0358F5 /* Pods_Duiet.framework */; };
+		5E79D5672283FAC90073CD98 /* LabelCanvasViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E79D5662283FAC90073CD98 /* LabelCanvasViewCell.swift */; };
+		5E79D56B2283FB0B0073CD98 /* LabelCanvasViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E79D56A2283FB0B0073CD98 /* LabelCanvasViewCell.xib */; };
 		8AFA7421A93B1AAF33698633 /* Pods_DuietTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B35F720B676F45DF7C30A993 /* Pods_DuietTests.framework */; };
 		D73436F20B6C69548E947136 /* Pods_DuietUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 006839574F440A78C2631C92 /* Pods_DuietUITests.framework */; };
 /* End PBXBuildFile section */
@@ -87,6 +99,8 @@
 
 /* Begin PBXFileReference section */
 		006839574F440A78C2631C92 /* Pods_DuietUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DuietUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0603293C227F3C22009A67A4 /* InputMealCalorieViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InputMealCalorieViewCell.xib; sourceTree = "<group>"; };
+		0603293E227F3C37009A67A4 /* InputMealCalorieViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputMealCalorieViewCell.swift; sourceTree = "<group>"; };
 		060A7979227C921800F02B30 /* PryntTrimmerView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PryntTrimmerView.framework; path = Carthage/Build/iOS/PryntTrimmerView.framework; sourceTree = "<group>"; };
 		060A797A227C921800F02B30 /* Stevia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stevia.framework; path = Carthage/Build/iOS/Stevia.framework; sourceTree = "<group>"; };
 		060A797B227C921800F02B30 /* YPImagePicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YPImagePicker.framework; path = Carthage/Build/iOS/YPImagePicker.framework; sourceTree = "<group>"; };
@@ -114,6 +128,11 @@
 		0630D496227490B200224EC9 /* ShowTDEEViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTDEEViewCell.swift; sourceTree = "<group>"; };
 		0630D498227490B900224EC9 /* ShowTDEEViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowTDEEViewCell.xib; sourceTree = "<group>"; };
 		0630D49A227495EB00224EC9 /* CellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellType.swift; sourceTree = "<group>"; };
+		063FCBBB227D8164007C191F /* InputMealViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InputMealViewController.xib; sourceTree = "<group>"; };
+		063FCBBC227D8164007C191F /* InputMealDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputMealDataSource.swift; sourceTree = "<group>"; };
+		063FCBBD227D8164007C191F /* InputMealViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputMealViewModel.swift; sourceTree = "<group>"; };
+		063FCBBE227D8164007C191F /* InputMealViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputMealViewController.swift; sourceTree = "<group>"; };
+		063FCBC6227DCDBA007C191F /* PhotoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
 		0641AD1F2264A1BA00CEDAE7 /* Duiet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Duiet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0641AD222264A1BA00CEDAE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0641AD292264A1BC00CEDAE7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -128,6 +147,9 @@
 		0641AD502264A7C900CEDAE7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0641AD572264ACB800CEDAE7 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		0641AD582264ACB800CEDAE7 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		06932AC322801A9400CFA05C /* MealLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealLabel.swift; sourceTree = "<group>"; };
+		06932AC522801AC500CFA05C /* MealLabelView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MealLabelView.xib; sourceTree = "<group>"; };
+		06932AC722801AEB00CFA05C /* MealLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealLabelView.swift; sourceTree = "<group>"; };
 		069AD425227722490075E711 /* TodayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TodayViewController.xib; sourceTree = "<group>"; };
 		069AD426227722490075E711 /* TodayViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayViewDataSource.swift; sourceTree = "<group>"; };
 		069AD427227722490075E711 /* TodayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -150,6 +172,8 @@
 		06F615D0227AF1080074089B /* Splash.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Splash.xcassets; sourceTree = "<group>"; };
 		06F615D2227AF5C40074089B /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
 		1D64453EF3A64E5B58A308B8 /* Pods-Duiet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Duiet.debug.xcconfig"; path = "Target Support Files/Pods-Duiet/Pods-Duiet.debug.xcconfig"; sourceTree = "<group>"; };
+		5E79D5662283FAC90073CD98 /* LabelCanvasViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCanvasViewCell.swift; sourceTree = "<group>"; };
+		5E79D56A2283FB0B0073CD98 /* LabelCanvasViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelCanvasViewCell.xib; sourceTree = "<group>"; };
 		6911E39E3468EB910D0358F5 /* Pods_Duiet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Duiet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CD1E0F4DE960D419C98FCDE /* Pods-DuietUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DuietUITests.release.xcconfig"; path = "Target Support Files/Pods-DuietUITests/Pods-DuietUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B35F720B676F45DF7C30A993 /* Pods_DuietTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DuietTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -193,6 +217,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0603293A227F3837009A67A4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0603293B227F3A6B009A67A4 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				5E79D5682283FAD50073CD98 /* InputMeal */,
+				5E79D5692283FAE00073CD98 /* LavelCanvas */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		060A7983227C968000F02B30 /* Rx */ = {
 			isa = PBXGroup;
 			children = (
@@ -240,6 +280,19 @@
 				0630D498227490B900224EC9 /* ShowTDEEViewCell.xib */,
 			);
 			path = ShowTDEEViewCell;
+			sourceTree = "<group>";
+		};
+		063FCBBA227D8158007C191F /* InputMeal */ = {
+			isa = PBXGroup;
+			children = (
+				06932AC222801A7E00CFA05C /* Label */,
+				0603293B227F3A6B009A67A4 /* Cells */,
+				063FCBBE227D8164007C191F /* InputMealViewController.swift */,
+				063FCBBD227D8164007C191F /* InputMealViewModel.swift */,
+				063FCBBC227D8164007C191F /* InputMealDataSource.swift */,
+				063FCBBB227D8164007C191F /* InputMealViewController.xib */,
+			);
+			path = InputMeal;
 			sourceTree = "<group>";
 		};
 		0641AD162264A1BA00CEDAE7 = {
@@ -318,10 +371,12 @@
 		0641AD5D2264AD4300CEDAE7 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				0603293A227F3837009A67A4 /* Model */,
 				06B2FCF0227221980078C7F1 /* Enum */,
 				0622E9FE226A1C5700E87F22 /* Protocol */,
 				0641AD5F2264ADB000CEDAE7 /* Extension */,
 				060A7983227C968000F02B30 /* Rx */,
+				063FCBC6227DCDBA007C191F /* PhotoManager.swift */,
 				0622EA28226A213B00E87F22 /* MyTextField.swift */,
 				0622EA2F226A251500E87F22 /* R.generated.swift */,
 				0641AD222264A1BA00CEDAE7 /* AppDelegate.swift */,
@@ -336,6 +391,7 @@
 				06516ABB2272D5520092DE3B /* Walkthrough */,
 				0622E9FB226A1B3500E87F22 /* FillInformation */,
 				069AD424227720700075E711 /* Today */,
+				063FCBBA227D8158007C191F /* InputMeal */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -366,6 +422,16 @@
 				061F278C22733D9800FDCB17 /* WalkthroughViewController.xib */,
 			);
 			path = Walkthrough;
+			sourceTree = "<group>";
+		};
+		06932AC222801A7E00CFA05C /* Label */ = {
+			isa = PBXGroup;
+			children = (
+				06932AC322801A9400CFA05C /* MealLabel.swift */,
+				06932AC722801AEB00CFA05C /* MealLabelView.swift */,
+				06932AC522801AC500CFA05C /* MealLabelView.xib */,
+			);
+			path = Label;
 			sourceTree = "<group>";
 		};
 		069AD424227720700075E711 /* Today */ = {
@@ -479,6 +545,24 @@
 				006839574F440A78C2631C92 /* Pods_DuietUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5E79D5682283FAD50073CD98 /* InputMeal */ = {
+			isa = PBXGroup;
+			children = (
+				0603293E227F3C37009A67A4 /* InputMealCalorieViewCell.swift */,
+				0603293C227F3C22009A67A4 /* InputMealCalorieViewCell.xib */,
+			);
+			path = InputMeal;
+			sourceTree = "<group>";
+		};
+		5E79D5692283FAE00073CD98 /* LavelCanvas */ = {
+			isa = PBXGroup;
+			children = (
+				5E79D5662283FAC90073CD98 /* LabelCanvasViewCell.swift */,
+				5E79D56A2283FB0B0073CD98 /* LabelCanvasViewCell.xib */,
+			);
+			path = LavelCanvas;
 			sourceTree = "<group>";
 		};
 		C78977283BBF1E6AD6DF25DA /* Pods */ = {
@@ -609,9 +693,13 @@
 				0622EA34226A283A00E87F22 /* Montserrat-Bold.ttf in Resources */,
 				0622EA35226A283A00E87F22 /* Montserrat-ExtraBold.ttf in Resources */,
 				0641AD2D2264A1BC00CEDAE7 /* LaunchScreen.storyboard in Resources */,
+				06932AC622801AC500CFA05C /* MealLabelView.xib in Resources */,
 				061F279C22735BD900FDCB17 /* Icons.xcassets in Resources */,
 				069AD4292277224A0075E711 /* TodayViewController.xib in Resources */,
+				0603293D227F3C22009A67A4 /* InputMealCalorieViewCell.xib in Resources */,
+				063FCBBF227D8164007C191F /* InputMealViewController.xib in Resources */,
 				0641AD512264A7C900CEDAE7 /* GoogleService-Info.plist in Resources */,
+				5E79D56B2283FB0B0073CD98 /* LabelCanvasViewCell.xib in Resources */,
 				069AD442227731FB0075E711 /* ProgressCardViewCell.xib in Resources */,
 				061F278D22733D9800FDCB17 /* WalkthroughViewController.xib in Resources */,
 				06B2FD04227222600078C7F1 /* InputActivityLevelViewCell.xib in Resources */,
@@ -794,13 +882,17 @@
 			files = (
 				0622EA30226A251500E87F22 /* R.generated.swift in Sources */,
 				0622EA02226A1DE800E87F22 /* FillInformationViewController.swift in Sources */,
+				063FCBC0227D8164007C191F /* InputMealDataSource.swift in Sources */,
 				0622EA29226A213B00E87F22 /* MyTextField.swift in Sources */,
+				0603293F227F3C37009A67A4 /* InputMealCalorieViewCell.swift in Sources */,
 				06B2FCF5227222010078C7F1 /* InputPickerViewCell.swift in Sources */,
 				069AD42A2277224A0075E711 /* TodayViewDataSource.swift in Sources */,
+				063FCBC2227D8164007C191F /* InputMealViewController.swift in Sources */,
 				06B2FCFC227222530078C7F1 /* InputGenderViewCell.swift in Sources */,
 				0622EA47226A2AB900E87F22 /* PublishRelay.extension.swift in Sources */,
 				0622EA2B226A21A400E87F22 /* UIButton.extension.swift in Sources */,
 				061F278F22733DA100FDCB17 /* WalkthroughViewController.swift in Sources */,
+				06932AC822801AEB00CFA05C /* MealLabelView.swift in Sources */,
 				06B2FD05227222600078C7F1 /* InputActivityLevelViewCell.swift in Sources */,
 				0622EA04226A1DFC00E87F22 /* FillInformationViewDataSource.swift in Sources */,
 				06B2FD002272225A0078C7F1 /* InputNumberViewCell.swift in Sources */,
@@ -809,10 +901,14 @@
 				0622EA27226A20CE00E87F22 /* RxTableViewCell.swift in Sources */,
 				0622EA49226A2AC000E87F22 /* BehaviorRelay.extension.swift in Sources */,
 				0622EA08226A1EF200E87F22 /* NSObjectProtocol.extension.swift in Sources */,
+				06932AC422801A9400CFA05C /* MealLabel.swift in Sources */,
 				0641AD232264A1BA00CEDAE7 /* AppDelegate.swift in Sources */,
 				069AD440227731EE0075E711 /* ProgressCardViewCell.swift in Sources */,
 				069AD437227723100075E711 /* RxCollectionViewCell.swift in Sources */,
+				063FCBC1227D8164007C191F /* InputMealViewModel.swift in Sources */,
 				0622EA00226A1C7D00E87F22 /* NavigationBarCustomizable.swift in Sources */,
+				5E79D5672283FAC90073CD98 /* LabelCanvasViewCell.swift in Sources */,
+				063FCBC7227DCDBA007C191F /* PhotoManager.swift in Sources */,
 				06B2FD08227222670078C7F1 /* CompleteButtonViewCell.swift in Sources */,
 				069AD434227722E50075E711 /* MealCardViewCell.swift in Sources */,
 				0630D49B227495EB00224EC9 /* CellType.swift in Sources */,

@@ -24,7 +24,7 @@ final class RxYPImagePicker: YPImagePicker {
         didFinishPicking {[weak self] items, cancel in
             guard let self = self else { return }
             if let photo = items.singlePhoto {
-                self.pickedImage.accept(photo.originalImage)
+                self.pickedImage.accept(photo.image)
             }
             self.didCancel.accept(cancel)
             self.dismiss(animated: true, completion: nil)
@@ -45,9 +45,11 @@ extension Reactive where Base: RxYPImagePicker {
     static func create(_ parent: UIViewController?) -> Observable<RxYPImagePicker> {
         return Observable.create { [weak parent] observer in
             var config = YPImagePickerConfiguration()
-            config.albumName = "Duiet"
             config.screens = [.photo, .library]
             config.showsPhotoFilters = false
+            config.showsCrop = .rectangle(ratio: 1)
+            config.shouldSaveNewPicturesToAlbum = false
+
             let picker = RxYPImagePicker(config: config)
             let dissmissDisposable = picker
                 .didCancel
