@@ -41,18 +41,29 @@ class InputMealCalorieViewCell: RxTableViewCell {
     }
 
     func configure(with viewModel: InputMealViewModel, tableView: UITableView) {
+        guard
+            let appdelegate = UIApplication.shared.delegate,
+            let window = appdelegate.window
+        else { return }
+
         let myTextFields = [mealNameTextField, mealCalorieTextField, mealAmountTextField]
         myTextFields.forEach { textField in
             guard let textField = textField else { return }
             textField.rx.controlEvent(.editingDidBegin)
                 .subscribe(onNext: { _ in
-                    guard
-                        let appdelegate = UIApplication.shared.delegate,
-                        let window = appdelegate.window
-                    else { return }
-                    print()
                     let frame = textField.convert(textField.frame, to: window)
-                    viewModel.input.inputFieldTap.on(.next(frame))
+                    viewModel.input.inputFieldFrame.on(.next(frame))
+                })
+                .disposed(by: disposeBag)
+
+            // Detect the keyboard layout change being edited and get the current value of the input form layout.
+            // If you do not do this, the old input form layout is referenced and scrolling does not work properly.
+            viewModel.output.keyboardWillShow
+                .filter { _ in textField.isEditing }
+                .map { _ in }
+                .subscribe(onNext: {
+                    let frame = textField.convert(textField.frame, to: window)
+                    viewModel.input.inputFieldFrame.on(.next(frame))
                 })
                 .disposed(by: disposeBag)
         }

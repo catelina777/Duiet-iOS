@@ -46,6 +46,10 @@ final class InputMealViewController: UIViewController {
         tableView.rx.contentOffset
             .bind(to: updateParallax)
             .disposed(by: disposeBag)
+
+        viewModel.output.difference
+            .bind(to: updateScroll)
+            .disposed(by: disposeBag)
     }
 
     private var configureHeaderView: Binder<Void> {
@@ -83,6 +87,14 @@ final class InputMealViewController: UIViewController {
                                          height: height)
                 me.headerView.frame = headerFrame
             }
+        }
+    }
+
+    private var updateScroll: Binder<CGFloat> {
+        return Binder(self) { me, difference in
+            let adaptedDifference = me.tableView.contentOffset.y + difference
+            let movePoint = CGPoint(x: 0, y: adaptedDifference)
+            me.tableView.setContentOffset(movePoint, animated: true)
         }
     }
 }
