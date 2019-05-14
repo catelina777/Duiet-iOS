@@ -30,8 +30,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window?.rootViewController = vc
             print("is first launch 🍻🍻🍻")
         case true:
-            let vc = FillInformationViewController()
-            window?.rootViewController = vc
+            let vc = TodayViewController()
+            let nc = UINavigationController(rootViewController: vc)
+            window?.rootViewController = nc
             print("is not first launch 🍣🍣🍣")
         }
 
