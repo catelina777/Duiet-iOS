@@ -24,10 +24,10 @@ class InputMealViewModel {
 
         self.mealImage = mealImage
 
-        let _inputFieldTap = PublishRelay<CGRect>()
+        let _inputFieldFrame = PublishRelay<CGRect>()
         let _addMealLabel = PublishRelay<MealLabelView?>()
 
-        input = Input(inputFieldTap: _inputFieldTap.asObserver(),
+        input = Input(inputFieldFrame: _inputFieldFrame.asObserver(),
                       addMealLabel: _addMealLabel.asObserver())
 
         let _keyboardWillShow = NotificationCenter.default.rx.notification(UIResponder.keyboardWillShowNotification)
@@ -39,10 +39,17 @@ class InputMealViewModel {
             .map { _ in }
             .share()
 
+        let _difference = Observable.combineLatest(_inputFieldFrame, _keyboardWillShow)
+            .filter { ($0.0.maxY - $0.1.minY) > 0 }
+            .map { $0.0.maxY - $0.1.minY }
+            .distinctUntilChanged()
+            .share()
+
         output = Output(keyboardWillShow: _keyboardWillShow,
                         keyboardWillHide: _keyboardWillHide,
-                        inputFieldTap: _inputFieldTap.asObservable(),
-                        mealLabelViews: _mealLabelViews.asObservable())
+                        mealLabelViews: _mealLabelViews.asObservable(),
+                        inputFieldFrame: _inputFieldFrame.asObservable(),
+                        difference: _difference)
 
         _addMealLabel
             .compactMap { $0 }
@@ -59,14 +66,15 @@ class InputMealViewModel {
 extension InputMealViewModel {
 
     struct Input {
-        let inputFieldTap: AnyObserver<CGRect>
+        let inputFieldFrame: AnyObserver<CGRect>
         let addMealLabel: AnyObserver<MealLabelView?>
     }
 
     struct Output {
         let keyboardWillShow: Observable<CGRect>
         let keyboardWillHide: Observable<Void>
-        let inputFieldTap: Observable<CGRect>
         let mealLabelViews: Observable<[MealLabelView]>
+        let inputFieldFrame: Observable<CGRect>
+        let difference: Observable<CGFloat>
     }
 }
