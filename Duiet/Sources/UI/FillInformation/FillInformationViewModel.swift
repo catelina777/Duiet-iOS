@@ -9,6 +9,8 @@
 import Foundation
 import RxSwift
 import RxRelay
+import RealmSwift
+import RxRealm
 
 final class FillInformationViewModel {
 
@@ -63,6 +65,7 @@ final class FillInformationViewModel {
             }
             .distinctUntilChanged()
 
+        let userInformation = BehaviorRelay<UserInfo?>(value: nil)
         let completeButtonTap = _completeButtonTap
 
         let BMRWithActivityLevel = combinedInfo
@@ -76,7 +79,12 @@ final class FillInformationViewModel {
                 else {
                     return (0, v4)
                 }
-                let userInfo = UserInfo(gender: v0, age: v1, height: v2, weight: v3, activityLevel: v4)
+                let userInfo = UserInfo(gender: v0,
+                                        age: v1,
+                                        height: v2,
+                                        weight: v3,
+                                        activityLevel: v4)
+                userInformation.accept(userInfo)
                 return (userInfo.BMR(), v4)
             }
             .share()
@@ -108,6 +116,12 @@ final class FillInformationViewModel {
                              didTapComplete: completeButtonTap.asObservable(),
                              BMR: BMR,
                              TDEE: TDEE)
+
+        completeButtonTap
+            .map { userInformation.value }
+            .compactMap { $0 }
+            .bind(to: Realm.rx.add(update: true))
+            .disposed(by: disposeBag)
     }
 }
 
@@ -128,29 +142,5 @@ extension FillInformationViewModel {
         let didTapComplete: Observable<Void>
         let BMR: Observable<String>
         let TDEE: Observable<String>
-    }
-
-    struct UserInfo {
-        let gender: Bool
-        let age: Int
-        let height: Double
-        let weight: Double
-        let activityLevel: ActivityLevel
-
-        func BMR() -> Double {
-            return calculate()
-        }
-
-        func TDEE() -> Double {
-            return calculate() * activityLevel.magnification
-        }
-
-        func calculate() -> Double {
-            return (height * 6.25) + (weight * 9.99) - (Double(age) * 4.92) + genderVariable(with: gender)
-        }
-
-        private func genderVariable(with gender: Bool) -> Double {
-            return gender ? 5 : -161
-        }
     }
 }

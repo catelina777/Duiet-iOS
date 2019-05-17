@@ -81,6 +81,10 @@
 		5E9C28B2228E4729004ABF3B /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9C28B1228E4729004ABF3B /* BaseTableViewController.swift */; };
 		5E9C28B4228E475E004ABF3B /* KeyboardFrameTrackkable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9C28B3228E475E004ABF3B /* KeyboardFrameTrackkable.swift */; };
 		5E9C28B6228E4E99004ABF3B /* CellFrameTrackkable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9C28B5228E4E99004ABF3B /* CellFrameTrackkable.swift */; };
+		5E9C28BF228E6254004ABF3B /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9C28BE228E6254004ABF3B /* UserInfo.swift */; };
+		5E9C28C3228E76D6004ABF3B /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9C28C0228E76D6004ABF3B /* Realm.framework */; };
+		5E9C28C4228E76D6004ABF3B /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9C28C1228E76D6004ABF3B /* RealmSwift.framework */; };
+		5E9C28C5228E76D6004ABF3B /* RxRealm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9C28C2228E76D6004ABF3B /* RxRealm.framework */; };
 		8AFA7421A93B1AAF33698633 /* Pods_DuietTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B35F720B676F45DF7C30A993 /* Pods_DuietTests.framework */; };
 		D73436F20B6C69548E947136 /* Pods_DuietUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 006839574F440A78C2631C92 /* Pods_DuietUITests.framework */; };
 /* End PBXBuildFile section */
@@ -184,6 +188,10 @@
 		5E9C28B1228E4729004ABF3B /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		5E9C28B3228E475E004ABF3B /* KeyboardFrameTrackkable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardFrameTrackkable.swift; sourceTree = "<group>"; };
 		5E9C28B5228E4E99004ABF3B /* CellFrameTrackkable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellFrameTrackkable.swift; sourceTree = "<group>"; };
+		5E9C28BE228E6254004ABF3B /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		5E9C28C0228E76D6004ABF3B /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
+		5E9C28C1228E76D6004ABF3B /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		5E9C28C2228E76D6004ABF3B /* RxRealm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRealm.framework; path = Carthage/Build/iOS/RxRealm.framework; sourceTree = "<group>"; };
 		6911E39E3468EB910D0358F5 /* Pods_Duiet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Duiet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CD1E0F4DE960D419C98FCDE /* Pods-DuietUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DuietUITests.release.xcconfig"; path = "Target Support Files/Pods-DuietUITests/Pods-DuietUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B35F720B676F45DF7C30A993 /* Pods_DuietTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DuietTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -198,6 +206,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E9C28C3228E76D6004ABF3B /* Realm.framework in Frameworks */,
+				5E9C28C4228E76D6004ABF3B /* RealmSwift.framework in Frameworks */,
+				5E9C28C5228E76D6004ABF3B /* RxRealm.framework in Frameworks */,
 				060A797C227C921800F02B30 /* PryntTrimmerView.framework in Frameworks */,
 				060A797D227C921800F02B30 /* Stevia.framework in Frameworks */,
 				060A797E227C921800F02B30 /* YPImagePicker.framework in Frameworks */,
@@ -230,6 +241,7 @@
 		0603293A227F3837009A67A4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5E9C28BE228E6254004ABF3B /* UserInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -548,6 +560,9 @@
 		4B312EFBEE0174A408F8814E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5E9C28C0228E76D6004ABF3B /* Realm.framework */,
+				5E9C28C1228E76D6004ABF3B /* RealmSwift.framework */,
+				5E9C28C2228E76D6004ABF3B /* RxRealm.framework */,
 				060A7979227C921800F02B30 /* PryntTrimmerView.framework */,
 				060A797A227C921800F02B30 /* Stevia.framework */,
 				060A797B227C921800F02B30 /* YPImagePicker.framework */,
@@ -904,6 +919,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0622EA30226A251500E87F22 /* R.generated.swift in Sources */,
+				5E9C28BF228E6254004ABF3B /* UserInfo.swift in Sources */,
 				0622EA02226A1DE800E87F22 /* FillInformationViewController.swift in Sources */,
 				5E9C28B2228E4729004ABF3B /* BaseTableViewController.swift in Sources */,
 				063FCBC0227D8164007C191F /* InputMealDataSource.swift in Sources */,
