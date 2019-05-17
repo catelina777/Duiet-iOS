@@ -12,9 +12,12 @@ import RxSwift
 class FillInformationViewDataSource: NSObject {
 
     private let viewModel: FillInformationViewModel
+    private let keyboardTrackViewModel: KeyboardTrackViewModel
 
-    init(viewModel: FillInformationViewModel) {
+    init(viewModel: FillInformationViewModel,
+         keyboardTrackViewModel: KeyboardTrackViewModel) {
         self.viewModel = viewModel
+        self.keyboardTrackViewModel = keyboardTrackViewModel
     }
 
     func configure(with tableView: UITableView) {
@@ -49,18 +52,21 @@ extension FillInformationViewDataSource: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.inputNumberViewCell,
                                                      for: indexPath)!
             cell.configure(with: viewModel, type: .age)
+            cell.configure(with: keyboardTrackViewModel)
             return cell
 
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.inputNumberViewCell,
                                                      for: indexPath)!
             cell.configure(with: viewModel, type: .height)
+            cell.configure(with: keyboardTrackViewModel)
             return cell
 
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.inputNumberViewCell,
                                                      for: indexPath)!
             cell.configure(with: viewModel, type: .weight)
+            cell.configure(with: keyboardTrackViewModel)
             return cell
 
         case 4:
@@ -68,6 +74,7 @@ extension FillInformationViewDataSource: UITableViewDataSource {
                                                      for: indexPath)!
             cell.configure(with: .activityLevel)
             cell.configure(with: viewModel)
+            cell.configure(with: keyboardTrackViewModel)
             return cell
 
         case 5:

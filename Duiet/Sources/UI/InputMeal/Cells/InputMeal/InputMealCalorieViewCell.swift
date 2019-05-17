@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxGesture
 
-class InputMealCalorieViewCell: RxTableViewCell {
+class InputMealCalorieViewCell: RxTableViewCell, CellFrameTrackkable {
 
     @IBOutlet weak var mealNameTextField: MyTextField! {
         didSet {
@@ -40,32 +40,22 @@ class InputMealCalorieViewCell: RxTableViewCell {
         }
     }
 
-    func configure(with viewModel: InputMealViewModel, tableView: UITableView) {
+    func configure(with viewModel: KeyboardTrackViewModel) {
         guard
-            let appdelegate = UIApplication.shared.delegate,
-            let window = appdelegate.window
+            let appDelegate = UIApplication.shared.delegate,
+            let optionalWindow = appDelegate.window,
+            let window = optionalWindow
         else { return }
 
-        let myTextFields = [mealNameTextField, mealCalorieTextField, mealAmountTextField]
+        let myTextFields = [mealNameTextField,
+                            mealCalorieTextField,
+                            mealAmountTextField]
+
         myTextFields.forEach { textField in
             guard let textField = textField else { return }
-            textField.rx.controlEvent(.editingDidBegin)
-                .subscribe(onNext: { _ in
-                    let frame = textField.convert(textField.frame, to: window)
-                    viewModel.input.inputFieldFrame.on(.next(frame))
-                })
-                .disposed(by: disposeBag)
-
-            // Detect the keyboard layout change being edited and get the current value of the input form layout.
-            // If you do not do this, the old input form layout is referenced and scrolling does not work properly.
-            viewModel.output.keyboardWillShow
-                .filter { _ in textField.isEditing }
-                .map { _ in }
-                .subscribe(onNext: {
-                    let frame = textField.convert(textField.frame, to: window)
-                    viewModel.input.inputFieldFrame.on(.next(frame))
-                })
-                .disposed(by: disposeBag)
+            configure(for: textField,
+                      viewModel: viewModel,
+                      window: window)
         }
     }
 }

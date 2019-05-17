@@ -11,20 +11,22 @@ import RxSwift
 import RxCocoa
 import RxGesture
 
-final class InputMealViewController: UIViewController {
+final class InputMealViewController: BaseTableViewController, KeyboardFrameTrackkable {
 
-    @IBOutlet private(set) weak var tableView: UITableView!
     let headerView: UIImageView
     let labelCanvasView: UIView
 
     let viewModel: InputMealViewModel
+    let keyboardTrackViewModel: KeyboardTrackViewModel
     let dataSource: InputMealDataSource
 
     private let disposeBag = DisposeBag()
 
     init(mealImage: UIImage?) {
         self.viewModel = InputMealViewModel(mealImage: mealImage)
-        self.dataSource = InputMealDataSource(viewModel: viewModel)
+        self.keyboardTrackViewModel = KeyboardTrackViewModel()
+        self.dataSource = InputMealDataSource(viewModel: viewModel,
+                                              keyboardTrackViewModel: keyboardTrackViewModel)
         self.headerView = UIImageView(image: viewModel.mealImage)
         self.labelCanvasView = UIView()
         super.init(nibName: InputMealViewController.className, bundle: nil)
@@ -47,7 +49,7 @@ final class InputMealViewController: UIViewController {
             .bind(to: updateParallax)
             .disposed(by: disposeBag)
 
-        viewModel.output.difference
+        keyboardTrackViewModel.output.difference
             .bind(to: updateScroll)
             .disposed(by: disposeBag)
     }
@@ -87,14 +89,6 @@ final class InputMealViewController: UIViewController {
                                          height: height)
                 me.headerView.frame = headerFrame
             }
-        }
-    }
-
-    private var updateScroll: Binder<CGFloat> {
-        return Binder(self) { me, difference in
-            let adaptedDifference = me.tableView.contentOffset.y + difference
-            let movePoint = CGPoint(x: 0, y: adaptedDifference)
-            me.tableView.setContentOffset(movePoint, animated: true)
         }
     }
 }

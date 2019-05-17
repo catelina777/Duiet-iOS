@@ -9,7 +9,18 @@
 import UIKit
 import RxSwift
 
-final class InputActivityLevelViewCell: InputPickerViewCell {
+final class InputActivityLevelViewCell: InputPickerViewCell, CellFrameTrackkable {
+
+    func configure(with viewModel: KeyboardTrackViewModel) {
+        guard
+            let appDelegate = UIApplication.shared.delegate,
+            let optionalWindow = appDelegate.window,
+            let window = optionalWindow
+        else { return }
+        configure(for: textField,
+                  viewModel: viewModel,
+                  window: window)
+    }
 
     func configure(with viewModel: FillInformationViewModel) {
         Observable.just(viewModel.activityTypes.map { $0.description })
