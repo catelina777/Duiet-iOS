@@ -12,7 +12,6 @@ import RxCocoa
 final class InputGenderViewCell: RxTableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
-    var isMale = BehaviorRelay<Bool?>(value: nil)
     let borderColor = #colorLiteral(red: 0.2588235294, green: 0.6470588235, blue: 0.9607843137, alpha: 1).cgColor
 
     @IBOutlet weak var maleButton: UIButton! {
@@ -27,38 +26,36 @@ final class InputGenderViewCell: RxTableViewCell {
         }
     }
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-
-        maleButton.rx.tap.subscribe { [weak self] _ in
-            guard let self = self else { return }
-            self.isMale.accept(true)
-        }.disposed(by: disposeBag)
-
-        femaleButton.rx.tap.subscribe { [weak self] _ in
-            guard let self = self else { return }
-            self.isMale.accept(false)
-        }.disposed(by: disposeBag)
-
-        isMale.asObservable().subscribe { [weak self] _ in
-            guard let self = self else { return }
-            self.switchSelectedButton(with: self.isMale.value)
-        }.disposed(by: disposeBag)
-    }
-
-    func configure(with cellType: CellType) {
+    func configure(with viewModel: FillInformationViewModel, cellType: CellType) {
         titleLabel.text = cellType.rawValue
+
+        maleButton.rx.tap
+            .subscribe(onNext: { _ in
+                viewModel.input.gender.on(.next(true))
+            })
+            .disposed(by: disposeBag)
+
+        femaleButton.rx.tap
+            .subscribe(onNext: { _ in
+                viewModel.input.gender.on(.next(false))
+            })
+            .disposed(by: disposeBag)
+
+        viewModel.output.gender
+            .bind(to: switchSelectedButton)
+            .disposed(by: disposeBag)
     }
 
-    func switchSelectedButton(with isMale: Bool?) {
-        guard let isMale = isMale else { return }
-
-        if isMale {
-            maleButton.layer.borderColor = borderColor
-            femaleButton.layer.borderColor = UIColor.clear.cgColor
-        } else {
-            femaleButton.layer.borderColor = borderColor
-            maleButton.layer.borderColor = UIColor.clear.cgColor
+    var switchSelectedButton: Binder<Bool?> {
+        return Binder(self) { me, bool in
+            guard let bool = bool else { return }
+            if bool {
+                me.maleButton.layer.borderColor = me.borderColor
+                me.femaleButton.layer.borderColor = UIColor.clear.cgColor
+            } else {
+                me.femaleButton.layer.borderColor = me.borderColor
+                me.maleButton.layer.borderColor = UIColor.clear.cgColor
+            }
         }
     }
 }

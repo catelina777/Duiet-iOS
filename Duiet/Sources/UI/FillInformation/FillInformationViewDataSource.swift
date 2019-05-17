@@ -41,10 +41,8 @@ extension FillInformationViewDataSource: UITableViewDataSource {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.inputGenderViewCell,
                                                      for: indexPath)!
-            cell.isMale
-                .bind(to: viewModel.input.gender)
-                .disposed(by: cell.disposeBag)
-            cell.configure(with: .gender)
+            cell.configure(with: viewModel,
+                           cellType: .gender)
             return cell
 
         case 1:
