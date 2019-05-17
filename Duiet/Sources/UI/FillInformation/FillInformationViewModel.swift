@@ -51,6 +51,8 @@ final class FillInformationViewModel {
                            activityLevel: _activityLevel.asObserver(),
                            completeButtonTap: _completeButtonTap.asObserver())
 
+        let gender = _gender.asObservable()
+
         let combinedInfo = Observable
             .combineLatest(_gender, _age, _height, _weight, _activityLevel)
             .share()
@@ -101,7 +103,8 @@ final class FillInformationViewModel {
                 return "\(Int(bmr * activityLevel.magnification)) kcal"
             }
 
-        self.output = Output(isValidateComplete: isValidateComplete,
+        self.output = Output(gender: gender,
+                             isValidateComplete: isValidateComplete,
                              didTapComplete: completeButtonTap.asObservable(),
                              BMR: BMR,
                              TDEE: TDEE)
@@ -120,6 +123,7 @@ extension FillInformationViewModel {
     }
 
     struct Output {
+        let gender: Observable<Bool?>
         let isValidateComplete: Observable<Bool>
         let didTapComplete: Observable<Void>
         let BMR: Observable<String>
