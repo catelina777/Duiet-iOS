@@ -40,7 +40,7 @@ class InputMealCalorieViewCell: RxTableViewCell {
         }
     }
 
-    func configure(with viewModel: InputMealViewModel, tableView: UITableView) {
+    func configure(with viewModel: KeyboardTrackViewModel) {
         guard
             let appdelegate = UIApplication.shared.delegate,
             let window = appdelegate.window
@@ -58,7 +58,7 @@ class InputMealCalorieViewCell: RxTableViewCell {
 
             // Detect the keyboard layout change being edited and get the current value of the input form layout.
             // If you do not do this, the old input form layout is referenced and scrolling does not work properly.
-            viewModel.output.keyboardWillShow
+            viewModel.output.keyboardFrame
                 .filter { _ in textField.isEditing }
                 .map { _ in }
                 .subscribe(onNext: {

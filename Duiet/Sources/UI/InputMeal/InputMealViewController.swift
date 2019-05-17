@@ -18,13 +18,16 @@ final class InputMealViewController: UIViewController {
     let labelCanvasView: UIView
 
     let viewModel: InputMealViewModel
+    let keyboardTrackViewModel: KeyboardTrackViewModel
     let dataSource: InputMealDataSource
 
     private let disposeBag = DisposeBag()
 
     init(mealImage: UIImage?) {
         self.viewModel = InputMealViewModel(mealImage: mealImage)
-        self.dataSource = InputMealDataSource(viewModel: viewModel)
+        self.keyboardTrackViewModel = KeyboardTrackViewModel()
+        self.dataSource = InputMealDataSource(viewModel: viewModel,
+                                              keyboardTrackViewModel: keyboardTrackViewModel)
         self.headerView = UIImageView(image: viewModel.mealImage)
         self.labelCanvasView = UIView()
         super.init(nibName: InputMealViewController.className, bundle: nil)
@@ -47,7 +50,7 @@ final class InputMealViewController: UIViewController {
             .bind(to: updateParallax)
             .disposed(by: disposeBag)
 
-        viewModel.output.difference
+        keyboardTrackViewModel.output.difference
             .bind(to: updateScroll)
             .disposed(by: disposeBag)
     }

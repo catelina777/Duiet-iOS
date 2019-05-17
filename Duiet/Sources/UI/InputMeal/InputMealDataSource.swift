@@ -11,9 +11,12 @@ import UIKit
 final class InputMealDataSource: NSObject {
 
     let viewModel: InputMealViewModel
+    let keyboardTrackViewModel: KeyboardTrackViewModel
 
-    init(viewModel: InputMealViewModel) {
+    init(viewModel: InputMealViewModel,
+         keyboardTrackViewModel: KeyboardTrackViewModel) {
         self.viewModel = viewModel
+        self.keyboardTrackViewModel = keyboardTrackViewModel
     }
 
     func configure(with tableView: UITableView) {
@@ -42,7 +45,7 @@ extension InputMealDataSource: UITableViewDataSource {
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.inputMealCalorieViewCell,
                                                      for: indexPath)!
-            cell.configure(with: viewModel, tableView: tableView)
+            cell.configure(with: keyboardTrackViewModel)
             return cell
         }
     }
