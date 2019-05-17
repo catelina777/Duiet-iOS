@@ -11,9 +11,8 @@ import RxSwift
 import RxCocoa
 import RxGesture
 
-final class InputMealViewController: UIViewController {
+final class InputMealViewController: BaseTableViewController, KeyboardFrameTrackkable {
 
-    @IBOutlet private(set) weak var tableView: UITableView!
     let headerView: UIImageView
     let labelCanvasView: UIView
 
@@ -90,14 +89,6 @@ final class InputMealViewController: UIViewController {
                                          height: height)
                 me.headerView.frame = headerFrame
             }
-        }
-    }
-
-    private var updateScroll: Binder<CGFloat> {
-        return Binder(self) { me, difference in
-            let adaptedDifference = me.tableView.contentOffset.y + difference
-            let movePoint = CGPoint(x: 0, y: adaptedDifference)
-            me.tableView.setContentOffset(movePoint, animated: true)
         }
     }
 }

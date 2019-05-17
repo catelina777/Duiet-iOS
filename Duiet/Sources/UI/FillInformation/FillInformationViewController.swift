@@ -10,17 +10,18 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-final class FillInformationViewController: UIViewController, NavigationBarCustomizable {
-
-    @IBOutlet private(set) weak var tableView: UITableView!
+final class FillInformationViewController: BaseTableViewController, NavigationBarCustomizable, KeyboardFrameTrackkable {
 
     let viewModel: FillInformationViewModel
     let dataSource: FillInformationViewDataSource
+
+    let keyboardTrackViewModel: KeyboardTrackViewModel
 
     private let disposeBag = DisposeBag()
 
     init() {
         self.viewModel = FillInformationViewModel()
+        self.keyboardTrackViewModel = KeyboardTrackViewModel()
         dataSource = FillInformationViewDataSource(viewModel: viewModel)
         super.init(nibName: FillInformationViewController.className, bundle: nil)
     }
