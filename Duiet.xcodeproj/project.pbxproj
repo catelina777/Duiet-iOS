@@ -80,6 +80,7 @@
 		5E92570E228D3E2D0076CCEE /* KeyboardTrackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E92570D228D3E2D0076CCEE /* KeyboardTrackViewModel.swift */; };
 		5E9C28B2228E4729004ABF3B /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9C28B1228E4729004ABF3B /* BaseTableViewController.swift */; };
 		5E9C28B4228E475E004ABF3B /* KeyboardFrameTrackkable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9C28B3228E475E004ABF3B /* KeyboardFrameTrackkable.swift */; };
+		5E9C28B6228E4E99004ABF3B /* CellFrameTrackkable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9C28B5228E4E99004ABF3B /* CellFrameTrackkable.swift */; };
 		8AFA7421A93B1AAF33698633 /* Pods_DuietTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B35F720B676F45DF7C30A993 /* Pods_DuietTests.framework */; };
 		D73436F20B6C69548E947136 /* Pods_DuietUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 006839574F440A78C2631C92 /* Pods_DuietUITests.framework */; };
 /* End PBXBuildFile section */
@@ -182,6 +183,7 @@
 		5E92570D228D3E2D0076CCEE /* KeyboardTrackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardTrackViewModel.swift; sourceTree = "<group>"; };
 		5E9C28B1228E4729004ABF3B /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		5E9C28B3228E475E004ABF3B /* KeyboardFrameTrackkable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardFrameTrackkable.swift; sourceTree = "<group>"; };
+		5E9C28B5228E4E99004ABF3B /* CellFrameTrackkable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellFrameTrackkable.swift; sourceTree = "<group>"; };
 		6911E39E3468EB910D0358F5 /* Pods_Duiet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Duiet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CD1E0F4DE960D419C98FCDE /* Pods-DuietUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DuietUITests.release.xcconfig"; path = "Target Support Files/Pods-DuietUITests/Pods-DuietUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B35F720B676F45DF7C30A993 /* Pods_DuietTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DuietTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -268,6 +270,7 @@
 			children = (
 				0622E9FF226A1C7D00E87F22 /* NavigationBarCustomizable.swift */,
 				5E9C28B3228E475E004ABF3B /* KeyboardFrameTrackkable.swift */,
+				5E9C28B5228E4E99004ABF3B /* CellFrameTrackkable.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -923,6 +926,7 @@
 				069AD42C2277224A0075E711 /* TodayViewModel.swift in Sources */,
 				0622EA27226A20CE00E87F22 /* RxTableViewCell.swift in Sources */,
 				0622EA49226A2AC000E87F22 /* BehaviorRelay.extension.swift in Sources */,
+				5E9C28B6228E4E99004ABF3B /* CellFrameTrackkable.swift in Sources */,
 				5E9C28B4228E475E004ABF3B /* KeyboardFrameTrackkable.swift in Sources */,
 				0622EA08226A1EF200E87F22 /* NSObjectProtocol.extension.swift in Sources */,
 				06932AC422801A9400CFA05C /* MealLabel.swift in Sources */,
