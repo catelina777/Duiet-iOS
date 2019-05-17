@@ -8,18 +8,9 @@
 
 import UIKit
 
-class InputPickerViewCell: RxTableViewCell {
+class InputPickerViewCell: RoundedTextFieldViewCell {
 
-    @IBOutlet weak var titleLabel: UILabel!
     let pickerView = UIPickerView()
-
-    @IBOutlet weak var textField: MyTextField! {
-        didSet {
-            textField.font = R.font.montserratExtraBold(size: 24)
-            textField.layer.cornerRadius = 10
-            textField.layer.masksToBounds = true
-        }
-    }
 
     func configure(with cellType: CellType) {
         titleLabel.text = cellType.rawValue
