@@ -12,6 +12,7 @@ import RxRelay
 
 protocol CellFrameTrackkable {
     func configure(with viewModel: KeyboardTrackViewModel)
+    func configure(for textField: MyTextField, viewModel: KeyboardTrackViewModel, window: UIWindow)
 }
 
 extension CellFrameTrackkable where Self: RxTableViewCell {

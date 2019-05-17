@@ -22,7 +22,8 @@ final class FillInformationViewController: BaseTableViewController, NavigationBa
     init() {
         self.viewModel = FillInformationViewModel()
         self.keyboardTrackViewModel = KeyboardTrackViewModel()
-        dataSource = FillInformationViewDataSource(viewModel: viewModel)
+        dataSource = FillInformationViewDataSource(viewModel: viewModel,
+                                                   keyboardTrackViewModel: keyboardTrackViewModel)
         super.init(nibName: FillInformationViewController.className, bundle: nil)
     }
 
@@ -37,6 +38,10 @@ final class FillInformationViewController: BaseTableViewController, NavigationBa
 
         viewModel.output.didTapComplete
             .bind(to: showMain)
+            .disposed(by: disposeBag)
+
+        keyboardTrackViewModel.output.difference
+            .bind(to: updateScroll)
             .disposed(by: disposeBag)
     }
 
