@@ -20,7 +20,8 @@ class InputMealViewModel {
     private let _mealLabelViews = BehaviorRelay<[MealLabelView]>(value: [])
     private let disposeBag = DisposeBag()
 
-    init(mealImage: UIImage?) {
+    init(mealImage: UIImage?,
+         meal: Meal) {
 
         self.mealImage = mealImage
 
