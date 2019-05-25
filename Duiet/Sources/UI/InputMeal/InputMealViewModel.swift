@@ -17,6 +17,10 @@ class InputMealViewModel {
     let input: Input
     let output: Output
 
+    var mealLabelViews: [MealLabelView] {
+        return _mealLabelViews.value
+    }
+
     private let _mealLabelViews = BehaviorRelay<[MealLabelView]>(value: [])
     private let disposeBag = DisposeBag()
 
@@ -39,8 +43,13 @@ class InputMealViewModel {
                       calorie: _calorie.asObserver(),
                       multiple: _multiple.asObserver())
 
-        output = Output(mealLabelViews: _mealLabelViews.asObservable())
+        let refreshTextField = PublishRelay<Void>()
+        let reloadData = _addMealLabel
+            .map { _ in }
 
+        output = Output(mealLabelViews: _mealLabelViews.asObservable(),
+                        refreshTextField: refreshTextField.asObservable(),
+                        reloadData: reloadData)
         _saveContent
             .map { $0 }
             .subscribe(onNext: { content in
@@ -91,5 +100,7 @@ extension InputMealViewModel {
 
     struct Output {
         let mealLabelViews: Observable<[MealLabelView]>
+        let refreshTextField: Observable<Void>
+        let reloadData: Observable<Void>
     }
 }
