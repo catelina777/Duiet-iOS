@@ -65,7 +65,7 @@ final class FillInformationViewModel {
             }
             .distinctUntilChanged()
 
-        let userInfo = BehaviorRelay<UserInfo?>(value: nil)
+        let userInfo = PublishRelay<UserInfo>()
         let completeButtonTap = _completeButtonTap
 
         let BMRWithActivityLevel = combinedInfo
@@ -117,9 +117,8 @@ final class FillInformationViewModel {
                              BMR: BMR,
                              TDEE: TDEE)
 
-        completeButtonTap
-            .map { userInfo.value }
-            .compactMap { $0 }
+        completeButtonTap.withLatestFrom(userInfo)
+            .map { $0 }
             .bind(to: Realm.rx.add(update: true))
             .disposed(by: disposeBag)
     }

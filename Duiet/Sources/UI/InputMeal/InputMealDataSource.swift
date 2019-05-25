@@ -46,6 +46,7 @@ extension InputMealDataSource: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.inputMealCalorieViewCell,
                                                      for: indexPath)!
             cell.configure(with: keyboardTrackViewModel)
+            cell.configure(with: viewModel)
             return cell
         }
     }
