@@ -56,7 +56,7 @@ extension InputMealDataSource: UITableViewDataSource {
         case 0:
             return tableView.bounds.width
         default:
-            return 140 * 3.5
+            return 140 * 2.8
         }
     }
 }
