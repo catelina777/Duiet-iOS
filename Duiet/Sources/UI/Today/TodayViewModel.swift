@@ -20,9 +20,16 @@ final class TodayViewModel {
     let input: Input
     let output: Output
 
+    var meals: [Meal] {
+        return model.mealsValue
+    }
+
+    private let model: TodayModel
     private let disposeBag = DisposeBag()
 
     init() {
+        self.model = TodayModel()
+
         let _viewDidAppear = PublishRelay<Void>()
         let _viewDidDisappear = PublishRelay<Void>()
         let _addButtonTap = PublishRelay<TodayViewController>()
