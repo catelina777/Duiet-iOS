@@ -52,12 +52,12 @@ final class TodayViewController: UIViewController, NavigationBarCustomizable {
             .disposed(by: disposeBag)
     }
 
-    private var showDetail: Binder<(UIImage?, Meal)> {
-        return Binder(self) { me, tuple in
-            let vc = InputMealViewController(mealImage: tuple.0,
-                                             meal: tuple.1)
+    private var showDetail: Binder<UIImage?> {
+        return Binder(self) { me, image in
+            print("go to input meal view!!!")
+            let vc = InputMealViewController(mealImage: image)
             me.present(vc, animated: true, completion: nil)
-            print("go to input meal view!!! ✌️✌️✌️")
+            print("gone ✌️✌️✌️")
         }
     }
 }

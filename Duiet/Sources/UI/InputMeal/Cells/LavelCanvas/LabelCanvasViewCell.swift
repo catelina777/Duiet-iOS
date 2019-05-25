@@ -20,15 +20,9 @@ final class LabelCanvasViewCell: RxTableViewCell {
             .asLocation()
             .map { [weak self] point -> MealLabelView? in
                 guard let self = self else { return nil }
-                // Create a view and add it to the parent view
-                // After that, save the content model that the view has,
-                // and perform processing to pass the Content Model to the view model when tapping
-                let mealLabelView = R.nib.mealLabelView.firstView(owner: nil)!
-                mealLabelView.configure(with: self, at: point)
-                mealLabelView.configure(with: viewModel)
-                viewModel.input.saveContent.on(.next(mealLabelView.content))
-                viewModel.input.selectedContent.on(.next(mealLabelView.content))
-                return mealLabelView
+                let mealLableView = R.nib.mealLabelView.firstView(owner: nil)!
+                mealLableView.configure(with: self, at: point)
+                return mealLableView
             }
             .bind(to: viewModel.input.addMealLabel)
             .disposed(by: disposeBag)

@@ -1,5 +1,3 @@
 github "ReactiveX/RxSwift" ~> 5.0
 github "Yummypets/YPImagePicker"
 github "catelina777/RxGesture"
-github "realm/realm-cocoa"
-github "RxSwiftCommunity/RxRealm"
