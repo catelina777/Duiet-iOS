@@ -30,7 +30,8 @@ extension TodayViewDataSource: UICollectionViewDataSource {
         return 8
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         switch indexPath.row {
         case 0:
@@ -79,7 +80,9 @@ extension TodayViewDataSource: UICollectionViewDelegateFlowLayout {
     }
 
     // MARK: It is set to make sure that there is no shadow line
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0.01
     }
 }
