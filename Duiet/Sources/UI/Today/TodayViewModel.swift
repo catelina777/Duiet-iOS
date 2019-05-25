@@ -8,10 +8,7 @@
 
 import UIKit
 import RxSwift
-import RxCocoa
 import RxRelay
-import RealmSwift
-import RxRealm
 
 final class TodayViewModel {
 
@@ -40,41 +37,21 @@ final class TodayViewModel {
             }
             .share()
 
-        // MARK: - Screen transition can't be made without viewDidAppear or later
-        let canShowDetail = _viewDidAppear
+        let showDetail = _viewDidAppear
             .map { true }
             .withLatestFrom(pickedImage)
 
-        let meal = PublishRelay<Meal>()
-
-        let showDetail = Observable.combineLatest(canShowDetail, meal)
-            .take(1)
-
         output = Output(showDetail: showDetail)
-
-        pickedImage
-            .compactMap { $0 }
-            .flatMapLatest { PhotoManager.rx.save(image: $0).take(1) }
-            .map { Meal(imagePath: $0) }
-            .bind(to: meal)
-            .disposed(by: disposeBag)
-
-        showDetail
-            .map { $1 }
-            .bind(to: Realm.rx.add())
-            .disposed(by: disposeBag)
     }
 }
 
 extension TodayViewModel {
-
     struct Input {
         let viewDidAppear: AnyObserver<Void>
         let viewDidDisappear: AnyObserver<Void>
         let addButtonTap: AnyObserver<TodayViewController>
     }
-
     struct Output {
-        let showDetail: Observable<(UIImage?, Meal)>
+        let showDetail: Observable<UIImage?>
     }
 }

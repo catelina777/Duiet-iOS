@@ -11,12 +11,12 @@ import RxSwift
 import RxCocoa
 import Photos
 
-final class PhotoManager: NSObject {}
+final class PhotoManager {}
 
 extension Reactive where Base: PhotoManager {
 
-    static func save(image: UIImage) -> Observable<String> {
-        return Observable<String>.create { observer in
+    static func save(image: UIImage) -> Observable<String?> {
+        return Observable<String?>.create { observer in
 
             PHPhotoLibrary.shared().performChanges({
                 let requestAsset = PHAssetChangeRequest.creationRequestForAsset(from: image)
@@ -35,8 +35,8 @@ extension Reactive where Base: PhotoManager {
         }
     }
 
-    static func fetchImage(with localIdentifier: String) -> Observable<UIImage> {
-        return Observable<UIImage>.create { observer in
+    static func fetchImage(with localIdentifier: String) -> Observable<UIImage?> {
+        return Observable<UIImage?>.create { observer in
 
             let results = PHAsset.fetchAssets(withLocalIdentifiers: [localIdentifier], options: nil)
             guard
