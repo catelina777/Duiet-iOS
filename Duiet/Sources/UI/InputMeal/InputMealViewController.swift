@@ -22,8 +22,10 @@ final class InputMealViewController: BaseTableViewController, KeyboardFrameTrack
 
     private let disposeBag = DisposeBag()
 
-    init(mealImage: UIImage?) {
-        self.viewModel = InputMealViewModel(mealImage: mealImage)
+    init(mealImage: UIImage?,
+         meal: Meal) {
+        self.viewModel = InputMealViewModel(mealImage: mealImage,
+                                            meal: meal)
         self.keyboardTrackViewModel = KeyboardTrackViewModel()
         self.dataSource = InputMealDataSource(viewModel: viewModel,
                                               keyboardTrackViewModel: keyboardTrackViewModel)
@@ -51,6 +53,10 @@ final class InputMealViewController: BaseTableViewController, KeyboardFrameTrack
 
         keyboardTrackViewModel.output.difference
             .bind(to: updateScroll)
+            .disposed(by: disposeBag)
+
+        viewModel.output.reloadData
+            .bind(to: reloadData)
             .disposed(by: disposeBag)
     }
 
@@ -89,6 +95,12 @@ final class InputMealViewController: BaseTableViewController, KeyboardFrameTrack
                                          height: height)
                 me.headerView.frame = headerFrame
             }
+        }
+    }
+
+    private var reloadData: Binder<Void> {
+        return Binder(self) { me, _ in
+            me.tableView.reloadData()
         }
     }
 }
