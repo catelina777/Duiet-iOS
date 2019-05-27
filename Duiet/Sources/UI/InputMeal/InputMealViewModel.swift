@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxRelay
+import RealmSwift
 
 class InputMealViewModel {
 
@@ -25,7 +26,8 @@ class InputMealViewModel {
     private let disposeBag = DisposeBag()
 
     init(mealImage: UIImage?,
-         meal: Meal) {
+         meal: Meal,
+         model: MealModel) {
 
         self.mealImage = mealImage
 
@@ -51,28 +53,20 @@ class InputMealViewModel {
                         refreshTextField: refreshTextField.asObservable(),
                         reloadData: reloadData)
         _saveContent
-            .map { $0 }
-            .subscribe(onNext: { content in
-                meal.rx.addContent.on(.next(content))
-            })
+            .map { (meal, $0) }
+            .bind(to: model.rx.addContent)
             .disposed(by: disposeBag)
 
         Observable.combineLatest(_selectedContent, _name)
-            .subscribe(onNext: { content, name in
-                content.rx.saveName.on(.next(name))
-            })
+            .bind(to: model.rx.saveName)
             .disposed(by: disposeBag)
 
         Observable.combineLatest(_selectedContent, _calorie)
-            .subscribe(onNext: { content, calorie in
-                content.rx.saveCalorie.on(.next(calorie))
-            })
+            .bind(to: model.rx.saveCalorie)
             .disposed(by: disposeBag)
 
         Observable.combineLatest(_selectedContent, _multiple)
-            .subscribe(onNext: { content, multiple in
-                content.rx.saveMultiple.on(.next(multiple))
-            })
+            .bind(to: model.rx.saveMultiple)
             .disposed(by: disposeBag)
 
         _addMealLabel

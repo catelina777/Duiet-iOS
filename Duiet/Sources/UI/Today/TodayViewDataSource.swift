@@ -27,7 +27,7 @@ final class TodayViewDataSource: NSObject {
 
 extension TodayViewDataSource: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8
+        return viewModel.meals.count + 1
     }
 
     func collectionView(_ collectionView: UICollectionView,
@@ -35,12 +35,15 @@ extension TodayViewDataSource: UICollectionViewDataSource {
 
         switch indexPath.row {
         case 0:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.progressCardVIewCell,
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.progressCardViewCell,
                                                           for: indexPath)!
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.mealCardViewCell,
                                                           for: indexPath)!
+            let mealIndex = indexPath.row - 1
+            let meal = viewModel.meals[mealIndex]
+            cell.configure(with: meal)
             return cell
         }
     }

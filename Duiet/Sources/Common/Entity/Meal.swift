@@ -8,8 +8,6 @@
 
 import Foundation
 import RealmSwift
-import RxSwift
-import RxCocoa
 
 final class Meal: Object {
 
@@ -20,17 +18,5 @@ final class Meal: Object {
     required convenience init(imagePath: String) {
         self.init()
         self.imagePath = imagePath
-    }
-}
-
-extension Reactive where Base: Meal {
-
-    var addContent: Binder<Content> {
-        return Binder(base, scheduler: CurrentThreadScheduler.instance) { me, content in
-            let realm = try! Realm()
-            try! realm.write {
-                me.contents.append(content)
-            }
-        }
     }
 }

@@ -16,6 +16,14 @@ final class InputMealViewController: BaseTableViewController, KeyboardFrameTrack
     let headerView: UIImageView
     let labelCanvasView: UIView
 
+    @IBOutlet weak var cancelButton: UIButton! {
+        didSet {
+            let image = R.image.cancel()?.withRenderingMode(.alwaysTemplate)
+            cancelButton.setImage(image, for: .normal)
+            cancelButton.imageView?.tintColor = .gray
+        }
+    }
+
     let viewModel: InputMealViewModel
     let keyboardTrackViewModel: KeyboardTrackViewModel
     let dataSource: InputMealDataSource
@@ -23,9 +31,10 @@ final class InputMealViewController: BaseTableViewController, KeyboardFrameTrack
     private let disposeBag = DisposeBag()
 
     init(mealImage: UIImage?,
-         meal: Meal) {
+         meal: Meal,
+         model: MealModel) {
         self.viewModel = InputMealViewModel(mealImage: mealImage,
-                                            meal: meal)
+                                            meal: meal, model: model)
         self.keyboardTrackViewModel = KeyboardTrackViewModel()
         self.dataSource = InputMealDataSource(viewModel: viewModel,
                                               keyboardTrackViewModel: keyboardTrackViewModel)
@@ -49,6 +58,10 @@ final class InputMealViewController: BaseTableViewController, KeyboardFrameTrack
 
         tableView.rx.contentOffset
             .bind(to: updateParallax)
+            .disposed(by: disposeBag)
+
+        cancelButton.rx.tap
+            .bind(to: dissmiss)
             .disposed(by: disposeBag)
 
         keyboardTrackViewModel.output.difference
@@ -101,6 +114,12 @@ final class InputMealViewController: BaseTableViewController, KeyboardFrameTrack
     private var reloadData: Binder<Void> {
         return Binder(self) { me, _ in
             me.tableView.reloadData()
+        }
+    }
+
+    private var dissmiss: Binder<Void> {
+        return Binder(self) { me, _ in
+            me.dismiss(animated: true, completion: nil)
         }
     }
 }

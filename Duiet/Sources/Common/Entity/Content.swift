@@ -8,8 +8,6 @@
 
 import Foundation
 import RealmSwift
-import RxSwift
-import RxCocoa
 
 final class Content: Object {
 
@@ -24,35 +22,5 @@ final class Content: Object {
         self.init()
         self.relativeX = relativeX
         self.relativeY = relativeY
-    }
-}
-
-extension Reactive where Base: Content {
-
-    var saveName: Binder<String> {
-        return Binder(base, scheduler: CurrentThreadScheduler.instance) { me, name in
-            let realm = try! Realm()
-            try! realm.write {
-                me.name = name
-            }
-        }
-    }
-
-    var saveCalorie: Binder<Double> {
-        return Binder(base, scheduler: CurrentThreadScheduler.instance) { me, calorie in
-            let realm = try! Realm()
-            try! realm.write {
-                me.calorie = calorie
-            }
-        }
-    }
-
-    var saveMultiple: Binder<Double> {
-        return Binder(base, scheduler: CurrentThreadScheduler.instance) { me, multiple in
-            let realm = try! Realm()
-            try! realm.write {
-                me.calorie = multiple
-            }
-        }
     }
 }

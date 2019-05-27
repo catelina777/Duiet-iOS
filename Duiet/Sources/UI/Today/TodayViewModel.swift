@@ -11,7 +11,6 @@ import RxSwift
 import RxCocoa
 import RxRelay
 import RealmSwift
-import RxRealm
 
 final class TodayViewModel {
 
@@ -24,11 +23,11 @@ final class TodayViewModel {
         return model.mealsValue
     }
 
-    private let model: TodayModel
+    let model: MealModel
     private let disposeBag = DisposeBag()
 
     init() {
-        self.model = TodayModel()
+        self.model = MealModel()
 
         let _viewDidAppear = PublishRelay<Void>()
         let _viewDidDisappear = PublishRelay<Void>()
@@ -47,28 +46,27 @@ final class TodayViewModel {
             }
             .share()
 
-        // MARK: - Screen transition can't be made without viewDidAppear or later
-        let canShowDetail = _viewDidAppear
-            .map { true }
-            .withLatestFrom(pickedImage)
-
         let meal = PublishRelay<Meal>()
 
-        let showDetail = Observable.combineLatest(canShowDetail, meal)
-            .take(1)
+        // MARK: - Screen transition can't be made without viewDidAppear or later
+        let showDetail = Observable.combineLatest(pickedImage, meal)
+            .withLatestFrom(_viewDidAppear) { ($0, $1) }
+            .map { ($0.0.0, $0.0.1) }
+            .share()
 
         output = Output(showDetail: showDetail)
 
         pickedImage
             .compactMap { $0 }
-            .flatMapLatest { PhotoManager.rx.save(image: $0).take(1) }
+            .flatMapLatest { PhotoManager.rx.save(image: $0) }
             .map { Meal(imagePath: $0) }
             .bind(to: meal)
             .disposed(by: disposeBag)
 
-        showDetail
-            .map { $1 }
-            .bind(to: Realm.rx.add())
+        // MARK: - Doing here because the specification of Realm.rx.add is bad and I can't bind at one time
+        meal
+            .map { $0 }
+            .bind(to: model.rx.addMeal)
             .disposed(by: disposeBag)
     }
 }
