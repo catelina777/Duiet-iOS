@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InputMealViewController" customModule="Duiet" customModuleProvider="target">
             <connections>
+                <outlet property="cancelButton" destination="Ob7-Ka-Xc4" id="t4Q-BE-FVk"/>
                 <outlet property="tableView" destination="80M-bE-qux" id="IlP-FQ-6VW"/>
                 <outlet property="view" destination="Ab2-xj-0yE" id="4Nj-Fi-Uwl"/>
             </connections>
@@ -25,15 +26,29 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ob7-Ka-Xc4">
+                    <rect key="frame" x="362" y="36" width="36" height="36"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="36" id="atr-GN-tDR"/>
+                        <constraint firstAttribute="width" secondItem="Ob7-Ka-Xc4" secondAttribute="height" multiplier="1:1" id="grm-mU-36I"/>
+                    </constraints>
+                    <state key="normal" image="cancel"/>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.94902342559999997" green="0.94900828599999998" blue="0.94902843240000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="80M-bE-qux" secondAttribute="bottom" id="BSX-wS-5VL"/>
                 <constraint firstItem="mF0-vP-syh" firstAttribute="trailing" secondItem="80M-bE-qux" secondAttribute="trailing" id="DBr-gR-eAa"/>
                 <constraint firstItem="80M-bE-qux" firstAttribute="top" secondItem="Ab2-xj-0yE" secondAttribute="top" id="j0h-XO-puA"/>
+                <constraint firstAttribute="trailing" secondItem="Ob7-Ka-Xc4" secondAttribute="trailing" constant="16" id="rfL-SM-wez"/>
                 <constraint firstItem="80M-bE-qux" firstAttribute="leading" secondItem="mF0-vP-syh" secondAttribute="leading" id="sUf-Ev-s0H"/>
+                <constraint firstItem="Ob7-Ka-Xc4" firstAttribute="top" secondItem="Ab2-xj-0yE" secondAttribute="top" constant="36" id="spZ-UQ-KaL"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="mF0-vP-syh"/>
+            <point key="canvasLocation" x="137.68115942028987" y="153.34821428571428"/>
         </view>
     </objects>
+    <resources>
+        <image name="cancel" width="96" height="96"/>
+    </resources>
 </document>

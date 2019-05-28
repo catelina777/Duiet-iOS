@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import RxSwift
+import RxRelay
 
 final class MealLabelView: UIView {
 
-    @IBOutlet private(set) weak var mealLabel: MealLabel! {
+    @IBOutlet private(set) weak var mealLabel: UILabel! {
         didSet {
             mealLabel.clipsToBounds = true
             mealLabel.layer.cornerRadius = 12
@@ -21,13 +23,42 @@ final class MealLabelView: UIView {
         }
     }
 
+    var content: Content {
+        return _content.value
+    }
+
+    private let _content = BehaviorRelay<Content>(value: Content())
+    private let disposeBag = DisposeBag()
+
+    func configure(with viewModel: InputMealViewModel) {
+        self.rx.tapGesture()
+            .when(.recognized)
+            .withLatestFrom(_content)
+            .bind(to: viewModel.input.selectedContent)
+            .disposed(by: disposeBag)
+
+        self.rx.tapGesture()
+            .when(.recognized)
+            .withLatestFrom(Observable.of(self))
+            .bind(to: viewModel.input.selectedMealLabel)
+            .disposed(by: disposeBag)
+    }
+
     func configure(with view: UIView, at point: CGPoint) {
+        // Add MealLavelView to SuperView
         view.addSubview(self)
         self.clipsToBounds = true
         let width = view.bounds.width * 0.3
         let height = width * 0.4
         let frame = CGRect(x: point.x - width / 2, y: point.y - height / 2, width: width, height: height)
         self.frame = frame
+
+        // Setup Content Model
+        let relativeX = point.x / view.frame.width
+        let relativeY = point.y / view.frame.height
+        let content = Content(relativeX: Double(relativeX),
+                              relativeY: Double(relativeY))
+        _content.accept(content)
     }
 
     func Constraint(item: AnyObject,

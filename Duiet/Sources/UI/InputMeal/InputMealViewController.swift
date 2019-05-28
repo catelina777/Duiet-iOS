@@ -16,14 +16,25 @@ final class InputMealViewController: BaseTableViewController, KeyboardFrameTrack
     let headerView: UIImageView
     let labelCanvasView: UIView
 
+    @IBOutlet weak var cancelButton: UIButton! {
+        didSet {
+            let image = R.image.cancel()?.withRenderingMode(.alwaysTemplate)
+            cancelButton.setImage(image, for: .normal)
+            cancelButton.imageView?.tintColor = .gray
+        }
+    }
+
     let viewModel: InputMealViewModel
     let keyboardTrackViewModel: KeyboardTrackViewModel
     let dataSource: InputMealDataSource
 
     private let disposeBag = DisposeBag()
 
-    init(mealImage: UIImage?) {
-        self.viewModel = InputMealViewModel(mealImage: mealImage)
+    init(mealImage: UIImage?,
+         meal: Meal,
+         model: MealModel) {
+        self.viewModel = InputMealViewModel(mealImage: mealImage,
+                                            meal: meal, model: model)
         self.keyboardTrackViewModel = KeyboardTrackViewModel()
         self.dataSource = InputMealDataSource(viewModel: viewModel,
                                               keyboardTrackViewModel: keyboardTrackViewModel)
@@ -49,8 +60,16 @@ final class InputMealViewController: BaseTableViewController, KeyboardFrameTrack
             .bind(to: updateParallax)
             .disposed(by: disposeBag)
 
+        cancelButton.rx.tap
+            .bind(to: dissmiss)
+            .disposed(by: disposeBag)
+
         keyboardTrackViewModel.output.difference
             .bind(to: updateScroll)
+            .disposed(by: disposeBag)
+
+        viewModel.output.reloadData
+            .bind(to: reloadData)
             .disposed(by: disposeBag)
     }
 
@@ -89,6 +108,18 @@ final class InputMealViewController: BaseTableViewController, KeyboardFrameTrack
                                          height: height)
                 me.headerView.frame = headerFrame
             }
+        }
+    }
+
+    private var reloadData: Binder<Void> {
+        return Binder(self) { me, _ in
+            me.tableView.reloadData()
+        }
+    }
+
+    private var dissmiss: Binder<Void> {
+        return Binder(self) { me, _ in
+            me.dismiss(animated: true, completion: nil)
         }
     }
 }

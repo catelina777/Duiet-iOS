@@ -40,6 +40,13 @@ class InputMealCalorieViewCell: RxTableViewCell, CellFrameTrackkable {
         }
     }
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        mealNameTextField.text = nil
+        mealCalorieTextField.text = nil
+        mealAmountTextField.text = nil
+    }
+
     func configure(with viewModel: KeyboardTrackViewModel) {
         guard
             let appDelegate = UIApplication.shared.delegate,
@@ -57,5 +64,24 @@ class InputMealCalorieViewCell: RxTableViewCell, CellFrameTrackkable {
                       viewModel: viewModel,
                       window: window)
         }
+    }
+
+    func configure(with viewModel: InputMealViewModel) {
+        mealCalorieTextField.rx.text
+            .compactMap { $0 }
+            .map { Double($0) ?? 0 }
+            .bind(to: viewModel.input.calorie)
+            .disposed(by: disposeBag)
+
+        mealAmountTextField.rx.text
+            .compactMap { $0 }
+            .map { Double($0) ?? 0 }
+            .bind(to: viewModel.input.multiple)
+            .disposed(by: disposeBag)
+
+        mealNameTextField.rx.text
+            .map { $0 ?? "" }
+            .bind(to: viewModel.input.name)
+            .disposed(by: disposeBag)
     }
 }

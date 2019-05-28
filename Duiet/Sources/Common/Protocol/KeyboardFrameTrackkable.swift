@@ -10,8 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-/*
-    MARK: How to prevent wrapped Keyboard on cell's textfield
+/*  // MARK: - How to prevent wrapped Keyboard on cell's textfield
     1. Adapt this protocol
     2. KeyboardTrackViewModel's property difference bind to updateScroll
     3. Adapt CellFrameTrackkable protocol to the cell you want to track
