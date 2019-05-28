@@ -249,14 +249,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0603293A227F3837009A67A4 /* Entity */ = {
+		0603293A227F3837009A67A4 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
 				5E9C28BE228E6254004ABF3B /* UserInfo.swift */,
 				405147C72291498100C9AF8C /* Meal.swift */,
 				405147C92291498800C9AF8C /* Content.swift */,
 			);
-			path = Entity;
+			path = Domain;
 			sourceTree = "<group>";
 		};
 		0603293B227F3A6B009A67A4 /* Cells */ = {
@@ -410,7 +410,7 @@
 			isa = PBXGroup;
 			children = (
 				5E9C28B0228E4717004ABF3B /* Base */,
-				0603293A227F3837009A67A4 /* Entity */,
+				0603293A227F3837009A67A4 /* Domain */,
 				40E7699A229953E000E9D5DA /* Model */,
 				06B2FCF0227221980078C7F1 /* Enum */,
 				0622E9FE226A1C5700E87F22 /* Protocol */,

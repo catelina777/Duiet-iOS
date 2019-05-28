@@ -12,7 +12,7 @@ import RxRelay
 import RxCocoa
 import RealmSwift
 
-class MealModel: NSObject {
+final class MealModel: NSObject {
 
     let meals: Observable<[Meal]>
 
