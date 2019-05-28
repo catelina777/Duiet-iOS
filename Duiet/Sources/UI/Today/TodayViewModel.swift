@@ -9,7 +9,6 @@
 import UIKit
 import RxSwift
 import RxRelay
-import RealmSwift
 
 final class TodayViewModel {
 
@@ -18,16 +17,9 @@ final class TodayViewModel {
     let input: Input
     let output: Output
 
-    var meals: [Meal] {
-        return model.mealsValue
-    }
-
-    let model: MealModel
     private let disposeBag = DisposeBag()
 
     init() {
-        self.model = MealModel()
-
         let _viewDidAppear = PublishRelay<Void>()
         let _viewDidDisappear = PublishRelay<Void>()
         let _addButtonTap = PublishRelay<TodayViewController>()
@@ -45,28 +37,11 @@ final class TodayViewModel {
             }
             .share()
 
-        let meal = PublishRelay<Meal>()
-
-        // MARK: - Screen transition can't be made without viewDidAppear or later
-        let showDetail = Observable.combineLatest(pickedImage, meal)
-            .withLatestFrom(_viewDidAppear) { ($0, $1) }
-            .map { ($0.0.0, $0.0.1) }
-            .share()
+        let showDetail = _viewDidAppear
+            .map { true }
+            .withLatestFrom(pickedImage)
 
         output = Output(showDetail: showDetail)
-
-        pickedImage
-            .compactMap { $0 }
-            .flatMapLatest { PhotoManager.rx.save(image: $0) }
-            .map { Meal(imagePath: $0) }
-            .bind(to: meal)
-            .disposed(by: disposeBag)
-
-        // MARK: - Doing here because the specification of Realm.rx.add is bad and I can't bind at one time
-        meal
-            .map { $0 }
-            .bind(to: model.rx.addMeal)
-            .disposed(by: disposeBag)
     }
 }
 

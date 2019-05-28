@@ -23,6 +23,7 @@ final class InputNumberViewCell: InputPickerViewCell, CellFrameTrackkable {
                   window: window)
     }
 
+
     func configure(with viewModel: FillInformationViewModel, type: CellType) {
         super.configure(with: type)
         if type == .height {

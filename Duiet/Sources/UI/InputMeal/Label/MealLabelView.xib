@@ -21,7 +21,7 @@
             <rect key="frame" x="0.0" y="0.0" width="150" height="72"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="200" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pOU-QK-22w">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="200" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pOU-QK-22w" customClass="MealLabel" customModule="Duiet" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="150" height="72"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <fontDescription key="fontDescription" name="Montserrat-ExtraBold" family="Montserrat" pointSize="28"/>
@@ -39,7 +39,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
-                <outlet property="mealLabel" destination="pOU-QK-22w" id="gLp-rR-T5U"/>
+                <outlet property="mealLabel" destination="pOU-QK-22w" id="VQW-Ic-K3y"/>
             </connections>
             <point key="canvasLocation" x="-143.47826086956522" y="300"/>
         </view>

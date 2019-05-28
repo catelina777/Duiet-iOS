@@ -6,6 +6,3 @@ excluded:
 disabled_rules:
   - identifier_name
   - force_try	
-
-line_length: 120
-function_body_length: 70

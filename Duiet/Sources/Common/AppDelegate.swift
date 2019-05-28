@@ -36,8 +36,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("is not first launch 🍣🍣🍣")
         }
 
-        print(Realm.Configuration.defaultConfiguration.fileURL!)
-
         window?.makeKeyAndVisible()
         return true
     }
