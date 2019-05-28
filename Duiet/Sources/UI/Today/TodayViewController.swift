@@ -39,8 +39,7 @@ final class TodayViewController: UIViewController, NavigationBarCustomizable {
 
         rx.methodInvoked(#selector(self.viewDidAppear(_:)))
             .map { _ in }
-            .bind(to: viewModel.input.viewDidAppear,
-                  reloadData.asObserver())
+            .bind(to: viewModel.input.viewDidAppear)
             .disposed(by: disposeBag)
 
         addButton.rx.tap
@@ -53,19 +52,12 @@ final class TodayViewController: UIViewController, NavigationBarCustomizable {
             .disposed(by: disposeBag)
     }
 
-    private var showDetail: Binder<(UIImage?, Meal)> {
-        return Binder(self) { me, tuple in
-            let vc = InputMealViewController(mealImage: tuple.0,
-                                             meal: tuple.1,
-                                             model: me.viewModel.model)
+    private var showDetail: Binder<UIImage?> {
+        return Binder(self) { me, image in
+            print("go to input meal view!!!")
+            let vc = InputMealViewController(mealImage: image)
             me.present(vc, animated: true, completion: nil)
             print("gone ✌️✌️✌️")
-        }
-    }
-
-    private var reloadData: Binder<Void> {
-        return Binder(self) { me, _ in
-            me.collectionView.reloadData()
         }
     }
 }

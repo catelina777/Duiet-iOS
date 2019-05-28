@@ -9,7 +9,23 @@
 import UIKit
 import RxSwift
 
-class CardView: UIView {}
+class CardView: UIView {
+
+    @IBOutlet weak var imageView: UIImageView! {
+        didSet {
+            imageView.layer.cornerRadius = 12
+            imageView.clipsToBounds = true
+            imageView.contentMode = .scaleAspectFill
+        }
+    }
+
+    @IBOutlet weak var caloriesLabel: UILabel! {
+        didSet {
+            caloriesLabel.layer.cornerRadius = 12
+            caloriesLabel.clipsToBounds = true
+        }
+    }
+}
 
 class RoundedCardWrapperView: UIView {
 
@@ -55,30 +71,4 @@ class RoundedCardWrapperView: UIView {
     }
 }
 
-final class MealCardViewCell: RxCollectionViewCell {
-
-    @IBOutlet weak var imageView: UIImageView! {
-        didSet {
-            imageView.layer.cornerRadius = 12
-            imageView.clipsToBounds = true
-            imageView.contentMode = .scaleAspectFill
-        }
-    }
-
-    @IBOutlet weak var caloriesLabel: UILabel! {
-        didSet {
-            caloriesLabel.layer.cornerRadius = 12
-            caloriesLabel.clipsToBounds = true
-        }
-    }
-
-    func configure(with meal: Meal) {
-        let mealImage = PhotoManager.rx.fetchImage(with: meal.imagePath)
-        mealImage
-            .bind(to: imageView.rx.image)
-            .disposed(by: disposeBag)
-
-        let sumCalorie = meal.contents.reduce(into: 0) { $0 += $1.calorie }
-        caloriesLabel.text = "\(sumCalorie)"
-    }
-}
+final class MealCardViewCell: RxCollectionViewCell {}

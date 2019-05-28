@@ -27,23 +27,19 @@ final class TodayViewDataSource: NSObject {
 
 extension TodayViewDataSource: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.meals.count + 1
+        return 8
     }
 
-    func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         switch indexPath.row {
         case 0:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.progressCardViewCell,
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.progressCardVIewCell,
                                                           for: indexPath)!
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.mealCardViewCell,
                                                           for: indexPath)!
-            let mealIndex = indexPath.row - 1
-            let meal = viewModel.meals[mealIndex]
-            cell.configure(with: meal)
             return cell
         }
     }
@@ -83,9 +79,7 @@ extension TodayViewDataSource: UICollectionViewDelegateFlowLayout {
     }
 
     // MARK: It is set to make sure that there is no shadow line
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0.01
     }
 }
