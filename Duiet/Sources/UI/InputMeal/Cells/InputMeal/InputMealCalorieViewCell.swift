@@ -67,11 +67,6 @@ class InputMealCalorieViewCell: RxTableViewCell, CellFrameTrackkable {
     }
 
     func configure(with viewModel: InputMealViewModel) {
-        mealNameTextField.rx.text
-            .map { $0 ?? "" }
-            .bind(to: viewModel.input.name)
-            .disposed(by: disposeBag)
-
         mealCalorieTextField.rx.text
             .compactMap { $0 }
             .map { Double($0) ?? 0 }
@@ -82,6 +77,11 @@ class InputMealCalorieViewCell: RxTableViewCell, CellFrameTrackkable {
             .compactMap { $0 }
             .map { Double($0) ?? 0 }
             .bind(to: viewModel.input.multiple)
+            .disposed(by: disposeBag)
+
+        mealNameTextField.rx.text
+            .map { $0 ?? "" }
+            .bind(to: viewModel.input.name)
             .disposed(by: disposeBag)
     }
 }

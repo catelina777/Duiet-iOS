@@ -28,6 +28,7 @@ final class LabelCanvasViewCell: RxTableViewCell {
                 mealLabelView.configure(with: viewModel)
                 viewModel.input.saveContent.on(.next(mealLabelView.content))
                 viewModel.input.selectedContent.on(.next(mealLabelView.content))
+                viewModel.input.selectedMealLabel.on(.next(mealLabelView))
                 return mealLabelView
             }
             .bind(to: viewModel.input.addMealLabel)
