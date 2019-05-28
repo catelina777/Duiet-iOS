@@ -184,7 +184,6 @@
 		06F615D0227AF1080074089B /* Splash.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Splash.xcassets; sourceTree = "<group>"; };
 		06F615D2227AF5C40074089B /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
 		1D64453EF3A64E5B58A308B8 /* Pods-Duiet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Duiet.debug.xcconfig"; path = "Target Support Files/Pods-Duiet/Pods-Duiet.debug.xcconfig"; sourceTree = "<group>"; };
-		40071C29229C19F800300969 /* EasyRealm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EasyRealm.framework; path = Carthage/Build/iOS/EasyRealm.framework; sourceTree = "<group>"; };
 		405147C72291498100C9AF8C /* Meal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		405147C92291498800C9AF8C /* Content.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		405E3A1C229929D500ECEA9E /* EmptyContentViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyContentViewCell.swift; sourceTree = "<group>"; };
@@ -589,7 +588,6 @@
 		4B312EFBEE0174A408F8814E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				40071C29229C19F800300969 /* EasyRealm.framework */,
 				5E9C28C0228E76D6004ABF3B /* Realm.framework */,
 				5E9C28C1228E76D6004ABF3B /* RealmSwift.framework */,
 				5E9C28C2228E76D6004ABF3B /* RxRealm.framework */,
