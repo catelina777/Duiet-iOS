@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import RxSwift
-import RxRelay
 
 final class MealLabelView: UIView {
 
@@ -45,7 +43,6 @@ final class MealLabelView: UIView {
     }
 
     func configure(with view: UIView, at point: CGPoint) {
-        // Add MealLavelView to SuperView
         view.addSubview(self)
         self.clipsToBounds = true
         let width = view.bounds.width * 0.3

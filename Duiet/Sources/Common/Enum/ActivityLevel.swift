@@ -74,19 +74,4 @@ enum ActivityLevel {
             return .none
         }
     }
-
-    var row: Int {
-        switch self {
-        case .sedentary:
-            return 1
-        case .lightly:
-            return 2
-        case .moderately:
-            return 3
-        case .veryActive:
-            return 4
-        case .none:
-            return 0
-        }
-    }
 }

@@ -8,7 +8,6 @@
 
 import UIKit
 import RxSwift
-import RxCocoa
 import RxRelay
 import RealmSwift
 
@@ -72,14 +71,12 @@ final class TodayViewModel {
 }
 
 extension TodayViewModel {
-
     struct Input {
         let viewDidAppear: AnyObserver<Void>
         let viewDidDisappear: AnyObserver<Void>
         let addButtonTap: AnyObserver<TodayViewController>
     }
-
     struct Output {
-        let showDetail: Observable<(UIImage?, Meal)>
+        let showDetail: Observable<UIImage?>
     }
 }

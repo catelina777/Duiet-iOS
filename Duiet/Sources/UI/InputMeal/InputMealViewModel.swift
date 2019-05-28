@@ -18,10 +18,6 @@ class InputMealViewModel {
     let input: Input
     let output: Output
 
-    var mealLabelViews: [MealLabelView] {
-        return _mealLabelViews.value
-    }
-
     private let _mealLabelViews = BehaviorRelay<[MealLabelView]>(value: [])
     private let disposeBag = DisposeBag()
 

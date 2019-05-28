@@ -59,7 +59,7 @@ final class TodayViewController: UIViewController, NavigationBarCustomizable {
                                              meal: tuple.1,
                                              model: me.viewModel.model)
             me.present(vc, animated: true, completion: nil)
-            print("go to input meal view!!! ✌️✌️✌️")
+            print("gone ✌️✌️✌️")
         }
     }
 

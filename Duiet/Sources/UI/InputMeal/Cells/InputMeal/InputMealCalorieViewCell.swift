@@ -40,13 +40,6 @@ class InputMealCalorieViewCell: RxTableViewCell, CellFrameTrackkable {
         }
     }
 
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        mealNameTextField.text = nil
-        mealCalorieTextField.text = nil
-        mealAmountTextField.text = nil
-    }
-
     func configure(with viewModel: KeyboardTrackViewModel) {
         guard
             let appDelegate = UIApplication.shared.delegate,
