@@ -11,10 +11,12 @@ import RxSwift
 import RxRelay
 import RxCocoa
 import RealmSwift
+import RxRealm
 
 final class MealModel: NSObject {
 
     let meals: Observable<[Meal]>
+    let changeData: Observable<RealmChangeset?>
 
     var mealsValue: [Meal] {
         return _meals.value
@@ -28,8 +30,18 @@ final class MealModel: NSObject {
     override init() {
         realm = try! Realm()
         self.meals = _meals.asObservable()
+
+        let todayStart = Calendar.current.startOfDay(for: .init())
+        let todayEnd = Date(timeInterval: 60 * 60 * 24, since: todayStart)
+        let meals = realm.objects(Meal.self).filter("date BETWEEN %@", [todayStart, todayEnd]).sorted(byKeyPath: "date")
+        Observable.array(from: meals)
+            .bind(to: self._meals)
+            .disposed(by: self.disposeBag)
+
+        changeData = Observable.changeset(from: meals)
+            .map { $1 }
+
         super.init()
-        findToday()
     }
 
     private func findToday() {

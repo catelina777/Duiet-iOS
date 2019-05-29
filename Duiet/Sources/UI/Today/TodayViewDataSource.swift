@@ -49,7 +49,19 @@ extension TodayViewDataSource: UICollectionViewDataSource {
     }
 }
 
-extension TodayViewDataSource: UICollectionViewDelegate {}
+extension TodayViewDataSource: UICollectionViewDelegate {
+
+    func collectionView(_ collectionView: UICollectionView,
+                        didSelectItemAt indexPath: IndexPath) {
+        guard
+            let cell = collectionView.cellForItem(at: indexPath),
+            let cardCell = cell as? MealCardViewCell
+        else { return }
+        let mealIndex = indexPath.row - 1
+        let meal = viewModel.meals[mealIndex]
+        viewModel.input.selectedItem.on(.next((cardCell, meal)))
+    }
+}
 
 extension TodayViewDataSource: UICollectionViewDelegateFlowLayout {
 

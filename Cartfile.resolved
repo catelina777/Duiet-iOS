@@ -1,4 +1,5 @@
 github "HHK1/PryntTrimmerView" "4.0.0"
+github "HeroTransitions/Hero" "1.4.0"
 github "ReactiveX/RxSwift" "5.0.1"
 github "RxSwiftCommunity/RxRealm" "1.0.0"
 github "Yummypets/YPImagePicker" "4.0.0"

@@ -10,3 +10,4 @@ $(SRCROOT)/Carthage/Build/iOS/RxSwift.framework
 $(SRCROOT)/Carthage/Build/iOS/RxTest.framework
 $(SRCROOT)/Carthage/Build/iOS/Stevia.framework
 $(SRCROOT)/Carthage/Build/iOS/YPImagePicker.framework
+$(SRCROOT)/Carthage/Build/iOS/Hero.framework
