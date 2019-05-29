@@ -73,7 +73,6 @@
 		06F615D1227AF1080074089B /* Splash.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06F615D0227AF1080074089B /* Splash.xcassets */; };
 		06F615D3227AF5C40074089B /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06F615D2227AF5C40074089B /* RxRelay.framework */; };
 		3D663033B554173C7AFF58FC /* Pods_Duiet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6911E39E3468EB910D0358F5 /* Pods_Duiet.framework */; };
-		40071C2D229C349E00300969 /* RxRealm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9C28C2228E76D6004ABF3B /* RxRealm.framework */; };
 		405147C82291498100C9AF8C /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405147C72291498100C9AF8C /* Meal.swift */; };
 		405147CA2291498800C9AF8C /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405147C92291498800C9AF8C /* Content.swift */; };
 		405E3A1D229929D500ECEA9E /* EmptyContentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405E3A1C229929D500ECEA9E /* EmptyContentViewCell.swift */; };
@@ -215,7 +214,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40071C2D229C349E00300969 /* RxRealm.framework in Frameworks */,
 				5E9C28C3228E76D6004ABF3B /* Realm.framework in Frameworks */,
 				5E9C28C4228E76D6004ABF3B /* RealmSwift.framework in Frameworks */,
 				060A797C227C921800F02B30 /* PryntTrimmerView.framework in Frameworks */,
