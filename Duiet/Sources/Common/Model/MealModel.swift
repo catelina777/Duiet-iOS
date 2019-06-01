@@ -68,8 +68,6 @@ extension Reactive where Base: MealModel {
         return Binder(base) { me, tuple in
             try! me.realm.write {
                 tuple.0.contents.append(tuple.1)
-                print("保存したのは")
-                print(tuple.1)
             }
         }
     }

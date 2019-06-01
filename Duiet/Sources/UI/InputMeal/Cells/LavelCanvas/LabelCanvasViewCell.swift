@@ -35,13 +35,8 @@ final class LabelCanvasViewCell: RxTableViewCell {
                 let mealLabelView = R.nib.mealLabelView.firstView(owner: nil)!
                 mealLabelView.configure(with: self, at: point)
                 mealLabelView.configure(with: viewModel)
-                print("長押し")
-                print("初期値は")
-                print(mealLabelView.content.value)
                 viewModel.input.saveContent.on(.next(mealLabelView.content.value))
                 viewModel.input.selectedMealLabel.on(.next(mealLabelView))
-                print("追加された値は")
-                print(mealLabelView.content.value)
                 return mealLabelView
             }
             .compactMap { $0 }
