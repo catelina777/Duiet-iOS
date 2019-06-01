@@ -68,30 +68,38 @@ extension Reactive where Base: MealModel {
         return Binder(base) { me, tuple in
             try! me.realm.write {
                 tuple.0.contents.append(tuple.1)
+                print("保存したのは")
+                print(tuple.1)
             }
         }
     }
 
-    var saveName: Binder<(Content, String)> {
+    var saveName: Binder<(MealLabelView, String)> {
         return Binder(base) { me, tuple in
             try! me.realm.write {
-                tuple.0.name = tuple.1
+                let content = tuple.0.content.value
+                content.name = tuple.1
+                tuple.0.content.accept(content)
             }
         }
     }
 
-    var saveCalorie: Binder<(Content, Double)> {
+    var saveCalorie: Binder<(MealLabelView, Double)> {
         return Binder(base) { me, tuple in
             try! me.realm.write {
-                tuple.0.calorie = tuple.1
+                let content = tuple.0.content.value
+                content.calorie = tuple.1
+                tuple.0.content.accept(content)
             }
         }
     }
 
-    var saveMultiple: Binder<(Content, Double)> {
+    var saveMultiple: Binder<(MealLabelView, Double)> {
         return Binder(base) { me, tuple in
             try! me.realm.write {
-                tuple.0.multiple = tuple.1
+                let content = tuple.0.content.value
+                content.multiple = tuple.1
+                tuple.0.content.accept(content)
             }
         }
     }

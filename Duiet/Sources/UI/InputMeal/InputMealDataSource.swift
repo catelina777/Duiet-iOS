@@ -46,7 +46,7 @@ extension InputMealDataSource: UITableViewDataSource {
             return cell
         default:
             // Display when mealLabelviews are empty
-            if viewModel.mealLabelViews.count == 0 {
+            if viewModel.meal.contents.count == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.emptyContentViewCell,
                                                          for: indexPath)!
                 return cell
