@@ -67,6 +67,10 @@ final class InputMealViewController: BaseTableViewController, KeyboardFrameTrack
         keyboardTrackViewModel.output.difference
             .bind(to: updateScroll)
             .disposed(by: disposeBag)
+
+        viewModel.output.reloadData
+            .bind(to: reloadData)
+            .disposed(by: disposeBag)
     }
 
     private var configureHeaderView: Binder<Void> {
@@ -109,7 +113,9 @@ final class InputMealViewController: BaseTableViewController, KeyboardFrameTrack
 
     private var reloadData: Binder<Void> {
         return Binder(self) { me, _ in
-            me.tableView.reloadData()
+            me.tableView.beginUpdates()
+            me.tableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .automatic)
+            me.tableView.endUpdates()
         }
     }
 

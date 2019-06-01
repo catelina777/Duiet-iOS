@@ -9,6 +9,9 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RealmSwift
+import RxRealm
+import Hero
 
 final class TodayViewController: UIViewController, NavigationBarCustomizable {
 
@@ -39,8 +42,7 @@ final class TodayViewController: UIViewController, NavigationBarCustomizable {
 
         rx.methodInvoked(#selector(self.viewDidAppear(_:)))
             .map { _ in }
-            .bind(to: viewModel.input.viewDidAppear,
-                  reloadData.asObserver())
+            .bind(to: viewModel.input.viewDidAppear)
             .disposed(by: disposeBag)
 
         addButton.rx.tap
@@ -51,6 +53,14 @@ final class TodayViewController: UIViewController, NavigationBarCustomizable {
         viewModel.output.showDetail
             .bind(to: showDetail)
             .disposed(by: disposeBag)
+
+        viewModel.output.editDetail
+            .bind(to: editDetail)
+            .disposed(by: disposeBag)
+
+        viewModel.output.changeData
+            .bind(to: applyChange)
+            .disposed(by: disposeBag)
     }
 
     private var showDetail: Binder<(UIImage?, Meal)> {
@@ -59,13 +69,37 @@ final class TodayViewController: UIViewController, NavigationBarCustomizable {
                                              meal: tuple.1,
                                              model: me.viewModel.model)
             me.present(vc, animated: true, completion: nil)
-            print("gone ✌️✌️✌️")
+            print("go to input meal view!!! ✌️✌️✌️")
         }
     }
 
-    private var reloadData: Binder<Void> {
-        return Binder(self) { me, _ in
-            me.collectionView.reloadData()
+    private var editDetail: Binder<(MealCardViewCell, Meal)> {
+        return Binder(self) { me, tuple in
+            let heroID = "meal\(tuple.1.date)"
+            tuple.0.imageView.hero.id = heroID
+
+            let vc = InputMealViewController(mealImage: tuple.0.imageView.image,
+                                             meal: tuple.1,
+                                             model: me.viewModel.model)
+            vc.hero.isEnabled = true
+            vc.hero.modalAnimationType = .auto
+            vc.headerView.hero.id = heroID
+            me.present(vc, animated: true, completion: nil)
+        }
+    }
+
+    private var applyChange: Binder<RealmChangeset?> {
+        return Binder(self) { me, changes in
+            if let changes = changes {
+                let inserted = changes.inserted.map { IndexPath(row: $0 + 1, section: 0) }
+                let updated = changes.updated.map { IndexPath(row: $0 + 1, section: 0) }
+                let deleted = changes.deleted.map { IndexPath(row: $0 + 1, section: 0) }
+                me.collectionView.insertItems(at: inserted)
+                me.collectionView.reloadItems(at: updated)
+                me.collectionView.deleteItems(at: deleted)
+            } else {
+                me.collectionView.reloadData()
+            }
         }
     }
 }

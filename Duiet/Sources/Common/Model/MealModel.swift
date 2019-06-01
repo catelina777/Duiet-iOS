@@ -11,10 +11,12 @@ import RxSwift
 import RxRelay
 import RxCocoa
 import RealmSwift
+import RxRealm
 
 final class MealModel: NSObject {
 
     let meals: Observable<[Meal]>
+    let changeData: Observable<RealmChangeset?>
 
     var mealsValue: [Meal] {
         return _meals.value
@@ -28,8 +30,18 @@ final class MealModel: NSObject {
     override init() {
         realm = try! Realm()
         self.meals = _meals.asObservable()
+
+        let todayStart = Calendar.current.startOfDay(for: .init())
+        let todayEnd = Date(timeInterval: 60 * 60 * 24, since: todayStart)
+        let meals = realm.objects(Meal.self).filter("date BETWEEN %@", [todayStart, todayEnd]).sorted(byKeyPath: "date")
+        Observable.array(from: meals)
+            .bind(to: self._meals)
+            .disposed(by: self.disposeBag)
+
+        changeData = Observable.changeset(from: meals)
+            .map { $1 }
+
         super.init()
-        findToday()
     }
 
     private func findToday() {
@@ -56,30 +68,38 @@ extension Reactive where Base: MealModel {
         return Binder(base) { me, tuple in
             try! me.realm.write {
                 tuple.0.contents.append(tuple.1)
+                print("保存したのは")
+                print(tuple.1)
             }
         }
     }
 
-    var saveName: Binder<(Content, String)> {
+    var saveName: Binder<(MealLabelView, String)> {
         return Binder(base) { me, tuple in
             try! me.realm.write {
-                tuple.0.name = tuple.1
+                let content = tuple.0.content.value
+                content.name = tuple.1
+                tuple.0.content.accept(content)
             }
         }
     }
 
-    var saveCalorie: Binder<(Content, Double)> {
+    var saveCalorie: Binder<(MealLabelView, Double)> {
         return Binder(base) { me, tuple in
             try! me.realm.write {
-                tuple.0.calorie = tuple.1
+                let content = tuple.0.content.value
+                content.calorie = tuple.1
+                tuple.0.content.accept(content)
             }
         }
     }
 
-    var saveMultiple: Binder<(Content, Double)> {
+    var saveMultiple: Binder<(MealLabelView, Double)> {
         return Binder(base) { me, tuple in
             try! me.realm.write {
-                tuple.0.multiple = tuple.1
+                let content = tuple.0.content.value
+                content.multiple = tuple.1
+                tuple.0.content.accept(content)
             }
         }
     }

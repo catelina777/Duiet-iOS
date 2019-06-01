@@ -8,8 +8,10 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 import RxRelay
 import RealmSwift
+import RxRealm
 
 final class TodayViewModel {
 
@@ -31,10 +33,12 @@ final class TodayViewModel {
         let _viewDidAppear = PublishRelay<Void>()
         let _viewDidDisappear = PublishRelay<Void>()
         let _addButtonTap = PublishRelay<TodayViewController>()
+        let _selectedItem = PublishRelay<(MealCardViewCell, Meal)>()
 
         input = Input(viewDidAppear: _viewDidAppear.asObserver(),
                       viewDidDisappear: _viewDidDisappear.asObserver(),
-                      addButtonTap: _addButtonTap.asObserver())
+                      addButtonTap: _addButtonTap.asObserver(),
+                      selectedItem: _selectedItem.asObserver())
 
         let pickedImage = _addButtonTap
             .flatMapLatest { vc in
@@ -53,7 +57,11 @@ final class TodayViewModel {
             .map { ($0.0.0, $0.0.1) }
             .share()
 
-        output = Output(showDetail: showDetail)
+        let editDetail = _selectedItem
+
+        output = Output(showDetail: showDetail,
+                        editDetail: editDetail.asObservable(),
+                        changeData: model.changeData)
 
         pickedImage
             .compactMap { $0 }
@@ -71,12 +79,17 @@ final class TodayViewModel {
 }
 
 extension TodayViewModel {
+
     struct Input {
         let viewDidAppear: AnyObserver<Void>
         let viewDidDisappear: AnyObserver<Void>
         let addButtonTap: AnyObserver<TodayViewController>
+        let selectedItem: AnyObserver<(MealCardViewCell, Meal)>
     }
+
     struct Output {
-        let showDetail: Observable<UIImage?>
+        let showDetail: Observable<(UIImage?, Meal)>
+        let editDetail: Observable<(MealCardViewCell, Meal)>
+        let changeData: Observable<RealmChangeset?>
     }
 }

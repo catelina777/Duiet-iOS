@@ -23,6 +23,7 @@ final class InputMealDataSource: NSObject {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.keyboardDismissMode = .onDrag
+        tableView.register(R.nib.emptyContentViewCell)
         tableView.register(R.nib.labelCanvasViewCell)
         tableView.register(R.nib.inputMealCalorieViewCell)
     }
@@ -35,6 +36,7 @@ extension InputMealDataSource: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
         switch indexPath.row {
         case 0:
             // MARK: Place an empty cell on the back of the header to avoid problems with tableview scrolling
@@ -43,19 +45,28 @@ extension InputMealDataSource: UITableViewDataSource {
             cell.configure(with: viewModel)
             return cell
         default:
+            // Display when mealLabelviews are empty
+            if viewModel.meal.contents.count == 0 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.emptyContentViewCell,
+                                                         for: indexPath)!
+                return cell
+            }
+
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.inputMealCalorieViewCell,
                                                      for: indexPath)!
             cell.configure(with: keyboardTrackViewModel)
+            cell.configure(with: viewModel)
             return cell
         }
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+
         switch indexPath.row {
         case 0:
             return tableView.bounds.width
         default:
-            return 140 * 3.5
+            return 140 * 2.8
         }
     }
 }

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxRelay
 
 final class MealLabelView: UIView {
 
@@ -21,28 +23,30 @@ final class MealLabelView: UIView {
         }
     }
 
-    var content: Content {
-        return _content.value
-    }
-
-    private let _content = BehaviorRelay<Content>(value: Content())
+    let content = BehaviorRelay<Content>(value: Content())
     private let disposeBag = DisposeBag()
 
     func configure(with viewModel: InputMealViewModel) {
         self.rx.tapGesture()
             .when(.recognized)
-            .withLatestFrom(_content)
-            .bind(to: viewModel.input.selectedContent)
-            .disposed(by: disposeBag)
-
-        self.rx.tapGesture()
-            .when(.recognized)
             .withLatestFrom(Observable.of(self))
             .bind(to: viewModel.input.selectedMealLabel)
+            .disposed(by: disposeBag)
+
+        // MARK: - Tell ViewModel new content information when tapping a new label
+        self.rx.tapGesture()
+            .when(.recognized)
+            .withLatestFrom(content)
+            .subscribe(onNext: {
+                viewModel.input.calorieTextInput.on(.next("\($0.calorie)"))
+                viewModel.input.multipleTextInput.on(.next("\($0.multiple)"))
+                viewModel.input.nameTextInput.on(.next($0.name))
+            })
             .disposed(by: disposeBag)
     }
 
     func configure(with view: UIView, at point: CGPoint) {
+        // Add MealLavelView to SuperView
         view.addSubview(self)
         self.clipsToBounds = true
         let width = view.bounds.width * 0.3
@@ -53,9 +57,9 @@ final class MealLabelView: UIView {
         // Setup Content Model
         let relativeX = point.x / view.frame.width
         let relativeY = point.y / view.frame.height
-        let content = Content(relativeX: Double(relativeX),
-                              relativeY: Double(relativeY))
-        _content.accept(content)
+        let _content = Content(relativeX: Double(relativeX),
+                               relativeY: Double(relativeY))
+        self.content.accept(_content)
     }
 
     func Constraint(item: AnyObject,

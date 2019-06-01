@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxGesture
+import RxCocoa
 
 class InputMealCalorieViewCell: RxTableViewCell, CellFrameTrackkable {
 
@@ -40,6 +41,13 @@ class InputMealCalorieViewCell: RxTableViewCell, CellFrameTrackkable {
         }
     }
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        mealNameTextField.text = nil
+        mealCalorieTextField.text = nil
+        mealAmountTextField.text = nil
+    }
+
     func configure(with viewModel: KeyboardTrackViewModel) {
         guard
             let appDelegate = UIApplication.shared.delegate,
@@ -61,20 +69,30 @@ class InputMealCalorieViewCell: RxTableViewCell, CellFrameTrackkable {
 
     func configure(with viewModel: InputMealViewModel) {
         mealCalorieTextField.rx.text
-            .compactMap { $0 }
-            .map { Double($0) ?? 0 }
-            .bind(to: viewModel.input.calorie)
+            .bind(to: viewModel.input.calorieTextInput)
             .disposed(by: disposeBag)
 
         mealAmountTextField.rx.text
-            .compactMap { $0 }
-            .map { Double($0) ?? 0 }
-            .bind(to: viewModel.input.multiple)
+            .bind(to: viewModel.input.multipleTextInput)
             .disposed(by: disposeBag)
 
         mealNameTextField.rx.text
-            .map { $0 ?? "" }
-            .bind(to: viewModel.input.name)
+            .bind(to: viewModel.input.nameTextInput)
             .disposed(by: disposeBag)
+
+        viewModel.output.selectedMealLabel
+            .bind(to: updateTextField)
+            .disposed(by: disposeBag)
+    }
+
+    var updateTextField: Binder<MealLabelView> {
+        return Binder(self) { me, mealLabel in
+            let content = mealLabel.content.value
+            me.mealNameTextField.text = content.name
+            me.mealCalorieTextField.text = ""
+            me.mealAmountTextField.text = ""
+            me.mealCalorieTextField.placeholder = "\(content.calorie)"
+            me.mealAmountTextField.placeholder = "\(content.multiple)"
+        }
     }
 }
