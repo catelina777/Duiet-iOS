@@ -91,12 +91,6 @@ class InputMealViewModel {
         multiple.withLatestFrom(_selectedMealLabel) { ($1, $0) }
             .bind(to: model.rx.saveMultiple)
             .disposed(by: disposeBag)
-
-        _selectedMealLabel
-            .subscribe(onNext: {
-                print("selected content value")
-                print($0.content.value)
-            })
     }
 }
 

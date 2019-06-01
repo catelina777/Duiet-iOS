@@ -34,6 +34,8 @@ extension Content {
         let point = CGPoint(x: pointX, y: pointY)
         mealLabelView.configure(with: view, at: point)
         mealLabelView.configure(with: viewModel)
+        mealLabelView.content.accept(self)
+        mealLabelView.mealLabel.text = "\(Int(calorie * (multiple == 0 ? 1 : multiple)))"
         return mealLabelView
     }
 }
