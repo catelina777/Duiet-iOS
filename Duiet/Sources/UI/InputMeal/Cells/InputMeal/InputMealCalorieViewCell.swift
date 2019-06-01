@@ -88,9 +88,11 @@ class InputMealCalorieViewCell: RxTableViewCell, CellFrameTrackkable {
     var updateTextField: Binder<MealLabelView> {
         return Binder(self) { me, mealLabel in
             let content = mealLabel.content.value
-            me.mealCalorieTextField.text = "\(Int(content.calorie))"
-            me.mealAmountTextField.text = "\(Int(content.multiple))"
             me.mealNameTextField.text = content.name
+            me.mealCalorieTextField.text = ""
+            me.mealAmountTextField.text = ""
+            me.mealCalorieTextField.placeholder = "\(content.calorie)"
+            me.mealAmountTextField.placeholder = "\(content.multiple)"
         }
     }
 }
