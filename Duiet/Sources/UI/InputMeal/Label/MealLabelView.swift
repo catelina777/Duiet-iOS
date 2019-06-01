@@ -61,24 +61,4 @@ final class MealLabelView: UIView {
                                relativeY: Double(relativeY))
         self.content.accept(_content)
     }
-
-    func Constraint(item: AnyObject,
-                    _ attr: NSLayoutConstraint.Attribute,
-                    to: AnyObject?,
-                    _ attrTo: NSLayoutConstraint.Attribute,
-                    constant: CGFloat = 0.0, multiplier: CGFloat = 1.0,
-                    relate: NSLayoutConstraint.Relation = .equal,
-                    priority: UILayoutPriority = UILayoutPriority.required) -> NSLayoutConstraint {
-        let ret = NSLayoutConstraint(
-            item: item,
-            attribute: attr,
-            relatedBy: relate,
-            toItem: to,
-            attribute: attrTo,
-            multiplier: multiplier,
-            constant: constant
-        )
-        ret.priority = priority
-        return ret
-    }
 }
