@@ -14,6 +14,15 @@ import RxGesture
 final class LabelCanvasViewCell: RxTableViewCell {
 
     func configure(with viewModel: InputMealViewModel) {
+
+        // MARK: - Show stored labels
+        viewModel.output.showLabelViews
+            .map { $0.convert(with: viewModel, view: self) }
+            .subscribe(onNext: { _ in
+                print("show labels")
+            })
+            .disposed(by: disposeBag)
+
         self.rx
             .longPressGesture()
             .when(.began)
@@ -26,11 +35,11 @@ final class LabelCanvasViewCell: RxTableViewCell {
                 let mealLabelView = R.nib.mealLabelView.firstView(owner: nil)!
                 mealLabelView.configure(with: self, at: point)
                 mealLabelView.configure(with: viewModel)
-                viewModel.input.saveContent.on(.next(mealLabelView.content))
-                viewModel.input.selectedContent.on(.next(mealLabelView.content))
+                viewModel.input.saveContent.on(.next(mealLabelView.content.value))
                 viewModel.input.selectedMealLabel.on(.next(mealLabelView))
                 return mealLabelView
             }
+            .compactMap { $0 }
             .bind(to: viewModel.input.addMealLabel)
             .disposed(by: disposeBag)
     }

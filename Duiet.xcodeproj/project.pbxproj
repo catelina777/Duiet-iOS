@@ -73,7 +73,6 @@
 		06F615D1227AF1080074089B /* Splash.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06F615D0227AF1080074089B /* Splash.xcassets */; };
 		06F615D3227AF5C40074089B /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06F615D2227AF5C40074089B /* RxRelay.framework */; };
 		3D663033B554173C7AFF58FC /* Pods_Duiet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6911E39E3468EB910D0358F5 /* Pods_Duiet.framework */; };
-		40071C2D229C349E00300969 /* RxRealm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9C28C2228E76D6004ABF3B /* RxRealm.framework */; };
 		405147C82291498100C9AF8C /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405147C72291498100C9AF8C /* Meal.swift */; };
 		405147CA2291498800C9AF8C /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405147C92291498800C9AF8C /* Content.swift */; };
 		405E3A1D229929D500ECEA9E /* EmptyContentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405E3A1C229929D500ECEA9E /* EmptyContentViewCell.swift */; };
@@ -82,6 +81,7 @@
 		5E17F981228BE4980046F68D /* RoundedTextFieldViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E17F980228BE4980046F68D /* RoundedTextFieldViewCell.swift */; };
 		5E79D5672283FAC90073CD98 /* LabelCanvasViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E79D5662283FAC90073CD98 /* LabelCanvasViewCell.swift */; };
 		5E79D56B2283FB0B0073CD98 /* LabelCanvasViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E79D56A2283FB0B0073CD98 /* LabelCanvasViewCell.xib */; };
+		5E916964229E2D260048BA63 /* Hero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E916963229E2D250048BA63 /* Hero.framework */; };
 		5E92570E228D3E2D0076CCEE /* KeyboardTrackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E92570D228D3E2D0076CCEE /* KeyboardTrackViewModel.swift */; };
 		5E9C28B2228E4729004ABF3B /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9C28B1228E4729004ABF3B /* BaseTableViewController.swift */; };
 		5E9C28B4228E475E004ABF3B /* KeyboardFrameTrackkable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9C28B3228E475E004ABF3B /* KeyboardFrameTrackkable.swift */; };
@@ -193,6 +193,7 @@
 		5E17F980228BE4980046F68D /* RoundedTextFieldViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedTextFieldViewCell.swift; sourceTree = "<group>"; };
 		5E79D5662283FAC90073CD98 /* LabelCanvasViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCanvasViewCell.swift; sourceTree = "<group>"; };
 		5E79D56A2283FB0B0073CD98 /* LabelCanvasViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelCanvasViewCell.xib; sourceTree = "<group>"; };
+		5E916963229E2D250048BA63 /* Hero.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hero.framework; path = Carthage/Build/iOS/Hero.framework; sourceTree = "<group>"; };
 		5E92570D228D3E2D0076CCEE /* KeyboardTrackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardTrackViewModel.swift; sourceTree = "<group>"; };
 		5E9C28B1228E4729004ABF3B /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		5E9C28B3228E475E004ABF3B /* KeyboardFrameTrackkable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardFrameTrackkable.swift; sourceTree = "<group>"; };
@@ -215,7 +216,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40071C2D229C349E00300969 /* RxRealm.framework in Frameworks */,
+				5E916964229E2D260048BA63 /* Hero.framework in Frameworks */,
 				5E9C28C3228E76D6004ABF3B /* Realm.framework in Frameworks */,
 				5E9C28C4228E76D6004ABF3B /* RealmSwift.framework in Frameworks */,
 				060A797C227C921800F02B30 /* PryntTrimmerView.framework in Frameworks */,
@@ -589,6 +590,7 @@
 		4B312EFBEE0174A408F8814E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5E916963229E2D250048BA63 /* Hero.framework */,
 				40071C29229C19F800300969 /* EasyRealm.framework */,
 				5E9C28C0228E76D6004ABF3B /* Realm.framework */,
 				5E9C28C1228E76D6004ABF3B /* RealmSwift.framework */,
@@ -1162,6 +1164,7 @@
 			baseConfigurationReference = 1D64453EF3A64E5B58A308B8 /* Pods-Duiet.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6MU2DV3MZ5;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1176,6 +1179,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.catelina777.duiet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1186,6 +1190,7 @@
 			baseConfigurationReference = D6DEA4663663C3FEDB166E8A /* Pods-Duiet.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6MU2DV3MZ5;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1200,6 +1205,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.catelina777.duiet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

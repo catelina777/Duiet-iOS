@@ -14,15 +14,11 @@ import RealmSwift
 class InputMealViewModel {
 
     let mealImage: UIImage?
+    let meal: Meal
 
     let input: Input
     let output: Output
 
-    var mealLabelViews: [MealLabelView] {
-        return _mealLabelViews.value
-    }
-
-    private let _mealLabelViews = BehaviorRelay<[MealLabelView]>(value: [])
     private let disposeBag = DisposeBag()
 
     init(mealImage: UIImage?,
@@ -30,60 +26,92 @@ class InputMealViewModel {
          model: MealModel) {
 
         self.mealImage = mealImage
+        self.meal = meal
 
-        let _addMealLabel = PublishRelay<MealLabelView?>()
-        let _selectedMealLabel = PublishRelay<MealLabelView>()
-        let _selectedContent = PublishRelay<Content>()
+        let _addMealLabel = PublishRelay<MealLabelView>()
+        let _selectedMealLabel = PublishRelay<MealLabelView?>()
+        let _deleteMealLabel = PublishRelay<Void>()
         let _saveContent = PublishRelay<Content>()
-        let _name = PublishRelay<String>()
-        let _calorie = PublishRelay<Double>()
-        let _multiple = PublishRelay<Double>()
+        let _nameTextInput = PublishRelay<String?>()
+        let _calorieTextInput = PublishRelay<String?>()
+        let _multipleTextInput = PublishRelay<String?>()
 
         input = Input(addMealLabel: _addMealLabel.asObserver(),
                       selectedMealLabel: _selectedMealLabel.asObserver(),
-                      selectedContent: _selectedContent.asObserver(),
+                      deleteMealLabel: _deleteMealLabel.asObserver(),
                       saveContent: _saveContent.asObserver(),
-                      name: _name.asObserver(),
-                      calorie: _calorie.asObserver(),
-                      multiple: _multiple.asObserver())
+                      nameTextInput: _nameTextInput.asObserver(),
+                      calorieTextInput: _calorieTextInput.asObserver(),
+                      multipleTextInput: _multipleTextInput.asObserver())
+
+        let showLabelViews = Observable.of(meal.contents)
+            .take(1)
+
+        let selectedMealLabel = _selectedMealLabel.compactMap { $0 }
 
         let reloadData = _addMealLabel
             .map { _ in }
 
-        output = Output(mealLabelViews: _mealLabelViews.asObservable(),
+        output = Output(showLabelViews: showLabelViews.asObservable(),
+                        selectedMealLabel: selectedMealLabel,
                         reloadData: reloadData)
 
-        Observable.combineLatest(_selectedMealLabel, _calorie, _multiple)
+        let calorie = _calorieTextInput
+            .compactMap { $0 }
+            .map { Double($0) ?? 0 }
+            .distinctUntilChanged()
+            .share()
+
+        let multiple = _multipleTextInput
+            .compactMap { $0 }
+            .map { Double($0) ?? 0 }
+            .distinctUntilChanged()
+            .share()
+
+        let name = _nameTextInput
+            .distinctUntilChanged()
+            .map { $0 ?? "" }
+
+        // MARK: - Reflect numbers on label
+        Observable.combineLatest(selectedMealLabel, calorie, multiple)
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: {
                 $0.0.mealLabel.text = "\(Int($0.1 * ($0.2 == 0 ? 1 : $0.2)))"
             })
             .disposed(by: disposeBag)
 
+        // MARK: - Processing to save data
         _saveContent
             .map { (meal, $0) }
             .bind(to: model.rx.addContent)
             .disposed(by: disposeBag)
 
-        Observable.combineLatest(_selectedContent, _name)
+        name.withLatestFrom(selectedMealLabel) { ($1, $0) }
             .bind(to: model.rx.saveName)
             .disposed(by: disposeBag)
 
-        Observable.combineLatest(_selectedContent, _calorie)
+        calorie.withLatestFrom(selectedMealLabel) { ($1, $0) }
             .bind(to: model.rx.saveCalorie)
             .disposed(by: disposeBag)
 
-        Observable.combineLatest(_selectedContent, _multiple)
+        multiple.withLatestFrom(selectedMealLabel) { ($1, $0) }
             .bind(to: model.rx.saveMultiple)
             .disposed(by: disposeBag)
 
-        _addMealLabel
-            .compactMap { $0 }
-            .subscribe(onNext: { [weak self] mealLabelView in
-                guard let self = self else { return }
-                var mealLabelViews = self._mealLabelViews.value
-                mealLabelViews.append(mealLabelView)
-                self._mealLabelViews.accept(mealLabelViews)
+        // MARK: - Processing to delete content
+        let _meal = Observable.just(meal)
+        let _targetContent = selectedMealLabel.flatMap { $0.content }
+        let prepareDelete = Observable.combineLatest(_meal, _targetContent)
+        _deleteMealLabel.withLatestFrom(prepareDelete)
+            .map { $0 }
+            .bind(to: model.rx.deleteContent)
+            .disposed(by: disposeBag)
+
+        // MARK: - Send nil to the currently selected label so that it does not refer to the deleted object when the content deletion is completed
+        model.contentDidDelete.withLatestFrom(selectedMealLabel)
+            .subscribe(onNext: {
+                $0.isHidden = true
+                _selectedMealLabel.accept(nil)
             })
             .disposed(by: disposeBag)
     }
@@ -92,17 +120,18 @@ class InputMealViewModel {
 extension InputMealViewModel {
 
     struct Input {
-        let addMealLabel: AnyObserver<MealLabelView?>
-        let selectedMealLabel: AnyObserver<MealLabelView>
-        let selectedContent: AnyObserver<Content>
+        let addMealLabel: AnyObserver<MealLabelView>
+        let selectedMealLabel: AnyObserver<MealLabelView?>
+        let deleteMealLabel: AnyObserver<Void>
         let saveContent: AnyObserver<Content>
-        let name: AnyObserver<String>
-        let calorie: AnyObserver<Double>
-        let multiple: AnyObserver<Double>
+        let nameTextInput: AnyObserver<String?>
+        let calorieTextInput: AnyObserver<String?>
+        let multipleTextInput: AnyObserver<String?>
     }
 
     struct Output {
-        let mealLabelViews: Observable<[MealLabelView]>
+        let showLabelViews: Observable<List<Content>>
+        let selectedMealLabel: Observable<MealLabelView>
         let reloadData: Observable<Void>
     }
 }

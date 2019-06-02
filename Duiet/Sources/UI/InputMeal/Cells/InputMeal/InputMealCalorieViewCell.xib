@@ -253,6 +253,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="deleteMealButton" destination="Osw-jM-YGP" id="8CH-1y-ezs"/>
                 <outlet property="mealAmountTextField" destination="U4h-gv-FhA" id="han-sN-utd"/>
                 <outlet property="mealCalorieTextField" destination="8dT-lb-rT6" id="Cax-H8-NSV"/>
                 <outlet property="mealNameTextField" destination="NNE-mY-BDR" id="oJt-R5-Npz"/>
