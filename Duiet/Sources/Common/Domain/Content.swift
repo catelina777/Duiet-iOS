@@ -18,6 +18,8 @@ final class Content: Object {
     @objc dynamic var relativeX = 0.0
     @objc dynamic var relativeY = 0.0
 
+    @objc dynamic var date = Date()
+
     required convenience init(relativeX: Double, relativeY: Double) {
         self.init()
         self.relativeX = relativeX
