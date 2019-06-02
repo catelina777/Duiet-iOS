@@ -41,6 +41,8 @@ class InputMealCalorieViewCell: RxTableViewCell, CellFrameTrackkable {
         }
     }
 
+    @IBOutlet weak var deleteMealButton: UIButton!
+
     override func prepareForReuse() {
         super.prepareForReuse()
         mealNameTextField.text = nil
@@ -78,6 +80,10 @@ class InputMealCalorieViewCell: RxTableViewCell, CellFrameTrackkable {
 
         mealNameTextField.rx.text
             .bind(to: viewModel.input.nameTextInput)
+            .disposed(by: disposeBag)
+
+        deleteMealButton.rx.tap
+            .bind(to: viewModel.input.deleteMealLabel)
             .disposed(by: disposeBag)
 
         viewModel.output.selectedMealLabel

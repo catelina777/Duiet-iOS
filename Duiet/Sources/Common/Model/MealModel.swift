@@ -15,13 +15,13 @@ import RxRealm
 
 final class MealModel: NSObject {
 
-    let meals: Observable<[Meal]>
     let changeData: Observable<RealmChangeset?>
 
     var mealsValue: [Meal] {
         return _meals.value
     }
 
+    let contentDidDelete = PublishRelay<Void>()
     private let _meals = BehaviorRelay<[Meal]>(value: [])
     private let disposeBag = DisposeBag()
 
@@ -29,28 +29,21 @@ final class MealModel: NSObject {
 
     override init() {
         realm = try! Realm()
-        self.meals = _meals.asObservable()
 
         let todayStart = Calendar.current.startOfDay(for: .init())
         let todayEnd = Date(timeInterval: 60 * 60 * 24, since: todayStart)
-        let meals = realm.objects(Meal.self).filter("date BETWEEN %@", [todayStart, todayEnd]).sorted(byKeyPath: "date")
-        Observable.array(from: meals)
+        let mealResults = realm.objects(Meal.self)
+            .filter("date BETWEEN %@", [todayStart, todayEnd])
+            .sorted(byKeyPath: "date")
+
+        Observable.array(from: mealResults)
             .bind(to: self._meals)
             .disposed(by: self.disposeBag)
 
-        changeData = Observable.changeset(from: meals)
+        changeData = Observable.changeset(from: mealResults)
             .map { $1 }
 
         super.init()
-    }
-
-    private func findToday() {
-        let todayStart = Calendar.current.startOfDay(for: .init())
-        let todayEnd = Date(timeInterval: 60 * 60 * 24, since: todayStart)
-        let meals = realm.objects(Meal.self).filter("date BETWEEN %@", [todayStart, todayEnd]).sorted(byKeyPath: "date")
-        Observable.array(from: meals)
-            .bind(to: self._meals)
-            .disposed(by: self.disposeBag)
     }
 }
 
@@ -98,6 +91,20 @@ extension Reactive where Base: MealModel {
                 let content = tuple.0.content.value
                 content.multiple = tuple.1
                 tuple.0.content.accept(content)
+            }
+        }
+    }
+
+    var deleteContent: Binder<(Meal, Content)> {
+        return Binder(base) { me, tuple in
+            if let deleteTargetIndex = tuple.0.contents.index(of: tuple.1) {
+                try! me.realm.write {
+                    tuple.0.contents.remove(at: deleteTargetIndex)
+                    me.realm.delete(tuple.1)
+                }
+                me.contentDidDelete.accept(())
+            } else {
+                print("nothing \(tuple.1)")
             }
         }
     }

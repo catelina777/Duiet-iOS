@@ -29,7 +29,8 @@ class InputMealViewModel {
         self.meal = meal
 
         let _addMealLabel = PublishRelay<MealLabelView>()
-        let _selectedMealLabel = PublishRelay<MealLabelView>()
+        let _selectedMealLabel = PublishRelay<MealLabelView?>()
+        let _deleteMealLabel = PublishRelay<Void>()
         let _saveContent = PublishRelay<Content>()
         let _nameTextInput = PublishRelay<String?>()
         let _calorieTextInput = PublishRelay<String?>()
@@ -37,6 +38,7 @@ class InputMealViewModel {
 
         input = Input(addMealLabel: _addMealLabel.asObserver(),
                       selectedMealLabel: _selectedMealLabel.asObserver(),
+                      deleteMealLabel: _deleteMealLabel.asObserver(),
                       saveContent: _saveContent.asObserver(),
                       nameTextInput: _nameTextInput.asObserver(),
                       calorieTextInput: _calorieTextInput.asObserver(),
@@ -45,11 +47,13 @@ class InputMealViewModel {
         let showLabelViews = Observable.of(meal.contents)
             .take(1)
 
+        let selectedMealLabel = _selectedMealLabel.compactMap { $0 }
+
         let reloadData = _addMealLabel
             .map { _ in }
 
         output = Output(showLabelViews: showLabelViews.asObservable(),
-                        selectedMealLabel: _selectedMealLabel.asObservable(),
+                        selectedMealLabel: selectedMealLabel,
                         reloadData: reloadData)
 
         let calorie = _calorieTextInput
@@ -68,28 +72,47 @@ class InputMealViewModel {
             .distinctUntilChanged()
             .map { $0 ?? "" }
 
-        Observable.combineLatest(_selectedMealLabel, calorie, multiple)
+        // MARK: - Reflect numbers on label
+        Observable.combineLatest(selectedMealLabel, calorie, multiple)
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: {
                 $0.0.mealLabel.text = "\(Int($0.1 * ($0.2 == 0 ? 1 : $0.2)))"
             })
             .disposed(by: disposeBag)
 
+        // MARK: - Processing to save data
         _saveContent
             .map { (meal, $0) }
             .bind(to: model.rx.addContent)
             .disposed(by: disposeBag)
 
-        name.withLatestFrom(_selectedMealLabel) { ($1, $0) }
+        name.withLatestFrom(selectedMealLabel) { ($1, $0) }
             .bind(to: model.rx.saveName)
             .disposed(by: disposeBag)
 
-        calorie.withLatestFrom(_selectedMealLabel) { ($1, $0) }
+        calorie.withLatestFrom(selectedMealLabel) { ($1, $0) }
             .bind(to: model.rx.saveCalorie)
             .disposed(by: disposeBag)
 
-        multiple.withLatestFrom(_selectedMealLabel) { ($1, $0) }
+        multiple.withLatestFrom(selectedMealLabel) { ($1, $0) }
             .bind(to: model.rx.saveMultiple)
+            .disposed(by: disposeBag)
+
+        // MARK: - Processing to delete content
+        let _meal = Observable.just(meal)
+        let _targetContent = selectedMealLabel.flatMap { $0.content }
+        let prepareDelete = Observable.combineLatest(_meal, _targetContent)
+        _deleteMealLabel.withLatestFrom(prepareDelete)
+            .map { $0 }
+            .bind(to: model.rx.deleteContent)
+            .disposed(by: disposeBag)
+
+        // MARK: - Send nil to the currently selected label so that it does not refer to the deleted object when the content deletion is completed
+        model.contentDidDelete.withLatestFrom(selectedMealLabel)
+            .subscribe(onNext: {
+                $0.isHidden = true
+                _selectedMealLabel.accept(nil)
+            })
             .disposed(by: disposeBag)
     }
 }
@@ -98,7 +121,8 @@ extension InputMealViewModel {
 
     struct Input {
         let addMealLabel: AnyObserver<MealLabelView>
-        let selectedMealLabel: AnyObserver<MealLabelView>
+        let selectedMealLabel: AnyObserver<MealLabelView?>
+        let deleteMealLabel: AnyObserver<Void>
         let saveContent: AnyObserver<Content>
         let nameTextInput: AnyObserver<String?>
         let calorieTextInput: AnyObserver<String?>
