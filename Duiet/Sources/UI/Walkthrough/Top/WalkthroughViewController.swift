@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class WalkthroughViewController: UIViewController {
 
@@ -43,5 +45,11 @@ class WalkthroughViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+
+    var didTapNextButton: Binder<Void> {
+        return Binder(self) { me, _  in
+            
+        }
     }
 }

@@ -15,8 +15,6 @@ import RxRealm
 
 final class TodayViewModel {
 
-    let title = "Today"
-
     let input: Input
     let output: Output
 
