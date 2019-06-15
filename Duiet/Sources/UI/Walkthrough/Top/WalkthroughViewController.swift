@@ -49,7 +49,7 @@ class WalkthroughViewController: UIViewController {
 
     var didTapNextButton: Binder<Void> {
         return Binder(self) { me, _  in
-            
+
         }
     }
 }

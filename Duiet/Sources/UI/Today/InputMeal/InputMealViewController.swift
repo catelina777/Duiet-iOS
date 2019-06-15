@@ -28,8 +28,6 @@ final class InputMealViewController: BaseTableViewController, KeyboardFrameTrack
     let keyboardTrackViewModel: KeyboardTrackViewModel
     let dataSource: InputMealDataSource
 
-    private let disposeBag = DisposeBag()
-
     init(mealImage: UIImage?,
          meal: Meal,
          model: MealModel) {

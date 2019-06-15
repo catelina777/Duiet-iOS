@@ -21,7 +21,7 @@ final class AppNavigator {
     func start(with window: UIWindow) {
         let todayNC = get(scene: .today)
         let detailNC = get(scene: .detail)
-        let yearNC = get(scene: .year)
+        let historyNC = get(scene: .history)
         let settingNC = get(scene: .setting)
 
         // TODO: - delete under test
@@ -32,7 +32,7 @@ final class AppNavigator {
         tabBarController.viewControllers = [
             todayNC,
             nc,
-            yearNC,
+            historyNC,
             settingNC
         ]
         window.rootViewController = tabBarController
@@ -48,8 +48,8 @@ final class AppNavigator {
         case .detail:
             let vc = TodayViewController()
             nc = UINavigationController(rootViewController: vc)
-        case .year:
-            let vc = TodayViewController()
+        case .history:
+            let vc = AllHistoryViewController()
             nc = UINavigationController(rootViewController: vc)
         case .setting:
             let vc = SettingViewController()

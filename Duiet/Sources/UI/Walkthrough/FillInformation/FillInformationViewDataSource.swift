@@ -38,7 +38,8 @@ extension FillInformationViewDataSource: UITableViewDataSource {
         return viewModel.rowCounts
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView,
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         switch indexPath.row {
         case 0:

@@ -17,8 +17,6 @@ final class FillInformationViewController: BaseTableViewController, NavigationBa
 
     let keyboardTrackViewModel: KeyboardTrackViewModel
 
-    private let disposeBag = DisposeBag()
-
     init() {
         self.viewModel = FillInformationViewModel()
         self.keyboardTrackViewModel = KeyboardTrackViewModel()

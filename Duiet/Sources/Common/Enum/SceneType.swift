@@ -11,7 +11,7 @@ import UIKit
 enum SceneType: String {
     case today
     case detail
-    case year
+    case history
     case setting
 
     var tabBarItem: UITabBarItem {

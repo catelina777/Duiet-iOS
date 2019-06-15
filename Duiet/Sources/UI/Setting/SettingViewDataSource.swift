@@ -35,8 +35,6 @@ extension SettingViewDataSource: UITableViewDataSource {
                                                  for: indexPath)!
         return cell
     }
-
-
 }
 
 extension SettingViewDataSource: UITableViewDelegate {}
