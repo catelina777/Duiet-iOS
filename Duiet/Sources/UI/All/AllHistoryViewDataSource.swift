@@ -26,7 +26,7 @@ final class AllHistoryViewDataSource: NSObject {
 extension AllHistoryViewDataSource: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return 12
     }
 
     func collectionView(_ collectionView: UICollectionView,
@@ -47,7 +47,7 @@ extension AllHistoryViewDataSource: UICollectionViewDelegateFlowLayout {
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
 
         let width = collectionView.frame.width * 0.425
-        let height = width * 1.25
+        let height = width * 1.2
         let size = CGSize(width: width, height: height)
         return size
     }
@@ -67,6 +67,7 @@ extension AllHistoryViewDataSource: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0.01
+        let space = collectionView.frame.width * 0.15 / 3
+        return space
     }
 }

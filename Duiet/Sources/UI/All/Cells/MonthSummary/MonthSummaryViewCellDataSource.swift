@@ -19,6 +19,7 @@ final class MonthSummaryViewDataSource: NSObject {
     func configure(with colletionView: UICollectionView) {
         colletionView.delegate = self
         colletionView.dataSource = self
+        colletionView.register(R.nib.dayViewCell)
         colletionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "kusa")
     }
 }
@@ -26,14 +27,22 @@ final class MonthSummaryViewDataSource: NSObject {
 extension MonthSummaryViewDataSource: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.progress.count
+        return Week.all.count + viewModel.progress.count
     }
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "kusa", for: indexPath)
-        cell.backgroundColor = viewModel.progress[indexPath.row].color
-        return cell
+        switch indexPath.row {
+        case 0..<Week.all.count:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.dayViewCell, for: indexPath)!
+            cell.textLabel.text = Week.all[indexPath.row].abbr
+            return cell
+        default:
+            let row = indexPath.row - Week.all.count
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "kusa", for: indexPath)
+            cell.backgroundColor = viewModel.progress[row].color
+            return cell
+        }
     }
 }
 
@@ -63,6 +72,8 @@ extension MonthSummaryViewDataSource: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0.01
+        let width = collectionView.frame.width / 8
+        let space = width / 7
+        return space
     }
 }

@@ -97,6 +97,9 @@
 		405E3A1D229929D500ECEA9E /* EmptyContentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405E3A1C229929D500ECEA9E /* EmptyContentViewCell.swift */; };
 		405E3A1F229929E900ECEA9E /* EmptyContentViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 405E3A1E229929E900ECEA9E /* EmptyContentViewCell.xib */; };
 		40B2141322B4A1FE0040EA9E /* RoundedWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B2141222B4A1FE0040EA9E /* RoundedWrapperView.swift */; };
+		40B2141522B4D5B00040EA9E /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B2141422B4D5B00040EA9E /* Week.swift */; };
+		40B2141B22B55D640040EA9E /* DayViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B2141A22B55D640040EA9E /* DayViewCell.swift */; };
+		40B2141D22B55D730040EA9E /* DayViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40B2141C22B55D730040EA9E /* DayViewCell.xib */; };
 		40E7699C2299540200E9D5DA /* MealModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E7699B2299540200E9D5DA /* MealModel.swift */; };
 		5E17F981228BE4980046F68D /* RoundedTextFieldViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E17F980228BE4980046F68D /* RoundedTextFieldViewCell.swift */; };
 		5E79D5672283FAC90073CD98 /* LabelCanvasViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E79D5662283FAC90073CD98 /* LabelCanvasViewCell.swift */; };
@@ -229,6 +232,9 @@
 		405E3A1C229929D500ECEA9E /* EmptyContentViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyContentViewCell.swift; sourceTree = "<group>"; };
 		405E3A1E229929E900ECEA9E /* EmptyContentViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyContentViewCell.xib; sourceTree = "<group>"; };
 		40B2141222B4A1FE0040EA9E /* RoundedWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedWrapperView.swift; sourceTree = "<group>"; };
+		40B2141422B4D5B00040EA9E /* Week.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week.swift; sourceTree = "<group>"; };
+		40B2141A22B55D640040EA9E /* DayViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewCell.swift; sourceTree = "<group>"; };
+		40B2141C22B55D730040EA9E /* DayViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DayViewCell.xib; sourceTree = "<group>"; };
 		40E7699B2299540200E9D5DA /* MealModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealModel.swift; sourceTree = "<group>"; };
 		5E17F980228BE4980046F68D /* RoundedTextFieldViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedTextFieldViewCell.swift; sourceTree = "<group>"; };
 		5E79D5662283FAC90073CD98 /* LabelCanvasViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCanvasViewCell.swift; sourceTree = "<group>"; };
@@ -555,6 +561,7 @@
 				4001F6F922ABA3720009CDA1 /* SceneType.swift */,
 				4001F70822ABD98A0009CDA1 /* PageType.swift */,
 				405A9F6022AE91C700454412 /* ProgressType.swift */,
+				40B2141422B4D5B00040EA9E /* Week.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -666,10 +673,8 @@
 		405A9F5322ACFFDC00454412 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				405A9F5422AD006100454412 /* MonthSummaryViewCell.swift */,
-				405A9F5C22AD0A3D00454412 /* MonthSummaryViewCellViewModel.swift */,
-				405A9F5E22AD0A4700454412 /* MonthSummaryViewCellDataSource.swift */,
-				405A9F5622AD007200454412 /* MonthSummaryViewCell.xib */,
+				40B2141722B55C320040EA9E /* Day */,
+				40B2141622B55B2B0040EA9E /* MonthSummary */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -681,6 +686,26 @@
 				405E3A1E229929E900ECEA9E /* EmptyContentViewCell.xib */,
 			);
 			path = Empty;
+			sourceTree = "<group>";
+		};
+		40B2141622B55B2B0040EA9E /* MonthSummary */ = {
+			isa = PBXGroup;
+			children = (
+				405A9F5422AD006100454412 /* MonthSummaryViewCell.swift */,
+				405A9F5C22AD0A3D00454412 /* MonthSummaryViewCellViewModel.swift */,
+				405A9F5E22AD0A4700454412 /* MonthSummaryViewCellDataSource.swift */,
+				405A9F5622AD007200454412 /* MonthSummaryViewCell.xib */,
+			);
+			path = MonthSummary;
+			sourceTree = "<group>";
+		};
+		40B2141722B55C320040EA9E /* Day */ = {
+			isa = PBXGroup;
+			children = (
+				40B2141A22B55D640040EA9E /* DayViewCell.swift */,
+				40B2141C22B55D730040EA9E /* DayViewCell.xib */,
+			);
+			path = Day;
 			sourceTree = "<group>";
 		};
 		40E7699A229953E000E9D5DA /* Model */ = {
@@ -878,6 +903,7 @@
 				0603293D227F3C22009A67A4 /* InputMealCalorieViewCell.xib in Resources */,
 				405A9F5722AD007200454412 /* MonthSummaryViewCell.xib in Resources */,
 				063FCBBF227D8164007C191F /* InputMealViewController.xib in Resources */,
+				40B2141D22B55D730040EA9E /* DayViewCell.xib in Resources */,
 				0641AD512264A7C900CEDAE7 /* GoogleService-Info.plist in Resources */,
 				5E79D56B2283FB0B0073CD98 /* LabelCanvasViewCell.xib in Resources */,
 				069AD442227731FB0075E711 /* ProgressCardViewCell.xib in Resources */,
@@ -1086,6 +1112,7 @@
 				405A9F5D22AD0A3D00454412 /* MonthSummaryViewCellViewModel.swift in Sources */,
 				061F278F22733DA100FDCB17 /* WalkthroughViewController.swift in Sources */,
 				4001F71322ABF1AC0009CDA1 /* BaseCollectionViewController.swift in Sources */,
+				40B2141522B4D5B00040EA9E /* Week.swift in Sources */,
 				06932AC822801AEB00CFA05C /* MealLabelView.swift in Sources */,
 				06B2FD05227222600078C7F1 /* InputActivityLevelViewCell.swift in Sources */,
 				5E92570E228D3E2D0076CCEE /* KeyboardTrackViewModel.swift in Sources */,
@@ -1099,6 +1126,7 @@
 				4001F6F822AB83D10009CDA1 /* AppNavigator.swift in Sources */,
 				405147CA2291498800C9AF8C /* Content.swift in Sources */,
 				0622EA27226A20CE00E87F22 /* RxTableViewCell.swift in Sources */,
+				40B2141B22B55D640040EA9E /* DayViewCell.swift in Sources */,
 				405A9F5222ACFB2E00454412 /* AllHistoryViewDataSource.swift in Sources */,
 				405A9F5522AD006100454412 /* MonthSummaryViewCell.swift in Sources */,
 				0622EA49226A2AC000E87F22 /* BehaviorRelay.extension.swift in Sources */,

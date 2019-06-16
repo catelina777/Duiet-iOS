@@ -16,7 +16,7 @@ final class AllHistoryViewModel {
 
     init() {
         let testArray: [Int] = .init(repeating: 0, count: 30)
-        self.testProgress = testArray.map { _ in ProgressType.get(by: Int.random(in: 0..<3)) }
+        testProgress = testArray.map { _ in ProgressType.get(by: Int.random(in: 0..<3)) }
     }
 }
 
