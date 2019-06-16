@@ -24,10 +24,6 @@ final class AppNavigator {
         let yearNC = get(scene: .year)
         let settingNC = get(scene: .setting)
 
-        // TODO: - delete under test
-        let vc = FillInformationViewController()
-        let nc = UINavigationController(rootViewController: vc)
-
         let tabBarController = UITabBarController()
         tabBarController.viewControllers = [
             dayNC,
@@ -43,13 +39,13 @@ final class AppNavigator {
         var nc: UINavigationController
         switch scene {
         case .day:
-            let vc = TodayViewController()
+            let vc = DayViewController()
             nc = UINavigationController(rootViewController: vc)
         case .month:
-            let vc = TodayViewController()
+            let vc = DayViewController()
             nc = UINavigationController(rootViewController: vc)
         case .year:
-            let vc = AllHistoryViewController()
+            let vc = YearViewController()
             nc = UINavigationController(rootViewController: vc)
         case .setting:
             let vc = SettingViewController()

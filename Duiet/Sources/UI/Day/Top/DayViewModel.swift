@@ -1,5 +1,5 @@
 //
-//  TodayViewModel.swift
+//  DayViewModel.swift
 //  Duiet
 //
 //  Created by 上西 隆平 on 2019/04/23.
@@ -13,7 +13,7 @@ import RxRelay
 import RealmSwift
 import RxRealm
 
-final class TodayViewModel {
+final class DayViewModel {
 
     let input: Input
     let output: Output
@@ -30,7 +30,7 @@ final class TodayViewModel {
 
         let _viewDidAppear = PublishRelay<Void>()
         let _viewDidDisappear = PublishRelay<Void>()
-        let _addButtonTap = PublishRelay<TodayViewController>()
+        let _addButtonTap = PublishRelay<DayViewController>()
         let _selectedItem = PublishRelay<(MealCardViewCell, Meal)>()
 
         input = Input(viewDidAppear: _viewDidAppear.asObserver(),
@@ -76,12 +76,12 @@ final class TodayViewModel {
     }
 }
 
-extension TodayViewModel {
+extension DayViewModel {
 
     struct Input {
         let viewDidAppear: AnyObserver<Void>
         let viewDidDisappear: AnyObserver<Void>
-        let addButtonTap: AnyObserver<TodayViewController>
+        let addButtonTap: AnyObserver<DayViewController>
         let selectedItem: AnyObserver<(MealCardViewCell, Meal)>
     }
 

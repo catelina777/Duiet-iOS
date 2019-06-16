@@ -1,5 +1,5 @@
 //
-//  AllHistoryViewModel.swift
+//  YearViewModel.swift
 //  Duiet
 //
 //  Created by Ryuhei Kaminishi on 2019/06/09.
@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 import RxRelay
 
-final class AllHistoryViewModel {
+final class YearViewModel {
 
     let testProgress: [ProgressType]
 
@@ -20,7 +20,7 @@ final class AllHistoryViewModel {
     }
 }
 
-extension AllHistoryViewModel {
+extension YearViewModel {
 
     struct Input {}
 

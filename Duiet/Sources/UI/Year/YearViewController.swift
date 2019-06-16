@@ -1,5 +1,5 @@
 //
-//  AllHistoryViewController.swift
+//  YearViewController.swift
 //  Duiet
 //
 //  Created by Ryuhei Kaminishi on 2019/06/08.
@@ -8,15 +8,15 @@
 
 import UIKit
 
-final class AllHistoryViewController: BaseCollectionViewController, NavigationBarCustomizable {
+final class YearViewController: BaseCollectionViewController, NavigationBarCustomizable {
 
-    private let viewModel: AllHistoryViewModel
-    private let dataSource: AllHistoryViewDataSource
+    private let viewModel: YearViewModel
+    private let dataSource: YearViewDataSource
 
     init() {
-        self.viewModel = AllHistoryViewModel()
-        self.dataSource = AllHistoryViewDataSource(viewModel: viewModel)
-        super.init(nibName: AllHistoryViewController.className, bundle: nil)
+        self.viewModel = YearViewModel()
+        self.dataSource = YearViewDataSource(viewModel: viewModel)
+        super.init(nibName: YearViewController.className, bundle: nil)
     }
 
     required init?(coder aDecoder: NSCoder) {

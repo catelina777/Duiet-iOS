@@ -1,5 +1,5 @@
 //
-//  AllHistoryViewDataSource.swift
+//  YearViewDataSource.swift
 //  Duiet
 //
 //  Created by Ryuhei Kaminishi on 2019/06/09.
@@ -8,11 +8,11 @@
 
 import UIKit
 
-final class AllHistoryViewDataSource: NSObject {
+final class YearViewDataSource: NSObject {
 
-    private let viewModel: AllHistoryViewModel
+    private let viewModel: YearViewModel
 
-    init(viewModel: AllHistoryViewModel) {
+    init(viewModel: YearViewModel) {
         self.viewModel = viewModel
     }
 
@@ -23,7 +23,7 @@ final class AllHistoryViewDataSource: NSObject {
     }
 }
 
-extension AllHistoryViewDataSource: UICollectionViewDataSource {
+extension YearViewDataSource: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 12
@@ -38,9 +38,9 @@ extension AllHistoryViewDataSource: UICollectionViewDataSource {
     }
 }
 
-extension AllHistoryViewDataSource: UICollectionViewDelegate {}
+extension YearViewDataSource: UICollectionViewDelegate {}
 
-extension AllHistoryViewDataSource: UICollectionViewDelegateFlowLayout {
+extension YearViewDataSource: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,

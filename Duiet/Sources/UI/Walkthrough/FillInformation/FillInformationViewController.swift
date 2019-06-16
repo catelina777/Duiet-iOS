@@ -45,7 +45,7 @@ final class FillInformationViewController: BaseTableViewController, NavigationBa
 
     private var showMain: Binder<Void> {
         return Binder(self) { _, _ in
-//            let vc = TodayViewController()
+//            let vc = DayViewController()
 //            let nc = UINavigationController(rootViewController: vc)
 //            me.present(nc, animated: true, completion: nil)
         }
