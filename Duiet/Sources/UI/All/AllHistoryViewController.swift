@@ -26,6 +26,6 @@ final class AllHistoryViewController: BaseCollectionViewController, NavigationBa
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource.configure(with: collectionView)
-        configureNavigationBar(with: "History")
+        configureNavigationBar(with: SceneType.year.title)
     }
 }

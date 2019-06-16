@@ -34,7 +34,7 @@ final class TodayViewController: UIViewController, NavigationBarCustomizable {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureNavigationBar(with: SceneType.today.rawValue)
+        configureNavigationBar(with: SceneType.day.title)
         dataSource.configure(with: collectionView)
 
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)

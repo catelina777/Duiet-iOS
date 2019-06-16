@@ -27,7 +27,7 @@ final class SettingViewController: BaseTableViewController, NavigationBarCustomi
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureNavigationBar(with: SceneType.setting.rawValue)
+        configureNavigationBar(with: SceneType.setting.title)
         dataSource.configure(with: tableView)
     }
 }

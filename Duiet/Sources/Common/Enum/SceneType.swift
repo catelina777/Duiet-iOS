@@ -9,9 +9,9 @@
 import UIKit
 
 enum SceneType: String {
-    case today
-    case detail
-    case history
+    case day
+    case month
+    case year
     case setting
 
     var tabBarItem: UITabBarItem {
@@ -19,5 +19,18 @@ enum SceneType: String {
         let padding: CGFloat = 4
         tabBarItem.imageInsets = UIEdgeInsets(top: padding, left: 0, bottom: -padding, right: 0)
         return tabBarItem
+    }
+
+    var title: String {
+        switch self {
+        case .day:
+            return "Day"
+        case .month:
+            return "Month"
+        case .year:
+            return "Year"
+        case .setting:
+            return "Setting"
+        }
     }
 }
