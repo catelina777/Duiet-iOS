@@ -42,7 +42,7 @@ final class AppNavigator {
             let vc = DayViewController()
             nc = UINavigationController(rootViewController: vc)
         case .month:
-            let vc = DayViewController()
+            let vc = MonthViewController()
             nc = UINavigationController(rootViewController: vc)
         case .year:
             let vc = YearViewController()

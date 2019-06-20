@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class MonthViewController: UIViewController {
+final class MonthViewController: BaseCollectionViewController, NavigationBarCustomizable {
 
     private let viewModel: MonthViewModel
     private let dataSource: MonthViewDataSource
@@ -25,5 +25,6 @@ final class MonthViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureNavigationBar(with: SceneType.month.title)
     }
 }

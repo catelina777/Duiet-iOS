@@ -104,6 +104,8 @@
 		40B2142222B636000040EA9E /* MonthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40B2142122B636000040EA9E /* MonthViewController.xib */; };
 		40B2142422B636120040EA9E /* MonthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B2142322B636120040EA9E /* MonthViewModel.swift */; };
 		40B2142622B6361E0040EA9E /* MonthViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B2142522B6361E0040EA9E /* MonthViewDataSource.swift */; };
+		40B2142922B638820040EA9E /* DaySummaryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B2142822B638820040EA9E /* DaySummaryViewCell.swift */; };
+		40B2142B22B638970040EA9E /* DaySummaryViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40B2142A22B638970040EA9E /* DaySummaryViewCell.xib */; };
 		40E7699C2299540200E9D5DA /* MealModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E7699B2299540200E9D5DA /* MealModel.swift */; };
 		5E17F981228BE4980046F68D /* RoundedTextFieldViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E17F980228BE4980046F68D /* RoundedTextFieldViewCell.swift */; };
 		5E79D5672283FAC90073CD98 /* LabelCanvasViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E79D5662283FAC90073CD98 /* LabelCanvasViewCell.swift */; };
@@ -243,6 +245,8 @@
 		40B2142122B636000040EA9E /* MonthViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MonthViewController.xib; sourceTree = "<group>"; };
 		40B2142322B636120040EA9E /* MonthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthViewModel.swift; sourceTree = "<group>"; };
 		40B2142522B6361E0040EA9E /* MonthViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthViewDataSource.swift; sourceTree = "<group>"; };
+		40B2142822B638820040EA9E /* DaySummaryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaySummaryViewCell.swift; sourceTree = "<group>"; };
+		40B2142A22B638970040EA9E /* DaySummaryViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DaySummaryViewCell.xib; sourceTree = "<group>"; };
 		40E7699B2299540200E9D5DA /* MealModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealModel.swift; sourceTree = "<group>"; };
 		5E17F980228BE4980046F68D /* RoundedTextFieldViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedTextFieldViewCell.swift; sourceTree = "<group>"; };
 		5E79D5662283FAC90073CD98 /* LabelCanvasViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCanvasViewCell.swift; sourceTree = "<group>"; };
@@ -720,12 +724,22 @@
 		40B2141E22B635DF0040EA9E /* Month */ = {
 			isa = PBXGroup;
 			children = (
+				40B2142722B638490040EA9E /* Cells */,
 				40B2141F22B635F80040EA9E /* MonthViewController.swift */,
 				40B2142322B636120040EA9E /* MonthViewModel.swift */,
 				40B2142522B6361E0040EA9E /* MonthViewDataSource.swift */,
 				40B2142122B636000040EA9E /* MonthViewController.xib */,
 			);
 			path = Month;
+			sourceTree = "<group>";
+		};
+		40B2142722B638490040EA9E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				40B2142822B638820040EA9E /* DaySummaryViewCell.swift */,
+				40B2142A22B638970040EA9E /* DaySummaryViewCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		40E7699A229953E000E9D5DA /* Model */ = {
@@ -922,6 +936,7 @@
 				4001F70D22ABDC5A0009CDA1 /* SettingViewCell.xib in Resources */,
 				0603293D227F3C22009A67A4 /* InputMealCalorieViewCell.xib in Resources */,
 				405A9F5722AD007200454412 /* MonthSummaryViewCell.xib in Resources */,
+				40B2142B22B638970040EA9E /* DaySummaryViewCell.xib in Resources */,
 				063FCBBF227D8164007C191F /* InputMealViewController.xib in Resources */,
 				40B2141D22B55D730040EA9E /* DayViewCell.xib in Resources */,
 				0641AD512264A7C900CEDAE7 /* GoogleService-Info.plist in Resources */,
@@ -1164,6 +1179,7 @@
 				5E79D5672283FAC90073CD98 /* LabelCanvasViewCell.swift in Sources */,
 				063FCBC7227DCDBA007C191F /* PhotoManager.swift in Sources */,
 				06B2FD08227222670078C7F1 /* CompleteButtonViewCell.swift in Sources */,
+				40B2142922B638820040EA9E /* DaySummaryViewCell.swift in Sources */,
 				069AD434227722E50075E711 /* MealCardViewCell.swift in Sources */,
 				0630D49B227495EB00224EC9 /* CellType.swift in Sources */,
 				40B2142422B636120040EA9E /* MonthViewModel.swift in Sources */,

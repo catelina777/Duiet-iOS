@@ -15,7 +15,7 @@ enum SceneType: String {
     case setting
 
     var tabBarItem: UITabBarItem {
-        let tabBarItem = UITabBarItem(title: rawValue, image: UIImage(named: rawValue), selectedImage: nil)
+        let tabBarItem = UITabBarItem(title: title, image: UIImage(named: rawValue), selectedImage: nil)
         let padding: CGFloat = 4
         tabBarItem.imageInsets = UIEdgeInsets(top: padding, left: 0, bottom: -padding, right: 0)
         return tabBarItem
