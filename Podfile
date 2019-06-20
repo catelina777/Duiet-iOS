@@ -8,8 +8,6 @@ target 'Duiet' do
   # Pods for Duiet
   pod 'R.swift'
   pod 'SwiftLint'
-  
-  pod 'Firebase/Core'
 
   target 'DuietTests' do
     inherit! :search_paths

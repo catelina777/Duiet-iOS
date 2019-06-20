@@ -46,7 +46,6 @@
 		0641AD2D2264A1BC00CEDAE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0641AD2B2264A1BC00CEDAE7 /* LaunchScreen.storyboard */; };
 		0641AD382264A1BC00CEDAE7 /* DuietTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0641AD372264A1BC00CEDAE7 /* DuietTests.swift */; };
 		0641AD432264A1BC00CEDAE7 /* DuietUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0641AD422264A1BC00CEDAE7 /* DuietUITests.swift */; };
-		0641AD512264A7C900CEDAE7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0641AD502264A7C900CEDAE7 /* GoogleService-Info.plist */; };
 		0641AD592264ACB800CEDAE7 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0641AD572264ACB800CEDAE7 /* RxCocoa.framework */; };
 		0641AD5A2264ACB800CEDAE7 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0641AD582264ACB800CEDAE7 /* RxSwift.framework */; };
 		06932AC622801AC500CFA05C /* MealLabelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06932AC522801AC500CFA05C /* MealLabelView.xib */; };
@@ -186,7 +185,6 @@
 		0641AD3E2264A1BC00CEDAE7 /* DuietUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DuietUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0641AD422264A1BC00CEDAE7 /* DuietUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuietUITests.swift; sourceTree = "<group>"; };
 		0641AD442264A1BC00CEDAE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0641AD502264A7C900CEDAE7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0641AD572264ACB800CEDAE7 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		0641AD582264ACB800CEDAE7 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		06932AC522801AC500CFA05C /* MealLabelView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MealLabelView.xib; sourceTree = "<group>"; };
@@ -449,7 +447,6 @@
 				06F615D0227AF1080074089B /* Splash.xcassets */,
 				0641AD2B2264A1BC00CEDAE7 /* LaunchScreen.storyboard */,
 				0641AD2E2264A1BC00CEDAE7 /* Info.plist */,
-				0641AD502264A7C900CEDAE7 /* GoogleService-Info.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -939,7 +936,6 @@
 				40B2142B22B638970040EA9E /* DaySummaryViewCell.xib in Resources */,
 				063FCBBF227D8164007C191F /* InputMealViewController.xib in Resources */,
 				40B2141D22B55D730040EA9E /* DayViewCell.xib in Resources */,
-				0641AD512264A7C900CEDAE7 /* GoogleService-Info.plist in Resources */,
 				5E79D56B2283FB0B0073CD98 /* LabelCanvasViewCell.xib in Resources */,
 				069AD442227731FB0075E711 /* ProgressCardViewCell.xib in Resources */,
 				061F278D22733D9800FDCB17 /* WalkthroughViewController.xib in Resources */,
