@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,11 +23,11 @@
                 <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P1K-TV-nWO">
-                        <rect key="frame" x="103.5" y="16" width="207" height="62"/>
-                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P1K-TV-nWO">
+                        <rect key="frame" x="31" y="16" width="352" height="67"/>
+                        <color key="backgroundColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="P1K-TV-nWO" secondAttribute="height" multiplier="10:3" id="6bw-S9-I4U"/>
+                            <constraint firstAttribute="width" secondItem="P1K-TV-nWO" secondAttribute="height" multiplier="5:0.95" id="6bw-S9-I4U"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="Montserrat-ExtraBold" family="Montserrat" pointSize="24"/>
                         <state key="normal" title="Complete🎉">
@@ -37,7 +38,7 @@
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="P1K-TV-nWO" firstAttribute="top" secondItem="J5e-x9-9Te" secondAttribute="top" constant="16" id="QMe-KD-1KF"/>
-                    <constraint firstItem="P1K-TV-nWO" firstAttribute="width" secondItem="J5e-x9-9Te" secondAttribute="width" multiplier="0.5" id="fmI-zo-vQw"/>
+                    <constraint firstItem="P1K-TV-nWO" firstAttribute="width" secondItem="J5e-x9-9Te" secondAttribute="width" multiplier="0.85" id="fmI-zo-vQw"/>
                     <constraint firstItem="P1K-TV-nWO" firstAttribute="centerX" secondItem="J5e-x9-9Te" secondAttribute="centerX" id="prn-ut-l6S"/>
                 </constraints>
             </tableViewCellContentView>

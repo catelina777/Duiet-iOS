@@ -14,11 +14,23 @@ final class AppNavigator {
 
     func firstStart(with window: UIWindow) {
         let vc = WalkthroughViewController()
-        window.rootViewController = vc
+        let nc = UINavigationController(rootViewController: vc)
+        window.rootViewController = nc
         window.makeKeyAndVisible()
     }
 
     func start(with window: UIWindow) {
+        let tabBarController = getMain()
+        window.rootViewController = tabBarController
+        window.makeKeyAndVisible()
+    }
+
+    func start(with vc: UIViewController) {
+        let tabBarController = getMain()
+        vc.present(tabBarController, animated: true, completion: nil)
+    }
+
+    private func getMain() -> UITabBarController {
         let dayNC = get(scene: .day)
         let monthNC = get(scene: .month)
         let yearNC = get(scene: .year)
@@ -31,8 +43,7 @@ final class AppNavigator {
             yearNC,
             settingNC
         ]
-        window.rootViewController = tabBarController
-        window.makeKeyAndVisible()
+        return tabBarController
     }
 
     private func get(scene: SceneType) -> UINavigationController {

@@ -43,11 +43,14 @@ final class FillInformationViewController: BaseTableViewController, NavigationBa
             .disposed(by: disposeBag)
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+
     private var showMain: Binder<Void> {
-        return Binder(self) { _, _ in
-//            let vc = DayViewController()
-//            let nc = UINavigationController(rootViewController: vc)
-//            me.present(nc, animated: true, completion: nil)
+        return Binder(self) { me, _ in
+            AppNavigator.shared.start(with: me)
         }
     }
 }
