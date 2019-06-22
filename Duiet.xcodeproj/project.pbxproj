@@ -223,7 +223,6 @@
 		4001F70E22ABF0D80009CDA1 /* YearViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearViewController.swift; sourceTree = "<group>"; };
 		4001F71022ABF0EB0009CDA1 /* YearViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YearViewController.xib; sourceTree = "<group>"; };
 		4001F71222ABF1AC0009CDA1 /* BaseCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewController.swift; sourceTree = "<group>"; };
-		40071C29229C19F800300969 /* EasyRealm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EasyRealm.framework; path = Carthage/Build/iOS/EasyRealm.framework; sourceTree = "<group>"; };
 		405147C72291498100C9AF8C /* Meal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		405147C92291498800C9AF8C /* Content.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		405A9F4F22ACFB1300454412 /* YearViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearViewModel.swift; sourceTree = "<group>"; };
@@ -751,7 +750,6 @@
 			isa = PBXGroup;
 			children = (
 				5E916963229E2D250048BA63 /* Hero.framework */,
-				40071C29229C19F800300969 /* EasyRealm.framework */,
 				5E9C28C0228E76D6004ABF3B /* Realm.framework */,
 				5E9C28C1228E76D6004ABF3B /* RealmSwift.framework */,
 				5E9C28C2228E76D6004ABF3B /* RxRealm.framework */,
