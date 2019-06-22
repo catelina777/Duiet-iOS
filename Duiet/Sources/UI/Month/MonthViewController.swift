@@ -26,5 +26,6 @@ final class MonthViewController: BaseCollectionViewController, NavigationBarCust
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigationBar(with: SceneType.month.title)
+        dataSource.configure(with: collectionView)
     }
 }

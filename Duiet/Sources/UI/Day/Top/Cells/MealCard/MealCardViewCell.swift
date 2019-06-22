@@ -73,8 +73,7 @@ final class MealCardViewCell: RxCollectionViewCell {
     }
 
     func configure(with meal: Meal) {
-        let mealImage = PhotoManager.rx.fetchImage(with: meal.imagePath)
-        mealImage
+        PhotoManager.rx.fetchImage(with: meal.imagePath)
             .bind(to: imageView.rx.image)
             .disposed(by: disposeBag)
 
