@@ -13,14 +13,10 @@ import RealmSwift
 import RxRealm
 import Hero
 
-final class DayViewController: UIViewController, NavigationBarCustomizable {
-
-    @IBOutlet private(set) weak var collectionView: UICollectionView!
+final class DayViewController: BaseCollectionViewController, NavigationBarCustomizable {
 
     let viewModel: DayViewModel
     let dataSource: DayViewDataSource
-
-    private let disposeBag = DisposeBag()
 
     init() {
         self.viewModel = DayViewModel()

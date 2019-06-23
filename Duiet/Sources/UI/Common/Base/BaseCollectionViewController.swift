@@ -11,6 +11,6 @@ import RxSwift
 
 class BaseCollectionViewController: UIViewController {
 
-    private let disposeBag = DisposeBag()
+    let disposeBag = DisposeBag()
     @IBOutlet private(set) weak var collectionView: UICollectionView!
 }
