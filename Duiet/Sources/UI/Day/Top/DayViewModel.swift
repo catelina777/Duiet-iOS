@@ -18,15 +18,13 @@ final class DayViewModel {
     let input: Input
     let output: Output
 
-    var meals: [Meal] {
-        return model.mealsValue
-    }
-
-    let model: MealModel
+    let progressModel: ProgressModel
+    let mealModel: MealModel
     private let disposeBag = DisposeBag()
 
     init() {
-        self.model = MealModel()
+        self.progressModel = ProgressModel()
+        self.mealModel = MealModel()
 
         let _viewDidAppear = PublishRelay<Void>()
         let _viewDidDisappear = PublishRelay<Void>()
@@ -57,9 +55,16 @@ final class DayViewModel {
 
         let editDetail = _selectedItem
 
+        let totalCalories = mealModel.meals
+            .map { $0.map { $0.contents.reduce(into: 0) { $0 += ($1.calorie * $1.multiple) } } }
+            .map { $0.reduce(into: 0) { $0 += $1 } }
+
+        let progress = Observable.combineLatest(Observable.of(progressModel.userInfoValue.TDEE()), totalCalories)
+
         output = Output(showDetail: showDetail,
                         editDetail: editDetail.asObservable(),
-                        changeData: model.changeData)
+                        changeData: mealModel.changeData,
+                        progress: progress)
 
         pickedImage
             .compactMap { $0 }
@@ -71,7 +76,7 @@ final class DayViewModel {
         // MARK: - Doing here because the specification of Realm.rx.add is bad and I can't bind at one time
         meal
             .map { $0 }
-            .bind(to: model.rx.addMeal)
+            .bind(to: mealModel.rx.addMeal)
             .disposed(by: disposeBag)
     }
 }
@@ -89,5 +94,6 @@ extension DayViewModel {
         let showDetail: Observable<(UIImage?, Meal)>
         let editDetail: Observable<(MealCardViewCell, Meal)>
         let changeData: Observable<RealmChangeset?>
+        let progress: Observable<(Double, Double)>
     }
 }

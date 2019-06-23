@@ -29,8 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             AppNavigator.shared.firstStart(with: window)
             print("is first launch 🍻🍻🍻")
         case true:
-//            AppNavigator.shared.start(with: window)
-            AppNavigator.shared.firstStart(with: window)
+            AppNavigator.shared.start(with: window)
             print("is not first launch 🍣🍣🍣")
         }
 

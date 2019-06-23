@@ -63,7 +63,7 @@ final class DayViewController: BaseCollectionViewController, NavigationBarCustom
         return Binder(self) { me, tuple in
             let vc = InputMealViewController(mealImage: tuple.0,
                                              meal: tuple.1,
-                                             model: me.viewModel.model)
+                                             model: me.viewModel.mealModel)
             me.present(vc, animated: true, completion: nil)
             print("go to input meal view!!! ✌️✌️✌️")
         }
@@ -76,7 +76,7 @@ final class DayViewController: BaseCollectionViewController, NavigationBarCustom
 
             let vc = InputMealViewController(mealImage: tuple.0.imageView.image,
                                              meal: tuple.1,
-                                             model: me.viewModel.model)
+                                             model: me.viewModel.mealModel)
             vc.hero.isEnabled = true
             vc.hero.modalAnimationType = .auto
             vc.headerView.hero.id = heroID

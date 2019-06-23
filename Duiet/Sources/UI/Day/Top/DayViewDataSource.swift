@@ -27,7 +27,7 @@ final class DayViewDataSource: NSObject {
 
 extension DayViewDataSource: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.meals.count + 1
+        return viewModel.mealModel.meals.value.count + 1
     }
 
     func collectionView(_ collectionView: UICollectionView,
@@ -37,12 +37,13 @@ extension DayViewDataSource: UICollectionViewDataSource {
         case 0:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.progressCardViewCell,
                                                           for: indexPath)!
+            cell.configure(with: viewModel.output.progress)
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.mealCardViewCell,
                                                           for: indexPath)!
             let mealIndex = indexPath.row - 1
-            let meal = viewModel.meals[mealIndex]
+            let meal = viewModel.mealModel.meals.value[mealIndex]
             cell.configure(with: meal)
             return cell
         }
@@ -58,7 +59,7 @@ extension DayViewDataSource: UICollectionViewDelegate {
             let cardCell = cell as? MealCardViewCell
         else { return }
         let mealIndex = indexPath.row - 1
-        let meal = viewModel.meals[mealIndex]
+        let meal = viewModel.mealModel.meals.value[mealIndex]
         viewModel.input.selectedItem.on(.next((cardCell, meal)))
     }
 }

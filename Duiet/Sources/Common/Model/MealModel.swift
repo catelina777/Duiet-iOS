@@ -17,15 +17,11 @@ final class MealModel: NSObject {
 
     let changeData: Observable<RealmChangeset?>
 
-    var mealsValue: [Meal] {
-        return _meals.value
-    }
-
     let contentDidDelete = PublishRelay<Void>()
-    private let _meals = BehaviorRelay<[Meal]>(value: [])
+    let meals = BehaviorRelay<[Meal]>(value: [])
     private let disposeBag = DisposeBag()
 
-    let realm: Realm
+    fileprivate let realm: Realm
 
     override init() {
         realm = try! Realm()
@@ -36,14 +32,17 @@ final class MealModel: NSObject {
             .filter("date BETWEEN %@", [todayStart, todayEnd])
             .sorted(byKeyPath: "date")
 
-        Observable.array(from: mealResults)
-            .bind(to: self._meals)
-            .disposed(by: self.disposeBag)
-
         changeData = Observable.changeset(from: mealResults)
             .map { $1 }
 
         super.init()
+
+        Observable.array(from: mealResults)
+            .subscribe(onNext: { [weak self] meals in
+                guard let self = self else { return }
+                self.meals.accept(meals)
+            })
+            .disposed(by: self.disposeBag)
     }
 }
 
