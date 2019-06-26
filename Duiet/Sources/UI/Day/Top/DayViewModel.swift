@@ -63,7 +63,7 @@ final class DayViewModel {
 
         output = Output(showDetail: showDetail,
                         editDetail: editDetail.asObservable(),
-                        changeData: mealModel.changeData,
+                        changeData: mealModel.changeData.asObservable(),
                         progress: progress)
 
         pickedImage

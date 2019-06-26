@@ -26,12 +26,14 @@ final class ProgressModel: NSObject {
 
     override init() {
         realm = try! Realm()
-
-        let userInfoResult = realm.objects(UserInfo.self)
-            .filter("id == 0")
-
         super.init()
 
+        observeUserInfo()
+    }
+
+    private func observeUserInfo() {
+        let userInfoResult = realm.objects(UserInfo.self)
+            .filter("id == 0")
         Observable.array(from: userInfoResult)
             .compactMap { $0.first }
             .subscribe(onNext: { [weak self] userInfo in

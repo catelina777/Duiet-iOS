@@ -108,6 +108,7 @@
 		40B214DC22BF23D00040EA9E /* ProgressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B214DB22BF23D00040EA9E /* ProgressModel.swift */; };
 		40E7699C2299540200E9D5DA /* MealModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E7699B2299540200E9D5DA /* MealModel.swift */; };
 		5E17F981228BE4980046F68D /* RoundedTextFieldViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E17F980228BE4980046F68D /* RoundedTextFieldViewCell.swift */; };
+		5E3E860622C305BD004E1676 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3E860522C305BD004E1676 /* Day.swift */; };
 		5E79D5672283FAC90073CD98 /* LabelCanvasViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E79D5662283FAC90073CD98 /* LabelCanvasViewCell.swift */; };
 		5E79D56B2283FB0B0073CD98 /* LabelCanvasViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E79D56A2283FB0B0073CD98 /* LabelCanvasViewCell.xib */; };
 		5E916964229E2D260048BA63 /* Hero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E916963229E2D250048BA63 /* Hero.framework */; };
@@ -248,6 +249,7 @@
 		40B214DB22BF23D00040EA9E /* ProgressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressModel.swift; sourceTree = "<group>"; };
 		40E7699B2299540200E9D5DA /* MealModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealModel.swift; sourceTree = "<group>"; };
 		5E17F980228BE4980046F68D /* RoundedTextFieldViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedTextFieldViewCell.swift; sourceTree = "<group>"; };
+		5E3E860522C305BD004E1676 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		5E79D5662283FAC90073CD98 /* LabelCanvasViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCanvasViewCell.swift; sourceTree = "<group>"; };
 		5E79D56A2283FB0B0073CD98 /* LabelCanvasViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelCanvasViewCell.xib; sourceTree = "<group>"; };
 		5E916963229E2D250048BA63 /* Hero.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hero.framework; path = Carthage/Build/iOS/Hero.framework; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 			isa = PBXGroup;
 			children = (
 				5E9C28BE228E6254004ABF3B /* UserInfo.swift */,
+				5E3E860522C305BD004E1676 /* Day.swift */,
 				405147C72291498100C9AF8C /* Meal.swift */,
 				405147C92291498800C9AF8C /* Content.swift */,
 			);
@@ -1150,6 +1153,7 @@
 				06B2FD05227222600078C7F1 /* InputActivityLevelViewCell.swift in Sources */,
 				5E92570E228D3E2D0076CCEE /* KeyboardTrackViewModel.swift in Sources */,
 				0622EA04226A1DFC00E87F22 /* FillInformationViewDataSource.swift in Sources */,
+				5E3E860622C305BD004E1676 /* Day.swift in Sources */,
 				405A9F5F22AD0A4700454412 /* MonthSummaryViewCellDataSource.swift in Sources */,
 				06B2FD002272225A0078C7F1 /* InputNumberViewCell.swift in Sources */,
 				405E3A1D229929D500ECEA9E /* EmptyContentViewCell.swift in Sources */,

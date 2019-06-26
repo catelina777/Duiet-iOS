@@ -15,28 +15,69 @@ import RxRealm
 
 final class MealModel: NSObject {
 
-    let changeData: Observable<RealmChangeset?>
-
+    let changeData = PublishRelay<RealmChangeset?>()
     let contentDidDelete = PublishRelay<Void>()
     let meals = BehaviorRelay<[Meal]>(value: [])
+    fileprivate let day = BehaviorRelay<Day>(value: Day(date: Date()))
     private let disposeBag = DisposeBag()
 
     fileprivate let realm: Realm
 
     override init() {
         realm = try! Realm()
+        super.init()
 
+        let now = Date()
+        let day = find(day: now)
+        accept(day: day)
+
+        let mealResults = find()
+        observe(mealResults: mealResults)
+        observe(mealResultsChangeset: mealResults)
+    }
+
+    private func find() -> Results<Meal> {
         let todayStart = Calendar.current.startOfDay(for: .init())
         let todayEnd = Date(timeInterval: 60 * 60 * 24, since: todayStart)
         let mealResults = realm.objects(Meal.self)
             .filter("date BETWEEN %@", [todayStart, todayEnd])
             .sorted(byKeyPath: "date")
+        return mealResults
+    }
 
-        changeData = Observable.changeset(from: mealResults)
+    /// Get the day model, and create and save a new day model if it does not exist
+    private func find(day: Date) -> Day {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .none
+        let today = dateFormatter.string(from: day)
+        let dayObject = realm.object(ofType: Day.self, forPrimaryKey: today)
+        if let _day = dayObject {
+            return _day
+        } else {
+            let _day = Day(date: day)
+            try! realm.write {
+                realm.add(_day)
+            }
+            return _day
+        }
+    }
+
+    private func accept(day: Day) {
+        self.day.accept(day)
+    }
+
+    private func observe(mealResultsChangeset mealResults: Results<Meal>) {
+        Observable.changeset(from: mealResults)
             .map { $1 }
+            .subscribe(onNext: { [weak self] changeset in
+                guard let self = self else { return }
+                self.changeData.accept(changeset)
+            })
+            .disposed(by: disposeBag)
+    }
 
-        super.init()
-
+    private func observe(mealResults: Results<Meal>) {
         Observable.array(from: mealResults)
             .subscribe(onNext: { [weak self] meals in
                 guard let self = self else { return }
@@ -51,7 +92,7 @@ extension Reactive where Base: MealModel {
     var addMeal: Binder<Meal> {
         return Binder(base) { me, meal in
             try! me.realm.write {
-                me.realm.add(meal)
+                me.day.value.meals.append(meal)
             }
         }
     }
