@@ -13,18 +13,14 @@ import RxCocoa
 import RealmSwift
 import RxRealm
 
-final class MealModel: NSObject {
+final class MealModel: RealmBaseModel {
 
     let changeData = PublishRelay<RealmChangeset?>()
     let contentDidDelete = PublishRelay<Void>()
     let meals = BehaviorRelay<[Meal]>(value: [])
-    fileprivate let day = BehaviorRelay<Day>(value: Day(date: Date()))
-    private let disposeBag = DisposeBag()
-
-    fileprivate let realm: Realm
+    let day = BehaviorRelay<Day>(value: Day(date: Date()))
 
     override init() {
-        realm = try! Realm()
         super.init()
 
         let now = Date()

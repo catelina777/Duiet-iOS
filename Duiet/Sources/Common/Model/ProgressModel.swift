@@ -12,7 +12,7 @@ import RxRelay
 import RealmSwift
 import RxRealm
 
-final class ProgressModel: NSObject {
+final class ProgressModel: RealmBaseModel {
 
     var userInfoValue: UserInfo {
         return userInfo.value
@@ -20,20 +20,18 @@ final class ProgressModel: NSObject {
 
     let userInfo = BehaviorRelay<UserInfo>(value: UserInfo())
 
-    private let realm: Realm
-
-    private let disposeBag = DisposeBag()
-
     override init() {
-        realm = try! Realm()
         super.init()
 
-        observeUserInfo()
+        let userInfoResult = get()
+        observe(userInfoResult: userInfoResult)
     }
 
-    private func observeUserInfo() {
-        let userInfoResult = realm.objects(UserInfo.self)
-            .filter("id == 0")
+    private func get() -> Results<UserInfo> {
+        return realm.objects(UserInfo.self).filter("id == 0")
+    }
+
+    private func observe(userInfoResult: Results<UserInfo>) {
         Observable.array(from: userInfoResult)
             .compactMap { $0.first }
             .subscribe(onNext: { [weak self] userInfo in
