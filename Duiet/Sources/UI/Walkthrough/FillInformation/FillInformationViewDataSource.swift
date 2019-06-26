@@ -87,14 +87,7 @@ extension FillInformationViewDataSource: UITableViewDataSource {
         case 6:
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.completeButtonViewCell,
                                                      for: indexPath)!
-
-            viewModel.output.isValidateComplete
-                .bind(to: cell.isComplete)
-                .disposed(by: cell.disposeBag)
-
-            cell.completeButton.rx.tap
-                .bind(to: viewModel.input.completeButtonTap)
-                .disposed(by: cell.disposeBag)
+            cell.configure(with: viewModel)
             return cell
 
         default:

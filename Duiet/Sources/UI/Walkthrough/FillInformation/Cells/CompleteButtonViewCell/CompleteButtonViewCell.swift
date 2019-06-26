@@ -28,4 +28,14 @@ final class CompleteButtonViewCell: RxTableViewCell {
             }
         }
     }
+
+    func configure(with viewModel: FillInformationViewModel) {
+        viewModel.output.isValidateComplete
+            .bind(to: isComplete)
+            .disposed(by: disposeBag)
+
+        completeButton.rx.tap
+            .bind(to: viewModel.input.completeButtonTap)
+            .disposed(by: disposeBag)
+    }
 }
