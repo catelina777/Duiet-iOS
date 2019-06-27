@@ -21,6 +21,8 @@ final class Meal: Object {
     }
 
     var totalCalorie: Double {
-        return contents.reduce(into: 0) { $0 += ($1.calorie * $1.multiple) }
+        return contents.reduce(into: 0) {
+            $0 += $1.calorie * ($1.multiple == 0 ? 1 : $1.multiple)
+        }
     }
 }
