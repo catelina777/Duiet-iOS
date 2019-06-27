@@ -1,5 +1,5 @@
 //
-//  ProgressModel.swift
+//  UserInfoModel.swift
 //  Duiet
 //
 //  Created by Ryuhei Kaminishi on 2019/06/23.
@@ -12,11 +12,7 @@ import RxRelay
 import RealmSwift
 import RxRealm
 
-final class ProgressModel: RealmBaseModel {
-
-    var userInfoValue: UserInfo {
-        return userInfo.value
-    }
+final class UserInfoModel: RealmBaseModel {
 
     let userInfo = BehaviorRelay<UserInfo>(value: UserInfo())
 

@@ -43,10 +43,7 @@ final class MealModel: RealmBaseModel {
 
     /// Get the day model, and create and save a new day model if it does not exist
     private func find(day: Date) -> Day {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .short
-        dateFormatter.timeStyle = .none
-        let today = dateFormatter.string(from: day)
+        let today = day.toKeyString()
         let dayObject = realm.object(ofType: Day.self, forPrimaryKey: today)
         if let _day = dayObject {
             return _day

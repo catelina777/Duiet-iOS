@@ -12,6 +12,7 @@ import RxCocoa
 
 final class ProgressCardViewCell: RxCollectionViewCell {
 
+    @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var TDEELabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var differenceLabel: UILabel!

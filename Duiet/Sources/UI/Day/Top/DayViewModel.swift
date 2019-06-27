@@ -18,12 +18,12 @@ final class DayViewModel {
     let input: Input
     let output: Output
 
-    let progressModel: ProgressModel
+    let userInfoModel: UserInfoModel
     let mealModel: MealModel
     private let disposeBag = DisposeBag()
 
     init() {
-        self.progressModel = ProgressModel()
+        self.userInfoModel = UserInfoModel()
         self.mealModel = MealModel()
 
         let _viewDidAppear = PublishRelay<Void>()
@@ -56,10 +56,12 @@ final class DayViewModel {
         let editDetail = _selectedItem
 
         let totalCalories = mealModel.meals
-            .map { $0.map { $0.contents.reduce(into: 0) { $0 += ($1.calorie * $1.multiple) } } }
-            .map { $0.reduce(into: 0) { $0 += $1 } }
+            .map { $0.map { $0.totalCalorie } }
+            .map { $0.reduce(into: 0) { $0 += $1} }
 
-        let progress = Observable.combineLatest(Observable.of(progressModel.userInfoValue.TDEE()), totalCalories)
+        let tdee = Observable.of(userInfoModel.userInfo.value.TDEE)
+
+        let progress = Observable.combineLatest(tdee, totalCalories)
 
         output = Output(showDetail: showDetail,
                         editDetail: editDetail.asObservable(),

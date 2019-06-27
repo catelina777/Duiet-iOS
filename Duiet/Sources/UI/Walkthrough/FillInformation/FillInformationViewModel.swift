@@ -85,7 +85,7 @@ final class FillInformationViewModel {
                                         weight: v3,
                                         activityLevel: v4)
                 userInfo.accept(_userInfo)
-                return (_userInfo.BMR(), v4)
+                return (_userInfo.BMR, v4)
             }
             .share()
 

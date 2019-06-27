@@ -36,8 +36,8 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GfF-Sd-Ljs" userLabel="Header View">
                                         <rect key="frame" x="0.0" y="0.0" width="309" height="66"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Progress" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NX2-eF-jOw">
-                                                <rect key="frame" x="98" y="18.5" width="113.5" height="29.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2019/06/07" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NX2-eF-jOw">
+                                                <rect key="frame" x="85.5" y="18.5" width="138.5" height="29.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-ExtraBold" family="Montserrat" pointSize="24"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -191,6 +191,7 @@
             <size key="customSize" width="343" height="210"/>
             <connections>
                 <outlet property="TDEELabel" destination="Kur-Iv-hN3" id="6kZ-A5-iAJ"/>
+                <outlet property="dayLabel" destination="NX2-eF-jOw" id="bhG-X2-elH"/>
                 <outlet property="differenceLabel" destination="pp5-Ge-iu5" id="Bre-PU-vu4"/>
                 <outlet property="totalLabel" destination="zsm-fr-pmf" id="Uux-rh-E92"/>
                 <outlet property="weightChangeLabel" destination="dD5-r9-Mwa" id="BsU-22-DvH"/>

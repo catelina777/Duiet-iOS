@@ -11,8 +11,9 @@ import RealmSwift
 
 final class Day: Object {
 
-    @objc dynamic var date = "aaa"
+    @objc dynamic var date = ""
     let meals = List<Meal>()
+    @objc dynamic var createdAt = Date()
 
     override static func primaryKey() -> String? {
         return "date"
@@ -20,9 +21,11 @@ final class Day: Object {
 
     required convenience init(date: Date) {
         self.init()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .short
-        dateFormatter.timeStyle = .none
-        self.date = dateFormatter.string(from: date)
+        self.date = date.toKeyString()
+        self.createdAt = date
+    }
+
+    var totalCalorie: Double {
+        return meals.reduce(into: 0) { $0 += $1.totalCalorie }
     }
 }

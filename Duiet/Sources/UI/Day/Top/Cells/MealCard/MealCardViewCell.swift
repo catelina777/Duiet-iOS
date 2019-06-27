@@ -77,7 +77,7 @@ final class MealCardViewCell: RxCollectionViewCell {
             .bind(to: imageView.rx.image)
             .disposed(by: disposeBag)
 
-        let sumCalorie = meal.contents.reduce(into: 0) { $0 += ($1.calorie * $1.multiple) }
-        caloriesLabel.text = "\(Int(sumCalorie))"
+        let totalCalorie = meal.totalCalorie
+        caloriesLabel.text = "\(Int(totalCalorie))"
     }
 }
