@@ -35,11 +35,11 @@ final class UserInfo: Object {
         return "id"
     }
 
-    func BMR() -> Double {
+    var BMR: Double {
         return calculate()
     }
 
-    func TDEE() -> Double {
+    var TDEE: Double {
         let activityLevel = ActivityLevel.getType(with: self.activityLevel)
         return calculate() * activityLevel.magnification
     }
