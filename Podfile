@@ -12,11 +12,13 @@ target 'Duiet' do
   target 'DuietTests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'R.swift'
   end
 
   target 'DuietUITests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'R.swift'
   end
 
 end

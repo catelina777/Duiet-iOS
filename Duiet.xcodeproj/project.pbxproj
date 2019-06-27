@@ -864,6 +864,7 @@
 				0641AD2F2264A1BC00CEDAE7 /* Sources */,
 				0641AD302264A1BC00CEDAE7 /* Frameworks */,
 				0641AD312264A1BC00CEDAE7 /* Resources */,
+				4EC75DB2670331BF8871F242 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -883,6 +884,7 @@
 				0641AD3A2264A1BC00CEDAE7 /* Sources */,
 				0641AD3B2264A1BC00CEDAE7 /* Frameworks */,
 				0641AD3C2264A1BC00CEDAE7 /* Resources */,
+				8B79A3F49EC5181DCDB3BDB6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1006,7 +1008,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				$SRCROOT/Duiet/Sources/Common/R.generated.swift,
+				"$SRCROOT/Duiet/Sources/Common/R.generated.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1094,6 +1096,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		4EC75DB2670331BF8871F242 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DuietTests/Pods-DuietTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DuietTests/Pods-DuietTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DuietTests/Pods-DuietTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		8555E173F9D24B1CB83CE54C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1109,6 +1128,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Duiet/Pods-Duiet-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8B79A3F49EC5181DCDB3BDB6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DuietUITests/Pods-DuietUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DuietUITests/Pods-DuietUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DuietUITests/Pods-DuietUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B3436BD541DF49D9465DC313 /* [CP] Check Pods Manifest.lock */ = {
@@ -1436,7 +1472,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7VNM74C3K4;
+				DEVELOPMENT_TEAM = 6MU2DV3MZ5;
 				INFOPLIST_FILE = DuietTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1458,7 +1494,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7VNM74C3K4;
+				DEVELOPMENT_TEAM = 6MU2DV3MZ5;
 				INFOPLIST_FILE = DuietTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1479,7 +1515,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7VNM74C3K4;
+				DEVELOPMENT_TEAM = 6MU2DV3MZ5;
 				INFOPLIST_FILE = DuietUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1500,7 +1536,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7VNM74C3K4;
+				DEVELOPMENT_TEAM = 6MU2DV3MZ5;
 				INFOPLIST_FILE = DuietUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
