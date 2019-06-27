@@ -13,17 +13,14 @@ private let formatter: DateFormatter = {
     return formatter
 }()
 
-private let keyFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    return formatter
-}()
-
 extension Date {
 
-    func toKeyString() -> String {
-        keyFormatter.dateStyle = .short
-        keyFormatter.timeStyle = .none
-        return keyFormatter.string(from: self)
+    func toMonthKeyString() -> String {
+        return self.toString("yyyy/MM")
+    }
+
+    func toDayKeyString() -> String {
+        return self.toString("yyyy/MM/dd")
     }
 
     func toString(_ format: String = "yyyy/MM/dd") -> String {

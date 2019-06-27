@@ -24,8 +24,9 @@ final class MealModel: RealmBaseModel {
         super.init()
 
         let now = Date()
+
         let day = find(day: now)
-        accept(day: day)
+        observe(day: day)
 
         let mealResults = find()
         observe(mealResults: mealResults)
@@ -41,23 +42,45 @@ final class MealModel: RealmBaseModel {
         return mealResults
     }
 
-    /// Get the day model, and create and save a new day model if it does not exist
-    private func find(day: Date) -> Day {
-        let today = day.toKeyString()
+    /// Get the day model. Create a new day model if it does not exist
+    private func find(day date: Date) -> Day {
+        let today = date.toDayKeyString()
         let dayObject = realm.object(ofType: Day.self, forPrimaryKey: today)
         if let _day = dayObject {
             return _day
         } else {
-            let _day = Day(date: day)
+            let _day = Day(date: date)
+            let month = find(month: date)
             try! realm.write {
-                realm.add(_day)
+                month.days.append(_day)
             }
             return _day
         }
     }
 
-    private func accept(day: Day) {
-        self.day.accept(day)
+    /// Get the month model. Create a new month model if it does not exist
+    private func find(month date: Date) -> Month {
+        let thisMonth = date.toMonthKeyString()
+        let monthObject = realm.object(ofType: Month.self, forPrimaryKey: thisMonth)
+        if let _month = monthObject {
+            return _month
+        } else {
+            let _month = Month(date: date)
+            print(_month)
+            try! realm.write {
+                realm.add(_month)
+            }
+            return _month
+        }
+    }
+
+    private func observe(day: Day) {
+        Observable.from(object: day)
+            .subscribe(onNext: { [weak self] day in
+                guard let self = self else { return }
+                self.day.accept(day)
+            })
+            .disposed(by: disposeBag)
     }
 
     private func observe(mealResultsChangeset mealResults: Results<Meal>) {

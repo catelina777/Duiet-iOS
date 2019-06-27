@@ -1,18 +1,18 @@
 //
-//  Day.swift
+//  Month.swift
 //  Duiet
 //
-//  Created by 上西 隆平 on 2019/06/26.
+//  Created by 上西 隆平 on 2019/06/27.
 //  Copyright © 2019 duiet. All rights reserved.
 //
 
 import Foundation
 import RealmSwift
 
-final class Day: Object {
+final class Month: Object {
 
     @objc dynamic var date = ""
-    let meals = List<Meal>()
+    let days = List<Day>()
     @objc dynamic var createdAt = Date()
 
     override static func primaryKey() -> String? {
@@ -21,11 +21,6 @@ final class Day: Object {
 
     required convenience init(date: Date) {
         self.init()
-        self.date = date.toDayKeyString()
-        self.createdAt = date
-    }
-
-    var totalCalorie: Double {
-        return meals.reduce(into: 0) { $0 += $1.totalCalorie }
+        self.date = date.toMonthKeyString()
     }
 }

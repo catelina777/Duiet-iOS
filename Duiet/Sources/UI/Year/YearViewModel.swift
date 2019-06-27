@@ -13,10 +13,13 @@ import RxRelay
 final class YearViewModel {
 
     let testProgress: [ProgressType]
+    let yearModel: YearModel
 
     init() {
         let testArray: [Int] = .init(repeating: 0, count: 30)
         testProgress = testArray.map { _ in ProgressType.get(by: Int.random(in: 0..<3)) }
+
+        yearModel = YearModel()
     }
 }
 

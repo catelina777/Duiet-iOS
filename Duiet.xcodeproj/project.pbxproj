@@ -122,6 +122,8 @@
 		5E9C28C3228E76D6004ABF3B /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9C28C0228E76D6004ABF3B /* Realm.framework */; };
 		5E9C28C4228E76D6004ABF3B /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9C28C1228E76D6004ABF3B /* RealmSwift.framework */; };
 		5E9EE7CD22C45FAD00AF5D82 /* Date.extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9EE7CC22C45FAD00AF5D82 /* Date.extension.swift */; };
+		5E9EE7CF22C48FF200AF5D82 /* YearModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9EE7CE22C48FF200AF5D82 /* YearModel.swift */; };
+		5E9EE7D122C4980E00AF5D82 /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9EE7D022C4980E00AF5D82 /* Month.swift */; };
 		8AFA7421A93B1AAF33698633 /* Pods_DuietTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B35F720B676F45DF7C30A993 /* Pods_DuietTests.framework */; };
 		D73436F20B6C69548E947136 /* Pods_DuietUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 006839574F440A78C2631C92 /* Pods_DuietUITests.framework */; };
 /* End PBXBuildFile section */
@@ -267,6 +269,8 @@
 		5E9C28C1228E76D6004ABF3B /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		5E9C28C2228E76D6004ABF3B /* RxRealm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRealm.framework; path = Carthage/Build/iOS/RxRealm.framework; sourceTree = "<group>"; };
 		5E9EE7CC22C45FAD00AF5D82 /* Date.extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.extension.swift; sourceTree = "<group>"; };
+		5E9EE7CE22C48FF200AF5D82 /* YearModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearModel.swift; sourceTree = "<group>"; };
+		5E9EE7D022C4980E00AF5D82 /* Month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
 		6911E39E3468EB910D0358F5 /* Pods_Duiet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Duiet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CD1E0F4DE960D419C98FCDE /* Pods-DuietUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DuietUITests.release.xcconfig"; path = "Target Support Files/Pods-DuietUITests/Pods-DuietUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B35F720B676F45DF7C30A993 /* Pods_DuietTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DuietTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -317,6 +321,7 @@
 			isa = PBXGroup;
 			children = (
 				5E9C28BE228E6254004ABF3B /* UserInfo.swift */,
+				5E9EE7D022C4980E00AF5D82 /* Month.swift */,
 				5E3E860522C305BD004E1676 /* Day.swift */,
 				405147C72291498100C9AF8C /* Meal.swift */,
 				405147C92291498800C9AF8C /* Content.swift */,
@@ -757,6 +762,7 @@
 				40E7699B2299540200E9D5DA /* MealModel.swift */,
 				40B214DB22BF23D00040EA9E /* UserInfoModel.swift */,
 				5E3E860722C334D3004E1676 /* MonthModel.swift */,
+				5E9EE7CE22C48FF200AF5D82 /* YearModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1142,6 +1148,7 @@
 				5E9C28B2228E4729004ABF3B /* BaseTableViewController.swift in Sources */,
 				405147C82291498100C9AF8C /* Meal.swift in Sources */,
 				4001F70422ABB4AD0009CDA1 /* SettingViewModel.swift in Sources */,
+				5E9EE7D122C4980E00AF5D82 /* Month.swift in Sources */,
 				40B2141322B4A1FE0040EA9E /* RoundedWrapperView.swift in Sources */,
 				063FCBC0227D8164007C191F /* InputMealDataSource.swift in Sources */,
 				0622EA29226A213B00E87F22 /* MyTextField.swift in Sources */,
@@ -1196,6 +1203,7 @@
 				0630D49B227495EB00224EC9 /* CellType.swift in Sources */,
 				40B2142422B636120040EA9E /* MonthViewModel.swift in Sources */,
 				4001F6FA22ABA3720009CDA1 /* SceneType.swift in Sources */,
+				5E9EE7CF22C48FF200AF5D82 /* YearModel.swift in Sources */,
 				061F279122733DAD00FDCB17 /* WalkthroughViewModel.swift in Sources */,
 				40B214DC22BF23D00040EA9E /* UserInfoModel.swift in Sources */,
 				4001F70622ABB4BA0009CDA1 /* SettingViewDataSource.swift in Sources */,
