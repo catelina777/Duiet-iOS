@@ -18,7 +18,9 @@ class SeedManager {
     }
 
     func generate() {
-        realm.deleteAll()
+        try! realm.write {
+            realm.deleteAll()
+        }
         let calendar = Calendar(identifier: .gregorian)
         var dateComponents = DateComponents()
         let years = [2017, 2018, 2019]
@@ -69,7 +71,7 @@ class SeedManager {
     func createContent() -> Content {
         let content = Content(relativeX: Double.random(in: 0..<200),
                               relativeY: Double.random(in: 0..<200))
-        content.calorie = Double.random(in: 100..<700)
+        content.calorie = Double.random(in: 400..<800)
         content.multiple = Double.random(in: 0.5..<2)
         return content
     }
