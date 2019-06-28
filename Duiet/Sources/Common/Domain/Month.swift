@@ -22,5 +22,6 @@ final class Month: Object {
     required convenience init(date: Date) {
         self.init()
         self.date = date.toMonthKeyString()
+        self.createdAt = date
     }
 }

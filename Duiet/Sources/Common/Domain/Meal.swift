@@ -20,6 +20,13 @@ final class Meal: Object {
         self.imagePath = imagePath
     }
 
+    #if DEBUG
+    required convenience init(date: Date) {
+        self.init()
+        self.date = date
+    }
+    #endif
+
     var totalCalorie: Double {
         return contents.reduce(into: 0) {
             $0 += $1.calorie * ($1.multiple == 0 ? 1 : $1.multiple)
