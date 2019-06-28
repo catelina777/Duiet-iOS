@@ -27,4 +27,42 @@ extension Date {
         formatter.dateFormat = format
         return formatter.string(from: self)
     }
+
+    func toYearMonthString() -> String {
+        return self.toString("yyyy/MM")
+    }
+
+    func year() -> Int {
+        let yearFormat = "yyyy"
+        formatter.dateFormat = yearFormat
+        let yearString = formatter.string(from: self)
+        let year = Int(yearString) ?? 1996
+        return year
+    }
+
+    func month() -> Int {
+        let monthFormat = "MM"
+        formatter.dateFormat = monthFormat
+        var monthString = formatter.string(from: self)
+        if monthString.first == "0" {
+            monthString.removeFirst()
+        }
+        let month = Int(monthString) ?? 7
+        return month
+    }
+
+    func day() -> Int {
+        let dayFormat = "dd"
+        formatter.dateFormat = dayFormat
+        var dayString = formatter.string(from: self)
+        if dayString.first == "0" {
+            dayString.removeFirst()
+        }
+        let day = Int(dayString) ?? 17
+        return day
+    }
+
+    func index() -> Int {
+        return day() - 1
+    }
 }

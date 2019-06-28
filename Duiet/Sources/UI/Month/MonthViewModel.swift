@@ -21,13 +21,6 @@ final class MonthViewModel {
         monthModel = MonthModel()
         userInfoModel = UserInfoModel()
         input = Input()
-
-        let totalCalories = monthModel.days
-            .map { $0.map { $0.totalCalorie } }
-
-        let tdee = Observable.of(userInfoModel.userInfo.value.TDEE)
-
-        let progress = Observable.combineLatest(tdee, totalCalories)
         output = Output()
     }
 }
