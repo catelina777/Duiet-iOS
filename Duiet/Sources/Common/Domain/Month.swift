@@ -24,4 +24,8 @@ final class Month: Object {
         self.date = date.toMonthKeyString()
         self.createdAt = date
     }
+
+    var totalCalories: Double {
+        return days.reduce(into: 0) { $0 += $1.totalCalorie }
+    }
 }
