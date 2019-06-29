@@ -26,14 +26,15 @@ final class YearViewDataSource: NSObject {
 extension YearViewDataSource: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 12
+        return viewModel.yearModel.months.value.count
     }
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.monthSummaryViewCell,
                                                       for: indexPath)!
-        cell.configure(with: viewModel.testProgress)
+        let month = viewModel.yearModel.months.value[indexPath.row]
+        cell.configure(with: month)
         return cell
     }
 }

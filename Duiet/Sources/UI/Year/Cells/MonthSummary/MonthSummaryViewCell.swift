@@ -13,10 +13,12 @@ final class MonthSummaryViewCell: RxCollectionViewCell {
     var viewModel: MonthSummaryViewModel!
     var dataSource: MonthSummaryViewDataSource!
     @IBOutlet private(set) weak var collectionView: UICollectionView!
+    @IBOutlet weak var dayLabel: UILabel!
 
-    func configure(with progress: [ProgressType]) {
-        self.viewModel = MonthSummaryViewModel(progress: progress)
+    func configure(with month: Month) {
+        self.viewModel = MonthSummaryViewModel(month: month)
         self.dataSource = MonthSummaryViewDataSource(viewModel: viewModel)
         dataSource.configure(with: collectionView)
+        dayLabel.text = month.createdAt.toYearMonthString()
     }
 }
