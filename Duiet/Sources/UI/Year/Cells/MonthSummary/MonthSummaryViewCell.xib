@@ -128,6 +128,7 @@
             <connections>
                 <outlet property="collectionView" destination="j3r-YH-IS8" id="x2s-et-G8Q"/>
                 <outlet property="dayLabel" destination="3Tl-fh-Adc" id="GLC-vB-1Ak"/>
+                <outlet property="weightChangeLabel" destination="aNU-mf-WQx" id="Pdh-85-cca"/>
             </connections>
             <point key="canvasLocation" x="81.884057971014499" y="201.5625"/>
         </collectionViewCell>

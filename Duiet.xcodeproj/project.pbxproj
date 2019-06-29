@@ -124,6 +124,7 @@
 		5E9EE7CD22C45FAD00AF5D82 /* Date.extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9EE7CC22C45FAD00AF5D82 /* Date.extension.swift */; };
 		5E9EE7CF22C48FF200AF5D82 /* YearModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9EE7CE22C48FF200AF5D82 /* YearModel.swift */; };
 		5E9EE7D122C4980E00AF5D82 /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9EE7D022C4980E00AF5D82 /* Month.swift */; };
+		5E9EE7D822C5CEAD00AF5D82 /* SeedManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9EE7D722C5CEAD00AF5D82 /* SeedManager.swift */; };
 		8AFA7421A93B1AAF33698633 /* Pods_DuietTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B35F720B676F45DF7C30A993 /* Pods_DuietTests.framework */; };
 		D73436F20B6C69548E947136 /* Pods_DuietUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 006839574F440A78C2631C92 /* Pods_DuietUITests.framework */; };
 /* End PBXBuildFile section */
@@ -271,6 +272,7 @@
 		5E9EE7CC22C45FAD00AF5D82 /* Date.extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.extension.swift; sourceTree = "<group>"; };
 		5E9EE7CE22C48FF200AF5D82 /* YearModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearModel.swift; sourceTree = "<group>"; };
 		5E9EE7D022C4980E00AF5D82 /* Month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
+		5E9EE7D722C5CEAD00AF5D82 /* SeedManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedManager.swift; sourceTree = "<group>"; };
 		6911E39E3468EB910D0358F5 /* Pods_Duiet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Duiet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CD1E0F4DE960D419C98FCDE /* Pods-DuietUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DuietUITests.release.xcconfig"; path = "Target Support Files/Pods-DuietUITests/Pods-DuietUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B35F720B676F45DF7C30A993 /* Pods_DuietTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DuietTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -456,10 +458,8 @@
 			isa = PBXGroup;
 			children = (
 				0622EA2C226A237C00E87F22 /* Fonts */,
-				0641AD292264A1BC00CEDAE7 /* Assets.xcassets */,
-				061F279B22735BD900FDCB17 /* Icons.xcassets */,
-				069AD43B227728050075E711 /* Placeholder.xcassets */,
-				06F615D0227AF1080074089B /* Splash.xcassets */,
+				5E9EE7D522C5CE5A00AF5D82 /* Assets */,
+				5E9EE7D622C5CE7D00AF5D82 /* Seeds */,
 				0641AD2B2264A1BC00CEDAE7 /* LaunchScreen.storyboard */,
 				0641AD2E2264A1BC00CEDAE7 /* Info.plist */,
 			);
@@ -818,6 +818,25 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		5E9EE7D522C5CE5A00AF5D82 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				0641AD292264A1BC00CEDAE7 /* Assets.xcassets */,
+				061F279B22735BD900FDCB17 /* Icons.xcassets */,
+				069AD43B227728050075E711 /* Placeholder.xcassets */,
+				06F615D0227AF1080074089B /* Splash.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		5E9EE7D622C5CE7D00AF5D82 /* Seeds */ = {
+			isa = PBXGroup;
+			children = (
+				5E9EE7D722C5CEAD00AF5D82 /* SeedManager.swift */,
+			);
+			path = Seeds;
+			sourceTree = "<group>";
+		};
 		C78977283BBF1E6AD6DF25DA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1008,7 +1027,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/Duiet/Sources/Common/R.generated.swift",
+				$SRCROOT/Duiet/Sources/Common/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1200,6 +1219,7 @@
 				405A9F5D22AD0A3D00454412 /* MonthSummaryViewCellViewModel.swift in Sources */,
 				061F278F22733DA100FDCB17 /* WalkthroughViewController.swift in Sources */,
 				4001F71322ABF1AC0009CDA1 /* BaseCollectionViewController.swift in Sources */,
+				5E9EE7D822C5CEAD00AF5D82 /* SeedManager.swift in Sources */,
 				40B2141522B4D5B00040EA9E /* Week.swift in Sources */,
 				06932AC822801AEB00CFA05C /* MealLabelView.swift in Sources */,
 				06B2FD05227222600078C7F1 /* InputActivityLevelViewCell.swift in Sources */,
