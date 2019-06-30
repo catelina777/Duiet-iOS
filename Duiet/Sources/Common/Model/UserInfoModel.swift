@@ -14,6 +14,8 @@ import RxRealm
 
 final class UserInfoModel: RealmBaseModel {
 
+    static let shared = UserInfoModel()
+
     let userInfo = BehaviorRelay<UserInfo>(value: UserInfo())
 
     override init() {

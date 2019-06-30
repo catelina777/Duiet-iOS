@@ -14,6 +14,8 @@ import RxRealm
 
 final class MonthModel: RealmBaseModel {
 
+    static let shared = MonthModel()
+
     let changeData = PublishRelay<RealmChangeset?>()
     let days = BehaviorRelay<[Day]>(value: [])
 

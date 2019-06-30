@@ -26,8 +26,8 @@ final class MonthViewModel {
     }
 
     init() {
-        monthModel = MonthModel()
-        userInfoModel = UserInfoModel()
+        monthModel = MonthModel.shared
+        userInfoModel = UserInfoModel.shared
         input = Input()
         output = Output()
     }
