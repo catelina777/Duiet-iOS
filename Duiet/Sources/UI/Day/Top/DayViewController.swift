@@ -18,8 +18,8 @@ final class DayViewController: BaseCollectionViewController, NavigationBarCustom
     let viewModel: DayViewModel
     let dataSource: DayViewDataSource
 
-    init() {
-        self.viewModel = DayViewModel()
+    init(date: Date = Date()) {
+        self.viewModel = DayViewModel(date: date)
         self.dataSource = DayViewDataSource(viewModel: viewModel)
         super.init(nibName: DayViewController.className, bundle: nil)
     }

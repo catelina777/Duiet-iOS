@@ -15,8 +15,6 @@ import RxRealm
 
 final class MealModel: RealmBaseModel {
 
-    static let shared = MealModel()
-
     let changeData = PublishRelay<RealmChangeset?>()
     let contentDidDelete = PublishRelay<Void>()
     let meals = BehaviorRelay<[Meal]>(value: [])

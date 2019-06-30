@@ -84,6 +84,8 @@
 		4001F70F22ABF0D80009CDA1 /* YearViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4001F70E22ABF0D80009CDA1 /* YearViewController.swift */; };
 		4001F71122ABF0EB0009CDA1 /* YearViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4001F71022ABF0EB0009CDA1 /* YearViewController.xib */; };
 		4001F71322ABF1AC0009CDA1 /* BaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4001F71222ABF1AC0009CDA1 /* BaseCollectionViewController.swift */; };
+		402FBE9F22C8D019000BBFA3 /* TopTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402FBE9E22C8D019000BBFA3 /* TopTabBarController.swift */; };
+		402FBEA222C8E63D000BBFA3 /* TopTabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402FBEA122C8E63D000BBFA3 /* TopTabBarViewModel.swift */; };
 		405147C82291498100C9AF8C /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405147C72291498100C9AF8C /* Meal.swift */; };
 		405147CA2291498800C9AF8C /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405147C92291498800C9AF8C /* Content.swift */; };
 		405A9F5022ACFB1300454412 /* YearViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405A9F4F22ACFB1300454412 /* YearViewModel.swift */; };
@@ -231,6 +233,8 @@
 		4001F70E22ABF0D80009CDA1 /* YearViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearViewController.swift; sourceTree = "<group>"; };
 		4001F71022ABF0EB0009CDA1 /* YearViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YearViewController.xib; sourceTree = "<group>"; };
 		4001F71222ABF1AC0009CDA1 /* BaseCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewController.swift; sourceTree = "<group>"; };
+		402FBE9E22C8D019000BBFA3 /* TopTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTabBarController.swift; sourceTree = "<group>"; };
+		402FBEA122C8E63D000BBFA3 /* TopTabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTabBarViewModel.swift; sourceTree = "<group>"; };
 		405147C72291498100C9AF8C /* Meal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		405147C92291498800C9AF8C /* Content.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		405A9F4F22ACFB1300454412 /* YearViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearViewModel.swift; sourceTree = "<group>"; };
@@ -518,6 +522,7 @@
 		0641AD602264ADC100CEDAE7 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				402FBEA022C8D23D000BBFA3 /* TabBar */,
 				5E9C28B0228E4717004ABF3B /* Base */,
 				5E92570D228D3E2D0076CCEE /* KeyboardTrackViewModel.swift */,
 				4001F6F722AB83D10009CDA1 /* AppNavigator.swift */,
@@ -694,6 +699,15 @@
 				4001F70C22ABDC5A0009CDA1 /* SettingViewCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		402FBEA022C8D23D000BBFA3 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				402FBE9E22C8D019000BBFA3 /* TopTabBarController.swift */,
+				402FBEA122C8E63D000BBFA3 /* TopTabBarViewModel.swift */,
+			);
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 		405A9F5322ACFFDC00454412 /* Cells */ = {
@@ -1200,6 +1214,7 @@
 				4001F70B22ABDC4E0009CDA1 /* SettingViewCell.swift in Sources */,
 				5E9C28BF228E6254004ABF3B /* UserInfo.swift in Sources */,
 				0622EA02226A1DE800E87F22 /* FillInformationViewController.swift in Sources */,
+				402FBE9F22C8D019000BBFA3 /* TopTabBarController.swift in Sources */,
 				5E9C28B2228E4729004ABF3B /* BaseTableViewController.swift in Sources */,
 				405147C82291498100C9AF8C /* Meal.swift in Sources */,
 				4001F70422ABB4AD0009CDA1 /* SettingViewModel.swift in Sources */,
@@ -1232,6 +1247,7 @@
 				5E17F981228BE4980046F68D /* RoundedTextFieldViewCell.swift in Sources */,
 				060A7982227C967100F02B30 /* RxYPImagePicker.swift in Sources */,
 				069AD42C2277224A0075E711 /* DayViewModel.swift in Sources */,
+				402FBEA222C8E63D000BBFA3 /* TopTabBarViewModel.swift in Sources */,
 				4001F6F822AB83D10009CDA1 /* AppNavigator.swift in Sources */,
 				405147CA2291498800C9AF8C /* Content.swift in Sources */,
 				40B2142022B635F80040EA9E /* MonthViewController.swift in Sources */,
