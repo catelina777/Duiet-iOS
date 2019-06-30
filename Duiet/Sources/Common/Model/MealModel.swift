@@ -22,24 +22,22 @@ final class MealModel: RealmBaseModel {
     let meals = BehaviorRelay<[Meal]>(value: [])
     let day = BehaviorRelay<Day>(value: Day(date: Date()))
 
-    override init() {
+    init(date: Date = Date()) {
         super.init()
 
-        let now = Date()
-
-        let day = find(day: now)
+        let day = find(day: date)
         observe(day: day)
 
-        let mealResults = find()
+        let mealResults = find(meals: date)
         observe(mealResults: mealResults)
         observe(mealResultsChangeset: mealResults)
     }
 
-    private func find() -> Results<Meal> {
-        let todayStart = Calendar.current.startOfDay(for: .init())
-        let todayEnd = Date(timeInterval: 60 * 60 * 24, since: todayStart)
+    private func find(meals date: Date) -> Results<Meal> {
+        let dayStart = Calendar.current.startOfDay(for: date)
+        let dayEnd = Date(timeInterval: 60 * 60 * 24, since: dayStart)
         let mealResults = realm.objects(Meal.self)
-            .filter("date BETWEEN %@", [todayStart, todayEnd])
+            .filter("date BETWEEN %@", [dayStart, dayEnd])
             .sorted(byKeyPath: "date")
         return mealResults
     }
