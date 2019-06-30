@@ -18,22 +18,26 @@ final class ProgressCardViewCell: RxCollectionViewCell {
     @IBOutlet weak var differenceLabel: UILabel!
     @IBOutlet weak var weightChangeLabel: UILabel!
 
-    func configure(with progress: Observable<(Double, Double)>) {
-        progress
-            .bind(to: bindLabel)
+    func configure(with progress: Observable<(Day, UserInfo)>) {
+       progress
+            .bind(to: bindLabels)
             .disposed(by: disposeBag)
     }
 
-    var bindLabel: Binder<(Double, Double)> {
+    var bindLabels: Binder<(Day, UserInfo)> {
         return Binder(self) { me, progress in
-            let tdee = progress.0
-            let total = progress.1
-            let difference = tdee - total
-            let weightChange = difference / 9
-            me.TDEELabel.text = "\(Int(tdee)) kcal"
-            me.totalLabel.text = "\(Int(total)) kcal"
-            me.differenceLabel.text = "\(Int(difference)) kcal"
-            me.weightChangeLabel.text = "\(Int(weightChange)) g"
+            let tdee = Int(progress.1.TDEE)
+            let totalCalorie = Int(progress.0.totalCalorie)
+            let difference = Double(totalCalorie - tdee)
+            let weightChange = Int(difference / (9 * 0.8))
+            let weightChangeText = weightChange > 0 ?
+                "\(abs(weightChange)) g UP 💪" :
+            "\(abs(weightChange)) g DOWN ⬇️"
+            me.dayLabel.text = "\(progress.0.createdAt.toString())"
+            me.TDEELabel.text = "\(tdee) kcal"
+            me.totalLabel.text = "\(totalCalorie) kcal"
+            me.differenceLabel.text = "\(difference) kcal"
+            me.weightChangeLabel.text = weightChangeText
         }
     }
 }
