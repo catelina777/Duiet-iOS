@@ -27,15 +27,15 @@ extension MonthViewDataSource: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return viewModel.monthModel.days.value.count
+        return viewModel.days.count
     }
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.daySummaryViewCell,
                                                       for: indexPath)!
-        cell.configure(with: viewModel.monthModel.days.value[indexPath.row],
-                       userInfo: viewModel.userInfoModel.userInfo.value)
+        cell.configure(with: viewModel.days[indexPath.row],
+                       userInfo: viewModel.userInfo)
         return cell
     }
 }

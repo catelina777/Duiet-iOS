@@ -14,8 +14,16 @@ final class MonthViewModel {
     let input: Input
     let output: Output
 
-    let monthModel: MonthModel
-    let userInfoModel: UserInfoModel
+    private let monthModel: MonthModel
+    private let userInfoModel: UserInfoModel
+
+    var userInfo: UserInfo {
+        return userInfoModel.userInfo.value
+    }
+
+    var days: [Day] {
+        return monthModel.days.value
+    }
 
     init() {
         monthModel = MonthModel()

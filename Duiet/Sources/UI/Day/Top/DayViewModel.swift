@@ -22,6 +22,10 @@ final class DayViewModel {
     let mealModel: MealModel
     private let disposeBag = DisposeBag()
 
+    var meals: [Meal] {
+        return mealModel.meals.value
+    }
+
     init() {
         self.userInfoModel = UserInfoModel()
         self.mealModel = MealModel()
@@ -47,7 +51,7 @@ final class DayViewModel {
 
         let meal = PublishRelay<Meal>()
 
-        // MARK: - Screen transition can't be made without viewDidAppear or later
+        /// Screen transition can't be made without viewDidAppear or later
         let showDetail = Observable.combineLatest(pickedImage, meal)
             .withLatestFrom(_viewDidAppear) { ($0, $1) }
             .map { ($0.0.0, $0.0.1) }
@@ -55,13 +59,9 @@ final class DayViewModel {
 
         let editDetail = _selectedItem
 
-        let totalCalories = mealModel.meals
-            .map { $0.map { $0.totalCalorie } }
-            .map { $0.reduce(into: 0) { $0 += $1} }
-
-        let tdee = Observable.of(userInfoModel.userInfo.value.TDEE)
-
-        let progress = Observable.combineLatest(tdee, totalCalories)
+        /// I also added meals because I want to detect the update of meal information
+        let progress = Observable.combineLatest(mealModel.day, userInfoModel.userInfo, mealModel.meals)
+            .map { ($0.0, $0.1) }
 
         output = Output(showDetail: showDetail,
                         editDetail: editDetail.asObservable(),
@@ -75,7 +75,6 @@ final class DayViewModel {
             .bind(to: meal)
             .disposed(by: disposeBag)
 
-        // MARK: - Doing here because the specification of Realm.rx.add is bad and I can't bind at one time
         meal
             .map { $0 }
             .bind(to: mealModel.rx.addMeal)
@@ -96,6 +95,6 @@ extension DayViewModel {
         let showDetail: Observable<(UIImage?, Meal)>
         let editDetail: Observable<(MealCardViewCell, Meal)>
         let changeData: Observable<RealmChangeset?>
-        let progress: Observable<(Double, Double)>
+        let progress: Observable<(Day, UserInfo)>
     }
 }
