@@ -14,6 +14,8 @@ import RxRelay
 
 final class YearModel: RealmBaseModel {
 
+    static let shared = YearModel()
+
     let months = BehaviorRelay<[Month]>(value: [])
 
     override init() {

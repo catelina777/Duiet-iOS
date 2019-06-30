@@ -27,8 +27,8 @@ final class DayViewModel {
     }
 
     init() {
-        self.userInfoModel = UserInfoModel()
-        self.mealModel = MealModel()
+        self.userInfoModel = UserInfoModel.shared
+        self.mealModel = MealModel.shared
 
         let _viewDidAppear = PublishRelay<Void>()
         let _viewDidDisappear = PublishRelay<Void>()
