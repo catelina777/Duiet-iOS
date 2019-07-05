@@ -8,13 +8,13 @@
 
 import UIKit
 
-final class YearViewController: BaseCollectionViewController, NavigationBarCustomizable {
+class YearViewController: BaseCollectionViewController, NavigationBarCustomizable {
 
     private let viewModel: YearViewModel
     private let dataSource: YearViewDataSource
 
-    init() {
-        self.viewModel = YearViewModel()
+    init(viewModel: YearViewModel) {
+        self.viewModel = viewModel
         self.dataSource = YearViewDataSource(viewModel: viewModel)
         super.init(nibName: YearViewController.className, bundle: nil)
     }

@@ -23,7 +23,7 @@ class InputMealViewModel {
 
     init(mealImage: UIImage?,
          meal: Meal,
-         model: MealModel) {
+         model: DayModelProtocol) {
 
         self.mealImage = mealImage
         self.meal = meal
@@ -83,19 +83,19 @@ class InputMealViewModel {
         // MARK: - Processing to save data
         _saveContent
             .map { (meal, $0) }
-            .bind(to: model.rx.addContent)
+            .bind(to: model.addContent)
             .disposed(by: disposeBag)
 
         name.withLatestFrom(selectedMealLabel) { ($1, $0) }
-            .bind(to: model.rx.saveName)
+            .bind(to: model.saveName)
             .disposed(by: disposeBag)
 
         calorie.withLatestFrom(selectedMealLabel) { ($1, $0) }
-            .bind(to: model.rx.saveCalorie)
+            .bind(to: model.saveCalorie)
             .disposed(by: disposeBag)
 
         multiple.withLatestFrom(selectedMealLabel) { ($1, $0) }
-            .bind(to: model.rx.saveMultiple)
+            .bind(to: model.saveMultiple)
             .disposed(by: disposeBag)
 
         // MARK: - Processing to delete content
@@ -104,7 +104,7 @@ class InputMealViewModel {
         let prepareDelete = Observable.combineLatest(_meal, _targetContent)
         _deleteMealLabel.withLatestFrom(prepareDelete)
             .map { $0 }
-            .bind(to: model.rx.deleteContent)
+            .bind(to: model.deleteContent)
             .disposed(by: disposeBag)
 
         // MARK: - Send nil to the currently selected label so that it does not refer to the deleted object when the content deletion is completed

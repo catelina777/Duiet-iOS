@@ -30,9 +30,10 @@ final class InputMealViewController: BaseTableViewController, KeyboardFrameTrack
 
     init(mealImage: UIImage?,
          meal: Meal,
-         model: MealModel) {
+         model: DayModelProtocol) {
         self.viewModel = InputMealViewModel(mealImage: mealImage,
-                                            meal: meal, model: model)
+                                            meal: meal,
+                                            model: model)
         self.keyboardTrackViewModel = KeyboardTrackViewModel()
         self.dataSource = InputMealDataSource(viewModel: viewModel,
                                               keyboardTrackViewModel: keyboardTrackViewModel)

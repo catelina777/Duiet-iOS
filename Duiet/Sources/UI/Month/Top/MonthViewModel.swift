@@ -14,7 +14,7 @@ final class MonthViewModel {
     let input: Input
     let output: Output
 
-    private let monthModel: MonthModel
+    private let monthModel: MonthModelProtocol
     private let userInfoModel: UserInfoModel
 
     var userInfo: UserInfo {
@@ -25,8 +25,15 @@ final class MonthViewModel {
         return monthModel.days.value
     }
 
-    init() {
-        monthModel = MonthModel.shared
+    private let coordinator: MonthCoordinator
+
+    private let disposeBag = DisposeBag()
+
+    init(coordinator: MonthCoordinator,
+         model: MonthModelProtocol,
+         month: Month? = nil) {
+        self.coordinator = coordinator
+        monthModel = model
         userInfoModel = UserInfoModel.shared
         input = Input()
         output = Output()

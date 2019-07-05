@@ -50,7 +50,7 @@ final class FillInformationViewController: BaseTableViewController, NavigationBa
 
     private var showMain: Binder<Void> {
         return Binder(self) { me, _ in
-            AppNavigator.shared.start(with: me)
+//            AppNavigator.shared.start(with: me)
         }
     }
 }

@@ -19,16 +19,22 @@ final class DayViewModel {
     let output: Output
 
     let userInfoModel: UserInfoModel
-    let mealModel: MealModel
+    let dayModel: DayModelProtocol
+
+    private let coordinator: DayCoordinator
+
     private let disposeBag = DisposeBag()
 
     var meals: [Meal] {
-        return mealModel.meals.value
+        return dayModel.meals.value
     }
 
-    init(date: Date) {
+    init(coordinator: DayCoordinator,
+         model: DayModelProtocol,
+         date: Date? = nil) {
+        self.coordinator = coordinator
         self.userInfoModel = UserInfoModel.shared
-        self.mealModel = MealModel(date: date)
+        self.dayModel = model
 
         let _viewDidAppear = PublishRelay<Void>()
         let _viewDidDisappear = PublishRelay<Void>()
@@ -60,12 +66,12 @@ final class DayViewModel {
         let editDetail = _selectedItem
 
         /// I also added meals because I want to detect the update of meal information
-        let progress = Observable.combineLatest(mealModel.day, userInfoModel.userInfo, mealModel.meals)
+        let progress = Observable.combineLatest(dayModel.day, userInfoModel.userInfo, dayModel.meals)
             .map { ($0.0, $0.1) }
 
         output = Output(showDetail: showDetail,
                         editDetail: editDetail.asObservable(),
-                        changeData: mealModel.changeData.asObservable(),
+                        changeData: dayModel.changeData.asObservable(),
                         progress: progress)
 
         pickedImage
@@ -77,7 +83,7 @@ final class DayViewModel {
 
         meal
             .map { $0 }
-            .bind(to: mealModel.rx.addMeal)
+            .bind(to: dayModel.addMeal)
             .disposed(by: disposeBag)
     }
 }

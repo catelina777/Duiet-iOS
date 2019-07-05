@@ -31,10 +31,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         switch isLaunchedBefore {
         case false:
             UserDefaults.standard.set(true, forKey: key)
-            AppNavigator.shared.firstStart(with: window)
+            AppCoordinator.shared.initialStart(in: window)
             print("is first launch 🍻🍻🍻")
         case true:
-            AppNavigator.shared.start(with: window)
+            AppCoordinator.shared.start(in: window)
             print("is not first launch 🍣🍣🍣")
         }
 

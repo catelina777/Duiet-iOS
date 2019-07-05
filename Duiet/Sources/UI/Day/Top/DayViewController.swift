@@ -13,13 +13,14 @@ import RealmSwift
 import RxRealm
 import Hero
 
-final class DayViewController: BaseCollectionViewController, NavigationBarCustomizable {
+class DayViewController: BaseCollectionViewController, NavigationBarCustomizable {
 
     let viewModel: DayViewModel
     let dataSource: DayViewDataSource
 
-    init(date: Date = Date()) {
-        self.viewModel = DayViewModel(date: date)
+    init(date: Date? = nil,
+         viewModel: DayViewModel) {
+        self.viewModel = viewModel
         self.dataSource = DayViewDataSource(viewModel: viewModel)
         super.init(nibName: DayViewController.className, bundle: nil)
     }
@@ -63,7 +64,7 @@ final class DayViewController: BaseCollectionViewController, NavigationBarCustom
         return Binder(self) { me, tuple in
             let vc = InputMealViewController(mealImage: tuple.0,
                                              meal: tuple.1,
-                                             model: me.viewModel.mealModel)
+                                             model: me.viewModel.dayModel)
             me.present(vc, animated: true, completion: nil)
             print("go to input meal view!!! ✌️✌️✌️")
         }
@@ -76,7 +77,7 @@ final class DayViewController: BaseCollectionViewController, NavigationBarCustom
 
             let vc = InputMealViewController(mealImage: tuple.0.imageView.image,
                                              meal: tuple.1,
-                                             model: me.viewModel.mealModel)
+                                             model: me.viewModel.dayModel)
             vc.hero.isEnabled = true
             vc.hero.modalAnimationType = .auto
             vc.headerView.hero.id = heroID

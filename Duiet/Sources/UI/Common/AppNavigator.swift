@@ -12,11 +12,23 @@ final class AppNavigator {
 
     static let shared = AppNavigator()
 
+    /*
     func firstStart(with window: UIWindow) {
         let vc = WalkthroughViewController()
         let nc = UINavigationController(rootViewController: vc)
         window.rootViewController = nc
         window.makeKeyAndVisible()
+    }
+
+    func start(with window: UIWindow) {
+//        let tabBarController = TopTabBarController()
+//        window.rootViewController = tabBarController
+//        window.makeKeyAndVisible()
+    }
+
+    func start(with vc: UIViewController) {
+//        let tabBarController = TopTabBarController()
+//        vc.present(tabBarController, animated: true, completion: nil)
     }
 
     func start(with window: UIWindow) {
@@ -65,4 +77,5 @@ final class AppNavigator {
         nc.tabBarItem = scene.tabBarItem
         return nc
     }
+    */
 }
