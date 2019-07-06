@@ -48,6 +48,10 @@ final class DayModel: RealmBaseModel, DayModelProtocol {
         observe(mealResultsChangeset: mealResults)
     }
 
+    deinit {
+        print("🧹🧹🧹 Day Model Parge 🧹🧹🧹")
+    }
+
     var addMeal: Binder<Meal> {
         return Binder(self) { me, meal in
             me.repository.add(meal: meal, to: me.day.value)

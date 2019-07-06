@@ -17,8 +17,8 @@ final class FillInformationViewController: BaseTableViewController, NavigationBa
 
     let keyboardTrackViewModel: KeyboardTrackViewModel
 
-    init() {
-        self.viewModel = FillInformationViewModel()
+    init(viewModel: FillInformationViewModel) {
+        self.viewModel = viewModel
         self.keyboardTrackViewModel = KeyboardTrackViewModel()
         dataSource = FillInformationViewDataSource(viewModel: viewModel,
                                                    keyboardTrackViewModel: keyboardTrackViewModel)

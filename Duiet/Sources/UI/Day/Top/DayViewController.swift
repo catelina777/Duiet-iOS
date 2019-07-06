@@ -47,42 +47,9 @@ class DayViewController: BaseCollectionViewController, NavigationBarCustomizable
             .bind(to: viewModel.input.addButtonTap)
             .disposed(by: disposeBag)
 
-        viewModel.output.showDetail
-            .bind(to: showDetail)
-            .disposed(by: disposeBag)
-
-        viewModel.output.editDetail
-            .bind(to: editDetail)
-            .disposed(by: disposeBag)
-
         viewModel.output.changeData
             .bind(to: applyChange)
             .disposed(by: disposeBag)
-    }
-
-    private var showDetail: Binder<(UIImage?, Meal)> {
-        return Binder(self) { me, tuple in
-            let vc = InputMealViewController(mealImage: tuple.0,
-                                             meal: tuple.1,
-                                             model: me.viewModel.dayModel)
-            me.present(vc, animated: true, completion: nil)
-            print("go to input meal view!!! ✌️✌️✌️")
-        }
-    }
-
-    private var editDetail: Binder<(MealCardViewCell, Meal)> {
-        return Binder(self) { me, tuple in
-            let heroID = "meal\(tuple.1.date)"
-            tuple.0.imageView.hero.id = heroID
-
-            let vc = InputMealViewController(mealImage: tuple.0.imageView.image,
-                                             meal: tuple.1,
-                                             model: me.viewModel.dayModel)
-            vc.hero.isEnabled = true
-            vc.hero.modalAnimationType = .auto
-            vc.headerView.hero.id = heroID
-            me.present(vc, animated: true, completion: nil)
-        }
     }
 
     private var applyChange: Binder<RealmChangeset?> {

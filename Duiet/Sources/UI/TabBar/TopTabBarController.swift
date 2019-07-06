@@ -12,9 +12,11 @@ class TopTabBarController: UITabBarController {
 
     private let viewModel: TopTabBarViewModel
 
-    init(viewModel: TopTabBarViewModel) {
+    init(viewModel: TopTabBarViewModel,
+         navigationControllers: [UIViewController]) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        self.viewControllers = navigationControllers
     }
 
     required init?(coder aDecoder: NSCoder) {

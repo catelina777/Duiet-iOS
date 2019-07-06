@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import RxRelay
 import RealmSwift
+import RxRealm
 
 class InputMealViewModel {
 
@@ -20,13 +21,17 @@ class InputMealViewModel {
     let output: Output
 
     private let disposeBag = DisposeBag()
+    private let dayModel: DayModelProtocol
+    private let coordinator: DayCoordinator
 
-    init(mealImage: UIImage?,
+    init(coordinator: DayCoordinator,
+         mealImage: UIImage?,
          meal: Meal,
          model: DayModelProtocol) {
-
+        self.coordinator = coordinator
         self.mealImage = mealImage
         self.meal = meal
+        self.dayModel = model
 
         let _addMealLabel = PublishRelay<MealLabelView>()
         let _selectedMealLabel = PublishRelay<MealLabelView?>()
@@ -35,6 +40,7 @@ class InputMealViewModel {
         let _nameTextInput = PublishRelay<String?>()
         let _calorieTextInput = PublishRelay<String?>()
         let _multipleTextInput = PublishRelay<String?>()
+        let _dismiss = PublishRelay<Void>()
 
         input = Input(addMealLabel: _addMealLabel.asObserver(),
                       selectedMealLabel: _selectedMealLabel.asObserver(),
@@ -42,7 +48,8 @@ class InputMealViewModel {
                       saveContent: _saveContent.asObserver(),
                       nameTextInput: _nameTextInput.asObserver(),
                       calorieTextInput: _calorieTextInput.asObserver(),
-                      multipleTextInput: _multipleTextInput.asObserver())
+                      multipleTextInput: _multipleTextInput.asObserver(),
+                      dismiss: _dismiss.asObserver())
 
         let showLabelViews = Observable.of(meal.contents)
             .take(1)
@@ -99,7 +106,7 @@ class InputMealViewModel {
             .disposed(by: disposeBag)
 
         // MARK: - Processing to delete content
-        let _meal = Observable.just(meal)
+        let _meal = Observable.from(object: meal)
         let _targetContent = selectedMealLabel.flatMap { $0.content }
         let prepareDelete = Observable.combineLatest(_meal, _targetContent)
         _deleteMealLabel.withLatestFrom(prepareDelete)
@@ -114,6 +121,15 @@ class InputMealViewModel {
                 _selectedMealLabel.accept(nil)
             })
             .disposed(by: disposeBag)
+
+        _dismiss
+            .asDriver(onErrorDriveWith: .empty())
+            .drive(onNext: coordinator.dismiss)
+            .disposed(by: disposeBag)
+    }
+
+    deinit {
+        print("🧹🧹🧹 Input Meal View Model parge 🧹🧹🧹")
     }
 }
 
@@ -127,6 +143,7 @@ extension InputMealViewModel {
         let nameTextInput: AnyObserver<String?>
         let calorieTextInput: AnyObserver<String?>
         let multipleTextInput: AnyObserver<String?>
+        let dismiss: AnyObserver<Void>
     }
 
     struct Output {

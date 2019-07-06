@@ -12,18 +12,51 @@ final class DayCoordinator: Coordinator {
 
     private let navigator: UINavigationController
     private let tabViewModel: TopTabBarViewModel
+    private var viewController: TopDayViewController!
 
     init(navigator: UINavigationController,
          tabViewModel: TopTabBarViewModel) {
         self.navigator = navigator
         self.tabViewModel = tabViewModel
+        let repository = DayRepository()
+        let model = DayModel(repository: repository)
+        self.viewController = TopDayViewController(viewModel: .init(coordinator: self, model: model),
+                                                   tabViewModel: tabViewModel)
     }
 
     func start() {
+        navigator.pushViewController(viewController, animated: false)
+    }
+
+    func showDetail(image: UIImage?, meal: Meal) {
         let repository = DayRepository()
         let model = DayModel(repository: repository)
-        let topDayVC = TopDayViewController(viewModel: .init(coordinator: self, model: model),
-                                            tabViewModel: tabViewModel)
-        navigator.pushViewController(topDayVC, animated: false)
+        let viewModel = InputMealViewModel(coordinator: self,
+                                           mealImage: image,
+                                           meal: meal,
+                                           model: model)
+        let vc = InputMealViewController(viewModel: viewModel)
+        viewController.present(vc, animated: true, completion: nil)
+    }
+
+    func showEdit(mealCard: MealCardViewCell, meal: Meal) {
+        let heroID = "\(meal.date.timeIntervalSince1970)"
+        mealCard.imageView.hero.id = heroID
+
+        let repository = DayRepository()
+        let model = DayModel(repository: repository)
+        let viewModel = InputMealViewModel(coordinator: self,
+                                           mealImage: mealCard.imageView.image,
+                                           meal: meal,
+                                           model: model)
+        let vc = InputMealViewController(viewModel: viewModel)
+        vc.hero.isEnabled = true
+        vc.hero.modalAnimationType = .auto
+        vc.headerView.hero.id = heroID
+        navigator.present(vc, animated: true, completion: nil)
+    }
+
+    func dismiss() {
+        navigator.dismiss(animated: true, completion: nil)
     }
 }

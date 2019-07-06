@@ -59,19 +59,12 @@ class WalkthroughViewController: UIViewController {
         super.viewDidLoad()
 
         nextButton.rx.tap
-            .bind(to: didTapNextButton)
+            .bind(to: viewModel.input.pushFillInformation)
             .disposed(by: disposeBag)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-    }
-
-    var didTapNextButton: Binder<Void> {
-        return Binder(self) { me, _  in
-            let vc = FillInformationViewController()
-            me.navigationController?.pushViewController(vc, animated: true)
-        }
     }
 }

@@ -11,18 +11,14 @@ import UIKit
 final class TopTabBarCoordinator: Coordinator {
 
     private let navigator: UINavigationController
-    private let viewModel: TopTabBarViewModel
-    private let viewControllers: [UIViewController]
+    let controller: TopTabBarController
 
-    init(navigator: UINavigationController, viewModel: TopTabBarViewModel, viewControllers: [UIViewController]) {
+    init(navigator: UINavigationController, viewModel: TopTabBarViewModel, navigationControllers: [UIViewController]) {
         self.navigator = navigator
-        self.viewModel = viewModel
-        self.viewControllers = viewControllers
+        self.controller = TopTabBarController(viewModel: viewModel, navigationControllers: navigationControllers)
     }
 
     func start() {
-        let vc = TopTabBarController(viewModel: viewModel)
-        vc.viewControllers = viewControllers
-        navigator.pushViewController(vc, animated: false)
+        navigator.pushViewController(controller, animated: false)
     }
 }

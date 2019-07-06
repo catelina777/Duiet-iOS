@@ -10,20 +10,18 @@ import UIKit
 
 final class AppCoordinator {
 
-    static let shared = AppCoordinator()
+    private let window: UIWindow
 
-    var walkthroughCoordinator: WalkthrouthCoordinator!
-    var topTabBarCoordinator: TopTabBarCoordinator!
+    private var walkthroughCoordinator: WalkthrouthCoordinator!
+    private let walkthroughNavigator: UINavigationController
+    private var topTabBarCoordinator: TopTabBarCoordinator!
+    private let topTabBarNavigator: UINavigationController
 
-    func initialStart(in window: UIWindow) {
-        let navigator = UINavigationController()
-        walkthroughCoordinator = WalkthrouthCoordinator(navigator: navigator)
-        window.rootViewController = navigator
-        walkthroughCoordinator.start()
-        window.makeKeyAndVisible()
-    }
+    init(window: UIWindow) {
+        self.window = window
+        self.topTabBarNavigator = UINavigationController()
+        self.walkthroughNavigator = UINavigationController()
 
-    func start(in window: UIWindow) {
         let dayNC = get(type: .day)
         let monthNC = get(type: .month)
         let yearNC = get(type: .year)
@@ -36,11 +34,22 @@ final class AppCoordinator {
         navigatorInit(type: .year, navigationController: yearNC, tabViewModel: viewModel)
         navigatorInit(type: .setting, navigationController: settingNC, tabViewModel: viewModel)
 
-        let navigator = UINavigationController()
-        topTabBarCoordinator = TopTabBarCoordinator(navigator: navigator,
-                                                    viewModel: viewModel,
-                                                    viewControllers: [dayNC, monthNC, yearNC, settingNC])
-        window.rootViewController = navigator
+        self.topTabBarCoordinator = TopTabBarCoordinator(navigator: topTabBarNavigator,
+                                                         viewModel: viewModel,
+                                                         navigationControllers: [dayNC, monthNC, yearNC, settingNC])
+
+        self.walkthroughCoordinator = WalkthrouthCoordinator(navigator: walkthroughNavigator,
+                                                             topTabBarCoordinator: topTabBarCoordinator)
+    }
+
+    func initialStart() {
+        window.rootViewController = walkthroughNavigator
+        walkthroughCoordinator.start()
+        window.makeKeyAndVisible()
+    }
+
+    func start() {
+        window.rootViewController = topTabBarNavigator
         topTabBarCoordinator.start()
         window.makeKeyAndVisible()
     }
@@ -51,7 +60,9 @@ final class AppCoordinator {
         return nc
     }
 
-    private func navigatorInit(type: SceneType, navigationController: UINavigationController, tabViewModel: TopTabBarViewModel) {
+    private func navigatorInit(type: SceneType,
+                               navigationController: UINavigationController,
+                               tabViewModel: TopTabBarViewModel) {
         let coordinator: Coordinator
         switch type {
         case .day:

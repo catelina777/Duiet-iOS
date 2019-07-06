@@ -69,9 +69,7 @@ final class DayViewModel {
         let progress = Observable.combineLatest(dayModel.day, userInfoModel.userInfo, dayModel.meals)
             .map { ($0.0, $0.1) }
 
-        output = Output(showDetail: showDetail,
-                        editDetail: editDetail.asObservable(),
-                        changeData: dayModel.changeData.asObservable(),
+        output = Output(changeData: dayModel.changeData.asObservable(),
                         progress: progress)
 
         pickedImage
@@ -84,6 +82,22 @@ final class DayViewModel {
         meal
             .map { $0 }
             .bind(to: dayModel.addMeal)
+            .disposed(by: disposeBag)
+
+        showDetail
+            .asDriver(onErrorDriveWith: .empty())
+            .drive(onNext: { [weak self] image, meal in
+                guard let self = self else { return }
+                self.coordinator.showDetail(image: image, meal: meal)
+            })
+            .disposed(by: disposeBag)
+
+        editDetail
+            .asDriver(onErrorDriveWith: .empty())
+            .drive(onNext: { [weak self] card, meal in
+                guard let self = self else { return }
+                self.coordinator.showEdit(mealCard: card, meal: meal)
+            })
             .disposed(by: disposeBag)
     }
 }
@@ -98,8 +112,6 @@ extension DayViewModel {
     }
 
     struct Output {
-        let showDetail: Observable<(UIImage?, Meal)>
-        let editDetail: Observable<(MealCardViewCell, Meal)>
         let changeData: Observable<RealmChangeset?>
         let progress: Observable<(Day, UserInfo)>
     }
