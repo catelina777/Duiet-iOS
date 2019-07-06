@@ -122,6 +122,7 @@ class InputMealViewModel {
             })
             .disposed(by: disposeBag)
 
+        // MARK - transition
         _dismiss
             .asDriver(onErrorDriveWith: .empty())
             .drive(onNext: coordinator.dismiss)
