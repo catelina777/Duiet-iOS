@@ -84,7 +84,7 @@ final class DayViewModel {
             .bind(to: dayModel.addMeal)
             .disposed(by: disposeBag)
 
-        // MARK - transition
+        // MARK: - Processing to transition
         showDetail
             .asDriver(onErrorDriveWith: .empty())
             .drive(onNext: { [weak self] image, meal in

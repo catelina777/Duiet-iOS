@@ -114,7 +114,10 @@ class InputMealViewModel {
             .bind(to: model.deleteContent)
             .disposed(by: disposeBag)
 
-        // MARK: - Send nil to the currently selected label so that it does not refer to the deleted object when the content deletion is completed
+        /*
+         Send nil to the currently selected label so that
+         it does not refer to the deleted object when the content deletion is completed
+        */
         model.contentDidDelete.withLatestFrom(selectedMealLabel)
             .subscribe(onNext: {
                 $0.isHidden = true
@@ -122,10 +125,13 @@ class InputMealViewModel {
             })
             .disposed(by: disposeBag)
 
-        // MARK - transition
+        // MARK: - Processing to transition
         _dismiss
             .asDriver(onErrorDriveWith: .empty())
-            .drive(onNext: coordinator.dismiss)
+            .drive(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.coordinator.dismiss()
+            })
             .disposed(by: disposeBag)
     }
 

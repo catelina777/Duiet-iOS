@@ -18,7 +18,7 @@ final class YearCoordinator: Coordinator {
         self.navigator = navigator
         self.tabViewModel = tabViewModel
     }
-    
+
     func start() {
         let vc = TopYearViewController(viewModel: .init(coordinator: self),
                                        tabViewModel: tabViewModel)

@@ -125,7 +125,7 @@ final class FillInformationViewModel {
             .bind(to: Realm.rx.add(update: true))
             .disposed(by: disposeBag)
 
-        // MARK - transition
+        // MARK: - Processing to transition
         didTapComplete
             .asDriver(onErrorDriveWith: .empty())
             .drive(onNext: {

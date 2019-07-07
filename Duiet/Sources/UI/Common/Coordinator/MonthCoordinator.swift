@@ -18,7 +18,7 @@ final class MonthCoordinator: Coordinator {
         self.navigator = navigator
         self.tabViewModel = tabViewModel
     }
-    
+
     func start() {
         let repository = MonthRepository()
         let model = MonthModel(repository: repository)

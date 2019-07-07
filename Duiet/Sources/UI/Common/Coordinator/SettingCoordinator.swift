@@ -18,7 +18,7 @@ final class SettingCoordinator: Coordinator {
         self.navigator = navigator
         self.tabViewModel = tabViewModel
     }
-    
+
     func start() {
         let vc = SettingViewController(viewModel: .init(coordinator: self))
         navigator.pushViewController(vc, animated: false)

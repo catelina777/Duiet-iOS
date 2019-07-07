@@ -26,7 +26,7 @@ final class WalkthroughViewModel {
         input = Input(pushFillInformation: _pushFillInformation.asObserver())
         output = Output()
 
-        // MARK - transition
+        // MARK: - Processing to transition
         _pushFillInformation
             .asDriver(onErrorDriveWith: .empty())
             .drive(onNext: coordinator.showFillInformation)
