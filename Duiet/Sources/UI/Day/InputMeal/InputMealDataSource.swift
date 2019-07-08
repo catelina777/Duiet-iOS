@@ -27,6 +27,10 @@ final class InputMealDataSource: NSObject {
         tableView.register(R.nib.labelCanvasViewCell)
         tableView.register(R.nib.inputMealCalorieViewCell)
     }
+
+    deinit {
+        print("🧹🧹🧹 Input Meal Datasource parge 🧹🧹🧹")
+    }
 }
 
 extension InputMealDataSource: UITableViewDataSource {

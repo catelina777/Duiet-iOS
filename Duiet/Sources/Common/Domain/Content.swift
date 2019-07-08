@@ -29,22 +29,16 @@ final class Content: Object {
 
 extension Content {
 
-    func convert(with viewModel: InputMealViewModel, view: LabelCanvasViewCell) -> MealLabelView {
+    func convert() -> MealLabelView {
         let mealLabelView = R.nib.mealLabelView.firstView(owner: nil)!
-        let pointX = CGFloat(relativeX) * view.frame.width
-        let pointY = CGFloat(relativeY) * view.frame.height
-        let point = CGPoint(x: pointX, y: pointY)
-        mealLabelView.configure(with: view, at: point)
-        mealLabelView.configure(with: viewModel)
-        mealLabelView.content.accept(self)
-        mealLabelView.mealLabel.text = "\(Int(calorie * (multiple == 0 ? 1 : multiple)))"
+        mealLabelView.configure(with: self)
         return mealLabelView
     }
 }
 
 extension List where Element == Content {
 
-    func convert(with viewModel: InputMealViewModel, view: LabelCanvasViewCell) -> [MealLabelView] {
-        return self.map { $0.convert(with: viewModel, view: view) }
+    func convert() -> [MealLabelView] {
+        return self.map { $0.convert() }
     }
 }

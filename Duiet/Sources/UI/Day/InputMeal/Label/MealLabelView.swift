@@ -27,10 +27,13 @@ final class MealLabelView: UIView {
     private let disposeBag = DisposeBag()
 
     func configure(with viewModel: InputMealViewModel) {
+
         self.rx.tapGesture()
             .when(.recognized)
-            .withLatestFrom(Observable.of(self))
-            .bind(to: viewModel.input.selectedMealLabel)
+            .subscribe(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                viewModel.input.selectedMealLabel.on(.next(self))
+            })
             .disposed(by: disposeBag)
 
         // MARK: - Tell ViewModel new content information when tapping a new label
@@ -45,20 +48,8 @@ final class MealLabelView: UIView {
             .disposed(by: disposeBag)
     }
 
-    func configure(with view: UIView, at point: CGPoint) {
-        // Add MealLavelView to SuperView
-        view.addSubview(self)
-        self.clipsToBounds = true
-        let width = view.bounds.width * 0.3
-        let height = width * 0.4
-        let frame = CGRect(x: point.x - width / 2, y: point.y - height / 2, width: width, height: height)
-        self.frame = frame
-
-        // Setup Content Model
-        let relativeX = point.x / view.frame.width
-        let relativeY = point.y / view.frame.height
-        let _content = Content(relativeX: Double(relativeX),
-                               relativeY: Double(relativeY))
-        self.content.accept(_content)
+    func configure(with content: Content) {
+        self.content.accept(content)
+        self.mealLabel.text = "\(Int(content.calorie * (content.multiple == 0 ? 1 : content.multiple)))"
     }
 }
