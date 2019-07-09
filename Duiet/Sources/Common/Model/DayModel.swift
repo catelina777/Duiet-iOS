@@ -91,6 +91,7 @@ final class DayModel: RealmBaseModel, DayModelProtocol {
     var deleteContent: Binder<(Meal, Content)> {
         return Binder(self) { me, tuple in
             me.repository.delete(content: tuple.1, of: tuple.0)
+            me.contentDidDelete.accept(())
         }
     }
 

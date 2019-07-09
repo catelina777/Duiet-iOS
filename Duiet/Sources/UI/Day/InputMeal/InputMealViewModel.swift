@@ -119,9 +119,10 @@ class InputMealViewModel {
          it does not refer to the deleted object when the content deletion is completed
         */
         model.contentDidDelete.withLatestFrom(selectedMealLabel)
+            .observeOn(MainScheduler.instance)
             .subscribe(onNext: {
-                $0.isHidden = true
                 _selectedMealLabel.accept(nil)
+                $0.isHidden = true
             })
             .disposed(by: disposeBag)
 
