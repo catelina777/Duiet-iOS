@@ -82,6 +82,7 @@
 		4001F70F22ABF0D80009CDA1 /* YearViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4001F70E22ABF0D80009CDA1 /* YearViewController.swift */; };
 		4001F71122ABF0EB0009CDA1 /* YearViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4001F71022ABF0EB0009CDA1 /* YearViewController.xib */; };
 		4001F71322ABF1AC0009CDA1 /* BaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4001F71222ABF1AC0009CDA1 /* BaseCollectionViewController.swift */; };
+		402260E322D615F50057BC9E /* MealLabelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402260E222D615F50057BC9E /* MealLabelViewModel.swift */; };
 		402FBE9F22C8D019000BBFA3 /* TopTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402FBE9E22C8D019000BBFA3 /* TopTabBarController.swift */; };
 		402FBEA222C8E63D000BBFA3 /* TopTabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402FBEA122C8E63D000BBFA3 /* TopTabBarViewModel.swift */; };
 		403E952E22CE3D7800EFF459 /* TopDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403E952D22CE3D7800EFF459 /* TopDayViewController.swift */; };
@@ -243,6 +244,7 @@
 		4001F70E22ABF0D80009CDA1 /* YearViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearViewController.swift; sourceTree = "<group>"; };
 		4001F71022ABF0EB0009CDA1 /* YearViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YearViewController.xib; sourceTree = "<group>"; };
 		4001F71222ABF1AC0009CDA1 /* BaseCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewController.swift; sourceTree = "<group>"; };
+		402260E222D615F50057BC9E /* MealLabelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealLabelViewModel.swift; sourceTree = "<group>"; };
 		402FBE9E22C8D019000BBFA3 /* TopTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTabBarController.swift; sourceTree = "<group>"; };
 		402FBEA122C8E63D000BBFA3 /* TopTabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTabBarViewModel.swift; sourceTree = "<group>"; };
 		403E952D22CE3D7800EFF459 /* TopDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopDayViewController.swift; sourceTree = "<group>"; };
@@ -569,6 +571,7 @@
 			isa = PBXGroup;
 			children = (
 				06932AC722801AEB00CFA05C /* MealLabelView.swift */,
+				402260E222D615F50057BC9E /* MealLabelViewModel.swift */,
 				06932AC522801AC500CFA05C /* MealLabelView.xib */,
 			);
 			path = Label;
@@ -1367,6 +1370,7 @@
 				4001F70022ABB43B0009CDA1 /* SettingViewController.swift in Sources */,
 				5E9EE7CD22C45FAD00AF5D82 /* Date.extension.swift in Sources */,
 				0622EA37226A29D600E87F22 /* ActivityLevel.swift in Sources */,
+				402260E322D615F50057BC9E /* MealLabelViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

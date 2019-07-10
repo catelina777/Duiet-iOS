@@ -23,6 +23,8 @@ final class MealLabelView: UIView {
         }
     }
 
+    var viewModel: MealLabelViewModel!
+
     let content = BehaviorRelay<Content>(value: Content())
     private let disposeBag = DisposeBag()
 
