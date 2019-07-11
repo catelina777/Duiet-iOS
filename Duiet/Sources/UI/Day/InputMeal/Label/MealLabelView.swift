@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxRelay
+import RxCocoa
 
 final class MealLabelView: UIView {
 
@@ -27,6 +28,51 @@ final class MealLabelView: UIView {
 
     let content = BehaviorRelay<Content>(value: Content())
     private let disposeBag = DisposeBag()
+
+    func configure(with content: Content, viewModel: NewInputMealViewModel) {
+        self.viewModel = MealLabelViewModel(content: content)
+
+        self.rx.tapGesture()
+            .when(.recognized)
+            .subscribe(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                viewModel.input.selectedMealLabelViewModel.on(.next(self.viewModel))
+            })
+            .disposed(by: disposeBag)
+
+        self.rx.tapGesture()
+            .when(.recognized)
+            .subscribe(onNext: { [weak self] _ in
+                guard let me = self else { return }
+                let content = me.viewModel.content
+                viewModel.input.calorieTextInput.on(.next("\(content.calorie)"))
+                viewModel.input.multipleTextInput.on(.next("\(content.multiple)"))
+                viewModel.input.nameTextInput.on(.next(content.name))
+            })
+            .disposed(by: disposeBag)
+
+        viewModel.output.updateLabelText
+            .bind(to: updateLabelText)
+            .disposed(by: disposeBag)
+
+        viewModel.output.hideMealLabel
+            .bind(to: hideMealLabel)
+            .disposed(by: disposeBag)
+    }
+
+    var updateLabelText: Binder<Content> {
+        return Binder(self) { me, content in
+            let calorie = content.calorie
+            let multiple = content.multiple
+            me.mealLabel.text = "\(Int(calorie * (multiple == 0 ? 1 : multiple)))"
+        }
+    }
+
+    var hideMealLabel: Binder<Void> {
+        return Binder(self) { me, _ in
+            me.isHidden = true
+        }
+    }
 
     func configure(with viewModel: InputMealViewModel) {
 

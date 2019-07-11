@@ -25,15 +25,17 @@ final class MealLabelViewModel {
     init(content: Content) {
         _content = BehaviorRelay<Content>(value: content)
 
-        let _didContentUpdate = PublishRelay<Content>()
-        let _didDeleteContent = PublishRelay<Void>()
-        input = Input(didContentUpdate: _didContentUpdate.asObserver(),
-                      didDeleteContent: _didDeleteContent.asObserver())
+        let _contentDidUpdate = PublishRelay<Content>()
+        let _contentDidDelete = PublishRelay<Void>()
+        input = Input(contentDidUpdate: _contentDidUpdate.asObserver(),
+                      contentDidDelete: _contentDidDelete.asObserver())
 
-        let hideView = _didDeleteContent.asObservable()
-        output = Output(hideView: hideView)
+        let updateLabelText = _contentDidUpdate
+        let hideView = _contentDidDelete
+        output = Output(updateLabelText: updateLabelText.asObservable(),
+                        hideView: hideView.asObservable())
 
-        _didContentUpdate
+        _contentDidUpdate
             .subscribe(onNext: { [weak self] content in
                 guard let self = self else { return }
                 self._content.accept(content)
@@ -45,10 +47,11 @@ final class MealLabelViewModel {
 extension MealLabelViewModel {
 
     struct Input {
-        let didContentUpdate: AnyObserver<Content>
-        let didDeleteContent: AnyObserver<Void>
+        let contentDidUpdate: AnyObserver<Content>
+        let contentDidDelete: AnyObserver<Void>
     }
     struct Output {
+        let updateLabelText: Observable<Content>
         let hideView: Observable<Void>
     }
 }

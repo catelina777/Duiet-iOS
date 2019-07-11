@@ -17,6 +17,7 @@ protocol InputMealModelProtocol {
     var changeData: PublishRelay<RealmChangeset?> { get }
     var contentDidUpdate: PublishRelay<Content> { get }
     var contentDidDelete: PublishRelay<Void> { get }
+    var meal: BehaviorRelay<Meal?> { get }
     var meals: PublishRelay<[Meal]> { get }
     var day: BehaviorRelay<Day> { get }
     var addMeal: Binder<Meal> { get }
@@ -29,7 +30,7 @@ protocol InputMealModelProtocol {
 
 final class InputMealModel: InputMealModelProtocol {
 
-    let meal = BehaviorRelay<Meal>(value: Meal(imagePath: ""))
+    let meal = BehaviorRelay<Meal?>(value: nil)
     let meals = PublishRelay<[Meal]>()
     let day = BehaviorRelay<Day>(value: Day(date: Date()))
     let contentDidDelete = PublishRelay<Void>()
