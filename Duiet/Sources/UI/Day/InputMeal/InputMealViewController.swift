@@ -14,7 +14,6 @@ import RxGesture
 final class InputMealViewController: BaseTableViewController, KeyboardFrameTrackkable {
 
     let headerView: UIImageView
-    let labelCanvasView: UIView
 
     @IBOutlet weak var cancelButton: UIButton! {
         didSet {
@@ -34,7 +33,6 @@ final class InputMealViewController: BaseTableViewController, KeyboardFrameTrack
         self.dataSource = InputMealDataSource(viewModel: viewModel,
                                               keyboardTrackViewModel: keyboardTrackViewModel)
         self.headerView = UIImageView(image: viewModel.mealImage)
-        self.labelCanvasView = UIView()
         super.init(nibName: InputMealViewController.className, bundle: nil)
     }
 
