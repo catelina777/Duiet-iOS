@@ -44,23 +44,12 @@ final class MealLabelView: UIView {
             })
             .disposed(by: disposeBag)
 
-        // MARK: - Send value of selected MealLabel
-        // TODO: -
-        self.rx.tapGesture()
-            .when(.recognized)
-            .subscribe(onNext: { [weak self] _ in
-                guard let me = self else { return }
-                let content = me.viewModel.content
-                viewModel.input.calorieTextInput.on(.next("\(content.calorie)"))
-                viewModel.input.multipleTextInput.on(.next("\(content.multiple)"))
-                viewModel.input.nameTextInput.on(.next(content.name))
-            })
-            .disposed(by: disposeBag)
-
+        // MARK: - Update text
         viewModel.output.updateLabelText
             .bind(to: updateLabelText)
             .disposed(by: disposeBag)
 
+        // MARK: - Hide myself when content is deleted
         viewModel.output.hideMealLabel
             .bind(to: hideMealLabel)
             .disposed(by: disposeBag)
@@ -80,6 +69,7 @@ final class MealLabelView: UIView {
         }
     }
 
+    // TODO: - OLD
     func configure(with viewModel: InputMealViewModel) {
 
         self.rx.tapGesture()
@@ -102,6 +92,7 @@ final class MealLabelView: UIView {
             .disposed(by: disposeBag)
     }
 
+    // TODO: - OLD
     func configure(with content: Content) {
         self.content.accept(content)
         self.mealLabel.text = "\(Int(content.calorie * (content.multiple == 0 ? 1 : content.multiple)))"
