@@ -38,11 +38,23 @@ final class NewInputMealViewModel {
                       contentDidAdd: _contentDidAdd.asObserver(),
                       contentWillDelete: _contentWillDelete.asObserver())
 
+        let updateTextFields = _selectedMealLabelViewModel.map { $0.content }
         let reloadData = _contentDidAdd
 
         output = Output(updateLabelText: model.contentDidUpdate.asObservable(),
+                        updateTextFields: updateTextFields,
                         hideMealLabel: model.contentDidDelete.asObservable(),
                         reloadData: reloadData.asObservable())
+
+        // MARK: - Update value when select a label
+        _selectedMealLabelViewModel
+            .map { $0.content }
+            .subscribe(onNext: {
+                _calorieTextInput.accept("\($0.calorie)")
+                _multipleTextInput.accept("\($0.multiple)")
+                _nameTextInput.accept($0.name)
+            })
+            .disposed(by: disposeBag)
 
         // MARK: - Update value by text input
         let calorie = _calorieTextInput
@@ -99,6 +111,7 @@ extension NewInputMealViewModel {
     }
     struct Output {
         let updateLabelText: Observable<Content>
+        let updateTextFields: Observable<Content>
         let hideMealLabel: Observable<Void>
         let reloadData: Observable<Void>
     }

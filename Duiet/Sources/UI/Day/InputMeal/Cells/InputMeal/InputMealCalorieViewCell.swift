@@ -69,6 +69,29 @@ class InputMealCalorieViewCell: RxTableViewCell, CellFrameTrackkable {
         }
     }
 
+    func configure(with viewModel: NewInputMealViewModel) {
+        mealCalorieTextField.rx.text
+            .bind(to: viewModel.input.calorieTextInput)
+            .disposed(by: disposeBag)
+
+        mealAmountTextField.rx.text
+            .bind(to: viewModel.input.multipleTextInput)
+            .disposed(by: disposeBag)
+
+        mealNameTextField.rx.text
+            .bind(to: viewModel.input.nameTextInput)
+            .disposed(by: disposeBag)
+
+        deleteMealButton.rx.tap
+            .bind(to: viewModel.input.contentWillDelete)
+            .disposed(by: disposeBag)
+
+        viewModel.output.updateTextFields
+            .bind(to: updateTextFields)
+            .disposed(by: disposeBag)
+    }
+
+    // TODO: - OLD
     func configure(with viewModel: InputMealViewModel) {
         mealCalorieTextField.rx.text
             .bind(to: viewModel.input.calorieTextInput)
@@ -91,6 +114,17 @@ class InputMealCalorieViewCell: RxTableViewCell, CellFrameTrackkable {
             .disposed(by: disposeBag)
     }
 
+    var updateTextFields: Binder<Content> {
+        return Binder(self) { me, content in
+            me.mealNameTextField.text = content.name
+            me.mealCalorieTextField.text = ""
+            me.mealAmountTextField.text = ""
+            me.mealCalorieTextField.placeholder = "\(content.calorie)"
+            me.mealAmountTextField.placeholder = "\(content.multiple)"
+        }
+    }
+
+    // TODO: - OLD
     var updateTextField: Binder<MealLabelView> {
         return Binder(self) { me, mealLabel in
             let content = mealLabel.content.value

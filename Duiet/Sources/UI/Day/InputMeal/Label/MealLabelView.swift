@@ -31,7 +31,11 @@ final class MealLabelView: UIView {
 
     func configure(with content: Content, viewModel: NewInputMealViewModel) {
         self.viewModel = MealLabelViewModel(content: content)
+        let calorie = self.viewModel.content.calorie
+        let multiple = self.viewModel.content.multiple
+        self.mealLabel.text = "\(Int(calorie * (multiple == 0 ? 1 : multiple)))"
 
+        // MARK: - Send ViewModel of selected MealLabel
         self.rx.tapGesture()
             .when(.recognized)
             .subscribe(onNext: { [weak self] _ in
@@ -40,6 +44,8 @@ final class MealLabelView: UIView {
             })
             .disposed(by: disposeBag)
 
+        // MARK: - Send value of selected MealLabel
+        // TODO: -
         self.rx.tapGesture()
             .when(.recognized)
             .subscribe(onNext: { [weak self] _ in
