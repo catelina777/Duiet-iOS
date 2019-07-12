@@ -19,11 +19,6 @@ protocol DayModelProtocol {
     var meals: BehaviorRelay<[Meal]> { get }
     var day: BehaviorRelay<Day> { get }
     var addMeal: Binder<Meal> { get }
-    var addContent: Binder<(Meal, Content)> { get }
-    var saveName: Binder<(MealLabelView, String)> { get }
-    var saveCalorie: Binder<(MealLabelView, Double)> { get }
-    var saveMultiple: Binder<(MealLabelView, Double)> { get }
-    var deleteContent: Binder<(Meal, Content)> { get }
 }
 
 final class DayModel: RealmBaseModel, DayModelProtocol {
@@ -61,30 +56,6 @@ final class DayModel: RealmBaseModel, DayModelProtocol {
     var addContent: Binder<(Meal, Content)> {
         return Binder(self) { me, tuple in
             me.repository.add(content: tuple.1, to: tuple.0)
-        }
-    }
-
-    var saveName: Binder<(MealLabelView, String)> {
-        return Binder(self) { me, tuple in
-            let content = tuple.0.content.value
-            me.repository.update(name: tuple.1, of: content)
-            tuple.0.content.accept(content)
-        }
-    }
-
-    var saveCalorie: Binder<(MealLabelView, Double)> {
-        return Binder(self) { me, tuple in
-            let content = tuple.0.content.value
-            me.repository.update(calorie: tuple.1, of: content)
-            tuple.0.content.accept(content)
-        }
-    }
-
-    var saveMultiple: Binder<(MealLabelView, Double)> {
-        return Binder(self) { me, tuple in
-            let content = tuple.0.content.value
-            me.repository.update(multiple: tuple.1, of: content)
-            tuple.0.content.accept(content)
         }
     }
 

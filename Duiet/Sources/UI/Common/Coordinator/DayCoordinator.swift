@@ -30,12 +30,11 @@ final class DayCoordinator: Coordinator {
 
     func showDetail(image: UIImage?, meal: Meal) {
         let repository = DayRepository()
-        let model = DayModel(repository: repository)
-        let viewModel = InputMealViewModel(coordinator: self,
-                                           mealImage: image,
-                                           meal: meal,
-                                           model: model)
-        let vc = InputMealViewController(viewModel: viewModel)
+        let model = InputMealModel(repository: repository, meal: meal)
+        let viewModel = NewInputMealViewModel(coordinator: self,
+                                              model: model)
+        let vc = InputMealViewController(viewModel: viewModel,
+                                         image: image)
         viewController.present(vc, animated: true, completion: nil)
     }
 
@@ -44,12 +43,12 @@ final class DayCoordinator: Coordinator {
         mealCard.imageView.hero.id = heroID
 
         let repository = DayRepository()
-        let model = DayModel(repository: repository)
-        let viewModel = InputMealViewModel(coordinator: self,
-                                           mealImage: mealCard.imageView.image,
-                                           meal: meal,
+        let model = InputMealModel(repository: repository,
+                                   meal: meal)
+        let viewModel = NewInputMealViewModel(coordinator: self,
                                            model: model)
-        let vc = InputMealViewController(viewModel: viewModel)
+        let vc = InputMealViewController(viewModel: viewModel,
+                                         image: mealCard.imageView.image)
         vc.hero.isEnabled = true
         vc.hero.modalAnimationType = .auto
         vc.headerView.hero.id = heroID

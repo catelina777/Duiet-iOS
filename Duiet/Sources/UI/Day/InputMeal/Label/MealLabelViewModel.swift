@@ -30,9 +30,8 @@ final class MealLabelViewModel {
         input = Input(contentDidUpdate: _contentDidUpdate.asObserver(),
                       contentDidDelete: _contentDidDelete.asObserver())
 
-        let updateLabelText = _contentDidUpdate
         let hideView = _contentDidDelete
-        output = Output(updateLabelText: updateLabelText.asObservable(),
+        output = Output(contentDidUpdate: _contentDidUpdate.asObservable(),
                         hideView: hideView.asObservable())
 
         _contentDidUpdate
@@ -51,7 +50,7 @@ extension MealLabelViewModel {
         let contentDidDelete: AnyObserver<Void>
     }
     struct Output {
-        let updateLabelText: Observable<Content>
+        let contentDidUpdate: Observable<Content>
         let hideView: Observable<Void>
     }
 }

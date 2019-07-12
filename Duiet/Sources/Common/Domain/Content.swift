@@ -31,14 +31,7 @@ extension Content {
 
     func convert() -> MealLabelView {
         let mealLabelView = R.nib.mealLabelView.firstView(owner: nil)!
-        mealLabelView.configure(with: self)
+        mealLabelView.initialize(with: self)
         return mealLabelView
-    }
-}
-
-extension List where Element == Content {
-
-    func convert() -> [MealLabelView] {
-        return self.map { $0.convert() }
     }
 }

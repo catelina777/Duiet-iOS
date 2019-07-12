@@ -13,31 +13,18 @@ import RxGesture
 
 final class LabelCanvasViewCell: RxTableViewCell {
 
-    // TODO: - The code here is almost a memory leak, so it needs to be improved
-    func configure(with viewModel: InputMealViewModel) {
+    func configure(with viewModel: NewInputMealViewModel) {
 
-        // MARK: - Show stored labels
-
-        /*
-         1. List<Content>を[MealLabelView]に変換する
-            1. contentを渡してframeの設定
-            2. 渡したcontentをmealLabelviewのcontentに通知する
-            3. mealLabelViewのtextにカロリーの値を渡す
-         2. MealLabelViewとviewModelの設定を行う
-            1. タッチしたときに選択したmealLabelとしてviewModeに通知
-            2. タッチしたとに編集した際の値の変更をviewModelに通知
-            3. MealLabelViewをcanvasに追加する
-         */
-
-        viewModel.output.showLabelViews
-            .map { $0.map { $0.convert() }}
+        // MARK: - Show labels from stored contents
+        viewModel.output.showLabelsOnce
+            .map { $0.map { $0.convert() } }
             .subscribe(onNext: { [weak self] labels in
                 guard let me = self else { return }
                 let width = me.frame.width
                 let height = me.frame.height
                 labels.forEach { label in
-                    let centerX = CGFloat(label.content.value.relativeX) * width
-                    let centerY = CGFloat(label.content.value.relativeY) * height
+                    let centerX = CGFloat(label.viewModel.content.relativeX) * width
+                    let centerY = CGFloat(label.viewModel.content.relativeY) * height
                     let labelWidth = width * 0.3
                     let labelHeight = labelWidth * 0.4
                     let labelFrame = CGRect(x: centerX - labelWidth / 2,
@@ -55,12 +42,9 @@ final class LabelCanvasViewCell: RxTableViewCell {
             .longPressGesture()
             .when(.began)
             .asLocation()
-            .map { [weak self] point -> MealLabelView? in
+            .map { [weak self] point -> Content? in
                 guard let me = self else { return nil }
-                // Create a view and add it to the parent view
-                // After that, save the content model that the view has,
-                // and perform processing to pass the Content Model to the view model when tapping
-                let mealLabelView = R.nib.mealLabelView.firstView(owner: nil)!
+                let mealLabel = R.nib.mealLabelView.firstView(owner: nil)!
                 let labelWidth = me.frame.width * 0.3
                 let labelHeight = labelWidth * 0.4
                 let labelFrame = CGRect(x: point.x - labelWidth / 2,
@@ -70,16 +54,14 @@ final class LabelCanvasViewCell: RxTableViewCell {
                 let relativeX = Double(point.x / me.frame.width)
                 let relativeY = Double(point.y / me.frame.height)
                 let content = Content(relativeX: relativeX, relativeY: relativeY)
-                mealLabelView.configure(with: content)
-                mealLabelView.frame = labelFrame
-                mealLabelView.configure(with: viewModel)
-                me.addSubview(mealLabelView)
-                viewModel.input.saveContent.on(.next(mealLabelView.content.value))
-                viewModel.input.selectedMealLabel.on(.next(mealLabelView))
-                return mealLabelView
+                mealLabel.initialize(with: content)
+                mealLabel.frame = labelFrame
+                mealLabel.configure(with: viewModel)
+                me.addSubview(mealLabel)
+                return content
             }
             .compactMap { $0 }
-            .bind(to: viewModel.input.addMealLabel)
+            .bind(to: viewModel.input.contentWillAdd)
             .disposed(by: disposeBag)
     }
 }

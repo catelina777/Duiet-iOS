@@ -15,9 +15,10 @@ import RxRealm
 
 protocol InputMealModelProtocol {
     var changeData: PublishRelay<RealmChangeset?> { get }
+    var contentDidAdd: PublishRelay<Void> { get }
     var contentDidUpdate: PublishRelay<Content> { get }
     var contentDidDelete: PublishRelay<Void> { get }
-    var meal: BehaviorRelay<Meal?> { get }
+    var meal: BehaviorRelay<Meal> { get }
     var meals: PublishRelay<[Meal]> { get }
     var day: BehaviorRelay<Day> { get }
     var addMeal: Binder<Meal> { get }
@@ -30,9 +31,10 @@ protocol InputMealModelProtocol {
 
 final class InputMealModel: InputMealModelProtocol {
 
-    let meal = BehaviorRelay<Meal?>(value: nil)
+    let meal: BehaviorRelay<Meal>
     let meals = PublishRelay<[Meal]>()
     let day = BehaviorRelay<Day>(value: Day(date: Date()))
+    let contentDidAdd = PublishRelay<Void>()
     let contentDidDelete = PublishRelay<Void>()
     let contentDidUpdate = PublishRelay<Content>()
     let changeData = PublishRelay<RealmChangeset?>()
@@ -42,8 +44,10 @@ final class InputMealModel: InputMealModelProtocol {
     private let disposeBag = DisposeBag()
 
     init(date: Date = Date(),
-         repository: DayRepositoryProtocol) {
+         repository: DayRepositoryProtocol,
+         meal: Meal) {
         self.repository = repository
+        self.meal = BehaviorRelay<Meal>(value: meal)
     }
 
     deinit {
@@ -58,7 +62,9 @@ final class InputMealModel: InputMealModelProtocol {
 
     var addContent: Binder<(Meal, Content)> {
         return Binder(self) { me, tuple in
+            print(tuple)
             me.repository.add(content: tuple.1, to: tuple.0)
+            me.contentDidAdd.accept(())
         }
     }
 

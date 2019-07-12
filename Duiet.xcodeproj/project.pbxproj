@@ -37,7 +37,6 @@
 		0630D49B227495EB00224EC9 /* CellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630D49A227495EB00224EC9 /* CellType.swift */; };
 		063FCBBF227D8164007C191F /* InputMealViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 063FCBBB227D8164007C191F /* InputMealViewController.xib */; };
 		063FCBC0227D8164007C191F /* InputMealDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063FCBBC227D8164007C191F /* InputMealDataSource.swift */; };
-		063FCBC1227D8164007C191F /* InputMealViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063FCBBD227D8164007C191F /* InputMealViewModel.swift */; };
 		063FCBC2227D8164007C191F /* InputMealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063FCBBE227D8164007C191F /* InputMealViewController.swift */; };
 		063FCBC7227DCDBA007C191F /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063FCBC6227DCDBA007C191F /* PhotoManager.swift */; };
 		0641AD232264A1BA00CEDAE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0641AD222264A1BA00CEDAE7 /* AppDelegate.swift */; };
@@ -195,7 +194,6 @@
 		0630D49A227495EB00224EC9 /* CellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellType.swift; sourceTree = "<group>"; };
 		063FCBBB227D8164007C191F /* InputMealViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InputMealViewController.xib; sourceTree = "<group>"; };
 		063FCBBC227D8164007C191F /* InputMealDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputMealDataSource.swift; sourceTree = "<group>"; };
-		063FCBBD227D8164007C191F /* InputMealViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputMealViewModel.swift; sourceTree = "<group>"; };
 		063FCBBE227D8164007C191F /* InputMealViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputMealViewController.swift; sourceTree = "<group>"; };
 		063FCBC6227DCDBA007C191F /* PhotoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
 		0641AD1F2264A1BA00CEDAE7 /* Duiet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Duiet.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -433,7 +431,6 @@
 				06932AC222801A7E00CFA05C /* Label */,
 				0603293B227F3A6B009A67A4 /* Cells */,
 				063FCBBE227D8164007C191F /* InputMealViewController.swift */,
-				063FCBBD227D8164007C191F /* InputMealViewModel.swift */,
 				5E35CF8522D7280E00C9CFC3 /* NewInputMealViewModel.swift */,
 				063FCBBC227D8164007C191F /* InputMealDataSource.swift */,
 				063FCBBB227D8164007C191F /* InputMealViewController.xib */,
@@ -1351,7 +1348,6 @@
 				0641AD232264A1BA00CEDAE7 /* AppDelegate.swift in Sources */,
 				069AD440227731EE0075E711 /* ProgressCardViewCell.swift in Sources */,
 				069AD437227723100075E711 /* RxCollectionViewCell.swift in Sources */,
-				063FCBC1227D8164007C191F /* InputMealViewModel.swift in Sources */,
 				5E3E860822C334D3004E1676 /* MonthModel.swift in Sources */,
 				5E3E860C22C338E2004E1676 /* RealmBaseModel.swift in Sources */,
 				0622EA00226A1C7D00E87F22 /* NavigationBarCustomizable.swift in Sources */,

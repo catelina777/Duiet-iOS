@@ -23,16 +23,17 @@ final class InputMealViewController: BaseTableViewController, KeyboardFrameTrack
         }
     }
 
-    let viewModel: InputMealViewModel
+    let viewModel: NewInputMealViewModel
     let keyboardTrackViewModel: KeyboardTrackViewModel
     let dataSource: InputMealDataSource
 
-    init(viewModel: InputMealViewModel) {
+    init(viewModel: NewInputMealViewModel,
+         image: UIImage?) {
         self.viewModel = viewModel
         self.keyboardTrackViewModel = KeyboardTrackViewModel()
         self.dataSource = InputMealDataSource(viewModel: viewModel,
                                               keyboardTrackViewModel: keyboardTrackViewModel)
-        self.headerView = UIImageView(image: viewModel.mealImage)
+        self.headerView = UIImageView(image: image)
         super.init(nibName: InputMealViewController.className, bundle: nil)
     }
 
