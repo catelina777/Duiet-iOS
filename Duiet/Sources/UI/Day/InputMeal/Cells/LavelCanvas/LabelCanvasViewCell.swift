@@ -42,7 +42,7 @@ final class LabelCanvasViewCell: RxTableViewCell {
             .longPressGesture()
             .when(.began)
             .asLocation()
-            .map { [weak self] point -> Content? in
+            .map { [weak self] point -> MealLabelView? in
                 guard let me = self else { return nil }
                 let mealLabel = R.nib.mealLabelView.firstView(owner: nil)!
                 let labelWidth = me.frame.width * 0.3
@@ -58,10 +58,13 @@ final class LabelCanvasViewCell: RxTableViewCell {
                 mealLabel.frame = labelFrame
                 mealLabel.configure(with: viewModel)
                 me.addSubview(mealLabel)
-                return content
+                return mealLabel
             }
             .compactMap { $0 }
-            .bind(to: viewModel.input.contentWillAdd)
+            .subscribe(onNext: { mealLabel in
+                viewModel.input.selectedViewModel.on(.next(mealLabel.viewModel))
+                viewModel.input.contentWillAdd.on(.next(mealLabel.viewModel.content))
+            })
             .disposed(by: disposeBag)
     }
 }

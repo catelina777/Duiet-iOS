@@ -23,10 +23,10 @@ protocol InputMealModelProtocol {
     var day: BehaviorRelay<Day> { get }
     var addMeal: Binder<Meal> { get }
     var addContent: Binder<(Meal, Content)> { get }
-    var saveName: Binder<(Content, String)> { get }
-    var saveCalorie: Binder<(Content, Double)> { get }
-    var saveMultiple: Binder<(Content, Double)> { get }
-    var deleteContent: Binder<(Meal, Content)> { get }
+    var saveName: Binder<(Content?, String)> { get }
+    var saveCalorie: Binder<(Content?, Double)> { get }
+    var saveMultiple: Binder<(Content?, Double)> { get }
+    var deleteContent: Binder<(Meal, Content?)> { get }
 }
 
 final class InputMealModel: InputMealModelProtocol {
@@ -67,34 +67,37 @@ final class InputMealModel: InputMealModelProtocol {
         }
     }
 
-    var saveName: Binder<(Content, String)> {
+    var saveName: Binder<(Content?, String)> {
         return Binder(self) { me, tuple in
-            let content = tuple.0
+            guard let content = tuple.0 else { return }
             me.repository.update(name: tuple.1, of: content)
             me.contentDidUpdate.accept(content)
         }
     }
 
-    var saveCalorie: Binder<(Content, Double)> {
+    var saveCalorie: Binder<(Content?, Double)> {
         return Binder(self) { me, tuple in
-            let content = tuple.0
+            guard let content = tuple.0 else { return }
             me.repository.update(calorie: tuple.1, of: content)
             me.contentDidUpdate.accept(content)
         }
     }
 
-    var saveMultiple: Binder<(Content, Double)> {
+    var saveMultiple: Binder<(Content?, Double)> {
         return Binder(self) { me, tuple in
-            let content = tuple.0
+            guard let content = tuple.0 else { return }
             me.repository.update(multiple: tuple.1, of: content)
             me.contentDidUpdate.accept(content)
         }
     }
 
-    var deleteContent: Binder<(Meal, Content)> {
+    var deleteContent: Binder<(Meal, Content?)> {
         return Binder(self) { me, tuple in
-            me.repository.delete(content: tuple.1, of: tuple.0)
+            guard let content = tuple.1 else { return }
+            print("try delete \(content)")
+            me.repository.delete(content: content, of: tuple.0)
             me.contentDidDelete.accept(())
+            print("delete successful")
         }
     }
 

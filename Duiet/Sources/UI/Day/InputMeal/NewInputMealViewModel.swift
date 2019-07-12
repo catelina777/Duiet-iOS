@@ -48,25 +48,23 @@ final class NewInputMealViewModel {
             .map { $0.contents.toArray() }
             .take(1)
 
-        let selectedContent = _selectedViewModel.map { $0.content }
-        let updateTextFields = selectedContent
+        let selectedContent = PublishRelay<Content?>()
+
+        _selectedViewModel
+            .subscribe(onNext: {
+                selectedContent.accept($0.content)
+                print($0.content)
+            })
+            .disposed(by: disposeBag)
+
+        let updateTextFields = selectedContent.compactMap { $0 }
         let reloadData = model.contentDidAdd
 
         output = Output(showLabelsOnce: showLabelsOnce,
                         contentDidUpdate: model.contentDidUpdate.asObservable(),
+                        contentDidDelete: model.contentDidDelete.asObservable(),
                         updateTextFields: updateTextFields.asObservable(),
-                        hideMealLabel: model.contentDidDelete.asObservable(),
                         reloadData: reloadData.asObservable())
-
-        // MARK: - Update value when select a label
-        selectedContent
-            .subscribe(onNext: {
-                _calorieTextInput.accept("\($0.calorie)")
-                _multipleTextInput.accept("\($0.multiple)")
-                _nameTextInput.accept($0.name)
-            })
-            .disposed(by: disposeBag)
-        // END
 
         // MARK: - Save content
         _contentWillAdd.withLatestFrom(model.meal) { ($1, $0) }
@@ -119,8 +117,9 @@ final class NewInputMealViewModel {
         // END
 
         // MARK: - Notify label of content deleted
-        model.contentDidDelete.withLatestFrom(selectedViewModel)
+        model.contentDidDelete.withLatestFrom(_selectedViewModel)
             .subscribe(onNext: {
+                selectedContent.accept(nil)
                 $0.input.contentDidDelete.on(.next(()))
             })
             .disposed(by: disposeBag)
@@ -130,6 +129,27 @@ final class NewInputMealViewModel {
             .subscribe(onNext: { [weak self] in
                 guard let me = self else { return }
                 me.coordinator.dismiss()
+            })
+            .disposed(by: disposeBag)
+
+        selectedContent
+            .subscribe(onNext: {
+                print("begin print selected content")
+                print("selected content \($0?.name)")
+            })
+            .disposed(by: disposeBag)
+
+        model.contentDidUpdate
+            .subscribe(onNext: {
+                print("begin print update content")
+                print("update content \($0.name)")
+            })
+            .disposed(by: disposeBag)
+
+        model.contentDidDelete.withLatestFrom(selectedContent)
+            .subscribe(onNext: { _ in
+                print("begin print delete content")
+//                print("delete content \($0.name)")
             })
             .disposed(by: disposeBag)
     }
@@ -153,8 +173,8 @@ extension NewInputMealViewModel {
     struct Output {
         let showLabelsOnce: Observable<[Content]>
         let contentDidUpdate: Observable<Content>
+        let contentDidDelete: Observable<Void>
         let updateTextFields: Observable<Content>
-        let hideMealLabel: Observable<Void>
         let reloadData: Observable<Void>
     }
 }
