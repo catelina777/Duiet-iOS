@@ -15,12 +15,12 @@ final class MealLabelViewModel {
     let input: Input
     let output: Output
 
+    private let _content: BehaviorRelay<Content>
+    private let disposeBag = DisposeBag()
+
     var content: Content {
         return _content.value
     }
-
-    private let _content: BehaviorRelay<Content>
-    private let disposeBag = DisposeBag()
 
     init(content: Content) {
         _content = BehaviorRelay<Content>(value: content)

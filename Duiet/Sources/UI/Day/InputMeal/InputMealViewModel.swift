@@ -15,13 +15,13 @@ final class InputMealViewModel {
     let input: Input
     let output: Output
 
-    var contentCount: Int {
-        return inputMealModel.meal.value.contents.count
-    }
-
     private let inputMealModel: InputMealModelProtocol
     private let coordinator: DayCoordinator
     private let disposeBag = DisposeBag()
+
+    var contentCount: Int {
+        return inputMealModel.meal.value.contents.count
+    }
 
     init(coordinator: DayCoordinator,
          model: InputMealModelProtocol) {

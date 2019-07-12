@@ -16,6 +16,8 @@ final class MonthViewModel {
 
     private let monthModel: MonthModelProtocol
     private let userInfoModel: UserInfoModel
+    private let coordinator: MonthCoordinator
+    private let disposeBag = DisposeBag()
 
     var userInfo: UserInfo {
         return userInfoModel.userInfo.value
@@ -24,10 +26,6 @@ final class MonthViewModel {
     var days: [Day] {
         return monthModel.days.value
     }
-
-    private let coordinator: MonthCoordinator
-
-    private let disposeBag = DisposeBag()
 
     init(coordinator: MonthCoordinator,
          model: MonthModelProtocol,

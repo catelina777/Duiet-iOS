@@ -23,7 +23,9 @@ protocol DayRepositoryProtocol {
 
 final class DayRepository: DayRepositoryProtocol {
 
-    let realm: Realm
+    static let shared = DayRepository()
+
+    private let realm: Realm
 
     init() {
         realm = try! Realm()

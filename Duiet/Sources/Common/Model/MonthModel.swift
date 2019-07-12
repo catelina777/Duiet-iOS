@@ -17,16 +17,16 @@ protocol MonthModelProtocol {
     var days: BehaviorRelay<[Day]> { get }
 }
 
-final class MonthModel: RealmBaseModel, MonthModelProtocol {
+final class MonthModel: MonthModelProtocol {
 
     let changeData = PublishRelay<RealmChangeset?>()
     let days = BehaviorRelay<[Day]>(value: [])
 
-    let repository: MonthRepositoryProtocol
+    private let repository: MonthRepositoryProtocol
+    private let disposeBag = DisposeBag()
 
     init(repository: MonthRepositoryProtocol) {
         self.repository = repository
-        super.init()
 
         let dayResults = repository.findAll()
         observe(dayResults: dayResults)

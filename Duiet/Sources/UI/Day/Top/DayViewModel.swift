@@ -22,7 +22,6 @@ final class DayViewModel {
     let dayModel: DayModelProtocol
 
     private let coordinator: DayCoordinator
-
     private let disposeBag = DisposeBag()
 
     var meals: [Meal] {

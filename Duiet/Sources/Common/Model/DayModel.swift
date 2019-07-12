@@ -21,7 +21,7 @@ protocol DayModelProtocol {
     var addMeal: Binder<Meal> { get }
 }
 
-final class DayModel: RealmBaseModel, DayModelProtocol {
+final class DayModel: DayModelProtocol {
 
     let changeData = PublishRelay<RealmChangeset?>()
     let contentDidDelete = PublishRelay<Void>()
@@ -29,11 +29,11 @@ final class DayModel: RealmBaseModel, DayModelProtocol {
     let day = BehaviorRelay<Day>(value: Day(date: Date()))
 
     private let repository: DayRepositoryProtocol
+    private let disposeBag = DisposeBag()
 
     init(date: Date = Date(),
          repository: DayRepositoryProtocol) {
         self.repository = repository
-        super.init()
 
         let day = repository.findOrCreate(day: date)
         observe(day: day)
@@ -50,19 +50,6 @@ final class DayModel: RealmBaseModel, DayModelProtocol {
     var addMeal: Binder<Meal> {
         return Binder(self) { me, meal in
             me.repository.add(meal: meal, to: me.day.value)
-        }
-    }
-
-    var addContent: Binder<(Meal, Content)> {
-        return Binder(self) { me, tuple in
-            me.repository.add(content: tuple.1, to: tuple.0)
-        }
-    }
-
-    var deleteContent: Binder<(Meal, Content)> {
-        return Binder(self) { me, tuple in
-            me.repository.delete(content: tuple.1, of: tuple.0)
-            me.contentDidDelete.accept(())
         }
     }
 

@@ -15,9 +15,11 @@ protocol MonthRepositoryProtocol {
     func find(month date: Date) -> Month?
 }
 
-class MonthRepository: MonthRepositoryProtocol {
+final class MonthRepository: MonthRepositoryProtocol {
 
-    let realm: Realm
+    static let shared = MonthRepository()
+
+    private let realm: Realm
 
     init() {
         realm = try! Realm()

@@ -20,6 +20,9 @@ final class FillInformationViewModel {
     let input: Input
     let output: Output
 
+    private let coordinator: WalkthrouthCoordinator
+    private let disposeBag = DisposeBag()
+
     private(set) lazy var ageList: [Int] = {
         return [Int].init(repeating: 0, count: 120).enumerated().map { $0.offset }
     }()
@@ -36,8 +39,6 @@ final class FillInformationViewModel {
 
     let activityTypes: [ActivityLevel] = [.none, .sedentary, .lightly, .moderately, .veryActive]
 
-    private let coordinator: WalkthrouthCoordinator
-    private let disposeBag = DisposeBag()
 
     init(coordinator: WalkthrouthCoordinator) {
         self.coordinator = coordinator
