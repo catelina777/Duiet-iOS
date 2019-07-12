@@ -64,7 +64,6 @@ final class DayRepository: DayRepositoryProtocol {
             return _month
         } else {
             let _month = Month(date: date)
-            print(_month)
             try! realm.write {
                 realm.add(_month)
             }

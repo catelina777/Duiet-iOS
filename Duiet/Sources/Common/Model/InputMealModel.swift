@@ -62,7 +62,6 @@ final class InputMealModel: InputMealModelProtocol {
 
     var addContent: Binder<(Meal, Content)> {
         return Binder(self) { me, tuple in
-            print(tuple)
             me.repository.add(content: tuple.1, to: tuple.0)
             me.contentDidAdd.accept(())
         }
