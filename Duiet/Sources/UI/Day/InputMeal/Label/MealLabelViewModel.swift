@@ -36,8 +36,8 @@ final class MealLabelViewModel {
 
         _contentDidUpdate
             .subscribe(onNext: { [weak self] content in
-                guard let self = self else { return }
-                self._content.accept(content)
+                guard let me = self else { return }
+                me._content.accept(content)
             })
             .disposed(by: disposeBag)
     }

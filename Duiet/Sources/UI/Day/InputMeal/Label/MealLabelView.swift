@@ -58,6 +58,7 @@ final class MealLabelView: UIView {
 
     var updateLabelText: Binder<Content> {
         return Binder(self) { me, content in
+            guard !content.isInvalidated else { return }
             let calorie = content.calorie
             let multiple = content.multiple
             me.mealLabel.text = "\(Int(calorie * (multiple == 0 ? 1 : multiple)))"

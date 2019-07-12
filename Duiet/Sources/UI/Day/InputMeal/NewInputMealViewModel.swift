@@ -48,14 +48,7 @@ final class NewInputMealViewModel {
             .map { $0.contents.toArray() }
             .take(1)
 
-        let selectedContent = PublishRelay<Content?>()
-
-        _selectedViewModel
-            .subscribe(onNext: {
-                selectedContent.accept($0.content)
-                print($0.content)
-            })
-            .disposed(by: disposeBag)
+        let selectedContent = _selectedViewModel.map { $0.content }
 
         let updateTextFields = selectedContent.compactMap { $0 }
         let reloadData = model.contentDidAdd
@@ -119,7 +112,6 @@ final class NewInputMealViewModel {
         // MARK: - Notify label of content deleted
         model.contentDidDelete.withLatestFrom(_selectedViewModel)
             .subscribe(onNext: {
-                selectedContent.accept(nil)
                 $0.input.contentDidDelete.on(.next(()))
             })
             .disposed(by: disposeBag)
@@ -129,27 +121,6 @@ final class NewInputMealViewModel {
             .subscribe(onNext: { [weak self] in
                 guard let me = self else { return }
                 me.coordinator.dismiss()
-            })
-            .disposed(by: disposeBag)
-
-        selectedContent
-            .subscribe(onNext: {
-                print("begin print selected content")
-                print("selected content \($0?.name)")
-            })
-            .disposed(by: disposeBag)
-
-        model.contentDidUpdate
-            .subscribe(onNext: {
-                print("begin print update content")
-                print("update content \($0.name)")
-            })
-            .disposed(by: disposeBag)
-
-        model.contentDidDelete.withLatestFrom(selectedContent)
-            .subscribe(onNext: { _ in
-                print("begin print delete content")
-//                print("delete content \($0.name)")
             })
             .disposed(by: disposeBag)
     }
