@@ -1,5 +1,5 @@
 //
-//  NewInputMealViewModel.swift
+//  InputMealViewModel.swift
 //  Duiet
 //
 //  Created by 上西 隆平 on 2019/07/11.
@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 import RxRelay
 
-final class NewInputMealViewModel {
+final class InputMealViewModel {
 
     let input: Input
     let output: Output
@@ -126,11 +126,11 @@ final class NewInputMealViewModel {
     }
 
     deinit {
-        print("🧹🧹🧹 NewInputMealViewModel parge 🧹🧹🧹")
+        print("🧹🧹🧹 InputMealViewModel parge 🧹🧹🧹")
     }
 }
 
-extension NewInputMealViewModel {
+extension InputMealViewModel {
 
     struct Input {
         let nameTextInput: AnyObserver<String?>

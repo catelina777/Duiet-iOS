@@ -10,10 +10,10 @@ import UIKit
 
 final class InputMealDataSource: NSObject {
 
-    let viewModel: NewInputMealViewModel
+    let viewModel: InputMealViewModel
     let keyboardTrackViewModel: KeyboardTrackViewModel
 
-    init(viewModel: NewInputMealViewModel,
+    init(viewModel: InputMealViewModel,
          keyboardTrackViewModel: KeyboardTrackViewModel) {
         self.viewModel = viewModel
         self.keyboardTrackViewModel = keyboardTrackViewModel

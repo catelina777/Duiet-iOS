@@ -13,7 +13,7 @@ import RxGesture
 
 final class LabelCanvasViewCell: RxTableViewCell {
 
-    func configure(with viewModel: NewInputMealViewModel) {
+    func configure(with viewModel: InputMealViewModel) {
 
         // MARK: - Show labels from stored contents
         viewModel.output.showLabelsOnce

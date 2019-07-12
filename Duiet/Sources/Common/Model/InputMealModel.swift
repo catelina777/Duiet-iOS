@@ -14,7 +14,6 @@ import RxCocoa
 import RxRealm
 
 protocol InputMealModelProtocol {
-    var changeData: PublishRelay<RealmChangeset?> { get }
     var contentDidAdd: PublishRelay<Void> { get }
     var contentDidUpdate: PublishRelay<Content> { get }
     var contentDidDelete: PublishRelay<Void> { get }
@@ -31,16 +30,14 @@ protocol InputMealModelProtocol {
 
 final class InputMealModel: InputMealModelProtocol {
 
+    let contentDidAdd = PublishRelay<Void>()
+    let contentDidUpdate = PublishRelay<Content>()
+    let contentDidDelete = PublishRelay<Void>()
     let meal: BehaviorRelay<Meal>
     let meals = PublishRelay<[Meal]>()
     let day = BehaviorRelay<Day>(value: Day(date: Date()))
-    let contentDidAdd = PublishRelay<Void>()
-    let contentDidDelete = PublishRelay<Void>()
-    let contentDidUpdate = PublishRelay<Content>()
-    let changeData = PublishRelay<RealmChangeset?>()
 
     private let repository: DayRepositoryProtocol
-
     private let disposeBag = DisposeBag()
 
     init(date: Date = Date(),
@@ -108,16 +105,6 @@ final class InputMealModel: InputMealModelProtocol {
             .subscribe(onNext: { [weak self] day in
                 guard let self = self else { return }
                 self.day.accept(day)
-            })
-            .disposed(by: disposeBag)
-    }
-
-    private func observe(mealResultsChangeset mealResults: Results<Meal>) {
-        Observable.changeset(from: mealResults)
-            .map { $1 }
-            .subscribe(onNext: { [weak self] changeset in
-                guard let self = self else { return }
-                self.changeData.accept(changeset)
             })
             .disposed(by: disposeBag)
     }
