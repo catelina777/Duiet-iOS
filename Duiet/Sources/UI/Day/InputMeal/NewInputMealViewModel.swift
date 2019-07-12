@@ -118,6 +118,13 @@ final class NewInputMealViewModel {
             .disposed(by: disposeBag)
         // END
 
+        // MARK: - Notify label of content deleted
+        model.contentDidDelete.withLatestFrom(selectedViewModel)
+            .subscribe(onNext: {
+                $0.input.contentDidDelete.on(.next(()))
+            })
+            .disposed(by: disposeBag)
+
         // MARK: - Transition
         _dismiss
             .subscribe(onNext: { [weak self] in
