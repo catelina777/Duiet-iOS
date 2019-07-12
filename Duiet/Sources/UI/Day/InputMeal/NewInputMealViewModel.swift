@@ -27,28 +27,33 @@ final class NewInputMealViewModel {
         let _nameTextInput = PublishRelay<String?>()
         let _calorieTextInput = PublishRelay<String?>()
         let _multipleTextInput = PublishRelay<String?>()
-        let _selectedMealLabelViewModel = PublishRelay<MealLabelViewModel>()
+        let _selectedContent = PublishRelay<Content>()
         let _contentDidAdd = PublishRelay<Void>()
         let _contentWillDelete = PublishRelay<Void>()
 
         input = Input(nameTextInput: _nameTextInput.asObserver(),
                       calorieTextInput: _calorieTextInput.asObserver(),
                       multipleTextInput: _multipleTextInput.asObserver(),
-                      selectedMealLabelViewModel: _selectedMealLabelViewModel.asObserver(),
+                      selectedContent: _selectedContent.asObserver(),
                       contentDidAdd: _contentDidAdd.asObserver(),
                       contentWillDelete: _contentWillDelete.asObserver())
 
-        let updateTextFields = _selectedMealLabelViewModel.map { $0.content }
+        let showLabelsOnce = model.meal
+            .compactMap { $0 }
+            .map { $0.contents.toArray() }
+            .take(1)
+
+        let updateTextFields = _selectedContent
         let reloadData = _contentDidAdd
 
-        output = Output(updateLabelText: model.contentDidUpdate.asObservable(),
-                        updateTextFields: updateTextFields,
+        output = Output(showLabelsOnce: showLabelsOnce,
+                        contentDidUpdate: model.contentDidUpdate.asObservable(),
+                        updateTextFields: updateTextFields.asObservable(),
                         hideMealLabel: model.contentDidDelete.asObservable(),
                         reloadData: reloadData.asObservable())
 
         // MARK: - Update value when select a label
-        _selectedMealLabelViewModel
-            .map { $0.content }
+        _selectedContent
             .subscribe(onNext: {
                 _calorieTextInput.accept("\($0.calorie)")
                 _multipleTextInput.accept("\($0.multiple)")
@@ -63,7 +68,7 @@ final class NewInputMealViewModel {
             .distinctUntilChanged()
             .share()
 
-        calorie.withLatestFrom(_selectedMealLabelViewModel) { ($1.content, $0) }
+        calorie.withLatestFrom(_selectedContent) { ($1, $0) }
             .bind(to: model.saveCalorie)
             .disposed(by: disposeBag)
 
@@ -73,7 +78,7 @@ final class NewInputMealViewModel {
             .distinctUntilChanged()
             .share()
 
-        multiple.withLatestFrom(_selectedMealLabelViewModel) { ($1.content, $0) }
+        multiple.withLatestFrom(_selectedContent) { ($1, $0) }
             .bind(to: model.saveMultiple)
             .disposed(by: disposeBag)
 
@@ -81,14 +86,13 @@ final class NewInputMealViewModel {
             .distinctUntilChanged()
             .map { $0 ?? "" }
 
-        name.withLatestFrom(_selectedMealLabelViewModel) { ($1.content, $0) }
+        name.withLatestFrom(_selectedContent) { ($1, $0) }
             .bind(to: model.saveName)
             .disposed(by: disposeBag)
 
         // MARK: - Delete content
         let meal = model.meal.compactMap { $0 }
-        let deleteTargetContent = _selectedMealLabelViewModel.map { $0.content }
-        let deleteTarget = Observable.combineLatest(meal, deleteTargetContent)
+        let deleteTarget = Observable.combineLatest(meal, _selectedContent)
         _contentWillDelete.withLatestFrom(deleteTarget)
             .bind(to: model.deleteContent)
             .disposed(by: disposeBag)
@@ -105,12 +109,13 @@ extension NewInputMealViewModel {
         let nameTextInput: AnyObserver<String?>
         let calorieTextInput: AnyObserver<String?>
         let multipleTextInput: AnyObserver<String?>
-        let selectedMealLabelViewModel: AnyObserver<MealLabelViewModel>
+        let selectedContent: AnyObserver<Content>
         let contentDidAdd: AnyObserver<Void>
         let contentWillDelete: AnyObserver<Void>
     }
     struct Output {
-        let updateLabelText: Observable<Content>
+        let showLabelsOnce: Observable<[Content]>
+        let contentDidUpdate: Observable<Content>
         let updateTextFields: Observable<Content>
         let hideMealLabel: Observable<Void>
         let reloadData: Observable<Void>

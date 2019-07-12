@@ -40,13 +40,14 @@ final class MealLabelView: UIView {
             .when(.recognized)
             .subscribe(onNext: { [weak self] _ in
                 guard let self = self else { return }
-                viewModel.input.selectedMealLabelViewModel.on(.next(self.viewModel))
+                viewModel.input.selectedContent.on(.next(self.viewModel.content))
             })
             .disposed(by: disposeBag)
 
-        // MARK: - Update text
-        viewModel.output.updateLabelText
-            .bind(to: updateLabelText)
+        // MARK: - Update text and notify new content
+        viewModel.output.contentDidUpdate
+            .bind(to: updateLabelText,
+                  updateContent)
             .disposed(by: disposeBag)
 
         // MARK: - Hide myself when content is deleted
@@ -60,6 +61,12 @@ final class MealLabelView: UIView {
             let calorie = content.calorie
             let multiple = content.multiple
             me.mealLabel.text = "\(Int(calorie * (multiple == 0 ? 1 : multiple)))"
+        }
+    }
+
+    var updateContent: Binder<Content> {
+        return Binder(self) { me, content in
+            me.viewModel.input.contentDidUpdate.on(.next(content))
         }
     }
 
