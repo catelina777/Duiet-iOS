@@ -29,10 +29,21 @@ class TopTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        viewModel.output.showDetailDay
+            .map { _ in }
+            .bind(to: showDetailDay)
+            .disposed(by: disposeBag)
+
         viewModel.output.showDays
             .map { _ in }
             .bind(to: showDays)
             .disposed(by: disposeBag)
+    }
+
+    var showDetailDay: Binder<Void> {
+        return Binder(self) { me, _ in
+            me.selectedIndex = 0
+        }
     }
 
     var showDays: Binder<Void> {

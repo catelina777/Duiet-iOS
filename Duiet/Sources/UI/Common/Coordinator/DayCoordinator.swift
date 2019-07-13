@@ -29,10 +29,8 @@ final class DayCoordinator: Coordinator {
 
     func showDetail(image: UIImage?, meal: Meal) {
         let model = InputMealModel(repository: DayRepository.shared, meal: meal)
-        let viewModel = InputMealViewModel(coordinator: self,
-                                              model: model)
-        let vc = InputMealViewController(viewModel: viewModel,
-                                         image: image)
+        let viewModel = InputMealViewModel(coordinator: self, model: model)
+        let vc = InputMealViewController(viewModel: viewModel, image: image)
         viewController.present(vc, animated: true, completion: nil)
     }
 
@@ -50,6 +48,12 @@ final class DayCoordinator: Coordinator {
         vc.hero.modalAnimationType = .auto
         vc.headerView.hero.id = heroID
         navigator.present(vc, animated: true, completion: nil)
+    }
+
+    func showDetailDay(day: Day) {
+        let model = DayModel(date: day.createdAt, repository: DayRepository.shared)
+        let vc = DayViewController(viewModel: .init(coordinator: self, model: model))
+        navigator.pushViewController(vc, animated: false)
     }
 
     func dismiss() {

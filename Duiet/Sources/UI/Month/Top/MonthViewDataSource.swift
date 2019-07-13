@@ -40,7 +40,14 @@ extension MonthViewDataSource: UICollectionViewDataSource {
     }
 }
 
-extension MonthViewDataSource: UICollectionViewDelegate {}
+extension MonthViewDataSource: UICollectionViewDelegate {
+
+    func collectionView(_ collectionView: UICollectionView,
+                        didSelectItemAt indexPath: IndexPath) {
+        let day = viewModel.days[indexPath.row]
+        viewModel.input.selectedDay.on(.next(day))
+    }
+}
 
 extension MonthViewDataSource: UICollectionViewDelegateFlowLayout {
 

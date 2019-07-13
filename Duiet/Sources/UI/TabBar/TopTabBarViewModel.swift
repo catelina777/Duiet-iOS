@@ -18,31 +18,24 @@ final class TopTabBarViewModel {
     private let disposeBag = DisposeBag()
 
     init() {
-        let _showDetailDay = PublishRelay<Date>()
+        let _itemDidSelect = PublishRelay<Day>()
         let _showDays = PublishRelay<Month>()
-        input = Input(showDetailDay: _showDetailDay.asObserver(),
+        input = Input(itemDidSelect: _itemDidSelect.asObserver(),
                       showDays: _showDays.asObserver())
-        output = Output(showDetailDay: _showDetailDay.asObservable(),
+        output = Output(showDetailDay: _itemDidSelect.asObservable(),
                         showDays: _showDays.asObservable())
-
-        _showDays
-            .subscribe(onNext: {
-                print("in tab view model")
-                print($0.createdAt)
-            })
-            .disposed(by: disposeBag)
     }
 }
 
 extension TopTabBarViewModel {
 
     struct Input {
-        let showDetailDay: AnyObserver<Date>
+        let itemDidSelect: AnyObserver<Day>
         let showDays: AnyObserver<Month>
     }
 
     struct Output {
-        let showDetailDay: Observable<Date>
+        let showDetailDay: Observable<Day>
         let showDays: Observable<Month>
     }
 }

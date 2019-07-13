@@ -38,11 +38,13 @@ final class DayViewModel {
         let _viewDidDisappear = PublishRelay<Void>()
         let _addButtonTap = PublishRelay<DayViewController>()
         let _selectedItem = PublishRelay<(MealCardViewCell, Meal)>()
+        let _showDetailDay = PublishRelay<Day>()
 
         input = Input(viewDidAppear: _viewDidAppear.asObserver(),
                       viewDidDisappear: _viewDidDisappear.asObserver(),
                       addButtonTap: _addButtonTap.asObserver(),
-                      selectedItem: _selectedItem.asObserver())
+                      selectedItem: _selectedItem.asObserver(),
+                      showDetailDay: _showDetailDay.asObserver())
 
         let pickedImage = _addButtonTap
             .flatMapLatest { vc in
@@ -86,16 +88,24 @@ final class DayViewModel {
         showDetail
             .asDriver(onErrorDriveWith: .empty())
             .drive(onNext: { [weak self] image, meal in
-                guard let self = self else { return }
-                self.coordinator.showDetail(image: image, meal: meal)
+                guard let me = self else { return }
+                me.coordinator.showDetail(image: image, meal: meal)
             })
             .disposed(by: disposeBag)
 
         editDetail
             .asDriver(onErrorDriveWith: .empty())
             .drive(onNext: { [weak self] card, meal in
-                guard let self = self else { return }
-                self.coordinator.showEdit(mealCard: card, meal: meal)
+                guard let me = self else { return }
+                me.coordinator.showEdit(mealCard: card, meal: meal)
+            })
+            .disposed(by: disposeBag)
+
+        _showDetailDay
+            .asDriver(onErrorDriveWith: .empty())
+            .drive(onNext: { [weak self] day in
+                guard let me = self else { return }
+                me.coordinator.showDetailDay(day: day)
             })
             .disposed(by: disposeBag)
     }
@@ -108,6 +118,7 @@ extension DayViewModel {
         let viewDidDisappear: AnyObserver<Void>
         let addButtonTap: AnyObserver<DayViewController>
         let selectedItem: AnyObserver<(MealCardViewCell, Meal)>
+        let showDetailDay: AnyObserver<Day>
     }
 
     struct Output {
