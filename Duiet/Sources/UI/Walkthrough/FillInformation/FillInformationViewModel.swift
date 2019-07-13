@@ -39,7 +39,6 @@ final class FillInformationViewModel {
 
     let activityTypes: [ActivityLevel] = [.none, .sedentary, .lightly, .moderately, .veryActive]
 
-
     init(coordinator: WalkthrouthCoordinator) {
         self.coordinator = coordinator
 

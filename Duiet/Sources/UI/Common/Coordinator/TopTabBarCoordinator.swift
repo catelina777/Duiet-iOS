@@ -13,9 +13,12 @@ final class TopTabBarCoordinator: Coordinator {
     private let navigator: UINavigationController
     let controller: TopTabBarController
 
-    init(navigator: UINavigationController, viewModel: TopTabBarViewModel, navigationControllers: [UIViewController]) {
+    init(navigator: UINavigationController,
+         viewModel: TopTabBarViewModel,
+         navigationControllers: [UIViewController]) {
         self.navigator = navigator
-        self.controller = TopTabBarController(viewModel: viewModel, navigationControllers: navigationControllers)
+        self.controller = TopTabBarController(viewModel: viewModel,
+                                              navigationControllers: navigationControllers)
     }
 
     func start() {

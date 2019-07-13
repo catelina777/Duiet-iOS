@@ -13,7 +13,8 @@ final class WalkthrouthCoordinator: Coordinator {
     private let topTabBarCoordinator: TopTabBarCoordinator
     private let navigator: UINavigationController
 
-    init(navigator: UINavigationController, topTabBarCoordinator: TopTabBarCoordinator) {
+    init(navigator: UINavigationController,
+         topTabBarCoordinator: TopTabBarCoordinator) {
         self.navigator = navigator
         self.topTabBarCoordinator = topTabBarCoordinator
     }
