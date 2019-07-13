@@ -10,7 +10,7 @@ import UIKit
 
 class YearViewController: BaseCollectionViewController, NavigationBarCustomizable {
 
-    private let viewModel: YearViewModel
+    let viewModel: YearViewModel
     private let dataSource: YearViewDataSource
 
     init(viewModel: YearViewModel) {

@@ -25,7 +25,8 @@ final class YearViewDataSource: NSObject {
 
 extension YearViewDataSource: UICollectionViewDataSource {
 
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int {
         return viewModel.months.count
     }
 
@@ -39,7 +40,14 @@ extension YearViewDataSource: UICollectionViewDataSource {
     }
 }
 
-extension YearViewDataSource: UICollectionViewDelegate {}
+extension YearViewDataSource: UICollectionViewDelegate {
+
+    func collectionView(_ collectionView: UICollectionView,
+                        didSelectItemAt indexPath: IndexPath) {
+        let month = viewModel.months[indexPath.row]
+        viewModel.input.itemDidSelect.on(.next(month))
+    }
+}
 
 extension YearViewDataSource: UICollectionViewDelegateFlowLayout {
 

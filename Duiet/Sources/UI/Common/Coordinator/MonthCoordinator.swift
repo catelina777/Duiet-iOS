@@ -25,4 +25,10 @@ final class MonthCoordinator: Coordinator {
                                         tabViewModel: tabViewModel)
         navigator.pushViewController(vc, animated: false)
     }
+
+    func show(month: Month) {
+        let model = MonthModel(month: month, repository: MonthRepository.shared)
+        let vc = MonthViewController(viewModel: .init(coordinator: self, model: model))
+        navigator.pushViewController(vc, animated: false)
+    }
 }

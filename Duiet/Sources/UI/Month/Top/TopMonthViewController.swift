@@ -24,5 +24,9 @@ final class TopMonthViewController: MonthViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        tabViewModel.output.showDays
+            .bind(to: viewModel.input.selectedMonth)
+            .disposed(by: disposeBag)
     }
 }

@@ -12,7 +12,7 @@ import RealmSwift
 
 protocol MonthRepositoryProtocol {
     func findAll() -> Results<Day>
-    func find(month date: Date) -> Month?
+    func find(month: Month) -> Month?
 }
 
 final class MonthRepository: MonthRepositoryProtocol {
@@ -28,7 +28,8 @@ final class MonthRepository: MonthRepositoryProtocol {
         return realm.objects(Day.self).sorted(byKeyPath: "createdAt")
     }
 
-    func find(month date: Date) -> Month? {
+    func find(month: Month) -> Month? {
+        let date = month.createdAt
         let monthPrimaryKey = date.toMonthKeyString()
         return realm.object(ofType: Month.self, forPrimaryKey: monthPrimaryKey)
     }

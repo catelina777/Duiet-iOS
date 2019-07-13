@@ -12,7 +12,10 @@ import RxRelay
 
 final class YearViewModel {
 
-    private let yearModel: YearModel
+    let input: Input
+    let output: Output
+
+    private let yearModel: YearModelProtocol
     private let coordinator: YearCoordinator
     private let disposeBag = DisposeBag()
 
@@ -20,15 +23,24 @@ final class YearViewModel {
         return yearModel.months.value
     }
 
-    init(coordinator: YearCoordinator) {
+    init(coordinator: YearCoordinator,
+         yearModel: YearModelProtocol) {
         self.coordinator = coordinator
-        yearModel = YearModel.shared
+        self.yearModel = yearModel
+
+        let _itemDidSelect = PublishRelay<Month>()
+        input = Input(itemDidSelect: _itemDidSelect.asObserver())
+        output = Output(showSelectedMonth: _itemDidSelect.asObservable())
     }
 }
 
 extension YearViewModel {
 
-    struct Input {}
+    struct Input {
+        let itemDidSelect: AnyObserver<Month>
+    }
 
-    struct Output {}
+    struct Output {
+        let showSelectedMonth: Observable<Month>
+    }
 }

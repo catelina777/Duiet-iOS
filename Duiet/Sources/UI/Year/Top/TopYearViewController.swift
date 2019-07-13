@@ -24,5 +24,9 @@ final class TopYearViewController: YearViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        viewModel.output.showSelectedMonth
+            .bind(to: tabViewModel.input.showDays)
+            .disposed(by: disposeBag)
     }
 }

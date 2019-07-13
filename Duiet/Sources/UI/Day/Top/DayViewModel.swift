@@ -29,8 +29,7 @@ final class DayViewModel {
     }
 
     init(coordinator: DayCoordinator,
-         model: DayModelProtocol,
-         date: Date? = nil) {
+         model: DayModelProtocol) {
         self.coordinator = coordinator
         self.userInfoModel = UserInfoModel.shared
         self.dayModel = model

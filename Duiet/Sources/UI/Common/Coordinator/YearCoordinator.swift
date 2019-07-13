@@ -20,7 +20,7 @@ final class YearCoordinator: Coordinator {
     }
 
     func start() {
-        let vc = TopYearViewController(viewModel: .init(coordinator: self),
+        let vc = TopYearViewController(viewModel: .init(coordinator: self, yearModel: YearModel.shared),
                                        tabViewModel: tabViewModel)
         navigator.pushViewController(vc, animated: false)
     }

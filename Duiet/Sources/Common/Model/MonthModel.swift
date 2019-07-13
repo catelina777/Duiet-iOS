@@ -25,11 +25,16 @@ final class MonthModel: MonthModelProtocol {
     private let repository: MonthRepositoryProtocol
     private let disposeBag = DisposeBag()
 
-    init(repository: MonthRepositoryProtocol) {
+    init(month: Month? = nil, repository: MonthRepositoryProtocol) {
         self.repository = repository
 
-        let dayResults = repository.findAll()
-        observe(dayResults: dayResults)
+        if let month = month {
+            let monthObject = repository.find(month: month)
+            observe(monthObject: monthObject)
+        } else {
+            let dayResults = repository.findAll()
+            observe(dayResults: dayResults)
+        }
     }
 
     private func observe(dayResults: Results<Day>) {
@@ -41,7 +46,8 @@ final class MonthModel: MonthModelProtocol {
             .disposed(by: disposeBag)
     }
 
-    private func observe(monthObject: Month) {
+    private func observe(monthObject: Month?) {
+        guard let monthObject = monthObject else { return }
         Observable.from(object: monthObject)
             .subscribe(onNext: { [weak self] month in
                 guard let self = self else { return }

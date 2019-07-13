@@ -12,7 +12,11 @@ import RealmSwift
 import RxRealm
 import RxRelay
 
-final class YearModel {
+protocol YearModelProtocol {
+    var months: BehaviorRelay<[Month]> { get }
+}
+
+final class YearModel: YearModelProtocol {
 
     static let shared = YearModel(repository: YearRepository.shared)
 

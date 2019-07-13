@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class TopTabBarController: UITabBarController {
 
     private let viewModel: TopTabBarViewModel
+    private let disposeBag = DisposeBag()
 
     init(viewModel: TopTabBarViewModel,
          navigationControllers: [UIViewController]) {
@@ -25,6 +28,24 @@ class TopTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        viewModel.output.showDays
+            .map { _ in }
+            .bind(to: showDays)
+            .disposed(by: disposeBag)
+    }
+
+    var showDays: Binder<Void> {
+        return Binder(self) { me, _ in
+            me.selectedIndex = 1
+        }
+    }
+
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        for nc in self.viewControllers! {
+            _ = nc.children[0].view
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
