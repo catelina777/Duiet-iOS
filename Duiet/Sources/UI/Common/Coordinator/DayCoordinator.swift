@@ -18,8 +18,7 @@ final class DayCoordinator: Coordinator {
          tabViewModel: TopTabBarViewModel) {
         self.navigator = navigator
         self.tabViewModel = tabViewModel
-        let repository = DayRepository()
-        let model = DayModel(repository: repository)
+        let model = DayModel(repository: DayRepository.shared)
         self.viewController = TopDayViewController(viewModel: .init(coordinator: self, model: model),
                                                    tabViewModel: tabViewModel)
     }
@@ -29,8 +28,7 @@ final class DayCoordinator: Coordinator {
     }
 
     func showDetail(image: UIImage?, meal: Meal) {
-        let repository = DayRepository()
-        let model = InputMealModel(repository: repository, meal: meal)
+        let model = InputMealModel(repository: DayRepository.shared, meal: meal)
         let viewModel = InputMealViewModel(coordinator: self,
                                               model: model)
         let vc = InputMealViewController(viewModel: viewModel,
@@ -42,8 +40,7 @@ final class DayCoordinator: Coordinator {
         let heroID = "\(meal.date.timeIntervalSince1970)"
         mealCard.imageView.hero.id = heroID
 
-        let repository = DayRepository()
-        let model = InputMealModel(repository: repository,
+        let model = InputMealModel(repository: DayRepository.shared,
                                    meal: meal)
         let viewModel = InputMealViewModel(coordinator: self,
                                            model: model)

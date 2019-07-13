@@ -20,9 +20,9 @@ final class MonthCoordinator: Coordinator {
     }
 
     func start() {
-        let repository = MonthRepository()
-        let model = MonthModel(repository: repository)
-        let vc = TopMonthViewController(viewModel: .init(coordinator: self, model: model), tabViewModel: tabViewModel)
+        let model = MonthModel(repository: MonthRepository.shared)
+        let vc = TopMonthViewController(viewModel: .init(coordinator: self, model: model),
+                                        tabViewModel: tabViewModel)
         navigator.pushViewController(vc, animated: false)
     }
 }
