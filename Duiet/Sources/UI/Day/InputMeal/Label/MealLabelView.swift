@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxRelay
+import RxCocoa
 
 final class MealLabelView: UIView {
 
@@ -23,42 +24,56 @@ final class MealLabelView: UIView {
         }
     }
 
-    let content = BehaviorRelay<Content>(value: Content())
+    var viewModel: MealLabelViewModel!
     private let disposeBag = DisposeBag()
 
     func configure(with viewModel: InputMealViewModel) {
+        // MARK: - Send ViewModel of selected MealLabel
         self.rx.tapGesture()
             .when(.recognized)
-            .withLatestFrom(Observable.of(self))
-            .bind(to: viewModel.input.selectedMealLabel)
+            .subscribe(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                viewModel.input.selectedViewModel.on(.next(self.viewModel))
+            })
             .disposed(by: disposeBag)
 
-        // MARK: - Tell ViewModel new content information when tapping a new label
-        self.rx.tapGesture()
-            .when(.recognized)
-            .withLatestFrom(content)
-            .subscribe(onNext: {
-                viewModel.input.calorieTextInput.on(.next("\($0.calorie)"))
-                viewModel.input.multipleTextInput.on(.next("\($0.multiple)"))
-                viewModel.input.nameTextInput.on(.next($0.name))
-            })
+        // MARK: - Update text and notify new content
+        self.viewModel.output.contentDidUpdate
+            .bind(to: updateLabelText,
+                      updateContent)
+            .disposed(by: disposeBag)
+
+        // MARK: - Hide myself when content is deleted
+        self.viewModel.output.hideView
+            .bind(to: hideMealLabel)
             .disposed(by: disposeBag)
     }
 
-    func configure(with view: UIView, at point: CGPoint) {
-        // Add MealLavelView to SuperView
-        view.addSubview(self)
-        self.clipsToBounds = true
-        let width = view.bounds.width * 0.3
-        let height = width * 0.4
-        let frame = CGRect(x: point.x - width / 2, y: point.y - height / 2, width: width, height: height)
-        self.frame = frame
+    func initialize(with content: Content) {
+        self.viewModel = MealLabelViewModel(content: content)
+        let calorie = self.viewModel.content.calorie
+        let multiple = self.viewModel.content.multiple
+        self.mealLabel.text = "\(Int(calorie * (multiple == 0 ? 1 : multiple)))"
+    }
 
-        // Setup Content Model
-        let relativeX = point.x / view.frame.width
-        let relativeY = point.y / view.frame.height
-        let _content = Content(relativeX: Double(relativeX),
-                               relativeY: Double(relativeY))
-        self.content.accept(_content)
+    var updateLabelText: Binder<Content> {
+        return Binder(self) { me, content in
+            guard !content.isInvalidated else { return }
+            let calorie = content.calorie
+            let multiple = content.multiple
+            me.mealLabel.text = "\(Int(calorie * (multiple == 0 ? 1 : multiple)))"
+        }
+    }
+
+    var updateContent: Binder<Content> {
+        return Binder(self) { me, content in
+            me.viewModel.input.contentDidUpdate.on(.next(content))
+        }
+    }
+
+    var hideMealLabel: Binder<Void> {
+        return Binder(self) { me, _ in
+            me.isHidden = true
+        }
     }
 }

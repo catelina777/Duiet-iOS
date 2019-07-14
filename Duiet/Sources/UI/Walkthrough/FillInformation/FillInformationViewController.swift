@@ -17,8 +17,8 @@ final class FillInformationViewController: BaseTableViewController, NavigationBa
 
     let keyboardTrackViewModel: KeyboardTrackViewModel
 
-    init() {
-        self.viewModel = FillInformationViewModel()
+    init(viewModel: FillInformationViewModel) {
+        self.viewModel = viewModel
         self.keyboardTrackViewModel = KeyboardTrackViewModel()
         dataSource = FillInformationViewDataSource(viewModel: viewModel,
                                                    keyboardTrackViewModel: keyboardTrackViewModel)
@@ -34,10 +34,6 @@ final class FillInformationViewController: BaseTableViewController, NavigationBa
         dataSource.configure(with: tableView)
         configureNavigationBar(with: viewModel.title)
 
-        viewModel.output.didTapComplete
-            .bind(to: showMain)
-            .disposed(by: disposeBag)
-
         keyboardTrackViewModel.output.difference
             .bind(to: updateScroll)
             .disposed(by: disposeBag)
@@ -46,11 +42,5 @@ final class FillInformationViewController: BaseTableViewController, NavigationBa
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-    }
-
-    private var showMain: Binder<Void> {
-        return Binder(self) { me, _ in
-            AppNavigator.shared.start(with: me)
-        }
     }
 }

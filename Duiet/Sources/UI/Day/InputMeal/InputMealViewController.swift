@@ -14,7 +14,6 @@ import RxGesture
 final class InputMealViewController: BaseTableViewController, KeyboardFrameTrackkable {
 
     let headerView: UIImageView
-    let labelCanvasView: UIView
 
     @IBOutlet weak var cancelButton: UIButton! {
         didSet {
@@ -28,16 +27,13 @@ final class InputMealViewController: BaseTableViewController, KeyboardFrameTrack
     let keyboardTrackViewModel: KeyboardTrackViewModel
     let dataSource: InputMealDataSource
 
-    init(mealImage: UIImage?,
-         meal: Meal,
-         model: MealModel) {
-        self.viewModel = InputMealViewModel(mealImage: mealImage,
-                                            meal: meal, model: model)
+    init(viewModel: InputMealViewModel,
+         image: UIImage?) {
+        self.viewModel = viewModel
         self.keyboardTrackViewModel = KeyboardTrackViewModel()
         self.dataSource = InputMealDataSource(viewModel: viewModel,
                                               keyboardTrackViewModel: keyboardTrackViewModel)
-        self.headerView = UIImageView(image: viewModel.mealImage)
-        self.labelCanvasView = UIView()
+        self.headerView = UIImageView(image: image)
         super.init(nibName: InputMealViewController.className, bundle: nil)
     }
 
@@ -59,7 +55,7 @@ final class InputMealViewController: BaseTableViewController, KeyboardFrameTrack
             .disposed(by: disposeBag)
 
         cancelButton.rx.tap
-            .bind(to: dissmiss)
+            .bind(to: viewModel.input.dismiss)
             .disposed(by: disposeBag)
 
         keyboardTrackViewModel.output.difference
@@ -69,6 +65,10 @@ final class InputMealViewController: BaseTableViewController, KeyboardFrameTrack
         viewModel.output.reloadData
             .bind(to: reloadData)
             .disposed(by: disposeBag)
+    }
+
+    deinit {
+        print("🧹🧹🧹 Input Meal View controller parge 🧹🧹🧹")
     }
 
     private var configureHeaderView: Binder<Void> {
@@ -114,12 +114,6 @@ final class InputMealViewController: BaseTableViewController, KeyboardFrameTrack
             me.tableView.beginUpdates()
             me.tableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .automatic)
             me.tableView.endUpdates()
-        }
-    }
-
-    private var dissmiss: Binder<Void> {
-        return Binder(self) { me, _ in
-            me.dismiss(animated: true, completion: nil)
         }
     }
 }

@@ -19,26 +19,32 @@ final class DayViewModel {
     let output: Output
 
     let userInfoModel: UserInfoModel
-    let mealModel: MealModel
+    let dayModel: DayModelProtocol
+
+    private let coordinator: DayCoordinator
     private let disposeBag = DisposeBag()
 
     var meals: [Meal] {
-        return mealModel.meals.value
+        return dayModel.meals.value
     }
 
-    init() {
+    init(coordinator: DayCoordinator,
+         model: DayModelProtocol) {
+        self.coordinator = coordinator
         self.userInfoModel = UserInfoModel.shared
-        self.mealModel = MealModel.shared
+        self.dayModel = model
 
         let _viewDidAppear = PublishRelay<Void>()
         let _viewDidDisappear = PublishRelay<Void>()
         let _addButtonTap = PublishRelay<DayViewController>()
         let _selectedItem = PublishRelay<(MealCardViewCell, Meal)>()
+        let _showDetailDay = PublishRelay<Day>()
 
         input = Input(viewDidAppear: _viewDidAppear.asObserver(),
                       viewDidDisappear: _viewDidDisappear.asObserver(),
                       addButtonTap: _addButtonTap.asObserver(),
-                      selectedItem: _selectedItem.asObserver())
+                      selectedItem: _selectedItem.asObserver(),
+                      showDetailDay: _showDetailDay.asObserver())
 
         let pickedImage = _addButtonTap
             .flatMapLatest { vc in
@@ -60,12 +66,10 @@ final class DayViewModel {
         let editDetail = _selectedItem
 
         /// I also added meals because I want to detect the update of meal information
-        let progress = Observable.combineLatest(mealModel.day, userInfoModel.userInfo, mealModel.meals)
+        let progress = Observable.combineLatest(dayModel.day, userInfoModel.userInfo, dayModel.meals)
             .map { ($0.0, $0.1) }
 
-        output = Output(showDetail: showDetail,
-                        editDetail: editDetail.asObservable(),
-                        changeData: mealModel.changeData.asObservable(),
+        output = Output(changeData: dayModel.changeData.asObservable(),
                         progress: progress)
 
         pickedImage
@@ -77,7 +81,32 @@ final class DayViewModel {
 
         meal
             .map { $0 }
-            .bind(to: mealModel.rx.addMeal)
+            .bind(to: dayModel.addMeal)
+            .disposed(by: disposeBag)
+
+        // MARK: - Processing to transition
+        showDetail
+            .asDriver(onErrorDriveWith: .empty())
+            .drive(onNext: { [weak self] image, meal in
+                guard let me = self else { return }
+                me.coordinator.showDetail(image: image, meal: meal)
+            })
+            .disposed(by: disposeBag)
+
+        editDetail
+            .asDriver(onErrorDriveWith: .empty())
+            .drive(onNext: { [weak self] card, meal in
+                guard let me = self else { return }
+                me.coordinator.showEdit(mealCard: card, meal: meal)
+            })
+            .disposed(by: disposeBag)
+
+        _showDetailDay
+            .asDriver(onErrorDriveWith: .empty())
+            .drive(onNext: { [weak self] day in
+                guard let me = self else { return }
+                me.coordinator.showDetailDay(day: day)
+            })
             .disposed(by: disposeBag)
     }
 }
@@ -89,11 +118,10 @@ extension DayViewModel {
         let viewDidDisappear: AnyObserver<Void>
         let addButtonTap: AnyObserver<DayViewController>
         let selectedItem: AnyObserver<(MealCardViewCell, Meal)>
+        let showDetailDay: AnyObserver<Day>
     }
 
     struct Output {
-        let showDetail: Observable<(UIImage?, Meal)>
-        let editDetail: Observable<(MealCardViewCell, Meal)>
         let changeData: Observable<RealmChangeset?>
         let progress: Observable<(Day, UserInfo)>
     }

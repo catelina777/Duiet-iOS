@@ -27,6 +27,10 @@ final class InputMealDataSource: NSObject {
         tableView.register(R.nib.labelCanvasViewCell)
         tableView.register(R.nib.inputMealCalorieViewCell)
     }
+
+    deinit {
+        print("🧹🧹🧹 Input Meal Datasource parge 🧹🧹🧹")
+    }
 }
 
 extension InputMealDataSource: UITableViewDataSource {
@@ -46,7 +50,7 @@ extension InputMealDataSource: UITableViewDataSource {
             return cell
         default:
             // Display when mealLabelviews are empty
-            if viewModel.meal.contents.count == 0 {
+            if viewModel.contentCount == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.emptyContentViewCell,
                                                          for: indexPath)!
                 return cell

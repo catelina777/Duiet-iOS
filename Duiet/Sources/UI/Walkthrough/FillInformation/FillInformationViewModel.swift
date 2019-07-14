@@ -20,6 +20,9 @@ final class FillInformationViewModel {
     let input: Input
     let output: Output
 
+    private let coordinator: WalkthrouthCoordinator
+    private let disposeBag = DisposeBag()
+
     private(set) lazy var ageList: [Int] = {
         return [Int].init(repeating: 0, count: 120).enumerated().map { $0.offset }
     }()
@@ -36,22 +39,22 @@ final class FillInformationViewModel {
 
     let activityTypes: [ActivityLevel] = [.none, .sedentary, .lightly, .moderately, .veryActive]
 
-    private let disposeBag = DisposeBag()
+    init(coordinator: WalkthrouthCoordinator) {
+        self.coordinator = coordinator
 
-    init() {
         let _gender = BehaviorRelay<Bool?>(value: nil)
         let _age = BehaviorRelay<Int?>(value: nil)
         let _height = BehaviorRelay<Double?>(value: nil)
         let _weight = BehaviorRelay<Double?>(value: nil)
         let _activityLevel = BehaviorRelay<ActivityLevel>(value: .none)
-        let _completeButtonTap = PublishRelay<Void>()
+        let _didTapComplete = PublishRelay<Void>()
 
         self.input = Input(gender: _gender.asObserver(),
                            age: _age.asObserver(),
                            height: _height.asObserver(),
                            weight: _weight.asObserver(),
                            activityLevel: _activityLevel.asObserver(),
-                           completeButtonTap: _completeButtonTap.asObserver())
+                           didTapComplete: _didTapComplete.asObserver())
 
         let gender = _gender.asObservable()
 
@@ -66,7 +69,7 @@ final class FillInformationViewModel {
             .distinctUntilChanged()
 
         let userInfo = PublishRelay<UserInfo>()
-        let completeButtonTap = _completeButtonTap
+        let didTapComplete = _didTapComplete
 
         let BMRWithActivityLevel = combinedInfo
             .map { v0, v1, v2, v3, v4 -> (Double, ActivityLevel) in
@@ -113,13 +116,21 @@ final class FillInformationViewModel {
 
         self.output = Output(gender: gender,
                              isValidateComplete: isValidateComplete,
-                             didTapComplete: completeButtonTap.asObservable(),
+                             didTapComplete: didTapComplete.asObservable(),
                              BMR: BMR,
                              TDEE: TDEE)
 
-        completeButtonTap.withLatestFrom(userInfo)
+        didTapComplete.withLatestFrom(userInfo)
             .map { $0 }
             .bind(to: Realm.rx.add(update: true))
+            .disposed(by: disposeBag)
+
+        // MARK: - Processing to transition
+        didTapComplete
+            .asDriver(onErrorDriveWith: .empty())
+            .drive(onNext: {
+                coordinator.showTop()
+            })
             .disposed(by: disposeBag)
     }
 }
@@ -132,7 +143,7 @@ extension FillInformationViewModel {
         let height: AnyObserver<Double?>
         let weight: AnyObserver<Double?>
         let activityLevel: AnyObserver<ActivityLevel>
-        let completeButtonTap: AnyObserver<Void>
+        let didTapComplete: AnyObserver<Void>
     }
 
     struct Output {

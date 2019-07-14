@@ -12,21 +12,23 @@ import RealmSwift
 import RxRealm
 import RxRelay
 
-final class YearModel: RealmBaseModel {
+protocol YearModelProtocol {
+    var months: BehaviorRelay<[Month]> { get }
+}
 
-    static let shared = YearModel()
+final class YearModel: YearModelProtocol {
+
+    static let shared = YearModel(repository: YearRepository.shared)
 
     let months = BehaviorRelay<[Month]>(value: [])
 
-    override init() {
-        super.init()
-        let monthResults = find()
-        observe(monthResults: monthResults)
-    }
+    private let repository: YearRepositoryProtocol
+    private let disposeBag = DisposeBag()
 
-    func find() -> Results<Month> {
-        let monthResults = realm.objects(Month.self).sorted(byKeyPath: "createdAt")
-        return monthResults
+    init(repository: YearRepositoryProtocol) {
+        self.repository = repository
+        let monthResults = repository.find()
+        observe(monthResults: monthResults)
     }
 
     func observe(monthResults: Results<Month>) {

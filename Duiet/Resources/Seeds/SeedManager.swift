@@ -9,6 +9,7 @@
 import Foundation
 import RealmSwift
 
+#if DEBUG
 class SeedManager {
 
     let realm: Realm
@@ -76,3 +77,4 @@ class SeedManager {
         return content
     }
 }
+#endif

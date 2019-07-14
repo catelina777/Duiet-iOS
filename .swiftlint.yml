@@ -5,4 +5,6 @@ excluded:
 
 disabled_rules:
   - identifier_name
-  - force_try	
+  - force_try
+
+function_body_length: 80

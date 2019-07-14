@@ -35,7 +35,7 @@ final class CompleteButtonViewCell: RxTableViewCell {
             .disposed(by: disposeBag)
 
         completeButton.rx.tap
-            .bind(to: viewModel.input.completeButtonTap)
+            .bind(to: viewModel.input.didTapComplete)
             .disposed(by: disposeBag)
     }
 }

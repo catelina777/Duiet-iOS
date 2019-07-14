@@ -13,12 +13,15 @@ import RealmSwift
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var appCoordinator: AppCoordinator?
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         let window = UIWindow(frame: UIScreen.main.bounds)
         self.window = window
+
+        self.appCoordinator = AppCoordinator(window: window)
 
         /* insert seed data
         let seedmanager = SeedManager()
@@ -31,10 +34,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         switch isLaunchedBefore {
         case false:
             UserDefaults.standard.set(true, forKey: key)
-            AppNavigator.shared.firstStart(with: window)
+            appCoordinator?.initialStart()
             print("is first launch 🍻🍻🍻")
         case true:
-            AppNavigator.shared.start(with: window)
+            appCoordinator?.start()
             print("is not first launch 🍣🍣🍣")
         }
 

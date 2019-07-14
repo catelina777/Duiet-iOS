@@ -25,21 +25,29 @@ final class YearViewDataSource: NSObject {
 
 extension YearViewDataSource: UICollectionViewDataSource {
 
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.yearModel.months.value.count
+    func collectionView(_ collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int {
+        return viewModel.months.count
     }
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.monthSummaryViewCell,
                                                       for: indexPath)!
-        let month = viewModel.yearModel.months.value[indexPath.row]
+        let month = viewModel.months[indexPath.row]
         cell.configure(with: month)
         return cell
     }
 }
 
-extension YearViewDataSource: UICollectionViewDelegate {}
+extension YearViewDataSource: UICollectionViewDelegate {
+
+    func collectionView(_ collectionView: UICollectionView,
+                        didSelectItemAt indexPath: IndexPath) {
+        let month = viewModel.months[indexPath.row]
+        viewModel.input.itemDidSelect.on(.next(month))
+    }
+}
 
 extension YearViewDataSource: UICollectionViewDelegateFlowLayout {
 

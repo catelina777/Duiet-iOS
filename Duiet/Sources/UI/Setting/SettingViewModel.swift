@@ -11,18 +11,16 @@ import RxSwift
 
 final class SettingViewModel {
 
-    init() {
+    private let coordinator: SettingCoordinator
 
+    init(coordinator: SettingCoordinator) {
+        self.coordinator = coordinator
     }
 }
 
 extension SettingViewModel {
 
-    struct Input {
+    struct Input {}
 
-    }
-
-    struct Output {
-
-    }
+    struct Output {}
 }

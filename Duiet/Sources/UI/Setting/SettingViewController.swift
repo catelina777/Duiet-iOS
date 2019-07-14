@@ -15,8 +15,8 @@ final class SettingViewController: BaseTableViewController, NavigationBarCustomi
     let viewModel: SettingViewModel
     let dataSource: SettingViewDataSource
 
-    init() {
-        viewModel = SettingViewModel()
+    init(viewModel: SettingViewModel) {
+        self.viewModel = viewModel
         dataSource = SettingViewDataSource(viewModel: viewModel)
         super.init(nibName: SettingViewController.className, bundle: nil)
     }

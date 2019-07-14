@@ -83,17 +83,16 @@ class InputMealCalorieViewCell: RxTableViewCell, CellFrameTrackkable {
             .disposed(by: disposeBag)
 
         deleteMealButton.rx.tap
-            .bind(to: viewModel.input.deleteMealLabel)
+            .bind(to: viewModel.input.contentWillDelete)
             .disposed(by: disposeBag)
 
-        viewModel.output.selectedMealLabel
-            .bind(to: updateTextField)
+        viewModel.output.updateTextFields
+            .bind(to: updateTextFields)
             .disposed(by: disposeBag)
     }
 
-    var updateTextField: Binder<MealLabelView> {
-        return Binder(self) { me, mealLabel in
-            let content = mealLabel.content.value
+    var updateTextFields: Binder<Content> {
+        return Binder(self) { me, content in
             me.mealNameTextField.text = content.name
             me.mealCalorieTextField.text = ""
             me.mealAmountTextField.text = ""

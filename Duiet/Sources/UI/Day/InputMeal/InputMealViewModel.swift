@@ -2,60 +2,70 @@
 //  InputMealViewModel.swift
 //  Duiet
 //
-//  Created by Ryuhei Kaminishi on 2019/05/03.
+//  Created by 上西 隆平 on 2019/07/11.
 //  Copyright © 2019 duiet. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import RxSwift
 import RxRelay
-import RealmSwift
 
-class InputMealViewModel {
-
-    let mealImage: UIImage?
-    let meal: Meal
+final class InputMealViewModel {
 
     let input: Input
     let output: Output
 
+    private let inputMealModel: InputMealModelProtocol
+    private let coordinator: DayCoordinator
     private let disposeBag = DisposeBag()
 
-    init(mealImage: UIImage?,
-         meal: Meal,
-         model: MealModel) {
+    var contentCount: Int {
+        return inputMealModel.meal.value.contents.count
+    }
 
-        self.mealImage = mealImage
-        self.meal = meal
+    init(coordinator: DayCoordinator,
+         model: InputMealModelProtocol) {
+        self.coordinator = coordinator
+        self.inputMealModel = model
 
-        let _addMealLabel = PublishRelay<MealLabelView>()
-        let _selectedMealLabel = PublishRelay<MealLabelView?>()
-        let _deleteMealLabel = PublishRelay<Void>()
-        let _saveContent = PublishRelay<Content>()
         let _nameTextInput = PublishRelay<String?>()
         let _calorieTextInput = PublishRelay<String?>()
         let _multipleTextInput = PublishRelay<String?>()
+        let _selectedViewModel = PublishRelay<MealLabelViewModel>()
+        let _contentWillAdd = PublishRelay<Content>()
+        let _contentWillDelete = PublishRelay<Void>()
+        let _dismiss = PublishRelay<Void>()
 
-        input = Input(addMealLabel: _addMealLabel.asObserver(),
-                      selectedMealLabel: _selectedMealLabel.asObserver(),
-                      deleteMealLabel: _deleteMealLabel.asObserver(),
-                      saveContent: _saveContent.asObserver(),
-                      nameTextInput: _nameTextInput.asObserver(),
+        input = Input(nameTextInput: _nameTextInput.asObserver(),
                       calorieTextInput: _calorieTextInput.asObserver(),
-                      multipleTextInput: _multipleTextInput.asObserver())
+                      multipleTextInput: _multipleTextInput.asObserver(),
+                      selectedViewModel: _selectedViewModel.asObserver(),
+                      contentWillAdd: _contentWillAdd.asObserver(),
+                      contentWillDelete: _contentWillDelete.asObserver(),
+                      dismiss: _dismiss.asObserver())
 
-        let showLabelViews = Observable.of(meal.contents)
+        let showLabelsOnce = model.meal
+            .map { $0.contents.toArray() }
             .take(1)
 
-        let selectedMealLabel = _selectedMealLabel.compactMap { $0 }
+        let selectedContent = _selectedViewModel.map { $0.content }
 
-        let reloadData = _addMealLabel
-            .map { _ in }
+        let updateTextFields = selectedContent.compactMap { $0 }
+        let reloadData = model.contentDidAdd
 
-        output = Output(showLabelViews: showLabelViews.asObservable(),
-                        selectedMealLabel: selectedMealLabel,
-                        reloadData: reloadData)
+        output = Output(showLabelsOnce: showLabelsOnce,
+                        contentDidUpdate: model.contentDidUpdate.asObservable(),
+                        contentDidDelete: model.contentDidDelete.asObservable(),
+                        updateTextFields: updateTextFields.asObservable(),
+                        reloadData: reloadData.asObservable())
 
+        // MARK: - Save content
+        _contentWillAdd.withLatestFrom(model.meal) { ($1, $0) }
+            .bind(to: model.addContent)
+            .disposed(by: disposeBag)
+        // END
+
+        // MARK: - Save value by text input
         let calorie = _calorieTextInput
             .compactMap { $0 }
             .map { Double($0) ?? 0 }
@@ -72,66 +82,70 @@ class InputMealViewModel {
             .distinctUntilChanged()
             .map { $0 ?? "" }
 
-        // MARK: - Reflect numbers on label
-        Observable.combineLatest(selectedMealLabel, calorie, multiple)
-            .observeOn(MainScheduler.instance)
+        calorie.withLatestFrom(selectedContent) { ($1, $0) }
+            .bind(to: model.saveCalorie)
+            .disposed(by: disposeBag)
+
+        multiple.withLatestFrom(selectedContent) { ($1, $0) }
+            .bind(to: model.saveMultiple)
+            .disposed(by: disposeBag)
+
+        name.withLatestFrom(selectedContent) { ($1, $0) }
+            .bind(to: model.saveName)
+            .disposed(by: disposeBag)
+        // END
+
+        // MARK: - Notify label of a change in value
+        model.contentDidUpdate.withLatestFrom(_selectedViewModel) { ($0, $1) }
             .subscribe(onNext: {
-                $0.0.mealLabel.text = "\(Int($0.1 * ($0.2 == 0 ? 1 : $0.2)))"
+                $0.1.input.contentDidUpdate.on(.next($0.0))
             })
             .disposed(by: disposeBag)
 
-        // MARK: - Processing to save data
-        _saveContent
-            .map { (meal, $0) }
-            .bind(to: model.rx.addContent)
+        // MARK: - Delete content
+        let deleteTarget = Observable.combineLatest(model.meal, selectedContent)
+        _contentWillDelete.withLatestFrom(deleteTarget)
+            .bind(to: model.deleteContent)
             .disposed(by: disposeBag)
+        // END
 
-        name.withLatestFrom(selectedMealLabel) { ($1, $0) }
-            .bind(to: model.rx.saveName)
-            .disposed(by: disposeBag)
-
-        calorie.withLatestFrom(selectedMealLabel) { ($1, $0) }
-            .bind(to: model.rx.saveCalorie)
-            .disposed(by: disposeBag)
-
-        multiple.withLatestFrom(selectedMealLabel) { ($1, $0) }
-            .bind(to: model.rx.saveMultiple)
-            .disposed(by: disposeBag)
-
-        // MARK: - Processing to delete content
-        let _meal = Observable.just(meal)
-        let _targetContent = selectedMealLabel.flatMap { $0.content }
-        let prepareDelete = Observable.combineLatest(_meal, _targetContent)
-        _deleteMealLabel.withLatestFrom(prepareDelete)
-            .map { $0 }
-            .bind(to: model.rx.deleteContent)
-            .disposed(by: disposeBag)
-
-        // MARK: - Send nil to the currently selected label so that it does not refer to the deleted object when the content deletion is completed
-        model.contentDidDelete.withLatestFrom(selectedMealLabel)
+        // MARK: - Notify label of content deleted
+        model.contentDidDelete.withLatestFrom(_selectedViewModel)
             .subscribe(onNext: {
-                $0.isHidden = true
-                _selectedMealLabel.accept(nil)
+                $0.input.contentDidDelete.on(.next(()))
             })
             .disposed(by: disposeBag)
+
+        // MARK: - Transition
+        _dismiss
+            .subscribe(onNext: { [weak self] in
+                guard let me = self else { return }
+                me.coordinator.dismiss()
+            })
+            .disposed(by: disposeBag)
+    }
+
+    deinit {
+        print("🧹🧹🧹 InputMealViewModel parge 🧹🧹🧹")
     }
 }
 
 extension InputMealViewModel {
 
     struct Input {
-        let addMealLabel: AnyObserver<MealLabelView>
-        let selectedMealLabel: AnyObserver<MealLabelView?>
-        let deleteMealLabel: AnyObserver<Void>
-        let saveContent: AnyObserver<Content>
         let nameTextInput: AnyObserver<String?>
         let calorieTextInput: AnyObserver<String?>
         let multipleTextInput: AnyObserver<String?>
+        let selectedViewModel: AnyObserver<MealLabelViewModel>
+        let contentWillAdd: AnyObserver<Content>
+        let contentWillDelete: AnyObserver<Void>
+        let dismiss: AnyObserver<Void>
     }
-
     struct Output {
-        let showLabelViews: Observable<List<Content>>
-        let selectedMealLabel: Observable<MealLabelView>
+        let showLabelsOnce: Observable<[Content]>
+        let contentDidUpdate: Observable<Content>
+        let contentDidDelete: Observable<Void>
+        let updateTextFields: Observable<Content>
         let reloadData: Observable<Void>
     }
 }

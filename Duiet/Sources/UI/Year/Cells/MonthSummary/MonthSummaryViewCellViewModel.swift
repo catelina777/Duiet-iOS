@@ -18,7 +18,7 @@ final class MonthSummaryViewModel {
 
     init(month: Month) {
         // TODO: - Consider singletoning a UserInfoModel
-        userInfoModel = UserInfoModel()
+        userInfoModel = UserInfoModel.shared
 
         /*
          1.Monthの日数個のnilが入った[Day?]を作成する

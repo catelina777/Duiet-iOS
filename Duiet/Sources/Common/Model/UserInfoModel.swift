@@ -12,21 +12,23 @@ import RxRelay
 import RealmSwift
 import RxRealm
 
-final class UserInfoModel: RealmBaseModel {
+protocol UserInfoModelProtocol {
+    var userInfo: BehaviorRelay<UserInfo> { get }
+}
 
-    static let shared = UserInfoModel()
+final class UserInfoModel {
+
+    static let shared = UserInfoModel(repository: UserInfoRepository.shared)
 
     let userInfo = BehaviorRelay<UserInfo>(value: UserInfo())
 
-    override init() {
-        super.init()
+    private let repository: UserInfoRepositoryProtocol
+    private let disposeBag = DisposeBag()
 
-        let userInfoResult = get()
+    init(repository: UserInfoRepositoryProtocol) {
+        self.repository = repository
+        let userInfoResult = repository.get()
         observe(userInfoResult: userInfoResult)
-    }
-
-    private func get() -> Results<UserInfo> {
-        return realm.objects(UserInfo.self).filter("id == 0")
     }
 
     private func observe(userInfoResult: Results<UserInfo>) {

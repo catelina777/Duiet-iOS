@@ -12,28 +12,46 @@ import RxRelay
 import RealmSwift
 import RxRealm
 
-final class MonthModel: RealmBaseModel {
+protocol MonthModelProtocol {
+    var changeData: PublishRelay<RealmChangeset?> { get }
+    var days: BehaviorRelay<[Day]> { get }
+}
 
-    static let shared = MonthModel()
+final class MonthModel: MonthModelProtocol {
 
     let changeData = PublishRelay<RealmChangeset?>()
     let days = BehaviorRelay<[Day]>(value: [])
 
-    override init() {
-        super.init()
+    private let repository: MonthRepositoryProtocol
+    private let disposeBag = DisposeBag()
 
-        let dayResult = find()
-        observe(dayResult: dayResult)
+    init(month: Month? = nil, repository: MonthRepositoryProtocol) {
+        self.repository = repository
+
+        if let month = month {
+            let monthObject = repository.find(month: month)
+            observe(monthObject: monthObject)
+        } else {
+            let dayResults = repository.findAll()
+            observe(dayResults: dayResults)
+        }
     }
 
-    private func find() -> Results<Day> {
-        return realm.objects(Day.self).sorted(byKeyPath: "createdAt")
-    }
-
-    private func observe(dayResult: Results<Day>) {
-        Observable.array(from: dayResult)
+    private func observe(dayResults: Results<Day>) {
+        Observable.array(from: dayResults)
             .subscribe(onNext: { [weak self] days in
                 guard let self = self else { return }
+                self.days.accept(days)
+            })
+            .disposed(by: disposeBag)
+    }
+
+    private func observe(monthObject: Month?) {
+        guard let monthObject = monthObject else { return }
+        Observable.from(object: monthObject)
+            .subscribe(onNext: { [weak self] month in
+                guard let self = self else { return }
+                let days = month.days.toArray()
                 self.days.accept(days)
             })
             .disposed(by: disposeBag)
