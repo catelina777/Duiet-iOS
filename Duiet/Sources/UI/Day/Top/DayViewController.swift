@@ -30,7 +30,7 @@ class DayViewController: BaseCollectionViewController, NavigationBarCustomizable
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureNavigationBar(with: SceneType.day.title)
+        configureNavigationBar(with: viewModel.title)
         dataSource.configure(with: collectionView)
 
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)

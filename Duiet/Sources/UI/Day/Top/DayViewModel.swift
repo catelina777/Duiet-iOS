@@ -28,6 +28,10 @@ final class DayViewModel {
         return dayModel.meals.value
     }
 
+    var title: String {
+        return dayModel.title
+    }
+
     init(coordinator: DayCoordinator,
          model: DayModelProtocol) {
         self.coordinator = coordinator

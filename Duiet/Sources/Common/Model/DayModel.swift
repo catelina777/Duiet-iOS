@@ -19,6 +19,7 @@ protocol DayModelProtocol {
     var meals: BehaviorRelay<[Meal]> { get }
     var day: BehaviorRelay<Day> { get }
     var addMeal: Binder<Meal> { get }
+    var title: String { get }
 }
 
 final class DayModel: DayModelProtocol {
@@ -26,7 +27,18 @@ final class DayModel: DayModelProtocol {
     let changeData = PublishRelay<RealmChangeset?>()
     let contentDidDelete = PublishRelay<Void>()
     let meals = BehaviorRelay<[Meal]>(value: [])
-    let day = BehaviorRelay<Day>(value: Day(date: Date()))
+    let day: BehaviorRelay<Day>
+
+    lazy var title: String = {
+        let now = Date()
+        let date = day.value.createdAt
+        let different = Calendar.current.dateComponents([.day], from: date, to: now).day
+        if different == 0 {
+            return SceneType.day.title
+        } else {
+            return  date.toString()
+        }
+    }()
 
     private let repository: DayRepositoryProtocol
     private let disposeBag = DisposeBag()
@@ -34,6 +46,7 @@ final class DayModel: DayModelProtocol {
     init(date: Date = Date(),
          repository: DayRepositoryProtocol) {
         self.repository = repository
+        self.day = BehaviorRelay<Day>(value: .init(date: date))
 
         let day = repository.findOrCreate(day: date)
         observe(day: day)
