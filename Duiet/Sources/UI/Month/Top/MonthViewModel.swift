@@ -28,6 +28,10 @@ final class MonthViewModel {
         return monthModel.days.value
     }
 
+    var title: String {
+        return monthModel.title
+    }
+
     init(coordinator: MonthCoordinator,
          model: MonthModelProtocol) {
         self.coordinator = coordinator
