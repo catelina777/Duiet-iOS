@@ -15,18 +15,30 @@ import RxRealm
 protocol MonthModelProtocol {
     var changeData: PublishRelay<RealmChangeset?> { get }
     var days: BehaviorRelay<[Day]> { get }
+    var title: String { get }
 }
 
 final class MonthModel: MonthModelProtocol {
 
     let changeData = PublishRelay<RealmChangeset?>()
     let days = BehaviorRelay<[Day]>(value: [])
+    private let _month: BehaviorRelay<Month?>
+
+    lazy var title: String = {
+        if let month = _month.value {
+            return month.createdAt.toYearMonthString()
+        } else {
+            return SceneType.month.title
+        }
+    }()
 
     private let repository: MonthRepositoryProtocol
     private let disposeBag = DisposeBag()
 
-    init(month: Month? = nil, repository: MonthRepositoryProtocol) {
+    init(month: Month? = nil,
+         repository: MonthRepositoryProtocol) {
         self.repository = repository
+        self._month = BehaviorRelay<Month?>(value: month)
 
         if let month = month {
             let monthObject = repository.find(month: month)

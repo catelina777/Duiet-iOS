@@ -24,7 +24,7 @@ enum SceneType: String {
     var title: String {
         switch self {
         case .day:
-            return "Day"
+            return "Today"
         case .month:
             return "Month"
         case .year:
