@@ -79,7 +79,8 @@ final class DayViewModel {
         pickedImage
             .compactMap { $0 }
             .flatMapLatest { PhotoManager.rx.save(image: $0) }
-            .map { Meal(imagePath: $0) }
+            .observeOn(MainScheduler.instance)
+            .map { Meal(imagePath: $0, date: model.date) }
             .bind(to: meal)
             .disposed(by: disposeBag)
 
