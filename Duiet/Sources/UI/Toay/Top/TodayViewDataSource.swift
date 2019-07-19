@@ -1,5 +1,5 @@
 //
-//  DayViewDataSource.swift
+//  TodayViewDataSource.swift
 //  Duiet
 //
 //  Created by 上西 隆平 on 2019/04/23.
@@ -9,11 +9,11 @@
 import UIKit
 import RxSwift
 
-final class DayViewDataSource: NSObject {
+final class TodayViewDataSource: NSObject {
 
-    private let viewModel: DayViewModel
+    private let viewModel: TodayViewModel
 
-    init(viewModel: DayViewModel) {
+    init(viewModel: TodayViewModel) {
         self.viewModel = viewModel
     }
 
@@ -25,7 +25,7 @@ final class DayViewDataSource: NSObject {
     }
 }
 
-extension DayViewDataSource: UICollectionViewDataSource {
+extension TodayViewDataSource: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.meals.count + 1
     }
@@ -50,7 +50,7 @@ extension DayViewDataSource: UICollectionViewDataSource {
     }
 }
 
-extension DayViewDataSource: UICollectionViewDelegate {
+extension TodayViewDataSource: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
@@ -64,7 +64,7 @@ extension DayViewDataSource: UICollectionViewDelegate {
     }
 }
 
-extension DayViewDataSource: UICollectionViewDelegateFlowLayout {
+extension TodayViewDataSource: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,

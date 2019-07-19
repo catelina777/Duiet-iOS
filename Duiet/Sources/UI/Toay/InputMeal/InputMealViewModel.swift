@@ -16,14 +16,14 @@ final class InputMealViewModel {
     let output: Output
 
     private let inputMealModel: InputMealModelProtocol
-    private let coordinator: DayCoordinator
+    private let coordinator: TodayCoordinator
     private let disposeBag = DisposeBag()
 
     var contentCount: Int {
         return inputMealModel.meal.value.contents.count
     }
 
-    init(coordinator: DayCoordinator,
+    init(coordinator: TodayCoordinator,
          model: InputMealModelProtocol) {
         self.coordinator = coordinator
         self.inputMealModel = model

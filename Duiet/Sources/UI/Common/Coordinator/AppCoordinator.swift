@@ -66,7 +66,7 @@ final class AppCoordinator {
         let coordinator: Coordinator
         switch type {
         case .day:
-            coordinator = DayCoordinator(navigator: navigationController, tabViewModel: tabViewModel)
+            coordinator = TodayCoordinator(navigator: navigationController, tabViewModel: tabViewModel)
         case .month:
             coordinator = MonthCoordinator(navigator: navigationController, tabViewModel: tabViewModel)
         case .setting:

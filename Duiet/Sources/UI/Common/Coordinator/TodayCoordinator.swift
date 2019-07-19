@@ -1,5 +1,5 @@
 //
-//  DayCoordinator.swift
+//  TodayCoordinator.swift
 //  Duiet
 //
 //  Created by Ryuhei Kaminishi on 2019/07/05.
@@ -8,20 +8,20 @@
 
 import UIKit
 
-final class DayCoordinator: Coordinator {
+final class TodayCoordinator: Coordinator {
 
     private let navigator: UINavigationController
     private let tabViewModel: TopTabBarViewModel
-    private var viewController: TopDayViewController!
+    private var viewController: TopTodayViewController!
 
     init(navigator: UINavigationController,
          tabViewModel: TopTabBarViewModel) {
         self.navigator = navigator
         self.tabViewModel = tabViewModel
-        let model = DayModel(repository: DayRepository.shared)
-        self.viewController = TopDayViewController(viewModel: .init(coordinator: self,
+        let model = TodayModel(repository: DayRepository.shared)
+        self.viewController = TopTodayViewController(viewModel: .init(coordinator: self,
                                                                     userInfoModel: UserInfoModel.shared,
-                                                                    dayModel: model),
+                                                                    todayModel: model),
                                                    tabViewModel: tabViewModel)
     }
 
@@ -53,10 +53,10 @@ final class DayCoordinator: Coordinator {
     }
 
     func showDetailDay(day: Day) {
-        let model = DayModel(date: day.createdAt, repository: DayRepository.shared)
-        let vc = DayViewController(viewModel: .init(coordinator: self,
+        let model = TodayModel(date: day.createdAt, repository: DayRepository.shared)
+        let vc = TodayViewController(viewModel: .init(coordinator: self,
                                                     userInfoModel: UserInfoModel.shared,
-                                                    dayModel: model))
+                                                    todayModel: model))
         navigator.pushViewController(vc, animated: false)
     }
 
