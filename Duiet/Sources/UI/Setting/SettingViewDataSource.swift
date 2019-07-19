@@ -10,7 +10,7 @@ import UIKit
 
 final class SettingViewDataSource: NSObject {
 
-    let viewModel: SettingViewModel
+    private let viewModel: SettingViewModel
 
     init(viewModel: SettingViewModel) {
         self.viewModel = viewModel
