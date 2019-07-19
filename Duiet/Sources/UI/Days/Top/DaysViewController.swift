@@ -1,5 +1,5 @@
 //
-//  MonthViewController.swift
+//  DaysViewController.swift
 //  Duiet
 //
 //  Created by Ryuhei Kaminishi on 2019/06/16.
@@ -8,15 +8,15 @@
 
 import UIKit
 
-class MonthViewController: BaseCollectionViewController, NavigationBarCustomizable {
+class DaysViewController: BaseCollectionViewController, NavigationBarCustomizable {
 
-    let viewModel: MonthViewModel
-    private let dataSource: MonthViewDataSource
+    let viewModel: DaysViewModel
+    private let dataSource: DaysViewDataSource
 
-    init(viewModel: MonthViewModel) {
+    init(viewModel: DaysViewModel) {
         self.viewModel = viewModel
-        self.dataSource = MonthViewDataSource(viewModel: viewModel)
-        super.init(nibName: MonthViewController.className, bundle: nil)
+        self.dataSource = DaysViewDataSource(viewModel: viewModel)
+        super.init(nibName: DaysViewController.className, bundle: nil)
     }
 
     required init?(coder aDecoder: NSCoder) {

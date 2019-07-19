@@ -1,5 +1,5 @@
 //
-//  MonthModel.swift
+//  DaysModel.swift
 //  Duiet
 //
 //  Created by 上西 隆平 on 2019/06/26.
@@ -12,13 +12,13 @@ import RxRelay
 import RealmSwift
 import RxRealm
 
-protocol MonthModelProtocol {
+protocol DaysModelProtocol {
     var changeData: PublishRelay<RealmChangeset?> { get }
     var days: BehaviorRelay<[Day]> { get }
     var title: String { get }
 }
 
-final class MonthModel: MonthModelProtocol {
+final class DaysModel: DaysModelProtocol {
 
     let changeData = PublishRelay<RealmChangeset?>()
     let days = BehaviorRelay<[Day]>(value: [])
@@ -32,11 +32,11 @@ final class MonthModel: MonthModelProtocol {
         }
     }()
 
-    private let repository: MonthRepositoryProtocol
+    private let repository: DaysRepositoryProtocol
     private let disposeBag = DisposeBag()
 
     init(month: Month? = nil,
-         repository: MonthRepositoryProtocol) {
+         repository: DaysRepositoryProtocol) {
         self.repository = repository
         self._month = BehaviorRelay<Month?>(value: month)
 

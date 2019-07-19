@@ -1,5 +1,5 @@
 //
-//  MonthViewDataSource.swift
+//  DaysViewDataSource.swift
 //  Duiet
 //
 //  Created by Ryuhei Kaminishi on 2019/06/16.
@@ -8,11 +8,11 @@
 
 import UIKit
 
-final class MonthViewDataSource: NSObject {
+final class DaysViewDataSource: NSObject {
 
-    private let viewModel: MonthViewModel
+    private let viewModel: DaysViewModel
 
-    init(viewModel: MonthViewModel) {
+    init(viewModel: DaysViewModel) {
         self.viewModel = viewModel
     }
 
@@ -23,7 +23,7 @@ final class MonthViewDataSource: NSObject {
     }
 }
 
-extension MonthViewDataSource: UICollectionViewDataSource {
+extension DaysViewDataSource: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
@@ -40,7 +40,7 @@ extension MonthViewDataSource: UICollectionViewDataSource {
     }
 }
 
-extension MonthViewDataSource: UICollectionViewDelegate {
+extension DaysViewDataSource: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
@@ -49,7 +49,7 @@ extension MonthViewDataSource: UICollectionViewDelegate {
     }
 }
 
-extension MonthViewDataSource: UICollectionViewDelegateFlowLayout {
+extension DaysViewDataSource: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,

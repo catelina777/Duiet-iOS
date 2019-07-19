@@ -1,5 +1,5 @@
 //
-//  TopMonthViewController.swift
+//  TopDaysViewController.swift
 //  Duiet
 //
 //  Created by Ryuhei Kaminishi on 2019/07/04.
@@ -8,11 +8,11 @@
 
 import UIKit
 
-final class TopMonthViewController: MonthViewController {
+final class TopDaysViewController: DaysViewController {
 
     private let tabViewModel: TopTabBarViewModel
 
-    init(viewModel: MonthViewModel,
+    init(viewModel: DaysViewModel,
          tabViewModel: TopTabBarViewModel) {
         self.tabViewModel = tabViewModel
         super.init(viewModel: viewModel)
