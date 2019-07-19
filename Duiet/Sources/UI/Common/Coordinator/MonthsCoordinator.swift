@@ -1,5 +1,5 @@
 //
-//  YearCoordinator.swift
+//  MonthsCoordinator.swift
 //  Duiet
 //
 //  Created by Ryuhei Kaminishi on 2019/07/05.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class YearCoordinator: Coordinator {
+final class MonthsCoordinator: Coordinator {
 
     private let navigator: UINavigationController
     private let tabViewModel: TopTabBarViewModel
@@ -20,9 +20,9 @@ final class YearCoordinator: Coordinator {
     }
 
     func start() {
-        let model = YearModel(repository: YearRepository.shared)
-        let vc = TopYearViewController(viewModel: .init(coordinator: self, yearModel: model),
-                                       tabViewModel: tabViewModel)
+        let model = MonthsModel(repository: MonthsRepository.shared)
+        let vc = TopMonthsViewController(viewModel: .init(coordinator: self, monthsModel: model),
+                                         tabViewModel: tabViewModel)
         navigator.pushViewController(vc, animated: false)
     }
 }

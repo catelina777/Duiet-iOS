@@ -1,5 +1,5 @@
 //
-//  YearViewModel.swift
+//  MonthsViewModel.swift
 //  Duiet
 //
 //  Created by Ryuhei Kaminishi on 2019/06/09.
@@ -10,23 +10,23 @@ import Foundation
 import RxSwift
 import RxRelay
 
-final class YearViewModel {
+final class MonthsViewModel {
 
     let input: Input
     let output: Output
 
-    private let yearModel: YearModelProtocol
-    private let coordinator: YearCoordinator
+    private let monthsModel: MonthsModelProtocol
+    private let coordinator: MonthsCoordinator
     private let disposeBag = DisposeBag()
 
     var months: [Month] {
-        return yearModel.months.value
+        return monthsModel.months.value
     }
 
-    init(coordinator: YearCoordinator,
-         yearModel: YearModelProtocol) {
+    init(coordinator: MonthsCoordinator,
+         monthsModel: MonthsModelProtocol) {
         self.coordinator = coordinator
-        self.yearModel = yearModel
+        self.monthsModel = monthsModel
 
         let _itemDidSelect = PublishRelay<Month>()
         input = Input(itemDidSelect: _itemDidSelect.asObserver())
@@ -34,7 +34,7 @@ final class YearViewModel {
     }
 }
 
-extension YearViewModel {
+extension MonthsViewModel {
 
     struct Input {
         let itemDidSelect: AnyObserver<Month>

@@ -1,5 +1,5 @@
 //
-//  YearRepository.swift
+//  MonthsRepository.swift
 //  Duiet
 //
 //  Created by Ryuhei Kaminishi on 2019/07/13.
@@ -9,13 +9,13 @@
 import Foundation
 import RealmSwift
 
-protocol YearRepositoryProtocol {
+protocol MonthsRepositoryProtocol {
     func find() -> Results<Month>
 }
 
-final class YearRepository: YearRepositoryProtocol {
+final class MonthsRepository: MonthsRepositoryProtocol {
 
-    static let shared = YearRepository()
+    static let shared = MonthsRepository()
 
     private let realm: Realm
 
