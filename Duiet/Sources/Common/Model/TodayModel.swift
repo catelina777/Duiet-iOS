@@ -1,5 +1,5 @@
 //
-//  DayModel.swift
+//  TodayModel.swift
 //  Duiet
 //
 //  Created by Ryuhei Kaminishi on 2019/05/25.
@@ -13,7 +13,7 @@ import RxCocoa
 import RealmSwift
 import RxRealm
 
-protocol DayModelProtocol {
+protocol TodayModelProtocol {
     var changeData: PublishRelay<RealmChangeset?> { get }
     var contentDidDelete: PublishRelay<Void> { get }
     var meals: BehaviorRelay<[Meal]> { get }
@@ -22,7 +22,7 @@ protocol DayModelProtocol {
     var title: String { get }
 }
 
-final class DayModel: DayModelProtocol {
+final class TodayModel: TodayModelProtocol {
 
     let changeData = PublishRelay<RealmChangeset?>()
     let contentDidDelete = PublishRelay<Void>()

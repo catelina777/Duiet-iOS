@@ -1,5 +1,5 @@
 //
-//  DayViewModel.swift
+//  TodayViewModel.swift
 //  Duiet
 //
 //  Created by 上西 隆平 on 2019/04/23.
@@ -13,35 +13,35 @@ import RxRelay
 import RealmSwift
 import RxRealm
 
-final class DayViewModel {
+final class TodayViewModel {
 
     let input: Input
     let output: Output
 
     let userInfoModel: UserInfoModelProtocol
-    let dayModel: DayModelProtocol
+    let todayModel: TodayModelProtocol
 
-    private let coordinator: DayCoordinator
+    private let coordinator: TodayCoordinator
     private let disposeBag = DisposeBag()
 
     var meals: [Meal] {
-        return dayModel.meals.value
+        return todayModel.meals.value
     }
 
     var title: String {
-        return dayModel.title
+        return todayModel.title
     }
 
-    init(coordinator: DayCoordinator,
+    init(coordinator: TodayCoordinator,
          userInfoModel: UserInfoModelProtocol,
-         dayModel: DayModelProtocol) {
+         todayModel: TodayModelProtocol) {
         self.coordinator = coordinator
         self.userInfoModel = userInfoModel
-        self.dayModel = dayModel
+        self.todayModel = todayModel
 
         let _viewDidAppear = PublishRelay<Void>()
         let _viewDidDisappear = PublishRelay<Void>()
-        let _addButtonTap = PublishRelay<DayViewController>()
+        let _addButtonTap = PublishRelay<TodayViewController>()
         let _selectedItem = PublishRelay<(MealCardViewCell, Meal)>()
         let _showDetailDay = PublishRelay<Day>()
 
@@ -71,10 +71,10 @@ final class DayViewModel {
         let editDetail = _selectedItem
 
         /// I also added meals because I want to detect the update of meal information
-        let progress = Observable.combineLatest(dayModel.day, userInfoModel.userInfo, dayModel.meals)
+        let progress = Observable.combineLatest(todayModel.day, userInfoModel.userInfo, todayModel.meals)
             .map { ($0.0, $0.1) }
 
-        output = Output(changeData: dayModel.changeData.asObservable(),
+        output = Output(changeData: todayModel.changeData.asObservable(),
                         progress: progress)
 
         pickedImage
@@ -86,7 +86,7 @@ final class DayViewModel {
 
         meal
             .map { $0 }
-            .bind(to: dayModel.addMeal)
+            .bind(to: todayModel.addMeal)
             .disposed(by: disposeBag)
 
         // MARK: - Processing to transition
@@ -116,12 +116,12 @@ final class DayViewModel {
     }
 }
 
-extension DayViewModel {
+extension TodayViewModel {
 
     struct Input {
         let viewDidAppear: AnyObserver<Void>
         let viewDidDisappear: AnyObserver<Void>
-        let addButtonTap: AnyObserver<DayViewController>
+        let addButtonTap: AnyObserver<TodayViewController>
         let selectedItem: AnyObserver<(MealCardViewCell, Meal)>
         let showDetailDay: AnyObserver<Day>
     }

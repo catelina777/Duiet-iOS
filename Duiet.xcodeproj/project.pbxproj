@@ -48,10 +48,9 @@
 		0641AD5A2264ACB800CEDAE7 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0641AD582264ACB800CEDAE7 /* RxSwift.framework */; };
 		06932AC622801AC500CFA05C /* MealLabelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06932AC522801AC500CFA05C /* MealLabelView.xib */; };
 		06932AC822801AEB00CFA05C /* MealLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06932AC722801AEB00CFA05C /* MealLabelView.swift */; };
-		069AD4292277224A0075E711 /* DayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 069AD425227722490075E711 /* DayViewController.xib */; };
-		069AD42A2277224A0075E711 /* DayViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069AD426227722490075E711 /* DayViewDataSource.swift */; };
-		069AD42B2277224A0075E711 /* DayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069AD427227722490075E711 /* DayViewController.swift */; };
-		069AD42C2277224A0075E711 /* DayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069AD4282277224A0075E711 /* DayViewModel.swift */; };
+		069AD4292277224A0075E711 /* TodayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 069AD425227722490075E711 /* TodayViewController.xib */; };
+		069AD42A2277224A0075E711 /* TodayViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069AD426227722490075E711 /* TodayViewDataSource.swift */; };
+		069AD42B2277224A0075E711 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069AD427227722490075E711 /* TodayViewController.swift */; };
 		069AD434227722E50075E711 /* MealCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069AD432227722E50075E711 /* MealCardViewCell.swift */; };
 		069AD437227723100075E711 /* RxCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069AD436227723100075E711 /* RxCollectionViewCell.swift */; };
 		069AD4392277246A0075E711 /* MealCardViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 069AD4382277246A0075E711 /* MealCardViewCell.xib */; };
@@ -86,7 +85,7 @@
 		402260E322D615F50057BC9E /* MealLabelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402260E222D615F50057BC9E /* MealLabelViewModel.swift */; };
 		402FBE9F22C8D019000BBFA3 /* TopTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402FBE9E22C8D019000BBFA3 /* TopTabBarController.swift */; };
 		402FBEA222C8E63D000BBFA3 /* TopTabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402FBEA122C8E63D000BBFA3 /* TopTabBarViewModel.swift */; };
-		403E952E22CE3D7800EFF459 /* TopDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403E952D22CE3D7800EFF459 /* TopDayViewController.swift */; };
+		403E952E22CE3D7800EFF459 /* TopTodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403E952D22CE3D7800EFF459 /* TopTodayViewController.swift */; };
 		403E953022CE3EAA00EFF459 /* TopMonthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403E952F22CE3EAA00EFF459 /* TopMonthViewController.swift */; };
 		403E953222CE40CC00EFF459 /* TopYearViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403E953122CE40CC00EFF459 /* TopYearViewController.swift */; };
 		403E953522CF747E00EFF459 /* MonthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403E953422CF747E00EFF459 /* MonthRepository.swift */; };
@@ -96,7 +95,7 @@
 		403E953E22CF93FE00EFF459 /* YearCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403E953D22CF93FE00EFF459 /* YearCoordinator.swift */; };
 		403E954022CF940D00EFF459 /* MonthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403E953F22CF940D00EFF459 /* MonthCoordinator.swift */; };
 		403E954222CF94C500EFF459 /* WalkthrouthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403E954122CF94C500EFF459 /* WalkthrouthCoordinator.swift */; };
-		403E954422CF94CF00EFF459 /* DayCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403E954322CF94CF00EFF459 /* DayCoordinator.swift */; };
+		403E954422CF94CF00EFF459 /* TodayCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403E954322CF94CF00EFF459 /* TodayCoordinator.swift */; };
 		403E954822CF958600EFF459 /* SettingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403E954722CF958600EFF459 /* SettingCoordinator.swift */; };
 		403E954A22CF9C9B00EFF459 /* TopTabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403E954922CF9C9B00EFF459 /* TopTabBarCoordinator.swift */; };
 		403E954C22CFA78900EFF459 /* WalkthrouthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403E954B22CFA78900EFF459 /* WalkthrouthViewModel.swift */; };
@@ -122,7 +121,6 @@
 		40B2142922B638820040EA9E /* DaySummaryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B2142822B638820040EA9E /* DaySummaryViewCell.swift */; };
 		40B2142B22B638970040EA9E /* DaySummaryViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40B2142A22B638970040EA9E /* DaySummaryViewCell.xib */; };
 		40B214DC22BF23D00040EA9E /* UserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B214DB22BF23D00040EA9E /* UserInfoModel.swift */; };
-		40E7699C2299540200E9D5DA /* DayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E7699B2299540200E9D5DA /* DayModel.swift */; };
 		5E17F981228BE4980046F68D /* RoundedTextFieldViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E17F980228BE4980046F68D /* RoundedTextFieldViewCell.swift */; };
 		5E35CF8622D7280E00C9CFC3 /* InputMealViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E35CF8522D7280E00C9CFC3 /* InputMealViewModel.swift */; };
 		5E35CF8822D728AE00C9CFC3 /* InputMealModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E35CF8722D728AE00C9CFC3 /* InputMealModel.swift */; };
@@ -130,6 +128,8 @@
 		5E3E860822C334D3004E1676 /* MonthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3E860722C334D3004E1676 /* MonthModel.swift */; };
 		5E79D5672283FAC90073CD98 /* LabelCanvasViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E79D5662283FAC90073CD98 /* LabelCanvasViewCell.swift */; };
 		5E79D56B2283FB0B0073CD98 /* LabelCanvasViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E79D56A2283FB0B0073CD98 /* LabelCanvasViewCell.xib */; };
+		5E83E9F822E1628E00B8F584 /* TodayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E83E9F722E1628E00B8F584 /* TodayModel.swift */; };
+		5E83E9FA22E1640400B8F584 /* TodayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E83E9F922E1640400B8F584 /* TodayViewModel.swift */; };
 		5E916964229E2D260048BA63 /* Hero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E916963229E2D250048BA63 /* Hero.framework */; };
 		5E92570E228D3E2D0076CCEE /* KeyboardTrackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E92570D228D3E2D0076CCEE /* KeyboardTrackViewModel.swift */; };
 		5E9C28B2228E4729004ABF3B /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9C28B1228E4729004ABF3B /* BaseTableViewController.swift */; };
@@ -212,10 +212,9 @@
 		0641AD582264ACB800CEDAE7 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		06932AC522801AC500CFA05C /* MealLabelView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MealLabelView.xib; sourceTree = "<group>"; };
 		06932AC722801AEB00CFA05C /* MealLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealLabelView.swift; sourceTree = "<group>"; };
-		069AD425227722490075E711 /* DayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DayViewController.xib; sourceTree = "<group>"; };
-		069AD426227722490075E711 /* DayViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayViewDataSource.swift; sourceTree = "<group>"; };
-		069AD427227722490075E711 /* DayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayViewController.swift; sourceTree = "<group>"; };
-		069AD4282277224A0075E711 /* DayViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayViewModel.swift; sourceTree = "<group>"; };
+		069AD425227722490075E711 /* TodayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TodayViewController.xib; sourceTree = "<group>"; };
+		069AD426227722490075E711 /* TodayViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayViewDataSource.swift; sourceTree = "<group>"; };
+		069AD427227722490075E711 /* TodayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		069AD432227722E50075E711 /* MealCardViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealCardViewCell.swift; sourceTree = "<group>"; };
 		069AD436227723100075E711 /* RxCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxCollectionViewCell.swift; sourceTree = "<group>"; };
 		069AD4382277246A0075E711 /* MealCardViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MealCardViewCell.xib; sourceTree = "<group>"; };
@@ -250,7 +249,7 @@
 		402260E222D615F50057BC9E /* MealLabelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealLabelViewModel.swift; sourceTree = "<group>"; };
 		402FBE9E22C8D019000BBFA3 /* TopTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTabBarController.swift; sourceTree = "<group>"; };
 		402FBEA122C8E63D000BBFA3 /* TopTabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTabBarViewModel.swift; sourceTree = "<group>"; };
-		403E952D22CE3D7800EFF459 /* TopDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopDayViewController.swift; sourceTree = "<group>"; };
+		403E952D22CE3D7800EFF459 /* TopTodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTodayViewController.swift; sourceTree = "<group>"; };
 		403E952F22CE3EAA00EFF459 /* TopMonthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopMonthViewController.swift; sourceTree = "<group>"; };
 		403E953122CE40CC00EFF459 /* TopYearViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopYearViewController.swift; sourceTree = "<group>"; };
 		403E953422CF747E00EFF459 /* MonthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthRepository.swift; sourceTree = "<group>"; };
@@ -260,7 +259,7 @@
 		403E953D22CF93FE00EFF459 /* YearCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearCoordinator.swift; sourceTree = "<group>"; };
 		403E953F22CF940D00EFF459 /* MonthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthCoordinator.swift; sourceTree = "<group>"; };
 		403E954122CF94C500EFF459 /* WalkthrouthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthrouthCoordinator.swift; sourceTree = "<group>"; };
-		403E954322CF94CF00EFF459 /* DayCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCoordinator.swift; sourceTree = "<group>"; };
+		403E954322CF94CF00EFF459 /* TodayCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCoordinator.swift; sourceTree = "<group>"; };
 		403E954722CF958600EFF459 /* SettingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCoordinator.swift; sourceTree = "<group>"; };
 		403E954922CF9C9B00EFF459 /* TopTabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTabBarCoordinator.swift; sourceTree = "<group>"; };
 		403E954B22CFA78900EFF459 /* WalkthrouthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthrouthViewModel.swift; sourceTree = "<group>"; };
@@ -286,7 +285,6 @@
 		40B2142822B638820040EA9E /* DaySummaryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaySummaryViewCell.swift; sourceTree = "<group>"; };
 		40B2142A22B638970040EA9E /* DaySummaryViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DaySummaryViewCell.xib; sourceTree = "<group>"; };
 		40B214DB22BF23D00040EA9E /* UserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoModel.swift; sourceTree = "<group>"; };
-		40E7699B2299540200E9D5DA /* DayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayModel.swift; sourceTree = "<group>"; };
 		5E17F980228BE4980046F68D /* RoundedTextFieldViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedTextFieldViewCell.swift; sourceTree = "<group>"; };
 		5E35CF8522D7280E00C9CFC3 /* InputMealViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputMealViewModel.swift; sourceTree = "<group>"; };
 		5E35CF8722D728AE00C9CFC3 /* InputMealModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputMealModel.swift; sourceTree = "<group>"; };
@@ -294,6 +292,8 @@
 		5E3E860722C334D3004E1676 /* MonthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthModel.swift; sourceTree = "<group>"; };
 		5E79D5662283FAC90073CD98 /* LabelCanvasViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCanvasViewCell.swift; sourceTree = "<group>"; };
 		5E79D56A2283FB0B0073CD98 /* LabelCanvasViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelCanvasViewCell.xib; sourceTree = "<group>"; };
+		5E83E9F722E1628E00B8F584 /* TodayModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayModel.swift; sourceTree = "<group>"; };
+		5E83E9F922E1640400B8F584 /* TodayViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayViewModel.swift; sourceTree = "<group>"; };
 		5E916963229E2D250048BA63 /* Hero.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hero.framework; path = Carthage/Build/iOS/Hero.framework; sourceTree = "<group>"; };
 		5E92570D228D3E2D0076CCEE /* KeyboardTrackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardTrackViewModel.swift; sourceTree = "<group>"; };
 		5E9C28B1228E4729004ABF3B /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
@@ -534,7 +534,7 @@
 				0641AD602264ADC100CEDAE7 /* Common */,
 				402FBEA022C8D23D000BBFA3 /* TabBar */,
 				06516ABB2272D5520092DE3B /* Walkthrough */,
-				069AD424227720700075E711 /* Day */,
+				069AD424227720700075E711 /* Toay */,
 				40B2141E22B635DF0040EA9E /* Month */,
 				4001F6FE22ABB3A40009CDA1 /* Year */,
 				4001F6FD22ABB3950009CDA1 /* Setting */,
@@ -581,13 +581,13 @@
 			path = Label;
 			sourceTree = "<group>";
 		};
-		069AD424227720700075E711 /* Day */ = {
+		069AD424227720700075E711 /* Toay */ = {
 			isa = PBXGroup;
 			children = (
 				4001F6FB22ABB3370009CDA1 /* Top */,
 				063FCBBA227D8158007C191F /* InputMeal */,
 			);
-			path = Day;
+			path = Toay;
 			sourceTree = "<group>";
 		};
 		069AD431227722D90075E711 /* Cells */ = {
@@ -683,11 +683,11 @@
 			isa = PBXGroup;
 			children = (
 				069AD431227722D90075E711 /* Cells */,
-				069AD427227722490075E711 /* DayViewController.swift */,
-				069AD4282277224A0075E711 /* DayViewModel.swift */,
-				069AD426227722490075E711 /* DayViewDataSource.swift */,
-				069AD425227722490075E711 /* DayViewController.xib */,
-				403E952D22CE3D7800EFF459 /* TopDayViewController.swift */,
+				069AD427227722490075E711 /* TodayViewController.swift */,
+				5E83E9F922E1640400B8F584 /* TodayViewModel.swift */,
+				069AD426227722490075E711 /* TodayViewDataSource.swift */,
+				069AD425227722490075E711 /* TodayViewController.xib */,
+				403E952D22CE3D7800EFF459 /* TopTodayViewController.swift */,
 			);
 			path = Top;
 			sourceTree = "<group>";
@@ -758,7 +758,7 @@
 				403E953B22CF93AA00EFF459 /* AppCoordinator.swift */,
 				403E954122CF94C500EFF459 /* WalkthrouthCoordinator.swift */,
 				403E954922CF9C9B00EFF459 /* TopTabBarCoordinator.swift */,
-				403E954322CF94CF00EFF459 /* DayCoordinator.swift */,
+				403E954322CF94CF00EFF459 /* TodayCoordinator.swift */,
 				403E953F22CF940D00EFF459 /* MonthCoordinator.swift */,
 				403E953D22CF93FE00EFF459 /* YearCoordinator.swift */,
 				403E954722CF958600EFF459 /* SettingCoordinator.swift */,
@@ -850,7 +850,7 @@
 			isa = PBXGroup;
 			children = (
 				40B214DB22BF23D00040EA9E /* UserInfoModel.swift */,
-				40E7699B2299540200E9D5DA /* DayModel.swift */,
+				5E83E9F722E1628E00B8F584 /* TodayModel.swift */,
 				5E35CF8722D728AE00C9CFC3 /* InputMealModel.swift */,
 				5E3E860722C334D3004E1676 /* MonthModel.swift */,
 				5E9EE7CE22C48FF200AF5D82 /* YearModel.swift */,
@@ -1060,7 +1060,7 @@
 				0641AD2D2264A1BC00CEDAE7 /* LaunchScreen.storyboard in Resources */,
 				06932AC622801AC500CFA05C /* MealLabelView.xib in Resources */,
 				061F279C22735BD900FDCB17 /* Icons.xcassets in Resources */,
-				069AD4292277224A0075E711 /* DayViewController.xib in Resources */,
+				069AD4292277224A0075E711 /* TodayViewController.xib in Resources */,
 				4001F70D22ABDC5A0009CDA1 /* SettingViewCell.xib in Resources */,
 				0603293D227F3C22009A67A4 /* InputMealCalorieViewCell.xib in Resources */,
 				405A9F5722AD007200454412 /* MonthSummaryViewCell.xib in Resources */,
@@ -1289,6 +1289,7 @@
 				0622EA30226A251500E87F22 /* R.generated.swift in Sources */,
 				4001F70F22ABF0D80009CDA1 /* YearViewController.swift in Sources */,
 				403E953C22CF93AA00EFF459 /* AppCoordinator.swift in Sources */,
+				5E83E9FA22E1640400B8F584 /* TodayViewModel.swift in Sources */,
 				4001F70B22ABDC4E0009CDA1 /* SettingViewCell.swift in Sources */,
 				5E9C28BF228E6254004ABF3B /* UserInfo.swift in Sources */,
 				0622EA02226A1DE800E87F22 /* FillInformationViewController.swift in Sources */,
@@ -1306,17 +1307,16 @@
 				0603293F227F3C37009A67A4 /* InputMealCalorieViewCell.swift in Sources */,
 				403E953222CE40CC00EFF459 /* TopYearViewController.swift in Sources */,
 				06B2FCF5227222010078C7F1 /* InputPickerViewCell.swift in Sources */,
-				069AD42A2277224A0075E711 /* DayViewDataSource.swift in Sources */,
+				069AD42A2277224A0075E711 /* TodayViewDataSource.swift in Sources */,
 				063FCBC2227D8164007C191F /* InputMealViewController.swift in Sources */,
 				06B2FCFC227222530078C7F1 /* InputGenderViewCell.swift in Sources */,
 				403E953A22CF939300EFF459 /* Coordinator.swift in Sources */,
 				405A9F6122AE91C700454412 /* ProgressType.swift in Sources */,
-				40E7699C2299540200E9D5DA /* DayModel.swift in Sources */,
 				0622EA47226A2AB900E87F22 /* PublishRelay.extension.swift in Sources */,
 				0622EA2B226A21A400E87F22 /* UIButton.extension.swift in Sources */,
 				405A9F5D22AD0A3D00454412 /* MonthSummaryViewCellViewModel.swift in Sources */,
 				061F278F22733DA100FDCB17 /* WalkthroughViewController.swift in Sources */,
-				403E954422CF94CF00EFF459 /* DayCoordinator.swift in Sources */,
+				403E954422CF94CF00EFF459 /* TodayCoordinator.swift in Sources */,
 				4001F71322ABF1AC0009CDA1 /* BaseCollectionViewController.swift in Sources */,
 				5E9EE7D822C5CEAD00AF5D82 /* SeedManager.swift in Sources */,
 				40B2141522B4D5B00040EA9E /* Week.swift in Sources */,
@@ -1333,7 +1333,6 @@
 				5E17F981228BE4980046F68D /* RoundedTextFieldViewCell.swift in Sources */,
 				060A7982227C967100F02B30 /* RxYPImagePicker.swift in Sources */,
 				403E953E22CF93FE00EFF459 /* YearCoordinator.swift in Sources */,
-				069AD42C2277224A0075E711 /* DayViewModel.swift in Sources */,
 				402FBEA222C8E63D000BBFA3 /* TopTabBarViewModel.swift in Sources */,
 				4005BDDA22D8EE8B001A7C9D /* UserInfoRepository.swift in Sources */,
 				405147CA2291498800C9AF8C /* Content.swift in Sources */,
@@ -1341,6 +1340,7 @@
 				40B2142022B635F80040EA9E /* MonthViewController.swift in Sources */,
 				0622EA27226A20CE00E87F22 /* RxTableViewCell.swift in Sources */,
 				40B2141B22B55D640040EA9E /* DayViewCell.swift in Sources */,
+				5E83E9F822E1628E00B8F584 /* TodayModel.swift in Sources */,
 				405A9F5222ACFB2E00454412 /* YearViewDataSource.swift in Sources */,
 				403E954A22CF9C9B00EFF459 /* TopTabBarCoordinator.swift in Sources */,
 				405A9F5522AD006100454412 /* MonthSummaryViewCell.swift in Sources */,
@@ -1364,12 +1364,12 @@
 				403E953022CE3EAA00EFF459 /* TopMonthViewController.swift in Sources */,
 				0630D49B227495EB00224EC9 /* CellType.swift in Sources */,
 				40B2142422B636120040EA9E /* MonthViewModel.swift in Sources */,
-				403E952E22CE3D7800EFF459 /* TopDayViewController.swift in Sources */,
+				403E952E22CE3D7800EFF459 /* TopTodayViewController.swift in Sources */,
 				4001F6FA22ABA3720009CDA1 /* SceneType.swift in Sources */,
 				5E9EE7CF22C48FF200AF5D82 /* YearModel.swift in Sources */,
 				40B214DC22BF23D00040EA9E /* UserInfoModel.swift in Sources */,
 				4001F70622ABB4BA0009CDA1 /* SettingViewDataSource.swift in Sources */,
-				069AD42B2277224A0075E711 /* DayViewController.swift in Sources */,
+				069AD42B2277224A0075E711 /* TodayViewController.swift in Sources */,
 				0622EA06226A1E0100E87F22 /* FillInformationViewModel.swift in Sources */,
 				405A9F5022ACFB1300454412 /* YearViewModel.swift in Sources */,
 				4001F70922ABD98A0009CDA1 /* PageType.swift in Sources */,

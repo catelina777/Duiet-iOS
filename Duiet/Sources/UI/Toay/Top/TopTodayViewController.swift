@@ -1,5 +1,5 @@
 //
-//  TopDayViewController.swift
+//  TopTodayViewController.swift
 //  Duiet
 //
 //  Created by Ryuhei Kaminishi on 2019/07/04.
@@ -8,11 +8,11 @@
 
 import UIKit
 
-final class TopDayViewController: DayViewController {
+final class TopTodayViewController: TodayViewController {
 
     private let tabViewModel: TopTabBarViewModel
 
-    init(viewModel: DayViewModel,
+    init(viewModel: TodayViewModel,
          tabViewModel: TopTabBarViewModel) {
         self.tabViewModel = tabViewModel
         super.init(viewModel: viewModel)

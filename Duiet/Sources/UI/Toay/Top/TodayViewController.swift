@@ -1,5 +1,5 @@
 //
-//  DayViewController.swift
+//  TodayViewController.swift
 //  Duiet
 //
 //  Created by 上西 隆平 on 2019/04/23.
@@ -13,15 +13,15 @@ import RealmSwift
 import RxRealm
 import Hero
 
-class DayViewController: BaseCollectionViewController, NavigationBarCustomizable {
+class TodayViewController: BaseCollectionViewController, NavigationBarCustomizable {
 
-    let viewModel: DayViewModel
-    private let dataSource: DayViewDataSource
+    let viewModel: TodayViewModel
+    private let dataSource: TodayViewDataSource
 
-    init(viewModel: DayViewModel) {
+    init(viewModel: TodayViewModel) {
         self.viewModel = viewModel
-        self.dataSource = DayViewDataSource(viewModel: viewModel)
-        super.init(nibName: DayViewController.className, bundle: nil)
+        self.dataSource = TodayViewDataSource(viewModel: viewModel)
+        super.init(nibName: TodayViewController.className, bundle: nil)
     }
 
     required init?(coder aDecoder: NSCoder) {
