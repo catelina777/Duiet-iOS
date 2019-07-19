@@ -534,7 +534,7 @@
 				0641AD602264ADC100CEDAE7 /* Common */,
 				402FBEA022C8D23D000BBFA3 /* TabBar */,
 				06516ABB2272D5520092DE3B /* Walkthrough */,
-				069AD424227720700075E711 /* Toay */,
+				069AD424227720700075E711 /* Today */,
 				40B2141E22B635DF0040EA9E /* Month */,
 				4001F6FE22ABB3A40009CDA1 /* Year */,
 				4001F6FD22ABB3950009CDA1 /* Setting */,
@@ -581,13 +581,13 @@
 			path = Label;
 			sourceTree = "<group>";
 		};
-		069AD424227720700075E711 /* Toay */ = {
+		069AD424227720700075E711 /* Today */ = {
 			isa = PBXGroup;
 			children = (
 				4001F6FB22ABB3370009CDA1 /* Top */,
 				063FCBBA227D8158007C191F /* InputMeal */,
 			);
-			path = Toay;
+			path = Today;
 			sourceTree = "<group>";
 		};
 		069AD431227722D90075E711 /* Cells */ = {
