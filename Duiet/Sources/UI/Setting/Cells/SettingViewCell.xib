@@ -63,6 +63,9 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="QF7-0C-sSQ"/>
             <size key="customSize" width="414" height="61"/>
+            <connections>
+                <outlet property="roundedView" destination="pW6-mN-hfc" id="xKW-Ss-6KM"/>
+            </connections>
             <point key="canvasLocation" x="44.927536231884062" y="52.566964285714285"/>
         </collectionViewCell>
     </objects>
