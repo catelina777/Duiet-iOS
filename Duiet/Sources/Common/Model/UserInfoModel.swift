@@ -28,16 +28,16 @@ final class UserInfoModel: UserInfoModelProtocol {
     init(repository: UserInfoRepositoryProtocol) {
         self.repository = repository
 
-        let userInfoResult = repository.get()
-        observe(userInfoResult: userInfoResult)
+        let userInfoObject = repository.get()
+        observe(userInfoObject: userInfoObject)
     }
 
-    private func observe(userInfoResult: Results<UserInfo>) {
-        Observable.array(from: userInfoResult)
-            .compactMap { $0.first }
+    private func observe(userInfoObject: UserInfo?) {
+        guard let userInfoObject = userInfoObject else { return }
+        Observable.from(object: userInfoObject)
             .subscribe(onNext: { [weak self] userInfo in
-                guard let self = self else { return }
-                self.userInfo.accept(userInfo)
+                guard let me = self else { return }
+                me.userInfo.accept(userInfo)
             })
             .disposed(by: disposeBag)
     }
