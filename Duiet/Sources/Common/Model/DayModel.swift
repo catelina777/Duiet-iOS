@@ -20,6 +20,7 @@ protocol DayModelProtocol {
     var day: BehaviorRelay<Day> { get }
     var addMeal: Binder<Meal> { get }
     var title: String { get }
+    var date: Date { get }
 }
 
 final class DayModel: DayModelProtocol {
@@ -39,6 +40,10 @@ final class DayModel: DayModelProtocol {
             return  date.toString()
         }
     }()
+
+    var date: Date {
+        return day.value.createdAt
+    }
 
     private let repository: DayRepositoryProtocol
     private let disposeBag = DisposeBag()

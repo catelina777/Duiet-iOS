@@ -15,9 +15,10 @@ final class Meal: Object {
     let contents = List<Content>()
     @objc dynamic var date = Date()
 
-    required convenience init(imagePath: String) {
+    required convenience init(imagePath: String, date: Date) {
         self.init()
         self.imagePath = imagePath
+        self.date = date
     }
 
     #if DEBUG
