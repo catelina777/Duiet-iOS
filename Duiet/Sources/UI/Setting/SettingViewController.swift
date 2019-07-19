@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-final class SettingViewController: BaseTableViewController, NavigationBarCustomizable {
+final class SettingViewController: BaseCollectionViewController, NavigationBarCustomizable {
 
     private let viewModel: SettingViewModel
     private let dataSource: SettingViewDataSource
@@ -28,6 +28,6 @@ final class SettingViewController: BaseTableViewController, NavigationBarCustomi
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigationBar(with: SceneType.setting.title)
-        dataSource.configure(with: tableView)
+        dataSource.configure(with: collectionView)
     }
 }
