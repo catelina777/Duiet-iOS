@@ -57,7 +57,7 @@ final class TodayCoordinator: Coordinator {
         let vc = TodayViewController(viewModel: .init(coordinator: self,
                                                     userInfoModel: UserInfoModel.shared,
                                                     todayModel: model))
-        navigator.pushViewController(vc, animated: false)
+        navigator.pushViewController(vc, animated: true)
     }
 
     func dismiss() {

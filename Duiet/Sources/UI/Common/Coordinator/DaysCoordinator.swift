@@ -34,6 +34,6 @@ final class DaysCoordinator: Coordinator {
                                                          userInfoModel: UserInfoModel.shared,
                                                          daysModel: model),
                                         tabViewModel: tabViewModel)
-        navigator.pushViewController(vc, animated: false)
+        navigator.pushViewController(vc, animated: true)
     }
 }
