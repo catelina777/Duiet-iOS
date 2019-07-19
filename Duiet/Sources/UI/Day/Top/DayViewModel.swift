@@ -18,7 +18,7 @@ final class DayViewModel {
     let input: Input
     let output: Output
 
-    let userInfoModel: UserInfoModel
+    let userInfoModel: UserInfoModelProtocol
     let dayModel: DayModelProtocol
 
     private let coordinator: DayCoordinator
@@ -33,10 +33,11 @@ final class DayViewModel {
     }
 
     init(coordinator: DayCoordinator,
-         model: DayModelProtocol) {
+         userInfoModel: UserInfoModelProtocol,
+         dayModel: DayModelProtocol) {
         self.coordinator = coordinator
-        self.userInfoModel = UserInfoModel.shared
-        self.dayModel = model
+        self.userInfoModel = userInfoModel
+        self.dayModel = dayModel
 
         let _viewDidAppear = PublishRelay<Void>()
         let _viewDidDisappear = PublishRelay<Void>()

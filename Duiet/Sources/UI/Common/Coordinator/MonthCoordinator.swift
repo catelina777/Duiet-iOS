@@ -21,14 +21,18 @@ final class MonthCoordinator: Coordinator {
 
     func start() {
         let model = MonthModel(repository: MonthRepository.shared)
-        let vc = TopMonthViewController(viewModel: .init(coordinator: self, model: model),
+        let vc = TopMonthViewController(viewModel: .init(coordinator: self,
+                                                         userInfoModel: UserInfoModel.shared,
+                                                         monthModel: model),
                                         tabViewModel: tabViewModel)
         navigator.pushViewController(vc, animated: false)
     }
 
     func show(month: Month) {
         let model = MonthModel(month: month, repository: MonthRepository.shared)
-        let vc = TopMonthViewController(viewModel: .init(coordinator: self, model: model),
+        let vc = TopMonthViewController(viewModel: .init(coordinator: self,
+                                                         userInfoModel: UserInfoModel.shared,
+                                                         monthModel: model),
                                         tabViewModel: tabViewModel)
         navigator.pushViewController(vc, animated: false)
     }

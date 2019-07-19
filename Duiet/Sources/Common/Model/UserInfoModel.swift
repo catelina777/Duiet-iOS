@@ -16,7 +16,7 @@ protocol UserInfoModelProtocol {
     var userInfo: BehaviorRelay<UserInfo> { get }
 }
 
-final class UserInfoModel {
+final class UserInfoModel: UserInfoModelProtocol {
 
     static let shared = UserInfoModel(repository: UserInfoRepository.shared)
 
@@ -27,6 +27,7 @@ final class UserInfoModel {
 
     init(repository: UserInfoRepositoryProtocol) {
         self.repository = repository
+
         let userInfoResult = repository.get()
         observe(userInfoResult: userInfoResult)
     }

@@ -18,8 +18,6 @@ protocol YearModelProtocol {
 
 final class YearModel: YearModelProtocol {
 
-    static let shared = YearModel(repository: YearRepository.shared)
-
     let months = BehaviorRelay<[Month]>(value: [])
 
     private let repository: YearRepositoryProtocol
@@ -27,6 +25,7 @@ final class YearModel: YearModelProtocol {
 
     init(repository: YearRepositoryProtocol) {
         self.repository = repository
+
         let monthResults = repository.find()
         observe(monthResults: monthResults)
     }

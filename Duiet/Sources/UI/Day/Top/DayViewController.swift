@@ -16,7 +16,7 @@ import Hero
 class DayViewController: BaseCollectionViewController, NavigationBarCustomizable {
 
     let viewModel: DayViewModel
-    let dataSource: DayViewDataSource
+    private let dataSource: DayViewDataSource
 
     init(viewModel: DayViewModel) {
         self.viewModel = viewModel
