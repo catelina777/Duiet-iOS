@@ -1,5 +1,5 @@
 //
-//  TopYearViewController.swift
+//  TopMonthsViewController.swift
 //  Duiet
 //
 //  Created by Ryuhei Kaminishi on 2019/07/04.
@@ -8,11 +8,11 @@
 
 import UIKit
 
-final class TopYearViewController: YearViewController {
+final class TopMonthsViewController: MonthsViewController {
 
     private let tabViewModel: TopTabBarViewModel
 
-    init(viewModel: YearViewModel,
+    init(viewModel: MonthsViewModel,
          tabViewModel: TopTabBarViewModel) {
         self.tabViewModel = tabViewModel
         super.init(viewModel: viewModel)
@@ -30,3 +30,4 @@ final class TopYearViewController: YearViewController {
             .disposed(by: disposeBag)
     }
 }
+

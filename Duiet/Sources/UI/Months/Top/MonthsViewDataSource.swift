@@ -1,5 +1,5 @@
 //
-//  YearViewDataSource.swift
+//  MonthsViewDataSource.swift
 //  Duiet
 //
 //  Created by Ryuhei Kaminishi on 2019/06/09.
@@ -8,11 +8,11 @@
 
 import UIKit
 
-final class YearViewDataSource: NSObject {
+final class MonthsViewDataSource: NSObject {
 
-    private let viewModel: YearViewModel
+    private let viewModel: MonthsViewModel
 
-    init(viewModel: YearViewModel) {
+    init(viewModel: MonthsViewModel) {
         self.viewModel = viewModel
     }
 
@@ -23,7 +23,7 @@ final class YearViewDataSource: NSObject {
     }
 }
 
-extension YearViewDataSource: UICollectionViewDataSource {
+extension MonthsViewDataSource: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
@@ -40,7 +40,7 @@ extension YearViewDataSource: UICollectionViewDataSource {
     }
 }
 
-extension YearViewDataSource: UICollectionViewDelegate {
+extension MonthsViewDataSource: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
@@ -49,7 +49,7 @@ extension YearViewDataSource: UICollectionViewDelegate {
     }
 }
 
-extension YearViewDataSource: UICollectionViewDelegateFlowLayout {
+extension MonthsViewDataSource: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,

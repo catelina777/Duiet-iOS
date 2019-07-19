@@ -1,5 +1,5 @@
 //
-//  YearModel.swift
+//  MonthsModel.swift
 //  Duiet
 //
 //  Created by 上西 隆平 on 2019/06/27.
@@ -12,18 +12,18 @@ import RealmSwift
 import RxRealm
 import RxRelay
 
-protocol YearModelProtocol {
+protocol MonthsModelProtocol {
     var months: BehaviorRelay<[Month]> { get }
 }
 
-final class YearModel: YearModelProtocol {
+final class MonthsModel: MonthsModelProtocol {
 
     let months = BehaviorRelay<[Month]>(value: [])
 
-    private let repository: YearRepositoryProtocol
+    private let repository: MonthsRepositoryProtocol
     private let disposeBag = DisposeBag()
 
-    init(repository: YearRepositoryProtocol) {
+    init(repository: MonthsRepositoryProtocol) {
         self.repository = repository
 
         let monthResults = repository.find()

@@ -72,7 +72,7 @@ final class AppCoordinator {
         case .setting:
             coordinator = SettingCoordinator(navigator: navigationController, tabViewModel: tabViewModel)
         case .year:
-            coordinator = YearCoordinator(navigator: navigationController, tabViewModel: tabViewModel)
+            coordinator = MonthsCoordinator(navigator: navigationController, tabViewModel: tabViewModel)
         }
         coordinator.start()
     }

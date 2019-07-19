@@ -1,5 +1,5 @@
 //
-//  YearViewController.swift
+//  MonthsViewController.swift
 //  Duiet
 //
 //  Created by Ryuhei Kaminishi on 2019/06/08.
@@ -8,15 +8,15 @@
 
 import UIKit
 
-class YearViewController: BaseCollectionViewController, NavigationBarCustomizable {
+class MonthsViewController: BaseCollectionViewController, NavigationBarCustomizable {
 
-    let viewModel: YearViewModel
-    private let dataSource: YearViewDataSource
+    let viewModel: MonthsViewModel
+    private let dataSource: MonthsViewDataSource
 
-    init(viewModel: YearViewModel) {
+    init(viewModel: MonthsViewModel) {
         self.viewModel = viewModel
-        self.dataSource = YearViewDataSource(viewModel: viewModel)
-        super.init(nibName: YearViewController.className, bundle: nil)
+        self.dataSource = MonthsViewDataSource(viewModel: viewModel)
+        super.init(nibName: MonthsViewController.className, bundle: nil)
     }
 
     required init?(coder aDecoder: NSCoder) {
