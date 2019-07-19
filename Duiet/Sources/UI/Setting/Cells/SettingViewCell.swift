@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class SettingViewCell: RxTableViewCell {
+final class SettingViewCell: UICollectionViewCell {
 
     @IBOutlet weak var roundedView: UIView! {
         didSet {
