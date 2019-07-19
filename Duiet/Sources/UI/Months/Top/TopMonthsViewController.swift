@@ -30,4 +30,3 @@ final class TopMonthsViewController: MonthsViewController {
             .disposed(by: disposeBag)
     }
 }
-
