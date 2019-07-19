@@ -22,16 +22,16 @@ final class AppCoordinator {
         self.topTabBarNavigator = UINavigationController()
         self.walkthroughNavigator = UINavigationController()
 
-        let dayNC = get(type: .day)
-        let monthNC = get(type: .month)
-        let yearNC = get(type: .year)
+        let dayNC = get(type: .today)
+        let monthNC = get(type: .days)
+        let yearNC = get(type: .months)
         let settingNC = get(type: .setting)
 
         let viewModel = TopTabBarViewModel()
 
-        navigatorInit(type: .day, navigationController: dayNC, tabViewModel: viewModel)
-        navigatorInit(type: .month, navigationController: monthNC, tabViewModel: viewModel)
-        navigatorInit(type: .year, navigationController: yearNC, tabViewModel: viewModel)
+        navigatorInit(type: .today, navigationController: dayNC, tabViewModel: viewModel)
+        navigatorInit(type: .days, navigationController: monthNC, tabViewModel: viewModel)
+        navigatorInit(type: .months, navigationController: yearNC, tabViewModel: viewModel)
         navigatorInit(type: .setting, navigationController: settingNC, tabViewModel: viewModel)
 
         self.topTabBarCoordinator = TopTabBarCoordinator(navigator: topTabBarNavigator,
@@ -65,14 +65,14 @@ final class AppCoordinator {
                                tabViewModel: TopTabBarViewModel) {
         let coordinator: Coordinator
         switch type {
-        case .day:
+        case .today:
             coordinator = TodayCoordinator(navigator: navigationController, tabViewModel: tabViewModel)
-        case .month:
+        case .days:
             coordinator = DaysCoordinator(navigator: navigationController, tabViewModel: tabViewModel)
+        case .months:
+            coordinator = MonthsCoordinator(navigator: navigationController, tabViewModel: tabViewModel)
         case .setting:
             coordinator = SettingCoordinator(navigator: navigationController, tabViewModel: tabViewModel)
-        case .year:
-            coordinator = MonthsCoordinator(navigator: navigationController, tabViewModel: tabViewModel)
         }
         coordinator.start()
     }

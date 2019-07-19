@@ -34,7 +34,7 @@ final class TodayModel: TodayModelProtocol {
         let date = day.value.createdAt
         let different = Calendar.current.dateComponents([.day], from: date, to: now).day
         if different == 0 {
-            return SceneType.day.title
+            return SceneType.today.title
         } else {
             return  date.toString()
         }

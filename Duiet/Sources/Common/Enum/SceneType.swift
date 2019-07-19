@@ -9,9 +9,9 @@
 import UIKit
 
 enum SceneType: String {
-    case day
-    case month
-    case year
+    case today
+    case days
+    case months
     case setting
 
     var tabBarItem: UITabBarItem {
@@ -23,12 +23,12 @@ enum SceneType: String {
 
     var title: String {
         switch self {
-        case .day:
+        case .today:
             return "Today"
-        case .month:
-            return "Month"
-        case .year:
-            return "Year"
+        case .days:
+            return "Days"
+        case .months:
+            return "Months"
         case .setting:
             return "Setting"
         }
