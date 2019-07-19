@@ -1,5 +1,5 @@
 //
-//  MonthViewModel.swift
+//  DaysViewModel.swift
 //  Duiet
 //
 //  Created by Ryuhei Kaminishi on 2019/06/16.
@@ -10,14 +10,14 @@ import Foundation
 import RxSwift
 import RxRelay
 
-final class MonthViewModel {
+final class DaysViewModel {
 
     let input: Input
     let output: Output
 
-    private let monthModel: MonthModelProtocol
+    private let daysModel: DaysModelProtocol
     private let userInfoModel: UserInfoModelProtocol
-    private let coordinator: MonthCoordinator
+    private let coordinator: DaysCoordinator
     private let disposeBag = DisposeBag()
 
     var userInfo: UserInfo {
@@ -25,18 +25,18 @@ final class MonthViewModel {
     }
 
     var days: [Day] {
-        return monthModel.days.value
+        return daysModel.days.value
     }
 
     var title: String {
-        return monthModel.title
+        return daysModel.title
     }
 
-    init(coordinator: MonthCoordinator,
+    init(coordinator: DaysCoordinator,
          userInfoModel: UserInfoModelProtocol,
-         monthModel: MonthModelProtocol) {
+         daysModel: DaysModelProtocol) {
         self.coordinator = coordinator
-        self.monthModel = monthModel
+        self.daysModel = daysModel
         self.userInfoModel = userInfoModel
 
         let _selectedDay = PublishRelay<Day>()
@@ -54,7 +54,7 @@ final class MonthViewModel {
     }
 }
 
-extension MonthViewModel {
+extension DaysViewModel {
 
     struct Input {
         let selectedDay: AnyObserver<Day>

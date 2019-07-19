@@ -1,5 +1,5 @@
 //
-//  MonthCoordinator.swift
+//  DaysCoordinator.swift
 //  Duiet
 //
 //  Created by Ryuhei Kaminishi on 2019/07/05.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class MonthCoordinator: Coordinator {
+final class DaysCoordinator: Coordinator {
 
     private let navigator: UINavigationController
     private let tabViewModel: TopTabBarViewModel
@@ -20,19 +20,19 @@ final class MonthCoordinator: Coordinator {
     }
 
     func start() {
-        let model = MonthModel(repository: MonthRepository.shared)
-        let vc = TopMonthViewController(viewModel: .init(coordinator: self,
+        let model = DaysModel(repository: DaysRepository.shared)
+        let vc = TopDaysViewController(viewModel: .init(coordinator: self,
                                                          userInfoModel: UserInfoModel.shared,
-                                                         monthModel: model),
+                                                         daysModel: model),
                                         tabViewModel: tabViewModel)
         navigator.pushViewController(vc, animated: false)
     }
 
     func show(month: Month) {
-        let model = MonthModel(month: month, repository: MonthRepository.shared)
-        let vc = TopMonthViewController(viewModel: .init(coordinator: self,
+        let model = DaysModel(month: month, repository: DaysRepository.shared)
+        let vc = TopDaysViewController(viewModel: .init(coordinator: self,
                                                          userInfoModel: UserInfoModel.shared,
-                                                         monthModel: model),
+                                                         daysModel: model),
                                         tabViewModel: tabViewModel)
         navigator.pushViewController(vc, animated: false)
     }

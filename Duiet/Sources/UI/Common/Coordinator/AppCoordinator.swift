@@ -68,7 +68,7 @@ final class AppCoordinator {
         case .day:
             coordinator = TodayCoordinator(navigator: navigationController, tabViewModel: tabViewModel)
         case .month:
-            coordinator = MonthCoordinator(navigator: navigationController, tabViewModel: tabViewModel)
+            coordinator = DaysCoordinator(navigator: navigationController, tabViewModel: tabViewModel)
         case .setting:
             coordinator = SettingCoordinator(navigator: navigationController, tabViewModel: tabViewModel)
         case .year:
