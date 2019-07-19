@@ -10,12 +10,21 @@ import UIKit
 
 final class SettingViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var roundedView: UIView! {
-        didSet {
-            roundedView.layer.cornerRadius = 10
-            roundedView.clipsToBounds = true
-        }
-    }
+    @IBOutlet weak var roundedView: UIView!
 
     @IBOutlet weak var titleLabel: UILabel!
+
+    override var isHighlighted: Bool {
+        didSet {
+            if self.isHighlighted {
+                UIView.animate(withDuration: 0.1) {
+                    self.roundedView.backgroundColor = #colorLiteral(red: 0.2588235294, green: 0.6470588235, blue: 0.9607843137, alpha: 0.2632437928)
+                }
+            } else {
+                UIView.animate(withDuration: 0.25) {
+                    self.roundedView.backgroundColor = .white
+                }
+            }
+        }
+    }
 }
