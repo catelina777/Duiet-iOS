@@ -17,7 +17,7 @@ final class MonthSummaryViewCell: RxCollectionViewCell {
     @IBOutlet weak var weightChangeLabel: UILabel!
 
     func configure(with month: Month) {
-        self.viewModel = MonthSummaryViewModel(month: month)
+        self.viewModel = MonthSummaryViewModel(month: month, userInfoModel: UserInfoModel.shared)
         self.dataSource = MonthSummaryViewDataSource(viewModel: viewModel)
         dataSource.configure(with: collectionView)
         dayLabel.text = month.createdAt.toYearMonthString()

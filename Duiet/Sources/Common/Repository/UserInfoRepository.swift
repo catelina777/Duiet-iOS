@@ -17,9 +17,10 @@ protocol UserInfoRepositoryProtocol {
 final class UserInfoRepository: UserInfoRepositoryProtocol {
 
     static let shared = UserInfoRepository()
+
     private let realm: Realm
 
-    init() {
+    private init() {
         realm = try! Realm()
     }
 

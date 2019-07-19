@@ -14,11 +14,11 @@ final class MonthSummaryViewModel {
     let output: Output
 
     let progress: [ProgressType]
-    let userInfoModel: UserInfoModel
+    let userInfoModel: UserInfoModelProtocol
 
-    init(month: Month) {
-        // TODO: - Consider singletoning a UserInfoModel
-        userInfoModel = UserInfoModel.shared
+    init(month: Month,
+         userInfoModel: UserInfoModelProtocol) {
+        self.userInfoModel = userInfoModel
 
         /*
          1.Monthの日数個のnilが入った[Day?]を作成する

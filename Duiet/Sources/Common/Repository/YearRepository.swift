@@ -16,9 +16,10 @@ protocol YearRepositoryProtocol {
 final class YearRepository: YearRepositoryProtocol {
 
     static let shared = YearRepository()
+
     private let realm: Realm
 
-    init() {
+    private init() {
         realm = try! Realm()
     }
 

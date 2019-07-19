@@ -12,8 +12,8 @@ import RxCocoa
 
 final class SettingViewController: BaseTableViewController, NavigationBarCustomizable {
 
-    let viewModel: SettingViewModel
-    let dataSource: SettingViewDataSource
+    private let viewModel: SettingViewModel
+    private let dataSource: SettingViewDataSource
 
     init(viewModel: SettingViewModel) {
         self.viewModel = viewModel

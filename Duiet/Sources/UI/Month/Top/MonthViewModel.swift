@@ -16,7 +16,7 @@ final class MonthViewModel {
     let output: Output
 
     private let monthModel: MonthModelProtocol
-    private let userInfoModel: UserInfoModel
+    private let userInfoModel: UserInfoModelProtocol
     private let coordinator: MonthCoordinator
     private let disposeBag = DisposeBag()
 
@@ -33,10 +33,11 @@ final class MonthViewModel {
     }
 
     init(coordinator: MonthCoordinator,
-         model: MonthModelProtocol) {
+         userInfoModel: UserInfoModelProtocol,
+         monthModel: MonthModelProtocol) {
         self.coordinator = coordinator
-        self.monthModel = model
-        self.userInfoModel = UserInfoModel.shared
+        self.monthModel = monthModel
+        self.userInfoModel = userInfoModel
 
         let _selectedDay = PublishRelay<Day>()
         let _selectedMonth = PublishRelay<Month>()

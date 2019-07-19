@@ -19,7 +19,9 @@ final class DayCoordinator: Coordinator {
         self.navigator = navigator
         self.tabViewModel = tabViewModel
         let model = DayModel(repository: DayRepository.shared)
-        self.viewController = TopDayViewController(viewModel: .init(coordinator: self, model: model),
+        self.viewController = TopDayViewController(viewModel: .init(coordinator: self,
+                                                                    userInfoModel: UserInfoModel.shared,
+                                                                    dayModel: model),
                                                    tabViewModel: tabViewModel)
     }
 
@@ -52,7 +54,9 @@ final class DayCoordinator: Coordinator {
 
     func showDetailDay(day: Day) {
         let model = DayModel(date: day.createdAt, repository: DayRepository.shared)
-        let vc = DayViewController(viewModel: .init(coordinator: self, model: model))
+        let vc = DayViewController(viewModel: .init(coordinator: self,
+                                                    userInfoModel: UserInfoModel.shared,
+                                                    dayModel: model))
         navigator.pushViewController(vc, animated: false)
     }
 
