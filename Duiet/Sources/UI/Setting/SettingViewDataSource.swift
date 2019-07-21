@@ -27,7 +27,7 @@ extension SettingViewDataSource: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return SettingType.allCases.count
     }
 
     func collectionView(_ collectionView: UICollectionView,

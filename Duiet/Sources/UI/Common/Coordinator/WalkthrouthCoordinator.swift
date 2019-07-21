@@ -33,4 +33,8 @@ final class WalkthrouthCoordinator: Coordinator {
         let vc = topTabBarCoordinator.controller
         navigator.present(vc, animated: true, completion: nil)
     }
+
+    func dismiss() {
+        navigator.dismiss(animated: true, completion: nil)
+    }
 }
