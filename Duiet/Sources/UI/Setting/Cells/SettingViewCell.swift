@@ -27,4 +27,8 @@ final class SettingViewCell: UICollectionViewCell {
             }
         }
     }
+
+    func configure(with type: SettingType) {
+        titleLabel.text = type.contentText
+    }
 }

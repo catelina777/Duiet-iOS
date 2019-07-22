@@ -28,4 +28,8 @@ final class SettingCoordinator: Coordinator {
         let vc = FillInformationViewController(viewModel: .init(coordinator: self))
         navigator.pushViewController(vc, animated: true)
     }
+
+    func pop() {
+        navigator.popViewController(animated: true)
+    }
 }

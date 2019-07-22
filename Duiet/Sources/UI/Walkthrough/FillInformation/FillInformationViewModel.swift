@@ -139,9 +139,8 @@ final class FillInformationViewModel {
 
         output.didTapComplete
             .asDriver(onErrorDriveWith: .empty())
-            .asDriver(onErrorDriveWith: .empty())
             .drive(onNext: {
-                coordinator.showFillInformation()
+                coordinator.pop()
             })
             .disposed(by: disposeBag)
     }

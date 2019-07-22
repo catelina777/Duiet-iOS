@@ -34,6 +34,8 @@ extension SettingViewDataSource: UICollectionViewDataSource {
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.settingViewCell,
                                                       for: indexPath)!
+        let selectionType = SettingType.allCases[indexPath.row]
+        cell.configure(with: selectionType)
         return cell
     }
 }
@@ -42,6 +44,8 @@ extension SettingViewDataSource: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
+        let selectionType = SettingType.allCases[indexPath.row]
+        viewModel.input.itemDidSelect.on(.next(selectionType))
     }
 }
 

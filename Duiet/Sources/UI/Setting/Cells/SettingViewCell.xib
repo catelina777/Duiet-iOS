@@ -65,6 +65,7 @@
             <size key="customSize" width="414" height="61"/>
             <connections>
                 <outlet property="roundedView" destination="pW6-mN-hfc" id="xKW-Ss-6KM"/>
+                <outlet property="titleLabel" destination="zkW-lG-xbG" id="FQ4-ID-7O9"/>
             </connections>
             <point key="canvasLocation" x="44.927536231884062" y="52.566964285714285"/>
         </collectionViewCell>
