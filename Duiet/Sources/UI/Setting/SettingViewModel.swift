@@ -8,19 +8,38 @@
 
 import Foundation
 import RxSwift
+import RxRelay
 
 final class SettingViewModel {
 
-    private let coordinator: SettingCoordinator
+    let input: Input
+    let output: Output
+
+    private let disposeBag = DisposeBag()
 
     init(coordinator: SettingCoordinator) {
-        self.coordinator = coordinator
+        let _itemDidSelect = PublishRelay<SettingType>()
+        input = Input(itemDidSelect: _itemDidSelect.asObserver())
+
+        output = Output()
+
+        _itemDidSelect
+            .asDriver(onErrorDriveWith: .empty())
+            .drive(onNext: {
+                switch $0 {
+                case .editInfo:
+                    coordinator.showFillInformation()
+                }
+            })
+            .disposed(by: disposeBag)
     }
 }
 
 extension SettingViewModel {
 
-    struct Input {}
+    struct Input {
+        let itemDidSelect: AnyObserver<SettingType>
+    }
 
     struct Output {}
 }

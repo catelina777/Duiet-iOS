@@ -23,4 +23,13 @@ final class SettingCoordinator: Coordinator {
         let vc = SettingViewController(viewModel: .init(coordinator: self))
         navigator.pushViewController(vc, animated: false)
     }
+
+    func showFillInformation() {
+        let vc = FillInformationViewController(viewModel: .init(coordinator: self))
+        navigator.pushViewController(vc, animated: true)
+    }
+
+    func pop() {
+        navigator.popViewController(animated: true)
+    }
 }

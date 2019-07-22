@@ -20,7 +20,6 @@ final class FillInformationViewModel {
     let input: Input
     let output: Output
 
-    private let coordinator: WalkthrouthCoordinator
     private let disposeBag = DisposeBag()
 
     private(set) lazy var ageList: [Int] = {
@@ -39,9 +38,7 @@ final class FillInformationViewModel {
 
     let activityTypes: [ActivityLevel] = [.none, .sedentary, .lightly, .moderately, .veryActive]
 
-    init(coordinator: WalkthrouthCoordinator) {
-        self.coordinator = coordinator
-
+    init() {
         let _gender = BehaviorRelay<Bool?>(value: nil)
         let _age = BehaviorRelay<Int?>(value: nil)
         let _height = BehaviorRelay<Double?>(value: nil)
@@ -124,12 +121,26 @@ final class FillInformationViewModel {
             .map { $0 }
             .bind(to: Realm.rx.add(update: true))
             .disposed(by: disposeBag)
+    }
 
-        // MARK: - Processing to transition
-        didTapComplete
+    convenience init(coordinator: WalkthrouthCoordinator) {
+        self.init()
+
+        output.didTapComplete
             .asDriver(onErrorDriveWith: .empty())
             .drive(onNext: {
                 coordinator.showTop()
+            })
+            .disposed(by: disposeBag)
+    }
+
+    convenience init(coordinator: SettingCoordinator) {
+        self.init()
+
+        output.didTapComplete
+            .asDriver(onErrorDriveWith: .empty())
+            .drive(onNext: {
+                coordinator.pop()
             })
             .disposed(by: disposeBag)
     }

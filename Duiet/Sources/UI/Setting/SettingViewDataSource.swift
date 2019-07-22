@@ -16,25 +16,67 @@ final class SettingViewDataSource: NSObject {
         self.viewModel = viewModel
     }
 
-    func configure(with tableView: UITableView) {
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.rowHeight = 90
-        tableView.register(R.nib.settingViewCell)
+    func configure(with collectionView: UICollectionView) {
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(R.nib.settingViewCell)
     }
 }
 
-extension SettingViewDataSource: UITableViewDataSource {
+extension SettingViewDataSource: UICollectionViewDataSource {
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+    func collectionView(_ collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int {
+        return SettingType.allCases.count
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.settingViewCell,
-                                                 for: indexPath)!
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.settingViewCell,
+                                                      for: indexPath)!
+        let selectionType = SettingType.allCases[indexPath.row]
+        cell.configure(with: selectionType)
         return cell
     }
 }
 
-extension SettingViewDataSource: UITableViewDelegate {}
+extension SettingViewDataSource: UICollectionViewDelegate {
+
+    func collectionView(_ collectionView: UICollectionView,
+                        didSelectItemAt indexPath: IndexPath) {
+        let selectionType = SettingType.allCases[indexPath.row]
+        viewModel.input.itemDidSelect.on(.next(selectionType))
+    }
+}
+
+extension SettingViewDataSource: UICollectionViewDelegateFlowLayout {
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        let width = collectionView.frame.width * 0.9
+        let height = width * 0.175
+        let size = CGSize(width: width, height: height)
+        return size
+    }
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+        let space = collectionView.frame.width * 0.1 / 2
+        let edgeInset = UIEdgeInsets(top: space,
+                                     left: space,
+                                     bottom: space,
+                                     right: space)
+        return edgeInset
+    }
+
+    // MARK: It is set to make sure that there is no shadow line
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        let space = collectionView.frame.width * 0.1 / 2
+        return space
+    }
+}
