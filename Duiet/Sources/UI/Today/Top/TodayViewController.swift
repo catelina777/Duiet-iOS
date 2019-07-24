@@ -49,10 +49,13 @@ class TodayViewController: BaseCollectionViewController, NavigationBarCustomizab
         viewModel.output.changeData
             .bind(to: applyChange)
             .disposed(by: disposeBag)
+
+        print("view did load")
     }
 
     private var applyChange: Binder<RealmChangeset?> {
         return Binder(self) { me, changes in
+            print("change data")
             if let changes = changes {
                 let inserted = changes.inserted.map { IndexPath(row: $0 + 1, section: 0) }
                 let updated = changes.updated.map { IndexPath(row: $0 + 1, section: 0) }

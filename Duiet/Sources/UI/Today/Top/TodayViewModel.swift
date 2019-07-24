@@ -40,13 +40,11 @@ final class TodayViewModel {
         self.todayModel = todayModel
 
         let _viewDidAppear = PublishRelay<Void>()
-        let _viewDidDisappear = PublishRelay<Void>()
         let _addButtonTap = PublishRelay<TodayViewController>()
         let _selectedItem = PublishRelay<(MealCardViewCell, Meal)>()
         let _showDetailDay = PublishRelay<Day>()
 
         input = Input(viewDidAppear: _viewDidAppear.asObserver(),
-                      viewDidDisappear: _viewDidDisappear.asObserver(),
                       addButtonTap: _addButtonTap.asObserver(),
                       selectedItem: _selectedItem.asObserver(),
                       showDetailDay: _showDetailDay.asObserver())
@@ -119,7 +117,6 @@ extension TodayViewModel {
 
     struct Input {
         let viewDidAppear: AnyObserver<Void>
-        let viewDidDisappear: AnyObserver<Void>
         let addButtonTap: AnyObserver<TodayViewController>
         let selectedItem: AnyObserver<(MealCardViewCell, Meal)>
         let showDetailDay: AnyObserver<Day>
