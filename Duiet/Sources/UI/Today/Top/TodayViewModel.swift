@@ -68,8 +68,6 @@ final class TodayViewModel {
             .map { ($0.0.0, $0.0.1) }
             .share()
 
-        let editDetail = _selectedItem
-
         /// I also added meals because I want to detect the update of meal information
         let progress = Observable.combineLatest(todayModel.day, userInfoModel.userInfo, todayModel.meals)
             .map { ($0.0, $0.1) }
@@ -99,7 +97,7 @@ final class TodayViewModel {
             })
             .disposed(by: disposeBag)
 
-        editDetail
+        _selectedItem
             .asDriver(onErrorDriveWith: .empty())
             .drive(onNext: { [weak self] card, meal in
                 guard let me = self else { return }
