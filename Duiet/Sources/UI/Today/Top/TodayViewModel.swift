@@ -58,10 +58,10 @@ final class TodayViewModel {
             }
             .share()
 
-        let meal = PublishRelay<Meal>()
+        let mealWillAdd = PublishRelay<Meal>()
 
         /// Screen transition can't be made without viewDidAppear or later
-        let showDetail = Observable.combineLatest(pickedImage, meal)
+        let showDetail = mealWillAdd.withLatestFrom(pickedImage) { ($1, $0) }
             .withLatestFrom(_viewDidAppear) { ($0, $1) }
             .map { ($0.0.0, $0.0.1) }
             .share()
@@ -78,10 +78,10 @@ final class TodayViewModel {
             .flatMapLatest { PhotoManager.rx.save(image: $0) }
             .observeOn(MainScheduler.instance)
             .map { Meal(imagePath: $0, date: todayModel.date) }
-            .bind(to: meal)
+            .bind(to: mealWillAdd)
             .disposed(by: disposeBag)
 
-        meal
+        mealWillAdd
             .map { $0 }
             .bind(to: todayModel.addMeal)
             .disposed(by: disposeBag)
