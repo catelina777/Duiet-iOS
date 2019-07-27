@@ -21,7 +21,6 @@ final class TodayViewModel {
     let userInfoModel: UserInfoModelProtocol
     let todayModel: TodayModelProtocol
 
-    private let coordinator: TodayCoordinator
     private let disposeBag = DisposeBag()
 
     var meals: [Meal] {
@@ -35,7 +34,6 @@ final class TodayViewModel {
     init(coordinator: TodayCoordinator,
          userInfoModel: UserInfoModelProtocol,
          todayModel: TodayModelProtocol) {
-        self.coordinator = coordinator
         self.userInfoModel = userInfoModel
         self.todayModel = todayModel
 
@@ -89,25 +87,22 @@ final class TodayViewModel {
         // MARK: - Processing to transition
         showDetail
             .asDriver(onErrorDriveWith: .empty())
-            .drive(onNext: { [weak self] image, meal in
-                guard let me = self else { return }
-                me.coordinator.showDetail(image: image, meal: meal)
+            .drive(onNext: {
+                coordinator.showDetail(image: $0.0, meal: $0.1)
             })
             .disposed(by: disposeBag)
 
         _selectedItem
             .asDriver(onErrorDriveWith: .empty())
-            .drive(onNext: { [weak self] card, meal in
-                guard let me = self else { return }
-                me.coordinator.showEdit(mealCard: card, meal: meal)
+            .drive(onNext: {
+                coordinator.showEdit(mealCard: $0.0, meal: $0.1)
             })
             .disposed(by: disposeBag)
 
         _showDetailDay
             .asDriver(onErrorDriveWith: .empty())
-            .drive(onNext: { [weak self] day in
-                guard let me = self else { return }
-                me.coordinator.showDetailDay(day: day)
+            .drive(onNext: {
+                coordinator.showDetailDay(day: $0)
             })
             .disposed(by: disposeBag)
     }

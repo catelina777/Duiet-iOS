@@ -16,7 +16,6 @@ final class InputMealViewModel {
     let output: Output
 
     private let inputMealModel: InputMealModelProtocol
-    private let coordinator: TodayCoordinator
     private let disposeBag = DisposeBag()
 
     var contentCount: Int {
@@ -25,7 +24,6 @@ final class InputMealViewModel {
 
     init(coordinator: TodayCoordinator,
          model: InputMealModelProtocol) {
-        self.coordinator = coordinator
         self.inputMealModel = model
 
         let _nameTextInput = PublishRelay<String?>()
@@ -118,9 +116,8 @@ final class InputMealViewModel {
 
         // MARK: - Transition
         _dismiss
-            .subscribe(onNext: { [weak self] in
-                guard let me = self else { return }
-                me.coordinator.dismiss()
+            .subscribe(onNext: {
+                coordinator.dismiss()
             })
             .disposed(by: disposeBag)
     }
