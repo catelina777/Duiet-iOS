@@ -72,12 +72,26 @@ final class MealCardViewCell: RxCollectionViewCell {
         }
     }
 
-    func configure(with meal: Meal) {
-        PhotoManager.rx.fetchImage(with: meal.imagePath)
+    func configure(with meal: Meal, viewDidAppear: Observable<Void>) {
+        set(image: meal.imagePath)
+        set(totalCalorie: meal.totalCalorie)
+
+        // MARK: - Reload image when the screen is displayed to avoid image not loading
+        viewDidAppear
+            .subscribe(onNext: { [weak self] in
+                guard let me = self else { return }
+                me.set(image: meal.imagePath)
+            })
+            .disposed(by: disposeBag)
+    }
+
+    private func set(image path: String) {
+        PhotoManager.rx.fetchImage(with: path)
             .bind(to: imageView.rx.image)
             .disposed(by: disposeBag)
+    }
 
-        let totalCalorie = meal.totalCalorie
+    private func set(totalCalorie: Double) {
         caloriesLabel.text = "\(Int(totalCalorie))"
     }
 }
