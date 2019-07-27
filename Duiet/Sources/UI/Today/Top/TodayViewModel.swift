@@ -68,7 +68,7 @@ final class TodayViewModel {
             .compactMap { $0 }
             .flatMapLatest { PhotoManager.rx.save(image: $0) }
             .observeOn(MainScheduler.instance)
-            .map { Meal(imagePath: $0, date: todayModel.date) }
+            .map { Meal(imagePath: $0, date: Date()) }
             .bind(to: mealWillAdd)
             .disposed(by: disposeBag)
 
