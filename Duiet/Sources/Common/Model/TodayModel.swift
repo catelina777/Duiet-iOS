@@ -16,7 +16,6 @@ import RxRealm
 protocol TodayModelProtocol {
     var changeData: PublishRelay<RealmChangeset?> { get }
     var contentDidDelete: PublishRelay<Void> { get }
-    var meals: BehaviorRelay<[Meal]> { get }
     var day: BehaviorRelay<Day> { get }
     var addMeal: Binder<Meal> { get }
     var title: String { get }
@@ -27,7 +26,6 @@ final class TodayModel: TodayModelProtocol {
 
     let changeData = PublishRelay<RealmChangeset?>()
     let contentDidDelete = PublishRelay<Void>()
-    let meals = BehaviorRelay<[Meal]>(value: [])
     let day: BehaviorRelay<Day>
 
     lazy var title: String = {
@@ -57,7 +55,6 @@ final class TodayModel: TodayModelProtocol {
         observe(day: day)
 
         let mealResults = repository.find(meals: date)
-        observe(mealResults: mealResults)
         observe(mealResultsChangeset: mealResults)
     }
 
@@ -71,8 +68,12 @@ final class TodayModel: TodayModelProtocol {
         }
     }
 
+    /// Detect change of day from change of meals
+    ///
+    /// - Parameter day: Day model find from repository
     private func observe(day: Day) {
-        Observable.from(object: day)
+        self.day.accept(day)
+        changeData.withLatestFrom(self.day)
             .subscribe(onNext: { [weak self] day in
                 guard let self = self else { return }
                 self.day.accept(day)
@@ -80,6 +81,9 @@ final class TodayModel: TodayModelProtocol {
             .disposed(by: disposeBag)
     }
 
+    /// Detect changes in meals
+    ///
+    /// - Parameter mealResults: Meal results find from repository
     private func observe(mealResultsChangeset mealResults: Results<Meal>) {
         Observable.changeset(from: mealResults)
             .map { $1 }
@@ -88,14 +92,5 @@ final class TodayModel: TodayModelProtocol {
                 self.changeData.accept(changeset)
             })
             .disposed(by: disposeBag)
-    }
-
-    private func observe(mealResults: Results<Meal>) {
-        Observable.array(from: mealResults)
-            .subscribe(onNext: { [weak self] meals in
-                guard let self = self else { return }
-                self.meals.accept(meals)
-            })
-            .disposed(by: self.disposeBag)
     }
 }
