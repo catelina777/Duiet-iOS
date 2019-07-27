@@ -48,7 +48,7 @@ final class InputMealModel: InputMealModelProtocol {
     }
 
     deinit {
-        print("InputMealModel Parge")
+        print("🧹🧹🧹 InputMealModel Parge 🧹🧹🧹")
     }
 
     var addMeal: Binder<Meal> {
