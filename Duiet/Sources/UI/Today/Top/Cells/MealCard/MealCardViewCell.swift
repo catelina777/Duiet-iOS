@@ -73,11 +73,17 @@ final class MealCardViewCell: RxCollectionViewCell {
     }
 
     func configure(with meal: Meal) {
-        PhotoManager.rx.fetchImage(with: meal.imagePath)
+        set(image: meal.imagePath)
+        set(totalCalorie: meal.totalCalorie)
+    }
+
+    private func set(image path: String) {
+        PhotoManager.rx.fetchImage(with: path)
             .bind(to: imageView.rx.image)
             .disposed(by: disposeBag)
+    }
 
-        let totalCalorie = meal.totalCalorie
+    private func set(totalCalorie: Double) {
         caloriesLabel.text = "\(Int(totalCalorie))"
     }
 }
