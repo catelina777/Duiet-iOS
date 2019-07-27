@@ -11,7 +11,7 @@ import RealmSwift
 import RxSwift
 
 protocol UserInfoRepositoryProtocol {
-    func get() -> UserInfo?
+    func get() -> Results<UserInfo>
 }
 
 final class UserInfoRepository: UserInfoRepositoryProtocol {
@@ -24,7 +24,7 @@ final class UserInfoRepository: UserInfoRepositoryProtocol {
         realm = try! Realm()
     }
 
-    func get() -> UserInfo? {
-        return realm.object(ofType: UserInfo.self, forPrimaryKey: 0)
+    func get() -> Results<UserInfo> {
+        return realm.objects(UserInfo.self)
     }
 }

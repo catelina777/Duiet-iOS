@@ -32,7 +32,7 @@ final class ProgressCardViewCell: RxCollectionViewCell {
             let weightChange = Int(difference / (9 * 0.8))
             let weightChangeText = weightChange > 0 ?
                 "\(abs(weightChange)) g UP 💪" :
-            "\(abs(weightChange)) g DOWN ⬇️"
+                "\(abs(weightChange)) g DOWN ⬇️"
             me.dayLabel.text = "\(progress.0.createdAt.toString())"
             me.TDEELabel.text = "\(tdee) kcal"
             me.totalLabel.text = "\(totalCalorie) kcal"

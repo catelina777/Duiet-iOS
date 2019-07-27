@@ -23,8 +23,8 @@ final class TodayViewModel {
 
     private let disposeBag = DisposeBag()
 
-    var meals: [Meal] {
-        return todayModel.meals.value
+    var meals: List<Meal> {
+        return todayModel.day.value.meals
     }
 
     var title: String {
@@ -57,8 +57,7 @@ final class TodayViewModel {
             .share()
 
         /// I also added meals because I want to detect the update of meal information
-        let progress = Observable.combineLatest(todayModel.day, userInfoModel.userInfo, todayModel.meals)
-            .map { ($0.0, $0.1) }
+        let progress = Observable.combineLatest(todayModel.day, userInfoModel.userInfo)
 
         output = Output(changeData: todayModel.changeData.asObservable(),
                         progress: progress)
