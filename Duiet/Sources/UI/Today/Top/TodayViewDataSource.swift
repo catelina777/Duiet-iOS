@@ -44,7 +44,7 @@ extension TodayViewDataSource: UICollectionViewDataSource {
                                                           for: indexPath)!
             let mealIndex = indexPath.row - 1
             let meal = viewModel.meals[mealIndex]
-            cell.configure(with: meal)
+            cell.configure(with: meal, viewDidAppear: viewModel.output.viewDidAppear)
             return cell
         }
     }
