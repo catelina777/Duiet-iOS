@@ -32,7 +32,6 @@ final class UserInfoModel: UserInfoModelProtocol {
         observe(userInfoResults: userInfoResults)
     }
 
-
     /// Observe changes in userinfo
     ///
     /// - Parameter userInfoResults: UserInfo results find from repository
