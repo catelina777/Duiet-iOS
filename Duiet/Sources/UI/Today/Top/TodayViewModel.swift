@@ -59,7 +59,8 @@ final class TodayViewModel {
         /// I also added meals because I want to detect the update of meal information
         let progress = Observable.combineLatest(todayModel.day, userInfoModel.userInfo)
 
-        output = Output(changeData: todayModel.changeData.asObservable(),
+        output = Output(viewDidAppear: _viewDidAppear.asObservable(),
+                        changeData: todayModel.changeData.asObservable(),
                         progress: progress)
 
         let mealWillAdd = PublishRelay<Meal>()
@@ -117,6 +118,7 @@ extension TodayViewModel {
     }
 
     struct Output {
+        let viewDidAppear: Observable<Void>
         let changeData: Observable<RealmChangeset?>
         let progress: Observable<(Day, UserInfo)>
     }
