@@ -56,20 +56,14 @@ final class TodayViewModel {
             }
             .share()
 
-        let mealWillAdd = PublishRelay<Meal>()
-
-        /// Screen transition can't be made without viewDidAppear or later
-        let showDetail = mealWillAdd.withLatestFrom(pickedImage) { ($1, $0) }
-            .withLatestFrom(_viewDidAppear) { ($0, $1) }
-            .map { ($0.0.0, $0.0.1) }
-            .share()
-
         /// I also added meals because I want to detect the update of meal information
         let progress = Observable.combineLatest(todayModel.day, userInfoModel.userInfo, todayModel.meals)
             .map { ($0.0, $0.1) }
 
         output = Output(changeData: todayModel.changeData.asObservable(),
                         progress: progress)
+
+        let mealWillAdd = PublishRelay<Meal>()
 
         pickedImage
             .compactMap { $0 }
@@ -83,6 +77,12 @@ final class TodayViewModel {
             .map { $0 }
             .bind(to: todayModel.addMeal)
             .disposed(by: disposeBag)
+
+        /// Screen transition can't be made without viewDidAppear or later
+        let showDetail = mealWillAdd.withLatestFrom(pickedImage) { ($1, $0) }
+            .withLatestFrom(_viewDidAppear) { ($0, $1) }
+            .map { ($0.0.0, $0.0.1) }
+            .share()
 
         // MARK: - Processing to transition
         showDetail
