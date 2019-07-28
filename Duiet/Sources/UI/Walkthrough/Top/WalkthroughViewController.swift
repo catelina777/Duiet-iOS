@@ -15,25 +15,25 @@ class WalkthroughViewController: UIViewController {
     @IBOutlet weak var firstImageView: UIImageView! {
         didSet {
             firstImageView.image = R.image.accessibility()?.withRenderingMode(.alwaysTemplate)
-            firstImageView.tintColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
+            firstImageView.tintColor = R.color.main()
         }
     }
     @IBOutlet weak var secondImageView: UIImageView! {
         didSet {
             secondImageView.image = R.image.image()?.withRenderingMode(.alwaysTemplate)
-            firstImageView.tintColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
+            firstImageView.tintColor = R.color.main()
         }
     }
     @IBOutlet weak var thirdImageView: UIImageView! {
         didSet {
             thirdImageView.image = R.image.edit()?.withRenderingMode(.alwaysTemplate)
-            thirdImageView.tintColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
+            thirdImageView.tintColor = R.color.main()
         }
     }
     @IBOutlet weak var fourthImageView: UIImageView! {
         didSet {
             fourthImageView.image = R.image.thumb_up()?.withRenderingMode(.alwaysTemplate)
-            fourthImageView.tintColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
+            fourthImageView.tintColor = R.color.main()
         }
     }
 
