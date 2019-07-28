@@ -16,7 +16,7 @@ extension NavigationBarCustomizable where Self: UIViewController {
 
     func configureNavigationBar(with title: String) {
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.2418628931, green: 0.2533941567, blue: 0.3443268239, alpha: 1)
+        navigationController?.navigationBar.tintColor = R.color.title()
         let largeTitleFont = R.font.montserratExtraBold(size: 32)!
         let titleText = R.font.montserratExtraBold(size: 18)!
         navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.font: largeTitleFont]

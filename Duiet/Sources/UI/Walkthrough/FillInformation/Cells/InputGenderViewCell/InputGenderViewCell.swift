@@ -12,7 +12,6 @@ import RxCocoa
 final class InputGenderViewCell: RxTableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
-    let borderColor = #colorLiteral(red: 0.2588235294, green: 0.6470588235, blue: 0.9607843137, alpha: 1).cgColor
 
     @IBOutlet weak var maleButton: UIButton! {
         didSet {
@@ -49,11 +48,12 @@ final class InputGenderViewCell: RxTableViewCell {
     var switchSelectedButton: Binder<Bool?> {
         return Binder(self) { me, bool in
             guard let bool = bool else { return }
+            let borderColor = R.color.main()?.cgColor
             if bool {
-                me.maleButton.layer.borderColor = me.borderColor
+                me.maleButton.layer.borderColor = borderColor
                 me.femaleButton.layer.borderColor = UIColor.clear.cgColor
             } else {
-                me.femaleButton.layer.borderColor = me.borderColor
+                me.femaleButton.layer.borderColor = borderColor
                 me.maleButton.layer.borderColor = UIColor.clear.cgColor
             }
         }

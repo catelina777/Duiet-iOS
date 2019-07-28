@@ -20,10 +20,10 @@ final class CompleteButtonViewCell: RxTableViewCell {
     var isComplete: Binder<Bool> {
         return Binder(completeButton) { button, bool in
             if bool {
-                button.backgroundColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
+                button.backgroundColor = R.color.main()
                 button.isEnabled = bool
             } else {
-                button.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+                button.backgroundColor = R.color.disable()
                 button.isEnabled = bool
             }
         }

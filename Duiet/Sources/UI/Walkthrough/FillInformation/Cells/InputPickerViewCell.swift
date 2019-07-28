@@ -19,14 +19,14 @@ class InputPickerViewCell: RoundedTextFieldViewCell {
     }
 
     private func configurePickerView() {
-        pickerView.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        pickerView.tintColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
+        pickerView.backgroundColor = R.color.contentBackground()
+        pickerView.tintColor = R.color.main()
         textField.inputView = pickerView
     }
 
     private func configureToolBar() {
         let toolBar = UIToolbar()
-        toolBar.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        toolBar.backgroundColor = R.color.contentBackground()
         toolBar.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: 44)
         let flexSpaceItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         let doneButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: nil)
