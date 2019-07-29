@@ -18,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
+        RealmMigrationHelper.shared.doMigration()
+
         let window = UIWindow(frame: UIScreen.main.bounds)
         self.window = window
 
@@ -41,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("is not first launch 🍣🍣🍣")
         }
 
-        print(Realm.Configuration.defaultConfiguration.fileURL!)
+        print(RealmMigrationHelper.shared.defaultURL)
 
         return true
     }
