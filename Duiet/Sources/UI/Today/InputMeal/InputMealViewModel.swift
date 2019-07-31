@@ -7,11 +7,10 @@
 //
 
 import Foundation
-import RxSwift
 import RxRelay
+import RxSwift
 
 final class InputMealViewModel {
-
     let input: Input
     let output: Output
 
@@ -128,7 +127,6 @@ final class InputMealViewModel {
 }
 
 extension InputMealViewModel {
-
     struct Input {
         let nameTextInput: AnyObserver<String?>
         let calorieTextInput: AnyObserver<String?>

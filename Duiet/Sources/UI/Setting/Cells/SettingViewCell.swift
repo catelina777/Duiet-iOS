@@ -9,7 +9,6 @@
 import UIKit
 
 final class SettingViewCell: UICollectionViewCell {
-
     @IBOutlet weak var roundedView: UIView!
 
     @IBOutlet weak var titleLabel: UILabel!

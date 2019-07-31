@@ -6,12 +6,11 @@
 //  Copyright © 2019 duiet. All rights reserved.
 //
 
-import UIKit
-import RxSwift
 import RxCocoa
+import RxSwift
+import UIKit
 
 final class FillInformationViewController: BaseTableViewController, NavigationBarCustomizable, KeyboardFrameTrackkable {
-
     let viewModel: FillInformationViewModel
     let dataSource: FillInformationViewDataSource
 

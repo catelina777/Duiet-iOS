@@ -6,11 +6,10 @@
 //  Copyright © 2019 duiet. All rights reserved.
 //
 
-import UIKit
 import RealmSwift
+import UIKit
 
 final class Content: Object {
-
     @objc dynamic var name = ""
     @objc dynamic var calorie = 0.0
     @objc dynamic var multiple = 0.0
@@ -28,7 +27,6 @@ final class Content: Object {
 }
 
 extension Content {
-
     func convert() -> MealLabelView {
         let mealLabelView = R.nib.mealLabelView.firstView(owner: nil)!
         mealLabelView.initialize(with: self)

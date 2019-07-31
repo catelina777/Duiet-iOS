@@ -7,17 +7,16 @@
 //
 
 import Foundation
-import RxSwift
 import RealmSwift
 import RxRealm
 import RxRelay
+import RxSwift
 
 protocol MonthsModelProtocol {
     var months: BehaviorRelay<[Month]> { get }
 }
 
 final class MonthsModel: MonthsModelProtocol {
-
     let months = BehaviorRelay<[Month]>(value: [])
 
     private let repository: MonthsRepositoryProtocol

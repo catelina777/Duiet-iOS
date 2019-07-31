@@ -9,7 +9,6 @@
 import UIKit
 
 final class DaySummaryViewCell: RxCollectionViewCell {
-
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var TDEELabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!

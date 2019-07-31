@@ -6,15 +6,13 @@
 //  Copyright © 2019 duiet. All rights reserved.
 //
 
-import UIKit
-import RxSwift
 import RxCocoa
 import RxGesture
+import RxSwift
+import UIKit
 
 final class LabelCanvasViewCell: RxTableViewCell {
-
     func configure(with viewModel: InputMealViewModel) {
-
         // MARK: - Show labels from stored contents
         viewModel.output.showLabelsOnce
             .map { $0.map { $0.convert() } }

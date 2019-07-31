@@ -10,7 +10,6 @@ import Foundation
 import RealmSwift
 
 final class RealmMigrationHelper {
-
     static let shared = RealmMigrationHelper()
 
     private init() {}

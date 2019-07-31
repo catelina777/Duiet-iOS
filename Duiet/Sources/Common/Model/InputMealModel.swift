@@ -8,10 +8,10 @@
 
 import Foundation
 import RealmSwift
-import RxSwift
-import RxRelay
 import RxCocoa
 import RxRealm
+import RxRelay
+import RxSwift
 
 protocol InputMealModelProtocol {
     var contentDidAdd: PublishRelay<Void> { get }
@@ -28,8 +28,7 @@ protocol InputMealModelProtocol {
     var deleteContent: Binder<(Meal, Content)> { get }
 }
 
-final class InputMealModel: InputMealModelProtocol {
-
+internal final class InputMealModel: InputMealModelProtocol {
     let contentDidAdd = PublishRelay<Void>()
     let contentDidUpdate = PublishRelay<Content>()
     let contentDidDelete = PublishRelay<Void>()
@@ -40,9 +39,9 @@ final class InputMealModel: InputMealModelProtocol {
     private let repository: DayRepositoryProtocol
     private let disposeBag = DisposeBag()
 
-    init(date: Date = Date(),
-         repository: DayRepositoryProtocol,
-         meal: Meal) {
+    init(repository: DayRepositoryProtocol,
+         meal: Meal,
+         date: Date = Date()) {
         self.repository = repository
         self.meal = BehaviorRelay<Meal>(value: meal)
     }

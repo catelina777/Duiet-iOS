@@ -6,8 +6,8 @@
 //  Copyright © 2019 duiet. All rights reserved.
 //
 
-import RxSwift
 import RxRelay
+import RxSwift
 
 extension PublishRelay {
     func asObserver() -> AnyObserver<Element> {

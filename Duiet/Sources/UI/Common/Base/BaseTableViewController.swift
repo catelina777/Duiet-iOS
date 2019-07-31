@@ -6,11 +6,10 @@
 //  Copyright © 2019 duiet. All rights reserved.
 //
 
-import UIKit
 import RxSwift
+import UIKit
 
 class BaseTableViewController: UIViewController {
-
     let disposeBag = DisposeBag()
     @IBOutlet private(set) weak var tableView: UITableView!
 }

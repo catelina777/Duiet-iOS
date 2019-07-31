@@ -3,16 +3,15 @@
 //  Duiet
 //
 //  Created by Ryuhei Kaminishi on 2019/05/03.
-//  Copyright © 2019 duiet. All rights reserved.
+//  Copyright © 2019 Duiet. All rights reserved.
 //
 
-import UIKit
-import RxSwift
 import RxCocoa
 import RxGesture
+import RxSwift
+import UIKit
 
 final class InputMealViewController: BaseTableViewController, KeyboardFrameTrackkable {
-
     let headerView: UIImageView
 
     @IBOutlet weak var cancelButton: UIButton! {

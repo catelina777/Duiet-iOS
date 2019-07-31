@@ -10,7 +10,6 @@ import Foundation
 import RealmSwift
 
 final class UserInfo: Object {
-
     @objc dynamic var id = 0
     @objc dynamic var gender = false
     @objc dynamic var age = 0

@@ -3,14 +3,13 @@
 //  Duiet
 //
 //  Created by 上西 隆平 on 2019/04/18.
-//  Copyright © 2019 duiet. All rights reserved.
+//  Copyright © 2019 Duiet. All rights reserved.
 //
 
-import UIKit
 import RxCocoa
+import UIKit
 
 final class InputGenderViewCell: RxTableViewCell {
-
     @IBOutlet weak var titleLabel: UILabel!
 
     @IBOutlet weak var maleButton: UIButton! {

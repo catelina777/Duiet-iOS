@@ -9,7 +9,6 @@
 import UIKit
 
 final class SettingCoordinator: Coordinator {
-
     private let navigator: UINavigationController
     private let tabViewModel: TopTabBarViewModel
 

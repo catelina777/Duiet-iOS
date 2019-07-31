@@ -9,7 +9,6 @@
 import UIKit
 
 final class DaysViewDataSource: NSObject {
-
     private let viewModel: DaysViewModel
 
     init(viewModel: DaysViewModel) {
@@ -24,7 +23,6 @@ final class DaysViewDataSource: NSObject {
 }
 
 extension DaysViewDataSource: UICollectionViewDataSource {
-
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
         return viewModel.days.count
@@ -41,7 +39,6 @@ extension DaysViewDataSource: UICollectionViewDataSource {
 }
 
 extension DaysViewDataSource: UICollectionViewDelegate {
-
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
         let day = viewModel.days[indexPath.row]
@@ -50,11 +47,9 @@ extension DaysViewDataSource: UICollectionViewDelegate {
 }
 
 extension DaysViewDataSource: UICollectionViewDelegateFlowLayout {
-
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-
         let width = collectionView.frame.width * 0.9
         let height = width * 0.5
         let size = CGSize(width: width, height: height)

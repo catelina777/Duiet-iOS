@@ -13,7 +13,6 @@ protocol NavigationBarCustomizable {
 }
 
 extension NavigationBarCustomizable where Self: UIViewController {
-
     func configureNavigationBar(with title: String) {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.tintColor = R.color.title()

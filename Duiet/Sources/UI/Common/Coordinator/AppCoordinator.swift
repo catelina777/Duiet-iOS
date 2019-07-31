@@ -9,7 +9,6 @@
 import UIKit
 
 final class AppCoordinator {
-
     private let window: UIWindow
 
     private var walkthroughCoordinator: WalkthrouthCoordinator!
@@ -67,10 +66,13 @@ final class AppCoordinator {
         switch type {
         case .today:
             coordinator = TodayCoordinator(navigator: navigationController, tabViewModel: tabViewModel)
+
         case .days:
             coordinator = DaysCoordinator(navigator: navigationController, tabViewModel: tabViewModel)
+
         case .months:
             coordinator = MonthsCoordinator(navigator: navigationController, tabViewModel: tabViewModel)
+
         case .setting:
             coordinator = SettingCoordinator(navigator: navigationController, tabViewModel: tabViewModel)
         }

@@ -3,14 +3,13 @@
 //  DuietTests
 //
 //  Created by Ryuhei Kaminishi on 2019/04/15.
-//  Copyright © 2019 duiet. All rights reserved.
+//  Copyright © 2019 Duiet. All rights reserved.
 //
 
-import XCTest
 @testable import Duiet
+import XCTest
 
 class DuietTests: XCTestCase {
-
     override func setUp() {}
 
     override func tearDown() {}

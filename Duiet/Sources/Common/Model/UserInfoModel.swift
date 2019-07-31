@@ -7,17 +7,16 @@
 //
 
 import Foundation
-import RxSwift
-import RxRelay
 import RealmSwift
 import RxRealm
+import RxRelay
+import RxSwift
 
 protocol UserInfoModelProtocol {
     var userInfo: BehaviorRelay<UserInfo> { get }
 }
 
 final class UserInfoModel: UserInfoModelProtocol {
-
     static let shared = UserInfoModel(repository: UserInfoRepository.shared)
 
     let userInfo = BehaviorRelay<UserInfo>(value: UserInfo())

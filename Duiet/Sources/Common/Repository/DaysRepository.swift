@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import RxSwift
 import RealmSwift
+import RxSwift
 
 protocol DaysRepositoryProtocol {
     func findAll() -> Results<Day>
@@ -16,7 +16,6 @@ protocol DaysRepositoryProtocol {
 }
 
 final class DaysRepository: DaysRepositoryProtocol {
-
     static let shared = DaysRepository()
 
     private let realm: Realm

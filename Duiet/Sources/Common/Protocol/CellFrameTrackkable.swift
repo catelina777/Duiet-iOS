@@ -6,9 +6,9 @@
 //  Copyright © 2019 duiet. All rights reserved.
 //
 
-import UIKit
-import RxSwift
 import RxRelay
+import RxSwift
+import UIKit
 
 protocol CellFrameTrackkable {
     func configure(with viewModel: KeyboardTrackViewModel)
@@ -16,7 +16,6 @@ protocol CellFrameTrackkable {
 }
 
 extension CellFrameTrackkable where Self: RxTableViewCell {
-
     func configure(for textField: MyTextField, viewModel: KeyboardTrackViewModel, window: UIWindow) {
         textField.rx.controlEvent(.editingDidBegin)
             .subscribe(onNext: { _ in

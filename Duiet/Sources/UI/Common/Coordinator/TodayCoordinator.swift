@@ -9,7 +9,6 @@
 import UIKit
 
 final class TodayCoordinator: Coordinator {
-
     private let navigator: UINavigationController
     private let tabViewModel: TopTabBarViewModel
     private var viewController: TopTodayViewController!
@@ -53,7 +52,7 @@ final class TodayCoordinator: Coordinator {
     }
 
     func showDetailDay(day: Day) {
-        let model = TodayModel(date: day.createdAt, repository: DayRepository.shared)
+        let model = TodayModel(repository: DayRepository.shared, date: day.createdAt)
         let vc = TodayViewController(viewModel: .init(coordinator: self,
                                                     userInfoModel: UserInfoModel.shared,
                                                     todayModel: model))

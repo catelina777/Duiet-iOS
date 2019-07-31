@@ -6,11 +6,10 @@
 //  Copyright © 2019 duiet. All rights reserved.
 //
 
-import UIKit
 import RxCocoa
+import UIKit
 
 final class CompleteButtonViewCell: RxTableViewCell {
-
     @IBOutlet weak var completeButton: UIButton! {
         didSet {
             completeButton.layer.cornerRadius = 10

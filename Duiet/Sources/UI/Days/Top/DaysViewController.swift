@@ -9,7 +9,6 @@
 import UIKit
 
 class DaysViewController: BaseCollectionViewController, NavigationBarCustomizable {
-
     let viewModel: DaysViewModel
     private let dataSource: DaysViewDataSource
 

@@ -6,11 +6,10 @@
 //  Copyright © 2019 duiet. All rights reserved.
 //
 
-import UIKit
 import RxSwift
+import UIKit
 
 class BaseCollectionViewController: UIViewController {
-
     let disposeBag = DisposeBag()
     @IBOutlet private(set) weak var collectionView: UICollectionView!
 }

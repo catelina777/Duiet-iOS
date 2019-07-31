@@ -6,13 +6,12 @@
 //  Copyright © 2019 duiet. All rights reserved.
 //
 
-import UIKit
-import RxSwift
 import RxRelay
+import RxSwift
+import UIKit
 import YPImagePicker
 
 final class RxYPImagePicker: YPImagePicker {
-
     var didCancel: PublishRelay<Bool>
     var pickedImage: PublishRelay<UIImage?>
 
@@ -41,7 +40,6 @@ final class RxYPImagePicker: YPImagePicker {
 }
 
 extension Reactive where Base: RxYPImagePicker {
-
     static func create(_ parent: UIViewController?) -> Observable<RxYPImagePicker> {
         return Observable.create { [weak parent] observer in
             var config = YPImagePickerConfiguration()

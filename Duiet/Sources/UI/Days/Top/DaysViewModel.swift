@@ -7,11 +7,10 @@
 //
 
 import Foundation
-import RxSwift
 import RxRelay
+import RxSwift
 
 final class DaysViewModel {
-
     let input: Input
     let output: Output
 
@@ -55,7 +54,6 @@ final class DaysViewModel {
 }
 
 extension DaysViewModel {
-
     struct Input {
         let selectedDay: AnyObserver<Day>
         let selectedMonth: AnyObserver<Month>

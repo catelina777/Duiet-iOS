@@ -3,13 +3,12 @@
 //  Duiet
 //
 //  Created by Ryuhei Kaminishi on 2019/06/09.
-//  Copyright © 2019 duiet. All rights reserved.
+//  Copyright © 2019 Duiet. All rights reserved.
 //
 
 import UIKit
 
 final class MonthsViewDataSource: NSObject {
-
     private let viewModel: MonthsViewModel
 
     init(viewModel: MonthsViewModel) {
@@ -24,7 +23,6 @@ final class MonthsViewDataSource: NSObject {
 }
 
 extension MonthsViewDataSource: UICollectionViewDataSource {
-
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
         return viewModel.months.count
@@ -41,7 +39,6 @@ extension MonthsViewDataSource: UICollectionViewDataSource {
 }
 
 extension MonthsViewDataSource: UICollectionViewDelegate {
-
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
         let month = viewModel.months[indexPath.row]
@@ -50,11 +47,9 @@ extension MonthsViewDataSource: UICollectionViewDelegate {
 }
 
 extension MonthsViewDataSource: UICollectionViewDelegateFlowLayout {
-
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-
         let width = collectionView.frame.width * 0.425
         let height = width * 1.2
         let size = CGSize(width: width, height: height)

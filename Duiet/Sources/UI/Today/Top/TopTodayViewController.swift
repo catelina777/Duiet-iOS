@@ -3,13 +3,12 @@
 //  Duiet
 //
 //  Created by Ryuhei Kaminishi on 2019/07/04.
-//  Copyright © 2019 duiet. All rights reserved.
+//  Copyright © 2019 Duiet. All rights reserved.
 //
 
 import UIKit
 
 final class TopTodayViewController: TodayViewController {
-
     private let tabViewModel: TopTabBarViewModel
 
     init(viewModel: TodayViewModel,

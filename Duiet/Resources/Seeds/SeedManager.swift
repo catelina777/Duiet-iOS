@@ -3,7 +3,7 @@
 //  Duiet
 //
 //  Created by 上西 隆平 on 2019/06/28.
-//  Copyright © 2019 duiet. All rights reserved.
+//  Copyright © 2019 Duiet. All rights reserved.
 //
 
 import Foundation
@@ -11,7 +11,6 @@ import RealmSwift
 
 #if DEBUG
 class SeedManager {
-
     let realm: Realm
 
     init() {
@@ -24,7 +23,7 @@ class SeedManager {
         }
         let calendar = Calendar(identifier: .gregorian)
         var dateComponents = DateComponents()
-        let years = [2017, 2018, 2019]
+        let years = [2_017, 2_018, 2_019]
         let months = [1, 2, 3, 4, 5, 7, 9, 10, 11, 12]
         let days = [1, 2, 3, 4, 5, 6, 8, 10, 13, 15, 16, 17, 20, 25, 27, 29]
 

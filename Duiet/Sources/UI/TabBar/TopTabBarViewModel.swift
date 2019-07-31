@@ -7,11 +7,10 @@
 //
 
 import Foundation
-import RxSwift
 import RxRelay
+import RxSwift
 
 final class TopTabBarViewModel {
-
     let input: Input
     let output: Output
 
@@ -28,7 +27,6 @@ final class TopTabBarViewModel {
 }
 
 extension TopTabBarViewModel {
-
     struct Input {
         let itemDidSelect: AnyObserver<Day>
         let showDays: AnyObserver<Month>

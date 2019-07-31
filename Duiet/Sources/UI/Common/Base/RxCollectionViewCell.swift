@@ -6,11 +6,10 @@
 //  Copyright © 2019 duiet. All rights reserved.
 //
 
-import UIKit
 import RxSwift
+import UIKit
 
 class RxCollectionViewCell: UICollectionViewCell {
-
     var disposeBag = DisposeBag()
 
     override func prepareForReuse() {

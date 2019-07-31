@@ -49,12 +49,16 @@ enum ActivityLevel {
         switch self {
         case .sedentary:
             return 1.2
+
         case .lightly:
             return 1.375
+
         case .moderately:
             return 1.55
+
         case .veryActive:
             return 1.725
+
         case .none:
             return 0
         }
@@ -64,12 +68,16 @@ enum ActivityLevel {
         switch row {
         case 1:
             return .sedentary
+
         case 2:
             return .lightly
+
         case 3:
             return .moderately
+
         case 4:
             return .veryActive
+
         default:
             return .none
         }
@@ -79,12 +87,16 @@ enum ActivityLevel {
         switch self {
         case .sedentary:
             return 1
+
         case .lightly:
             return 2
+
         case .moderately:
             return 3
+
         case .veryActive:
             return 4
+
         case .none:
             return 0
         }

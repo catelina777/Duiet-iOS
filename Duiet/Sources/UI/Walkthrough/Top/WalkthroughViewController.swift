@@ -6,12 +6,11 @@
 //  Copyright © 2019 duiet. All rights reserved.
 //
 
-import UIKit
-import RxSwift
 import RxCocoa
+import RxSwift
+import UIKit
 
 class WalkthroughViewController: UIViewController {
-
     @IBOutlet weak var firstImageView: UIImageView! {
         didSet {
             firstImageView.image = R.image.accessibility()?.withRenderingMode(.alwaysTemplate)

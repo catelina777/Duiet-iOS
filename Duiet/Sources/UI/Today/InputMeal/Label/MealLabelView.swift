@@ -6,13 +6,12 @@
 //  Copyright © 2019 duiet. All rights reserved.
 //
 
-import UIKit
-import RxSwift
-import RxRelay
 import RxCocoa
+import RxRelay
+import RxSwift
+import UIKit
 
 final class MealLabelView: UIView {
-
     @IBOutlet private(set) weak var mealLabel: UILabel! {
         didSet {
             mealLabel.clipsToBounds = true

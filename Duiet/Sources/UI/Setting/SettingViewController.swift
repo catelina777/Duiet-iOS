@@ -6,12 +6,11 @@
 //  Copyright © 2019 duiet. All rights reserved.
 //
 
-import UIKit
-import RxSwift
 import RxCocoa
+import RxSwift
+import UIKit
 
 final class SettingViewController: BaseCollectionViewController, NavigationBarCustomizable {
-
     private let viewModel: SettingViewModel
     private let dataSource: SettingViewDataSource
 

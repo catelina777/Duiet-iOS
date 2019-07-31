@@ -9,7 +9,6 @@
 import UIKit
 
 final class ShowTDEEViewCell: RxTableViewCell {
-
     @IBOutlet weak var BMRLabel: UILabel!
     @IBOutlet weak var TDEELabel: UILabel!
 

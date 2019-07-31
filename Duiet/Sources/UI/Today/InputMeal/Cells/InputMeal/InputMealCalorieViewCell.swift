@@ -6,13 +6,12 @@
 //  Copyright © 2019 duiet. All rights reserved.
 //
 
-import UIKit
-import RxSwift
-import RxGesture
 import RxCocoa
+import RxGesture
+import RxSwift
+import UIKit
 
 class InputMealCalorieViewCell: RxTableViewCell, CellFrameTrackkable {
-
     @IBOutlet weak var mealNameTextField: MyTextField! {
         didSet {
             mealNameTextField.font = R.font.montserratExtraBold(size: 24)

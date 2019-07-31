@@ -6,18 +6,16 @@
 //  Copyright © 2019 duiet. All rights reserved.
 //
 
-import UIKit
-import RxSwift
-import RxCocoa
 import Photos
+import RxCocoa
+import RxSwift
+import UIKit
 
 final class PhotoManager: NSObject {}
 
 extension Reactive where Base: PhotoManager {
-
     static func save(image: UIImage) -> Observable<String> {
         return Observable<String>.create { observer in
-
             PHPhotoLibrary.shared().performChanges({
                 let requestAsset = PHAssetChangeRequest.creationRequestForAsset(from: image)
                 let placeholder = requestAsset.placeholderForCreatedAsset
@@ -25,7 +23,6 @@ extension Reactive where Base: PhotoManager {
                     observer.on(.next(identifier))
                 }
             }, completionHandler: { _, error in
-
                 if let error = error {
                     observer.on(.error(error))
                 }
@@ -37,7 +34,6 @@ extension Reactive where Base: PhotoManager {
 
     static func fetchImage(with localIdentifier: String) -> Observable<UIImage> {
         return Observable<UIImage>.create { observer in
-
             let results = PHAsset.fetchAssets(withLocalIdentifiers: [localIdentifier], options: nil)
             guard
                 results.count > 0,
