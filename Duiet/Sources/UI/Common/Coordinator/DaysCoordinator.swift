@@ -9,7 +9,6 @@
 import UIKit
 
 final class DaysCoordinator: Coordinator {
-
     private let navigator: UINavigationController
     private let tabViewModel: TopTabBarViewModel
 
@@ -20,19 +19,19 @@ final class DaysCoordinator: Coordinator {
     }
 
     func start() {
-        let model = DaysModel(repository: DaysRepository.shared)
+        let model = DaysModel()
         let vc = TopDaysViewController(viewModel: .init(coordinator: self,
-                                                         userInfoModel: UserInfoModel.shared,
-                                                         daysModel: model),
+                                                        userInfoModel: UserInfoModel.shared,
+                                                        daysModel: model),
                                         tabViewModel: tabViewModel)
         navigator.pushViewController(vc, animated: false)
     }
 
     func show(month: Month) {
-        let model = DaysModel(month: month, repository: DaysRepository.shared)
+        let model = DaysModel(month: month)
         let vc = TopDaysViewController(viewModel: .init(coordinator: self,
-                                                         userInfoModel: UserInfoModel.shared,
-                                                         daysModel: model),
+                                                        userInfoModel: UserInfoModel.shared,
+                                                        daysModel: model),
                                         tabViewModel: tabViewModel)
         navigator.pushViewController(vc, animated: true)
     }

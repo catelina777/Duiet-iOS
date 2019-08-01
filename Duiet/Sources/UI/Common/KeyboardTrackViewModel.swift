@@ -6,12 +6,11 @@
 //  Copyright © 2019 duiet. All rights reserved.
 //
 
-import UIKit
-import RxSwift
 import RxRelay
+import RxSwift
+import UIKit
 
 final class KeyboardTrackViewModel {
-
     let input: Input
     let output: Output
 
@@ -34,11 +33,9 @@ final class KeyboardTrackViewModel {
                         inputFieldFrame: _inputFieldFrame.asObservable(),
                         difference: _difference)
     }
-
 }
 
 extension KeyboardTrackViewModel {
-
     struct Input {
         let inputFieldFrame: AnyObserver<CGRect>
     }

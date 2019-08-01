@@ -17,8 +17,10 @@ enum ProgressType {
         switch self {
         case .exceed:
             return R.color.exceed()!
+
         case .less:
             return R.color.main()!
+
         case .none:
             return R.color.contentBackground()!
         }
@@ -28,10 +30,13 @@ enum ProgressType {
         switch number {
         case 0:
             return .none
+
         case 1:
             return .exceed
+
         case 2:
             return .less
+
         default:
             return .none
         }

@@ -7,11 +7,10 @@
 //
 
 import Foundation
-import RxSwift
 import RxRelay
+import RxSwift
 
 final class SettingViewModel {
-
     let input: Input
     let output: Output
 
@@ -36,7 +35,6 @@ final class SettingViewModel {
 }
 
 extension SettingViewModel {
-
     struct Input {
         let itemDidSelect: AnyObserver<SettingType>
     }

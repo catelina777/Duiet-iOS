@@ -7,11 +7,10 @@
 //
 
 import Foundation
-import RxSwift
 import RxRelay
+import RxSwift
 
 final class MealLabelViewModel {
-
     let input: Input
     let output: Output
 
@@ -44,7 +43,6 @@ final class MealLabelViewModel {
 }
 
 extension MealLabelViewModel {
-
     struct Input {
         let contentDidUpdate: AnyObserver<Content>
         let contentDidDelete: AnyObserver<Void>

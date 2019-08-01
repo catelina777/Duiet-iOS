@@ -9,7 +9,6 @@
 import UIKit
 
 final class MonthsCoordinator: Coordinator {
-
     private let navigator: UINavigationController
     private let tabViewModel: TopTabBarViewModel
 

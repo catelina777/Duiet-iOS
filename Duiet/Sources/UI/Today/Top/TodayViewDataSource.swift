@@ -3,14 +3,13 @@
 //  Duiet
 //
 //  Created by 上西 隆平 on 2019/04/23.
-//  Copyright © 2019 duiet. All rights reserved.
+//  Copyright © 2019 Duiet. All rights reserved.
 //
 
-import UIKit
 import RxSwift
+import UIKit
 
 final class TodayViewDataSource: NSObject {
-
     private let viewModel: TodayViewModel
 
     init(viewModel: TodayViewModel) {
@@ -32,13 +31,13 @@ extension TodayViewDataSource: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
         switch indexPath.row {
         case 0:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.progressCardViewCell,
                                                           for: indexPath)!
             cell.configure(with: viewModel.output.progress)
             return cell
+
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.mealCardViewCell,
                                                           for: indexPath)!
@@ -51,7 +50,6 @@ extension TodayViewDataSource: UICollectionViewDataSource {
 }
 
 extension TodayViewDataSource: UICollectionViewDelegate {
-
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
         guard
@@ -65,17 +63,16 @@ extension TodayViewDataSource: UICollectionViewDelegate {
 }
 
 extension TodayViewDataSource: UICollectionViewDelegateFlowLayout {
-
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-
         switch indexPath.row {
         case 0:
             let width = collectionView.frame.width
             let height = width * 0.5
             let size = CGSize(width: width, height: height)
             return size
+
         default:
             let width = collectionView.frame.width
             let height = width * 0.985

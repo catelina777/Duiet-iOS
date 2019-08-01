@@ -7,11 +7,11 @@
 //
 
 import Foundation
-import RxSwift
-import RxRelay
-import RxCocoa
 import RealmSwift
+import RxCocoa
 import RxRealm
+import RxRelay
+import RxSwift
 
 protocol TodayModelProtocol {
     var changeData: PublishRelay<RealmChangeset?> { get }
@@ -23,7 +23,6 @@ protocol TodayModelProtocol {
 }
 
 final class TodayModel: TodayModelProtocol {
-
     let changeData = PublishRelay<RealmChangeset?>()
     let contentDidDelete = PublishRelay<Void>()
     let day: BehaviorRelay<Day>
@@ -46,8 +45,8 @@ final class TodayModel: TodayModelProtocol {
     private let repository: DayRepositoryProtocol
     private let disposeBag = DisposeBag()
 
-    init(date: Date = Date(),
-         repository: DayRepositoryProtocol) {
+    init(repository: DayRepositoryProtocol = DayRepository.shared,
+         date: Date = Date()) {
         self.repository = repository
         self.day = BehaviorRelay<Day>(value: .init(date: date))
 

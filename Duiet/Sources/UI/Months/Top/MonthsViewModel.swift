@@ -3,15 +3,14 @@
 //  Duiet
 //
 //  Created by Ryuhei Kaminishi on 2019/06/09.
-//  Copyright © 2019 duiet. All rights reserved.
+//  Copyright © 2019 Duiet. All rights reserved.
 //
 
 import Foundation
-import RxSwift
 import RxRelay
+import RxSwift
 
 final class MonthsViewModel {
-
     let input: Input
     let output: Output
 
@@ -35,7 +34,6 @@ final class MonthsViewModel {
 }
 
 extension MonthsViewModel {
-
     struct Input {
         let itemDidSelect: AnyObserver<Month>
     }

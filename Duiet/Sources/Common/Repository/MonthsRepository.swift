@@ -14,7 +14,6 @@ protocol MonthsRepositoryProtocol {
 }
 
 final class MonthsRepository: MonthsRepositoryProtocol {
-
     static let shared = MonthsRepository()
 
     private let realm: Realm

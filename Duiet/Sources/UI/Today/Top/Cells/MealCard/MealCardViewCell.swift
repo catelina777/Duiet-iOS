@@ -6,13 +6,12 @@
 //  Copyright © 2019 duiet. All rights reserved.
 //
 
-import UIKit
 import RxSwift
+import UIKit
 
 class CardView: UIView {}
 
 class RoundedCardWrapperView: UIView {
-
     @IBOutlet weak var cardView: CardView!
 
     var isTouched: Bool = false {
@@ -56,7 +55,6 @@ class RoundedCardWrapperView: UIView {
 }
 
 final class MealCardViewCell: RxCollectionViewCell {
-
     @IBOutlet weak var imageView: UIImageView! {
         didSet {
             imageView.layer.cornerRadius = 12

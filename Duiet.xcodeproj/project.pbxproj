@@ -97,15 +97,15 @@
 		403E954422CF94CF00EFF459 /* TodayCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403E954322CF94CF00EFF459 /* TodayCoordinator.swift */; };
 		403E954822CF958600EFF459 /* SettingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403E954722CF958600EFF459 /* SettingCoordinator.swift */; };
 		403E954A22CF9C9B00EFF459 /* TopTabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403E954922CF9C9B00EFF459 /* TopTabBarCoordinator.swift */; };
-		403E954C22CFA78900EFF459 /* WalkthrouthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403E954B22CFA78900EFF459 /* WalkthrouthViewModel.swift */; };
+		403E954C22CFA78900EFF459 /* WalkthroughViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403E954B22CFA78900EFF459 /* WalkthroughViewModel.swift */; };
 		405147C82291498100C9AF8C /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405147C72291498100C9AF8C /* Meal.swift */; };
 		405147CA2291498800C9AF8C /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405147C92291498800C9AF8C /* Content.swift */; };
 		405A9F5022ACFB1300454412 /* MonthsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405A9F4F22ACFB1300454412 /* MonthsViewModel.swift */; };
 		405A9F5222ACFB2E00454412 /* MonthsViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405A9F5122ACFB2E00454412 /* MonthsViewDataSource.swift */; };
 		405A9F5522AD006100454412 /* MonthSummaryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405A9F5422AD006100454412 /* MonthSummaryViewCell.swift */; };
 		405A9F5722AD007200454412 /* MonthSummaryViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 405A9F5622AD007200454412 /* MonthSummaryViewCell.xib */; };
-		405A9F5D22AD0A3D00454412 /* MonthSummaryViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405A9F5C22AD0A3D00454412 /* MonthSummaryViewCellViewModel.swift */; };
-		405A9F5F22AD0A4700454412 /* MonthSummaryViewCellDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405A9F5E22AD0A4700454412 /* MonthSummaryViewCellDataSource.swift */; };
+		405A9F5D22AD0A3D00454412 /* MonthSummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405A9F5C22AD0A3D00454412 /* MonthSummaryViewModel.swift */; };
+		405A9F5F22AD0A4700454412 /* MonthSummaryViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405A9F5E22AD0A4700454412 /* MonthSummaryViewDataSource.swift */; };
 		405A9F6122AE91C700454412 /* ProgressType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405A9F6022AE91C700454412 /* ProgressType.swift */; };
 		405E3A1D229929D500ECEA9E /* EmptyContentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405E3A1C229929D500ECEA9E /* EmptyContentViewCell.swift */; };
 		405E3A1F229929E900ECEA9E /* EmptyContentViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 405E3A1E229929E900ECEA9E /* EmptyContentViewCell.xib */; };
@@ -264,15 +264,15 @@
 		403E954322CF94CF00EFF459 /* TodayCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCoordinator.swift; sourceTree = "<group>"; };
 		403E954722CF958600EFF459 /* SettingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCoordinator.swift; sourceTree = "<group>"; };
 		403E954922CF9C9B00EFF459 /* TopTabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTabBarCoordinator.swift; sourceTree = "<group>"; };
-		403E954B22CFA78900EFF459 /* WalkthrouthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthrouthViewModel.swift; sourceTree = "<group>"; };
+		403E954B22CFA78900EFF459 /* WalkthroughViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughViewModel.swift; sourceTree = "<group>"; };
 		405147C72291498100C9AF8C /* Meal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		405147C92291498800C9AF8C /* Content.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		405A9F4F22ACFB1300454412 /* MonthsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthsViewModel.swift; sourceTree = "<group>"; };
 		405A9F5122ACFB2E00454412 /* MonthsViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthsViewDataSource.swift; sourceTree = "<group>"; };
 		405A9F5422AD006100454412 /* MonthSummaryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthSummaryViewCell.swift; sourceTree = "<group>"; };
 		405A9F5622AD007200454412 /* MonthSummaryViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MonthSummaryViewCell.xib; sourceTree = "<group>"; };
-		405A9F5C22AD0A3D00454412 /* MonthSummaryViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthSummaryViewCellViewModel.swift; sourceTree = "<group>"; };
-		405A9F5E22AD0A4700454412 /* MonthSummaryViewCellDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthSummaryViewCellDataSource.swift; sourceTree = "<group>"; };
+		405A9F5C22AD0A3D00454412 /* MonthSummaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthSummaryViewModel.swift; sourceTree = "<group>"; };
+		405A9F5E22AD0A4700454412 /* MonthSummaryViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthSummaryViewDataSource.swift; sourceTree = "<group>"; };
 		405A9F6022AE91C700454412 /* ProgressType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressType.swift; sourceTree = "<group>"; };
 		405E3A1C229929D500ECEA9E /* EmptyContentViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyContentViewCell.swift; sourceTree = "<group>"; };
 		405E3A1E229929E900ECEA9E /* EmptyContentViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyContentViewCell.xib; sourceTree = "<group>"; };
@@ -704,7 +704,7 @@
 			isa = PBXGroup;
 			children = (
 				061F278E22733DA100FDCB17 /* WalkthroughViewController.swift */,
-				403E954B22CFA78900EFF459 /* WalkthrouthViewModel.swift */,
+				403E954B22CFA78900EFF459 /* WalkthroughViewModel.swift */,
 				061F278C22733D9800FDCB17 /* WalkthroughViewController.xib */,
 			);
 			path = Top;
@@ -828,8 +828,8 @@
 			isa = PBXGroup;
 			children = (
 				405A9F5422AD006100454412 /* MonthSummaryViewCell.swift */,
-				405A9F5C22AD0A3D00454412 /* MonthSummaryViewCellViewModel.swift */,
-				405A9F5E22AD0A4700454412 /* MonthSummaryViewCellDataSource.swift */,
+				405A9F5C22AD0A3D00454412 /* MonthSummaryViewModel.swift */,
+				405A9F5E22AD0A4700454412 /* MonthSummaryViewDataSource.swift */,
 				405A9F5622AD007200454412 /* MonthSummaryViewCell.xib */,
 			);
 			path = MonthSummary;
@@ -1311,7 +1311,7 @@
 				4001F70B22ABDC4E0009CDA1 /* SettingViewCell.swift in Sources */,
 				5E9C28BF228E6254004ABF3B /* UserInfo.swift in Sources */,
 				0622EA02226A1DE800E87F22 /* FillInformationViewController.swift in Sources */,
-				403E954C22CFA78900EFF459 /* WalkthrouthViewModel.swift in Sources */,
+				403E954C22CFA78900EFF459 /* WalkthroughViewModel.swift in Sources */,
 				402FBE9F22C8D019000BBFA3 /* TopTabBarController.swift in Sources */,
 				403E954822CF958600EFF459 /* SettingCoordinator.swift in Sources */,
 				5E9C28B2228E4729004ABF3B /* BaseTableViewController.swift in Sources */,
@@ -1334,7 +1334,7 @@
 				405A9F6122AE91C700454412 /* ProgressType.swift in Sources */,
 				0622EA47226A2AB900E87F22 /* PublishRelay.extension.swift in Sources */,
 				0622EA2B226A21A400E87F22 /* UIButton.extension.swift in Sources */,
-				405A9F5D22AD0A3D00454412 /* MonthSummaryViewCellViewModel.swift in Sources */,
+				405A9F5D22AD0A3D00454412 /* MonthSummaryViewModel.swift in Sources */,
 				061F278F22733DA100FDCB17 /* WalkthroughViewController.swift in Sources */,
 				403E954422CF94CF00EFF459 /* TodayCoordinator.swift in Sources */,
 				4001F71322ABF1AC0009CDA1 /* BaseCollectionViewController.swift in Sources */,
@@ -1345,7 +1345,7 @@
 				5E92570E228D3E2D0076CCEE /* KeyboardTrackViewModel.swift in Sources */,
 				0622EA04226A1DFC00E87F22 /* FillInformationViewDataSource.swift in Sources */,
 				5E3E860622C305BD004E1676 /* Day.swift in Sources */,
-				405A9F5F22AD0A4700454412 /* MonthSummaryViewCellDataSource.swift in Sources */,
+				405A9F5F22AD0A4700454412 /* MonthSummaryViewDataSource.swift in Sources */,
 				06B2FD002272225A0078C7F1 /* InputNumberViewCell.swift in Sources */,
 				405E3A1D229929D500ECEA9E /* EmptyContentViewCell.swift in Sources */,
 				403E954222CF94C500EFF459 /* WalkthrouthCoordinator.swift in Sources */,

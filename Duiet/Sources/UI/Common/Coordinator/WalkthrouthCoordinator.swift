@@ -9,7 +9,6 @@
 import UIKit
 
 final class WalkthrouthCoordinator: Coordinator {
-
     private let topTabBarCoordinator: TopTabBarCoordinator
     private let navigator: UINavigationController
 

@@ -6,12 +6,11 @@
 //  Copyright © 2019 duiet. All rights reserved.
 //
 
-import UIKit
-import RxSwift
 import RxCocoa
+import RxSwift
+import UIKit
 
 class TopTabBarController: UITabBarController {
-
     private let viewModel: TopTabBarViewModel
     private let disposeBag = DisposeBag()
 

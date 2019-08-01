@@ -10,7 +10,6 @@ import Foundation
 import RealmSwift
 
 final class Month: Object {
-
     @objc dynamic var date = ""
     let days = List<Day>()
     @objc dynamic var createdAt = Date()

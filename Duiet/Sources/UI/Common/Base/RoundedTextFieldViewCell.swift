@@ -9,7 +9,6 @@
 import UIKit
 
 class RoundedTextFieldViewCell: RxTableViewCell {
-
     @IBOutlet weak var titleLabel: UILabel!
 
     @IBOutlet weak var textField: MyTextField! {

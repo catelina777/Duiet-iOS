@@ -3,13 +3,12 @@
 //  Duiet
 //
 //  Created by Ryuhei Kaminishi on 2019/06/08.
-//  Copyright © 2019 duiet. All rights reserved.
+//  Copyright © 2019 Duiet. All rights reserved.
 //
 
 import UIKit
 
 class MonthsViewController: BaseCollectionViewController, NavigationBarCustomizable {
-
     let viewModel: MonthsViewModel
     private let dataSource: MonthsViewDataSource
 

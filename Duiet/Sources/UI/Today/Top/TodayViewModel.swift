@@ -6,15 +6,14 @@
 //  Copyright © 2019 duiet. All rights reserved.
 //
 
-import UIKit
-import RxSwift
-import RxCocoa
-import RxRelay
 import RealmSwift
+import RxCocoa
 import RxRealm
+import RxRelay
+import RxSwift
+import UIKit
 
 final class TodayViewModel {
-
     let input: Input
     let output: Output
 
@@ -48,9 +47,9 @@ final class TodayViewModel {
                       showDetailDay: _showDetailDay.asObserver())
 
         let pickedImage = _addButtonTap
-            .flatMapLatest { vc in
-                return RxYPImagePicker.rx
-                    .create(vc)
+            .flatMapLatest {
+                RxYPImagePicker.rx
+                    .create($0)
                     .flatMap { $0.pickedImage }
                     .take(1)
             }
@@ -109,7 +108,6 @@ final class TodayViewModel {
 }
 
 extension TodayViewModel {
-
     struct Input {
         let viewDidAppear: AnyObserver<Void>
         let addButtonTap: AnyObserver<TodayViewController>

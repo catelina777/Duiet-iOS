@@ -7,13 +7,12 @@
 //
 
 import Foundation
-import RxSwift
-import RxRelay
 import RealmSwift
 import RxRealm
+import RxRelay
+import RxSwift
 
 final class FillInformationViewModel {
-
     let title = "Calculate"
     let rowCounts = 7
 
@@ -23,7 +22,7 @@ final class FillInformationViewModel {
     private let disposeBag = DisposeBag()
 
     private(set) lazy var ageList: [Int] = {
-        return [Int].init(repeating: 0, count: 120).enumerated().map { $0.offset }
+        [Int].init(repeating: 0, count: 120).enumerated().map { $0.offset }
     }()
 
     private(set) lazy var heightList: [Double] = {
@@ -39,7 +38,7 @@ final class FillInformationViewModel {
     let activityTypes: [ActivityLevel] = [.none, .sedentary, .lightly, .moderately, .veryActive]
 
     init() {
-        let _gender = BehaviorRelay<Bool?>(value: nil)
+        let _gender = BehaviorRelay<Bool?>(value: false)
         let _age = BehaviorRelay<Int?>(value: nil)
         let _height = BehaviorRelay<Double?>(value: nil)
         let _weight = BehaviorRelay<Double?>(value: nil)
@@ -60,9 +59,7 @@ final class FillInformationViewModel {
             .share()
 
         let isValidateComplete = combinedInfo
-            .map { v0, v1, v2, v3, v4 -> Bool in
-                return (v0 != nil) && (v1 != nil) && (v2 != nil) && (v3 != nil) && (v4 != .none)
-            }
+            .map { ($0 != nil) && ($1 != nil) && ($2 != nil) && ($3 != nil) && ($4 != .none) }
             .distinctUntilChanged()
 
         let userInfo = PublishRelay<UserInfo>()
@@ -80,10 +77,10 @@ final class FillInformationViewModel {
                     return (0, v4)
                 }
                 let _userInfo = UserInfo(gender: v0,
-                                        age: v1,
-                                        height: v2,
-                                        weight: v3,
-                                        activityLevel: v4)
+                                         age: v1,
+                                         height: v2,
+                                         weight: v3,
+                                         activityLevel: v4)
                 userInfo.accept(_userInfo)
                 return (_userInfo.BMR, v4)
             }
@@ -147,7 +144,6 @@ final class FillInformationViewModel {
 }
 
 extension FillInformationViewModel {
-
     struct Input {
         let gender: AnyObserver<Bool?>
         let age: AnyObserver<Int?>

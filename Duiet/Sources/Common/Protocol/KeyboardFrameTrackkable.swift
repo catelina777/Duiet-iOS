@@ -6,9 +6,9 @@
 //  Copyright © 2019 duiet. All rights reserved.
 //
 
-import UIKit
-import RxSwift
 import RxCocoa
+import RxSwift
+import UIKit
 
 /*  // MARK: - How to prevent wrapped Keyboard on cell's textfield
     1. Adapt this protocol
@@ -23,7 +23,6 @@ protocol KeyboardFrameTrackkable {
 }
 
 extension KeyboardFrameTrackkable where Self: BaseTableViewController {
-
     var updateScroll: Binder<CGFloat> {
         return Binder(self) { me, difference in
             let adaptedDifference = me.tableView.contentOffset.y + difference

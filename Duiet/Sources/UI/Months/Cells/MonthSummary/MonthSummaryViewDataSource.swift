@@ -3,13 +3,12 @@
 //  Duiet
 //
 //  Created by Ryuhei Kaminishi on 2019/06/09.
-//  Copyright © 2019 duiet. All rights reserved.
+//  Copyright © 2019 Duiet. All rights reserved.
 //
 
 import UIKit
 
 final class MonthSummaryViewDataSource: NSObject {
-
     private let viewModel: MonthSummaryViewModel
 
     init(viewModel: MonthSummaryViewModel) {
@@ -25,7 +24,6 @@ final class MonthSummaryViewDataSource: NSObject {
 }
 
 extension MonthSummaryViewDataSource: UICollectionViewDataSource {
-
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return Week.all.count + viewModel.progress.count
     }
@@ -38,6 +36,7 @@ extension MonthSummaryViewDataSource: UICollectionViewDataSource {
                                                           for: indexPath)!
             cell.textLabel.text = Week.all[indexPath.row].abbr
             return cell
+
         default:
             let row = indexPath.row - Week.all.count
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "kusa", for: indexPath)
@@ -50,7 +49,6 @@ extension MonthSummaryViewDataSource: UICollectionViewDataSource {
 extension MonthSummaryViewDataSource: UICollectionViewDelegate {}
 
 extension MonthSummaryViewDataSource: UICollectionViewDelegateFlowLayout {
-
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {

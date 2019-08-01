@@ -6,12 +6,11 @@
 //  Copyright © 2019 duiet. All rights reserved.
 //
 
-import UIKit
-import RxSwift
 import RxCocoa
+import RxSwift
+import UIKit
 
 final class ProgressCardViewCell: RxCollectionViewCell {
-
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var TDEELabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!

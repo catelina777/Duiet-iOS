@@ -6,11 +6,10 @@
 //  Copyright © 2019 duiet. All rights reserved.
 //
 
-import UIKit
 import RxSwift
+import UIKit
 
 class FillInformationViewDataSource: NSObject {
-
     private let viewModel: FillInformationViewModel
     private let keyboardTrackViewModel: KeyboardTrackViewModel
 
@@ -40,7 +39,6 @@ extension FillInformationViewDataSource: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
         switch indexPath.row {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.inputGenderViewCell,

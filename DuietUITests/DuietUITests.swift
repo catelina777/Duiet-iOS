@@ -9,7 +9,6 @@
 import XCTest
 
 class DuietUITests: XCTestCase {
-
     override func setUp() {
         continueAfterFailure = false
         XCUIApplication().launch()

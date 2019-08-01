@@ -3,14 +3,14 @@
 //  Duiet
 //
 //  Created by 上西 隆平 on 2019/06/26.
-//  Copyright © 2019 duiet. All rights reserved.
+//  Copyright © 2019 Duiet. All rights reserved.
 //
 
 import Foundation
-import RxSwift
-import RxRelay
 import RealmSwift
 import RxRealm
+import RxRelay
+import RxSwift
 
 protocol DaysModelProtocol {
     var changeData: PublishRelay<RealmChangeset?> { get }
@@ -19,7 +19,6 @@ protocol DaysModelProtocol {
 }
 
 final class DaysModel: DaysModelProtocol {
-
     let changeData = PublishRelay<RealmChangeset?>()
     let days = BehaviorRelay<[Day]>(value: [])
     private let _month: BehaviorRelay<Month?>
@@ -35,8 +34,8 @@ final class DaysModel: DaysModelProtocol {
     private let repository: DaysRepositoryProtocol
     private let disposeBag = DisposeBag()
 
-    init(month: Month? = nil,
-         repository: DaysRepositoryProtocol) {
+    init(repository: DaysRepositoryProtocol = DaysRepository.shared,
+         month: Month? = nil) {
         self.repository = repository
         self._month = BehaviorRelay<Month?>(value: month)
 

@@ -9,7 +9,6 @@
 import UIKit
 
 final class SettingViewDataSource: NSObject {
-
     private let viewModel: SettingViewModel
 
     init(viewModel: SettingViewModel) {
@@ -24,7 +23,6 @@ final class SettingViewDataSource: NSObject {
 }
 
 extension SettingViewDataSource: UICollectionViewDataSource {
-
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
         return SettingType.allCases.count
@@ -41,7 +39,6 @@ extension SettingViewDataSource: UICollectionViewDataSource {
 }
 
 extension SettingViewDataSource: UICollectionViewDelegate {
-
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
         let selectionType = SettingType.allCases[indexPath.row]
@@ -50,11 +47,9 @@ extension SettingViewDataSource: UICollectionViewDelegate {
 }
 
 extension SettingViewDataSource: UICollectionViewDelegateFlowLayout {
-
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-
         let width = collectionView.frame.width * 0.9
         let height = width * 0.175
         let size = CGSize(width: width, height: height)

@@ -10,7 +10,6 @@ import Foundation
 import RealmSwift
 
 final class Meal: Object {
-
     @objc dynamic var imagePath = ""
     let contents = List<Content>()
     @objc dynamic var date = Date()

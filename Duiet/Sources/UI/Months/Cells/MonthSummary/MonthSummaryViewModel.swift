@@ -1,15 +1,14 @@
 //
-//  MonthSummaryViewCellViewModel.swift
+//  MonthSummaryViewModel.swift
 //  Duiet
 //
 //  Created by Ryuhei Kaminishi on 2019/06/09.
-//  Copyright © 2019 duiet. All rights reserved.
+//  Copyright © 2019 Duiet. All rights reserved.
 //
 
 import Foundation
 
 final class MonthSummaryViewModel {
-
     let input: Input
     let output: Output
 
@@ -66,7 +65,6 @@ final class MonthSummaryViewModel {
 }
 
 extension MonthSummaryViewModel {
-
     struct Input {}
 
     struct Output {}

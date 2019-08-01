@@ -3,13 +3,12 @@
 //  Duiet
 //
 //  Created by 上西 隆平 on 2019/04/22.
-//  Copyright © 2019 duiet. All rights reserved.
+//  Copyright © 2019 Duiet. All rights reserved.
 //
 
 import UIKit
 
 class InputPickerViewCell: RoundedTextFieldViewCell {
-
     let pickerView = UIPickerView()
 
     func configure(with cellType: CellType) {

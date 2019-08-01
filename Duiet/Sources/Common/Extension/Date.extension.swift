@@ -3,7 +3,7 @@
 //  Duiet
 //
 //  Created by 上西 隆平 on 2019/06/27.
-//  Copyright © 2019 duiet. All rights reserved.
+//  Copyright © 2019 Duiet. All rights reserved.
 //
 
 import Foundation
@@ -14,7 +14,6 @@ private let formatter: DateFormatter = {
 }()
 
 extension Date {
-
     func toMonthKeyString() -> String {
         return self.toString("yyyy/MM")
     }
@@ -36,7 +35,7 @@ extension Date {
         let yearFormat = "yyyy"
         formatter.dateFormat = yearFormat
         let yearString = formatter.string(from: self)
-        let year = Int(yearString) ?? 1996
+        let year = Int(yearString) ?? 1_996
         return year
     }
 

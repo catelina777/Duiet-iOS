@@ -7,12 +7,11 @@
 //
 
 import Foundation
-import RxSwift
-import RxRelay
 import RxCocoa
+import RxRelay
+import RxSwift
 
 final class WalkthroughViewModel {
-
     let input: Input
     let output: Output
 
@@ -34,7 +33,6 @@ final class WalkthroughViewModel {
 }
 
 extension WalkthroughViewModel {
-
     struct Input {
         let pushFillInformation: AnyObserver<Void>
     }

@@ -9,7 +9,6 @@
 import UIKit
 
 final class TopMonthsViewController: MonthsViewController {
-
     private let tabViewModel: TopTabBarViewModel
 
     init(viewModel: MonthsViewModel,

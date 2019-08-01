@@ -9,7 +9,6 @@
 import UIKit
 
 final class TopDaysViewController: DaysViewController {
-
     private let tabViewModel: TopTabBarViewModel
 
     init(viewModel: DaysViewModel,

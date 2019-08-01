@@ -6,11 +6,10 @@
 //  Copyright © 2019 duiet. All rights reserved.
 //
 
-import UIKit
 import RxSwift
+import UIKit
 
 final class InputActivityLevelViewCell: InputPickerViewCell, CellFrameTrackkable {
-
     func configure(with viewModel: KeyboardTrackViewModel) {
         guard
             let appDelegate = UIApplication.shared.delegate,

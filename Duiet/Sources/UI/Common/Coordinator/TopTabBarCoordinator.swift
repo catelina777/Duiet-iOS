@@ -9,7 +9,6 @@
 import UIKit
 
 final class TopTabBarCoordinator: Coordinator {
-
     private let navigator: UINavigationController
     let controller: TopTabBarController
 

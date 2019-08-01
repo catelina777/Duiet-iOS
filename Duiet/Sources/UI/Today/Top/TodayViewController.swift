@@ -6,15 +6,14 @@
 //  Copyright © 2019 duiet. All rights reserved.
 //
 
-import UIKit
-import RxSwift
-import RxCocoa
-import RealmSwift
-import RxRealm
 import Hero
+import RealmSwift
+import RxCocoa
+import RxRealm
+import RxSwift
+import UIKit
 
 class TodayViewController: BaseCollectionViewController, NavigationBarCustomizable {
-
     let viewModel: TodayViewModel
     private let dataSource: TodayViewDataSource
 
