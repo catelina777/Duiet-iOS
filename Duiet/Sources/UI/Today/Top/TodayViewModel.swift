@@ -22,8 +22,8 @@ final class TodayViewModel {
 
     private let disposeBag = DisposeBag()
 
-    var meals: List<Meal> {
-        return todayModel.day.value.meals
+    var meals: [Meal] {
+        return todayModel.meals
     }
 
     var title: String {
@@ -38,7 +38,7 @@ final class TodayViewModel {
 
         let _viewDidAppear = PublishRelay<Void>()
         let _addButtonTap = PublishRelay<TodayViewController>()
-        let _selectedItem = PublishRelay<(MealCardViewCell, Meal)>()
+        let _selectedItem = PublishRelay<(MealCardViewCell, Meal, Int)>()
         let _showDetailDay = PublishRelay<Day>()
 
         input = Input(viewDidAppear: _viewDidAppear.asObserver(),
@@ -68,7 +68,7 @@ final class TodayViewModel {
             .compactMap { $0 }
             .flatMapLatest { PhotoManager.rx.save(image: $0) }
             .observeOn(MainScheduler.instance)
-            .map { Meal(imagePath: $0, date: Date()) }
+            .map { Meal(imagePath: $0, date: todayModel.date) }
             .bind(to: mealWillAdd)
             .disposed(by: disposeBag)
 
@@ -94,7 +94,7 @@ final class TodayViewModel {
         _selectedItem
             .asDriver(onErrorDriveWith: .empty())
             .drive(onNext: {
-                coordinator.showEdit(mealCard: $0.0, meal: $0.1)
+                coordinator.showEdit(mealCard: $0.0, meal: $0.1, row: $0.2)
             })
             .disposed(by: disposeBag)
 
@@ -111,7 +111,7 @@ extension TodayViewModel {
     struct Input {
         let viewDidAppear: AnyObserver<Void>
         let addButtonTap: AnyObserver<TodayViewController>
-        let selectedItem: AnyObserver<(MealCardViewCell, Meal)>
+        let selectedItem: AnyObserver<(MealCardViewCell, Meal, Int)>
         let showDetailDay: AnyObserver<Day>
     }
 

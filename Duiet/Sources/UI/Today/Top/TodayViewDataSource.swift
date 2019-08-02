@@ -58,7 +58,7 @@ extension TodayViewDataSource: UICollectionViewDelegate {
         else { return }
         let mealIndex = indexPath.row - 1
         let meal = viewModel.meals[mealIndex]
-        viewModel.input.selectedItem.on(.next((cardCell, meal)))
+        viewModel.input.selectedItem.on(.next((cardCell, meal, mealIndex)))
     }
 }
 
