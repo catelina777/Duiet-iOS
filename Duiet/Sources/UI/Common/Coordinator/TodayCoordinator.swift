@@ -35,8 +35,8 @@ final class TodayCoordinator: Coordinator {
         viewController.present(vc, animated: true, completion: nil)
     }
 
-    func showEdit(mealCard: MealCardViewCell, meal: Meal) {
-        let heroID = "\(meal.date.timeIntervalSince1970)"
+    func showEdit(mealCard: MealCardViewCell, meal: Meal, row: Int) {
+        let heroID = "\(row)"
         mealCard.imageView.hero.id = heroID
 
         let model = InputMealModel(repository: DayRepository.shared,

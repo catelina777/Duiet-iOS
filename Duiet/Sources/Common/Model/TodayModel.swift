@@ -17,6 +17,7 @@ protocol TodayModelProtocol {
     var changeData: PublishRelay<RealmChangeset?> { get }
     var contentDidDelete: PublishRelay<Void> { get }
     var day: BehaviorRelay<Day> { get }
+    var meals: [Meal] { get }
     var addMeal: Binder<Meal> { get }
     var title: String { get }
     var date: Date { get }
@@ -26,6 +27,11 @@ final class TodayModel: TodayModelProtocol {
     let changeData = PublishRelay<RealmChangeset?>()
     let contentDidDelete = PublishRelay<Void>()
     let day: BehaviorRelay<Day>
+    private let _meals = BehaviorRelay<[Meal]>(value: [])
+
+    var meals: [Meal] {
+        return _meals.value
+    }
 
     lazy var title: String = {
         let now = Date()
@@ -54,6 +60,7 @@ final class TodayModel: TodayModelProtocol {
         observe(day: day)
 
         let mealResults = repository.find(meals: date)
+        observe(mealResults: mealResults)
         observe(mealResultsChangeset: mealResults)
     }
 
@@ -80,6 +87,18 @@ final class TodayModel: TodayModelProtocol {
             .disposed(by: disposeBag)
     }
 
+    /// Detect change of meals
+    ///
+    /// - Parameter mealResults: find fron repository by date
+    private func observe(mealResults: Results<Meal>) {
+        Observable.array(from: mealResults)
+            .subscribe(onNext: { [weak self] meals in
+                guard let me = self else { return }
+                me._meals.accept(meals)
+            })
+            .disposed(by: disposeBag)
+    }
+
     /// Detect changes in meals
     ///
     /// - Parameter mealResults: Meal results find from repository
@@ -87,8 +106,8 @@ final class TodayModel: TodayModelProtocol {
         Observable.changeset(from: mealResults)
             .map { $1 }
             .subscribe(onNext: { [weak self] changeset in
-                guard let self = self else { return }
-                self.changeData.accept(changeset)
+                guard let me = self else { return }
+                me.changeData.accept(changeset)
             })
             .disposed(by: disposeBag)
     }
