@@ -44,8 +44,6 @@
 		0641AD2D2264A1BC00CEDAE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0641AD2B2264A1BC00CEDAE7 /* LaunchScreen.storyboard */; };
 		0641AD382264A1BC00CEDAE7 /* DuietTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0641AD372264A1BC00CEDAE7 /* DuietTests.swift */; };
 		0641AD432264A1BC00CEDAE7 /* DuietUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0641AD422264A1BC00CEDAE7 /* DuietUITests.swift */; };
-		0641AD592264ACB800CEDAE7 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0641AD572264ACB800CEDAE7 /* RxCocoa.framework */; };
-		0641AD5A2264ACB800CEDAE7 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0641AD582264ACB800CEDAE7 /* RxSwift.framework */; };
 		06932AC622801AC500CFA05C /* MealLabelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06932AC522801AC500CFA05C /* MealLabelView.xib */; };
 		06932AC822801AEB00CFA05C /* MealLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06932AC722801AEB00CFA05C /* MealLabelView.swift */; };
 		069AD4292277224A0075E711 /* TodayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 069AD425227722490075E711 /* TodayViewController.xib */; };
@@ -67,7 +65,6 @@
 		06B2FD08227222670078C7F1 /* CompleteButtonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B2FD06227222670078C7F1 /* CompleteButtonViewCell.swift */; };
 		06B2FD09227222670078C7F1 /* CompleteButtonViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06B2FD07227222670078C7F1 /* CompleteButtonViewCell.xib */; };
 		06F615D1227AF1080074089B /* Splash.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06F615D0227AF1080074089B /* Splash.xcassets */; };
-		06F615D3227AF5C40074089B /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06F615D2227AF5C40074089B /* RxRelay.framework */; };
 		3D663033B554173C7AFF58FC /* Pods_Duiet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6911E39E3468EB910D0358F5 /* Pods_Duiet.framework */; };
 		4001F6FA22ABA3720009CDA1 /* SceneType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4001F6F922ABA3720009CDA1 /* SceneType.swift */; };
 		4001F70022ABB43B0009CDA1 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4001F6FF22ABB43B0009CDA1 /* SettingViewController.swift */; };
@@ -84,6 +81,8 @@
 		402260E322D615F50057BC9E /* MealLabelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402260E222D615F50057BC9E /* MealLabelViewModel.swift */; };
 		4022F2D622F47022006F5D49 /* Date.extension.test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4022F2D522F47022006F5D49 /* Date.extension.test.swift */; };
 		4022F2DA22F47B0D006F5D49 /* UserInfoRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4022F2D922F47B0D006F5D49 /* UserInfoRepositoryTests.swift */; };
+		4022F2DB22F49592006F5D49 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9C28C0228E76D6004ABF3B /* Realm.framework */; };
+		4022F2DC22F49592006F5D49 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9C28C1228E76D6004ABF3B /* RealmSwift.framework */; };
 		402D9BFC22E214FA003676C3 /* SettingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402D9BFB22E214FA003676C3 /* SettingType.swift */; };
 		402FBE9F22C8D019000BBFA3 /* TopTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402FBE9E22C8D019000BBFA3 /* TopTabBarController.swift */; };
 		402FBEA222C8E63D000BBFA3 /* TopTabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402FBEA122C8E63D000BBFA3 /* TopTabBarViewModel.swift */; };
@@ -142,8 +141,6 @@
 		5E9C28B4228E475E004ABF3B /* KeyboardFrameTrackkable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9C28B3228E475E004ABF3B /* KeyboardFrameTrackkable.swift */; };
 		5E9C28B6228E4E99004ABF3B /* CellFrameTrackkable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9C28B5228E4E99004ABF3B /* CellFrameTrackkable.swift */; };
 		5E9C28BF228E6254004ABF3B /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9C28BE228E6254004ABF3B /* UserInfo.swift */; };
-		5E9C28C3228E76D6004ABF3B /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9C28C0228E76D6004ABF3B /* Realm.framework */; };
-		5E9C28C4228E76D6004ABF3B /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9C28C1228E76D6004ABF3B /* RealmSwift.framework */; };
 		5E9EE7CD22C45FAD00AF5D82 /* Date.extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9EE7CC22C45FAD00AF5D82 /* Date.extension.swift */; };
 		5E9EE7D122C4980E00AF5D82 /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9EE7D022C4980E00AF5D82 /* Month.swift */; };
 		5E9EE7D822C5CEAD00AF5D82 /* SeedManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9EE7D722C5CEAD00AF5D82 /* SeedManager.swift */; };
@@ -332,14 +329,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E916964229E2D260048BA63 /* Hero.framework in Frameworks */,
-				5E9C28C3228E76D6004ABF3B /* Realm.framework in Frameworks */,
-				5E9C28C4228E76D6004ABF3B /* RealmSwift.framework in Frameworks */,
 				060A797C227C921800F02B30 /* PryntTrimmerView.framework in Frameworks */,
 				060A797D227C921800F02B30 /* Stevia.framework in Frameworks */,
 				060A797E227C921800F02B30 /* YPImagePicker.framework in Frameworks */,
-				06F615D3227AF5C40074089B /* RxRelay.framework in Frameworks */,
-				0641AD592264ACB800CEDAE7 /* RxCocoa.framework in Frameworks */,
-				0641AD5A2264ACB800CEDAE7 /* RxSwift.framework in Frameworks */,
 				3D663033B554173C7AFF58FC /* Pods_Duiet.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -348,6 +340,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4022F2DB22F49592006F5D49 /* Realm.framework in Frameworks */,
+				4022F2DC22F49592006F5D49 /* RealmSwift.framework in Frameworks */,
 				8AFA7421A93B1AAF33698633 /* Pods_DuietTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1685,6 +1679,10 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6MU2DV3MZ5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = DuietTests/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1707,6 +1705,10 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6MU2DV3MZ5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = DuietTests/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
