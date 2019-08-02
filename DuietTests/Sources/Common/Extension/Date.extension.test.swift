@@ -10,10 +10,6 @@
 import XCTest
 
 class DateTests: XCTestCase {
-    override func setUp() {}
-
-    override func tearDown() {}
-
     func testPerformance() {
         self.measure {
             testDateConvert()
