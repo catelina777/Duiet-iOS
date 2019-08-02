@@ -83,6 +83,7 @@
 		4005BDDA22D8EE8B001A7C9D /* UserInfoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4005BDD922D8EE8B001A7C9D /* UserInfoRepository.swift */; };
 		402260E322D615F50057BC9E /* MealLabelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402260E222D615F50057BC9E /* MealLabelViewModel.swift */; };
 		4022F2D622F47022006F5D49 /* Date.extension.test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4022F2D522F47022006F5D49 /* Date.extension.test.swift */; };
+		4022F2DA22F47B0D006F5D49 /* UserInfoRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4022F2D922F47B0D006F5D49 /* UserInfoRepositoryTests.swift */; };
 		402D9BFC22E214FA003676C3 /* SettingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402D9BFB22E214FA003676C3 /* SettingType.swift */; };
 		402FBE9F22C8D019000BBFA3 /* TopTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402FBE9E22C8D019000BBFA3 /* TopTabBarController.swift */; };
 		402FBEA222C8E63D000BBFA3 /* TopTabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402FBEA122C8E63D000BBFA3 /* TopTabBarViewModel.swift */; };
@@ -251,6 +252,7 @@
 		4005BDD922D8EE8B001A7C9D /* UserInfoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoRepository.swift; sourceTree = "<group>"; };
 		402260E222D615F50057BC9E /* MealLabelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealLabelViewModel.swift; sourceTree = "<group>"; };
 		4022F2D522F47022006F5D49 /* Date.extension.test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.extension.test.swift; sourceTree = "<group>"; };
+		4022F2D922F47B0D006F5D49 /* UserInfoRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoRepositoryTests.swift; sourceTree = "<group>"; };
 		402D9BFB22E214FA003676C3 /* SettingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingType.swift; sourceTree = "<group>"; };
 		402FBE9E22C8D019000BBFA3 /* TopTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTabBarController.swift; sourceTree = "<group>"; };
 		402FBEA122C8E63D000BBFA3 /* TopTabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTabBarViewModel.swift; sourceTree = "<group>"; };
@@ -780,6 +782,7 @@
 		4022F2D222F46FB6006F5D49 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				4022F2D922F47B0D006F5D49 /* UserInfoRepositoryTests.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -1466,6 +1469,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0641AD382264A1BC00CEDAE7 /* DuietTests.swift in Sources */,
+				4022F2DA22F47B0D006F5D49 /* UserInfoRepositoryTests.swift in Sources */,
 				4022F2D622F47022006F5D49 /* Date.extension.test.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

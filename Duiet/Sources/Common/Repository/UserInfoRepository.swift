@@ -11,6 +11,7 @@ import RealmSwift
 import RxSwift
 
 protocol UserInfoRepositoryProtocol {
+    func add(userInfo: UserInfo)
     func get() -> Results<UserInfo>
 }
 
@@ -21,6 +22,12 @@ final class UserInfoRepository: UserInfoRepositoryProtocol {
 
     private init() {
         realm = try! Realm()
+    }
+
+    func add(userInfo: UserInfo) {
+        try! realm.write {
+            realm.add(userInfo, update: .modified)
+        }
     }
 
     func get() -> Results<UserInfo> {

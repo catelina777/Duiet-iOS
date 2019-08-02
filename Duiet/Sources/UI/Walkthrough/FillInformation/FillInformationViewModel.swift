@@ -37,8 +37,8 @@ final class FillInformationViewModel {
 
     let activityTypes: [ActivityLevel] = [.none, .sedentary, .lightly, .moderately, .veryActive]
 
-    init() {
-        let _gender = BehaviorRelay<Bool?>(value: false)
+    init(userInfoModel: UserInfoModelProtocol = UserInfoModel.shared) {
+        let _gender = BehaviorRelay<Bool?>(value: nil)
         let _age = BehaviorRelay<Int?>(value: nil)
         let _height = BehaviorRelay<Double?>(value: nil)
         let _weight = BehaviorRelay<Double?>(value: nil)
@@ -115,8 +115,7 @@ final class FillInformationViewModel {
                              TDEE: TDEE)
 
         didTapComplete.withLatestFrom(userInfo)
-            .map { $0 }
-            .bind(to: Realm.rx.add(update: true))
+            .bind(to: userInfoModel.addUserInfo)
             .disposed(by: disposeBag)
     }
 
