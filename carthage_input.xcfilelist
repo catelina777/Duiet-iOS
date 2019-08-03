@@ -1,4 +1,0 @@
-$(SRCROOT)/Carthage/Build/iOS/Hero.framework
-$(SRCROOT)/Carthage/Build/iOS/PryntTrimmerView.framework
-$(SRCROOT)/Carthage/Build/iOS/Stevia.framework
-$(SRCROOT)/Carthage/Build/iOS/YPImagePicker.framework

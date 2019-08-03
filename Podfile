@@ -13,6 +13,8 @@ target 'Duiet' do
   pod 'RealmSwift'
   pod "RxRealm"
   pod "RxGesture"
+  pod 'YPImagePicker'
+  pod 'Hero'
 
   target 'DuietTests' do
     inherit! :search_paths

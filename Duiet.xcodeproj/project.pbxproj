@@ -9,9 +9,6 @@
 /* Begin PBXBuildFile section */
 		0603293D227F3C22009A67A4 /* InputMealCalorieViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0603293C227F3C22009A67A4 /* InputMealCalorieViewCell.xib */; };
 		0603293F227F3C37009A67A4 /* InputMealCalorieViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0603293E227F3C37009A67A4 /* InputMealCalorieViewCell.swift */; };
-		060A797C227C921800F02B30 /* PryntTrimmerView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 060A7979227C921800F02B30 /* PryntTrimmerView.framework */; };
-		060A797D227C921800F02B30 /* Stevia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 060A797A227C921800F02B30 /* Stevia.framework */; };
-		060A797E227C921800F02B30 /* YPImagePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 060A797B227C921800F02B30 /* YPImagePicker.framework */; };
 		060A7982227C967100F02B30 /* RxYPImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A7981227C967100F02B30 /* RxYPImagePicker.swift */; };
 		061F278D22733D9800FDCB17 /* WalkthroughViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 061F278C22733D9800FDCB17 /* WalkthroughViewController.xib */; };
 		061F278F22733DA100FDCB17 /* WalkthroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061F278E22733DA100FDCB17 /* WalkthroughViewController.swift */; };
@@ -135,7 +132,6 @@
 		5E83E9FC22E1665800B8F584 /* DaysCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E83E9FB22E1665800B8F584 /* DaysCoordinator.swift */; };
 		5E83E9FE22E167D400B8F584 /* MonthsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E83E9FD22E167D400B8F584 /* MonthsModel.swift */; };
 		5E83EA0022E1680E00B8F584 /* MonthsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E83E9FF22E1680E00B8F584 /* MonthsRepository.swift */; };
-		5E916964229E2D260048BA63 /* Hero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E916963229E2D250048BA63 /* Hero.framework */; };
 		5E92570E228D3E2D0076CCEE /* KeyboardTrackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E92570D228D3E2D0076CCEE /* KeyboardTrackViewModel.swift */; };
 		5E9C28B2228E4729004ABF3B /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9C28B1228E4729004ABF3B /* BaseTableViewController.swift */; };
 		5E9C28B4228E475E004ABF3B /* KeyboardFrameTrackkable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9C28B3228E475E004ABF3B /* KeyboardFrameTrackkable.swift */; };
@@ -328,10 +324,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5E916964229E2D260048BA63 /* Hero.framework in Frameworks */,
-				060A797C227C921800F02B30 /* PryntTrimmerView.framework in Frameworks */,
-				060A797D227C921800F02B30 /* Stevia.framework in Frameworks */,
-				060A797E227C921800F02B30 /* YPImagePicker.framework in Frameworks */,
 				3D663033B554173C7AFF58FC /* Pods_Duiet.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1023,7 +1015,6 @@
 			buildPhases = (
 				0A9D16FD77AB56746511B8F2 /* [CP] Check Pods Manifest.lock */,
 				0641AD522264A86400CEDAE7 /* R.swift */,
-				0641AD532264A87D00CEDAE7 /* Carthage */,
 				0641AD542264A89500CEDAE7 /* SwiftLint */,
 				0641AD1B2264A1BA00CEDAE7 /* Sources */,
 				0641AD1C2264A1BA00CEDAE7 /* Frameworks */,
@@ -1197,26 +1188,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate $SRCROOT/Duiet/Sources/Common/R.generated.swift\n";
-		};
-		0641AD532264A87D00CEDAE7 /* Carthage */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"$(SRCROOT)/carthage_input.xcfilelist",
-			);
-			inputPaths = (
-			);
-			name = Carthage;
-			outputFileListPaths = (
-				"$(SRCROOT)/carthage_output.xcfilelist",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
 		0641AD542264A89500CEDAE7 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
