@@ -8,12 +8,14 @@
 
 import Foundation
 import RealmSwift
+import RxCocoa
 import RxRealm
 import RxRelay
 import RxSwift
 
 protocol UserInfoModelProtocol {
     var userInfo: BehaviorRelay<UserInfo> { get }
+    var addUserInfo: Binder<UserInfo> { get }
 }
 
 final class UserInfoModel: UserInfoModelProtocol {
@@ -29,6 +31,12 @@ final class UserInfoModel: UserInfoModelProtocol {
 
         let userInfoResults = repository.get()
         observe(userInfoResults: userInfoResults)
+    }
+
+    var addUserInfo: Binder<UserInfo> {
+        return Binder(self) { me, userInfo in
+            me.repository.add(userInfo: userInfo)
+        }
     }
 
     /// Observe changes in userinfo

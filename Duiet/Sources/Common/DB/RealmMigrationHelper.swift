@@ -28,9 +28,16 @@ final class RealmMigrationHelper {
             if oldSchemaVersion < 1 {}
         }
         let v0URL = defaultParentURL.appendingPathComponent("duiet-v0.realm")
+
+        #if TEST
+        Realm.Configuration.defaultConfiguration = Realm.Configuration(inMemoryIdentifier: "duiet-v0-test")
+        #endif
+
+        #if TEST
         Realm.Configuration.defaultConfiguration = Realm.Configuration(fileURL: v0URL,
                                                                        schemaVersion: schemaVersion,
                                                                        migrationBlock: migrationBlock)
+        #endif
         _ = try! Realm()
     }
 

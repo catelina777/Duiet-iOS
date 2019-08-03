@@ -1,6 +1,0 @@
-github "ReactiveX/RxSwift" ~> 5.0
-github "Yummypets/YPImagePicker"
-github "RxSwiftCommunity/RxGesture"
-github "realm/realm-cocoa"
-github "RxSwiftCommunity/RxRealm"
-github "HeroTransitions/Hero"

@@ -15,7 +15,7 @@ private let formatter: DateFormatter = {
 
 extension Date {
     func toMonthKeyString() -> String {
-        return self.toString("yyyy/MM")
+        return toYearMonthString()
     }
 
     func toDayKeyString() -> String {
