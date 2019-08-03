@@ -78,8 +78,6 @@
 		402260E322D615F50057BC9E /* MealLabelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402260E222D615F50057BC9E /* MealLabelViewModel.swift */; };
 		4022F2D622F47022006F5D49 /* Date.extension.test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4022F2D522F47022006F5D49 /* Date.extension.test.swift */; };
 		4022F2DA22F47B0D006F5D49 /* UserInfoRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4022F2D922F47B0D006F5D49 /* UserInfoRepositoryTests.swift */; };
-		4022F2DB22F49592006F5D49 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9C28C0228E76D6004ABF3B /* Realm.framework */; };
-		4022F2DC22F49592006F5D49 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9C28C1228E76D6004ABF3B /* RealmSwift.framework */; };
 		402D9BFC22E214FA003676C3 /* SettingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402D9BFB22E214FA003676C3 /* SettingType.swift */; };
 		402FBE9F22C8D019000BBFA3 /* TopTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402FBE9E22C8D019000BBFA3 /* TopTabBarController.swift */; };
 		402FBEA222C8E63D000BBFA3 /* TopTabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402FBEA122C8E63D000BBFA3 /* TopTabBarViewModel.swift */; };
@@ -167,9 +165,6 @@
 		006839574F440A78C2631C92 /* Pods_DuietUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DuietUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0603293C227F3C22009A67A4 /* InputMealCalorieViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InputMealCalorieViewCell.xib; sourceTree = "<group>"; };
 		0603293E227F3C37009A67A4 /* InputMealCalorieViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputMealCalorieViewCell.swift; sourceTree = "<group>"; };
-		060A7979227C921800F02B30 /* PryntTrimmerView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PryntTrimmerView.framework; path = Carthage/Build/iOS/PryntTrimmerView.framework; sourceTree = "<group>"; };
-		060A797A227C921800F02B30 /* Stevia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stevia.framework; path = Carthage/Build/iOS/Stevia.framework; sourceTree = "<group>"; };
-		060A797B227C921800F02B30 /* YPImagePicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YPImagePicker.framework; path = Carthage/Build/iOS/YPImagePicker.framework; sourceTree = "<group>"; };
 		060A7981227C967100F02B30 /* RxYPImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxYPImagePicker.swift; sourceTree = "<group>"; };
 		061F278C22733D9800FDCB17 /* WalkthroughViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalkthroughViewController.xib; sourceTree = "<group>"; };
 		061F278E22733DA100FDCB17 /* WalkthroughViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughViewController.swift; sourceTree = "<group>"; };
@@ -208,8 +203,6 @@
 		0641AD3E2264A1BC00CEDAE7 /* DuietUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DuietUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0641AD422264A1BC00CEDAE7 /* DuietUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuietUITests.swift; sourceTree = "<group>"; };
 		0641AD442264A1BC00CEDAE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0641AD572264ACB800CEDAE7 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
-		0641AD582264ACB800CEDAE7 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		06932AC522801AC500CFA05C /* MealLabelView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MealLabelView.xib; sourceTree = "<group>"; };
 		06932AC722801AEB00CFA05C /* MealLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealLabelView.swift; sourceTree = "<group>"; };
 		069AD425227722490075E711 /* TodayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TodayViewController.xib; sourceTree = "<group>"; };
@@ -231,7 +224,6 @@
 		06B2FD06227222670078C7F1 /* CompleteButtonViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompleteButtonViewCell.swift; sourceTree = "<group>"; };
 		06B2FD07227222670078C7F1 /* CompleteButtonViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CompleteButtonViewCell.xib; sourceTree = "<group>"; };
 		06F615D0227AF1080074089B /* Splash.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Splash.xcassets; sourceTree = "<group>"; };
-		06F615D2227AF5C40074089B /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
 		1D64453EF3A64E5B58A308B8 /* Pods-Duiet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Duiet.debug.xcconfig"; path = "Target Support Files/Pods-Duiet/Pods-Duiet.debug.xcconfig"; sourceTree = "<group>"; };
 		4001F6F922ABA3720009CDA1 /* SceneType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneType.swift; sourceTree = "<group>"; };
 		4001F6FF22ABB43B0009CDA1 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -302,15 +294,11 @@
 		5E83E9FB22E1665800B8F584 /* DaysCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaysCoordinator.swift; sourceTree = "<group>"; };
 		5E83E9FD22E167D400B8F584 /* MonthsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthsModel.swift; sourceTree = "<group>"; };
 		5E83E9FF22E1680E00B8F584 /* MonthsRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthsRepository.swift; sourceTree = "<group>"; };
-		5E916963229E2D250048BA63 /* Hero.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hero.framework; path = Carthage/Build/iOS/Hero.framework; sourceTree = "<group>"; };
 		5E92570D228D3E2D0076CCEE /* KeyboardTrackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardTrackViewModel.swift; sourceTree = "<group>"; };
 		5E9C28B1228E4729004ABF3B /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		5E9C28B3228E475E004ABF3B /* KeyboardFrameTrackkable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardFrameTrackkable.swift; sourceTree = "<group>"; };
 		5E9C28B5228E4E99004ABF3B /* CellFrameTrackkable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellFrameTrackkable.swift; sourceTree = "<group>"; };
 		5E9C28BE228E6254004ABF3B /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
-		5E9C28C0228E76D6004ABF3B /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
-		5E9C28C1228E76D6004ABF3B /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
-		5E9C28C2228E76D6004ABF3B /* RxRealm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRealm.framework; path = Carthage/Build/iOS/RxRealm.framework; sourceTree = "<group>"; };
 		5E9EE7CC22C45FAD00AF5D82 /* Date.extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.extension.swift; sourceTree = "<group>"; };
 		5E9EE7D022C4980E00AF5D82 /* Month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
 		5E9EE7D722C5CEAD00AF5D82 /* SeedManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedManager.swift; sourceTree = "<group>"; };
@@ -336,8 +324,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4022F2DB22F49592006F5D49 /* Realm.framework in Frameworks */,
-				4022F2DC22F49592006F5D49 /* RealmSwift.framework in Frameworks */,
 				8AFA7421A93B1AAF33698633 /* Pods_DuietTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1607,8 +1593,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6MU2DV3MZ5;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(inherited)"
 				);
 				INFOPLIST_FILE = Duiet/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1633,8 +1618,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6MU2DV3MZ5;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(inherited)"
 				);
 				INFOPLIST_FILE = Duiet/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1659,8 +1643,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6MU2DV3MZ5;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(inherited)"
 				);
 				INFOPLIST_FILE = DuietTests/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1685,8 +1668,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6MU2DV3MZ5;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(inherited)"
 				);
 				INFOPLIST_FILE = DuietTests/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
