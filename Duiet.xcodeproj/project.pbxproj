@@ -120,6 +120,8 @@
 		40B2142B22B638970040EA9E /* DaySummaryViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40B2142A22B638970040EA9E /* DaySummaryViewCell.xib */; };
 		40B214DC22BF23D00040EA9E /* UserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B214DB22BF23D00040EA9E /* UserInfoModel.swift */; };
 		40D97C9222ED52A10069B5F2 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40D97C9122ED52A10069B5F2 /* Colors.xcassets */; };
+		40DF0D3422F5676A005005C8 /* DayRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DF0D3322F5676A005005C8 /* DayRepositoryTests.swift */; };
+		40DF0D3622F5677C005005C8 /* DaysRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DF0D3522F5677C005005C8 /* DaysRepositoryTests.swift */; };
 		5E17F981228BE4980046F68D /* RoundedTextFieldViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E17F980228BE4980046F68D /* RoundedTextFieldViewCell.swift */; };
 		5E35CF8622D7280E00C9CFC3 /* InputMealViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E35CF8522D7280E00C9CFC3 /* InputMealViewModel.swift */; };
 		5E35CF8822D728AE00C9CFC3 /* InputMealModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E35CF8722D728AE00C9CFC3 /* InputMealModel.swift */; };
@@ -286,6 +288,8 @@
 		40B2142A22B638970040EA9E /* DaySummaryViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DaySummaryViewCell.xib; sourceTree = "<group>"; };
 		40B214DB22BF23D00040EA9E /* UserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoModel.swift; sourceTree = "<group>"; };
 		40D97C9122ED52A10069B5F2 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		40DF0D3322F5676A005005C8 /* DayRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRepositoryTests.swift; sourceTree = "<group>"; };
+		40DF0D3522F5677C005005C8 /* DaysRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysRepositoryTests.swift; sourceTree = "<group>"; };
 		5E17F980228BE4980046F68D /* RoundedTextFieldViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedTextFieldViewCell.swift; sourceTree = "<group>"; };
 		5E35CF8522D7280E00C9CFC3 /* InputMealViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputMealViewModel.swift; sourceTree = "<group>"; };
 		5E35CF8722D728AE00C9CFC3 /* InputMealModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputMealModel.swift; sourceTree = "<group>"; };
@@ -769,6 +773,8 @@
 			isa = PBXGroup;
 			children = (
 				4022F2D922F47B0D006F5D49 /* UserInfoRepositoryTests.swift */,
+				40DF0D3322F5676A005005C8 /* DayRepositoryTests.swift */,
+				40DF0D3522F5677C005005C8 /* DaysRepositoryTests.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -1433,7 +1439,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40DF0D3422F5676A005005C8 /* DayRepositoryTests.swift in Sources */,
 				0641AD382264A1BC00CEDAE7 /* DuietTests.swift in Sources */,
+				40DF0D3622F5677C005005C8 /* DaysRepositoryTests.swift in Sources */,
 				4022F2DA22F47B0D006F5D49 /* UserInfoRepositoryTests.swift in Sources */,
 				4022F2D622F47022006F5D49 /* Date.extension.test.swift in Sources */,
 			);
