@@ -103,6 +103,8 @@
 		405A9F5D22AD0A3D00454412 /* MonthSummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405A9F5C22AD0A3D00454412 /* MonthSummaryViewModel.swift */; };
 		405A9F5F22AD0A4700454412 /* MonthSummaryViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405A9F5E22AD0A4700454412 /* MonthSummaryViewDataSource.swift */; };
 		405A9F6122AE91C700454412 /* ProgressType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405A9F6022AE91C700454412 /* ProgressType.swift */; };
+		405D24B622F5CBAB009FC5C2 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405D24B522F5CBAB009FC5C2 /* main.swift */; };
+		405D24B822F5CC15009FC5C2 /* UnitTestAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405D24B722F5CC15009FC5C2 /* UnitTestAppDelegate.swift */; };
 		405E3A1D229929D500ECEA9E /* EmptyContentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405E3A1C229929D500ECEA9E /* EmptyContentViewCell.swift */; };
 		405E3A1F229929E900ECEA9E /* EmptyContentViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 405E3A1E229929E900ECEA9E /* EmptyContentViewCell.xib */; };
 		407D2E7A22EF2537001EC701 /* RealmMigrationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407D2E7922EF2537001EC701 /* RealmMigrationHelper.swift */; };
@@ -266,6 +268,8 @@
 		405A9F5C22AD0A3D00454412 /* MonthSummaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthSummaryViewModel.swift; sourceTree = "<group>"; };
 		405A9F5E22AD0A4700454412 /* MonthSummaryViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthSummaryViewDataSource.swift; sourceTree = "<group>"; };
 		405A9F6022AE91C700454412 /* ProgressType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressType.swift; sourceTree = "<group>"; };
+		405D24B522F5CBAB009FC5C2 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		405D24B722F5CC15009FC5C2 /* UnitTestAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTestAppDelegate.swift; sourceTree = "<group>"; };
 		405E3A1C229929D500ECEA9E /* EmptyContentViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyContentViewCell.swift; sourceTree = "<group>"; };
 		405E3A1E229929E900ECEA9E /* EmptyContentViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyContentViewCell.xib; sourceTree = "<group>"; };
 		407D2E7922EF2537001EC701 /* RealmMigrationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmMigrationHelper.swift; sourceTree = "<group>"; };
@@ -511,9 +515,10 @@
 				0641AD5F2264ADB000CEDAE7 /* Extension */,
 				060A7983227C968000F02B30 /* Rx */,
 				063FCBC6227DCDBA007C191F /* PhotoManager.swift */,
-				0622EA28226A213B00E87F22 /* MyTextField.swift */,
 				0622EA2F226A251500E87F22 /* R.generated.swift */,
 				0641AD222264A1BA00CEDAE7 /* AppDelegate.swift */,
+				405D24B722F5CC15009FC5C2 /* UnitTestAppDelegate.swift */,
+				405D24B522F5CBAB009FC5C2 /* main.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -920,16 +925,6 @@
 		4B312EFBEE0174A408F8814E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5E916963229E2D250048BA63 /* Hero.framework */,
-				5E9C28C0228E76D6004ABF3B /* Realm.framework */,
-				5E9C28C1228E76D6004ABF3B /* RealmSwift.framework */,
-				5E9C28C2228E76D6004ABF3B /* RxRealm.framework */,
-				060A7979227C921800F02B30 /* PryntTrimmerView.framework */,
-				060A797A227C921800F02B30 /* Stevia.framework */,
-				060A797B227C921800F02B30 /* YPImagePicker.framework */,
-				06F615D2227AF5C40074089B /* RxRelay.framework */,
-				0641AD572264ACB800CEDAE7 /* RxCocoa.framework */,
-				0641AD582264ACB800CEDAE7 /* RxSwift.framework */,
 				6911E39E3468EB910D0358F5 /* Pods_Duiet.framework */,
 				B35F720B676F45DF7C30A993 /* Pods_DuietTests.framework */,
 				006839574F440A78C2631C92 /* Pods_DuietUITests.framework */,
@@ -964,6 +959,7 @@
 				5E9C28B1228E4729004ABF3B /* BaseTableViewController.swift */,
 				4001F71222ABF1AC0009CDA1 /* BaseCollectionViewController.swift */,
 				40B2141222B4A1FE0040EA9E /* RoundedWrapperView.swift */,
+				0622EA28226A213B00E87F22 /* MyTextField.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -1365,9 +1361,11 @@
 				06932AC822801AEB00CFA05C /* MealLabelView.swift in Sources */,
 				06B2FD05227222600078C7F1 /* InputActivityLevelViewCell.swift in Sources */,
 				5E92570E228D3E2D0076CCEE /* KeyboardTrackViewModel.swift in Sources */,
+				405D24B822F5CC15009FC5C2 /* UnitTestAppDelegate.swift in Sources */,
 				0622EA04226A1DFC00E87F22 /* FillInformationViewDataSource.swift in Sources */,
 				5E3E860622C305BD004E1676 /* Day.swift in Sources */,
 				405A9F5F22AD0A4700454412 /* MonthSummaryViewDataSource.swift in Sources */,
+				405D24B622F5CBAB009FC5C2 /* main.swift in Sources */,
 				06B2FD002272225A0078C7F1 /* InputNumberViewCell.swift in Sources */,
 				405E3A1D229929D500ECEA9E /* EmptyContentViewCell.swift in Sources */,
 				403E954222CF94C500EFF459 /* WalkthrouthCoordinator.swift in Sources */,
@@ -1596,9 +1594,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6MU2DV3MZ5;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)"
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Duiet/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1621,9 +1617,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6MU2DV3MZ5;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)"
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Duiet/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1646,9 +1640,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6MU2DV3MZ5;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)"
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = DuietTests/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1671,9 +1663,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6MU2DV3MZ5;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)"
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = DuietTests/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
