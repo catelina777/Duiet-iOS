@@ -10,13 +10,13 @@
 import RealmSwift
 import XCTest
 
-class UserInfoRepositoryTests: XCTestCase {
+class UserInfoRepositoryTests: DBUnitTestCase {
     override func setUp() {
-        reset()
+        super.setUp()
     }
 
     override func tearDown() {
-        reset()
+        super.tearDown()
     }
 
     func testAddGet() {
@@ -61,14 +61,6 @@ class UserInfoRepositoryTests: XCTestCase {
         XCTAssertFalse(userInfo.first?.gender == mock1.gender)
         XCTAssertTrue(userInfo.first?.gender == mock2.gender)
         XCTAssertEqual(userInfo.count, 1)
-    }
-
-    func reset() {
-        let realm = try! Realm()
-        try! realm.write {
-            realm.deleteAll()
-        }
-        print("🗑🗑🗑 DB reset 🗑🗑🗑")
     }
 
     struct MockUserInfo {

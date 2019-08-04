@@ -105,6 +105,7 @@
 		405A9F6122AE91C700454412 /* ProgressType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405A9F6022AE91C700454412 /* ProgressType.swift */; };
 		405D24B622F5CBAB009FC5C2 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405D24B522F5CBAB009FC5C2 /* main.swift */; };
 		405D24B822F5CC15009FC5C2 /* UnitTestAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405D24B722F5CC15009FC5C2 /* UnitTestAppDelegate.swift */; };
+		405D24BA22F5D25B009FC5C2 /* DBUnitTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405D24B922F5D25B009FC5C2 /* DBUnitTestCase.swift */; };
 		405E3A1D229929D500ECEA9E /* EmptyContentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405E3A1C229929D500ECEA9E /* EmptyContentViewCell.swift */; };
 		405E3A1F229929E900ECEA9E /* EmptyContentViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 405E3A1E229929E900ECEA9E /* EmptyContentViewCell.xib */; };
 		407D2E7A22EF2537001EC701 /* RealmMigrationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407D2E7922EF2537001EC701 /* RealmMigrationHelper.swift */; };
@@ -270,6 +271,7 @@
 		405A9F6022AE91C700454412 /* ProgressType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressType.swift; sourceTree = "<group>"; };
 		405D24B522F5CBAB009FC5C2 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		405D24B722F5CC15009FC5C2 /* UnitTestAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTestAppDelegate.swift; sourceTree = "<group>"; };
+		405D24B922F5D25B009FC5C2 /* DBUnitTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBUnitTestCase.swift; sourceTree = "<group>"; };
 		405E3A1C229929D500ECEA9E /* EmptyContentViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyContentViewCell.swift; sourceTree = "<group>"; };
 		405E3A1E229929E900ECEA9E /* EmptyContentViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyContentViewCell.xib; sourceTree = "<group>"; };
 		407D2E7922EF2537001EC701 /* RealmMigrationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmMigrationHelper.swift; sourceTree = "<group>"; };
@@ -769,6 +771,7 @@
 				4022F2D922F47B0D006F5D49 /* UserInfoRepositoryTests.swift */,
 				40DF0D3322F5676A005005C8 /* DayRepositoryTests.swift */,
 				40DF0D3522F5677C005005C8 /* DaysRepositoryTests.swift */,
+				405D24B922F5D25B009FC5C2 /* DBUnitTestCase.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -1432,6 +1435,7 @@
 				40DF0D3622F5677C005005C8 /* DaysRepositoryTests.swift in Sources */,
 				4022F2DA22F47B0D006F5D49 /* UserInfoRepositoryTests.swift in Sources */,
 				4022F2D622F47022006F5D49 /* Date.extension.test.swift in Sources */,
+				405D24BA22F5D25B009FC5C2 /* DBUnitTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

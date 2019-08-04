@@ -6,4 +6,15 @@
 //  Copyright © 2019 duiet. All rights reserved.
 //
 
-import Foundation
+@testable import Duiet
+import XCTest
+
+class DaysRepositoryTests: DBUnitTestCase {
+    override func setUp() {
+        super.setUp()
+    }
+
+    override func tearDown() {
+        super.tearDown()
+    }
+}
