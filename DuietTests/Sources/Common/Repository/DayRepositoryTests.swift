@@ -35,7 +35,7 @@ class DayRepositoryTests: DBUnitTestCase {
         super.tearDown()
     }
 
-    func testAddFindMealThenAddContent() {
+    func testAddFindMealThenAddTwoContentsThenDeleteTwoContents() {
         let monthResults = realm.objects(Month.self)
         let dayResults = realm.objects(Day.self)
         let mealResults = realm.objects(Meal.self)
@@ -68,5 +68,11 @@ class DayRepositoryTests: DBUnitTestCase {
         XCTAssertEqual(contentResults.count, 2)
         XCTAssertEqual(acquiredMeal.contents[1].relativeX, MockData.relativeX2)
         XCTAssertEqual(acquiredMeal.contents[1].relativeY, MockData.relativeY2)
+
+        DayRepository.shared.delete(content: mockContent1, of: mockMeal)
+        XCTAssertEqual(contentResults.count, 1)
+
+        DayRepository.shared.delete(content: mockContent2, of: mockMeal)
+        XCTAssertEqual(contentResults.count, 0)
     }
 }
