@@ -31,15 +31,14 @@ class DateTests: XCTestCase {
     }
 
     private func testConvert(year: Int, month: Int, day: Int) {
-        let dateComponents = DateComponents(year: year, month: month, day: day)
-        let birthDate = Calendar.current.date(from: dateComponents)
-        XCTAssertEqual(birthDate?.toMonthKeyString(), "\(year)/\(complement(number: month))")
-        XCTAssertEqual(birthDate?.toDayKeyString(), "\(year)/\(complement(number: month))/\(complement(number: day))")
-        XCTAssertEqual(birthDate?.toYearMonthString(), "\(year)/\(complement(number: month))")
-        XCTAssertEqual(birthDate?.year(), year)
-        XCTAssertEqual(birthDate?.month(), month)
-        XCTAssertEqual(birthDate?.day(), day)
-        XCTAssertEqual(birthDate?.index(), day - 1)
+        let mockDate = MockDate.shared.create(year: year, month: month, day: day)
+        XCTAssertEqual(mockDate.toMonthKeyString(), "\(year)/\(complement(number: month))")
+        XCTAssertEqual(mockDate.toDayKeyString(), "\(year)/\(complement(number: month))/\(complement(number: day))")
+        XCTAssertEqual(mockDate.toYearMonthString(), "\(year)/\(complement(number: month))")
+        XCTAssertEqual(mockDate.year(), year)
+        XCTAssertEqual(mockDate.month(), month)
+        XCTAssertEqual(mockDate.day(), day)
+        XCTAssertEqual(mockDate.index(), day - 1)
     }
 
     private func complement(number: Int) -> String {

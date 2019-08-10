@@ -7,9 +7,18 @@
 //
 
 @testable import Duiet
+import RealmSwift
 import XCTest
 
-class UserInfoRepositoryTests: XCTestCase {
+class UserInfoRepositoryTests: DBUnitTestCase {
+    override func setUp() {
+        super.setUp()
+    }
+
+    override func tearDown() {
+        super.tearDown()
+    }
+
     func testAddGet() {
         let mock1 = MockUserInfo(gender: true, age: 23, height: 168, weight: 62, activityLevel: .none)
         let mock2 = MockUserInfo(gender: false, age: 28, height: 168, weight: 62, activityLevel: .moderately)
@@ -18,8 +27,10 @@ class UserInfoRepositoryTests: XCTestCase {
                                      height: mock1.height,
                                      weight: mock1.weight,
                                      activityLevel: mock1.activityLevel)
-        UserInfoRepository.shared.add(userInfo: mockUserInfo1)
+
         let userInfo = UserInfoRepository.shared.get()
+        XCTAssertEqual(userInfo.count, 0)
+        UserInfoRepository.shared.add(userInfo: mockUserInfo1)
         XCTAssertEqual(userInfo.count, 1)
         XCTAssertTrue(userInfo.first?.gender == mock1.gender)
         XCTAssertFalse(userInfo.first?.gender == mock2.gender)
@@ -39,12 +50,15 @@ class UserInfoRepositoryTests: XCTestCase {
                                      weight: mock2.weight,
                                      activityLevel: mock2.activityLevel)
 
-        UserInfoRepository.shared.add(userInfo: mockUserInfo1)
+        //　Test whether the expected UserInfo has been added
         let userInfo = UserInfoRepository.shared.get()
+        XCTAssertEqual(userInfo.count, 0)
+        UserInfoRepository.shared.add(userInfo: mockUserInfo1)
         XCTAssertTrue(userInfo.first?.gender == mock1.gender)
         XCTAssertFalse(userInfo.first?.gender == mock2.gender)
         XCTAssertEqual(userInfo.count, 1)
 
+        // Test if the expected UserInfo has been updated
         UserInfoRepository.shared.add(userInfo: mockUserInfo2)
         XCTAssertFalse(userInfo.first?.gender == mock1.gender)
         XCTAssertTrue(userInfo.first?.gender == mock2.gender)

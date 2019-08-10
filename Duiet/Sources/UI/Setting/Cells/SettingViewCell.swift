@@ -8,25 +8,9 @@
 
 import UIKit
 
-final class SettingViewCell: UICollectionViewCell {
-    @IBOutlet weak var roundedView: UIView!
-
+final class SettingViewCell: RxRoundedCollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel!
-
-    override var isHighlighted: Bool {
-        didSet {
-            if self.isHighlighted {
-                UIView.animate(withDuration: 0.1) {
-                    self.roundedView.backgroundColor = R.color.highlight()
-                }
-            } else {
-                UIView.animate(withDuration: 0.25) {
-                    self.roundedView.backgroundColor = R.color.contentBackground()
-                }
-            }
-        }
-    }
-
+    
     func configure(with type: SettingType) {
         titleLabel.text = type.contentText
     }
