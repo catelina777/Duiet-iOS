@@ -36,12 +36,14 @@ final class TodayViewModel {
         self.userInfoModel = userInfoModel
         self.todayModel = todayModel
 
+        let _viewWillAppear = PublishRelay<Void>()
         let _viewDidAppear = PublishRelay<Void>()
         let _addButtonTap = PublishRelay<TodayViewController>()
         let _selectedItem = PublishRelay<(MealCardViewCell, Meal, Int)>()
         let _showDetailDay = PublishRelay<Day>()
 
-        input = Input(viewDidAppear: _viewDidAppear.asObserver(),
+        input = Input(viewWillAppear: _viewWillAppear.asObserver(),
+                      viewDidAppear: _viewDidAppear.asObserver(),
                       addButtonTap: _addButtonTap.asObserver(),
                       selectedItem: _selectedItem.asObserver(),
                       showDetailDay: _showDetailDay.asObserver())
@@ -61,6 +63,13 @@ final class TodayViewModel {
         output = Output(viewDidAppear: _viewDidAppear.asObservable(),
                         changeData: todayModel.changeData.asObservable(),
                         progress: progress)
+
+        /// Reload the data to be displayed when the screen is displayed to correspond to the date
+        _viewWillAppear
+            .subscribe(onNext: {
+                todayModel.loadMealData(date: Date())
+            })
+            .disposed(by: disposeBag)
 
         let mealWillAdd = PublishRelay<Meal>()
 
@@ -109,6 +118,7 @@ final class TodayViewModel {
 
 extension TodayViewModel {
     struct Input {
+        let viewWillAppear: AnyObserver<Void>
         let viewDidAppear: AnyObserver<Void>
         let addButtonTap: AnyObserver<TodayViewController>
         let selectedItem: AnyObserver<(MealCardViewCell, Meal, Int)>
