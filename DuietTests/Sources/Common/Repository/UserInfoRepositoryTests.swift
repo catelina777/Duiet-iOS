@@ -50,6 +50,7 @@ class UserInfoRepositoryTests: DBUnitTestCase {
                                      weight: mock2.weight,
                                      activityLevel: mock2.activityLevel)
 
+        //　Test whether the expected UserInfo has been added
         let userInfo = UserInfoRepository.shared.get()
         XCTAssertEqual(userInfo.count, 0)
         UserInfoRepository.shared.add(userInfo: mockUserInfo1)
@@ -57,6 +58,7 @@ class UserInfoRepositoryTests: DBUnitTestCase {
         XCTAssertFalse(userInfo.first?.gender == mock2.gender)
         XCTAssertEqual(userInfo.count, 1)
 
+        // Test if the expected UserInfo has been updated
         UserInfoRepository.shared.add(userInfo: mockUserInfo2)
         XCTAssertFalse(userInfo.first?.gender == mock1.gender)
         XCTAssertTrue(userInfo.first?.gender == mock2.gender)

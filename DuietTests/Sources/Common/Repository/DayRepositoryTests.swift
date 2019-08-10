@@ -41,20 +41,22 @@ class DayRepositoryTests: DBUnitTestCase {
         let mealResults = realm.objects(Meal.self)
         let contentResults = realm.objects(Content.self)
 
+        // Test whether month / day model is created
         XCTAssertEqual(monthResults.count, 0)
         XCTAssertEqual(dayResults.count, 0)
-        XCTAssertEqual(mealResults.count, 0)
         let day = DayRepository.shared.findOrCreate(day: mockDate)
         XCTAssertEqual(monthResults.count, 1)
         XCTAssertEqual(dayResults.count, 1)
         XCTAssertEqual(day.createdAt, mockDate)
 
+        // Test whether the assumed meal model is added to the day model
         let mockMeal = Meal(imagePath: MockData.imagePath, date: mockDate)
         XCTAssertEqual(mealResults.count, 0)
         DayRepository.shared.add(meal: mockMeal, to: day)
         XCTAssertEqual(mealResults.count, 1)
         XCTAssertEqual(mealResults.first!.imagePath, mockMeal.imagePath)
 
+        // Test whether the expected content has been added to the meal model
         let mockContent1 = Content(relativeX: MockData.relativeX1, relativeY: MockData.relativeY1)
         XCTAssertEqual(contentResults.count, 0)
         DayRepository.shared.add(content: mockContent1, to: mockMeal)
@@ -69,6 +71,7 @@ class DayRepositoryTests: DBUnitTestCase {
         XCTAssertEqual(acquiredMeal.contents[1].relativeX, MockData.relativeX2)
         XCTAssertEqual(acquiredMeal.contents[1].relativeY, MockData.relativeY2)
 
+        // Content deletion function test
         DayRepository.shared.delete(content: mockContent1, of: mockMeal)
         XCTAssertEqual(contentResults.count, 1)
 
