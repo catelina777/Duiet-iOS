@@ -22,7 +22,7 @@ enum ProgressType {
             return R.color.main()!
 
         case .none:
-            return R.color.contentBackground()!
+            return R.color.subBackground()!
         }
     }
 

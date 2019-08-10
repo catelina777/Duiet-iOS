@@ -194,6 +194,7 @@
                 <outlet property="TDEELabel" destination="8DJ-Nw-ZnE" id="Xq4-Ck-ppa"/>
                 <outlet property="dayLabel" destination="KNo-f1-wo0" id="Ebq-aS-qn3"/>
                 <outlet property="differenceLabel" destination="nAD-QW-fPi" id="kGQ-dp-skC"/>
+                <outlet property="roundedView" destination="wbp-Ab-YF8" id="fAK-E2-cNP"/>
                 <outlet property="totalLabel" destination="QSf-RM-SAY" id="9OQ-9b-PFt"/>
                 <outlet property="weightChangeLabel" destination="LNu-ZN-9rO" id="Ydb-m0-y9E"/>
             </connections>
