@@ -21,6 +21,8 @@ protocol TodayModelProtocol {
     var addMeal: Binder<Meal> { get }
     var title: String { get }
     var date: Date { get }
+
+    func loadMealData(date: Date)
 }
 
 final class TodayModel: TodayModelProtocol {
@@ -56,12 +58,7 @@ final class TodayModel: TodayModelProtocol {
         self.repository = repository
         self.day = BehaviorRelay<Day>(value: .init(date: date))
 
-        let day = repository.findOrCreate(day: date)
-        observe(day: day)
-
-        let mealResults = repository.find(meals: date)
-        observe(mealResults: mealResults)
-        observe(mealResultsChangeset: mealResults)
+        loadMealData(date: date)
     }
 
     deinit {
@@ -72,6 +69,15 @@ final class TodayModel: TodayModelProtocol {
         return Binder(self) { me, meal in
             me.repository.add(meal: meal, to: me.day.value)
         }
+    }
+
+    func loadMealData(date: Date) {
+        let day = repository.findOrCreate(day: date)
+        observe(day: day)
+
+        let mealResults = repository.find(meals: date)
+        observe(mealResults: mealResults)
+        observe(mealResultsChangeset: mealResults)
     }
 
     /// Detect change of day from change of meals
