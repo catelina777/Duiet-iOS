@@ -22,7 +22,6 @@ PODS:
     - RxSwift (~> 5)
   - RxSwift (5.0.0)
   - SteviaLayout (4.4.4)
-  - SwiftLint (0.34.0)
   - YPImagePicker (4.0.0):
     - PryntTrimmerView (~> 3.0.0)
     - SteviaLayout (~> 4.4.1)
@@ -35,7 +34,6 @@ DEPENDENCIES:
   - RxGesture
   - RxRealm
   - RxSwift (~> 5)
-  - SwiftLint
   - YPImagePicker
 
 SPEC REPOS:
@@ -52,7 +50,6 @@ SPEC REPOS:
     - RxRelay
     - RxSwift
     - SteviaLayout
-    - SwiftLint
     - YPImagePicker
 
 SPEC CHECKSUMS:
@@ -68,9 +65,8 @@ SPEC CHECKSUMS:
   RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
   RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
   SteviaLayout: 523469269059f2c6da02820bb2ff28a5fe0780aa
-  SwiftLint: 79d48a17c6565dc286c37efb8322c7b450f95c67
   YPImagePicker: 8039f89ad79281545fa868486f32d9bf5d65ede1
 
-PODFILE CHECKSUM: 4d34c033301e6142a8c4ba29af8cad0ddcf508be
+PODFILE CHECKSUM: 8be98d4528239fed5f471fb438da43591012aae1
 
 COCOAPODS: 1.7.5

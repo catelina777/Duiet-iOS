@@ -7,7 +7,6 @@ target 'Duiet' do
 
   # Pods for Duiet
   pod 'R.swift'
-  pod 'SwiftLint'
   pod 'RxSwift', '~> 5'
   pod 'RxCocoa', '~> 5'
   pod 'RealmSwift'

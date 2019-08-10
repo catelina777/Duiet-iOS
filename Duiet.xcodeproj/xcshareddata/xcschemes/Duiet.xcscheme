@@ -20,6 +20,20 @@
                ReferencedContainer = "container:Duiet.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "0641AD3D2264A1BC00CEDAE7"
+               BuildableName = "DuietUITests.xctest"
+               BlueprintName = "DuietUITests"
+               ReferencedContainer = "container:Duiet.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
