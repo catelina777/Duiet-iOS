@@ -4,6 +4,7 @@ excluded:
   - Duiet/Sources/Common/R.generated.swift
 
 function_body_length: 80
+large_tuple: 3
 
 disabled_rules:
   - identifier_name
