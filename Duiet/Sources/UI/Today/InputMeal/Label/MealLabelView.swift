@@ -38,8 +38,7 @@ final class MealLabelView: UIView {
 
         // MARK: - Update text and notify new content
         self.viewModel.output.contentDidUpdate
-            .bind(to: updateLabelText,
-                      updateContent)
+            .bind(to: updateLabelText)
             .disposed(by: disposeBag)
 
         // MARK: - Hide myself when content is deleted
@@ -61,12 +60,6 @@ final class MealLabelView: UIView {
             let calorie = content.calorie
             let multiple = content.multiple
             me.mealLabel.text = "\(Int(calorie * (multiple == 0 ? 1 : multiple)))"
-        }
-    }
-
-    var updateContent: Binder<Content> {
-        return Binder(self) { me, content in
-            me.viewModel.input.contentDidUpdate.on(.next(content))
         }
     }
 
