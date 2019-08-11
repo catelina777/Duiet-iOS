@@ -10,7 +10,7 @@ import UIKit
 
 final class SettingViewCell: RxRoundedCollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel!
-    
+
     func configure(with type: SettingType) {
         titleLabel.text = type.contentText
     }
