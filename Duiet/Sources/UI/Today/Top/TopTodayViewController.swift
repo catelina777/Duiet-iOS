@@ -24,13 +24,19 @@ final class TopTodayViewController: TodayViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        rx.methodInvoked(#selector(viewWillAppear(_:)))
-            .map { _ in }
-            .bind(to: viewModel.input.viewWillAppear)
-            .disposed(by: disposeBag)
-
         tabViewModel.output.showDetailDay
             .bind(to: viewModel.input.showDetailDay)
+            .disposed(by: disposeBag)
+
+        let refreshControl = UIRefreshControl()
+        collectionView.refreshControl = refreshControl
+        refreshControl.rx.controlEvent(.valueChanged)
+            .bind(to: viewModel.input.willLoadData)
+            .disposed(by: disposeBag)
+
+        viewModel.output.didLoadData
+            .map { false }
+            .bind(to: refreshControl.rx.isRefreshing)
             .disposed(by: disposeBag)
     }
 }

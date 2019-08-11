@@ -30,6 +30,7 @@ final class TodayModel: TodayModelProtocol {
     let contentDidDelete = PublishRelay<Void>()
     let day: BehaviorRelay<Day>
     private let _meals = BehaviorRelay<[Meal]>(value: [])
+    private let _mealResults = PublishRelay<Results<Meal>>()
 
     var meals: [Meal] {
         return _meals.value
@@ -58,6 +59,24 @@ final class TodayModel: TodayModelProtocol {
         self.repository = repository
         self.day = BehaviorRelay<Day>(value: .init(date: date))
 
+        /// Use the difference of the meal model to detect changes in child elements of the day model
+        changeData.withLatestFrom(day)
+            .bind(to: day)
+            .disposed(by: disposeBag)
+
+        /// Detect change of meals
+        _mealResults
+            .flatMapLatest { Observable.array(from: $0) }
+            .bind(to: _meals)
+            .disposed(by: disposeBag)
+
+        /// Detect changes in meals difference
+        _mealResults
+            .flatMapLatest { Observable.changeset(from: $0) }
+            .map { $1 }
+            .bind(to: changeData)
+            .disposed(by: disposeBag)
+
         loadMealData(date: date)
     }
 
@@ -72,49 +91,10 @@ final class TodayModel: TodayModelProtocol {
     }
 
     func loadMealData(date: Date) {
-        let day = repository.findOrCreate(day: date)
-        observe(day: day)
+        let dayObject = repository.findOrCreate(day: date)
+        day.accept(dayObject)
 
         let mealResults = repository.find(meals: date)
-        observe(mealResults: mealResults)
-        observe(mealResultsChangeset: mealResults)
-    }
-
-    /// Detect change of day from change of meals
-    ///
-    /// - Parameter day: Day model find from repository
-    private func observe(day: Day) {
-        self.day.accept(day)
-        changeData.withLatestFrom(self.day)
-            .subscribe(onNext: { [weak self] day in
-                guard let self = self else { return }
-                self.day.accept(day)
-            })
-            .disposed(by: disposeBag)
-    }
-
-    /// Detect change of meals
-    ///
-    /// - Parameter mealResults: find fron repository by date
-    private func observe(mealResults: Results<Meal>) {
-        Observable.array(from: mealResults)
-            .subscribe(onNext: { [weak self] meals in
-                guard let me = self else { return }
-                me._meals.accept(meals)
-            })
-            .disposed(by: disposeBag)
-    }
-
-    /// Detect changes in meals
-    ///
-    /// - Parameter mealResults: Meal results find from repository
-    private func observe(mealResultsChangeset mealResults: Results<Meal>) {
-        Observable.changeset(from: mealResults)
-            .map { $1 }
-            .subscribe(onNext: { [weak self] changeset in
-                guard let me = self else { return }
-                me.changeData.accept(changeset)
-            })
-            .disposed(by: disposeBag)
+        _mealResults.accept(mealResults)
     }
 }
