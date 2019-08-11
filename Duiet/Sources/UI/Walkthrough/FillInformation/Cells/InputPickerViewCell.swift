@@ -35,8 +35,8 @@ class InputPickerViewCell: RoundedTextFieldViewCell {
         textField.inputAccessoryView = toolBar
         doneButtonItem.rx.tap
             .subscribe(onNext: { [weak self] in
-                guard let self = self else { return }
-                self.endEditing(true)
+                guard let me = self else { return }
+                me.endEditing(true)
             })
             .disposed(by: disposeBag)
     }

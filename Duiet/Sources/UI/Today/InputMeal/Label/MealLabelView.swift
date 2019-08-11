@@ -28,18 +28,17 @@ final class MealLabelView: UIView {
 
     func configure(with viewModel: InputMealViewModel) {
         // MARK: - Send ViewModel of selected MealLabel
-        self.rx.tapGesture()
+        rx.tapGesture()
             .when(.recognized)
             .subscribe(onNext: { [weak self] _ in
-                guard let self = self else { return }
-                viewModel.input.selectedViewModel.on(.next(self.viewModel))
+                guard let me = self else { return }
+                viewModel.input.selectedViewModel.on(.next(me.viewModel))
             })
             .disposed(by: disposeBag)
 
         // MARK: - Update text and notify new content
         self.viewModel.output.contentDidUpdate
-            .bind(to: updateLabelText,
-                      updateContent)
+            .bind(to: updateLabelText)
             .disposed(by: disposeBag)
 
         // MARK: - Hide myself when content is deleted
@@ -49,9 +48,9 @@ final class MealLabelView: UIView {
     }
 
     func initialize(with content: Content) {
-        self.viewModel = MealLabelViewModel(content: content)
-        let calorie = self.viewModel.content.calorie
-        let multiple = self.viewModel.content.multiple
+        viewModel = MealLabelViewModel(content: content)
+        let calorie = viewModel.content.calorie
+        let multiple = viewModel.content.multiple
         self.mealLabel.text = "\(Int(calorie * (multiple == 0 ? 1 : multiple)))"
     }
 
@@ -61,12 +60,6 @@ final class MealLabelView: UIView {
             let calorie = content.calorie
             let multiple = content.multiple
             me.mealLabel.text = "\(Int(calorie * (multiple == 0 ? 1 : multiple)))"
-        }
-    }
-
-    var updateContent: Binder<Content> {
-        return Binder(self) { me, content in
-            me.viewModel.input.contentDidUpdate.on(.next(content))
         }
     }
 

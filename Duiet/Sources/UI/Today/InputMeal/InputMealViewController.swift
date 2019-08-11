@@ -44,7 +44,7 @@ final class InputMealViewController: BaseTableViewController, KeyboardFrameTrack
         super.viewDidLoad()
         dataSource.configure(with: tableView)
 
-        rx.methodInvoked(#selector(InputMealViewController.viewWillLayoutSubviews))
+        rx.methodInvoked(#selector(self.viewWillLayoutSubviews))
             .map { _ in }
             .bind(to: configureHeaderView)
             .disposed(by: disposeBag)

@@ -17,6 +17,6 @@ class DuietTests: XCTestCase {
     func testExample() {}
 
     func testPerformanceExample() {
-        self.measure {}
+        measure {}
     }
 }

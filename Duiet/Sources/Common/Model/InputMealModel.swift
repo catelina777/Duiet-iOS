@@ -102,8 +102,8 @@ internal final class InputMealModel: InputMealModelProtocol {
     private func observe(day: Day) {
         Observable.from(object: day)
             .subscribe(onNext: { [weak self] day in
-                guard let self = self else { return }
-                self.day.accept(day)
+                guard let me = self else { return }
+                me.day.accept(day)
             })
             .disposed(by: disposeBag)
     }
@@ -111,9 +111,9 @@ internal final class InputMealModel: InputMealModelProtocol {
     private func observe(mealResults: Results<Meal>) {
         Observable.array(from: mealResults)
             .subscribe(onNext: { [weak self] meals in
-                guard let self = self else { return }
-                self.meals.accept(meals)
+                guard let me = self else { return }
+                me.meals.accept(meals)
             })
-            .disposed(by: self.disposeBag)
+            .disposed(by: disposeBag)
     }
 }

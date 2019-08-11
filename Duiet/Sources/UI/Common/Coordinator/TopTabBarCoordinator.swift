@@ -16,8 +16,8 @@ final class TopTabBarCoordinator: Coordinator {
          viewModel: TopTabBarViewModel,
          navigationControllers: [UIViewController]) {
         self.navigator = navigator
-        self.controller = TopTabBarController(viewModel: viewModel,
-                                              navigationControllers: navigationControllers)
+        controller = TopTabBarController(viewModel: viewModel,
+                                         navigationControllers: navigationControllers)
     }
 
     func start() {

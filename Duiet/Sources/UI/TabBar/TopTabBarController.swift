@@ -18,7 +18,7 @@ class TopTabBarController: UITabBarController {
          navigationControllers: [UIViewController]) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-        self.viewControllers = navigationControllers
+        viewControllers = navigationControllers
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -60,6 +60,6 @@ class TopTabBarController: UITabBarController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
 }

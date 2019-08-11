@@ -10,9 +10,9 @@ import UIKit
 
 extension UIButton {
     func configureGender() {
-        self.layer.cornerRadius = 10
-        self.layer.borderWidth = 4
-        self.layer.borderColor = UIColor.clear.cgColor
-        self.layer.masksToBounds = true
+        layer.cornerRadius = 10
+        layer.borderWidth = 4
+        layer.borderColor = UIColor.clear.cgColor
+        layer.masksToBounds = true
     }
 }

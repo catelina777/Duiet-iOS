@@ -57,7 +57,7 @@ final class TodayModel: TodayModelProtocol {
     init(repository: DayRepositoryProtocol = DayRepository.shared,
          date: Date = Date()) {
         self.repository = repository
-        self.day = BehaviorRelay<Day>(value: .init(date: date))
+        day = BehaviorRelay<Day>(value: .init(date: date))
 
         /// Use the difference of the meal model to detect changes in child elements of the day model
         changeData.withLatestFrom(day)

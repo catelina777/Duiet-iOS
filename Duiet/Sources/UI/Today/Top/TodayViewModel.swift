@@ -69,15 +69,12 @@ final class TodayViewModel {
                         changeData: todayModel.changeData.asObservable(),
                         progress: progress)
 
-        let mealWillAdd = PublishRelay<Meal>()
-
-        pickedImage
+        let mealWillAdd = pickedImage
             .compactMap { $0 }
             .flatMapLatest { PhotoManager.rx.save(image: $0) }
             .observeOn(MainScheduler.instance)
             .map { Meal(imagePath: $0, date: todayModel.date) }
-            .bind(to: mealWillAdd)
-            .disposed(by: disposeBag)
+            .share()
 
         mealWillAdd
             .map { $0 }

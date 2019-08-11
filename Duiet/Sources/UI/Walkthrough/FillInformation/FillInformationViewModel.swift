@@ -45,12 +45,12 @@ final class FillInformationViewModel {
         let _activityLevel = BehaviorRelay<ActivityLevel>(value: .none)
         let _didTapComplete = PublishRelay<Void>()
 
-        self.input = Input(gender: _gender.asObserver(),
-                           age: _age.asObserver(),
-                           height: _height.asObserver(),
-                           weight: _weight.asObserver(),
-                           activityLevel: _activityLevel.asObserver(),
-                           didTapComplete: _didTapComplete.asObserver())
+        input = Input(gender: _gender.asObserver(),
+                      age: _age.asObserver(),
+                      height: _height.asObserver(),
+                      weight: _weight.asObserver(),
+                      activityLevel: _activityLevel.asObserver(),
+                      didTapComplete: _didTapComplete.asObserver())
 
         let gender = _gender.asObservable()
 
@@ -108,11 +108,11 @@ final class FillInformationViewModel {
                 return "\(Int(bmr * activityLevel.magnification)) kcal"
             }
 
-        self.output = Output(gender: gender,
-                             isValidateComplete: isValidateComplete,
-                             didTapComplete: didTapComplete.asObservable(),
-                             BMR: BMR,
-                             TDEE: TDEE)
+        output = Output(gender: gender,
+                        isValidateComplete: isValidateComplete,
+                        didTapComplete: didTapComplete.asObservable(),
+                        BMR: BMR,
+                        TDEE: TDEE)
 
         didTapComplete.withLatestFrom(userInfo)
             .bind(to: userInfoModel.addUserInfo)

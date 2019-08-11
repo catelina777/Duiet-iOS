@@ -14,7 +14,7 @@ class MockDate {
     private var dateComponents: DateComponents
 
     private init() {
-        self.dateComponents = DateComponents()
+        dateComponents = DateComponents()
     }
 
     func create(year: Int, month: Int, day: Int) -> Date {

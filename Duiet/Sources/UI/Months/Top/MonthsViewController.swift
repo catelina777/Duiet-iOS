@@ -14,7 +14,7 @@ class MonthsViewController: BaseCollectionViewController, NavigationBarCustomiza
 
     init(viewModel: MonthsViewModel) {
         self.viewModel = viewModel
-        self.dataSource = MonthsViewDataSource(viewModel: viewModel)
+        dataSource = MonthsViewDataSource(viewModel: viewModel)
         super.init(nibName: MonthsViewController.className, bundle: nil)
     }
 
