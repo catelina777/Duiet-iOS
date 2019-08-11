@@ -36,7 +36,7 @@ final class LabelCanvasViewCell: RxTableViewCell {
             })
             .disposed(by: disposeBag)
 
-        self.rx
+        rx
             .longPressGesture()
             .when(.began)
             .asLocation()

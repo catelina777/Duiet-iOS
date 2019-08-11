@@ -32,8 +32,8 @@ final class MonthsModel: MonthsModelProtocol {
     func observe(monthResults: Results<Month>) {
         Observable.array(from: monthResults)
             .subscribe(onNext: { [weak self] months in
-                guard let self = self else { return }
-                self.months.accept(months)
+                guard let me = self else { return }
+                me.months.accept(months)
             })
             .disposed(by: disposeBag)
     }

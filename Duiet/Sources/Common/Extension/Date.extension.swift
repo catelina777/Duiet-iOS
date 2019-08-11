@@ -19,7 +19,7 @@ extension Date {
     }
 
     func toDayKeyString() -> String {
-        return self.toString("yyyy/MM/dd")
+        return toString("yyyy/MM/dd")
     }
 
     func toString(_ format: String = "yyyy/MM/dd") -> String {
@@ -28,7 +28,7 @@ extension Date {
     }
 
     func toYearMonthString() -> String {
-        return self.toString("yyyy/MM")
+        return toString("yyyy/MM")
     }
 
     func year() -> Int {

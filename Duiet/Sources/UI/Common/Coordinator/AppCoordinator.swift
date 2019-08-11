@@ -18,8 +18,8 @@ final class AppCoordinator {
 
     init(window: UIWindow) {
         self.window = window
-        self.topTabBarNavigator = UINavigationController()
-        self.walkthroughNavigator = UINavigationController()
+        topTabBarNavigator = UINavigationController()
+        walkthroughNavigator = UINavigationController()
 
         let dayNC = get(type: .today)
         let monthNC = get(type: .days)
@@ -33,12 +33,12 @@ final class AppCoordinator {
         navigatorInit(type: .months, navigationController: yearNC, tabViewModel: viewModel)
         navigatorInit(type: .setting, navigationController: settingNC, tabViewModel: viewModel)
 
-        self.topTabBarCoordinator = TopTabBarCoordinator(navigator: topTabBarNavigator,
-                                                         viewModel: viewModel,
-                                                         navigationControllers: [dayNC, monthNC, yearNC, settingNC])
+        topTabBarCoordinator = TopTabBarCoordinator(navigator: topTabBarNavigator,
+                                                    viewModel: viewModel,
+                                                    navigationControllers: [dayNC, monthNC, yearNC, settingNC])
 
-        self.walkthroughCoordinator = WalkthrouthCoordinator(navigator: walkthroughNavigator,
-                                                             topTabBarCoordinator: topTabBarCoordinator)
+        walkthroughCoordinator = WalkthrouthCoordinator(navigator: walkthroughNavigator,
+                                                        topTabBarCoordinator: topTabBarCoordinator)
     }
 
     func initialStart() {

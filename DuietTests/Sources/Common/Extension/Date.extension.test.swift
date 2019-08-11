@@ -11,7 +11,7 @@ import XCTest
 
 class DateTests: XCTestCase {
     func testPerformance() {
-        self.measure {
+        measure {
             testDateConvert()
         }
     }

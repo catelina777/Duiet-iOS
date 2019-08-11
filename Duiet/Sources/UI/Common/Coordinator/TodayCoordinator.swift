@@ -18,10 +18,10 @@ final class TodayCoordinator: Coordinator {
         self.navigator = navigator
         self.tabViewModel = tabViewModel
         let model = TodayModel(repository: DayRepository.shared)
-        self.viewController = TopTodayViewController(viewModel: .init(coordinator: self,
-                                                                    userInfoModel: UserInfoModel.shared,
-                                                                    todayModel: model),
-                                                   tabViewModel: tabViewModel)
+        viewController = TopTodayViewController(viewModel: .init(coordinator: self,
+                                                                userInfoModel: UserInfoModel.shared,
+                                                                todayModel: model),
+                                                tabViewModel: tabViewModel)
     }
 
     func start() {

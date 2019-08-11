@@ -37,7 +37,7 @@ final class DaysModel: DaysModelProtocol {
     init(repository: DaysRepositoryProtocol = DaysRepository.shared,
          month: Month? = nil) {
         self.repository = repository
-        self._month = BehaviorRelay<Month?>(value: month)
+        _month = BehaviorRelay<Month?>(value: month)
 
         if let month = month {
             let monthObject = repository.find(month: month)
@@ -51,8 +51,8 @@ final class DaysModel: DaysModelProtocol {
     private func observe(dayResults: Results<Day>) {
         Observable.array(from: dayResults)
             .subscribe(onNext: { [weak self] days in
-                guard let self = self else { return }
-                self.days.accept(days)
+                guard let me = self else { return }
+                me.days.accept(days)
             })
             .disposed(by: disposeBag)
     }
@@ -61,9 +61,9 @@ final class DaysModel: DaysModelProtocol {
         guard let monthObject = monthObject else { return }
         Observable.from(object: monthObject)
             .subscribe(onNext: { [weak self] month in
-                guard let self = self else { return }
+                guard let me = self else { return }
                 let days = month.days.toArray()
-                self.days.accept(days)
+                me.days.accept(days)
             })
             .disposed(by: disposeBag)
     }

@@ -21,12 +21,12 @@ final class RxYPImagePicker: YPImagePicker {
         super.init(configuration: config)
 
         didFinishPicking {[weak self] items, cancel in
-            guard let self = self else { return }
+            guard let me = self else { return }
             if let photo = items.singlePhoto {
-                self.pickedImage.accept(photo.image)
+                me.pickedImage.accept(photo.image)
             }
-            self.didCancel.accept(cancel)
-            self.dismiss(animated: true, completion: nil)
+            me.didCancel.accept(cancel)
+            me.dismiss(animated: true, completion: nil)
         }
     }
 
