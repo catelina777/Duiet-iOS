@@ -76,6 +76,8 @@ final class TodayModel: TodayModelProtocol {
             .map { $1 }
             .bind(to: changeData)
             .disposed(by: disposeBag)
+
+        loadMealData(date: date)
     }
 
     deinit {

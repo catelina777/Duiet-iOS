@@ -32,11 +32,6 @@ class TodayViewController: BaseCollectionViewController, NavigationBarCustomizab
         configureNavigationBar(with: viewModel.title)
         dataSource.configure(with: collectionView)
 
-        rx.methodInvoked(#selector(viewWillAppear(_:)))
-            .map { _ in }
-            .bind(to: viewModel.input.viewWillAppear)
-            .disposed(by: disposeBag)
-
         rx.methodInvoked(#selector(self.viewDidAppear(_:)))
             .map { _ in }
             .bind(to: viewModel.input.viewDidAppear)
