@@ -32,14 +32,18 @@ class TodayViewController: BaseCollectionViewController, NavigationBarCustomizab
         configureNavigationBar(with: viewModel.title)
         dataSource.configure(with: collectionView)
 
-        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
-        navigationItem.rightBarButtonItem = addButton
+        rx.methodInvoked(#selector(viewWillAppear(_:)))
+            .map { _ in }
+            .bind(to: viewModel.input.viewWillAppear)
+            .disposed(by: disposeBag)
 
         rx.methodInvoked(#selector(self.viewDidAppear(_:)))
             .map { _ in }
             .bind(to: viewModel.input.viewDidAppear)
             .disposed(by: disposeBag)
 
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
+        navigationItem.rightBarButtonItem = addButton
         addButton.rx.tap
             .map { self }
             .bind(to: viewModel.input.addButtonTap)

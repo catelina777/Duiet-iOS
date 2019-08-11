@@ -24,11 +24,6 @@ final class TopTodayViewController: TodayViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        rx.methodInvoked(#selector(viewWillAppear(_:)))
-            .map { _ in }
-            .bind(to: viewModel.input.viewWillAppear)
-            .disposed(by: disposeBag)
-
         tabViewModel.output.showDetailDay
             .bind(to: viewModel.input.showDetailDay)
             .disposed(by: disposeBag)
