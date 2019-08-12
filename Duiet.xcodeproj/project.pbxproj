@@ -75,6 +75,7 @@
 		4001F71122ABF0EB0009CDA1 /* MonthsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4001F71022ABF0EB0009CDA1 /* MonthsViewController.xib */; };
 		4001F71322ABF1AC0009CDA1 /* BaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4001F71222ABF1AC0009CDA1 /* BaseCollectionViewController.swift */; };
 		4005BDDA22D8EE8B001A7C9D /* UserInfoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4005BDD922D8EE8B001A7C9D /* UserInfoRepository.swift */; };
+		40116116230172BC00D522CC /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 40116115230172BC00D522CC /* Settings.bundle */; };
 		401D54B823012C7B0089E2F7 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 401D54B023012C7B0089E2F7 /* RealmSwift.framework */; };
 		401D54B923012C7B0089E2F7 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 401D54B123012C7B0089E2F7 /* RxCocoa.framework */; };
 		401D54BA23012C7B0089E2F7 /* RxRealm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 401D54B223012C7B0089E2F7 /* RxRealm.framework */; };
@@ -270,6 +271,7 @@
 		4001F71022ABF0EB0009CDA1 /* MonthsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MonthsViewController.xib; sourceTree = "<group>"; };
 		4001F71222ABF1AC0009CDA1 /* BaseCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewController.swift; sourceTree = "<group>"; };
 		4005BDD922D8EE8B001A7C9D /* UserInfoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoRepository.swift; sourceTree = "<group>"; };
+		40116115230172BC00D522CC /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		401D54B023012C7B0089E2F7 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		401D54B123012C7B0089E2F7 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		401D54B223012C7B0089E2F7 /* RxRealm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRealm.framework; path = Carthage/Build/iOS/RxRealm.framework; sourceTree = "<group>"; };
@@ -558,8 +560,8 @@
 				0622EA2C226A237C00E87F22 /* Fonts */,
 				5E9EE7D522C5CE5A00AF5D82 /* Assets */,
 				5E9EE7D622C5CE7D00AF5D82 /* Seeds */,
+				401161142301728B00D522CC /* Settings */,
 				0641AD2B2264A1BC00CEDAE7 /* LaunchScreen.storyboard */,
-				0641AD2E2264A1BC00CEDAE7 /* Info.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -796,6 +798,15 @@
 				4001F70C22ABDC5A0009CDA1 /* SettingViewCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		401161142301728B00D522CC /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				0641AD2E2264A1BC00CEDAE7 /* Info.plist */,
+				40116115230172BC00D522CC /* Settings.bundle */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		4022F2CE22F46F51006F5D49 /* Resources */ = {
@@ -1092,6 +1103,7 @@
 				401D54C023012C8C0089E2F7 /* Carthage */,
 				0641AD1B2264A1BA00CEDAE7 /* Sources */,
 				0641AD1C2264A1BA00CEDAE7 /* Frameworks */,
+				401161172301775500D522CC /* Settings.bundle */,
 				0641AD1D2264A1BA00CEDAE7 /* Resources */,
 				8555E173F9D24B1CB83CE54C /* [CP] Embed Pods Frameworks */,
 			);
@@ -1200,6 +1212,7 @@
 				061F279C22735BD900FDCB17 /* Icons.xcassets in Resources */,
 				069AD4292277224A0075E711 /* TodayViewController.xib in Resources */,
 				4001F70D22ABDC5A0009CDA1 /* SettingViewCell.xib in Resources */,
+				40116116230172BC00D522CC /* Settings.bundle in Resources */,
 				0603293D227F3C22009A67A4 /* InputMealCalorieViewCell.xib in Resources */,
 				405A9F5722AD007200454412 /* MonthSummaryViewCell.xib in Resources */,
 				40B2142B22B638970040EA9E /* DaySummaryViewCell.xib in Resources */,
@@ -1302,6 +1315,24 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		401161172301775500D522CC /* Settings.bundle */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Settings.bundle;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "APP_VERSION=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" $PRODUCT_SETTINGS_PATH)\n/usr/libexec/PlistBuddy -c \"Set :PreferenceSpecifiers:1:DefaultValue ${APP_VERSION}\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Settings.bundle/Root.plist\"\n\nBUILD_NUMBER=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" $PRODUCT_SETTINGS_PATH)\n/usr/libexec/PlistBuddy -c \"Set :PreferenceSpecifiers:2:DefaultValue ${BUILD_NUMBER}\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Settings.bundle/Root.plist\"\n";
 		};
 		401D54C023012C8C0089E2F7 /* Carthage */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1703,7 +1734,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Duiet/Resources/Info.plist;
+				INFOPLIST_FILE = Duiet/Resources/Settings/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1729,7 +1760,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Duiet/Resources/Info.plist;
+				INFOPLIST_FILE = Duiet/Resources/Settings/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

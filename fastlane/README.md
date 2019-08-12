@@ -25,10 +25,15 @@ Run Duiet.app tests
 ```
 fastlane ios update_dependencies
 ```
-Update dependencies managed by CocoaPods
+Update dependencies managed by CocoaPods and Carthage
 ### ios update_tools
 ```
 fastlane ios update_tools
+```
+
+### ios update_license_list
+```
+fastlane ios update_license_list
 ```
 
 

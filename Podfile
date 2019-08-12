@@ -6,6 +6,7 @@ target 'Duiet' do
   use_frameworks!
 
   # Pods for Duiet
+  pod 'LicensePlist'
   pod 'R.swift'
   pod 'YPImagePicker'
 

@@ -1,0 +1,71 @@
+name: LicensePlist, nameSpecified: 
+body: MIT License
+
+Copyrig…
+version: 2.5.8
+
+name: PryntTrimmerView, nameSpecified: 
+body: MIT License
+
+Copyrig…
+version: 3.0.0
+
+name: PryntTrimmerView, nameSpecified: 
+body: MIT License
+
+Copyrig…
+version: 3.0.0
+
+name: R.swift, nameSpecified: 
+body: The MIT License (MIT…
+version: 5.0.3
+
+name: R.swift, nameSpecified: 
+body: The MIT License (MIT…
+version: 5.0.3
+
+name: R.swift, nameSpecified: 
+body: The MIT License (MIT…
+version: 5.0.3
+
+name: R.swift.Library, nameSpecified: 
+body: The MIT License (MIT…
+version: 5.0.1
+
+name: R.swift.Library, nameSpecified: 
+body: The MIT License (MIT…
+version: 5.0.1
+
+name: R.swift.Library, nameSpecified: 
+body: The MIT License (MIT…
+version: 5.0.1
+
+name: SteviaLayout, nameSpecified: 
+body: The MIT License (MIT…
+version: 4.4.4
+
+name: SteviaLayout, nameSpecified: 
+body: The MIT License (MIT…
+version: 4.4.4
+
+name: YPImagePicker, nameSpecified: 
+body: The MIT License (MIT…
+version: 4.0.0
+
+name: YPImagePicker, nameSpecified: 
+body: The MIT License (MIT…
+version: 4.0.0
+
+name: Hero, nameSpecified: , owner: HeroTransitions, version: 1.4.0
+
+name: realm-cocoa, nameSpecified: , owner: realm, version: v3.17.3
+
+name: RxGesture, nameSpecified: , owner: RxSwiftCommunity, version: 3.0.0
+
+name: RxRealm, nameSpecified: , owner: RxSwiftCommunity, version: 1.0.0
+
+name: RxSwift, nameSpecified: , owner: ReactiveX, version: 5.0.1
+
+add-version-numbers: false
+
+LicensePlist Version: 1.8.3

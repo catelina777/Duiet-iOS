@@ -39,6 +39,18 @@ platform :ios do
     end
   end
 
+  lane :update_license_list do
+    github_token = ENV['GITHUB_ACCESS_TOKEN']
+    Dir.chdir("#{ENV['PWD']}") do
+      sh "Pods/LicensePlist/license-plist --force --output-path Duiet/Resources/Settings/Settings.bundle --github-token #{github_token} --suppress-opening-directory"
+
+      unless system('git diff --quiet --exit-code')
+        sh 'git add Duiet/Resources/Settings/Settings.bundle/'
+        commit_push_create_pr(branch_name: "ci/update-license-#{Time.now.to_i}", message: 'Update license list')
+      end
+    end
+  end
+
   def commit_push_create_pr(branch_name: "", message: "")
     sh "git checkout -b #{branch_name}"
     sh "git commit -m '#{message}'"
