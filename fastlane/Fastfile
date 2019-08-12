@@ -15,14 +15,15 @@ platform :ios do
   end
 
 
-  desc 'Update dependencies managed by CocoaPods'
+  desc 'Update dependencies managed by CocoaPods and Carthage'
   lane :update_dependencies do
     Dir.chdir("#{ENV['PWD']}") do
       sh 'bundle exec pod update'
+      sh 'carthage update --platform ios --configuration Release --cache-builds'
 
       unless system('git diff --quiet --exit-code')
         system('git add Podfile.lock')
-        commit_push_create_pr(branch_name: "ci/update-dependencies-#{Time.now.to_i}", message: 'Update dependencies managed by CocoaPods')
+        commit_push_create_pr(branch_name: "ci/update-dependencies-#{Time.now.to_i}", message: 'Update dependencies managed by CocoaPods and Carthage')
       end
     end
   end
