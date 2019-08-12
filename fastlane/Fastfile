@@ -47,7 +47,7 @@ platform :ios do
       unless system('git diff --quiet --exit-code')
         sh 'git add Duiet/Resources/Settings/Settings.bundle/'
         commit_push_create_pr(branch_name: "ci/update-license-#{Time.now.to_i}", message: 'Update license list')
-      #end
+      end
     end
   end
 
