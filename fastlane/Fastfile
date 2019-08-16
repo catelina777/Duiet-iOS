@@ -23,6 +23,7 @@ platform :ios do
 
       unless system('git diff --quiet --exit-code')
         system('git add Podfile.lock')
+        system('git add Cartfile.resolved')
         commit_push_create_pr(branch_name: "ci/update-dependencies-#{Time.now.to_i}", message: 'Update dependencies managed by CocoaPods and Carthage')
       end
     end
