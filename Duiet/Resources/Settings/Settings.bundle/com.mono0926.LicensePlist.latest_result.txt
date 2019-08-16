@@ -62,7 +62,7 @@ name: realm-cocoa, nameSpecified: , owner: realm, version: v3.17.3
 
 name: RxGesture, nameSpecified: , owner: RxSwiftCommunity, version: 3.0.0
 
-name: RxRealm, nameSpecified: , owner: RxSwiftCommunity, version: 1.0.0
+name: RxRealm, nameSpecified: , owner: RxSwiftCommunity, version: 1.0.1
 
 name: RxSwift, nameSpecified: , owner: ReactiveX, version: 5.0.1
 
