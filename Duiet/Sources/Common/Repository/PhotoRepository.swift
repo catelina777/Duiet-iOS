@@ -1,5 +1,5 @@
 //
-//  PhotoManager.swift
+//  PhotoRepository.swift
 //  Duiet
 //
 //  Created by Ryuhei Kaminishi on 2019/05/04.
@@ -11,10 +11,17 @@ import RxCocoa
 import RxSwift
 import UIKit
 
-final class PhotoManager: NSObject {}
+protocol PhotoRepositoryProtocol {
+    func save(image: UIImage) -> Observable<String>
+    func fetch(with localIdentifier: String) -> Observable<UIImage>
+}
 
-extension Reactive where Base: PhotoManager {
-    static func save(image: UIImage) -> Observable<String> {
+final class PhotoRepository: PhotoRepositoryProtocol {
+    static let shared = PhotoRepository()
+
+    private init() {}
+
+    func save(image: UIImage) -> Observable<String> {
         return Observable<String>.create { observer in
             PHPhotoLibrary.shared().performChanges({
                 let requestAsset = PHAssetChangeRequest.creationRequestForAsset(from: image)
@@ -32,19 +39,19 @@ extension Reactive where Base: PhotoManager {
         }
     }
 
-    static func fetchImage(with localIdentifier: String) -> Observable<UIImage> {
+    func fetch(with localIdentifier: String) -> Observable<UIImage> {
         return Observable<UIImage>.create { observer in
             let results = PHAsset.fetchAssets(withLocalIdentifiers: [localIdentifier], options: nil)
             guard
                 results.count > 0,
                 let asset = results.firstObject
-            else { return Disposables.create() }
+                else { return Disposables.create() }
 
             PHImageManager.default().requestImageData(for: asset, options: nil) { data, _, _, _ in
                 guard
                     let data = data,
                     let image = UIImage(data: data)
-                else { return }
+                    else { return }
                 observer.on(.next(image))
             }
             return Disposables.create()
