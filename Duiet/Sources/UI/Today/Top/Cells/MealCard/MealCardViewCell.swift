@@ -84,7 +84,7 @@ final class MealCardViewCell: RxCollectionViewCell {
     }
 
     private func set(image path: String) {
-        PhotoManager.rx.fetchImage(with: path)
+        PhotoRepository.shared.fetch(with: path)
             .bind(to: imageView.rx.image)
             .disposed(by: disposeBag)
     }
