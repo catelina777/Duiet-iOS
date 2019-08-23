@@ -71,7 +71,7 @@ final class TodayViewModel {
 
         let mealWillAdd = pickedImage
             .compactMap { $0 }
-            .flatMapLatest { PhotoManager.rx.save(image: $0) }
+            .flatMapLatest { PhotoRepository.shared.save(image: $0) }
             .observeOn(MainScheduler.instance)
             .map { Meal(imagePath: $0, date: todayModel.date) }
             .share()
