@@ -137,6 +137,7 @@
 		40EADBEC231A8D5B00D6E9E1 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EADBEB231A8D5B00D6E9E1 /* Theme.swift */; };
 		40EADBEE231A911000D6E9E1 /* UIColor.extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EADBED231A911000D6E9E1 /* UIColor.extension.swift */; };
 		40EADBF0231A962E00D6E9E1 /* AppAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EADBEF231A962E00D6E9E1 /* AppAppearance.swift */; };
+		40EADBF2231AACFD00D6E9E1 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EADBF1231AACFD00D6E9E1 /* UserDefaultsKey.swift */; };
 		5E17F981228BE4980046F68D /* RoundedTextFieldViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E17F980228BE4980046F68D /* RoundedTextFieldViewCell.swift */; };
 		5E35CF8622D7280E00C9CFC3 /* InputMealViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E35CF8522D7280E00C9CFC3 /* InputMealViewModel.swift */; };
 		5E35CF8822D728AE00C9CFC3 /* InputMealModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E35CF8722D728AE00C9CFC3 /* InputMealModel.swift */; };
@@ -318,6 +319,7 @@
 		40EADBEB231A8D5B00D6E9E1 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		40EADBED231A911000D6E9E1 /* UIColor.extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.extension.swift; sourceTree = "<group>"; };
 		40EADBEF231A962E00D6E9E1 /* AppAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAppearance.swift; sourceTree = "<group>"; };
+		40EADBF1231AACFD00D6E9E1 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 		5E17F980228BE4980046F68D /* RoundedTextFieldViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedTextFieldViewCell.swift; sourceTree = "<group>"; };
 		5E35CF8522D7280E00C9CFC3 /* InputMealViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputMealViewModel.swift; sourceTree = "<group>"; };
 		5E35CF8722D728AE00C9CFC3 /* InputMealModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputMealModel.swift; sourceTree = "<group>"; };
@@ -662,6 +664,7 @@
 				402D9BFB22E214FA003676C3 /* SettingType.swift */,
 				40B2141422B4D5B00040EA9E /* Week.swift */,
 				40EADBEB231A8D5B00D6E9E1 /* Theme.swift */,
+				40EADBF1231AACFD00D6E9E1 /* UserDefaultsKey.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -1467,6 +1470,7 @@
 				5E92570E228D3E2D0076CCEE /* KeyboardTrackViewModel.swift in Sources */,
 				405D24B822F5CC15009FC5C2 /* UnitTestAppDelegate.swift in Sources */,
 				0622EA04226A1DFC00E87F22 /* FillInformationViewDataSource.swift in Sources */,
+				40EADBF2231AACFD00D6E9E1 /* UserDefaultsKey.swift in Sources */,
 				5E3E860622C305BD004E1676 /* Day.swift in Sources */,
 				405A9F5F22AD0A4700454412 /* MonthSummaryViewDataSource.swift in Sources */,
 				405D24B622F5CBAB009FC5C2 /* main.swift in Sources */,

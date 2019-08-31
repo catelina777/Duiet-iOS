@@ -7,15 +7,29 @@
 //
 
 import Foundation
+import RxCocoa
 import RxSwift
 import RxTheme
 
 final class AppAppearance {
     static let shared = AppAppearance()
 
-    let themeService = ThemeType.service(initial: .light)
+    static let themeKey = "Duiet-app-theme"
 
-    func themeDidUpdate<T>(_ mapper: @escaping ((Theme) -> T)) -> Observable<T> {
+    let themeService: ThemeService<ThemeType> = {
+        let themeTypeValue = (UserDefaults.standard.object(forKey: UserDefaultsKey.appTheme) as? Int) ?? 0
+        let themeType = ThemeType(value: themeTypeValue)
+        return ThemeType.service(initial: themeType)
+    }()
+
+    var themeWillUpdate: Binder<ThemeType> {
+        return Binder(self) { me, type in
+            UserDefaults.standard.set(type.value, forKey: UserDefaultsKey.appTheme)
+            me.themeService.switch(type)
+        }
+    }
+
+    func appty<T>(_ mapper: @escaping ((Theme) -> T)) -> Observable<T> {
         return themeService.attrStream(mapper)
     }
 }
