@@ -66,6 +66,8 @@ name: RxRealm, nameSpecified: , owner: RxSwiftCommunity, version: 1.0.1
 
 name: RxSwift, nameSpecified: , owner: ReactiveX, version: 5.0.1
 
+name: RxTheme, nameSpecified: , owner: RxSwiftCommunity, version: 4.0.0
+
 add-version-numbers: false
 
 LicensePlist Version: 1.8.3
