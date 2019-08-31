@@ -22,6 +22,7 @@ protocol Theme {
     var progressExceedColor: UIColor { get }
     var progressLessColor: UIColor { get }
     var progressNoneColor: UIColor { get }
+    var statusBarStyle: UIStatusBarStyle { get }
 }
 
 struct LightTheme: Theme {
@@ -36,6 +37,7 @@ struct LightTheme: Theme {
     let progressExceedColor    = UIColor(hex: "EE5787", alpha: 1)
     let progressLessColor      = UIColor(hex: "007AFF", alpha: 1)
     let progressNoneColor      = UIColor(hex: "E7E8E9", alpha: 1)
+    let statusBarStyle         = UIStatusBarStyle.default
 }
 
 struct DarkTheme: Theme {
@@ -50,6 +52,7 @@ struct DarkTheme: Theme {
     let progressExceedColor    = UIColor(hex: "BF5F82", alpha: 1)
     let progressLessColor      = UIColor(hex: "39C1BC", alpha: 1)
     let progressNoneColor      = UIColor(hex: "2E3038", alpha: 1)
+    let statusBarStyle         = UIStatusBarStyle.lightContent
 }
 
 enum ThemeType: ThemeProvider {
@@ -62,6 +65,29 @@ enum ThemeType: ThemeProvider {
 
         case .dark:
             return DarkTheme()
+        }
+    }
+
+    init(value: Int) {
+        switch value {
+        case 0:
+            self = .light
+
+        case 1:
+            self = .dark
+            
+        default:
+            self = .light
+        }
+    }
+
+    var value: Int {
+        switch self {
+        case .light:
+            return 0
+
+        case .dark:
+            return 1
         }
     }
 }
