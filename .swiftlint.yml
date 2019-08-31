@@ -37,6 +37,8 @@ disabled_rules:
   - required_deinit
   - strong_iboutlet
   - vertical_parameter_alignment_on_call
+  - operator_usage_whitespace
+  - file_types_order
 
 opt_in_rules:
   - anyobject_protocol
@@ -53,7 +55,6 @@ opt_in_rules:
   - extension_access_modifier
   - fallthrough
   - fatal_error_message
-  - file_types_order
   - first_where
   - function_default_parameter_at_end
   - identical_operands
@@ -76,7 +77,6 @@ opt_in_rules:
   - nslocalizedstring_require_bundle
   - number_separator
   - object_literal
-  - operator_usage_whitespace
   - override_in_extension
   - pattern_matching_keywords
   - private_action
