@@ -16,6 +16,8 @@ final class AppAppearance {
 
     static let themeKey = "Duiet-app-theme"
 
+    private var disposeBag = DisposeBag()
+
     let themeService: ThemeService<ThemeType> = {
         let themeTypeValue = (UserDefaults.standard.object(forKey: UserDefaultsKey.appTheme) as? Int) ?? 0
         let themeType = ThemeType(value: themeTypeValue)
@@ -25,11 +27,16 @@ final class AppAppearance {
     var themeWillUpdate: Binder<ThemeType> {
         return Binder(self) { me, type in
             UserDefaults.standard.set(type.value, forKey: UserDefaultsKey.appTheme)
-            me.themeService.switch(type)
         }
     }
 
     func appty<T>(_ mapper: @escaping ((Theme) -> T)) -> Observable<T> {
         return themeService.attrStream(mapper)
+    }
+
+    func start() {
+        themeService.typeStream
+            .bind(to: themeWillUpdate)
+            .disposed(by: disposeBag)
     }
 }

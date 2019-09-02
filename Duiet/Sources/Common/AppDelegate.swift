@@ -21,18 +21,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = window
 
         self.appCoordinator = AppCoordinator(window: window)
+        AppAppearance.shared.start()
 
         /* insert seed data
         let seedmanager = SeedManager()
         seedmanager.generate()
         */
 
-        let key = "isLaunchedBefore"
-        let isLaunchedBefore = UserDefaults.standard.bool(forKey: key)
+        let isLaunchedBefore = UserDefaults.standard.bool(forKey: UserDefaultsKey.isLaunchedBefore)
 
         switch isLaunchedBefore {
         case false:
-            UserDefaults.standard.set(true, forKey: key)
+            UserDefaults.standard.set(true, forKey: UserDefaultsKey.isLaunchedBefore)
             appCoordinator?.initialStart()
             print("is first launch 🍻🍻🍻")
 

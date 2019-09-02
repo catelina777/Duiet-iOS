@@ -75,7 +75,7 @@ enum ThemeType: ThemeProvider {
 
         case 1:
             self = .dark
-            
+
         default:
             self = .light
         }
