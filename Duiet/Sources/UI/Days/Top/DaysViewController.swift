@@ -24,7 +24,8 @@ class DaysViewController: BaseCollectionViewController, NavigationBarCustomizabl
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureNavigationBar(with: viewModel.title)
+        configureNavigationBar(with: viewModel.title,
+                               isLargeTitles: true)
         dataSource.configure(with: collectionView)
     }
 }

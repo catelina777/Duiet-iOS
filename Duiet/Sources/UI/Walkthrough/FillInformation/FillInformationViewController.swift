@@ -31,7 +31,8 @@ final class FillInformationViewController: BaseTableViewController, NavigationBa
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource.configure(with: tableView)
-        configureNavigationBar(with: viewModel.title)
+        configureNavigationBar(with: viewModel.title,
+                               isLargeTitles: true)
 
         keyboardTrackViewModel.output.difference
             .bind(to: updateScroll)

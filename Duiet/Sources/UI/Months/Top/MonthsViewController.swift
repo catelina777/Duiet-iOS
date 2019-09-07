@@ -25,6 +25,7 @@ class MonthsViewController: BaseCollectionViewController, NavigationBarCustomiza
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource.configure(with: collectionView)
-        configureNavigationBar(with: SceneType.months.title)
+        configureNavigationBar(with: SceneType.months.title,
+                               isLargeTitles: true)
     }
 }

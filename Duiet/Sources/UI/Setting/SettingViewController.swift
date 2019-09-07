@@ -26,7 +26,8 @@ final class SettingViewController: BaseCollectionViewController, NavigationBarCu
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureNavigationBar(with: SceneType.setting.title)
+        configureNavigationBar(with: SceneType.setting.title,
+                               isLargeTitles: true)
         dataSource.configure(with: collectionView)
     }
 }

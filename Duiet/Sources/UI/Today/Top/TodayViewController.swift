@@ -29,7 +29,8 @@ class TodayViewController: BaseCollectionViewController, NavigationBarCustomizab
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureNavigationBar(with: viewModel.title)
+        configureNavigationBar(with: viewModel.title,
+                               isLargeTitles: true)
         dataSource.configure(with: collectionView)
 
         rx.methodInvoked(#selector(self.viewDidAppear(_:)))
