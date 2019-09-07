@@ -26,14 +26,11 @@ class BaseCollectionViewController: UIViewController, AppearanceChangeable {
     }
 
     func updateAppearance(with theme: Theme, me: BaseCollectionViewController) {
-        print("appearance did update")
         me.setNeedsStatusBarAppearanceUpdate()
         collectionView.backgroundColor = theme.backgroundMainColor
     }
 
     private func bindAppearance() {
-        print("bind appearance")
-        print(AppAppearance.shared.themeService.attrs.statusBarStyle.rawValue)
         AppAppearance.shared.themeService.attrsStream
             .bind(to: appearanceWillUpdate)
             .disposed(by: disposeBag)
