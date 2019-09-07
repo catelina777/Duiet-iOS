@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class SettingViewCell: RxRoundedCollectionViewCell {
+final class SettingViewCell: RoundedCollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel!
 
     func configure(with type: SettingType) {

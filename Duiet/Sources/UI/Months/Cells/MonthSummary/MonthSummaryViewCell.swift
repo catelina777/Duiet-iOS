@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class MonthSummaryViewCell: RxRoundedCollectionViewCell {
+final class MonthSummaryViewCell: RoundedCollectionViewCell {
     var viewModel: MonthSummaryViewModel!
     var dataSource: MonthSummaryViewDataSource!
     @IBOutlet private(set) weak var collectionView: UICollectionView!

@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class DaySummaryViewCell: RxRoundedCollectionViewCell {
+final class DaySummaryViewCell: RoundedCollectionViewCell {
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var TDEELabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!

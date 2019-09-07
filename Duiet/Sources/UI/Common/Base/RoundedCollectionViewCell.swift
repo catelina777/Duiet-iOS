@@ -1,5 +1,5 @@
 //
-//  RxRoundedCollectionViewCell.swift
+//  RoundedCollectionViewCell.swift
 //  Duiet
 //
 //  Created by Ryuhei Kaminishi on 2019/08/10.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RxRoundedCollectionViewCell: BaseCollectionViewCell {
+class RoundedCollectionViewCell: BaseCollectionViewCell {
     @IBOutlet weak var roundedView: UIView!
 
     override var isHighlighted: Bool {
