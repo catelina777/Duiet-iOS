@@ -12,14 +12,14 @@ final class AppCoordinator {
     private let window: UIWindow
 
     private var walkthroughCoordinator: WalkthrouthCoordinator!
-    private let walkthroughNavigator: UINavigationController
+    private let walkthroughNavigator: BaseNavigationController
     private var topTabBarCoordinator: TopTabBarCoordinator!
-    private let topTabBarNavigator: UINavigationController
+    private let topTabBarNavigator: BaseNavigationController
 
     init(window: UIWindow) {
         self.window = window
-        topTabBarNavigator = UINavigationController()
-        walkthroughNavigator = UINavigationController()
+        topTabBarNavigator = BaseNavigationController()
+        walkthroughNavigator = BaseNavigationController()
 
         let dayNC = get(type: .today)
         let monthNC = get(type: .days)
@@ -53,14 +53,14 @@ final class AppCoordinator {
         window.makeKeyAndVisible()
     }
 
-    private func get(type: SceneType) -> UINavigationController {
-        let nc = UINavigationController()
+    private func get(type: SceneType) -> BaseNavigationController {
+        let nc = BaseNavigationController()
         nc.tabBarItem = type.tabBarItem
         return nc
     }
 
     private func navigatorInit(type: SceneType,
-                               navigationController: UINavigationController,
+                               navigationController: BaseNavigationController,
                                tabViewModel: TopTabBarViewModel) {
         let coordinator: Coordinator
         switch type {

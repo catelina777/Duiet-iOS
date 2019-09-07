@@ -9,10 +9,10 @@
 import UIKit
 
 final class SettingCoordinator: Coordinator {
-    private let navigator: UINavigationController
+    private let navigator: BaseNavigationController
     private let tabViewModel: TopTabBarViewModel
 
-    init(navigator: UINavigationController,
+    init(navigator: BaseNavigationController,
          tabViewModel: TopTabBarViewModel) {
         self.navigator = navigator
         self.tabViewModel = tabViewModel
