@@ -17,6 +17,7 @@ protocol Theme {
     var buttonDisableColor: UIColor { get }
     var backgroundMainColor: UIColor { get }
     var tabBarTintColor: UIColor { get }
+    var tabBarBarTintColor: UIColor { get }
     var navigationBarTintColor: UIColor { get }
     var navigationBarBarTintColor: UIColor { get }
     var cellHighlightColor: UIColor { get }
@@ -32,7 +33,8 @@ struct LightTheme: Theme {
     let buttonMainColor           = UIColor(hex: "007AFF", alpha: 1)
     let buttonDisableColor        = UIColor(hex: "999999", alpha: 1)
     let backgroundMainColor       = UIColor(hex: "F2F2F2", alpha: 1)
-    let tabBarTintColor           = UIColor(hex: "FFFFFF", alpha: 1)
+    let tabBarTintColor           = UIColor(hex: "007AFF", alpha: 1)
+    let tabBarBarTintColor        = UIColor(hex: "FFFFFF", alpha: 1)
     let navigationBarTintColor    = UIColor(hex: "3E4158", alpha: 1)
     let navigationBarBarTintColor = UIColor(hex: "FFFFFF", alpha: 1)
     let cellHighlightColor        = UIColor(hex: "00BAFF", alpha: 0.08)
@@ -48,7 +50,8 @@ struct DarkTheme: Theme {
     let buttonMainColor           = UIColor(hex: "39C1BC", alpha: 1)
     let buttonDisableColor        = UIColor(hex: "8D8D8D", alpha: 1)
     let backgroundMainColor       = UIColor(hex: "000000", alpha: 1)
-    let tabBarTintColor           = UIColor(hex: "000000", alpha: 1)
+    let tabBarTintColor           = UIColor(hex: "39C1BC", alpha: 1)
+    let tabBarBarTintColor        = UIColor(hex: "000000", alpha: 1)
     let navigationBarTintColor    = UIColor(hex: "EEEEEE", alpha: 1)
     let navigationBarBarTintColor = UIColor(hex: "000000", alpha: 1)
     let cellHighlightColor        = UIColor(hex: "39C1BC", alpha: 0.08)

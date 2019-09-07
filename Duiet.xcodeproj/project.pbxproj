@@ -117,6 +117,7 @@
 		405D24BA22F5D25B009FC5C2 /* DBUnitTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405D24B922F5D25B009FC5C2 /* DBUnitTestCase.swift */; };
 		405E3A1D229929D500ECEA9E /* EmptyContentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405E3A1C229929D500ECEA9E /* EmptyContentViewCell.swift */; };
 		405E3A1F229929E900ECEA9E /* EmptyContentViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 405E3A1E229929E900ECEA9E /* EmptyContentViewCell.xib */; };
+		407869C02323D19500C46C94 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407869BF2323D19500C46C94 /* BaseTabBarController.swift */; };
 		407D2E7A22EF2537001EC701 /* RealmMigrationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407D2E7922EF2537001EC701 /* RealmMigrationHelper.swift */; };
 		40B2141322B4A1FE0040EA9E /* RoundedWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B2141222B4A1FE0040EA9E /* RoundedWrapperView.swift */; };
 		40B2141522B4D5B00040EA9E /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B2141422B4D5B00040EA9E /* Week.swift */; };
@@ -302,6 +303,7 @@
 		405D24B922F5D25B009FC5C2 /* DBUnitTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBUnitTestCase.swift; sourceTree = "<group>"; };
 		405E3A1C229929D500ECEA9E /* EmptyContentViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyContentViewCell.swift; sourceTree = "<group>"; };
 		405E3A1E229929E900ECEA9E /* EmptyContentViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyContentViewCell.xib; sourceTree = "<group>"; };
+		407869BF2323D19500C46C94 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		407D2E7922EF2537001EC701 /* RealmMigrationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmMigrationHelper.swift; sourceTree = "<group>"; };
 		40B2141222B4A1FE0040EA9E /* RoundedWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedWrapperView.swift; sourceTree = "<group>"; };
 		40B2141422B4D5B00040EA9E /* Week.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week.swift; sourceTree = "<group>"; };
@@ -1028,6 +1030,7 @@
 				5E9C28B1228E4729004ABF3B /* BaseTableViewController.swift */,
 				4001F71222ABF1AC0009CDA1 /* BaseCollectionViewController.swift */,
 				40EADBF92323512500D6E9E1 /* BaseNavigationController.swift */,
+				407869BF2323D19500C46C94 /* BaseTabBarController.swift */,
 				0622EA26226A20CE00E87F22 /* RxTableViewCell.swift */,
 				069AD436227723100075E711 /* RxCollectionViewCell.swift */,
 				40D8999622FE750400B6DA6D /* RxRoundedCollectionViewCell.swift */,
@@ -1519,6 +1522,7 @@
 				0622EA00226A1C7D00E87F22 /* NavigationBarCustomizable.swift in Sources */,
 				5E79D5672283FAC90073CD98 /* LabelCanvasViewCell.swift in Sources */,
 				063FCBC7227DCDBA007C191F /* PhotoRepository.swift in Sources */,
+				407869C02323D19500C46C94 /* BaseTabBarController.swift in Sources */,
 				5E35CF8622D7280E00C9CFC3 /* InputMealViewModel.swift in Sources */,
 				06B2FD08227222670078C7F1 /* CompleteButtonViewCell.swift in Sources */,
 				40EADBF4231B6BD800D6E9E1 /* AppearanceChangeable.swift in Sources */,
