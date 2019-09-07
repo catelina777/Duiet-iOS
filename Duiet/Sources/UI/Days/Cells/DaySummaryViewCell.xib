@@ -191,12 +191,16 @@
             <viewLayoutGuide key="safeArea" id="HFf-di-MTy"/>
             <size key="customSize" width="319" height="157"/>
             <connections>
-                <outlet property="TDEELabel" destination="8DJ-Nw-ZnE" id="Xq4-Ck-ppa"/>
-                <outlet property="dayLabel" destination="KNo-f1-wo0" id="Ebq-aS-qn3"/>
-                <outlet property="differenceLabel" destination="nAD-QW-fPi" id="kGQ-dp-skC"/>
+                <outlet property="TDEELabel" destination="T1L-TY-51Y" id="AtM-uU-2cL"/>
+                <outlet property="TDEEValueLabel" destination="8DJ-Nw-ZnE" id="Xq4-Ck-ppa"/>
+                <outlet property="dayValueLabel" destination="KNo-f1-wo0" id="Ebq-aS-qn3"/>
+                <outlet property="differenceLabel" destination="fBd-67-PPj" id="Lzd-kM-vFW"/>
+                <outlet property="differenceValueLabel" destination="nAD-QW-fPi" id="kGQ-dp-skC"/>
                 <outlet property="roundedView" destination="wbp-Ab-YF8" id="fAK-E2-cNP"/>
-                <outlet property="totalLabel" destination="QSf-RM-SAY" id="9OQ-9b-PFt"/>
-                <outlet property="weightChangeLabel" destination="LNu-ZN-9rO" id="Ydb-m0-y9E"/>
+                <outlet property="totalLabel" destination="bbH-T4-io3" id="q2i-M5-wYm"/>
+                <outlet property="totalValueLabel" destination="QSf-RM-SAY" id="9OQ-9b-PFt"/>
+                <outlet property="weightChangeLabel" destination="HZb-l8-PBE" id="sK9-ZK-jY2"/>
+                <outlet property="weightChangeValueLabel" destination="LNu-ZN-9rO" id="Ydb-m0-y9E"/>
             </connections>
             <point key="canvasLocation" x="332.60869565217394" y="168.41517857142856"/>
         </collectionViewCell>

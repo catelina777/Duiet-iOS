@@ -13,5 +13,9 @@ final class SettingViewCell: RoundedCollectionViewCell {
 
     func configure(with type: SettingType) {
         titleLabel.text = type.contentText
+
+        let theme = AppAppearance.shared.themeService.attrs
+        roundedView.backgroundColor = theme.cellBackgroundColor
+        titleLabel.textColor = theme.textMainColor
     }
 }

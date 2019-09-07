@@ -15,11 +15,11 @@ class RoundedCollectionViewCell: BaseCollectionViewCell {
         didSet {
             if isHighlighted {
                 UIView.animate(withDuration: 0.1) {
-                    self.roundedView.backgroundColor = R.color.highlight()
+                    self.roundedView.backgroundColor = AppAppearance.shared.themeService.attrs.cellHighlightColor
                 }
             } else {
                 UIView.animate(withDuration: 0.25) {
-                    self.roundedView.backgroundColor = R.color.mainBackground()
+                    self.roundedView.backgroundColor = AppAppearance.shared.themeService.attrs.cellBackgroundColor
                 }
             }
         }

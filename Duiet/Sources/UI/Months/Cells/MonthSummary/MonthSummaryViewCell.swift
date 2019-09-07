@@ -27,5 +27,12 @@ final class MonthSummaryViewCell: RoundedCollectionViewCell {
             "+\(abs(round(weightChange * 100) / 100)) kg 💪" :
             "-\(abs(round(weightChange * 100) / 100)) kg ⬇️"
         weightChangeLabel.text = weightChangeText
+
+        // MARK: Apply theme
+        let theme = AppAppearance.shared.themeService.attrs
+        roundedView.backgroundColor = theme.cellBackgroundColor
+        collectionView.backgroundColor = theme.cellBackgroundColor
+        dayLabel.textColor = theme.textMainColor
+        weightChangeLabel.textColor = theme.textMainColor
     }
 }

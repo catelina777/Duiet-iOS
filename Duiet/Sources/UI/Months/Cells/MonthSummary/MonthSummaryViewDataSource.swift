@@ -34,7 +34,7 @@ extension MonthSummaryViewDataSource: UICollectionViewDataSource {
         case 0..<Week.all.count:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.dayViewCell,
                                                           for: indexPath)!
-            cell.textLabel.text = Week.all[indexPath.row].abbr
+            cell.configure(with: Week.all[indexPath.row].abbr)
             return cell
 
         default:
