@@ -19,7 +19,7 @@
 		0622EA04226A1DFC00E87F22 /* FillInformationViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0622EA03226A1DFC00E87F22 /* FillInformationViewDataSource.swift */; };
 		0622EA06226A1E0100E87F22 /* FillInformationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0622EA05226A1E0100E87F22 /* FillInformationViewModel.swift */; };
 		0622EA08226A1EF200E87F22 /* NSObjectProtocol.extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0622EA07226A1EF200E87F22 /* NSObjectProtocol.extension.swift */; };
-		0622EA27226A20CE00E87F22 /* RxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0622EA26226A20CE00E87F22 /* RxTableViewCell.swift */; };
+		0622EA27226A20CE00E87F22 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0622EA26226A20CE00E87F22 /* BaseTableViewCell.swift */; };
 		0622EA29226A213B00E87F22 /* MyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0622EA28226A213B00E87F22 /* MyTextField.swift */; };
 		0622EA2B226A21A400E87F22 /* UIButton.extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0622EA2A226A21A400E87F22 /* UIButton.extension.swift */; };
 		0622EA30226A251500E87F22 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0622EA2F226A251500E87F22 /* R.generated.swift */; };
@@ -197,7 +197,7 @@
 		0622EA03226A1DFC00E87F22 /* FillInformationViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FillInformationViewDataSource.swift; sourceTree = "<group>"; };
 		0622EA05226A1E0100E87F22 /* FillInformationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FillInformationViewModel.swift; sourceTree = "<group>"; };
 		0622EA07226A1EF200E87F22 /* NSObjectProtocol.extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSObjectProtocol.extension.swift; sourceTree = "<group>"; };
-		0622EA26226A20CE00E87F22 /* RxTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxTableViewCell.swift; sourceTree = "<group>"; };
+		0622EA26226A20CE00E87F22 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		0622EA28226A213B00E87F22 /* MyTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTextField.swift; sourceTree = "<group>"; };
 		0622EA2A226A21A400E87F22 /* UIButton.extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton.extension.swift; sourceTree = "<group>"; };
 		0622EA2D226A239300E87F22 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
@@ -1031,7 +1031,7 @@
 				4001F71222ABF1AC0009CDA1 /* BaseCollectionViewController.swift */,
 				40EADBF92323512500D6E9E1 /* BaseNavigationController.swift */,
 				407869BF2323D19500C46C94 /* BaseTabBarController.swift */,
-				0622EA26226A20CE00E87F22 /* RxTableViewCell.swift */,
+				0622EA26226A20CE00E87F22 /* BaseTableViewCell.swift */,
 				069AD436227723100075E711 /* RxCollectionViewCell.swift */,
 				40D8999622FE750400B6DA6D /* RxRoundedCollectionViewCell.swift */,
 				5E17F980228BE4980046F68D /* RoundedTextFieldViewCell.swift */,
@@ -1501,7 +1501,7 @@
 				403E953722CF7B1000EFF459 /* DayRepository.swift in Sources */,
 				40EADBF0231A962E00D6E9E1 /* AppAppearance.swift in Sources */,
 				40B2142022B635F80040EA9E /* DaysViewController.swift in Sources */,
-				0622EA27226A20CE00E87F22 /* RxTableViewCell.swift in Sources */,
+				0622EA27226A20CE00E87F22 /* BaseTableViewCell.swift in Sources */,
 				40B2141B22B55D640040EA9E /* DayViewCell.swift in Sources */,
 				5E83E9F822E1628E00B8F584 /* TodayModel.swift in Sources */,
 				405A9F5222ACFB2E00454412 /* MonthsViewDataSource.swift in Sources */,

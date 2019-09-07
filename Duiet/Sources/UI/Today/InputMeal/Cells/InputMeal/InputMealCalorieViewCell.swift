@@ -11,7 +11,7 @@ import RxGesture
 import RxSwift
 import UIKit
 
-class InputMealCalorieViewCell: RxTableViewCell, CellFrameTrackkable {
+class InputMealCalorieViewCell: BaseTableViewCell, CellFrameTrackkable {
     @IBOutlet weak var mealNameTextField: MyTextField! {
         didSet {
             mealNameTextField.font = R.font.montserratExtraBold(size: 24)

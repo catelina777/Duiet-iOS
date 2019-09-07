@@ -9,7 +9,7 @@
 import RxCocoa
 import UIKit
 
-final class InputGenderViewCell: RxTableViewCell {
+final class InputGenderViewCell: BaseTableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
 
     @IBOutlet weak var maleButton: UIButton! {

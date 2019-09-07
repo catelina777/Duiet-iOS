@@ -15,7 +15,7 @@ protocol CellFrameTrackkable {
     func configure(for textField: MyTextField, viewModel: KeyboardTrackViewModel, window: UIWindow)
 }
 
-extension CellFrameTrackkable where Self: RxTableViewCell {
+extension CellFrameTrackkable where Self: BaseTableViewCell {
     func configure(for textField: MyTextField, viewModel: KeyboardTrackViewModel, window: UIWindow) {
         textField.rx.controlEvent(.editingDidBegin)
             .subscribe(onNext: { _ in

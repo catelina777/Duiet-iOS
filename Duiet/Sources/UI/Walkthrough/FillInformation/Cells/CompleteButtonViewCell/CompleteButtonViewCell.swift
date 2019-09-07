@@ -9,7 +9,7 @@
 import RxCocoa
 import UIKit
 
-final class CompleteButtonViewCell: RxTableViewCell {
+final class CompleteButtonViewCell: BaseTableViewCell {
     @IBOutlet weak var completeButton: UIButton! {
         didSet {
             completeButton.layer.cornerRadius = 10

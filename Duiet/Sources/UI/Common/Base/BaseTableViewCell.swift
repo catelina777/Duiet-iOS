@@ -1,5 +1,5 @@
 //
-//  RxTableViewCell.swift
+//  BaseTableViewCell.swift
 //  Duiet
 //
 //  Created by 上西 隆平 on 2019/04/18.
@@ -9,7 +9,7 @@
 import RxSwift
 import UIKit
 
-class RxTableViewCell: UITableViewCell {
+class BaseTableViewCell: UITableViewCell {
     var disposeBag = DisposeBag()
 
     override func prepareForReuse() {

@@ -11,7 +11,7 @@ import RxGesture
 import RxSwift
 import UIKit
 
-final class LabelCanvasViewCell: RxTableViewCell {
+final class LabelCanvasViewCell: BaseTableViewCell {
     func configure(with viewModel: InputMealViewModel) {
         // MARK: - Show labels from stored contents
         viewModel.output.showLabelsOnce
