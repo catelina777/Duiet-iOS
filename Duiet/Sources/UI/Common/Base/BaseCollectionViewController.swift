@@ -15,7 +15,6 @@ class BaseCollectionViewController: UIViewController, AppearanceChangeable {
     let disposeBag = DisposeBag()
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        print("status bar changed")
         return AppAppearance.shared.themeService.attrs.statusBarStyle
     }
 
