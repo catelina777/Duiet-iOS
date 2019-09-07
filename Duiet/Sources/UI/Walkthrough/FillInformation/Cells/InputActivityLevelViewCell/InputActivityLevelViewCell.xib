@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -35,7 +36,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.94902342559999997" green="0.94900828599999998" blue="0.94902843240000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="sG6-Yv-l4f" secondAttribute="bottom" id="2p8-qa-JFu"/>
                             <constraint firstAttribute="height" constant="48" id="5RA-SH-fiD"/>
@@ -54,7 +55,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
-                        <color key="backgroundColor" red="0.94902342559999997" green="0.94900828599999998" blue="0.94902843240000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="vR1-SS-EAE" firstAttribute="leading" secondItem="MKE-U8-b4L" secondAttribute="leading" constant="16" id="Jbw-w9-TrS"/>
                             <constraint firstAttribute="bottom" secondItem="vR1-SS-EAE" secondAttribute="bottom" constant="16" id="bLE-0V-T3V"/>
@@ -63,6 +64,7 @@
                         </constraints>
                     </view>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="MKE-U8-b4L" secondAttribute="trailing" id="HNS-ht-TSg"/>
                     <constraint firstItem="MKE-U8-b4L" firstAttribute="leading" secondItem="vCe-uD-LNs" secondAttribute="leading" id="Ot5-wD-w46"/>
@@ -73,6 +75,7 @@
                     <constraint firstAttribute="bottom" secondItem="MKE-U8-b4L" secondAttribute="bottom" id="vQm-pu-p3H"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="textField" destination="vR1-SS-EAE" id="nw4-da-c8N"/>
                 <outlet property="titleLabel" destination="sG6-Yv-l4f" id="L24-qG-i7g"/>

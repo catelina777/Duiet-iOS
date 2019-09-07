@@ -30,19 +30,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="461" height="54.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BMR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fSR-de-n6I">
-                                <rect key="frame" x="32" y="8.5" width="72" height="37.5"/>
+                                <rect key="frame" x="32" y="7.5" width="79" height="39.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-ExtraBold" family="Montserrat" pointSize="32"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="=" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AZo-af-qCc">
-                                <rect key="frame" x="120" y="8" width="20" height="38.5"/>
+                                <rect key="frame" x="130" y="7" width="20" height="40.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="33"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="calc..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xoK-qb-nmi">
-                                <rect key="frame" x="148" y="8.5" width="85.5" height="37.5"/>
+                                <rect key="frame" x="158" y="7.5" width="97" height="39.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-ExtraBold" family="Montserrat" pointSize="32"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -60,19 +60,19 @@
                         <rect key="frame" x="0.0" y="54.5" width="461" height="54"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TDEE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QG4-bN-W2i">
-                                <rect key="frame" x="32" y="8" width="80" height="37.5"/>
+                                <rect key="frame" x="32" y="7" width="90" height="39.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-ExtraBold" family="Montserrat" pointSize="32"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="=" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ROf-f8-k3n">
-                                <rect key="frame" x="120" y="7.5" width="20" height="38.5"/>
+                                <rect key="frame" x="130" y="6.5" width="20" height="40.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="33"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="calc..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rkz-DE-FCv">
-                                <rect key="frame" x="148" y="8" width="85.5" height="37.5"/>
+                                <rect key="frame" x="158" y="7" width="97" height="39.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-ExtraBold" family="Montserrat" pointSize="32"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -105,8 +105,12 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
-                <outlet property="BMRLabel" destination="xoK-qb-nmi" id="Itc-0V-nHQ"/>
-                <outlet property="TDEELabel" destination="Rkz-DE-FCv" id="o2m-QE-dAY"/>
+                <outlet property="BMRLabel" destination="fSR-de-n6I" id="rHu-ME-3RE"/>
+                <outlet property="BMRValueLabel" destination="xoK-qb-nmi" id="Itc-0V-nHQ"/>
+                <outlet property="TDEELabel" destination="QG4-bN-W2i" id="wxQ-iD-Tua"/>
+                <outlet property="TDEEValueLabel" destination="Rkz-DE-FCv" id="o2m-QE-dAY"/>
+                <outlet property="equalLabel1" destination="AZo-af-qCc" id="ncd-L5-WER"/>
+                <outlet property="equalLabel2" destination="ROf-f8-k3n" id="q9S-ys-VAg"/>
             </connections>
             <point key="canvasLocation" x="222.46376811594206" y="195.20089285714286"/>
         </tableViewCell>

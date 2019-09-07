@@ -19,10 +19,10 @@ final class CompleteButtonViewCell: BaseTableViewCell {
     var isComplete: Binder<Bool> {
         return Binder(completeButton) { button, bool in
             if bool {
-                button.backgroundColor = R.color.main()
+                button.backgroundColor = AppAppearance.shared.themeService.attrs.buttonMainColor
                 button.isEnabled = bool
             } else {
-                button.backgroundColor = R.color.disable()
+                button.backgroundColor = AppAppearance.shared.themeService.attrs.buttonDisableColor
                 button.isEnabled = bool
             }
         }

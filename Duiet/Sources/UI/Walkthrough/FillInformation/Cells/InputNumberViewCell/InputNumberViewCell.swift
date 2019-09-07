@@ -89,5 +89,9 @@ final class InputNumberViewCell: InputPickerViewCell, CellFrameTrackkable {
                 .bind(to: textField.rx.text)
                 .disposed(by: disposeBag)
         }
+
+        // MARK: Apply theme
+        let theme = AppAppearance.shared.themeService.attrs
+        titleLabel.textColor = theme.textMainColor
     }
 }

@@ -10,7 +10,7 @@ import RxCocoa
 import RxSwift
 import UIKit
 
-class WalkthroughViewController: UIViewController {
+class WalkthroughViewController: BaseViewController {
     @IBOutlet weak var firstImageView: UIImageView! {
         didSet {
             firstImageView.image = R.image.accessibility()?.withRenderingMode(.alwaysTemplate)
@@ -43,7 +43,6 @@ class WalkthroughViewController: UIViewController {
     }
 
     private let viewModel: WalkthroughViewModel
-    private let disposeBag = DisposeBag()
 
     init(viewModel: WalkthroughViewModel) {
         self.viewModel = viewModel

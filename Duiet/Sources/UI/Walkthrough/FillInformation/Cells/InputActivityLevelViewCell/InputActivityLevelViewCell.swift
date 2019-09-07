@@ -35,5 +35,9 @@ final class InputActivityLevelViewCell: InputPickerViewCell, CellFrameTrackkable
             .map { ActivityLevel.getType(with: $0.row).text }
             .bind(to: textField.rx.text)
             .disposed(by: disposeBag)
+
+        // MARK: Apply theme
+        let theme = AppAppearance.shared.themeService.attrs
+        titleLabel.textColor = theme.textMainColor
     }
 }

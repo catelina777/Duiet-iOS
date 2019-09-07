@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -38,7 +39,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.94902342559999997" green="0.94900828599999998" blue="0.94902843240000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="N2u-xh-5Q9" secondAttribute="bottom" id="Cjg-RR-9eM"/>
                             <constraint firstAttribute="height" constant="48" id="NSZ-Ww-MOs"/>
@@ -65,7 +66,7 @@
                                 </state>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.94902342559999997" green="0.94900828599999998" blue="0.94902843240000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="4wu-kh-eyj" firstAttribute="centerX" secondItem="Bor-WS-kVf" secondAttribute="centerX" constant="84" id="09h-Ws-e1L"/>
                             <constraint firstItem="329-qa-JcN" firstAttribute="centerY" secondItem="4wu-kh-eyj" secondAttribute="centerY" id="22z-Rz-dq5"/>
@@ -78,6 +79,7 @@
                         </constraints>
                     </view>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="Bor-WS-kVf" secondAttribute="bottom" id="004-0a-vkb"/>
                     <constraint firstItem="c8D-dJ-ggM" firstAttribute="leading" secondItem="660-hX-tJk" secondAttribute="leading" id="L2Q-9f-7L9"/>
@@ -88,6 +90,7 @@
                     <constraint firstItem="Bor-WS-kVf" firstAttribute="top" secondItem="c8D-dJ-ggM" secondAttribute="bottom" id="rDz-Zp-4Tm"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="femaleButton" destination="4wu-kh-eyj" id="Fln-Zs-LzM"/>
                 <outlet property="maleButton" destination="329-qa-JcN" id="Nz2-rs-o9z"/>
