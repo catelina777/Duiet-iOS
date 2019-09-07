@@ -25,7 +25,7 @@ final class AppAppearance {
     }()
 
     var themeWillUpdate: Binder<ThemeType> {
-        return Binder(self) { me, type in
+        return Binder(self) { _, type in
             UserDefaults.standard.set(type.value, forKey: UserDefaultsKey.appTheme)
         }
     }

@@ -9,15 +9,15 @@
 import RxCocoa
 
 protocol AppearanceChangeable: AnyObject {
-    var appearanceWillUpdate: Binder<ThemeType> { get }
+    var appearanceWillUpdate: Binder<Theme> { get }
 
-    func updateAppearance(with theme: ThemeType, me: Self)
+    func updateAppearance(with theme: Theme, me: Self)
 }
 
 extension AppearanceChangeable {
-    var appearanceWillUpdate: Binder<ThemeType> {
-        return Binder(self) { me, themeType in
-            me.updateAppearance(with: themeType, me: me)
+    var appearanceWillUpdate: Binder<Theme> {
+        return Binder(self) { me, theme in
+            me.updateAppearance(with: theme, me: me)
         }
     }
 }
