@@ -24,6 +24,16 @@ class BaseNavigationController: UINavigationController, AppearanceChangeable {
 
     func updateAppearance(with theme: Theme, me: BaseNavigationController) {
         me.setNeedsStatusBarAppearanceUpdate()
+        navigationBar.barTintColor = theme.navigationBarBarTintColor
+        navigationBar.tintColor = theme.navigationBarTintColor
+        navigationBar.largeTitleTextAttributes = [
+            .foregroundColor: theme.titleColor,
+            .font: R.font.montserratExtraBold(size: 32)!
+        ]
+        navigationBar.titleTextAttributes = [
+            .foregroundColor: theme.titleColor,
+            .font: R.font.montserratExtraBold(size: 18)!
+        ]
     }
 
     private func bindAppearance() {

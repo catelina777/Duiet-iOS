@@ -15,10 +15,6 @@ protocol NavigationBarCustomizable {
 extension NavigationBarCustomizable where Self: UIViewController {
     func configureNavigationBar(with title: String, isLargeTitles: Bool) {
         navigationController?.navigationBar.prefersLargeTitles = isLargeTitles
-        let largeTitleFont = R.font.montserratExtraBold(size: 32)!
-        let titleText = R.font.montserratExtraBold(size: 18)!
-        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.font: largeTitleFont]
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: titleText]
         self.title = title
     }
 }
