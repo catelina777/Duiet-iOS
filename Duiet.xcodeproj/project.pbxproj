@@ -47,7 +47,7 @@
 		069AD42A2277224A0075E711 /* TodayViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069AD426227722490075E711 /* TodayViewDataSource.swift */; };
 		069AD42B2277224A0075E711 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069AD427227722490075E711 /* TodayViewController.swift */; };
 		069AD434227722E50075E711 /* MealCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069AD432227722E50075E711 /* MealCardViewCell.swift */; };
-		069AD437227723100075E711 /* RxCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069AD436227723100075E711 /* RxCollectionViewCell.swift */; };
+		069AD437227723100075E711 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069AD436227723100075E711 /* BaseCollectionViewCell.swift */; };
 		069AD4392277246A0075E711 /* MealCardViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 069AD4382277246A0075E711 /* MealCardViewCell.xib */; };
 		069AD43C227728050075E711 /* Placeholder.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 069AD43B227728050075E711 /* Placeholder.xcassets */; };
 		069AD440227731EE0075E711 /* ProgressCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069AD43F227731EE0075E711 /* ProgressCardViewCell.swift */; };
@@ -231,7 +231,7 @@
 		069AD426227722490075E711 /* TodayViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayViewDataSource.swift; sourceTree = "<group>"; };
 		069AD427227722490075E711 /* TodayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		069AD432227722E50075E711 /* MealCardViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealCardViewCell.swift; sourceTree = "<group>"; };
-		069AD436227723100075E711 /* RxCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxCollectionViewCell.swift; sourceTree = "<group>"; };
+		069AD436227723100075E711 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		069AD4382277246A0075E711 /* MealCardViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MealCardViewCell.xib; sourceTree = "<group>"; };
 		069AD43B227728050075E711 /* Placeholder.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Placeholder.xcassets; sourceTree = "<group>"; };
 		069AD43F227731EE0075E711 /* ProgressCardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCardViewCell.swift; sourceTree = "<group>"; };
@@ -1032,7 +1032,7 @@
 				40EADBF92323512500D6E9E1 /* BaseNavigationController.swift */,
 				407869BF2323D19500C46C94 /* BaseTabBarController.swift */,
 				0622EA26226A20CE00E87F22 /* BaseTableViewCell.swift */,
-				069AD436227723100075E711 /* RxCollectionViewCell.swift */,
+				069AD436227723100075E711 /* BaseCollectionViewCell.swift */,
 				40D8999622FE750400B6DA6D /* RxRoundedCollectionViewCell.swift */,
 				5E17F980228BE4980046F68D /* RoundedTextFieldViewCell.swift */,
 				40B2141222B4A1FE0040EA9E /* RoundedWrapperView.swift */,
@@ -1517,7 +1517,7 @@
 				40EADBEE231A911000D6E9E1 /* UIColor.extension.swift in Sources */,
 				0641AD232264A1BA00CEDAE7 /* AppDelegate.swift in Sources */,
 				069AD440227731EE0075E711 /* ProgressCardViewCell.swift in Sources */,
-				069AD437227723100075E711 /* RxCollectionViewCell.swift in Sources */,
+				069AD437227723100075E711 /* BaseCollectionViewCell.swift in Sources */,
 				5E3E860822C334D3004E1676 /* DaysModel.swift in Sources */,
 				0622EA00226A1C7D00E87F22 /* NavigationBarCustomizable.swift in Sources */,
 				5E79D5672283FAC90073CD98 /* LabelCanvasViewCell.swift in Sources */,

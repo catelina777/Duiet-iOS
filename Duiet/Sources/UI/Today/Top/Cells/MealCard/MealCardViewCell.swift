@@ -54,7 +54,7 @@ class RoundedCardWrapperView: UIView {
     }
 }
 
-final class MealCardViewCell: RxCollectionViewCell {
+final class MealCardViewCell: BaseCollectionViewCell {
     @IBOutlet weak var imageView: UIImageView! {
         didSet {
             imageView.layer.cornerRadius = 12

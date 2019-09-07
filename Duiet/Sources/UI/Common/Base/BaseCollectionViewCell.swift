@@ -1,5 +1,5 @@
 //
-//  RxCollectionViewCell.swift
+//  BaseCollectionViewCell.swift
 //  Duiet
 //
 //  Created by Ryuhei Kaminishi on 2019/04/29.
@@ -9,7 +9,7 @@
 import RxSwift
 import UIKit
 
-class RxCollectionViewCell: UICollectionViewCell {
+class BaseCollectionViewCell: UICollectionViewCell {
     var disposeBag = DisposeBag()
 
     override func prepareForReuse() {

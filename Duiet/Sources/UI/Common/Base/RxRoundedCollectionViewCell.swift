@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RxRoundedCollectionViewCell: RxCollectionViewCell {
+class RxRoundedCollectionViewCell: BaseCollectionViewCell {
     @IBOutlet weak var roundedView: UIView!
 
     override var isHighlighted: Bool {
