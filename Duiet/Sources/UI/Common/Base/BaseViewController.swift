@@ -1,21 +1,18 @@
 //
-//  BaseCollectionViewController.swift
+//  BaseViewController.swift
 //  Duiet
 //
-//  Created by Ryuhei Kaminishi on 2019/06/08.
+//  Created by Ryuhei Kaminishi on 2019/09/07.
 //  Copyright © 2019 duiet. All rights reserved.
 //
 
 import RxSwift
 import UIKit
 
-class BaseCollectionViewController: UIViewController, AppearanceChangeable {
-    @IBOutlet private(set) weak var collectionView: UICollectionView!
-
+class BaseViewController: UIViewController, AppearanceChangeable {
     let disposeBag = DisposeBag()
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        print("status bar changed")
         return AppAppearance.shared.themeService.attrs.statusBarStyle
     }
 
@@ -25,15 +22,12 @@ class BaseCollectionViewController: UIViewController, AppearanceChangeable {
         bindAppearance()
     }
 
-    func updateAppearance(with theme: Theme, me: BaseCollectionViewController) {
-        print("appearance did update")
+    func updateAppearance(with theme: Theme, me: BaseViewController) {
         me.setNeedsStatusBarAppearanceUpdate()
-        collectionView.backgroundColor = theme.backgroundMainColor
+        view.backgroundColor = theme.backgroundMainColor
     }
 
     private func bindAppearance() {
-        print("bind appearance")
-        print(AppAppearance.shared.themeService.attrs.statusBarStyle.rawValue)
         AppAppearance.shared.themeService.attrsStream
             .bind(to: appearanceWillUpdate)
             .disposed(by: disposeBag)
