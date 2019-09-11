@@ -59,7 +59,11 @@ final class FillInformationViewModel {
             .share()
 
         let isValidateComplete = combinedInfo
-            .map { ($0 != nil) && ($1 != nil) && ($2 != nil) && ($3 != nil) && ($4 != .none) }
+            .map { gender, age, height, weight, level -> Bool in
+                let isCompleteForm = (gender != nil) && (age != nil) && (height != nil) && (weight != nil)
+                let isCompleteSelect = level != .none
+                return isCompleteForm && isCompleteSelect
+            }
             .distinctUntilChanged()
 
         let userInfo = PublishRelay<UserInfo>()
