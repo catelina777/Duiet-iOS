@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -exo pipefail
+
+PROJECT_ROOT=$(cd $(dirname $0); cd ..; pwd)
+PODS_ROOT="$PROJECT_ROOT/Pods"
+
+(cd "$PROJECT_ROOT"; bundle exec pod repo update)
+(cd "$PROJECT_ROOT"; COCOAPODS_DISABLE_STATS=true bundle exec pod install)

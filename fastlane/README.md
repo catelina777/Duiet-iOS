@@ -36,6 +36,21 @@ fastlane ios update_tools
 fastlane ios update_license_list
 ```
 
+### ios upload_build_cache
+```
+fastlane ios upload_build_cache
+```
+Archive build dependencies and upload it to GitHub Releases
+### ios download_build_cache
+```
+fastlane ios download_build_cache
+```
+Download build dependencies and expand it
+### ios renew_build_cache
+```
+fastlane ios renew_build_cache
+```
+Overwrite the　existing build cache with the latest
 
 ----
 
