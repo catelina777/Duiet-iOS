@@ -11,19 +11,29 @@ import RxCocoa
 import RxRelay
 import RxSwift
 
-final class WalkthroughViewModel {
-    let input: Input
-    let output: Output
+protocol WalkthroughViewModelInput {
+    var didTapNextButton: AnyObserver<Void> { get }
+}
 
+protocol WalkthroughViewModelOutput {}
+
+protocol WalkthroughViewModelProtocol {
+    var input: WalkthroughViewModelInput { get }
+    var output: WalkthroughViewModelOutput { get }
+}
+
+final class WalkthroughViewModel: WalkthroughViewModelProtocol {
+    let input: WalkthroughViewModelInput
+    let output: WalkthroughViewModelOutput
     private let disposeBag = DisposeBag()
 
     init(coordinator: WalkthrouthCoordinator) {
-        let _pushFillInformation = PublishRelay<Void>()
-        input = Input(pushFillInformation: _pushFillInformation.asObserver())
+        let _didTapNextButton = PublishRelay<Void>()
+        input = Input(didTapNextButton: _didTapNextButton.asObserver())
         output = Output()
 
         // MARK: - Processing to transition
-        _pushFillInformation
+        _didTapNextButton
             .asDriver(onErrorDriveWith: .empty())
             .drive(onNext: {
                 coordinator.showFillInformation()
@@ -33,8 +43,9 @@ final class WalkthroughViewModel {
 }
 
 extension WalkthroughViewModel {
-    struct Input {
-        let pushFillInformation: AnyObserver<Void>
+    struct Input: WalkthroughViewModelInput {
+        let didTapNextButton: AnyObserver<Void>
     }
-    struct Output {}
+
+    struct Output: WalkthroughViewModelOutput {}
 }

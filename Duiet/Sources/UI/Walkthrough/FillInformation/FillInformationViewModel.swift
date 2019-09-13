@@ -12,30 +12,34 @@ import RxRealm
 import RxRelay
 import RxSwift
 
-final class FillInformationViewModel {
-    let title = "Calculate"
-    let rowCounts = 7
+protocol FillInformationViewModelInput {
+    var gender: AnyObserver<Bool?> { get }
+    var age: AnyObserver<Int?> { get }
+    var height: AnyObserver<Double?> { get }
+    var weight: AnyObserver<Double?> { get }
+    var activityLevel: AnyObserver<ActivityLevel> { get }
+    var didTapCompleteButton: AnyObserver<Void> { get }
+}
 
-    let input: Input
-    let output: Output
+protocol FillInformationViewModelOutput {
+    var gender: Observable<Bool?> { get }
+    var isValidateComplete: Observable<Bool> { get }
+    var didTapComplete: Observable<Void> { get }
+    var BMR: Observable<String> { get }
+    var TDEE: Observable<String> { get }
+}
+
+protocol FillInformationViewModelProtocol {
+    var input: FillInformationViewModelInput { get }
+    var output: FillInformationViewModelOutput { get }
+}
+
+// TODO: Separate domain logic into model
+final class FillInformationViewModel: FillInformationViewModelProtocol {
+    let input: FillInformationViewModelInput
+    let output: FillInformationViewModelOutput
 
     private let disposeBag = DisposeBag()
-
-    private(set) lazy var ageList: [Int] = {
-        [Int].init(repeating: 0, count: 120).enumerated().map { $0.offset }
-    }()
-
-    private(set) lazy var heightList: [Double] = {
-        let list = [Double].init(repeating: 0, count: 215)
-        return list.enumerated().map { Double($0.offset) * 0.5 + 100 }
-    }()
-
-    private(set) lazy var weightList: [Double] = {
-        let list = [Double].init(repeating: 0, count: 150)
-        return list.enumerated().map { Double($0.offset) * 0.5 + 20 }
-    }()
-
-    let activityTypes: [ActivityLevel] = [.none, .sedentary, .lightly, .moderately, .veryActive]
 
     init(userInfoModel: UserInfoModelProtocol = UserInfoModel.shared) {
         let _gender = BehaviorRelay<Bool?>(value: nil)
@@ -43,14 +47,14 @@ final class FillInformationViewModel {
         let _height = BehaviorRelay<Double?>(value: nil)
         let _weight = BehaviorRelay<Double?>(value: nil)
         let _activityLevel = BehaviorRelay<ActivityLevel>(value: .none)
-        let _didTapComplete = PublishRelay<Void>()
+        let _didTapCompleteButton = PublishRelay<Void>()
 
         input = Input(gender: _gender.asObserver(),
                       age: _age.asObserver(),
                       height: _height.asObserver(),
                       weight: _weight.asObserver(),
                       activityLevel: _activityLevel.asObserver(),
-                      didTapComplete: _didTapComplete.asObserver())
+                      didTapCompleteButton: _didTapCompleteButton.asObserver())
 
         let gender = _gender.asObservable()
 
@@ -67,7 +71,7 @@ final class FillInformationViewModel {
             .distinctUntilChanged()
 
         let userInfo = PublishRelay<UserInfo>()
-        let didTapComplete = _didTapComplete
+        let didTapComplete = _didTapCompleteButton
 
         let BMRWithActivityLevel = combinedInfo
             .map { v0, v1, v2, v3, v4 -> (Double, ActivityLevel) in
@@ -126,6 +130,7 @@ final class FillInformationViewModel {
     convenience init(coordinator: WalkthrouthCoordinator) {
         self.init()
 
+        // MARK: - Processing to transition
         output.didTapComplete
             .asDriver(onErrorDriveWith: .empty())
             .drive(onNext: {
@@ -137,6 +142,7 @@ final class FillInformationViewModel {
     convenience init(coordinator: SettingCoordinator) {
         self.init()
 
+        // MARK: - Processing to transition
         output.didTapComplete
             .asDriver(onErrorDriveWith: .empty())
             .drive(onNext: {
@@ -147,16 +153,16 @@ final class FillInformationViewModel {
 }
 
 extension FillInformationViewModel {
-    struct Input {
+    struct Input: FillInformationViewModelInput {
         let gender: AnyObserver<Bool?>
         let age: AnyObserver<Int?>
         let height: AnyObserver<Double?>
         let weight: AnyObserver<Double?>
         let activityLevel: AnyObserver<ActivityLevel>
-        let didTapComplete: AnyObserver<Void>
+        let didTapCompleteButton: AnyObserver<Void>
     }
 
-    struct Output {
+    struct Output: FillInformationViewModelOutput {
         let gender: Observable<Bool?>
         let isValidateComplete: Observable<Bool>
         let didTapComplete: Observable<Void>

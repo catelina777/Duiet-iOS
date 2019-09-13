@@ -19,12 +19,14 @@ final class WalkthrouthCoordinator: Coordinator {
     }
 
     func start() {
-        let vc = WalkthroughViewController(viewModel: .init(coordinator: self))
+        let vm = WalkthroughViewModel(coordinator: self)
+        let vc = WalkthroughViewController(viewModel: vm)
         navigator.pushViewController(vc, animated: false)
     }
 
     func showFillInformation() {
-        let vc = FillInformationViewController(viewModel: .init(coordinator: self))
+        let vm = FillInformationViewModel(coordinator: self)
+        let vc = FillInformationViewController(viewModel: vm)
         navigator.pushViewController(vc, animated: true)
     }
 

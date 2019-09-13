@@ -24,7 +24,8 @@ final class SettingCoordinator: Coordinator {
     }
 
     func showFillInformation() {
-        let vc = FillInformationViewController(viewModel: .init(coordinator: self))
+        let vm = FillInformationViewModel(coordinator: self)
+        let vc = FillInformationViewController(viewModel: vm)
         navigator.pushViewController(vc, animated: true)
     }
 

@@ -28,13 +28,13 @@ final class CompleteButtonViewCell: BaseTableViewCell {
         }
     }
 
-    func configure(with viewModel: FillInformationViewModel) {
+    func configure(with viewModel: FillInformationViewModelProtocol) {
         viewModel.output.isValidateComplete
             .bind(to: isComplete)
             .disposed(by: disposeBag)
 
         completeButton.rx.tap
-            .bind(to: viewModel.input.didTapComplete)
+            .bind(to: viewModel.input.didTapCompleteButton)
             .disposed(by: disposeBag)
     }
 }

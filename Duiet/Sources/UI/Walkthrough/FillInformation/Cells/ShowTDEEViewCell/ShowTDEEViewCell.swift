@@ -16,7 +16,7 @@ final class ShowTDEEViewCell: BaseTableViewCell {
     @IBOutlet weak var equalLabel1: UILabel!
     @IBOutlet weak var equalLabel2: UILabel!
 
-    func configure(with viewModel: FillInformationViewModel) {
+    func configure(with viewModel: FillInformationViewModelProtocol) {
         viewModel.output.BMR
             .bind(to: BMRValueLabel.rx.text)
             .disposed(by: disposeBag)

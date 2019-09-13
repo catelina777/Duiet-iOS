@@ -22,10 +22,12 @@ final class InputNumberViewCell: InputPickerViewCell, CellFrameTrackkable {
                   window: window)
     }
 
-    func configure(with viewModel: FillInformationViewModel, type: CellType) {
+    func configure(with viewModel: FillInformationViewModelProtocol, type: CellType) {
         super.configure(with: type)
         if type == .height {
-            let list = viewModel.heightList
+            let list = [Double].init(repeating: 0, count: 215)
+                .enumerated()
+                .map { Double($0.offset) }
             let unit = " cm"
             let defaultRow = 140
 
@@ -47,7 +49,9 @@ final class InputNumberViewCell: InputPickerViewCell, CellFrameTrackkable {
         }
 
         if type == .weight {
-            let list = viewModel.weightList
+            let list = [Double].init(repeating: 0, count: 150)
+                .enumerated()
+                .map { Double($0.offset) * 0.5 + 20 }
             let unit = " kg"
             let defaultRow = 80
 
@@ -69,7 +73,9 @@ final class InputNumberViewCell: InputPickerViewCell, CellFrameTrackkable {
         }
 
         if type == .age {
-            let list = viewModel.ageList
+            let list =  [Int].init(repeating: 0, count: 120)
+                .enumerated()
+                .map { $0.offset }
             let unit = " years old"
             let defaultRow = 30
 

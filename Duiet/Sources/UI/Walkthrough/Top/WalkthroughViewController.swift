@@ -42,9 +42,9 @@ class WalkthroughViewController: BaseViewController {
         }
     }
 
-    private let viewModel: WalkthroughViewModel
+    private let viewModel: WalkthroughViewModelProtocol
 
-    init(viewModel: WalkthroughViewModel) {
+    init(viewModel: WalkthroughViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: WalkthroughViewController.className, bundle: nil)
     }
@@ -57,7 +57,7 @@ class WalkthroughViewController: BaseViewController {
         super.viewDidLoad()
 
         nextButton.rx.tap
-            .bind(to: viewModel.input.pushFillInformation)
+            .bind(to: viewModel.input.didTapNextButton)
             .disposed(by: disposeBag)
     }
 

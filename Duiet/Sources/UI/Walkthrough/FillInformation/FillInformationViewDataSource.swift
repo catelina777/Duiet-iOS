@@ -10,10 +10,10 @@ import RxSwift
 import UIKit
 
 class FillInformationViewDataSource: NSObject {
-    private let viewModel: FillInformationViewModel
+    private let viewModel: FillInformationViewModelProtocol
     private let keyboardTrackViewModel: KeyboardTrackViewModel
 
-    init(viewModel: FillInformationViewModel,
+    init(viewModel: FillInformationViewModelProtocol,
          keyboardTrackViewModel: KeyboardTrackViewModel) {
         self.viewModel = viewModel
         self.keyboardTrackViewModel = keyboardTrackViewModel
@@ -34,7 +34,7 @@ class FillInformationViewDataSource: NSObject {
 
 extension FillInformationViewDataSource: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.rowCounts
+        return 7
     }
 
     func tableView(_ tableView: UITableView,
