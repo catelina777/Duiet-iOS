@@ -38,10 +38,6 @@ final class MealLabelViewModel: MealLabelViewModelProtocol, MealLabelViewModelDa
     private let _content: BehaviorRelay<Content>
     private let disposeBag = DisposeBag()
 
-    var content: Content {
-        return _content.value
-    }
-
     init(content: Content) {
         _content = BehaviorRelay<Content>(value: content)
 
@@ -68,8 +64,13 @@ extension MealLabelViewModel {
         let contentDidUpdate: AnyObserver<Content>
         let contentDidDelete: AnyObserver<Void>
     }
+
     struct Output: MealLabelViewModelOutput {
         let contentDidUpdate: Observable<Content>
         let hideView: Observable<Void>
+    }
+
+    var content: Content {
+        return _content.value
     }
 }

@@ -9,9 +9,9 @@
 import UIKit
 
 final class DaysViewDataSource: NSObject {
-    private let viewModel: DaysViewModel
+    private let viewModel: DaysViewModelProtocol
 
-    init(viewModel: DaysViewModel) {
+    init(viewModel: DaysViewModelProtocol) {
         self.viewModel = viewModel
     }
 
@@ -25,15 +25,15 @@ final class DaysViewDataSource: NSObject {
 extension DaysViewDataSource: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return viewModel.days.count
+        return viewModel.data.days.count
     }
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.daySummaryViewCell,
                                                       for: indexPath)!
-        cell.configure(with: viewModel.days[indexPath.row],
-                       userInfo: viewModel.userInfo)
+        cell.configure(with: viewModel.data.days[indexPath.row],
+                       userInfo: viewModel.data.userInfo)
         return cell
     }
 }
@@ -41,7 +41,7 @@ extension DaysViewDataSource: UICollectionViewDataSource {
 extension DaysViewDataSource: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
-        let day = viewModel.days[indexPath.row]
+        let day = viewModel.data.days[indexPath.row]
         viewModel.input.selectedDay.on(.next(day))
     }
 }
