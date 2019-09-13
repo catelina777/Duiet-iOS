@@ -1324,13 +1324,13 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"$(SRCROOT)/carthage_input.xcfilelist",
+				"$(SRCROOT)/Scripts/BuildPhases/carthage_input.xcfilelist",
 			);
 			inputPaths = (
 			);
 			name = Carthage;
 			outputFileListPaths = (
-				"$(SRCROOT)/carthage_output.xcfilelist",
+				"$(SRCROOT)/Scripts/BuildPhases/carthage_output.xcfilelist",
 			);
 			outputPaths = (
 			);
