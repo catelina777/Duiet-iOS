@@ -14,10 +14,10 @@ import RxSwift
 import UIKit
 
 class TodayViewController: BaseCollectionViewController, NavigationBarCustomizable {
-    let viewModel: TodayViewModel
+    let viewModel: TodayViewModelProtocol
     private let dataSource: TodayViewDataSource
 
-    init(viewModel: TodayViewModel) {
+    init(viewModel: TodayViewModelProtocol) {
         self.viewModel = viewModel
         self.dataSource = TodayViewDataSource(viewModel: viewModel)
         super.init(nibName: TodayViewController.className, bundle: nil)
@@ -29,7 +29,7 @@ class TodayViewController: BaseCollectionViewController, NavigationBarCustomizab
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureNavigationBar(with: viewModel.title,
+        configureNavigationBar(with: viewModel.data.title,
                                isLargeTitles: true)
         dataSource.configure(with: collectionView)
 

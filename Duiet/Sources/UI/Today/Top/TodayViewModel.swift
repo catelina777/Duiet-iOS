@@ -13,14 +13,36 @@ import RxRelay
 import RxSwift
 import UIKit
 
-final class TodayViewModel {
-    let input: Input
-    let output: Output
+protocol TodayViewModelInput {
+    var viewDidAppear: AnyObserver<Void> { get }
+    var willLoadData: AnyObserver<Void> { get }
+    var addButtonTap: AnyObserver<TodayViewController> { get }
+    var selectedItem: AnyObserver<(MealCardViewCell, Meal, Int)> { get }
+    var showDetailDay: AnyObserver<Day> { get }
+}
 
-    let userInfoModel: UserInfoModelProtocol
-    let todayModel: TodayModelProtocol
+protocol TodayViewModelOutput {
+    var viewDidAppear: Observable<Void> { get }
+    var didLoadData: Observable<Void> { get }
+    var changeData: Observable<RealmChangeset?> { get }
+    var progress: Observable<(Day, UserInfo)> { get }
+}
 
-    private let disposeBag = DisposeBag()
+protocol TodayViewModelData {
+    var meals: [Meal] { get }
+    var title: String { get }
+}
+
+protocol TodayViewModelProtocol {
+    var input: TodayViewModelInput { get }
+    var output: TodayViewModelOutput { get }
+    var data: TodayViewModelData { get }
+}
+
+final class TodayViewModel: TodayViewModelProtocol, TodayViewModelData {
+    let input: TodayViewModelInput
+    let output: TodayViewModelOutput
+    var data: TodayViewModelData { return self }
 
     var meals: [Meal] {
         return todayModel.meals
@@ -29,6 +51,11 @@ final class TodayViewModel {
     var title: String {
         return todayModel.title
     }
+
+    let userInfoModel: UserInfoModelProtocol
+    let todayModel: TodayModelProtocol
+
+    private let disposeBag = DisposeBag()
 
     init(coordinator: TodayCoordinator,
          userInfoModel: UserInfoModelProtocol,
@@ -112,7 +139,7 @@ final class TodayViewModel {
 }
 
 extension TodayViewModel {
-    struct Input {
+    struct Input: TodayViewModelInput {
         let viewDidAppear: AnyObserver<Void>
         let willLoadData: AnyObserver<Void>
         let addButtonTap: AnyObserver<TodayViewController>
@@ -120,7 +147,7 @@ extension TodayViewModel {
         let showDetailDay: AnyObserver<Day>
     }
 
-    struct Output {
+    struct Output: TodayViewModelOutput {
         let viewDidAppear: Observable<Void>
         let didLoadData: Observable<Void>
         let changeData: Observable<RealmChangeset?>

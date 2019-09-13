@@ -11,7 +11,7 @@ import UIKit
 final class TopTodayViewController: TodayViewController {
     private let tabViewModel: TopTabBarViewModel
 
-    init(viewModel: TodayViewModel,
+    init(viewModel: TodayViewModelProtocol,
          tabViewModel: TopTabBarViewModel) {
         self.tabViewModel = tabViewModel
         super.init(viewModel: viewModel)
