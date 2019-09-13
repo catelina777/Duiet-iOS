@@ -10,9 +10,30 @@ import Foundation
 import RxRelay
 import RxSwift
 
-final class MealLabelViewModel {
-    let input: Input
-    let output: Output
+protocol MealLabelViewModelInput {
+    var contentDidUpdate: AnyObserver<Content> { get }
+    var contentDidDelete: AnyObserver<Void> { get }
+}
+
+protocol MealLabelViewModelOutput {
+    var contentDidUpdate: Observable<Content> { get }
+    var hideView: Observable<Void> { get }
+}
+
+protocol MealLabelViewModelData {
+    var content: Content { get }
+}
+
+protocol MealLabelViewModelProtocol {
+    var input: MealLabelViewModelInput { get }
+    var output: MealLabelViewModelOutput { get }
+    var data: MealLabelViewModelData { get }
+}
+
+final class MealLabelViewModel: MealLabelViewModelProtocol, MealLabelViewModelData {
+    let input: MealLabelViewModelInput
+    let output: MealLabelViewModelOutput
+    var data: MealLabelViewModelData { return self }
 
     private let _content: BehaviorRelay<Content>
     private let disposeBag = DisposeBag()
@@ -43,11 +64,11 @@ final class MealLabelViewModel {
 }
 
 extension MealLabelViewModel {
-    struct Input {
+    struct Input: MealLabelViewModelInput {
         let contentDidUpdate: AnyObserver<Content>
         let contentDidDelete: AnyObserver<Void>
     }
-    struct Output {
+    struct Output: MealLabelViewModelOutput {
         let contentDidUpdate: Observable<Content>
         let hideView: Observable<Void>
     }

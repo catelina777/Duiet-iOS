@@ -25,6 +25,7 @@ protocol WalkthroughViewModelProtocol {
 final class WalkthroughViewModel: WalkthroughViewModelProtocol {
     let input: WalkthroughViewModelInput
     let output: WalkthroughViewModelOutput
+
     private let disposeBag = DisposeBag()
 
     init(coordinator: WalkthrouthCoordinator) {

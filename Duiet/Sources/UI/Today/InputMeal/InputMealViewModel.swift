@@ -10,16 +10,41 @@ import Foundation
 import RxRelay
 import RxSwift
 
-final class InputMealViewModel {
-    let input: Input
-    let output: Output
+protocol InputMealViewModelInput {
+    var nameTextInput: AnyObserver<String?> { get }
+    var calorieTextInput: AnyObserver<String?> { get }
+    var multipleTextInput: AnyObserver<String?> { get }
+    var selectedViewModel: AnyObserver<MealLabelViewModelProtocol> { get }
+    var contentWillAdd: AnyObserver<Content> { get }
+    var contentWillDelete: AnyObserver<Void> { get }
+    var dismiss: AnyObserver<Void> { get }
+}
+
+protocol InputMealViewModelOutput {
+    var showLabelsOnce: Observable<[Content]> { get }
+    var contentDidUpdate: Observable<Content> { get }
+    var contentDidDelete: Observable<Void> { get }
+    var updateTextFields: Observable<Content> { get }
+    var reloadData: Observable<Void> { get }
+}
+
+protocol InputMealViewModelData {
+    var contentCount: Int { get }
+}
+
+protocol InputMealViewModelProtocol {
+    var input: InputMealViewModelInput { get }
+    var output: InputMealViewModelOutput { get }
+    var data: InputMealViewModelData { get }
+}
+
+final class InputMealViewModel: InputMealViewModelProtocol, InputMealViewModelData {
+    let input: InputMealViewModelInput
+    let output: InputMealViewModelOutput
+    var data: InputMealViewModelData { return self }
 
     private let inputMealModel: InputMealModelProtocol
     private let disposeBag = DisposeBag()
-
-    var contentCount: Int {
-        return inputMealModel.meal.value.contents.count
-    }
 
     init(coordinator: TodayCoordinator,
          model: InputMealModelProtocol) {
@@ -28,7 +53,7 @@ final class InputMealViewModel {
         let _nameTextInput = PublishRelay<String?>()
         let _calorieTextInput = PublishRelay<String?>()
         let _multipleTextInput = PublishRelay<String?>()
-        let _selectedViewModel = PublishRelay<MealLabelViewModel>()
+        let _selectedViewModel = PublishRelay<MealLabelViewModelProtocol>()
         let _contentWillAdd = PublishRelay<Content>()
         let _contentWillDelete = PublishRelay<Void>()
         let _dismiss = PublishRelay<Void>()
@@ -45,7 +70,7 @@ final class InputMealViewModel {
             .map { $0.contents.toArray() }
             .take(1)
 
-        let selectedContent = _selectedViewModel.map { $0.content }
+        let selectedContent = _selectedViewModel.map { $0.data.content }
 
         let updateTextFields = selectedContent.compactMap { $0 }
         let reloadData = model.contentDidAdd
@@ -127,20 +152,24 @@ final class InputMealViewModel {
 }
 
 extension InputMealViewModel {
-    struct Input {
+    struct Input: InputMealViewModelInput {
         let nameTextInput: AnyObserver<String?>
         let calorieTextInput: AnyObserver<String?>
         let multipleTextInput: AnyObserver<String?>
-        let selectedViewModel: AnyObserver<MealLabelViewModel>
+        let selectedViewModel: AnyObserver<MealLabelViewModelProtocol>
         let contentWillAdd: AnyObserver<Content>
         let contentWillDelete: AnyObserver<Void>
         let dismiss: AnyObserver<Void>
     }
-    struct Output {
+    struct Output: InputMealViewModelOutput {
         let showLabelsOnce: Observable<[Content]>
         let contentDidUpdate: Observable<Content>
         let contentDidDelete: Observable<Void>
         let updateTextFields: Observable<Content>
         let reloadData: Observable<Void>
+    }
+
+    var contentCount: Int {
+        return inputMealModel.meal.value.contents.count
     }
 }

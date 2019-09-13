@@ -44,14 +44,6 @@ final class TodayViewModel: TodayViewModelProtocol, TodayViewModelData {
     let output: TodayViewModelOutput
     var data: TodayViewModelData { return self }
 
-    var meals: [Meal] {
-        return todayModel.meals
-    }
-
-    var title: String {
-        return todayModel.title
-    }
-
     let userInfoModel: UserInfoModelProtocol
     let todayModel: TodayModelProtocol
 
@@ -152,5 +144,13 @@ extension TodayViewModel {
         let didLoadData: Observable<Void>
         let changeData: Observable<RealmChangeset?>
         let progress: Observable<(Day, UserInfo)>
+    }
+
+    var meals: [Meal] {
+        return todayModel.meals
+    }
+
+    var title: String {
+        return todayModel.title
     }
 }

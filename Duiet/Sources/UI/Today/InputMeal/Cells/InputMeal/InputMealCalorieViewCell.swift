@@ -68,7 +68,7 @@ class InputMealCalorieViewCell: BaseTableViewCell, CellFrameTrackkable {
         }
     }
 
-    func configure(with viewModel: InputMealViewModel) {
+    func configure(with viewModel: InputMealViewModelProtocol) {
         mealCalorieTextField.rx.text
             .bind(to: viewModel.input.calorieTextInput)
             .disposed(by: disposeBag)
