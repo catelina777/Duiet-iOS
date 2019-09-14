@@ -4,8 +4,8 @@ platform :ios do
 
   desc 'Run Duiet.app tests'
   lane :duiet_tests do
-    run_test("Duiet.xcworkspace", 'DuietTests', 'name=iPhone Xs Max,OS=12.4', 'DuietTests')
-    run_test("Duiet.xcworkspace", 'DuietUITests', 'name=iPhone Xs Max,OS=12.4', 'DuietUITests')
+    run_test("Duiet.xcworkspace", 'DuietTests', 'name=iPhone 11 Pro Max,OS=13.0', 'DuietTests')
+    run_test("Duiet.xcworkspace", 'DuietUITests', 'name=iPhone 11 Pro Max,OS=13.0', 'DuietUITests')
   end
 
   def run_test(workspace, scheme, destination, testcase)
