@@ -9,10 +9,10 @@
 import UIKit
 
 class MonthsViewController: BaseCollectionViewController, NavigationBarCustomizable {
-    let viewModel: MonthsViewModel
+    let viewModel: MonthsViewModelProtocol
     private let dataSource: MonthsViewDataSource
 
-    init(viewModel: MonthsViewModel) {
+    init(viewModel: MonthsViewModelProtocol) {
         self.viewModel = viewModel
         dataSource = MonthsViewDataSource(viewModel: viewModel)
         super.init(nibName: MonthsViewController.className, bundle: nil)

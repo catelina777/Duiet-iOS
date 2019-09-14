@@ -10,17 +10,32 @@ import Foundation
 import RxRelay
 import RxSwift
 
-final class MonthsViewModel {
-    let input: Input
-    let output: Output
+protocol MonthsViewModelInput {
+    var itemDidSelect: AnyObserver<Month> { get }
+}
+
+protocol MonthsViewModelOutput {
+    var showSelectedMonth: Observable<Month> { get }
+}
+
+protocol MonthsViewModelData {
+    var months: [Month] { get }
+}
+
+protocol MonthsViewModelProtocol {
+    var input: MonthsViewModelInput { get }
+    var output: MonthsViewModelOutput { get }
+    var data: MonthsViewModelData { get }
+}
+
+final class MonthsViewModel: MonthsViewModelProtocol, MonthsViewModelData {
+    let input: MonthsViewModelInput
+    let output: MonthsViewModelOutput
+    var data: MonthsViewModelData { return self }
 
     private let monthsModel: MonthsModelProtocol
     private let coordinator: MonthsCoordinator
     private let disposeBag = DisposeBag()
-
-    var months: [Month] {
-        return monthsModel.months.value
-    }
 
     init(coordinator: MonthsCoordinator,
          monthsModel: MonthsModelProtocol) {
@@ -34,11 +49,15 @@ final class MonthsViewModel {
 }
 
 extension MonthsViewModel {
-    struct Input {
+    struct Input: MonthsViewModelInput {
         let itemDidSelect: AnyObserver<Month>
     }
 
-    struct Output {
+    struct Output: MonthsViewModelOutput {
         let showSelectedMonth: Observable<Month>
+    }
+
+    var months: [Month] {
+        return monthsModel.months.value
     }
 }

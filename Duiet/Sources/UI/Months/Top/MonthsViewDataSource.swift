@@ -9,9 +9,9 @@
 import UIKit
 
 final class MonthsViewDataSource: NSObject {
-    private let viewModel: MonthsViewModel
+    private let viewModel: MonthsViewModelProtocol
 
-    init(viewModel: MonthsViewModel) {
+    init(viewModel: MonthsViewModelProtocol) {
         self.viewModel = viewModel
     }
 
@@ -25,14 +25,14 @@ final class MonthsViewDataSource: NSObject {
 extension MonthsViewDataSource: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return viewModel.months.count
+        return viewModel.data.months.count
     }
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.monthSummaryViewCell,
                                                       for: indexPath)!
-        let month = viewModel.months[indexPath.row]
+        let month = viewModel.data.months[indexPath.row]
         cell.configure(with: month)
         return cell
     }
@@ -41,7 +41,7 @@ extension MonthsViewDataSource: UICollectionViewDataSource {
 extension MonthsViewDataSource: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
-        let month = viewModel.months[indexPath.row]
+        let month = viewModel.data.months[indexPath.row]
         viewModel.input.itemDidSelect.on(.next(month))
     }
 }
