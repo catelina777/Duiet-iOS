@@ -11,4 +11,5 @@ import Foundation
 enum PageType: String {
     case fillInfomation
     case inputMeal
+    case calculate = "Calculate"
 }

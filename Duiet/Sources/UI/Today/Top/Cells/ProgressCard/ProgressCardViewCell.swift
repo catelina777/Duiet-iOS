@@ -11,7 +11,6 @@ import RxSwift
 import UIKit
 
 final class ProgressCardViewCell: BaseCollectionViewCell {
-
     @IBOutlet weak var dayValueLabel: UILabel!
     @IBOutlet weak var TDEEValueLabel: UILabel!
     @IBOutlet weak var totalValueLabel: UILabel!

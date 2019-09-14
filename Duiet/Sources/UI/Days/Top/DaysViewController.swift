@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DaysViewController: BaseCollectionViewController, NavigationBarCustomizable {
+class DaysViewController: BaseCollectionViewController {
     let viewModel: DaysViewModelProtocol
     private let dataSource: DaysViewDataSource
 
@@ -24,8 +24,8 @@ class DaysViewController: BaseCollectionViewController, NavigationBarCustomizabl
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureNavigationBar(with: viewModel.data.title,
-                               isLargeTitles: true)
+
+        title = viewModel.data.title
         dataSource.configure(with: collectionView)
     }
 }

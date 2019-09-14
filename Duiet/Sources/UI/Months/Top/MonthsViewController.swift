@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MonthsViewController: BaseCollectionViewController, NavigationBarCustomizable {
+class MonthsViewController: BaseCollectionViewController {
     let viewModel: MonthsViewModelProtocol
     private let dataSource: MonthsViewDataSource
 
@@ -24,8 +24,8 @@ class MonthsViewController: BaseCollectionViewController, NavigationBarCustomiza
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        title = SceneType.months.title
         dataSource.configure(with: collectionView)
-        configureNavigationBar(with: SceneType.months.title,
-                               isLargeTitles: true)
     }
 }
