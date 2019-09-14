@@ -11,12 +11,12 @@ import RxSwift
 import UIKit
 
 final class FillInformationViewController: BaseTableViewController, NavigationBarCustomizable, KeyboardFrameTrackkable {
-    let viewModel: FillInformationViewModel
+    let viewModel: FillInformationViewModelProtocol
     let dataSource: FillInformationViewDataSource
 
     let keyboardTrackViewModel: KeyboardTrackViewModel
 
-    init(viewModel: FillInformationViewModel) {
+    init(viewModel: FillInformationViewModelProtocol) {
         self.viewModel = viewModel
         self.keyboardTrackViewModel = KeyboardTrackViewModel()
         dataSource = FillInformationViewDataSource(viewModel: viewModel,
@@ -31,7 +31,9 @@ final class FillInformationViewController: BaseTableViewController, NavigationBa
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource.configure(with: tableView)
-        configureNavigationBar(with: viewModel.title)
+        // TODO: Consider creating an enum that holds the titles
+        configureNavigationBar(with: "Calculate",
+                               isLargeTitles: true)
 
         keyboardTrackViewModel.output.difference
             .bind(to: updateScroll)

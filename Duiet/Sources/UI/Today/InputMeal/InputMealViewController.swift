@@ -22,11 +22,11 @@ final class InputMealViewController: BaseTableViewController, KeyboardFrameTrack
         }
     }
 
-    let viewModel: InputMealViewModel
+    let viewModel: InputMealViewModelProtocol
     let keyboardTrackViewModel: KeyboardTrackViewModel
     let dataSource: InputMealDataSource
 
-    init(viewModel: InputMealViewModel,
+    init(viewModel: InputMealViewModelProtocol,
          image: UIImage?) {
         self.viewModel = viewModel
         self.keyboardTrackViewModel = KeyboardTrackViewModel()

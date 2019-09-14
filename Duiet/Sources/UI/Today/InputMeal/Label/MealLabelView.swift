@@ -26,7 +26,7 @@ final class MealLabelView: UIView {
     var viewModel: MealLabelViewModel!
     private let disposeBag = DisposeBag()
 
-    func configure(with viewModel: InputMealViewModel) {
+    func configure(with viewModel: InputMealViewModelProtocol) {
         // MARK: - Send ViewModel of selected MealLabel
         rx.tapGesture()
             .when(.recognized)

@@ -10,9 +10,9 @@ import RxSwift
 import UIKit
 
 final class TodayViewDataSource: NSObject {
-    private let viewModel: TodayViewModel
+    private let viewModel: TodayViewModelProtocol
 
-    init(viewModel: TodayViewModel) {
+    init(viewModel: TodayViewModelProtocol) {
         self.viewModel = viewModel
     }
 
@@ -26,7 +26,7 @@ final class TodayViewDataSource: NSObject {
 
 extension TodayViewDataSource: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.meals.count + 1
+        return viewModel.data.meals.count + 1
     }
 
     func collectionView(_ collectionView: UICollectionView,
@@ -42,7 +42,7 @@ extension TodayViewDataSource: UICollectionViewDataSource {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.mealCardViewCell,
                                                           for: indexPath)!
             let mealIndex = indexPath.row - 1
-            let meal = viewModel.meals[mealIndex]
+            let meal = viewModel.data.meals[mealIndex]
             cell.configure(with: meal, viewDidAppear: viewModel.output.viewDidAppear)
             return cell
         }
@@ -57,7 +57,7 @@ extension TodayViewDataSource: UICollectionViewDelegate {
             let cardCell = cell as? MealCardViewCell
         else { return }
         let mealIndex = indexPath.row - 1
-        let meal = viewModel.meals[mealIndex]
+        let meal = viewModel.data.meals[mealIndex]
         viewModel.input.selectedItem.on(.next((cardCell, meal, mealIndex)))
     }
 }

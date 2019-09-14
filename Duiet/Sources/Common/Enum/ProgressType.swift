@@ -16,13 +16,13 @@ enum ProgressType {
     var color: UIColor {
         switch self {
         case .exceed:
-            return R.color.exceed()!
+            return UIColor.systemPink
 
         case .less:
-            return R.color.main()!
+            return UIColor.systemBlue
 
         case .none:
-            return R.color.subBackground()!
+            return R.color.systemBackgroundMain()!
         }
     }
 

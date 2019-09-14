@@ -10,4 +10,8 @@ import UIKit
 
 final class DayViewCell: UICollectionViewCell {
     @IBOutlet weak var textLabel: UILabel!
+
+    func configure(with text: String) {
+        textLabel.text = text
+    }
 }

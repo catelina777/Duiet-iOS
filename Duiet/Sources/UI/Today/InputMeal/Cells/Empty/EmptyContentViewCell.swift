@@ -8,5 +8,5 @@
 
 import UIKit
 
-final class EmptyContentViewCell: RxTableViewCell {
+final class EmptyContentViewCell: BaseTableViewCell {
 }

@@ -9,9 +9,9 @@
 import UIKit
 
 final class SettingViewDataSource: NSObject {
-    private let viewModel: SettingViewModel
+    private let viewModel: SettingViewModelProtocol
 
-    init(viewModel: SettingViewModel) {
+    init(viewModel: SettingViewModelProtocol) {
         self.viewModel = viewModel
     }
 

@@ -18,9 +18,10 @@ final class TodayCoordinator: Coordinator {
         self.navigator = navigator
         self.tabViewModel = tabViewModel
         let model = TodayModel(repository: DayRepository.shared)
-        viewController = TopTodayViewController(viewModel: .init(coordinator: self,
-                                                                userInfoModel: UserInfoModel.shared,
-                                                                todayModel: model),
+        let vm = TodayViewModel(coordinator: self,
+                                userInfoModel: UserInfoModel.shared,
+                                todayModel: model)
+        viewController = TopTodayViewController(viewModel: vm,
                                                 tabViewModel: tabViewModel)
     }
 
@@ -36,26 +37,21 @@ final class TodayCoordinator: Coordinator {
     }
 
     func showEdit(mealCard: MealCardViewCell, meal: Meal, row: Int) {
-        let heroID = "\(row)"
-        mealCard.imageView.hero.id = heroID
-
         let model = InputMealModel(repository: DayRepository.shared,
                                    meal: meal)
         let viewModel = InputMealViewModel(coordinator: self,
                                            model: model)
         let vc = InputMealViewController(viewModel: viewModel,
                                          image: mealCard.imageView.image)
-        vc.hero.isEnabled = true
-        vc.hero.modalAnimationType = .auto
-        vc.headerView.hero.id = heroID
         navigator.present(vc, animated: true, completion: nil)
     }
 
     func showDetailDay(day: Day) {
         let model = TodayModel(repository: DayRepository.shared, date: day.createdAt)
-        let vc = TodayViewController(viewModel: .init(coordinator: self,
-                                                    userInfoModel: UserInfoModel.shared,
-                                                    todayModel: model))
+        let vm = TodayViewModel(coordinator: self,
+                                userInfoModel: UserInfoModel.shared,
+                                todayModel: model)
+        let vc = TodayViewController(viewModel: vm)
         navigator.pushViewController(vc, animated: true)
     }
 

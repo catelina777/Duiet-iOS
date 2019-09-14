@@ -9,7 +9,7 @@
 import RxSwift
 import UIKit
 
-class BaseTableViewController: UIViewController {
-    let disposeBag = DisposeBag()
+class BaseTableViewController: UIViewController{
     @IBOutlet private(set) weak var tableView: UITableView!
+    let disposeBag = DisposeBag()
 }

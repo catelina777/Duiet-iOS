@@ -10,9 +10,8 @@ import RxCocoa
 import RxSwift
 import UIKit
 
-class TopTabBarController: UITabBarController {
+class TopTabBarController: BaseTabBarController {
     private let viewModel: TopTabBarViewModel
-    private let disposeBag = DisposeBag()
 
     init(viewModel: TopTabBarViewModel,
          navigationControllers: [UIViewController]) {

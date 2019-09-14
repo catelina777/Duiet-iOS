@@ -1,5 +1,4 @@
 github "ReactiveX/RxSwift" ~> 5.0
 github "RxSwiftCommunity/RxGesture" ~> 3.0
 github "RxSwiftCommunity/RxRealm"
-github "HeroTransitions/Hero"
 github "realm/realm-cocoa"

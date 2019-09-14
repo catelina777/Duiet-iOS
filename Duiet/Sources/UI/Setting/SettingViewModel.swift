@@ -10,9 +10,20 @@ import Foundation
 import RxRelay
 import RxSwift
 
-final class SettingViewModel {
-    let input: Input
-    let output: Output
+protocol SettingViewModelInput {
+    var itemDidSelect: AnyObserver<SettingType> { get }
+}
+
+protocol SettingViewModelOutput {}
+
+protocol SettingViewModelProtocol {
+    var input: SettingViewModelInput { get }
+    var output: SettingViewModelOutput { get }
+}
+
+final class SettingViewModel: SettingViewModelProtocol {
+    let input: SettingViewModelInput
+    let output: SettingViewModelOutput
 
     private let disposeBag = DisposeBag()
 
@@ -35,9 +46,9 @@ final class SettingViewModel {
 }
 
 extension SettingViewModel {
-    struct Input {
+    struct Input: SettingViewModelInput {
         let itemDidSelect: AnyObserver<SettingType>
     }
 
-    struct Output {}
+    struct Output: SettingViewModelOutput {}
 }

@@ -8,12 +8,12 @@
 
 import UIKit
 
-final class DaySummaryViewCell: RxRoundedCollectionViewCell {
-    @IBOutlet weak var dayLabel: UILabel!
-    @IBOutlet weak var TDEELabel: UILabel!
-    @IBOutlet weak var totalLabel: UILabel!
-    @IBOutlet weak var differenceLabel: UILabel!
-    @IBOutlet weak var weightChangeLabel: UILabel!
+final class DaySummaryViewCell: RoundedCollectionViewCell {
+    @IBOutlet weak var dayValueLabel: UILabel!
+    @IBOutlet weak var TDEEValueLabel: UILabel!
+    @IBOutlet weak var totalValueLabel: UILabel!
+    @IBOutlet weak var differenceValueLabel: UILabel!
+    @IBOutlet weak var weightChangeValueLabel: UILabel!
 
     func configure(with day: Day, userInfo: UserInfo) {
         let tdee = Int(userInfo.TDEE)
@@ -23,10 +23,10 @@ final class DaySummaryViewCell: RxRoundedCollectionViewCell {
         let weightChangeText = weightChange > 0 ?
             "\(abs(weightChange)) g UP 💪" :
             "\(abs(weightChange)) g DOWN ⬇️"
-        dayLabel.text = "\(day.createdAt.toString())"
-        TDEELabel.text = "\(tdee) kcal"
-        totalLabel.text = "\(totalCalorie) kcal"
-        differenceLabel.text = "\(difference) kcal"
-        weightChangeLabel.text = weightChangeText
+        dayValueLabel.text = "\(day.createdAt.toString())"
+        TDEEValueLabel.text = "\(tdee) kcal"
+        totalValueLabel.text = "\(totalCalorie) kcal"
+        differenceValueLabel.text = "\(difference) kcal"
+        weightChangeValueLabel.text = weightChangeText
     }
 }

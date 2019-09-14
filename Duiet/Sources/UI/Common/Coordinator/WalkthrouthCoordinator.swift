@@ -10,26 +10,29 @@ import UIKit
 
 final class WalkthrouthCoordinator: Coordinator {
     private let topTabBarCoordinator: TopTabBarCoordinator
-    private let navigator: UINavigationController
+    private let navigator: BaseNavigationController
 
-    init(navigator: UINavigationController,
+    init(navigator: BaseNavigationController,
          topTabBarCoordinator: TopTabBarCoordinator) {
         self.navigator = navigator
         self.topTabBarCoordinator = topTabBarCoordinator
     }
 
     func start() {
-        let vc = WalkthroughViewController(viewModel: .init(coordinator: self))
+        let vm = WalkthroughViewModel(coordinator: self)
+        let vc = WalkthroughViewController(viewModel: vm)
         navigator.pushViewController(vc, animated: false)
     }
 
     func showFillInformation() {
-        let vc = FillInformationViewController(viewModel: .init(coordinator: self))
+        let vm = FillInformationViewModel(coordinator: self)
+        let vc = FillInformationViewController(viewModel: vm)
         navigator.pushViewController(vc, animated: true)
     }
 
     func showTop() {
         let vc = topTabBarCoordinator.controller
+        vc.modalPresentationStyle = .fullScreen
         navigator.present(vc, animated: true, completion: nil)
     }
 }

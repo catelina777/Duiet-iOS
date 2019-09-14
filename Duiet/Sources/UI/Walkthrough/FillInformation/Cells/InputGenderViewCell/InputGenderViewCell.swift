@@ -9,7 +9,7 @@
 import RxCocoa
 import UIKit
 
-final class InputGenderViewCell: RxTableViewCell {
+final class InputGenderViewCell: BaseTableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
 
     @IBOutlet weak var maleButton: UIButton! {
@@ -24,7 +24,7 @@ final class InputGenderViewCell: RxTableViewCell {
         }
     }
 
-    func configure(with viewModel: FillInformationViewModel, cellType: CellType) {
+    func configure(with viewModel: FillInformationViewModelProtocol, cellType: CellType) {
         titleLabel.text = cellType.rawValue
 
         maleButton.rx.tap
@@ -47,7 +47,7 @@ final class InputGenderViewCell: RxTableViewCell {
     var switchSelectedButton: Binder<Bool?> {
         return Binder(self) { me, bool in
             guard let bool = bool else { return }
-            let borderColor = R.color.main()?.cgColor
+            let borderColor = R.color.componentMain()!.cgColor
             if bool {
                 me.maleButton.layer.borderColor = borderColor
                 me.femaleButton.layer.borderColor = UIColor.clear.cgColor

@@ -9,10 +9,10 @@
 import UIKit
 
 class MonthsViewController: BaseCollectionViewController, NavigationBarCustomizable {
-    let viewModel: MonthsViewModel
+    let viewModel: MonthsViewModelProtocol
     private let dataSource: MonthsViewDataSource
 
-    init(viewModel: MonthsViewModel) {
+    init(viewModel: MonthsViewModelProtocol) {
         self.viewModel = viewModel
         dataSource = MonthsViewDataSource(viewModel: viewModel)
         super.init(nibName: MonthsViewController.className, bundle: nil)
@@ -25,6 +25,7 @@ class MonthsViewController: BaseCollectionViewController, NavigationBarCustomiza
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource.configure(with: collectionView)
-        configureNavigationBar(with: SceneType.months.title)
+        configureNavigationBar(with: SceneType.months.title,
+                               isLargeTitles: true)
     }
 }

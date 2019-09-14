@@ -1,5 +1,5 @@
 //
-//  RxRoundedCollectionViewCell.swift
+//  RoundedCollectionViewCell.swift
 //  Duiet
 //
 //  Created by Ryuhei Kaminishi on 2019/08/10.
@@ -8,18 +8,18 @@
 
 import UIKit
 
-class RxRoundedCollectionViewCell: RxCollectionViewCell {
+class RoundedCollectionViewCell: BaseCollectionViewCell {
     @IBOutlet weak var roundedView: UIView!
 
     override var isHighlighted: Bool {
         didSet {
             if isHighlighted {
                 UIView.animate(withDuration: 0.1) {
-                    self.roundedView.backgroundColor = R.color.highlight()
+                    self.roundedView.backgroundColor = R.color.cellHighlight()!
                 }
             } else {
                 UIView.animate(withDuration: 0.25) {
-                    self.roundedView.backgroundColor = R.color.mainBackground()
+                    self.roundedView.backgroundColor = R.color.cellBackground()!
                 }
             }
         }

@@ -8,17 +8,17 @@
 
 import UIKit
 
-final class ShowTDEEViewCell: RxTableViewCell {
-    @IBOutlet weak var BMRLabel: UILabel!
-    @IBOutlet weak var TDEELabel: UILabel!
+final class ShowTDEEViewCell: BaseTableViewCell {
+    @IBOutlet weak var BMRValueLabel: UILabel!
+    @IBOutlet weak var TDEEValueLabel: UILabel!
 
-    func configure(with viewModel: FillInformationViewModel) {
+    func configure(with viewModel: FillInformationViewModelProtocol) {
         viewModel.output.BMR
-            .bind(to: BMRLabel.rx.text)
+            .bind(to: BMRValueLabel.rx.text)
             .disposed(by: disposeBag)
 
         viewModel.output.TDEE
-            .bind(to: TDEELabel.rx.text)
+            .bind(to: TDEEValueLabel.rx.text)
             .disposed(by: disposeBag)
     }
 }

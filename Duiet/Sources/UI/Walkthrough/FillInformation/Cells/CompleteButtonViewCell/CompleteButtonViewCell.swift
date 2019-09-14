@@ -9,7 +9,7 @@
 import RxCocoa
 import UIKit
 
-final class CompleteButtonViewCell: RxTableViewCell {
+final class CompleteButtonViewCell: BaseTableViewCell {
     @IBOutlet weak var completeButton: UIButton! {
         didSet {
             completeButton.layer.cornerRadius = 10
@@ -19,22 +19,22 @@ final class CompleteButtonViewCell: RxTableViewCell {
     var isComplete: Binder<Bool> {
         return Binder(completeButton) { button, bool in
             if bool {
-                button.backgroundColor = R.color.main()
+                button.backgroundColor = R.color.componentMain()!
                 button.isEnabled = bool
             } else {
-                button.backgroundColor = R.color.disable()
+                button.backgroundColor = .systemGray3
                 button.isEnabled = bool
             }
         }
     }
 
-    func configure(with viewModel: FillInformationViewModel) {
+    func configure(with viewModel: FillInformationViewModelProtocol) {
         viewModel.output.isValidateComplete
             .bind(to: isComplete)
             .disposed(by: disposeBag)
 
         completeButton.rx.tap
-            .bind(to: viewModel.input.didTapComplete)
+            .bind(to: viewModel.input.didTapCompleteButton)
             .disposed(by: disposeBag)
     }
 }

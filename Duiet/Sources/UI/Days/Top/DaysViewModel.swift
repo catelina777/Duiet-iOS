@@ -10,26 +10,36 @@ import Foundation
 import RxRelay
 import RxSwift
 
-final class DaysViewModel {
-    let input: Input
-    let output: Output
+protocol DaysViewModelInput {
+    var selectedDay: AnyObserver<Day> { get }
+    var selectedMonth: AnyObserver<Month> { get }
+}
+
+protocol DaysViewModelOutput {
+    var showDetailDay: Observable<Day> { get }
+}
+
+protocol DaysViewModelData {
+    var days: [Day] { get }
+    var userInfo: UserInfo { get }
+    var title: String { get }
+}
+
+protocol DaysViewModelProtocol {
+    var input: DaysViewModelInput { get }
+    var output: DaysViewModelOutput { get }
+    var data: DaysViewModelData { get }
+}
+
+final class DaysViewModel: DaysViewModelProtocol, DaysViewModelData {
+    let input: DaysViewModelInput
+    let output: DaysViewModelOutput
+    var data: DaysViewModelData { return self }
 
     private let daysModel: DaysModelProtocol
     private let userInfoModel: UserInfoModelProtocol
     private let coordinator: DaysCoordinator
     private let disposeBag = DisposeBag()
-
-    var userInfo: UserInfo {
-        return userInfoModel.userInfo.value
-    }
-
-    var days: [Day] {
-        return daysModel.days.value
-    }
-
-    var title: String {
-        return daysModel.title
-    }
 
     init(coordinator: DaysCoordinator,
          userInfoModel: UserInfoModelProtocol,
@@ -54,12 +64,24 @@ final class DaysViewModel {
 }
 
 extension DaysViewModel {
-    struct Input {
+    struct Input: DaysViewModelInput {
         let selectedDay: AnyObserver<Day>
         let selectedMonth: AnyObserver<Month>
     }
 
-    struct Output {
+    struct Output: DaysViewModelOutput {
         let showDetailDay: Observable<Day>
+    }
+
+    var days: [Day] {
+        return daysModel.days.value
+    }
+
+    var userInfo: UserInfo {
+        return userInfoModel.userInfo.value
+    }
+
+    var title: String {
+        return daysModel.title
     }
 }

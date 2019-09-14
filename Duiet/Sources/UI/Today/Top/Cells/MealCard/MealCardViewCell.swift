@@ -54,7 +54,7 @@ class RoundedCardWrapperView: UIView {
     }
 }
 
-final class MealCardViewCell: RxCollectionViewCell {
+final class MealCardViewCell: BaseCollectionViewCell {
     @IBOutlet weak var imageView: UIImageView! {
         didSet {
             imageView.layer.cornerRadius = 12
@@ -84,7 +84,7 @@ final class MealCardViewCell: RxCollectionViewCell {
     }
 
     private func set(image path: String) {
-        PhotoManager.rx.fetchImage(with: path)
+        PhotoRepository.shared.fetch(with: path)
             .bind(to: imageView.rx.image)
             .disposed(by: disposeBag)
     }

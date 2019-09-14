@@ -9,10 +9,10 @@
 import UIKit
 
 final class InputMealDataSource: NSObject {
-    let viewModel: InputMealViewModel
+    let viewModel: InputMealViewModelProtocol
     let keyboardTrackViewModel: KeyboardTrackViewModel
 
-    init(viewModel: InputMealViewModel,
+    init(viewModel: InputMealViewModelProtocol,
          keyboardTrackViewModel: KeyboardTrackViewModel) {
         self.viewModel = viewModel
         self.keyboardTrackViewModel = keyboardTrackViewModel
@@ -48,7 +48,7 @@ extension InputMealDataSource: UITableViewDataSource {
 
         default:
             // Display when mealLabelviews are empty
-            if viewModel.contentCount == 0 {
+            if viewModel.data.contentCount == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.emptyContentViewCell,
                                                          for: indexPath)!
                 return cell

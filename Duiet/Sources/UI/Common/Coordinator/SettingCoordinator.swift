@@ -9,22 +9,24 @@
 import UIKit
 
 final class SettingCoordinator: Coordinator {
-    private let navigator: UINavigationController
+    private let navigator: BaseNavigationController
     private let tabViewModel: TopTabBarViewModel
 
-    init(navigator: UINavigationController,
+    init(navigator: BaseNavigationController,
          tabViewModel: TopTabBarViewModel) {
         self.navigator = navigator
         self.tabViewModel = tabViewModel
     }
 
     func start() {
-        let vc = SettingViewController(viewModel: .init(coordinator: self))
+        let vm = SettingViewModel(coordinator: self)
+        let vc = SettingViewController(viewModel: vm)
         navigator.pushViewController(vc, animated: false)
     }
 
     func showFillInformation() {
-        let vc = FillInformationViewController(viewModel: .init(coordinator: self))
+        let vm = FillInformationViewModel(coordinator: self)
+        let vc = FillInformationViewController(viewModel: vm)
         navigator.pushViewController(vc, animated: true)
     }
 

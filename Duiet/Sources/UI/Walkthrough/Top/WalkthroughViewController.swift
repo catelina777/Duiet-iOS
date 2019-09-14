@@ -10,29 +10,29 @@ import RxCocoa
 import RxSwift
 import UIKit
 
-class WalkthroughViewController: UIViewController {
+class WalkthroughViewController: BaseViewController {
     @IBOutlet weak var firstImageView: UIImageView! {
         didSet {
             firstImageView.image = R.image.accessibility()?.withRenderingMode(.alwaysTemplate)
-            firstImageView.tintColor = R.color.main()
+//            firstImageView.tintColor = R.color.main()
         }
     }
     @IBOutlet weak var secondImageView: UIImageView! {
         didSet {
             secondImageView.image = R.image.image()?.withRenderingMode(.alwaysTemplate)
-            firstImageView.tintColor = R.color.main()
+//            firstImageView.tintColor = R.color.main()
         }
     }
     @IBOutlet weak var thirdImageView: UIImageView! {
         didSet {
             thirdImageView.image = R.image.edit()?.withRenderingMode(.alwaysTemplate)
-            thirdImageView.tintColor = R.color.main()
+//            thirdImageView.tintColor = R.color.main()
         }
     }
     @IBOutlet weak var fourthImageView: UIImageView! {
         didSet {
             fourthImageView.image = R.image.thumb_up()?.withRenderingMode(.alwaysTemplate)
-            fourthImageView.tintColor = R.color.main()
+//            fourthImageView.tintColor = R.color.main()
         }
     }
 
@@ -42,10 +42,9 @@ class WalkthroughViewController: UIViewController {
         }
     }
 
-    private let viewModel: WalkthroughViewModel
-    private let disposeBag = DisposeBag()
+    private let viewModel: WalkthroughViewModelProtocol
 
-    init(viewModel: WalkthroughViewModel) {
+    init(viewModel: WalkthroughViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: WalkthroughViewController.className, bundle: nil)
     }
@@ -58,7 +57,7 @@ class WalkthroughViewController: UIViewController {
         super.viewDidLoad()
 
         nextButton.rx.tap
-            .bind(to: viewModel.input.pushFillInformation)
+            .bind(to: viewModel.input.didTapNextButton)
             .disposed(by: disposeBag)
     }
 

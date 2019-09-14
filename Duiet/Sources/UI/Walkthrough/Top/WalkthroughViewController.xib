@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -43,7 +41,7 @@
                             <rect key="frame" x="0.0" y="44" width="414" height="120"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How to use 🧐" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f1B-Zr-Zow">
-                                    <rect key="frame" x="76" y="48" width="262" height="44"/>
+                                    <rect key="frame" x="92.5" y="48" width="229.5" height="42"/>
                                     <fontDescription key="fontDescription" name="Montserrat-ExtraBold" family="Montserrat" pointSize="36"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -67,6 +65,7 @@
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="accessibility" translatesAutoresizingMaskIntoConstraints="NO" id="J9j-FC-F9b">
                                                     <rect key="frame" x="43.5" y="39.5" width="62" height="62"/>
+                                                    <color key="tintColor" name="componentMain"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="J9j-FC-F9b" secondAttribute="height" multiplier="1:1" id="slc-4t-kmV"/>
                                                     </constraints>
@@ -86,7 +85,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="290" height="42"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Caluculate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r0M-pa-3le">
-                                                            <rect key="frame" x="0.0" y="17.5" width="112" height="24.5"/>
+                                                            <rect key="frame" x="0.0" y="18.5" width="95" height="23.5"/>
                                                             <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="20"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -99,8 +98,9 @@
                                                     </constraints>
                                                 </view>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Calculate your daily calorie consumption by entering your height, weight, etc..." selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L6R-3U-8Ul">
-                                                    <rect key="frame" x="-4" y="38" width="258" height="75"/>
+                                                    <rect key="frame" x="-4" y="38" width="258" height="73.5"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
@@ -137,6 +137,7 @@
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image" translatesAutoresizingMaskIntoConstraints="NO" id="zOj-Jg-FyD">
                                                     <rect key="frame" x="43.5" y="25" width="62" height="62"/>
+                                                    <color key="tintColor" name="componentMain"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="zOj-Jg-FyD" secondAttribute="height" multiplier="1:1" id="2Ed-Hg-tYw"/>
                                                     </constraints>
@@ -156,7 +157,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="290" height="33.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get photo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gQ2-x5-lGl">
-                                                            <rect key="frame" x="0.0" y="9" width="105" height="24.5"/>
+                                                            <rect key="frame" x="0.0" y="10" width="90.5" height="23.5"/>
                                                             <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="20"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -169,8 +170,9 @@
                                                     </constraints>
                                                 </view>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Take a picture of a meal or get it from your library" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HcM-Vh-ZKI">
-                                                    <rect key="frame" x="-4" y="29.5" width="258" height="55.5"/>
+                                                    <rect key="frame" x="-4" y="29.5" width="258" height="54.5"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
@@ -207,6 +209,7 @@
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="edit" translatesAutoresizingMaskIntoConstraints="NO" id="Okg-Qb-Soo">
                                                     <rect key="frame" x="43.5" y="32.5" width="62" height="62"/>
+                                                    <color key="tintColor" name="componentMain"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="Okg-Qb-Soo" secondAttribute="height" multiplier="1:1" id="LsX-Yg-izQ"/>
                                                     </constraints>
@@ -226,7 +229,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="290" height="38"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Record calories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6CL-9M-TMm">
-                                                            <rect key="frame" x="0.0" y="13.5" width="161.5" height="24.5"/>
+                                                            <rect key="frame" x="0.0" y="14.5" width="140" height="23.5"/>
                                                             <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="20"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -239,8 +242,9 @@
                                                     </constraints>
                                                 </view>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Tap the picture of the meal and fill in the calories one by one" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J81-3O-hLH">
-                                                    <rect key="frame" x="-4" y="34" width="258" height="75"/>
+                                                    <rect key="frame" x="-4" y="34" width="258" height="54.5"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
@@ -277,6 +281,7 @@
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="thumb_up" translatesAutoresizingMaskIntoConstraints="NO" id="l9k-uM-7KP">
                                                     <rect key="frame" x="43.5" y="53.5" width="62" height="62"/>
+                                                    <color key="tintColor" name="componentMain"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="l9k-uM-7KP" secondAttribute="height" multiplier="1:1" id="syo-0s-Duk"/>
                                                     </constraints>
@@ -296,7 +301,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="290" height="51"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Control weight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ijg-Wu-SL6">
-                                                            <rect key="frame" x="0.0" y="26.5" width="157" height="24.5"/>
+                                                            <rect key="frame" x="0.0" y="27.5" width="130.5" height="23.5"/>
                                                             <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="20"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -309,8 +314,9 @@
                                                     </constraints>
                                                 </view>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Human beings are not moving by magic, so controlling calories can give you the ideal weight like magic" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4tb-y4-Jnb">
-                                                    <rect key="frame" x="-4" y="47" width="258" height="94.5"/>
+                                                    <rect key="frame" x="-4" y="47" width="258" height="92.5"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
@@ -344,7 +350,7 @@
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qC3-zs-81y">
                                             <rect key="frame" x="31" y="37" width="352" height="67"/>
-                                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" name="componentMain"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="qC3-zs-81y" secondAttribute="height" multiplier="5:0.95" id="AQM-c0-b0t"/>
                                             </constraints>
@@ -370,7 +376,7 @@
                             </constraints>
                         </stackView>
                     </subviews>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="hZX-HG-9fz" firstAttribute="top" secondItem="qRW-CL-UGX" secondAttribute="bottom" constant="8" id="Bsy-bA-Gj3"/>
                         <constraint firstItem="U9r-eW-Xdy" firstAttribute="bottom" secondItem="hZX-HG-9fz" secondAttribute="bottom" id="OeJ-Z9-ckj"/>
@@ -383,7 +389,7 @@
                     <viewLayoutGuide key="safeArea" id="U9r-eW-Xdy"/>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" name="systemBackgroundMain"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="lDt-xx-fyD" secondAttribute="bottom" id="3ou-E0-SD2"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="lDt-xx-fyD" secondAttribute="trailing" id="bMd-LS-Fot"/>
@@ -399,5 +405,11 @@
         <image name="edit" width="18" height="18"/>
         <image name="image" width="18" height="18"/>
         <image name="thumb_up" width="18" height="18"/>
+        <namedColor name="componentMain">
+            <color red="0.22352941176470589" green="0.75686274509803919" blue="0.73725490196078436" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="systemBackgroundMain">
+            <color red="0.18823529411764706" green="0.18823529411764706" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

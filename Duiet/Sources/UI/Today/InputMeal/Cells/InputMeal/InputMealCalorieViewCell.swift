@@ -11,32 +11,36 @@ import RxGesture
 import RxSwift
 import UIKit
 
-class InputMealCalorieViewCell: RxTableViewCell, CellFrameTrackkable {
-    @IBOutlet weak var mealNameTextField: MyTextField! {
+class InputMealCalorieViewCell: BaseTableViewCell, CellFrameTrackkable {
+    @IBOutlet weak var calorieTitleLabel: UILabel!
+    @IBOutlet weak var multipleTitleLabel: UILabel!
+    @IBOutlet weak var nameTitleLabel: UILabel!
+
+    @IBOutlet weak var calorieTextField: MyTextField! {
         didSet {
-            mealNameTextField.font = R.font.montserratExtraBold(size: 24)
-            mealNameTextField.layer.cornerRadius = 10
-            mealNameTextField.layer.masksToBounds = true
-            mealNameTextField.placeholder = "option"
+            calorieTextField.font = R.font.montserratExtraBold(size: 24)
+            calorieTextField.layer.cornerRadius = 10
+            calorieTextField.layer.masksToBounds = true
+            calorieTextField.keyboardType = .decimalPad
         }
     }
 
-    @IBOutlet weak var mealCalorieTextField: MyTextField! {
+    @IBOutlet weak var multipleTextField: MyTextField! {
         didSet {
-            mealCalorieTextField.font = R.font.montserratExtraBold(size: 24)
-            mealCalorieTextField.layer.cornerRadius = 10
-            mealCalorieTextField.layer.masksToBounds = true
-            mealCalorieTextField.keyboardType = .decimalPad
+            multipleTextField.font = R.font.montserratExtraBold(size: 24)
+            multipleTextField.layer.cornerRadius = 10
+            multipleTextField.layer.masksToBounds = true
+            multipleTextField.keyboardType = .decimalPad
+            multipleTextField.placeholder = "option"
         }
     }
 
-    @IBOutlet weak var mealAmountTextField: MyTextField! {
+    @IBOutlet weak var nameTextField: MyTextField! {
         didSet {
-            mealAmountTextField.font = R.font.montserratExtraBold(size: 24)
-            mealAmountTextField.layer.cornerRadius = 10
-            mealAmountTextField.layer.masksToBounds = true
-            mealAmountTextField.keyboardType = .decimalPad
-            mealAmountTextField.placeholder = "option"
+            nameTextField.font = R.font.montserratExtraBold(size: 24)
+            nameTextField.layer.cornerRadius = 10
+            nameTextField.layer.masksToBounds = true
+            nameTextField.placeholder = "option"
         }
     }
 
@@ -44,9 +48,9 @@ class InputMealCalorieViewCell: RxTableViewCell, CellFrameTrackkable {
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        mealNameTextField.text = nil
-        mealCalorieTextField.text = nil
-        mealAmountTextField.text = nil
+        nameTextField.text = nil
+        calorieTextField.text = nil
+        multipleTextField.text = nil
     }
 
     func configure(with viewModel: KeyboardTrackViewModel) {
@@ -56,28 +60,26 @@ class InputMealCalorieViewCell: RxTableViewCell, CellFrameTrackkable {
             let window = optionalWindow
         else { return }
 
-        let myTextFields = [mealNameTextField,
-                            mealCalorieTextField,
-                            mealAmountTextField]
-
-        myTextFields.forEach { textField in
-            guard let textField = textField else { return }
+        [nameTextField,
+         calorieTextField,
+         multipleTextField].forEach {
+            guard let textField = $0 else { return }
             configure(for: textField,
                       viewModel: viewModel,
                       window: window)
         }
     }
 
-    func configure(with viewModel: InputMealViewModel) {
-        mealCalorieTextField.rx.text
+    func configure(with viewModel: InputMealViewModelProtocol) {
+        calorieTextField.rx.text
             .bind(to: viewModel.input.calorieTextInput)
             .disposed(by: disposeBag)
 
-        mealAmountTextField.rx.text
+        multipleTextField.rx.text
             .bind(to: viewModel.input.multipleTextInput)
             .disposed(by: disposeBag)
 
-        mealNameTextField.rx.text
+        nameTextField.rx.text
             .bind(to: viewModel.input.nameTextInput)
             .disposed(by: disposeBag)
 
@@ -92,11 +94,11 @@ class InputMealCalorieViewCell: RxTableViewCell, CellFrameTrackkable {
 
     var updateTextFields: Binder<Content> {
         return Binder(self) { me, content in
-            me.mealNameTextField.text = content.name
-            me.mealCalorieTextField.text = ""
-            me.mealAmountTextField.text = ""
-            me.mealCalorieTextField.placeholder = "\(content.calorie)"
-            me.mealAmountTextField.placeholder = "\(content.multiple)"
+            me.nameTextField.text = content.name
+            me.calorieTextField.text = ""
+            me.multipleTextField.text = ""
+            me.calorieTextField.placeholder = "\(content.calorie)"
+            me.multipleTextField.placeholder = "\(content.multiple)"
         }
     }
 }
