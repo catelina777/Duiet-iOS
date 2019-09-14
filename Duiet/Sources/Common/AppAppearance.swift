@@ -14,9 +14,7 @@ import RxTheme
 final class AppAppearance {
     static let shared = AppAppearance()
 
-    static let themeKey = "Duiet-app-theme"
-
-    private var disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
 
     let themeService: ThemeService<ThemeType> = {
         let themeTypeValue = (UserDefaults.standard.object(forKey: UserDefaultsKey.appTheme) as? Int) ?? 0
