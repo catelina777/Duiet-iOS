@@ -8,17 +8,31 @@
 
 import Foundation
 
-final class MonthSummaryViewModel {
-    let input: Input
-    let output: Output
+protocol MonthSummaryViewModelInput {}
+
+protocol MonthSummaryViewModelOutput {}
+
+protocol MonthSummaryViewModelData {
+    var progress: [ProgressType] { get }
+    var userInfo: UserInfo { get }
+}
+
+protocol MonthSummaryViewModelProtocol {
+    var input: MonthSummaryViewModelInput { get }
+    var output: MonthSummaryViewModelOutput { get }
+    var data: MonthSummaryViewModelData { get }
+}
+
+final class MonthSummaryViewModel: MonthSummaryViewModelProtocol, MonthSummaryViewModelData {
+    let input: MonthSummaryViewModelInput
+    let output: MonthSummaryViewModelOutput
+    var data: MonthSummaryViewModelData { return self }
 
     let progress: [ProgressType]
-    let userInfoModel: UserInfoModelProtocol
+    let userInfo: UserInfo
 
     init(month: Month,
          userInfoModel: UserInfoModelProtocol) {
-        self.userInfoModel = userInfoModel
-
         /*
          1.Monthの日数個のnilが入った[Day?]を作成する
          2.Monthの持っているDaysを[Day?]の対応した要素に挿入し，
@@ -58,14 +72,14 @@ final class MonthSummaryViewModel {
             return ProgressType.none
         }
         self.progress = progress
-
+        self.userInfo = userInfoModel.userInfo.value
         input = Input()
         output = Output()
     }
 }
 
 extension MonthSummaryViewModel {
-    struct Input {}
+    struct Input: MonthSummaryViewModelInput {}
 
-    struct Output {}
+    struct Output: MonthSummaryViewModelOutput {}
 }

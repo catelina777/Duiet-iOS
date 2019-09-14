@@ -9,9 +9,9 @@
 import UIKit
 
 final class MonthSummaryViewDataSource: NSObject {
-    private let viewModel: MonthSummaryViewModel
+    private let viewModel: MonthSummaryViewModelProtocol
 
-    init(viewModel: MonthSummaryViewModel) {
+    init(viewModel: MonthSummaryViewModelProtocol) {
         self.viewModel = viewModel
     }
 
@@ -25,7 +25,7 @@ final class MonthSummaryViewDataSource: NSObject {
 
 extension MonthSummaryViewDataSource: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Week.all.count + viewModel.progress.count
+        return Week.all.count + viewModel.data.progress.count
     }
 
     func collectionView(_ collectionView: UICollectionView,
@@ -40,7 +40,7 @@ extension MonthSummaryViewDataSource: UICollectionViewDataSource {
         default:
             let row = indexPath.row - Week.all.count
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "kusa", for: indexPath)
-            cell.backgroundColor = viewModel.progress[row].color
+            cell.backgroundColor = viewModel.data.progress[row].color
             return cell
         }
     }

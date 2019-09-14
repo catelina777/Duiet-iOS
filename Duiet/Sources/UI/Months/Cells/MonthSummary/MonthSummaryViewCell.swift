@@ -9,7 +9,7 @@
 import UIKit
 
 final class MonthSummaryViewCell: RoundedCollectionViewCell {
-    var viewModel: MonthSummaryViewModel!
+    var viewModel: MonthSummaryViewModelProtocol!
     var dataSource: MonthSummaryViewDataSource!
     @IBOutlet private(set) weak var collectionView: UICollectionView!
     @IBOutlet weak var dayLabel: UILabel!
@@ -20,7 +20,7 @@ final class MonthSummaryViewCell: RoundedCollectionViewCell {
         dataSource = MonthSummaryViewDataSource(viewModel: viewModel)
         dataSource.configure(with: collectionView)
         dayLabel.text = month.createdAt.toYearMonthString()
-        let tdee = viewModel.userInfoModel.userInfo.value.TDEE
+        let tdee = viewModel.data.userInfo.TDEE
         let totalDifferenceGram = month.days.reduce(into: 0) { $0 += $1.totalCalorie - tdee }
         let weightChange = totalDifferenceGram / (9 * 0.8) / 1_000
         let weightChangeText = weightChange > 0 ?
