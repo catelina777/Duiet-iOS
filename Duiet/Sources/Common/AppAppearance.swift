@@ -34,6 +34,17 @@ final class AppAppearance {
         return themeService.attrStream(mapper)
     }
 
+    func `switch`(to style: UIUserInterfaceStyle) {
+        print("switch to \(style)")
+        switch style {
+        case .dark:
+            themeService.switch(.dark)
+
+        default:
+            themeService.switch(.light)
+        }
+    }
+
     func start() {
         themeService.typeStream
             .bind(to: themeWillUpdate)
