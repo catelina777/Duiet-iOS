@@ -12,7 +12,7 @@ import RxRealm
 import RxSwift
 import UIKit
 
-class TodayViewController: BaseCollectionViewController, NavigationBarCustomizable {
+class TodayViewController: BaseCollectionViewController {
     let viewModel: TodayViewModelProtocol
     private let dataSource: TodayViewDataSource
 
@@ -28,8 +28,8 @@ class TodayViewController: BaseCollectionViewController, NavigationBarCustomizab
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureNavigationBar(with: viewModel.data.title,
-                               isLargeTitles: true)
+
+        title = viewModel.data.title
         dataSource.configure(with: collectionView)
 
         rx.methodInvoked(#selector(self.viewDidAppear(_:)))

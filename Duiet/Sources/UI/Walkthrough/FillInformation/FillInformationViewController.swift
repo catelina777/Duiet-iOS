@@ -10,7 +10,7 @@ import RxCocoa
 import RxSwift
 import UIKit
 
-final class FillInformationViewController: BaseTableViewController, NavigationBarCustomizable, KeyboardFrameTrackkable {
+final class FillInformationViewController: BaseTableViewController, KeyboardFrameTrackkable {
     let viewModel: FillInformationViewModelProtocol
     let dataSource: FillInformationViewDataSource
 
@@ -31,9 +31,8 @@ final class FillInformationViewController: BaseTableViewController, NavigationBa
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource.configure(with: tableView)
-        // TODO: Consider creating an enum that holds the titles
-        configureNavigationBar(with: "Calculate",
-                               isLargeTitles: true)
+
+        title = PageType.calculate.rawValue
 
         keyboardTrackViewModel.output.difference
             .bind(to: updateScroll)
