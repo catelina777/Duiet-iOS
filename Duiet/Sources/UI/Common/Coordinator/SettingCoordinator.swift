@@ -19,7 +19,8 @@ final class SettingCoordinator: Coordinator {
     }
 
     func start() {
-        let vc = SettingViewController(viewModel: .init(coordinator: self))
+        let vm = SettingViewModel(coordinator: self)
+        let vc = SettingViewController(viewModel: vm)
         navigator.pushViewController(vc, animated: false)
     }
 

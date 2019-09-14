@@ -11,10 +11,10 @@ import RxSwift
 import UIKit
 
 final class SettingViewController: BaseCollectionViewController, NavigationBarCustomizable {
-    private let viewModel: SettingViewModel
+    private let viewModel: SettingViewModelProtocol
     private let dataSource: SettingViewDataSource
 
-    init(viewModel: SettingViewModel) {
+    init(viewModel: SettingViewModelProtocol) {
         self.viewModel = viewModel
         dataSource = SettingViewDataSource(viewModel: viewModel)
         super.init(nibName: SettingViewController.className, bundle: nil)
