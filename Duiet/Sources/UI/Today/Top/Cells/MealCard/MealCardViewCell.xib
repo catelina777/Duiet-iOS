@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,29 +16,28 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MealCardViewCell" customModule="Duiet" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MealCardViewCell" id="HAf-0d-Rge" customClass="MealCardViewCell" customModule="Duiet" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="261" height="261"/>
+            <rect key="frame" x="0.0" y="0.0" width="380" height="370"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                <rect key="frame" x="0.0" y="0.0" width="261" height="261"/>
+                <rect key="frame" x="0.0" y="0.0" width="380" height="370"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T0z-aU-85B" customClass="RoundedCardWrapperView" customModule="Duiet" customModuleProvider="target">
-                        <rect key="frame" x="13" y="0.0" width="235" height="235"/>
+                        <rect key="frame" x="19" y="0.0" width="342" height="342"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zKH-mN-EUf" customClass="CardView" customModule="Duiet" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="235" height="235"/>
+                                <rect key="frame" x="0.0" y="0.0" width="342" height="342"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="4F6-x7-8Ho">
-                                        <rect key="frame" x="0.0" y="0.0" width="235" height="235"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="342" height="342"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="900 kcal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q7y-xA-2z7">
-                                        <rect key="frame" x="47" y="193" width="141" height="34"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <rect key="frame" x="85.5" y="293" width="171" height="41"/>
+                                        <color key="backgroundColor" name="cellBackground"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Q7y-xA-2z7" secondAttribute="height" multiplier="5:1.2" id="l7E-rq-eT6"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Montserrat-ExtraBold" family="Montserrat" pointSize="24"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-ExtraBold" family="Montserrat" pointSize="28"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -49,7 +46,7 @@
                                     <constraint firstItem="4F6-x7-8Ho" firstAttribute="leading" secondItem="zKH-mN-EUf" secondAttribute="leading" id="2dd-aA-RS0"/>
                                     <constraint firstAttribute="bottom" secondItem="4F6-x7-8Ho" secondAttribute="bottom" id="32m-8w-dFi"/>
                                     <constraint firstAttribute="trailing" secondItem="4F6-x7-8Ho" secondAttribute="trailing" id="6It-sB-suf"/>
-                                    <constraint firstItem="Q7y-xA-2z7" firstAttribute="width" secondItem="4F6-x7-8Ho" secondAttribute="width" multiplier="0.6" id="Nci-0J-Wrv"/>
+                                    <constraint firstItem="Q7y-xA-2z7" firstAttribute="width" secondItem="4F6-x7-8Ho" secondAttribute="width" multiplier="0.5" id="Nci-0J-Wrv"/>
                                     <constraint firstItem="4F6-x7-8Ho" firstAttribute="top" secondItem="zKH-mN-EUf" secondAttribute="top" id="hGw-Px-ZQp"/>
                                     <constraint firstAttribute="bottom" secondItem="Q7y-xA-2z7" secondAttribute="bottom" constant="8" id="kwg-4C-3oR"/>
                                     <constraint firstItem="Q7y-xA-2z7" firstAttribute="centerX" secondItem="zKH-mN-EUf" secondAttribute="centerX" id="qBR-hN-BaK"/>
@@ -77,15 +74,18 @@
                 <constraint firstItem="T0z-aU-85B" firstAttribute="width" secondItem="HAf-0d-Rge" secondAttribute="width" multiplier="0.9" id="bHw-FI-RTG"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="brf-El-cGN"/>
-            <size key="customSize" width="261" height="261"/>
+            <size key="customSize" width="380" height="370"/>
             <connections>
                 <outlet property="caloriesLabel" destination="Q7y-xA-2z7" id="7Q7-aj-2sl"/>
                 <outlet property="imageView" destination="4F6-x7-8Ho" id="0fe-2p-xgF"/>
             </connections>
-            <point key="canvasLocation" x="-209.42028985507247" y="132.92410714285714"/>
+            <point key="canvasLocation" x="-243.47826086956525" y="169.41964285714286"/>
         </collectionViewCell>
     </objects>
     <resources>
         <image name="placeholder" width="2700" height="2700"/>
+        <namedColor name="cellBackground">
+            <color red="0.25882352941176473" green="0.25882352941176473" blue="0.25882352941176473" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

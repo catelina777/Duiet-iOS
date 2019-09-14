@@ -9,28 +9,7 @@
 import RxSwift
 import UIKit
 
-class BaseTableViewController: UIViewController, AppearanceChangeable {
+class BaseTableViewController: UIViewController{
     @IBOutlet private(set) weak var tableView: UITableView!
     let disposeBag = DisposeBag()
-
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return AppAppearance.shared.themeService.attrs.statusBarStyle
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        bindAppearance()
-    }
-
-    func updateAppearance(with theme: Theme, me: BaseTableViewController) {
-        me.setNeedsStatusBarAppearanceUpdate()
-        tableView.backgroundColor = theme.backgroundMainColor
-    }
-
-    private func bindAppearance() {
-        AppAppearance.shared.themeService.attrsStream
-            .bind(to: appearanceWillUpdate)
-            .disposed(by: disposeBag)
-    }
 }

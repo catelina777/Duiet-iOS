@@ -36,17 +36,6 @@ class TopTabBarController: BaseTabBarController {
             .map { _ in }
             .bind(to: showDays)
             .disposed(by: disposeBag)
-
-        // TODO: The function to monitor theme may be overkill, so consider removing it
-        #if DEBUG
-        rx.methodInvoked(#selector(traitCollectionDidChange(_:)))
-            .subscribe(onNext: { [weak self] _ in
-                guard let me = self else { return }
-                let style = me.traitCollection.userInterfaceStyle
-                AppAppearance.shared.switch(to: style)
-            })
-            .disposed(by: disposeBag)
-        #endif
     }
 
     var showDetailDay: Binder<Void> {

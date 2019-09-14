@@ -21,7 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = window
 
         self.appCoordinator = AppCoordinator(window: window)
-        AppAppearance.shared.start()
 
         /* insert seed data
         let seedmanager = SeedManager()

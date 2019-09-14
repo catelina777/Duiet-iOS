@@ -14,16 +14,15 @@ enum ProgressType {
     case none
 
     var color: UIColor {
-        let theme = AppAppearance.shared.themeService.attrs
         switch self {
         case .exceed:
-            return theme.progressExceedColor
+            return UIColor.systemPink
 
         case .less:
-            return theme.progressLessColor
+            return UIColor.systemBlue
 
         case .none:
-            return theme.progressNoneColor
+            return R.color.systemBackgroundMain()!
         }
     }
 

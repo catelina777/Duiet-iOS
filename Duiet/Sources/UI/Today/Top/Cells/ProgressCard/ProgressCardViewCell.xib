@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -37,7 +35,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="309" height="66"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2019/06/07" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NX2-eF-jOw">
-                                                <rect key="frame" x="85.5" y="18.5" width="138.5" height="29.5"/>
+                                                <rect key="frame" x="93" y="19" width="123" height="28"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-ExtraBold" family="Montserrat" pointSize="24"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -56,13 +54,13 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="309" height="28.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TDEE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSi-mm-tgo">
-                                                        <rect key="frame" x="24" y="5.5" width="39.5" height="17.5"/>
+                                                        <rect key="frame" x="24" y="6" width="35" height="16.5"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="14"/>
-                                                        <color key="textColor" red="0.38039215686274508" green="0.38039215686274508" blue="0.38039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1700 kcal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kur-Iv-hN3">
-                                                        <rect key="frame" x="171.5" y="4" width="83.5" height="21"/>
+                                                        <rect key="frame" x="152" y="4.5" width="73.5" height="20"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-ExtraBold" family="Montserrat" pointSize="17"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -78,13 +76,13 @@
                                                 <rect key="frame" x="0.0" y="28.5" width="309" height="28.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3SE-GW-n3H">
-                                                        <rect key="frame" x="24" y="5.5" width="36" height="17.5"/>
+                                                        <rect key="frame" x="24" y="6" width="30" height="16.5"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="14"/>
-                                                        <color key="textColor" red="0.38039215686274508" green="0.38039215686274508" blue="0.38039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1400 kcal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zsm-fr-pmf">
-                                                        <rect key="frame" x="171.5" y="3.5" width="85" height="21"/>
+                                                        <rect key="frame" x="152" y="4" width="73.5" height="20"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-ExtraBold" family="Montserrat" pointSize="17"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -99,13 +97,13 @@
                                                 <rect key="frame" x="0.0" y="57" width="309" height="28"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Difference" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vQv-G3-djJ">
-                                                        <rect key="frame" x="24" y="5.5" width="77" height="17.5"/>
+                                                        <rect key="frame" x="24" y="6" width="63.5" height="16.5"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="14"/>
-                                                        <color key="textColor" red="0.38039215686274508" green="0.38039215686274508" blue="0.38039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="300 kcal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pp5-Ge-iu5">
-                                                        <rect key="frame" x="171.5" y="3.5" width="76" height="21"/>
+                                                        <rect key="frame" x="152" y="4" width="64" height="20"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-ExtraBold" family="Montserrat" pointSize="17"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -120,13 +118,13 @@
                                                 <rect key="frame" x="0.0" y="85" width="309" height="28.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weight Change" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rxg-y4-Nj9">
-                                                        <rect key="frame" x="24" y="5.5" width="115.5" height="17.5"/>
+                                                        <rect key="frame" x="24" y="6" width="96" height="16.5"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="14"/>
-                                                        <color key="textColor" red="0.38039215686274508" green="0.38039215686274508" blue="0.38039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+0.09 kg 💪" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dD5-r9-Mwa">
-                                                        <rect key="frame" x="171.5" y="4" width="104.5" height="21"/>
+                                                        <rect key="frame" x="152" y="4.5" width="93.5" height="20"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-ExtraBold" family="Montserrat" pointSize="17"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -153,7 +151,7 @@
                                         </constraints>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" name="cellBackground"/>
                                 <constraints>
                                     <constraint firstItem="GfF-Sd-Ljs" firstAttribute="trailing" secondItem="JbQ-Af-5y2" secondAttribute="trailing" id="BIl-gM-37S"/>
                                     <constraint firstItem="JbQ-Af-5y2" firstAttribute="trailing" secondItem="7Qe-1k-1hn" secondAttribute="trailing" id="FiW-9x-IBd"/>
@@ -190,18 +188,18 @@
             <viewLayoutGuide key="safeArea" id="Zzs-uT-Uu2"/>
             <size key="customSize" width="343" height="210"/>
             <connections>
-                <outlet property="TDEELabel" destination="ZSi-mm-tgo" id="eK8-Ff-0TE"/>
                 <outlet property="TDEEValueLabel" destination="Kur-Iv-hN3" id="6kZ-A5-iAJ"/>
                 <outlet property="dayValueLabel" destination="NX2-eF-jOw" id="bhG-X2-elH"/>
-                <outlet property="differenceLabel" destination="vQv-G3-djJ" id="nrA-Bj-TgJ"/>
                 <outlet property="differenceValueLabel" destination="pp5-Ge-iu5" id="Bre-PU-vu4"/>
-                <outlet property="roundedView" destination="jnd-Zn-su3" id="A3S-03-ajT"/>
-                <outlet property="totalLabel" destination="3SE-GW-n3H" id="rhw-uJ-62O"/>
                 <outlet property="totalValueLabel" destination="zsm-fr-pmf" id="Uux-rh-E92"/>
-                <outlet property="weightChangeLabel" destination="Rxg-y4-Nj9" id="ZTr-13-OMl"/>
                 <outlet property="weightChangeValueLabel" destination="dD5-r9-Mwa" id="BsU-22-DvH"/>
             </connections>
             <point key="canvasLocation" x="258.69565217391306" y="88.392857142857139"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <namedColor name="cellBackground">
+            <color red="0.25882352941176473" green="0.25882352941176473" blue="0.25882352941176473" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

@@ -46,14 +46,6 @@ class InputMealCalorieViewCell: BaseTableViewCell, CellFrameTrackkable {
 
     @IBOutlet weak var deleteMealButton: UIButton!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        let textMainColor = AppAppearance.shared.themeService.attrs.textMainColor
-        [calorieTitleLabel,
-         multipleTitleLabel,
-         nameTitleLabel].forEach { $0?.textColor = textMainColor }
-    }
-
     override func prepareForReuse() {
         super.prepareForReuse()
         nameTextField.text = nil

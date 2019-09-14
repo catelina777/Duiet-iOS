@@ -9,11 +9,6 @@
 import UIKit
 
 final class DaySummaryViewCell: RoundedCollectionViewCell {
-    @IBOutlet weak var TDEELabel: UILabel!
-    @IBOutlet weak var totalLabel: UILabel!
-    @IBOutlet weak var differenceLabel: UILabel!
-    @IBOutlet weak var weightChangeLabel: UILabel!
-
     @IBOutlet weak var dayValueLabel: UILabel!
     @IBOutlet weak var TDEEValueLabel: UILabel!
     @IBOutlet weak var totalValueLabel: UILabel!
@@ -33,17 +28,5 @@ final class DaySummaryViewCell: RoundedCollectionViewCell {
         totalValueLabel.text = "\(totalCalorie) kcal"
         differenceValueLabel.text = "\(difference) kcal"
         weightChangeValueLabel.text = weightChangeText
-
-        let theme = AppAppearance.shared.themeService.attrs
-        roundedView.backgroundColor = theme.cellBackgroundColor
-        [dayValueLabel,
-         TDEEValueLabel,
-         totalValueLabel,
-         differenceValueLabel,
-         weightChangeValueLabel].forEach { $0?.textColor = theme.textMainColor }
-        [TDEELabel,
-         totalLabel,
-         differenceLabel,
-         weightChangeLabel].forEach { $0?.textColor = theme.textSubColor }
     }
 }

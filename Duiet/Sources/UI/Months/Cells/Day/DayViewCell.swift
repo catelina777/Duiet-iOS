@@ -13,8 +13,5 @@ final class DayViewCell: UICollectionViewCell {
 
     func configure(with text: String) {
         textLabel.text = text
-
-        // MARK: Apply theme
-        backgroundColor = AppAppearance.shared.themeService.attrs.backgroundMainColor
     }
 }

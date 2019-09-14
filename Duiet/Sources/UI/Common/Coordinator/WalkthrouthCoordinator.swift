@@ -32,6 +32,7 @@ final class WalkthrouthCoordinator: Coordinator {
 
     func showTop() {
         let vc = topTabBarCoordinator.controller
+        vc.modalPresentationStyle = .fullScreen
         navigator.present(vc, animated: true, completion: nil)
     }
 }

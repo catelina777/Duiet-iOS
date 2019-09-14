@@ -1,5 +1,4 @@
 github "ReactiveX/RxSwift" ~> 5.0
 github "RxSwiftCommunity/RxGesture" ~> 3.0
 github "RxSwiftCommunity/RxRealm"
-github "RxSwiftCommunity/RxTheme" ~> 4.0.0
 github "realm/realm-cocoa"

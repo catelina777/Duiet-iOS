@@ -66,12 +66,6 @@ final class InputMealViewController: BaseTableViewController, KeyboardFrameTrack
             .disposed(by: disposeBag)
     }
 
-    // To Prevent CollectionView from obscuring the header
-    override func updateAppearance(with theme: Theme, me: BaseTableViewController) {
-        me.setNeedsStatusBarAppearanceUpdate()
-        view.backgroundColor = theme.backgroundMainColor
-    }
-
     deinit {
         print("🧹🧹🧹 Input Meal View controller parge 🧹🧹🧹")
     }

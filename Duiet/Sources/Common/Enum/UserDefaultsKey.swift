@@ -9,6 +9,5 @@
 import Foundation
 
 enum UserDefaultsKey {
-    static let appTheme = "duiet-app-theme"
     static let isLaunchedBefore = "duiet-is-launched-before"
 }

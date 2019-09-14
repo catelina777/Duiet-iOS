@@ -9,27 +9,6 @@
 import RxSwift
 import UIKit
 
-class BaseViewController: UIViewController, AppearanceChangeable {
+class BaseViewController: UIViewController {
     let disposeBag = DisposeBag()
-
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return AppAppearance.shared.themeService.attrs.statusBarStyle
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        bindAppearance()
-    }
-
-    func updateAppearance(with theme: Theme, me: BaseViewController) {
-        me.setNeedsStatusBarAppearanceUpdate()
-        view.backgroundColor = theme.backgroundMainColor
-    }
-
-    private func bindAppearance() {
-        AppAppearance.shared.themeService.attrsStream
-            .bind(to: appearanceWillUpdate)
-            .disposed(by: disposeBag)
-    }
 }

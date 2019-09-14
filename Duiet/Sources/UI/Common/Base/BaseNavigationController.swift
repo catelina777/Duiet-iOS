@@ -9,7 +9,7 @@
 import RxSwift
 import UIKit
 
-class BaseNavigationController: UINavigationController, AppearanceChangeable {
+class BaseNavigationController: UINavigationController {
     let disposeBag = DisposeBag()
 
     override var childForStatusBarStyle: UIViewController? {
@@ -22,23 +22,17 @@ class BaseNavigationController: UINavigationController, AppearanceChangeable {
         bindAppearance()
     }
 
-    func updateAppearance(with theme: Theme, me: BaseNavigationController) {
-        me.setNeedsStatusBarAppearanceUpdate()
-        navigationBar.barTintColor = theme.navigationBarBarTintColor
-        navigationBar.tintColor = theme.navigationBarTintColor
+    func bindAppearance() {
         navigationBar.largeTitleTextAttributes = [
-            .foregroundColor: theme.titleColor,
+            .foregroundColor: UIColor.label,
             .font: R.font.montserratExtraBold(size: 32)!
         ]
+
         navigationBar.titleTextAttributes = [
-            .foregroundColor: theme.titleColor,
+            .foregroundColor: UIColor.label,
             .font: R.font.montserratExtraBold(size: 18)!
         ]
-    }
 
-    private func bindAppearance() {
-        AppAppearance.shared.themeService.attrsStream
-            .bind(to: appearanceWillUpdate)
-            .disposed(by: disposeBag)
+        navigationBar.tintColor = UIColor.label
     }
 }

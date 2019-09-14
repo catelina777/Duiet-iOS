@@ -9,7 +9,7 @@
 import RxSwift
 import UIKit
 
-class BaseTabBarController: UITabBarController, AppearanceChangeable {
+class BaseTabBarController: UITabBarController {
     let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
@@ -18,14 +18,7 @@ class BaseTabBarController: UITabBarController, AppearanceChangeable {
         bindAppearance()
     }
 
-    func updateAppearance(with theme: Theme, me: BaseTabBarController) {
-        tabBar.tintColor = theme.tabBarTintColor
-        tabBar.barTintColor = theme.tabBarBarTintColor
-    }
-
-    private func bindAppearance() {
-        AppAppearance.shared.themeService.attrsStream
-            .bind(to: appearanceWillUpdate)
-            .disposed(by: disposeBag)
+    func bindAppearance() {
+        tabBar.tintColor = R.color.componentMain()!
     }
 }

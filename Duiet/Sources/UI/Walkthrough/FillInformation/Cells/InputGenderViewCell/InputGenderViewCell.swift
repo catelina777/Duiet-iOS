@@ -42,16 +42,12 @@ final class InputGenderViewCell: BaseTableViewCell {
         viewModel.output.gender
             .bind(to: switchSelectedButton)
             .disposed(by: disposeBag)
-
-        // MARK: Apply theme
-        let theme = AppAppearance.shared.themeService.attrs
-        titleLabel.textColor = theme.textMainColor
     }
 
     var switchSelectedButton: Binder<Bool?> {
         return Binder(self) { me, bool in
             guard let bool = bool else { return }
-            let borderColor = AppAppearance.shared.themeService.attrs.buttonMainColor.cgColor
+            let borderColor = R.color.componentMain()!.cgColor
             if bool {
                 me.maleButton.layer.borderColor = borderColor
                 me.femaleButton.layer.borderColor = UIColor.clear.cgColor
