@@ -37,18 +37,12 @@ final class TodayCoordinator: Coordinator {
     }
 
     func showEdit(mealCard: MealCardViewCell, meal: Meal, row: Int) {
-        let heroID = "\(row)"
-        mealCard.imageView.hero.id = heroID
-
         let model = InputMealModel(repository: DayRepository.shared,
                                    meal: meal)
         let viewModel = InputMealViewModel(coordinator: self,
                                            model: model)
         let vc = InputMealViewController(viewModel: viewModel,
                                          image: mealCard.imageView.image)
-        vc.hero.isEnabled = true
-        vc.hero.modalAnimationType = .auto
-        vc.headerView.hero.id = heroID
         navigator.present(vc, animated: true, completion: nil)
     }
 

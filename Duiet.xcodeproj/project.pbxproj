@@ -79,7 +79,6 @@
 		401D54B823012C7B0089E2F7 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 401D54B023012C7B0089E2F7 /* RealmSwift.framework */; };
 		401D54B923012C7B0089E2F7 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 401D54B123012C7B0089E2F7 /* RxCocoa.framework */; };
 		401D54BA23012C7B0089E2F7 /* RxRealm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 401D54B223012C7B0089E2F7 /* RxRealm.framework */; };
-		401D54BB23012C7B0089E2F7 /* Hero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 401D54B323012C7B0089E2F7 /* Hero.framework */; };
 		401D54BC23012C7B0089E2F7 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 401D54B423012C7B0089E2F7 /* RxSwift.framework */; };
 		401D54BD23012C7B0089E2F7 /* RxGesture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 401D54B523012C7B0089E2F7 /* RxGesture.framework */; };
 		401D54BE23012C7B0089E2F7 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 401D54B623012C7B0089E2F7 /* Realm.framework */; };
@@ -365,7 +364,6 @@
 				401D54B823012C7B0089E2F7 /* RealmSwift.framework in Frameworks */,
 				401D54B923012C7B0089E2F7 /* RxCocoa.framework in Frameworks */,
 				401D54BA23012C7B0089E2F7 /* RxRealm.framework in Frameworks */,
-				401D54BB23012C7B0089E2F7 /* Hero.framework in Frameworks */,
 				401D54BC23012C7B0089E2F7 /* RxSwift.framework in Frameworks */,
 				401D54BD23012C7B0089E2F7 /* RxGesture.framework in Frameworks */,
 				401D54BE23012C7B0089E2F7 /* Realm.framework in Frameworks */,
