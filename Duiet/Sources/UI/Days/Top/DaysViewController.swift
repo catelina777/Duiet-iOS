@@ -26,6 +26,7 @@ class DaysViewController: BaseCollectionViewController {
         super.viewDidLoad()
 
         title = viewModel.data.title
+        navigationController?.navigationBar.prefersLargeTitles = true
         dataSource.configure(with: collectionView)
     }
 }

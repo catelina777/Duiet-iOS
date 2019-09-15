@@ -28,6 +28,7 @@ final class SettingViewController: BaseCollectionViewController {
         super.viewDidLoad()
 
         title = SceneType.setting.title
+        navigationController?.navigationBar.prefersLargeTitles = true
         dataSource.configure(with: collectionView)
     }
 }

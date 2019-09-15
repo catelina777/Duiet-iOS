@@ -30,6 +30,7 @@ class TodayViewController: BaseCollectionViewController {
         super.viewDidLoad()
 
         title = viewModel.data.title
+        navigationController?.navigationBar.prefersLargeTitles = true
         dataSource.configure(with: collectionView)
 
         rx.methodInvoked(#selector(self.viewDidAppear(_:)))
