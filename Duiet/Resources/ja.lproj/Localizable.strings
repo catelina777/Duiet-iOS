@@ -1,0 +1,32 @@
+/* 
+  Localizable.strings
+  Duiet
+
+  Created by Ryuhei Kaminishi on 2019/09/15.
+  Copyright © 2019 duiet. All rights reserved.
+*/
+
+"Today"   = "今日";
+"Days"    = "日";
+"Months"  = "月";
+"Setting" = "設定";
+
+// Progress Card
+"Total"         = "合計";
+"Difference"    = "基礎代謝との差";
+"Weight Change" = "体重変化量";
+
+// WalkthroughView
+"Get photo" = "写真撮影";
+
+// FillInformationView
+"Calculate"      = "計算";
+"Gender"         = "性別";
+"Male"           = "男";
+"Female"         = "女";
+"Age"            = "歳";
+"Height"         = "身長";
+"Weight"         = "体重";
+"Activity Level" = "活動量";
+"calc..."        = "計算中";
+"Complete"       = "完了";

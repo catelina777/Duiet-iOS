@@ -1,0 +1,32 @@
+/* 
+  Localizable.strings
+  Duiet
+
+  Created by Ryuhei Kaminishi on 2019/09/15.
+  Copyright © 2019 duiet. All rights reserved.
+*/
+
+"Today"   = "Today";
+"Days"    = "Days";
+"Months"  = "Months";
+"Setting" = "Setting";
+
+// Progress Card
+"Total"         = "Total";
+"Difference"    = "Difference";
+"Weight Change" = "Weight Change";
+
+// WalkthroughView
+"Get photo" = "Get photo";
+
+// FillInformationView
+"Calculate"      = "Calculate";
+"Gender"         = "Gender";
+"Male"           = "Male";
+"Female"         = "Female";
+"Age"            = "Age";
+"Height"         = "Height";
+"Weight"         = "Weight";
+"Activity Level" = "Activity Level";
+"calc..."        = "calc...";
+"Complete"       = "Complete";
