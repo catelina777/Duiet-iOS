@@ -26,6 +26,7 @@ class MonthsViewController: BaseCollectionViewController {
         super.viewDidLoad()
 
         title = SceneType.months.title
+        navigationController?.navigationBar.prefersLargeTitles = true
         dataSource.configure(with: collectionView)
     }
 }

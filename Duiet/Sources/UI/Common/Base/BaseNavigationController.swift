@@ -12,17 +12,13 @@ import UIKit
 class BaseNavigationController: UINavigationController {
     let disposeBag = DisposeBag()
 
-    override var childForStatusBarStyle: UIViewController? {
-        return visibleViewController
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
         bindAppearance()
     }
 
-    func bindAppearance() {
+    private func bindAppearance() {
         navigationBar.largeTitleTextAttributes = [
             .foregroundColor: UIColor.label,
             .font: R.font.montserratExtraBold(size: 32)!
@@ -34,6 +30,5 @@ class BaseNavigationController: UINavigationController {
         ]
 
         navigationBar.tintColor = UIColor.label
-        navigationBar.prefersLargeTitles = true
     }
 }
