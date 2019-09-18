@@ -29,6 +29,6 @@ class BaseNavigationController: UINavigationController {
             .font: R.font.montserratExtraBold(size: 18)!
         ]
 
-        navigationBar.tintColor = UIColor.label
+        navigationBar.tintColor = R.color.navigationBarTint()
     }
 }
