@@ -24,13 +24,16 @@ enum SceneType: String {
     var title: String {
         switch self {
         case .today:
-            return "Today"
+            return R.string.localizable.today()
+
         case .days:
-            return "Days"
+            return R.string.localizable.days()
+
         case .months:
-            return "Months"
+            return R.string.localizable.months()
+
         case .setting:
-            return "Setting"
+            return R.string.localizable.setting()
         }
     }
 }

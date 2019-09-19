@@ -11,5 +11,14 @@ import Foundation
 enum PageType: String {
     case fillInfomation
     case inputMeal
-    case calculate = "Calculate"
+    case calculate
+
+    var title: String {
+        switch self {
+        case .calculate:
+            return R.string.localizable.calculate()
+        default:
+            return self.rawValue
+        }
+    }
 }

@@ -25,7 +25,7 @@ final class InputGenderViewCell: BaseTableViewCell {
     }
 
     func configure(with viewModel: FillInformationViewModelProtocol, cellType: CellType) {
-        titleLabel.text = cellType.rawValue
+        titleLabel.text = cellType.title
 
         maleButton.rx.tap
             .subscribe(onNext: { _ in

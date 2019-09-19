@@ -30,3 +30,8 @@
 "Activity Level" = "活动量";
 "calc..."        = "计算...";
 "Complete"       = "完成";
+"cm"             = "厘米";
+"kg"             = "公斤";
+
+// SettingView
+"Edit user information" = "编辑用户信息";

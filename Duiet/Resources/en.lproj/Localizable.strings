@@ -30,3 +30,8 @@
 "Activity Level" = "Activity Level";
 "calc..."        = "calc...";
 "Complete"       = "Complete";
+"cm"             = "cm";
+"kg"             = "kg";
+
+// SettingView
+"Edit user information" = "Edit user information";

@@ -32,7 +32,7 @@ final class FillInformationViewController: BaseTableViewController, KeyboardFram
         super.viewDidLoad()
         dataSource.configure(with: tableView)
 
-        title = PageType.calculate.rawValue
+        title = PageType.calculate.title
 
         keyboardTrackViewModel.output.difference
             .bind(to: updateScroll)
