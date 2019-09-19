@@ -15,12 +15,14 @@ final class InputGenderViewCell: BaseTableViewCell {
     @IBOutlet weak var maleButton: UIButton! {
         didSet {
             maleButton.configureGender()
+            maleButton.setTitle(R.string.localizable.male(), for: .normal)
         }
     }
 
     @IBOutlet weak var femaleButton: UIButton! {
         didSet {
             femaleButton.configureGender()
+            femaleButton.setTitle(R.string.localizable.female(), for: .normal)
         }
     }
 
