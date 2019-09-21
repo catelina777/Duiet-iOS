@@ -9,6 +9,19 @@
 import UIKit
 
 final class DaySummaryViewCell: RoundedCollectionViewCell {
+    @IBOutlet weak var tdeeLabel: UILabel! {
+        didSet { tdeeLabel.text = R.string.localizable.tdee() }
+    }
+    @IBOutlet weak var calorieIntakeLabel: UILabel! {
+        didSet { calorieIntakeLabel.text = R.string.localizable.calorieIntake() }
+    }
+    @IBOutlet weak var differenceLabel: UILabel! {
+        didSet { differenceLabel.text = R.string.localizable.difference() }
+    }
+    @IBOutlet weak var weightChangeLabel: UILabel! {
+        didSet { weightChangeLabel.text = R.string.localizable.weightChange() }
+    }
+
     @IBOutlet weak var dayValueLabel: UILabel!
     @IBOutlet weak var TDEEValueLabel: UILabel!
     @IBOutlet weak var totalValueLabel: UILabel!
@@ -21,12 +34,12 @@ final class DaySummaryViewCell: RoundedCollectionViewCell {
         let difference = Double(totalCalorie - tdee)
         let weightChange = Int(difference / (9 * 0.8))
         let weightChangeText = weightChange > 0 ?
-            "\(abs(weightChange)) g UP 💪" :
-            "\(abs(weightChange)) g DOWN ⬇️"
+            "\(abs(weightChange)) \(R.string.localizable.g()) \(R.string.localizable.up()) 💪" :
+            "\(abs(weightChange)) \(R.string.localizable.g()) \(R.string.localizable.down()) ⬇️"
         dayValueLabel.text = "\(day.createdAt.toString())"
-        TDEEValueLabel.text = "\(tdee) kcal"
-        totalValueLabel.text = "\(totalCalorie) kcal"
-        differenceValueLabel.text = "\(difference) kcal"
+        TDEEValueLabel.text = "\(tdee) \(R.string.localizable.kcal())"
+        totalValueLabel.text = "\(totalCalorie) \(R.string.localizable.kcal())"
+        differenceValueLabel.text = "\(difference) \(R.string.localizable.kcal())"
         weightChangeValueLabel.text = weightChangeText
     }
 }

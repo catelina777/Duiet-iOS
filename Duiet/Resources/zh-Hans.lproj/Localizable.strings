@@ -6,32 +6,37 @@
   Copyright © 2019 duiet. All rights reserved.
 */
 
-"Today"   = "今天";
-"Days"    = "日";
-"Months"  = "月";
-"Setting" = "设置";
-
-// Progress Card
-"Total"         = "总";
-"Difference"    = "与基础代谢的区别";
-"Weight Change" = "体重变化";
+"today"   = "今天";
+"days"    = "日";
+"months"  = "月";
+"setting" = "设置";
 
 // WalkthroughView
-"Get photo" = "摄影";
+"get photo" = "摄影";
 
 // FillInformationView
-"Calculate"      = "计算";
-"Gender"         = "性别";
-"Male"           = "男";
-"Female"         = "女";
-"Age"            = "年龄";
-"Height"         = "高度";
-"Weight"         = "体重";
-"Activity Level" = "活动量";
+"calculate"      = "计算";
+"gender"         = "性别";
+"male"           = "男";
+"female"         = "女";
+"age"            = "年龄";
+"height"         = "高度";
+"weight"         = "体重";
+"activity level" = "活动量";
 "calc..."        = "计算...";
-"Complete"       = "完成";
+"complete"       = "完成";
 "cm"             = "厘米";
 "kg"             = "公斤";
 
+// ProgressCardView
+"tdee" = "每天消耗的卡路里";
+"calorie intake" = "热量摄入";
+"difference"    = "与基础代谢的区别";
+"weight change" = "体重变化";
+"kcal" = "千卡";
+"up" = "增重";
+"down" = "減";
+"g" = "克";
+
 // SettingView
-"Edit user information" = "编辑用户信息";
+"edit user information" = "编辑用户信息";

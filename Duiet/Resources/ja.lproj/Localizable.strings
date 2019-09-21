@@ -6,32 +6,37 @@
   Copyright © 2019 duiet. All rights reserved.
 */
 
-"Today"   = "今日";
-"Days"    = "日";
-"Months"  = "月";
-"Setting" = "設定";
-
-// Progress Card
-"Total"         = "合計";
-"Difference"    = "基礎代謝との差";
-"Weight Change" = "体重変化量";
+"today"   = "今日";
+"days"    = "日";
+"months"  = "月";
+"setting" = "設定";
 
 // WalkthroughView
-"Get photo" = "写真撮影";
+"get photo" = "写真撮影";
 
 // FillInformationView
-"Calculate"      = "計算";
-"Gender"         = "性別";
-"Male"           = "男";
-"Female"         = "女";
-"Age"            = "歳";
-"Height"         = "身長";
-"Weight"         = "体重";
-"Activity Level" = "活動量";
+"calculate"      = "計算";
+"gender"         = "性別";
+"male"           = "男";
+"female"         = "女";
+"age"            = "歳";
+"height"         = "身長";
+"weight"         = "体重";
+"activity level" = "活動量";
 "calc..."        = "計算中";
-"Complete"       = "完了";
+"complete"       = "完了";
 "cm"             = "cm";
 "kg"             = "kg";
 
+// ProgressCardView
+"tdee" = "1日の総消費カロリー";
+"calorie intake" = "摂取したカロリー";
+"difference"    = "基礎代謝との差";
+"weight change" = "体重変化量";
+"kcal" = "kcal";
+"up" = "増量";
+"down" = "減量";
+"g" = "g";
+
 // SettingView
-"Edit user information" = "ユーザ情報編集";
+"edit user information" = "ユーザ情報編集";

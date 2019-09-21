@@ -56,11 +56,11 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TDEE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSi-mm-tgo">
                                                         <rect key="frame" x="24" y="6" width="35" height="16.5"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="14"/>
-                                                        <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1700 kcal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kur-Iv-hN3">
-                                                        <rect key="frame" x="152" y="4.5" width="73.5" height="20"/>
+                                                        <rect key="frame" x="172" y="4.5" width="73.5" height="20"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-ExtraBold" family="Montserrat" pointSize="17"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -75,14 +75,14 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="13T-5z-RI7">
                                                 <rect key="frame" x="0.0" y="28.5" width="309" height="28.5"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3SE-GW-n3H">
-                                                        <rect key="frame" x="24" y="6" width="30" height="16.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calorie intake" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3SE-GW-n3H">
+                                                        <rect key="frame" x="24" y="6" width="86" height="16.5"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="14"/>
-                                                        <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1400 kcal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zsm-fr-pmf">
-                                                        <rect key="frame" x="152" y="4" width="73.5" height="20"/>
+                                                        <rect key="frame" x="172" y="4" width="73.5" height="20"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-ExtraBold" family="Montserrat" pointSize="17"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -99,11 +99,11 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Difference" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vQv-G3-djJ">
                                                         <rect key="frame" x="24" y="6" width="63.5" height="16.5"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="14"/>
-                                                        <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="300 kcal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pp5-Ge-iu5">
-                                                        <rect key="frame" x="152" y="4" width="64" height="20"/>
+                                                        <rect key="frame" x="172" y="4" width="64" height="20"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-ExtraBold" family="Montserrat" pointSize="17"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -118,13 +118,13 @@
                                                 <rect key="frame" x="0.0" y="85" width="309" height="28.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weight Change" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rxg-y4-Nj9">
-                                                        <rect key="frame" x="24" y="6" width="96" height="16.5"/>
+                                                        <rect key="frame" x="24" y="6" width="116" height="16.5"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="14"/>
-                                                        <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+0.09 kg 💪" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dD5-r9-Mwa">
-                                                        <rect key="frame" x="152" y="4.5" width="93.5" height="20"/>
+                                                        <rect key="frame" x="172" y="4.5" width="93.5" height="20"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-ExtraBold" family="Montserrat" pointSize="17"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -133,6 +133,7 @@
                                                 <constraints>
                                                     <constraint firstItem="dD5-r9-Mwa" firstAttribute="leading" secondItem="Rxg-y4-Nj9" secondAttribute="trailing" constant="32" id="7jd-qc-Iv1"/>
                                                     <constraint firstItem="Rxg-y4-Nj9" firstAttribute="centerY" secondItem="eQC-j1-DK8" secondAttribute="centerY" id="adC-Eq-f0e"/>
+                                                    <constraint firstItem="Rxg-y4-Nj9" firstAttribute="width" secondItem="eQC-j1-DK8" secondAttribute="width" multiplier="0.375" id="taE-gN-XmV"/>
                                                     <constraint firstItem="dD5-r9-Mwa" firstAttribute="centerY" secondItem="Rxg-y4-Nj9" secondAttribute="centerY" id="uU0-0h-iAt"/>
                                                 </constraints>
                                             </view>
@@ -189,9 +190,13 @@
             <size key="customSize" width="343" height="210"/>
             <connections>
                 <outlet property="TDEEValueLabel" destination="Kur-Iv-hN3" id="6kZ-A5-iAJ"/>
+                <outlet property="calorieIntakeLabel" destination="3SE-GW-n3H" id="La5-8T-z4t"/>
                 <outlet property="dayValueLabel" destination="NX2-eF-jOw" id="bhG-X2-elH"/>
+                <outlet property="differenceLabel" destination="vQv-G3-djJ" id="GgM-4M-fhK"/>
                 <outlet property="differenceValueLabel" destination="pp5-Ge-iu5" id="Bre-PU-vu4"/>
+                <outlet property="tdeeLabel" destination="ZSi-mm-tgo" id="5L5-WL-ORF"/>
                 <outlet property="totalValueLabel" destination="zsm-fr-pmf" id="Uux-rh-E92"/>
+                <outlet property="weightChangeLabel" destination="Rxg-y4-Nj9" id="wEe-qg-oii"/>
                 <outlet property="weightChangeValueLabel" destination="dD5-r9-Mwa" id="BsU-22-DvH"/>
             </connections>
             <point key="canvasLocation" x="258.69565217391306" y="88.392857142857139"/>
