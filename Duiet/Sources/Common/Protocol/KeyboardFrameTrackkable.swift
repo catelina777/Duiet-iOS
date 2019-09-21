@@ -25,7 +25,10 @@ protocol KeyboardFrameTrackkable {
 extension KeyboardFrameTrackkable where Self: BaseTableViewController {
     var updateScroll: Binder<CGFloat> {
         return Binder(self) { me, difference in
-            let adaptedDifference = me.tableView.contentOffset.y + difference
+            // This margin to prevent unnecessary scrolling when changing keyboard type
+            // Cause the keyboard height slightly changes when changing the keyboard type
+            let margin: CGFloat = 10
+            let adaptedDifference = me.tableView.contentOffset.y + difference + margin
             let movePoint = CGPoint(x: 0, y: adaptedDifference)
             me.tableView.setContentOffset(movePoint, animated: true)
         }
