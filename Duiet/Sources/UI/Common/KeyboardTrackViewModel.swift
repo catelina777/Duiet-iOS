@@ -26,7 +26,6 @@ final class KeyboardTrackViewModel {
         let _difference = Observable.combineLatest(_inputFieldFrame, _keyboardFrame)
             .filter { ($0.0.maxY - $0.1.minY) > 0 }
             .map { $0.0.maxY - $0.1.minY }
-            .distinctUntilChanged()
             .share()
 
         output = Output(keyboardFrame: _keyboardFrame,
