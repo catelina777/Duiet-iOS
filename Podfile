@@ -6,7 +6,6 @@ target 'Duiet' do
 
   pod 'LicensePlist'
   pod 'R.swift'
-  pod 'YPImagePicker'
 
   target 'DuietTests' do
     inherit! :search_paths
@@ -16,7 +15,6 @@ target 'Duiet' do
   target 'DuietUITests' do
     inherit! :search_paths
     pod 'R.swift'
-    pod 'YPImagePicker'
   end
 
 end
