@@ -39,7 +39,6 @@ final class InputMealCalorieViewCell: BaseTableViewCell, CellFrameTrackkable {
             multipleTextField.layer.cornerRadius = 10
             multipleTextField.layer.masksToBounds = true
             multipleTextField.keyboardType = .decimalPad
-            multipleTextField.placeholder = "option"
         }
     }
 
@@ -48,7 +47,6 @@ final class InputMealCalorieViewCell: BaseTableViewCell, CellFrameTrackkable {
             nameTextField.font = R.font.montserratExtraBold(size: 24)
             nameTextField.layer.cornerRadius = 10
             nameTextField.layer.masksToBounds = true
-            nameTextField.placeholder = "option"
         }
     }
 
