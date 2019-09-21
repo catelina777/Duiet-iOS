@@ -41,3 +41,12 @@
 
 // SettingView
 "edit user information" = "Edit user information";
+
+// MonthSummaryView
+"sunday abbr" = "S";
+"monday abbr" = "M";
+"tuesday abbr" = "T";
+"wednesday abbr" = "W";
+"thursday abbr" = "T";
+"friday abbr" = "F";
+"saturday abbr" = "S";

@@ -41,3 +41,12 @@
 
 // SettingView
 "edit user information" = "编辑用户信息";
+
+// MonthSummaryView
+"sunday abbr" = "日";
+"monday abbr" = "一";
+"tuesday abbr" = "二";
+"wednesday abbr" = "三";
+"thursday abbr" = "四";
+"friday abbr" = "五";
+"saturday abbr" = "六";
