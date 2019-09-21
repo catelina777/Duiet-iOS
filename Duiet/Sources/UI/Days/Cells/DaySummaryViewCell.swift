@@ -23,7 +23,7 @@ final class DaySummaryViewCell: RoundedCollectionViewCell {
     }
 
     @IBOutlet weak var dayValueLabel: UILabel!
-    @IBOutlet weak var TDEEValueLabel: UILabel!
+    @IBOutlet weak var tdeeValueLabel: UILabel!
     @IBOutlet weak var totalValueLabel: UILabel!
     @IBOutlet weak var differenceValueLabel: UILabel!
     @IBOutlet weak var weightChangeValueLabel: UILabel!
@@ -37,7 +37,7 @@ final class DaySummaryViewCell: RoundedCollectionViewCell {
             "\(abs(weightChange)) \(R.string.localizable.g()) \(R.string.localizable.up()) 💪" :
             "\(abs(weightChange)) \(R.string.localizable.g()) \(R.string.localizable.down()) ⬇️"
         dayValueLabel.text = "\(day.createdAt.toString())"
-        TDEEValueLabel.text = "\(tdee) \(R.string.localizable.kcal())"
+        tdeeValueLabel.text = "\(tdee) \(R.string.localizable.kcal())"
         totalValueLabel.text = "\(totalCalorie) \(R.string.localizable.kcal())"
         differenceValueLabel.text = "\(difference) \(R.string.localizable.kcal())"
         weightChangeValueLabel.text = weightChangeText

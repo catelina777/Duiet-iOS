@@ -190,13 +190,13 @@
             <viewLayoutGuide key="safeArea" id="HFf-di-MTy"/>
             <size key="customSize" width="319" height="157"/>
             <connections>
-                <outlet property="TDEEValueLabel" destination="8DJ-Nw-ZnE" id="Xq4-Ck-ppa"/>
                 <outlet property="calorieIntakeLabel" destination="bbH-T4-io3" id="Kos-v4-ynq"/>
                 <outlet property="dayValueLabel" destination="KNo-f1-wo0" id="Ebq-aS-qn3"/>
                 <outlet property="differenceLabel" destination="fBd-67-PPj" id="Zhb-Yz-3b3"/>
                 <outlet property="differenceValueLabel" destination="nAD-QW-fPi" id="kGQ-dp-skC"/>
                 <outlet property="roundedView" destination="wbp-Ab-YF8" id="fAK-E2-cNP"/>
                 <outlet property="tdeeLabel" destination="T1L-TY-51Y" id="0QM-Ny-KOe"/>
+                <outlet property="tdeeValueLabel" destination="8DJ-Nw-ZnE" id="Xq4-Ck-ppa"/>
                 <outlet property="totalValueLabel" destination="QSf-RM-SAY" id="9OQ-9b-PFt"/>
                 <outlet property="weightChangeLabel" destination="HZb-l8-PBE" id="D8O-Ti-B5N"/>
                 <outlet property="weightChangeValueLabel" destination="LNu-ZN-9rO" id="Ydb-m0-y9E"/>
