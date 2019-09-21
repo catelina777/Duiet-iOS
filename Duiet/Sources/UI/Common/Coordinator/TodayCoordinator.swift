@@ -31,7 +31,7 @@ final class TodayCoordinator: Coordinator {
 
     func showDetail(image: UIImage?, meal: Meal) {
         let model = InputMealModel(repository: DayRepository.shared, meal: meal)
-        let viewModel = InputMealViewModel(coordinator: self, model: model)
+        let viewModel = InputMealViewModel(coordinator: self, model: model, foodImage: image)
         let vc = InputMealViewController(viewModel: viewModel, image: image)
         viewController.present(vc, animated: true, completion: nil)
     }
@@ -40,7 +40,8 @@ final class TodayCoordinator: Coordinator {
         let model = InputMealModel(repository: DayRepository.shared,
                                    meal: meal)
         let viewModel = InputMealViewModel(coordinator: self,
-                                           model: model)
+                                           model: model,
+                                           foodImage: mealCard.imageView.image)
         let vc = InputMealViewController(viewModel: viewModel,
                                          image: mealCard.imageView.image)
         navigator.present(vc, animated: true, completion: nil)

@@ -12,8 +12,6 @@ import RxSwift
 import UIKit
 
 final class InputMealViewController: BaseTableViewController, KeyboardFrameTrackkable {
-    let headerView: UIImageView
-
     @IBOutlet weak var cancelButton: UIButton! {
         didSet {
             let image = R.image.cancel()?.withRenderingMode(.alwaysTemplate)
@@ -29,10 +27,9 @@ final class InputMealViewController: BaseTableViewController, KeyboardFrameTrack
     init(viewModel: InputMealViewModelProtocol,
          image: UIImage?) {
         self.viewModel = viewModel
-        self.keyboardTrackViewModel = KeyboardTrackViewModel()
-        self.dataSource = InputMealDataSource(viewModel: viewModel,
-                                              keyboardTrackViewModel: keyboardTrackViewModel)
-        self.headerView = UIImageView(image: image)
+        keyboardTrackViewModel = KeyboardTrackViewModel()
+        dataSource = InputMealDataSource(viewModel: viewModel,
+                                         keyboardTrackViewModel: keyboardTrackViewModel)
         super.init(nibName: InputMealViewController.className, bundle: nil)
     }
 
@@ -43,15 +40,6 @@ final class InputMealViewController: BaseTableViewController, KeyboardFrameTrack
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource.configure(with: tableView)
-
-        rx.methodInvoked(#selector(self.viewWillLayoutSubviews))
-            .map { _ in }
-            .bind(to: configureHeaderView)
-            .disposed(by: disposeBag)
-
-        tableView.rx.contentOffset
-            .bind(to: updateParallax)
-            .disposed(by: disposeBag)
 
         cancelButton.rx.tap
             .bind(to: viewModel.input.dismiss)
@@ -68,44 +56,6 @@ final class InputMealViewController: BaseTableViewController, KeyboardFrameTrack
 
     deinit {
         print("🧹🧹🧹 Input Meal View controller parge 🧹🧹🧹")
-    }
-
-    private var configureHeaderView: Binder<Void> {
-        return Binder(self) { me, _ in
-            me.tableView.layoutIfNeeded()
-            let multiple: CGFloat = 1
-            let width = me.tableView.frame.width
-            let height = width / multiple
-            me.headerView.frame = CGRect(x: 0, y: 0, width: width, height: height)
-            me.headerView.clipsToBounds = true
-            me.headerView.layer.cornerRadius = 12
-            me.view.addSubview(me.headerView)
-            me.view.sendSubviewToBack(me.headerView)
-        }
-    }
-
-    private var updateParallax: Binder<CGPoint> {
-        return Binder(self) { me, point in
-            let multiple: CGFloat = 1
-            let defaultPointY = point.y
-            if defaultPointY <= 0 {
-                let width = me.tableView.frame.width - defaultPointY
-                let height = me.tableView.frame.width / multiple - defaultPointY
-                let headerFrame = CGRect(x: defaultPointY / 2,
-                                         y: 0,
-                                         width: width,
-                                         height: height)
-                me.headerView.frame = headerFrame
-            } else {
-                let width = me.tableView.frame.width + defaultPointY
-                let height = me.tableView.frame.width / multiple + defaultPointY
-                let headerFrame = CGRect(x: -defaultPointY / 2,
-                                         y: -defaultPointY * 2,
-                                         width: width,
-                                         height: height)
-                me.headerView.frame = headerFrame
-            }
-        }
     }
 
     private var reloadData: Binder<Void> {

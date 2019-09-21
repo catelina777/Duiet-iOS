@@ -44,6 +44,7 @@ extension InputMealDataSource: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.labelCanvasViewCell,
                                                      for: indexPath)!
             cell.configure(with: viewModel)
+            cell.configure(with: viewModel.data.foodImage)
             return cell
 
         default:

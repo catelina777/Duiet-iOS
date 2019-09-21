@@ -9,6 +9,7 @@
 import Foundation
 import RxRelay
 import RxSwift
+import UIKit.UIImage
 
 protocol InputMealViewModelInput {
     var nameTextInput: AnyObserver<String?> { get }
@@ -30,6 +31,7 @@ protocol InputMealViewModelOutput {
 
 protocol InputMealViewModelData {
     var contentCount: Int { get }
+    var foodImage: UIImage? { get }
 }
 
 protocol InputMealViewModelProtocol {
@@ -43,12 +45,15 @@ final class InputMealViewModel: InputMealViewModelProtocol, InputMealViewModelDa
     let output: InputMealViewModelOutput
     var data: InputMealViewModelData { return self }
 
+    let foodImage: UIImage?
     private let inputMealModel: InputMealModelProtocol
     private let disposeBag = DisposeBag()
 
     init(coordinator: TodayCoordinator,
-         model: InputMealModelProtocol) {
-        self.inputMealModel = model
+         model: InputMealModelProtocol,
+         foodImage: UIImage?) {
+        inputMealModel = model
+        self.foodImage = foodImage
 
         let _nameTextInput = PublishRelay<String?>()
         let _calorieTextInput = PublishRelay<String?>()
@@ -85,7 +90,6 @@ final class InputMealViewModel: InputMealViewModelProtocol, InputMealViewModelDa
         _contentWillAdd.withLatestFrom(model.meal) { ($1, $0) }
             .bind(to: model.addContent)
             .disposed(by: disposeBag)
-        // END
 
         // MARK: - Save value by text input
         let calorie = _calorieTextInput
@@ -115,7 +119,6 @@ final class InputMealViewModel: InputMealViewModelProtocol, InputMealViewModelDa
         name.withLatestFrom(selectedContent) { ($1, $0) }
             .bind(to: model.saveName)
             .disposed(by: disposeBag)
-        // END
 
         // MARK: - Notify label of a change in value
         model.contentDidUpdate.withLatestFrom(_selectedViewModel) { ($0, $1) }
@@ -129,7 +132,6 @@ final class InputMealViewModel: InputMealViewModelProtocol, InputMealViewModelDa
         _contentWillDelete.withLatestFrom(deleteTarget)
             .bind(to: model.deleteContent)
             .disposed(by: disposeBag)
-        // END
 
         // MARK: - Notify label of content deleted
         model.contentDidDelete.withLatestFrom(_selectedViewModel)
