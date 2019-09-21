@@ -50,3 +50,9 @@
 "thursday abbr" = "木";
 "friday abbr" = "金";
 "saturday abbr" = "土";
+
+// InputMealView
+"calorie"  = "カロリー";
+"multiple" = "倍率";
+"name"     = "名前";
+"delete"   = "削除";

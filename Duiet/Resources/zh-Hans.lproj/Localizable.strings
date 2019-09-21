@@ -50,3 +50,9 @@
 "thursday abbr" = "四";
 "friday abbr" = "五";
 "saturday abbr" = "六";
+
+// InputMealView
+"calorie"  = "卡路里";
+"multiple" = "放大率";
+"name"     = "食物名称";
+"delete"   = "删除";

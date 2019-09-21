@@ -50,3 +50,9 @@
 "thursday abbr" = "T";
 "friday abbr" = "F";
 "saturday abbr" = "S";
+
+// InputMealView
+"calorie"  = "Calorie";
+"multiple" = "Multiple";
+"name"     = "Name";
+"delete"   = "Delete";
