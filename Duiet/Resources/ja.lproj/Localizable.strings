@@ -27,9 +27,10 @@
 "complete"       = "完了";
 "cm"             = "cm";
 "kg"             = "kg";
+"bmr"            = "基礎代謝";
 
 // ProgressCardView
-"tdee" = "1日の総消費カロリー";
+"tdee" = "総消費カロリー";
 "calorie intake" = "摂取したカロリー";
 "difference"    = "基礎代謝との差";
 "weight change" = "体重変化量";

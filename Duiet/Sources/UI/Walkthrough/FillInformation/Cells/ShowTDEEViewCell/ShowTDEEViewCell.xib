@@ -102,8 +102,10 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
-                <outlet property="BMRValueLabel" destination="xoK-qb-nmi" id="Itc-0V-nHQ"/>
-                <outlet property="TDEEValueLabel" destination="Rkz-DE-FCv" id="o2m-QE-dAY"/>
+                <outlet property="BMRLabel" destination="fSR-de-n6I" id="3Qx-y8-nE3"/>
+                <outlet property="BMRValueLabel" destination="xoK-qb-nmi" id="x46-h8-qIu"/>
+                <outlet property="TDEELabel" destination="QG4-bN-W2i" id="9d7-Km-Ob3"/>
+                <outlet property="TDEEValueLabel" destination="Rkz-DE-FCv" id="6mg-Sn-9Dj"/>
             </connections>
             <point key="canvasLocation" x="222.46376811594206" y="195.20089285714286"/>
         </tableViewCell>

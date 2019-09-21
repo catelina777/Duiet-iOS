@@ -27,6 +27,7 @@
 "complete"       = "Complete";
 "cm"             = "cm";
 "kg"             = "kg";
+"bmr"            = "BMR";
 
 // ProgressCardView
 "tdee" = "TDEE";

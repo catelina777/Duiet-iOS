@@ -27,9 +27,10 @@
 "complete"       = "完成";
 "cm"             = "厘米";
 "kg"             = "公斤";
+"bmr"            = "基础代谢";
 
 // ProgressCardView
-"tdee" = "每天消耗的卡路里";
+"tdee" = "总卡路里消耗";
 "calorie intake" = "热量摄入";
 "difference"    = "与基础代谢的区别";
 "weight change" = "体重变化";
