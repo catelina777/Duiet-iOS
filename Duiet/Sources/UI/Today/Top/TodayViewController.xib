@@ -20,7 +20,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="65E-0V-sxz">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vOq-Dg-kLu">
                         <size key="itemSize" width="50" height="50"/>
@@ -34,7 +34,7 @@
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="65E-0V-sxz" secondAttribute="trailing" id="4UM-JG-6MA"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="65E-0V-sxz" secondAttribute="bottom" id="FxI-lx-jsP"/>
-                <constraint firstItem="65E-0V-sxz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Wba-BE-kWP"/>
+                <constraint firstItem="65E-0V-sxz" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Wba-BE-kWP"/>
                 <constraint firstItem="65E-0V-sxz" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="fca-iD-MrE"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
