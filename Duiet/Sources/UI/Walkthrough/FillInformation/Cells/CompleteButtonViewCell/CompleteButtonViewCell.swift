@@ -13,6 +13,7 @@ final class CompleteButtonViewCell: BaseTableViewCell {
     @IBOutlet weak var completeButton: UIButton! {
         didSet {
             completeButton.layer.cornerRadius = 10
+            completeButton.setTitle(R.string.localizable.complete() + " 🎉", for: .normal)
         }
     }
 

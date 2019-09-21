@@ -1,5 +1,5 @@
 //
-//  Week.swift
+//  WeekType.swift
 //  Duiet
 //
 //  Created by Ryuhei Kaminishi on 2019/06/15.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Week: String {
+enum WeekType: String, CaseIterable {
     case sunday
     case monday
     case tuesday
@@ -20,21 +20,25 @@ enum Week: String {
     var abbr: String {
         switch self {
         case .sunday:
-            return "S"
+            return R.string.localizable.sundayAbbr()
+
         case .monday:
-            return "M"
+            return R.string.localizable.mondayAbbr()
+
         case .tuesday:
-            return "T"
+            return R.string.localizable.tuesdayAbbr()
+
         case .wednesday:
-            return "W"
+            return R.string.localizable.wednesdayAbbr()
+
         case .thursday:
-            return "T"
+            return R.string.localizable.thursdayAbbr()
+
         case .friday:
-            return "F"
+            return R.string.localizable.fridayAbbr()
+
         case .saturday:
-            return "S"
+            return R.string.localizable.saturdayAbbr()
         }
     }
-
-    static let all: [Week] = [.sunday, .monday, .tuesday, .wednesday, .thursday, .friday, .saturday]
 }

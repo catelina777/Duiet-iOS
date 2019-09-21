@@ -118,7 +118,7 @@
 		407869C02323D19500C46C94 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407869BF2323D19500C46C94 /* BaseTabBarController.swift */; };
 		407D2E7A22EF2537001EC701 /* RealmMigrationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407D2E7922EF2537001EC701 /* RealmMigrationHelper.swift */; };
 		40B2141322B4A1FE0040EA9E /* RoundedWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B2141222B4A1FE0040EA9E /* RoundedWrapperView.swift */; };
-		40B2141522B4D5B00040EA9E /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B2141422B4D5B00040EA9E /* Week.swift */; };
+		40B2141522B4D5B00040EA9E /* WeekType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B2141422B4D5B00040EA9E /* WeekType.swift */; };
 		40B2141B22B55D640040EA9E /* DayViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B2141A22B55D640040EA9E /* DayViewCell.swift */; };
 		40B2141D22B55D730040EA9E /* DayViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40B2141C22B55D730040EA9E /* DayViewCell.xib */; };
 		40B2142022B635F80040EA9E /* DaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B2141F22B635F80040EA9E /* DaysViewController.swift */; };
@@ -130,6 +130,7 @@
 		40B214DC22BF23D00040EA9E /* UserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B214DB22BF23D00040EA9E /* UserInfoModel.swift */; };
 		40D8999722FE750400B6DA6D /* RoundedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D8999622FE750400B6DA6D /* RoundedCollectionViewCell.swift */; };
 		40D97C9222ED52A10069B5F2 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40D97C9122ED52A10069B5F2 /* Colors.xcassets */; };
+		40DC407D232E6593002BB82D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 40DC407F232E6593002BB82D /* Localizable.strings */; };
 		40DF0D3422F5676A005005C8 /* DayRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DF0D3322F5676A005005C8 /* DayRepositoryTests.swift */; };
 		40DF0D3622F5677C005005C8 /* DaysRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DF0D3522F5677C005005C8 /* DaysRepositoryTests.swift */; };
 		40DF0D3822F59EDC005005C8 /* MockDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DF0D3722F59EDC005005C8 /* MockDate.swift */; };
@@ -300,7 +301,7 @@
 		407869BF2323D19500C46C94 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		407D2E7922EF2537001EC701 /* RealmMigrationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmMigrationHelper.swift; sourceTree = "<group>"; };
 		40B2141222B4A1FE0040EA9E /* RoundedWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedWrapperView.swift; sourceTree = "<group>"; };
-		40B2141422B4D5B00040EA9E /* Week.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week.swift; sourceTree = "<group>"; };
+		40B2141422B4D5B00040EA9E /* WeekType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekType.swift; sourceTree = "<group>"; };
 		40B2141A22B55D640040EA9E /* DayViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewCell.swift; sourceTree = "<group>"; };
 		40B2141C22B55D730040EA9E /* DayViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DayViewCell.xib; sourceTree = "<group>"; };
 		40B2141F22B635F80040EA9E /* DaysViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysViewController.swift; sourceTree = "<group>"; };
@@ -312,6 +313,9 @@
 		40B214DB22BF23D00040EA9E /* UserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoModel.swift; sourceTree = "<group>"; };
 		40D8999622FE750400B6DA6D /* RoundedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCollectionViewCell.swift; sourceTree = "<group>"; };
 		40D97C9122ED52A10069B5F2 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		40DC407E232E6593002BB82D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		40DC4080232E65A5002BB82D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		40DC4081232E65B0002BB82D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		40DF0D3322F5676A005005C8 /* DayRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRepositoryTests.swift; sourceTree = "<group>"; };
 		40DF0D3522F5677C005005C8 /* DaysRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysRepositoryTests.swift; sourceTree = "<group>"; };
 		40DF0D3722F59EDC005005C8 /* MockDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDate.swift; sourceTree = "<group>"; };
@@ -527,6 +531,7 @@
 				5E9EE7D622C5CE7D00AF5D82 /* Seeds */,
 				401161142301728B00D522CC /* Settings */,
 				0641AD2B2264A1BC00CEDAE7 /* LaunchScreen.storyboard */,
+				40DC407F232E6593002BB82D /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -658,7 +663,7 @@
 				405A9F6022AE91C700454412 /* ProgressType.swift */,
 				4001F6F922ABA3720009CDA1 /* SceneType.swift */,
 				402D9BFB22E214FA003676C3 /* SettingType.swift */,
-				40B2141422B4D5B00040EA9E /* Week.swift */,
+				40B2141422B4D5B00040EA9E /* WeekType.swift */,
 				40EADBF1231AACFD00D6E9E1 /* UserDefaultsKey.swift */,
 			);
 			path = Enum;
@@ -1156,6 +1161,8 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
+				"zh-Hans",
 			);
 			mainGroup = 0641AD162264A1BA00CEDAE7;
 			productRefGroup = 0641AD202264A1BA00CEDAE7 /* Products */;
@@ -1187,6 +1194,7 @@
 				405A9F5722AD007200454412 /* MonthSummaryViewCell.xib in Resources */,
 				40B2142B22B638970040EA9E /* DaySummaryViewCell.xib in Resources */,
 				063FCBBF227D8164007C191F /* InputMealViewController.xib in Resources */,
+				40DC407D232E6593002BB82D /* Localizable.strings in Resources */,
 				40B2141D22B55D730040EA9E /* DayViewCell.xib in Resources */,
 				5E79D56B2283FB0B0073CD98 /* LabelCanvasViewCell.xib in Resources */,
 				069AD442227731FB0075E711 /* ProgressCardViewCell.xib in Resources */,
@@ -1464,7 +1472,7 @@
 				403E954422CF94CF00EFF459 /* TodayCoordinator.swift in Sources */,
 				4001F71322ABF1AC0009CDA1 /* BaseCollectionViewController.swift in Sources */,
 				5E9EE7D822C5CEAD00AF5D82 /* SeedManager.swift in Sources */,
-				40B2141522B4D5B00040EA9E /* Week.swift in Sources */,
+				40B2141522B4D5B00040EA9E /* WeekType.swift in Sources */,
 				06932AC822801AEB00CFA05C /* MealLabelView.swift in Sources */,
 				06B2FD05227222600078C7F1 /* InputActivityLevelViewCell.swift in Sources */,
 				5E92570E228D3E2D0076CCEE /* KeyboardTrackViewModel.swift in Sources */,
@@ -1577,6 +1585,16 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		40DC407F232E6593002BB82D /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				40DC407E232E6593002BB82D /* en */,
+				40DC4080232E65A5002BB82D /* ja */,
+				40DC4081232E65B0002BB82D /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -1584,6 +1602,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1645,6 +1664,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

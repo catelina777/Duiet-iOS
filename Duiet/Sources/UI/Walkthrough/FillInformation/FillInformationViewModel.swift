@@ -100,9 +100,9 @@ final class FillInformationViewModel: FillInformationViewModelProtocol {
                     bmr != 0,
                     activityLevel != .none
                 else {
-                    return "calc..."
+                    return R.string.localizable.calc()
                 }
-                return "\(Int(bmr)) kcal"
+                return "\(Int(bmr)) \(R.string.localizable.kcal())"
             }
 
         let TDEE = BMRWithActivityLevel
@@ -111,9 +111,9 @@ final class FillInformationViewModel: FillInformationViewModelProtocol {
                     bmr != 0,
                     activityLevel != .none
                 else {
-                    return "calc..."
+                    return R.string.localizable.calc()
                 }
-                return "\(Int(bmr * activityLevel.magnification)) kcal"
+                return "\(Int(bmr * activityLevel.magnification)) \(R.string.localizable.kcal())"
             }
 
         output = Output(gender: gender,

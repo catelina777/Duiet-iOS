@@ -28,7 +28,7 @@ final class InputNumberViewCell: InputPickerViewCell, CellFrameTrackkable {
             let list = [Double].init(repeating: 0, count: 215)
                 .enumerated()
                 .map { Double($0.offset) }
-            let unit = " cm"
+            let unit = " " + R.string.localizable.cm()
             let defaultRow = 140
 
             Observable.just(list.map { String($0) + unit })
@@ -52,7 +52,7 @@ final class InputNumberViewCell: InputPickerViewCell, CellFrameTrackkable {
             let list = [Double].init(repeating: 0, count: 150)
                 .enumerated()
                 .map { Double($0.offset) * 0.5 + 20 }
-            let unit = " kg"
+            let unit = " " + R.string.localizable.kg()
             let defaultRow = 80
 
             Observable.just(list.map { String($0) + unit })

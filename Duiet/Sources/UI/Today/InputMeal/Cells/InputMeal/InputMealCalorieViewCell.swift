@@ -11,10 +11,18 @@ import RxGesture
 import RxSwift
 import UIKit
 
-class InputMealCalorieViewCell: BaseTableViewCell, CellFrameTrackkable {
-    @IBOutlet weak var calorieTitleLabel: UILabel!
-    @IBOutlet weak var multipleTitleLabel: UILabel!
-    @IBOutlet weak var nameTitleLabel: UILabel!
+final class InputMealCalorieViewCell: BaseTableViewCell, CellFrameTrackkable {
+    @IBOutlet weak var calorieTitleLabel: UILabel! {
+        didSet { calorieTitleLabel.text = R.string.localizable.calorie() }
+    }
+
+    @IBOutlet weak var multipleTitleLabel: UILabel! {
+        didSet { multipleTitleLabel.text = R.string.localizable.multiple() }
+    }
+
+    @IBOutlet weak var nameTitleLabel: UILabel! {
+        didSet { nameTitleLabel.text = R.string.localizable.name() }
+    }
 
     @IBOutlet weak var calorieTextField: MyTextField! {
         didSet {
@@ -44,7 +52,9 @@ class InputMealCalorieViewCell: BaseTableViewCell, CellFrameTrackkable {
         }
     }
 
-    @IBOutlet weak var deleteMealButton: UIButton!
+    @IBOutlet weak var deleteMealButton: UIButton! {
+        didSet { deleteMealButton.setTitle("🗑 " + R.string.localizable.delete(), for: .normal) }
+    }
 
     override func prepareForReuse() {
         super.prepareForReuse()

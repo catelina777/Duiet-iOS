@@ -15,22 +15,34 @@ enum SceneType: String {
     case setting
 
     var tabBarItem: UITabBarItem {
-        let tabBarItem = UITabBarItem(title: title, image: UIImage(named: rawValue), selectedImage: nil)
-        let padding: CGFloat = 4
-        tabBarItem.imageInsets = UIEdgeInsets(top: padding, left: 0, bottom: -padding, right: 0)
-        return tabBarItem
+        switch self {
+        case .today:
+            return UITabBarItem(title: title, image: UIImage(systemName: "calendar"), selectedImage: nil)
+
+        case .days:
+            return UITabBarItem(title: title, image: UIImage(systemName: "square.split.1x2.fill"), selectedImage: nil)
+
+        case .months:
+            return UITabBarItem(title: title, image: UIImage(systemName: "square.split.2x2.fill"), selectedImage: nil)
+
+        case .setting:
+            return UITabBarItem(title: title, image: UIImage(systemName: "gear"), selectedImage: nil)
+        }
     }
 
     var title: String {
         switch self {
         case .today:
-            return "Today"
+            return R.string.localizable.today()
+
         case .days:
-            return "Days"
+            return R.string.localizable.days()
+
         case .months:
-            return "Months"
+            return R.string.localizable.months()
+
         case .setting:
-            return "Setting"
+            return R.string.localizable.setting()
         }
     }
 }

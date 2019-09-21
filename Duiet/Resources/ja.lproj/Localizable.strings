@@ -1,0 +1,58 @@
+/* 
+  Localizable.strings
+  Duiet
+
+  Created by Ryuhei Kaminishi on 2019/09/15.
+  Copyright © 2019 duiet. All rights reserved.
+*/
+
+"today"   = "今日";
+"days"    = "日";
+"months"  = "月";
+"setting" = "設定";
+
+// WalkthroughView
+"get photo" = "写真撮影";
+
+// FillInformationView
+"calculate"      = "計算";
+"gender"         = "性別";
+"male"           = "男";
+"female"         = "女";
+"age"            = "歳";
+"height"         = "身長";
+"weight"         = "体重";
+"activity level" = "活動量";
+"calc..."        = "計算中";
+"complete"       = "完了";
+"cm"             = "cm";
+"kg"             = "kg";
+"bmr"            = "基礎代謝";
+
+// ProgressCardView
+"tdee"           = "総消費カロリー";
+"calorie intake" = "摂取したカロリー";
+"difference"     = "基礎代謝との差";
+"weight change"  = "体重変化量";
+"kcal"           = "kcal";
+"up"             = "増量";
+"down"           = "減量";
+"g"              = "g";
+
+// SettingView
+"edit user information" = "ユーザ情報編集";
+
+// MonthSummaryView
+"sunday abbr"    = "日";
+"monday abbr"    = "月";
+"tuesday abbr"   = "火";
+"wednesday abbr" = "水";
+"thursday abbr"  = "木";
+"friday abbr"    = "金";
+"saturday abbr"  = "土";
+
+// InputMealView
+"calorie"  = "カロリー";
+"multiple" = "倍率";
+"name"     = "名前";
+"delete"   = "削除";

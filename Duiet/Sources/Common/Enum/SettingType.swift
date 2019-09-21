@@ -14,7 +14,7 @@ enum SettingType: CaseIterable {
     var contentText: String {
         switch self {
         case .editInfo:
-            return "✍️ Edit Information"
+            return "✍️ " + R.string.localizable.editUserInformation()
         }
     }
 }

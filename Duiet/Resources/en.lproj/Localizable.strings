@@ -1,0 +1,58 @@
+/* 
+  Localizable.strings
+  Duiet
+
+  Created by Ryuhei Kaminishi on 2019/09/15.
+  Copyright © 2019 duiet. All rights reserved.
+*/
+
+"today"   = "Today";
+"days"    = "Days";
+"months"  = "Months";
+"setting" = "Setting";
+
+// WalkthroughView
+"get photo" = "Get photo";
+
+// FillInformationView
+"calculate"      = "Calculate";
+"gender"         = "Gender";
+"male"           = "Male";
+"female"         = "Female";
+"age"            = "Age";
+"height"         = "Height";
+"weight"         = "Weight";
+"activity level" = "Activity Level";
+"calc..."        = "calc...";
+"complete"       = "Complete";
+"cm"             = "cm";
+"kg"             = "kg";
+"bmr"            = "BMR";
+
+// ProgressCardView
+"tdee"           = "TDEE";
+"calorie intake" = "Calorie intake";
+"difference"     = "Difference";
+"weight change"  = "Weight Change";
+"kcal"           = "kcal";
+"up"             = "UP";
+"down"           = "DOWN";
+"g"              = "g";
+
+// SettingView
+"edit user information" = "Edit user information";
+
+// MonthSummaryView
+"sunday abbr"    = "S";
+"monday abbr"    = "M";
+"tuesday abbr"   = "T";
+"wednesday abbr" = "W";
+"thursday abbr"  = "T";
+"friday abbr"    = "F";
+"saturday abbr"  = "S";
+
+// InputMealView
+"calorie"  = "Calorie";
+"multiple" = "Multiple";
+"name"     = "Name";
+"delete"   = "Delete";
