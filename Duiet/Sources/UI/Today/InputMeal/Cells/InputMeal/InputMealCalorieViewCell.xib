@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -33,7 +34,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="234" height="48"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calorie" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wSW-T6-noU">
-                                                        <rect key="frame" x="16" y="20" width="88" height="28"/>
+                                                        <rect key="frame" x="16" y="20" width="76" height="28"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="28" id="9Gg-aB-zdC"/>
                                                         </constraints>
@@ -53,7 +54,7 @@
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8dT-lb-rT6" customClass="MyTextField" customModule="Duiet" customModuleProvider="target">
                                                         <rect key="frame" x="16" y="16" width="202" height="78.5"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="backgroundColor" name="cellBackground"/>
                                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
@@ -86,7 +87,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="191" height="48"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Multiple" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uVZ-ZU-k8h">
-                                                        <rect key="frame" x="16" y="20" width="104.5" height="28"/>
+                                                        <rect key="frame" x="16" y="20" width="85" height="28"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="28" id="seQ-bj-Vfr"/>
                                                         </constraints>
@@ -107,7 +108,7 @@
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U4h-gv-FhA" customClass="MyTextField" customModule="Duiet" customModuleProvider="target">
                                                         <rect key="frame" x="16" y="16" width="159" height="78.5"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="backgroundColor" name="cellBackground"/>
                                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
@@ -153,7 +154,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="425" height="48"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w2z-wH-PiH">
-                                                <rect key="frame" x="16" y="20" width="75" height="28"/>
+                                                <rect key="frame" x="16" y="20" width="64" height="28"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28" id="xUH-KN-h2R"/>
                                                 </constraints>
@@ -174,7 +175,7 @@
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NNE-mY-BDR" customClass="MyTextField" customModule="Duiet" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="12" width="393" height="82.5"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="backgroundColor" name="cellBackground"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -207,7 +208,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="425" height="127"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Osw-jM-YGP">
-                                                <rect key="frame" x="131.5" y="44.5" width="162" height="38"/>
+                                                <rect key="frame" x="142.5" y="45" width="140" height="37"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="21"/>
                                                 <state key="normal" title="🗑 Delete meal">
                                                     <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -258,4 +259,9 @@
             <point key="canvasLocation" x="342.75362318840581" y="116.51785714285714"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <namedColor name="cellBackground">
+            <color red="0.25882352941176473" green="0.25882352941176473" blue="0.25882352941176473" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>
