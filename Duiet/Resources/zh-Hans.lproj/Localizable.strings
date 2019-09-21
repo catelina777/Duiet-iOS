@@ -30,26 +30,26 @@
 "bmr"            = "基础代谢";
 
 // ProgressCardView
-"tdee" = "总卡路里消耗";
+"tdee"           = "总卡路里消耗";
 "calorie intake" = "热量摄入";
-"difference"    = "与基础代谢的区别";
-"weight change" = "体重变化";
-"kcal" = "千卡";
-"up" = "增重";
-"down" = "減";
-"g" = "克";
+"difference"     = "与基础代谢的区别";
+"weight change"  = "体重变化";
+"kcal"           = "千卡";
+"up"             = "增重";
+"down"           = "減";
+"g"              = "克";
 
 // SettingView
 "edit user information" = "编辑用户信息";
 
 // MonthSummaryView
-"sunday abbr" = "日";
-"monday abbr" = "一";
-"tuesday abbr" = "二";
+"sunday abbr"    = "日";
+"monday abbr"    = "一";
+"tuesday abbr"   = "二";
 "wednesday abbr" = "三";
-"thursday abbr" = "四";
-"friday abbr" = "五";
-"saturday abbr" = "六";
+"thursday abbr"  = "四";
+"friday abbr"    = "五";
+"saturday abbr"  = "六";
 
 // InputMealView
 "calorie"  = "卡路里";

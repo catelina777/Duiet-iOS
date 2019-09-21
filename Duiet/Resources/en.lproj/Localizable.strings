@@ -30,26 +30,26 @@
 "bmr"            = "BMR";
 
 // ProgressCardView
-"tdee" = "TDEE";
+"tdee"           = "TDEE";
 "calorie intake" = "Calorie intake";
-"difference"    = "Difference";
-"weight change" = "Weight Change";
-"kcal" = "kcal";
-"up" = "UP";
-"down" = "DOWN";
-"g" = "g";
+"difference"     = "Difference";
+"weight change"  = "Weight Change";
+"kcal"           = "kcal";
+"up"             = "UP";
+"down"           = "DOWN";
+"g"              = "g";
 
 // SettingView
 "edit user information" = "Edit user information";
 
 // MonthSummaryView
-"sunday abbr" = "S";
-"monday abbr" = "M";
-"tuesday abbr" = "T";
+"sunday abbr"    = "S";
+"monday abbr"    = "M";
+"tuesday abbr"   = "T";
 "wednesday abbr" = "W";
-"thursday abbr" = "T";
-"friday abbr" = "F";
-"saturday abbr" = "S";
+"thursday abbr"  = "T";
+"friday abbr"    = "F";
+"saturday abbr"  = "S";
 
 // InputMealView
 "calorie"  = "Calorie";

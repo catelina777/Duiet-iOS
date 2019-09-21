@@ -25,20 +25,20 @@ final class MonthSummaryViewDataSource: NSObject {
 
 extension MonthSummaryViewDataSource: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Week.all.count + viewModel.data.progress.count
+        return WeekType.allCases.count + viewModel.data.progress.count
     }
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.row {
-        case 0..<Week.all.count:
+        case 0..<WeekType.allCases.count:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.dayViewCell,
                                                           for: indexPath)!
-            cell.configure(with: Week.all[indexPath.row].abbr)
+            cell.configure(with: WeekType.allCases[indexPath.row].abbr)
             return cell
 
         default:
-            let row = indexPath.row - Week.all.count
+            let row = indexPath.row - WeekType.allCases.count
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "kusa", for: indexPath)
             cell.backgroundColor = viewModel.data.progress[row].color
             return cell

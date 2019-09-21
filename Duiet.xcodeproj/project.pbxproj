@@ -118,7 +118,7 @@
 		407869C02323D19500C46C94 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407869BF2323D19500C46C94 /* BaseTabBarController.swift */; };
 		407D2E7A22EF2537001EC701 /* RealmMigrationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407D2E7922EF2537001EC701 /* RealmMigrationHelper.swift */; };
 		40B2141322B4A1FE0040EA9E /* RoundedWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B2141222B4A1FE0040EA9E /* RoundedWrapperView.swift */; };
-		40B2141522B4D5B00040EA9E /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B2141422B4D5B00040EA9E /* Week.swift */; };
+		40B2141522B4D5B00040EA9E /* WeekType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B2141422B4D5B00040EA9E /* WeekType.swift */; };
 		40B2141B22B55D640040EA9E /* DayViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B2141A22B55D640040EA9E /* DayViewCell.swift */; };
 		40B2141D22B55D730040EA9E /* DayViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40B2141C22B55D730040EA9E /* DayViewCell.xib */; };
 		40B2142022B635F80040EA9E /* DaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B2141F22B635F80040EA9E /* DaysViewController.swift */; };
@@ -301,7 +301,7 @@
 		407869BF2323D19500C46C94 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		407D2E7922EF2537001EC701 /* RealmMigrationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmMigrationHelper.swift; sourceTree = "<group>"; };
 		40B2141222B4A1FE0040EA9E /* RoundedWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedWrapperView.swift; sourceTree = "<group>"; };
-		40B2141422B4D5B00040EA9E /* Week.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week.swift; sourceTree = "<group>"; };
+		40B2141422B4D5B00040EA9E /* WeekType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekType.swift; sourceTree = "<group>"; };
 		40B2141A22B55D640040EA9E /* DayViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewCell.swift; sourceTree = "<group>"; };
 		40B2141C22B55D730040EA9E /* DayViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DayViewCell.xib; sourceTree = "<group>"; };
 		40B2141F22B635F80040EA9E /* DaysViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysViewController.swift; sourceTree = "<group>"; };
@@ -663,7 +663,7 @@
 				405A9F6022AE91C700454412 /* ProgressType.swift */,
 				4001F6F922ABA3720009CDA1 /* SceneType.swift */,
 				402D9BFB22E214FA003676C3 /* SettingType.swift */,
-				40B2141422B4D5B00040EA9E /* Week.swift */,
+				40B2141422B4D5B00040EA9E /* WeekType.swift */,
 				40EADBF1231AACFD00D6E9E1 /* UserDefaultsKey.swift */,
 			);
 			path = Enum;
@@ -1472,7 +1472,7 @@
 				403E954422CF94CF00EFF459 /* TodayCoordinator.swift in Sources */,
 				4001F71322ABF1AC0009CDA1 /* BaseCollectionViewController.swift in Sources */,
 				5E9EE7D822C5CEAD00AF5D82 /* SeedManager.swift in Sources */,
-				40B2141522B4D5B00040EA9E /* Week.swift in Sources */,
+				40B2141522B4D5B00040EA9E /* WeekType.swift in Sources */,
 				06932AC822801AEB00CFA05C /* MealLabelView.swift in Sources */,
 				06B2FD05227222600078C7F1 /* InputActivityLevelViewCell.swift in Sources */,
 				5E92570E228D3E2D0076CCEE /* KeyboardTrackViewModel.swift in Sources */,

@@ -24,7 +24,7 @@ enum SceneType: String {
 
         case .months:
             return UITabBarItem(title: title, image: UIImage(systemName: "square.split.2x2.fill"), selectedImage: nil)
-            
+
         case .setting:
             return UITabBarItem(title: title, image: UIImage(systemName: "gear"), selectedImage: nil)
         }
