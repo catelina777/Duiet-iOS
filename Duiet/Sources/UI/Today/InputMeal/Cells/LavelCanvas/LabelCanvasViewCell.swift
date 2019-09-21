@@ -65,4 +65,15 @@ final class LabelCanvasViewCell: BaseTableViewCell {
             })
             .disposed(by: disposeBag)
     }
+
+    func configure(with image: UIImage?) {
+        let headerSize = CGRect(x: 0,
+                                y: 0,
+                                width: contentView.frame.width,
+                                height: contentView.frame.height)
+        let headerImageView = UIImageView(frame: headerSize)
+        headerImageView.image = image
+        headerImageView.clipsToBounds = true
+        contentView.addSubview(headerImageView)
+    }
 }
