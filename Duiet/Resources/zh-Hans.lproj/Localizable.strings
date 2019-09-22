@@ -20,7 +20,7 @@
 "male"           = "男";
 "female"         = "女";
 "age"            = "年龄";
-"height"         = "高度";
+"height"         = "身高";
 "weight"         = "体重";
 "activity level" = "活动量";
 "calc..."        = "计算...";
