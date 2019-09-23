@@ -29,6 +29,17 @@
 "kg"             = "kg";
 "bmr"            = "BMR";
 
+"sedentary text"  = "No exercise";
+"lightly text"    = "Lightly";
+"moderately text" = "Moderately";
+"veryActive text" = "Very Active";
+
+"sedentary description"  = "No exercise";
+"lightly description"    = "Light exercise 1-3 days/week";
+"moderately description" = "Moderately exercise 3-5 days/week";
+"veryActive description" = "Hard exercise 6-7 days/week";
+"none description"       = "Please Pick from these";
+
 // ProgressCardView
 "tdee"           = "TDEE";
 "calorie intake" = "Calorie intake";

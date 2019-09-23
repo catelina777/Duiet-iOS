@@ -29,6 +29,17 @@
 "kg"             = "kg";
 "bmr"            = "基礎代謝";
 
+"sedentary text"  = "運動をしない";
+"lightly text"    = "低強度";
+"moderately text" = "中強度";
+"veryActive text" = "高強度";
+
+"sedentary description"  = "運動をしない";
+"lightly description"    = "低強度（週に1-3日）";
+"moderately description" = "中強度（週に3-5日）";
+"veryActive description" = "高強度（週に6-7日）";
+"none description"       = "以下から選んでください";
+
 // ProgressCardView
 "tdee"           = "総消費カロリー";
 "calorie intake" = "摂取したカロリー";
