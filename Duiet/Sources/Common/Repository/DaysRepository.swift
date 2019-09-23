@@ -25,7 +25,7 @@ final class DaysRepository: DaysRepositoryProtocol {
     }
 
     func findAll() -> Results<Day> {
-        return realm.objects(Day.self).sorted(byKeyPath: "createdAt")
+        realm.objects(Day.self).sorted(byKeyPath: "createdAt")
     }
 
     func find(month: Month) -> Month? {

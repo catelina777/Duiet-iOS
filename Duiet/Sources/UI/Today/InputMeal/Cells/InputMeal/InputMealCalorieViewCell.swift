@@ -71,8 +71,7 @@ final class InputMealCalorieViewCell: BaseTableViewCell, CellFrameTrackkable {
         [nameTextField,
          calorieTextField,
          multipleTextField].forEach {
-            guard let textField = $0 else { return }
-            configure(for: textField,
+            configure(for: $0!,
                       viewModel: viewModel,
                       window: window)
         }
@@ -101,7 +100,7 @@ final class InputMealCalorieViewCell: BaseTableViewCell, CellFrameTrackkable {
     }
 
     var updateTextFields: Binder<Content> {
-        return Binder(self) { me, content in
+        Binder(self) { me, content in
             me.nameTextField.text = content.name
             me.calorieTextField.text = ""
             me.multipleTextField.text = ""

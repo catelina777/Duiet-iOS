@@ -19,18 +19,18 @@ final class Meal: Object {
     required convenience init(imagePath: String, date: Date) {
         self.init()
         self.imagePath = imagePath
-        self.createdAt = date
+        createdAt = date
     }
 
     #if DEBUG
     required convenience init(date: Date) {
         self.init()
-        self.createdAt = date
+        createdAt = date
     }
     #endif
 
     var totalCalorie: Double {
-        return contents.reduce(into: 0) {
+        contents.reduce(into: 0) {
             $0 += $1.calorie * ($1.multiple == 0 ? 1 : $1.multiple)
         }
     }

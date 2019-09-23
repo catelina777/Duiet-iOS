@@ -37,7 +37,7 @@ final class ProgressCardViewCell: BaseCollectionViewCell {
     }
 
     var bindLabels: Binder<(Day, UserInfo)> {
-        return Binder(self) { me, progress in
+        Binder(self) { me, progress in
             let tdee = Int(progress.1.TDEE)
             let totalCalorie = Int(progress.0.totalCalorie)
             let difference = Double(totalCalorie - tdee)

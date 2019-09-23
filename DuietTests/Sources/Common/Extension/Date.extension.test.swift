@@ -42,6 +42,6 @@ class DateTests: XCTestCase {
     }
 
     private func complement(number: Int) -> String {
-        return number < 10 ? "0" + String(number) : String(number)
+        number < 10 ? "0" + String(number) : String(number)
     }
 }

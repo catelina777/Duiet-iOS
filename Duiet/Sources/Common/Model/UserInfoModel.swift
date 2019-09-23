@@ -34,7 +34,7 @@ final class UserInfoModel: UserInfoModelProtocol {
     }
 
     var addUserInfo: Binder<UserInfo> {
-        return Binder(self) { me, userInfo in
+        Binder(self) { me, userInfo in
             me.repository.add(userInfo: userInfo)
         }
     }

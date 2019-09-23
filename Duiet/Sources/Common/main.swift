@@ -10,7 +10,7 @@ import UIKit
 
 enum Global {
     static var isUnitTest: Bool {
-        return ProcessInfo.processInfo.environment["isUnitTest"] == "true"
+        ProcessInfo.processInfo.environment["isUnitTest"] == "true"
     }
 }
 

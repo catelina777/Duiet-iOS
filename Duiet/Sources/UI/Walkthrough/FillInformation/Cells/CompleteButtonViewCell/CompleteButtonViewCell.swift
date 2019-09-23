@@ -18,7 +18,7 @@ final class CompleteButtonViewCell: BaseTableViewCell {
     }
 
     var isComplete: Binder<Bool> {
-        return Binder(completeButton) { button, bool in
+        Binder(completeButton) { button, bool in
             if bool {
                 button.backgroundColor = R.color.componentMain()!
                 button.isEnabled = bool

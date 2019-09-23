@@ -25,7 +25,7 @@ final class MonthsViewDataSource: NSObject {
 extension MonthsViewDataSource: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return viewModel.data.months.count
+        viewModel.data.months.count
     }
 
     func collectionView(_ collectionView: UICollectionView,

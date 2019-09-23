@@ -17,16 +17,16 @@ final class Day: Object {
     @objc dynamic var updatedAt = Date()
 
     override static func primaryKey() -> String? {
-        return "date"
+        "date"
     }
 
     required convenience init(date: Date) {
         self.init()
         self.date = date.toDayKeyString()
-        self.createdAt = date
+        createdAt = date
     }
 
     var totalCalorie: Double {
-        return meals.reduce(into: 0) { $0 += $1.totalCalorie }
+        meals.reduce(into: 0) { $0 += $1.totalCalorie }
     }
 }

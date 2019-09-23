@@ -19,7 +19,7 @@ enum PageType: String {
             return R.string.localizable.calculate()
 
         default:
-            return self.rawValue
+            return rawValue
         }
     }
 }

@@ -47,7 +47,7 @@ final class InputGenderViewCell: BaseTableViewCell {
     }
 
     var switchSelectedButton: Binder<Bool?> {
-        return Binder(self) { me, bool in
+        Binder(self) { me, bool in
             guard let bool = bool else { return }
             let borderColor = R.color.componentMain()!.cgColor
             if bool {

@@ -15,11 +15,11 @@ final class RealmMigrationHelper {
     private init() {}
 
     var defaultURL: URL {
-        return Realm.Configuration.defaultConfiguration.fileURL!
+        Realm.Configuration.defaultConfiguration.fileURL!
     }
 
     var defaultParentURL: URL {
-        return defaultURL.deletingLastPathComponent()
+        defaultURL.deletingLastPathComponent()
     }
 
     func doMigration() {
@@ -36,6 +36,6 @@ final class RealmMigrationHelper {
     }
 
     private func bundleURL(_ name: String) -> URL? {
-        return Bundle.main.url(forResource: name, withExtension: "realm")
+        Bundle.main.url(forResource: name, withExtension: "realm")
     }
 }

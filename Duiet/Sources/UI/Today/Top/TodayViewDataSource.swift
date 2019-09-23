@@ -26,7 +26,7 @@ final class TodayViewDataSource: NSObject {
 
 extension TodayViewDataSource: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.data.meals.count + 1
+        viewModel.data.meals.count + 1
     }
 
     func collectionView(_ collectionView: UICollectionView,
@@ -96,6 +96,6 @@ extension TodayViewDataSource: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0.01
+        0.01
     }
 }

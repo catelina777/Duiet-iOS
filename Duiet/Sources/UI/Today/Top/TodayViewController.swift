@@ -51,7 +51,7 @@ class TodayViewController: BaseCollectionViewController {
     }
 
     private var applyChange: Binder<RealmChangeset?> {
-        return Binder(self) { me, changes in
+        Binder(self) { me, changes in
             if let changes = changes {
                 let inserted = changes.inserted.map { IndexPath(row: $0 + 1, section: 0) }
                 let updated = changes.updated.map { IndexPath(row: $0 + 1, section: 0) }

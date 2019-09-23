@@ -33,7 +33,7 @@ final class TodayModel: TodayModelProtocol {
     private let _mealResults = PublishRelay<Results<Meal>>()
 
     var meals: [Meal] {
-        return _meals.value
+        _meals.value
     }
 
     lazy var title: String = {
@@ -48,7 +48,7 @@ final class TodayModel: TodayModelProtocol {
     }()
 
     var date: Date {
-        return day.value.createdAt
+        day.value.createdAt
     }
 
     private let repository: DayRepositoryProtocol
@@ -85,7 +85,7 @@ final class TodayModel: TodayModelProtocol {
     }
 
     var addMeal: Binder<Meal> {
-        return Binder(self) { me, meal in
+        Binder(self) { me, meal in
             me.repository.add(meal: meal, to: me.day.value)
         }
     }

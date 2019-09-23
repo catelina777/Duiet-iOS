@@ -58,6 +58,6 @@ extension MonthsViewModel {
     }
 
     var months: [Month] {
-        return monthsModel.months.value
+        monthsModel.months.value
     }
 }

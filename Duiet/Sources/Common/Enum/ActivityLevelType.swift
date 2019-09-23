@@ -1,5 +1,5 @@
 //
-//  ActivityLevel.swift
+//  ActivityLevelType.swift
 //  Duiet
 //
 //  Created by 上西 隆平 on 2019/04/19.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum ActivityLevel {
+enum ActivityLevelType: CaseIterable {
     case sedentary
     case lightly
     case moderately
@@ -72,7 +72,7 @@ enum ActivityLevel {
         }
     }
 
-    static func getType(with row: Int) -> ActivityLevel {
+    static func get(_ row: Int) -> ActivityLevelType {
         switch row {
         case 1:
             return .sedentary

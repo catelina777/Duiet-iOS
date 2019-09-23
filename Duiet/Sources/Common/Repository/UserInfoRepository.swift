@@ -31,6 +31,6 @@ final class UserInfoRepository: UserInfoRepositoryProtocol {
     }
 
     func get() -> Results<UserInfo> {
-        return realm.objects(UserInfo.self)
+        realm.objects(UserInfo.self)
     }
 }

@@ -24,7 +24,7 @@
 		0622EA30226A251500E87F22 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0622EA2F226A251500E87F22 /* R.generated.swift */; };
 		0622EA34226A283A00E87F22 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0622EA2D226A239300E87F22 /* Montserrat-Bold.ttf */; };
 		0622EA35226A283A00E87F22 /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0622EA2E226A239900E87F22 /* Montserrat-ExtraBold.ttf */; };
-		0622EA37226A29D600E87F22 /* ActivityLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0622EA36226A29D600E87F22 /* ActivityLevel.swift */; };
+		0622EA37226A29D600E87F22 /* ActivityLevelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0622EA36226A29D600E87F22 /* ActivityLevelType.swift */; };
 		0622EA47226A2AB900E87F22 /* PublishRelay.extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0622EA46226A2AB900E87F22 /* PublishRelay.extension.swift */; };
 		0622EA49226A2AC000E87F22 /* BehaviorRelay.extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0622EA48226A2AC000E87F22 /* BehaviorRelay.extension.swift */; };
 		0630D49422742FE800224EC9 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0630D49322742FD400224EC9 /* Montserrat-Regular.ttf */; };
@@ -137,7 +137,6 @@
 		40DF0D3422F5676A005005C8 /* DayRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DF0D3322F5676A005005C8 /* DayRepositoryTests.swift */; };
 		40DF0D3622F5677C005005C8 /* DaysRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DF0D3522F5677C005005C8 /* DaysRepositoryTests.swift */; };
 		40DF0D3822F59EDC005005C8 /* MockDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DF0D3722F59EDC005005C8 /* MockDate.swift */; };
-		40EADBEE231A911000D6E9E1 /* UIColor.extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EADBED231A911000D6E9E1 /* UIColor.extension.swift */; };
 		40EADBF2231AACFD00D6E9E1 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EADBF1231AACFD00D6E9E1 /* UserDefaultsKey.swift */; };
 		40EADBF623234A3500D6E9E1 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EADBF523234A3500D6E9E1 /* BaseViewController.swift */; };
 		40EADBFA2323512500D6E9E1 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EADBF92323512500D6E9E1 /* BaseNavigationController.swift */; };
@@ -201,7 +200,7 @@
 		0622EA2D226A239300E87F22 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		0622EA2E226A239900E87F22 /* Montserrat-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBold.ttf"; sourceTree = "<group>"; };
 		0622EA2F226A251500E87F22 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
-		0622EA36226A29D600E87F22 /* ActivityLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityLevel.swift; sourceTree = "<group>"; };
+		0622EA36226A29D600E87F22 /* ActivityLevelType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityLevelType.swift; sourceTree = "<group>"; };
 		0622EA46226A2AB900E87F22 /* PublishRelay.extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublishRelay.extension.swift; sourceTree = "<group>"; };
 		0622EA48226A2AC000E87F22 /* BehaviorRelay.extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BehaviorRelay.extension.swift; sourceTree = "<group>"; };
 		0630D49322742FD400224EC9 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
@@ -325,7 +324,6 @@
 		40DF0D3322F5676A005005C8 /* DayRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRepositoryTests.swift; sourceTree = "<group>"; };
 		40DF0D3522F5677C005005C8 /* DaysRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysRepositoryTests.swift; sourceTree = "<group>"; };
 		40DF0D3722F59EDC005005C8 /* MockDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDate.swift; sourceTree = "<group>"; };
-		40EADBED231A911000D6E9E1 /* UIColor.extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.extension.swift; sourceTree = "<group>"; };
 		40EADBF1231AACFD00D6E9E1 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 		40EADBF523234A3500D6E9E1 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		40EADBF92323512500D6E9E1 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
@@ -593,7 +591,6 @@
 				5E9EE7CC22C45FAD00AF5D82 /* Date.extension.swift */,
 				0622EA07226A1EF200E87F22 /* NSObjectProtocol.extension.swift */,
 				0622EA2A226A21A400E87F22 /* UIButton.extension.swift */,
-				40EADBED231A911000D6E9E1 /* UIColor.extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -666,7 +663,7 @@
 		06B2FCF0227221980078C7F1 /* Enum */ = {
 			isa = PBXGroup;
 			children = (
-				0622EA36226A29D600E87F22 /* ActivityLevel.swift */,
+				0622EA36226A29D600E87F22 /* ActivityLevelType.swift */,
 				0630D49A227495EB00224EC9 /* CellType.swift */,
 				4001F70822ABD98A0009CDA1 /* PageType.swift */,
 				405A9F6022AE91C700454412 /* ProgressType.swift */,
@@ -1519,7 +1516,6 @@
 				0622EA08226A1EF200E87F22 /* NSObjectProtocol.extension.swift in Sources */,
 				40B2142622B6361E0040EA9E /* DaysViewDataSource.swift in Sources */,
 				5E83EA0022E1680E00B8F584 /* MonthsRepository.swift in Sources */,
-				40EADBEE231A911000D6E9E1 /* UIColor.extension.swift in Sources */,
 				0641AD232264A1BA00CEDAE7 /* AppDelegate.swift in Sources */,
 				069AD440227731EE0075E711 /* ProgressCardViewCell.swift in Sources */,
 				069AD437227723100075E711 /* BaseCollectionViewCell.swift in Sources */,
@@ -1546,7 +1542,7 @@
 				5E35CF8822D728AE00C9CFC3 /* InputMealModel.swift in Sources */,
 				4001F70022ABB43B0009CDA1 /* SettingViewController.swift in Sources */,
 				5E9EE7CD22C45FAD00AF5D82 /* Date.extension.swift in Sources */,
-				0622EA37226A29D600E87F22 /* ActivityLevel.swift in Sources */,
+				0622EA37226A29D600E87F22 /* ActivityLevelType.swift in Sources */,
 				402260E322D615F50057BC9E /* MealLabelViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -24,7 +24,7 @@ final class UserInfo: Object {
                               age: Int,
                               height: Double,
                               weight: Double,
-                              activityLevel: ActivityLevel) {
+                              activityLevel: ActivityLevelType) {
         self.init()
         self.gender = gender
         self.age = age
@@ -34,23 +34,22 @@ final class UserInfo: Object {
     }
 
     override static func primaryKey() -> String? {
-        return "id"
+        "id"
     }
 
     var BMR: Double {
-        return calculate()
+        calculate()
     }
 
     var TDEE: Double {
-        let activityLevel = ActivityLevel.getType(with: self.activityLevel)
-        return calculate() * activityLevel.magnification
+        calculate() * ActivityLevelType.get(activityLevel).magnification
     }
 
     private func calculate() -> Double {
-        return (height * 6.25) + (weight * 9.99) - (Double(age) * 4.92) + genderVariable(with: gender)
+        (height * 6.25) + (weight * 9.99) - (Double(age) * 4.92) + genderVariable(with: gender)
     }
 
     private func genderVariable(with gender: Bool) -> Double {
-        return gender ? 5 : -161
+        gender ? 5 : -161
     }
 }
