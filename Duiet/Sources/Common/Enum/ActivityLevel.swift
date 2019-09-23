@@ -18,13 +18,17 @@ enum ActivityLevel {
     var text: String? {
         switch self {
         case .sedentary:
-            return "No exercise"
+            return R.string.localizable.sedentaryText()
+
         case .lightly:
-            return "Lightly"
+            return R.string.localizable.lightlyText()
+
         case .moderately:
-            return "Moderately"
+            return R.string.localizable.moderatelyText()
+
         case .veryActive:
-            return "Very Active"
+            return R.string.localizable.veryActiveText()
+
         case .none:
             return nil
         }
@@ -33,15 +37,19 @@ enum ActivityLevel {
     var description: String {
         switch self {
         case .sedentary:
-            return "No exercise"
+            return R.string.localizable.sedentaryDescription()
+
         case .lightly:
-            return "Light exercise 1-3 days/week"
+            return R.string.localizable.lightlyDescription()
+
         case .moderately:
-            return "Moderately exercise 3-5 days/week"
+            return R.string.localizable.moderatelyDescription()
+
         case .veryActive:
-            return "Hard exercise 6-7 days/week"
+            return R.string.localizable.veryActiveDescription()
+
         case .none:
-            return "Please Pick from these"
+            return R.string.localizable.noneDescription()
         }
     }
 

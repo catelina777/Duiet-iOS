@@ -20,14 +20,25 @@
 "male"           = "男";
 "female"         = "女";
 "age"            = "年龄";
-"height"         = "高度";
+"height"         = "身高";
 "weight"         = "体重";
 "activity level" = "活动量";
 "calc..."        = "计算...";
 "complete"       = "完成";
 "cm"             = "厘米";
-"kg"             = "公斤";
+"kg"             = "千克";
 "bmr"            = "基础代谢";
+
+"sedentary text"  = "不要运动";
+"lightly text"    = "低强度";
+"moderately text" = "中等强度";
+"veryActive text" = "高强度";
+
+"sedentary description"  = "不要运动";
+"lightly description"    = "低强度（每周1-3天）";
+"moderately description" = "中等强度（每周3-5天）";
+"veryActive description" = "高强度（每周6-7天）";
+"none description"       = "请从以下选择";
 
 // ProgressCardView
 "tdee"           = "总卡路里消耗";
