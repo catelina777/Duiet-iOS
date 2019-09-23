@@ -10,8 +10,6 @@ import RxSwift
 import UIKit
 
 final class InputActivityLevelViewCell: InputPickerViewCell, CellFrameTrackkable {
-    let activityTypes: [ActivityLevel] = [.none, .sedentary, .lightly, .moderately, .veryActive]
-
     func configure(with viewModel: KeyboardTrackViewModel) {
         guard
             let appDelegate = UIApplication.shared.delegate,
@@ -24,17 +22,17 @@ final class InputActivityLevelViewCell: InputPickerViewCell, CellFrameTrackkable
     }
 
     func configure(with viewModel: FillInformationViewModelProtocol) {
-        Observable.just(activityTypes.map { $0.description })
+        Observable.just(ActivityLevelType.allCases.map { $0.description })
             .bind(to: pickerView.rx.itemTitles) { $1 }
             .disposed(by: disposeBag)
 
         pickerView.rx.itemSelected
-            .map { ActivityLevel.getType(with: $0.row) }
+            .map { ActivityLevelType.get($0.row) }
             .bind(to: viewModel.input.activityLevel)
             .disposed(by: disposeBag)
 
         pickerView.rx.itemSelected
-            .map { ActivityLevel.getType(with: $0.row).text }
+            .map { ActivityLevelType.get($0.row).text }
             .bind(to: textField.rx.text)
             .disposed(by: disposeBag)
     }

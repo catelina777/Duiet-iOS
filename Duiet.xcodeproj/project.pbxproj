@@ -24,7 +24,7 @@
 		0622EA30226A251500E87F22 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0622EA2F226A251500E87F22 /* R.generated.swift */; };
 		0622EA34226A283A00E87F22 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0622EA2D226A239300E87F22 /* Montserrat-Bold.ttf */; };
 		0622EA35226A283A00E87F22 /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0622EA2E226A239900E87F22 /* Montserrat-ExtraBold.ttf */; };
-		0622EA37226A29D600E87F22 /* ActivityLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0622EA36226A29D600E87F22 /* ActivityLevel.swift */; };
+		0622EA37226A29D600E87F22 /* ActivityLevelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0622EA36226A29D600E87F22 /* ActivityLevelType.swift */; };
 		0622EA47226A2AB900E87F22 /* PublishRelay.extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0622EA46226A2AB900E87F22 /* PublishRelay.extension.swift */; };
 		0622EA49226A2AC000E87F22 /* BehaviorRelay.extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0622EA48226A2AC000E87F22 /* BehaviorRelay.extension.swift */; };
 		0630D49422742FE800224EC9 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0630D49322742FD400224EC9 /* Montserrat-Regular.ttf */; };
@@ -201,7 +201,7 @@
 		0622EA2D226A239300E87F22 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		0622EA2E226A239900E87F22 /* Montserrat-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBold.ttf"; sourceTree = "<group>"; };
 		0622EA2F226A251500E87F22 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
-		0622EA36226A29D600E87F22 /* ActivityLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityLevel.swift; sourceTree = "<group>"; };
+		0622EA36226A29D600E87F22 /* ActivityLevelType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityLevelType.swift; sourceTree = "<group>"; };
 		0622EA46226A2AB900E87F22 /* PublishRelay.extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublishRelay.extension.swift; sourceTree = "<group>"; };
 		0622EA48226A2AC000E87F22 /* BehaviorRelay.extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BehaviorRelay.extension.swift; sourceTree = "<group>"; };
 		0630D49322742FD400224EC9 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
@@ -666,7 +666,7 @@
 		06B2FCF0227221980078C7F1 /* Enum */ = {
 			isa = PBXGroup;
 			children = (
-				0622EA36226A29D600E87F22 /* ActivityLevel.swift */,
+				0622EA36226A29D600E87F22 /* ActivityLevelType.swift */,
 				0630D49A227495EB00224EC9 /* CellType.swift */,
 				4001F70822ABD98A0009CDA1 /* PageType.swift */,
 				405A9F6022AE91C700454412 /* ProgressType.swift */,
@@ -1546,7 +1546,7 @@
 				5E35CF8822D728AE00C9CFC3 /* InputMealModel.swift in Sources */,
 				4001F70022ABB43B0009CDA1 /* SettingViewController.swift in Sources */,
 				5E9EE7CD22C45FAD00AF5D82 /* Date.extension.swift in Sources */,
-				0622EA37226A29D600E87F22 /* ActivityLevel.swift in Sources */,
+				0622EA37226A29D600E87F22 /* ActivityLevelType.swift in Sources */,
 				402260E322D615F50057BC9E /* MealLabelViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -70,6 +70,6 @@ class UserInfoRepositoryTests: DBUnitTestCase {
         let age: Int
         let height: Double
         let weight: Double
-        let activityLevel: ActivityLevel
+        let activityLevel: ActivityLevelType
     }
 }

@@ -17,7 +17,7 @@ protocol FillInformationViewModelInput {
     var age: AnyObserver<Int?> { get }
     var height: AnyObserver<Double?> { get }
     var weight: AnyObserver<Double?> { get }
-    var activityLevel: AnyObserver<ActivityLevel> { get }
+    var activityLevel: AnyObserver<ActivityLevelType> { get }
     var didTapCompleteButton: AnyObserver<Void> { get }
 }
 
@@ -46,7 +46,7 @@ final class FillInformationViewModel: FillInformationViewModelProtocol {
         let _age = BehaviorRelay<Int?>(value: nil)
         let _height = BehaviorRelay<Double?>(value: nil)
         let _weight = BehaviorRelay<Double?>(value: nil)
-        let _activityLevel = BehaviorRelay<ActivityLevel>(value: .none)
+        let _activityLevel = BehaviorRelay<ActivityLevelType>(value: .none)
         let _didTapCompleteButton = PublishRelay<Void>()
 
         input = Input(gender: _gender.asObserver(),
@@ -74,7 +74,7 @@ final class FillInformationViewModel: FillInformationViewModelProtocol {
         let didTapComplete = _didTapCompleteButton
 
         let BMRWithActivityLevel = combinedInfo
-            .map { v0, v1, v2, v3, v4 -> (Double, ActivityLevel) in
+            .map { v0, v1, v2, v3, v4 -> (Double, ActivityLevelType) in
                 guard
                     let v0 = v0,
                     let v1 = v1,
@@ -158,7 +158,7 @@ extension FillInformationViewModel {
         let age: AnyObserver<Int?>
         let height: AnyObserver<Double?>
         let weight: AnyObserver<Double?>
-        let activityLevel: AnyObserver<ActivityLevel>
+        let activityLevel: AnyObserver<ActivityLevelType>
         let didTapCompleteButton: AnyObserver<Void>
     }
 
