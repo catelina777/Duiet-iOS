@@ -38,67 +38,73 @@ final class DayRepository: DayRepositoryProtocol {
         let dayStart = Calendar.current.startOfDay(for: date)
         let dayEnd = Date(timeInterval: 60 * 60 * 24, since: dayStart)
         let mealResults = realm.objects(Meal.self)
-            .filter("date BETWEEN %@", [dayStart, dayEnd])
-            .sorted(byKeyPath: "date")
+            .filter("createdAt BETWEEN %@", [dayStart, dayEnd])
+            .sorted(byKeyPath: "createdAt")
         return mealResults
     }
 
     func findOrCreate(day date: Date) -> Day {
         let today = date.toDayKeyString()
         let dayObject = realm.object(ofType: Day.self, forPrimaryKey: today)
-        if let _day = dayObject {
-            return _day
+        if let day = dayObject {
+            return day
         } else {
-            let _day = Day(date: date)
+            let day = Day(date: date)
             let month = findOrCreate(month: date)
             try! realm.write {
-                month.days.append(_day)
+                month.days.append(day)
+                month.updatedAt = Date()
             }
-            return _day
+            return day
         }
     }
 
     func findOrCreate(month date: Date) -> Month {
         let thisMonth = date.toMonthKeyString()
         let monthObject = realm.object(ofType: Month.self, forPrimaryKey: thisMonth)
-        if let _month = monthObject {
-            return _month
+        if let month = monthObject {
+            return month
         } else {
-            let _month = Month(date: date)
+            let month = Month(date: date)
             try! realm.write {
-                realm.add(_month)
+                realm.add(month)
             }
-            return _month
+            return month
         }
     }
 
     func add(meal: Meal, to day: Day) {
         try! realm.write {
             day.meals.append(meal)
+            day.updatedAt = Date()
         }
     }
 
     func add(content: Content, to meal: Meal) {
         try! realm.write {
             meal.contents.append(content)
+            meal.updatedAt = Date()
         }
     }
 
     func update(name: String, of content: Content) {
         try! realm.write {
             content.name = name
+            content.updatedAt = Date()
         }
     }
 
     func update(calorie: Double, of content: Content) {
         try! realm.write {
             content.calorie = calorie
+            content.updatedAt = Date()
         }
     }
 
     func update(multiple: Double, of content: Content) {
         try! realm.write {
             content.multiple = multiple
+            content.updatedAt = Date()
         }
     }
 
@@ -107,6 +113,7 @@ final class DayRepository: DayRepositoryProtocol {
             try! realm.write {
                 meal.contents.remove(at: deleteTargetIndex)
                 realm.delete(content)
+                meal.updatedAt = Date()
             }
         } else {
             print("Nothing \(content)")

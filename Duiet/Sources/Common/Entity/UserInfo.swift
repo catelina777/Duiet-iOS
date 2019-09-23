@@ -17,6 +17,9 @@ final class UserInfo: Object {
     @objc dynamic var weight = 0.0
     @objc dynamic var activityLevel = 0
 
+    @objc dynamic var createdAt = Date()
+    @objc dynamic var updatedAt = Date()
+
     required convenience init(gender: Bool,
                               age: Int,
                               height: Double,
