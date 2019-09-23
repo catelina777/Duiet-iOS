@@ -72,7 +72,7 @@ final class MonthSummaryViewModel: MonthSummaryViewModelProtocol, MonthSummaryVi
             return ProgressType.none
         }
         self.progress = progress
-        self.userInfo = userInfoModel.userInfo.value
+        userInfo = userInfoModel.userInfo.value
         input = Input()
         output = Output()
     }

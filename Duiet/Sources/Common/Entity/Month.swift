@@ -17,7 +17,7 @@ final class Month: Object {
     @objc dynamic var updatedAt = Date()
 
     override static func primaryKey() -> String? {
-        return "date"
+        "date"
     }
 
     required convenience init(date: Date) {
@@ -27,6 +27,6 @@ final class Month: Object {
     }
 
     var totalCalories: Double {
-        return days.reduce(into: 0) { $0 += $1.totalCalorie }
+        days.reduce(into: 0) { $0 += $1.totalCalorie }
     }
 }

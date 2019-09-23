@@ -25,7 +25,7 @@ final class MonthSummaryViewDataSource: NSObject {
 
 extension MonthSummaryViewDataSource: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return WeekType.allCases.count + viewModel.data.progress.count
+        WeekType.allCases.count + viewModel.data.progress.count
     }
 
     func collectionView(_ collectionView: UICollectionView,

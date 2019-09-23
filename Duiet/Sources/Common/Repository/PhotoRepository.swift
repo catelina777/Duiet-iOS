@@ -40,19 +40,20 @@ final class PhotoRepository: PhotoRepositoryProtocol {
     }
 
     func fetch(with localIdentifier: String) -> Observable<UIImage> {
-        return Observable<UIImage>.create { observer in
+        Observable<UIImage>.create { observer in
             let results = PHAsset.fetchAssets(withLocalIdentifiers: [localIdentifier], options: nil)
-            guard
-                results.count > 0,
-                let asset = results.firstObject
-                else { return Disposables.create() }
+            guard let asset = results.firstObject else {
+                return Disposables.create()
+            }
 
-            PHImageManager.default().requestImageData(for: asset, options: nil) { data, _, _, _ in
-                guard
-                    let data = data,
-                    let image = UIImage(data: data)
-                    else { return }
-                observer.on(.next(image))
+            let targetSize = CGSize(width: asset.pixelWidth / 2, height: asset.pixelHeight / 2)
+            PHImageManager.default().requestImage(for: asset,
+                                                  targetSize: targetSize,
+                                                  contentMode: .default,
+                                                  options: nil) { image, _ in
+                if let image = image {
+                    observer.on(.next(image))
+                }
             }
             return Disposables.create()
         }

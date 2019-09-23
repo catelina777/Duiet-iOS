@@ -34,7 +34,7 @@ final class UserInfo: Object {
     }
 
     override static func primaryKey() -> String? {
-        return "id"
+        "id"
     }
 
     var BMR: Double {

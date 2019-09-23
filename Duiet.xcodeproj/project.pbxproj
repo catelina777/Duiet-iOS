@@ -137,7 +137,6 @@
 		40DF0D3422F5676A005005C8 /* DayRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DF0D3322F5676A005005C8 /* DayRepositoryTests.swift */; };
 		40DF0D3622F5677C005005C8 /* DaysRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DF0D3522F5677C005005C8 /* DaysRepositoryTests.swift */; };
 		40DF0D3822F59EDC005005C8 /* MockDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DF0D3722F59EDC005005C8 /* MockDate.swift */; };
-		40EADBEE231A911000D6E9E1 /* UIColor.extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EADBED231A911000D6E9E1 /* UIColor.extension.swift */; };
 		40EADBF2231AACFD00D6E9E1 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EADBF1231AACFD00D6E9E1 /* UserDefaultsKey.swift */; };
 		40EADBF623234A3500D6E9E1 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EADBF523234A3500D6E9E1 /* BaseViewController.swift */; };
 		40EADBFA2323512500D6E9E1 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EADBF92323512500D6E9E1 /* BaseNavigationController.swift */; };
@@ -325,7 +324,6 @@
 		40DF0D3322F5676A005005C8 /* DayRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRepositoryTests.swift; sourceTree = "<group>"; };
 		40DF0D3522F5677C005005C8 /* DaysRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysRepositoryTests.swift; sourceTree = "<group>"; };
 		40DF0D3722F59EDC005005C8 /* MockDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDate.swift; sourceTree = "<group>"; };
-		40EADBED231A911000D6E9E1 /* UIColor.extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.extension.swift; sourceTree = "<group>"; };
 		40EADBF1231AACFD00D6E9E1 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 		40EADBF523234A3500D6E9E1 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		40EADBF92323512500D6E9E1 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
@@ -593,7 +591,6 @@
 				5E9EE7CC22C45FAD00AF5D82 /* Date.extension.swift */,
 				0622EA07226A1EF200E87F22 /* NSObjectProtocol.extension.swift */,
 				0622EA2A226A21A400E87F22 /* UIButton.extension.swift */,
-				40EADBED231A911000D6E9E1 /* UIColor.extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1519,7 +1516,6 @@
 				0622EA08226A1EF200E87F22 /* NSObjectProtocol.extension.swift in Sources */,
 				40B2142622B6361E0040EA9E /* DaysViewDataSource.swift in Sources */,
 				5E83EA0022E1680E00B8F584 /* MonthsRepository.swift in Sources */,
-				40EADBEE231A911000D6E9E1 /* UIColor.extension.swift in Sources */,
 				0641AD232264A1BA00CEDAE7 /* AppDelegate.swift in Sources */,
 				069AD440227731EE0075E711 /* ProgressCardViewCell.swift in Sources */,
 				069AD437227723100075E711 /* BaseCollectionViewCell.swift in Sources */,

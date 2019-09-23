@@ -74,14 +74,14 @@ extension DaysViewModel {
     }
 
     var days: [Day] {
-        return daysModel.days.value
+        daysModel.days.value
     }
 
     var userInfo: UserInfo {
-        return userInfoModel.userInfo.value
+        userInfoModel.userInfo.value
     }
 
     var title: String {
-        return daysModel.title
+        daysModel.title
     }
 }

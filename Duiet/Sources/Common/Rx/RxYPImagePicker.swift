@@ -41,7 +41,7 @@ final class RxYPImagePicker: YPImagePicker {
 
 extension Reactive where Base: RxYPImagePicker {
     static func create(_ parent: UIViewController?) -> Observable<RxYPImagePicker> {
-        return Observable.create { [weak parent] observer in
+        Observable.create { [weak parent] observer in
             var config = YPImagePickerConfiguration()
             config.screens = [.photo, .library]
             config.showsPhotoFilters = false

@@ -147,10 +147,10 @@ extension TodayViewModel {
     }
 
     var meals: [Meal] {
-        return todayModel.meals
+        todayModel.meals
     }
 
     var title: String {
-        return todayModel.title
+        todayModel.title
     }
 }

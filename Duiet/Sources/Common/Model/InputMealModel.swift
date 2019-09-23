@@ -51,20 +51,20 @@ internal final class InputMealModel: InputMealModelProtocol {
     }
 
     var addMeal: Binder<Meal> {
-        return Binder(self) { me, meal in
+        Binder(self) { me, meal in
             me.repository.add(meal: meal, to: me.day.value)
         }
     }
 
     var addContent: Binder<(Meal, Content)> {
-        return Binder(self) { me, tuple in
+        Binder(self) { me, tuple in
             me.repository.add(content: tuple.1, to: tuple.0)
             me.contentDidAdd.accept(())
         }
     }
 
     var saveName: Binder<(Content, String)> {
-        return Binder(self) { me, tuple in
+        Binder(self) { me, tuple in
             let content = tuple.0
             guard !content.isInvalidated else { return }
             me.repository.update(name: tuple.1, of: content)
@@ -73,7 +73,7 @@ internal final class InputMealModel: InputMealModelProtocol {
     }
 
     var saveCalorie: Binder<(Content, Double)> {
-        return Binder(self) { me, tuple in
+        Binder(self) { me, tuple in
             let content = tuple.0
             guard !content.isInvalidated else { return }
             me.repository.update(calorie: tuple.1, of: content)
@@ -82,7 +82,7 @@ internal final class InputMealModel: InputMealModelProtocol {
     }
 
     var saveMultiple: Binder<(Content, Double)> {
-        return Binder(self) { me, tuple in
+        Binder(self) { me, tuple in
             let content = tuple.0
             guard !content.isInvalidated else { return }
             me.repository.update(multiple: tuple.1, of: content)
@@ -91,7 +91,7 @@ internal final class InputMealModel: InputMealModelProtocol {
     }
 
     var deleteContent: Binder<(Meal, Content)> {
-        return Binder(self) { me, tuple in
+        Binder(self) { me, tuple in
             let content = tuple.1
             guard !content.isInvalidated else { return }
             me.repository.delete(content: tuple.1, of: tuple.0)

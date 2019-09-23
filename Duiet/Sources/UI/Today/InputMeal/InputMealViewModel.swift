@@ -172,6 +172,6 @@ extension InputMealViewModel {
     }
 
     var contentCount: Int {
-        return inputMealModel.meal.value.contents.count
+        inputMealModel.meal.value.contents.count
     }
 }

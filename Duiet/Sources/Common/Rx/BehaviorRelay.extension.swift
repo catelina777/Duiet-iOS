@@ -11,6 +11,6 @@ import RxSwift
 
 extension BehaviorRelay {
     func asObserver() -> AnyObserver<Element> {
-        return AnyObserver { $0.element.map(self.accept) }
+        AnyObserver { $0.element.map(self.accept) }
     }
 }

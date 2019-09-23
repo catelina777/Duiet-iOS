@@ -39,13 +39,13 @@ class TopTabBarController: BaseTabBarController {
     }
 
     var showDetailDay: Binder<Void> {
-        return Binder(self) { me, _ in
+        Binder(self) { me, _ in
             me.selectedIndex = 0
         }
     }
 
     var showDays: Binder<Void> {
-        return Binder(self) { me, _ in
+        Binder(self) { me, _ in
             me.selectedIndex = 1
         }
     }

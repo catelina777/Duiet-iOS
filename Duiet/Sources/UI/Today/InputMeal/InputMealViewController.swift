@@ -59,7 +59,7 @@ final class InputMealViewController: BaseTableViewController, KeyboardFrameTrack
     }
 
     private var reloadData: Binder<Void> {
-        return Binder(self) { me, _ in
+        Binder(self) { me, _ in
             me.tableView.beginUpdates()
             me.tableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .automatic)
             me.tableView.endUpdates()

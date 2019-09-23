@@ -8,18 +8,15 @@
 
 import Foundation
 
-private let formatter: DateFormatter = {
-    let formatter = DateFormatter()
-    return formatter
-}()
+private let formatter = DateFormatter()
 
 extension Date {
     func toMonthKeyString() -> String {
-        return toYearMonthString()
+        toYearMonthString()
     }
 
     func toDayKeyString() -> String {
-        return toString("yyyy/MM/dd")
+        toString("yyyy/MM/dd")
     }
 
     func toString(_ format: String = "yyyy/MM/dd") -> String {
@@ -28,7 +25,7 @@ extension Date {
     }
 
     func toYearMonthString() -> String {
-        return toString("yyyy/MM")
+        toString("yyyy/MM")
     }
 
     func year() -> Int {
@@ -62,6 +59,6 @@ extension Date {
     }
 
     func index() -> Int {
-        return day() - 1
+        day() - 1
     }
 }

@@ -23,6 +23,6 @@ final class MonthsRepository: MonthsRepositoryProtocol {
     }
 
     func find() -> Results<Month> {
-        return realm.objects(Month.self).sorted(byKeyPath: "createdAt")
+        realm.objects(Month.self).sorted(byKeyPath: "createdAt")
     }
 }

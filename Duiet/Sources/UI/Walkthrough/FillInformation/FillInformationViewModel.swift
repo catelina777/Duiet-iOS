@@ -81,9 +81,7 @@ final class FillInformationViewModel: FillInformationViewModelProtocol {
                     let v2 = v2,
                     let v3 = v3,
                     v4 != .none
-                else {
-                    return (0, v4)
-                }
+                else { return (0, v4) }
                 let _userInfo = UserInfo(gender: v0,
                                          age: v1,
                                          height: v2,
@@ -99,9 +97,7 @@ final class FillInformationViewModel: FillInformationViewModelProtocol {
                 guard
                     bmr != 0,
                     activityLevel != .none
-                else {
-                    return R.string.localizable.calc()
-                }
+                else { return R.string.localizable.calc() }
                 return "\(Int(bmr)) \(R.string.localizable.kcal())"
             }
 
@@ -110,9 +106,7 @@ final class FillInformationViewModel: FillInformationViewModelProtocol {
                 guard
                     bmr != 0,
                     activityLevel != .none
-                else {
-                    return R.string.localizable.calc()
-                }
+                else { return R.string.localizable.calc() }
                 return "\(Int(bmr * activityLevel.magnification)) \(R.string.localizable.kcal())"
             }
 

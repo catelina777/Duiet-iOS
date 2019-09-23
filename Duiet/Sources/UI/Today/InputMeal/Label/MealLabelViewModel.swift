@@ -71,6 +71,6 @@ extension MealLabelViewModel {
     }
 
     var content: Content {
-        return _content.value
+        _content.value
     }
 }

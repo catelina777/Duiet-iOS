@@ -25,7 +25,7 @@ final class DaysViewDataSource: NSObject {
 extension DaysViewDataSource: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return viewModel.data.days.count
+        viewModel.data.days.count
     }
 
     func collectionView(_ collectionView: UICollectionView,
@@ -70,7 +70,6 @@ extension DaysViewDataSource: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        let space = collectionView.frame.width * 0.1 / 2
-        return space
+        collectionView.frame.width * 0.1 / 2
     }
 }

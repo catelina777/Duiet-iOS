@@ -55,7 +55,7 @@ final class MealLabelView: UIView {
     }
 
     var updateLabelText: Binder<Content> {
-        return Binder(self) { me, content in
+        Binder(self) { me, content in
             guard !content.isInvalidated else { return }
             let calorie = content.calorie
             let multiple = content.multiple
@@ -64,7 +64,7 @@ final class MealLabelView: UIView {
     }
 
     var hideMealLabel: Binder<Void> {
-        return Binder(self) { me, _ in
+        Binder(self) { me, _ in
             me.isHidden = true
         }
     }
