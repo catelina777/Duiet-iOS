@@ -12,7 +12,9 @@ import RealmSwift
 final class Day: Object {
     @objc dynamic var date = ""
     let meals = List<Meal>()
+
     @objc dynamic var createdAt = Date()
+    @objc dynamic var updatedAt = Date()
 
     override static func primaryKey() -> String? {
         return "date"
