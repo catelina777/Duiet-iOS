@@ -85,6 +85,7 @@ final class MealCardViewCell: BaseCollectionViewCell {
 
     private func set(image path: String) {
         PhotoRepository.shared.fetch(with: path)
+            .asObservable()
             .bind(to: imageView.rx.image)
             .disposed(by: disposeBag)
     }

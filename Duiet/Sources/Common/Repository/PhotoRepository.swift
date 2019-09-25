@@ -12,7 +12,7 @@ import RxSwift
 import UIKit
 
 protocol PhotoRepositoryProtocol {
-    func save(image: UIImage) -> Observable<String>
+    func save(image: UIImage) -> Single<String>
     func fetch(with localIdentifier: String) -> Observable<UIImage>
 }
 
@@ -21,19 +21,18 @@ final class PhotoRepository: PhotoRepositoryProtocol {
 
     private init() {}
 
-    func save(image: UIImage) -> Observable<String> {
-        return Observable<String>.create { observer in
+    func save(image: UIImage) -> Single<String> {
+        return Single<String>.create { observer in
             PHPhotoLibrary.shared().performChanges({
                 let requestAsset = PHAssetChangeRequest.creationRequestForAsset(from: image)
                 let placeholder = requestAsset.placeholderForCreatedAsset
                 if let identifier = placeholder?.localIdentifier {
-                    observer.on(.next(identifier))
+                    observer(.success(identifier))
                 }
             }, completionHandler: { _, error in
                 if let error = error {
-                    observer.on(.error(error))
+                    observer(.error(error))
                 }
-                observer.on(.completed)
             })
             return Disposables.create()
         }
