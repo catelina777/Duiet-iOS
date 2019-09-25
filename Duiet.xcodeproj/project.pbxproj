@@ -117,6 +117,9 @@
 		405E3A1F229929E900ECEA9E /* EmptyContentViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 405E3A1E229929E900ECEA9E /* EmptyContentViewCell.xib */; };
 		407869C02323D19500C46C94 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407869BF2323D19500C46C94 /* BaseTabBarController.swift */; };
 		407D2E7A22EF2537001EC701 /* RealmMigrationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407D2E7922EF2537001EC701 /* RealmMigrationHelper.swift */; };
+		407D47EB2338D8F800C7B874 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 407D47EA2338D8F800C7B874 /* HealthKit.framework */; };
+		407D47EE2338DCDA00C7B874 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 407D47F02338DCDA00C7B874 /* InfoPlist.strings */; };
+		407D47F52338E2AD00C7B874 /* HealthKitRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407D47F42338E2AD00C7B874 /* HealthKitRepository.swift */; };
 		40A7383223365BB400A3E605 /* PryntTrimmerView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40A7383123365BB400A3E605 /* PryntTrimmerView.framework */; };
 		40A7383723365BCA00A3E605 /* YPImagePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40A7383523365BCA00A3E605 /* YPImagePicker.framework */; };
 		40A7383923365BCA00A3E605 /* Stevia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40A7383623365BCA00A3E605 /* Stevia.framework */; };
@@ -302,6 +305,12 @@
 		405E3A1E229929E900ECEA9E /* EmptyContentViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyContentViewCell.xib; sourceTree = "<group>"; };
 		407869BF2323D19500C46C94 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		407D2E7922EF2537001EC701 /* RealmMigrationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmMigrationHelper.swift; sourceTree = "<group>"; };
+		407D47E92338D8F800C7B874 /* Duiet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Duiet.entitlements; sourceTree = "<group>"; };
+		407D47EA2338D8F800C7B874 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		407D47EF2338DCDA00C7B874 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		407D47F12338DCE100C7B874 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		407D47F22338DCE200C7B874 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		407D47F42338E2AD00C7B874 /* HealthKitRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitRepository.swift; sourceTree = "<group>"; };
 		40A7383123365BB400A3E605 /* PryntTrimmerView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PryntTrimmerView.framework; path = Carthage/Build/iOS/PryntTrimmerView.framework; sourceTree = "<group>"; };
 		40A7383523365BCA00A3E605 /* YPImagePicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YPImagePicker.framework; path = Carthage/Build/iOS/YPImagePicker.framework; sourceTree = "<group>"; };
 		40A7383623365BCA00A3E605 /* Stevia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stevia.framework; path = Carthage/Build/iOS/Stevia.framework; sourceTree = "<group>"; };
@@ -370,6 +379,7 @@
 				401D54BD23012C7B0089E2F7 /* RxGesture.framework in Frameworks */,
 				401D54BE23012C7B0089E2F7 /* Realm.framework in Frameworks */,
 				401D54BF23012C7B0089E2F7 /* RxRelay.framework in Frameworks */,
+				407D47EB2338D8F800C7B874 /* HealthKit.framework in Frameworks */,
 				3D663033B554173C7AFF58FC /* Pods_Duiet.framework in Frameworks */,
 				40A7383723365BCA00A3E605 /* YPImagePicker.framework in Frameworks */,
 			);
@@ -535,10 +545,10 @@
 			children = (
 				5E9EE7D522C5CE5A00AF5D82 /* Assets */,
 				0622EA2C226A237C00E87F22 /* Fonts */,
+				407D47F32338DCF900C7B874 /* Localize */,
 				5E9EE7D622C5CE7D00AF5D82 /* Seeds */,
 				401161142301728B00D522CC /* Settings */,
 				0641AD2B2264A1BC00CEDAE7 /* LaunchScreen.storyboard */,
-				40DC407F232E6593002BB82D /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -780,6 +790,7 @@
 		401161142301728B00D522CC /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				407D47E92338D8F800C7B874 /* Duiet.entitlements */,
 				0641AD2E2264A1BC00CEDAE7 /* Info.plist */,
 				40116115230172BC00D522CC /* Settings.bundle */,
 			);
@@ -862,8 +873,9 @@
 				403E953622CF7B1000EFF459 /* DayRepository.swift */,
 				403E953422CF747E00EFF459 /* DaysRepository.swift */,
 				5E83E9FF22E1680E00B8F584 /* MonthsRepository.swift */,
-				063FCBC6227DCDBA007C191F /* PhotoRepository.swift */,
 				4005BDD922D8EE8B001A7C9D /* UserInfoRepository.swift */,
+				063FCBC6227DCDBA007C191F /* PhotoRepository.swift */,
+				407D47F42338E2AD00C7B874 /* HealthKitRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -932,6 +944,15 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
+		407D47F32338DCF900C7B874 /* Localize */ = {
+			isa = PBXGroup;
+			children = (
+				407D47F02338DCDA00C7B874 /* InfoPlist.strings */,
+				40DC407F232E6593002BB82D /* Localizable.strings */,
+			);
+			path = Localize;
+			sourceTree = "<group>";
+		};
 		40B2141622B55B2B0040EA9E /* MonthSummary */ = {
 			isa = PBXGroup;
 			children = (
@@ -985,6 +1006,7 @@
 		4B312EFBEE0174A408F8814E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				407D47EA2338D8F800C7B874 /* HealthKit.framework */,
 				40A7383623365BCA00A3E605 /* Stevia.framework */,
 				40A7383523365BCA00A3E605 /* YPImagePicker.framework */,
 				40A7383123365BB400A3E605 /* PryntTrimmerView.framework */,
@@ -1195,6 +1217,7 @@
 				0622EA35226A283A00E87F22 /* Montserrat-ExtraBold.ttf in Resources */,
 				0641AD2D2264A1BC00CEDAE7 /* LaunchScreen.storyboard in Resources */,
 				06932AC622801AC500CFA05C /* MealLabelView.xib in Resources */,
+				407D47EE2338DCDA00C7B874 /* InfoPlist.strings in Resources */,
 				061F279C22735BD900FDCB17 /* Icons.xcassets in Resources */,
 				069AD4292277224A0075E711 /* TodayViewController.xib in Resources */,
 				4001F70D22ABDC5A0009CDA1 /* SettingViewCell.xib in Resources */,
@@ -1497,6 +1520,7 @@
 				5E17F981228BE4980046F68D /* RoundedTextFieldViewCell.swift in Sources */,
 				060A7982227C967100F02B30 /* RxYPImagePicker.swift in Sources */,
 				403E953E22CF93FE00EFF459 /* MonthsCoordinator.swift in Sources */,
+				407D47F52338E2AD00C7B874 /* HealthKitRepository.swift in Sources */,
 				402FBEA222C8E63D000BBFA3 /* TopTabBarViewModel.swift in Sources */,
 				4005BDDA22D8EE8B001A7C9D /* UserInfoRepository.swift in Sources */,
 				405147CA2291498800C9AF8C /* Content.swift in Sources */,
@@ -1591,6 +1615,16 @@
 				0641AD2C2264A1BC00CEDAE7 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		407D47F02338DCDA00C7B874 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				407D47EF2338DCDA00C7B874 /* en */,
+				407D47F12338DCE100C7B874 /* zh-Hans */,
+				407D47F22338DCE200C7B874 /* ja */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 		40DC407F232E6593002BB82D /* Localizable.strings */ = {
@@ -1729,6 +1763,7 @@
 			baseConfigurationReference = 1D64453EF3A64E5B58A308B8 /* Pods-Duiet.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Duiet/Resources/Settings/Duiet.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6MU2DV3MZ5;
@@ -1755,6 +1790,7 @@
 			baseConfigurationReference = D6DEA4663663C3FEDB166E8A /* Pods-Duiet.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Duiet/Resources/Settings/Duiet.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6MU2DV3MZ5;

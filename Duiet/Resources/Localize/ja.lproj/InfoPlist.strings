@@ -1,0 +1,12 @@
+/* 
+  InfoPlist.strings
+  Duiet
+
+  Created by Ryuhei Kaminishi on 2019/09/23.
+  Copyright © 2019 duiet. All rights reserved.
+*/
+
+"NSHealthShareUsageDescription"  = "消費カロリーを計算するために使用します";
+"NSHealthUpdateUsageDescription" = "体重の変化を記録するために使用します";
+"NSPhotoLibraryUsageDescription" = "食べ物の記録を取るために使用します";
+"NSCameraUsageDescription"       = "食べ物の記録を取るために使用します";
