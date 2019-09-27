@@ -11,32 +11,57 @@ import HealthKit
 import RxSwift
 
 protocol HealthKitRepositoryProtocol {
-    func isAuth() -> Single<Bool>
+    /// Request permission to save and read the specified type
+    /// - Parameter writeTypes: Request write types
+    /// - Parameter readTypes: Request read types
+    func requestPermission(writeTypes: [HealthType], readTypes: [HealthType]) -> Single<Bool>
+
+    /// Check permission to save and read specified type
+    /// - Parameter writeTypes: Check write types
+    /// - Parameter readTypes: Check read types
+    func isAuth(writeTypes: [HealthType], readTypes: [HealthType]) -> Single<Bool>
+
+    /// Get Health data
+    /// - Parameter sampleType: Want to get health type
+    /// - Parameter unit: Health type unit
     func get(sampleType: HKSampleType, unit: HKUnit) -> Single<Double>
-    func update(hkObject: HKObject) -> Single<Bool>
+
+    /// Add Health data
+    /// - Parameter hkObject: Add object
+    func add(hkObject: HKObject) -> Single<Bool>
 }
 
+/// Repository to operate HealthKit
 final class HealthKitRepository: HealthKitRepositoryProtocol {
     static let shared = HealthKitRepository()
     private let store = HKHealthStore()
 
-    private let bodyMassType = HKQuantityType.quantityType(forIdentifier: .bodyMass)!
-    private let heightType = HKQuantityType.quantityType(forIdentifier: .height)!
-
-    private  var readTypes: Set<HKQuantityType> {
-        Set([ bodyMassType, heightType ])
-    }
-
-    private var writeTypes: Set<HKQuantityType> {
-        Set([ bodyMassType ])
-    }
-
-    func isAuth() -> Single<Bool> {
+    func requestPermission(writeTypes: [HealthType], readTypes: [HealthType]) -> Single<Bool> {
         Single<Bool>.create { [weak self] observer in
             guard let me = self else {
                 return Disposables.create()
             }
-            me.store.getRequestStatusForAuthorization(toShare: me.writeTypes, read: me.readTypes) { success, error in
+            let writeSet = Set(writeTypes.map { $0.quantity! })
+            let readSet = Set(readTypes.map { $0.object })
+            me.store.requestAuthorization(toShare: writeSet, read: readSet) { success, error in
+                observer(.success(success))
+                if let error = error {
+                    observer(.error(error))
+                }
+            }
+
+            return Disposables.create()
+        }
+    }
+
+    func isAuth(writeTypes: [HealthType], readTypes: [HealthType]) -> Single<Bool> {
+        Single<Bool>.create { [weak self] observer in
+            guard let me = self else {
+                return Disposables.create()
+            }
+            let writeSet = Set(writeTypes.map { $0.quantity! })
+            let readSet = Set(readTypes.map { $0.object })
+            me.store.getRequestStatusForAuthorization(toShare: writeSet, read: readSet) { success, error in
                 switch success {
                 case .unnecessary:
                     observer(.success(true))
@@ -77,7 +102,7 @@ final class HealthKitRepository: HealthKitRepositoryProtocol {
         }
     }
 
-    func update(hkObject: HKObject) -> Single<Bool> {
+    func add(hkObject: HKObject) -> Single<Bool> {
         Single<Bool>.create { [weak self] observer in
             guard let me = self else {
                 return Disposables.create()
