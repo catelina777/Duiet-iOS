@@ -6,7 +6,7 @@
   Copyright © 2019 duiet. All rights reserved.
 */
 
-"NSHealthShareUsageDescription"  = "消費カロリーを計算するために使用します";
-"NSHealthUpdateUsageDescription" = "体重の変化を記録するために使用します";
-"NSPhotoLibraryUsageDescription" = "食べ物の記録を取るために使用します";
-"NSCameraUsageDescription"       = "食べ物の記録を取るために使用します";
+"NSHealthShareUsageDescription"  = "このアプリが消費カロリーの計算をするために体情報を利用します";
+"NSHealthUpdateUsageDescription" = "このアプリが体重の変化を記録するために書き込み権限を利用します。";
+"NSPhotoLibraryUsageDescription" = "このアプリが食べ物の写真を読み込むために利用します。";
+"NSCameraUsageDescription"       = "このアプリが食べ物の写真を撮影するために利用します。";

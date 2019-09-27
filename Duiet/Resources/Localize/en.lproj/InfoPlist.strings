@@ -6,7 +6,7 @@
   Copyright © 2019 duiet. All rights reserved.
 */
 
-"NSHealthShareUsageDescription"  = "用于计算消耗的卡路里";
-"NSHealthUpdateUsageDescription" = "用于记录体重变化";
-"NSPhotoLibraryUsageDescription" = "用于获取食物图片";
-"NSCameraUsageDescription"       = "用来给食物拍照";
+"NSHealthShareUsageDescription"  = "This app uses body information to calculate calories burned";
+"NSHealthUpdateUsageDescription" = "This app uses write permissions to record weight changes";
+"NSPhotoLibraryUsageDescription" = "This app is used to load food photos";
+"NSCameraUsageDescription"       = "This app is used to take food photos";
