@@ -26,6 +26,12 @@ protocol HealthKitRepositoryProtocol {
     /// - Parameter unit: Health type unit
     func get(sampleType: HKSampleType, unit: HKUnit) -> Single<Double>
 
+    /// Get biologicalSex
+    func getBiologicalSex() -> Single<HKBiologicalSexObject>
+
+    /// Get BirthOfDate
+    func getBirthOfDate() -> Single<DateComponents>
+
     /// Add Health data
     /// - Parameter hkObject: Add object
     func add(hkObject: HKObject) -> Single<Bool>
@@ -98,6 +104,36 @@ final class HealthKitRepository: HealthKitRepositoryProtocol {
             }
 
             me.store.execute(query)
+            return Disposables.create()
+        }
+    }
+
+    func getBiologicalSex() -> Single<HKBiologicalSexObject> {
+        Single<HKBiologicalSexObject>.create { [weak self] observer in
+            guard let me = self else {
+                return Disposables.create()
+            }
+            do {
+                let biologicalSex = try me.store.biologicalSex()
+                observer(.success(biologicalSex))
+            } catch let error {
+                observer(.error(error))
+            }
+            return Disposables.create()
+        }
+    }
+
+    func getBirthOfDate() -> Single<DateComponents> {
+        Single<DateComponents>.create { [weak self] observer in
+            guard let me = self else {
+                return Disposables.create()
+            }
+            do {
+                let birthOfDate = try me.store.dateOfBirthComponents()
+                observer(.success(birthOfDate))
+            } catch let error {
+                observer(.error(error))
+            }
             return Disposables.create()
         }
     }
