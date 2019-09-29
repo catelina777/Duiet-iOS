@@ -8,11 +8,12 @@
 
 import Foundation
 import RealmSwift
+import RxRealm
 import RxSwift
 
 protocol UserInfoRepositoryProtocol {
     func add(userInfo: UserInfo)
-    func get() -> Results<UserInfo>
+    func get() -> Observable<Results<UserInfo>>
 }
 
 final class UserInfoRepository: UserInfoRepositoryProtocol {
@@ -30,7 +31,7 @@ final class UserInfoRepository: UserInfoRepositoryProtocol {
         }
     }
 
-    func get() -> Results<UserInfo> {
-        realm.objects(UserInfo.self)
+    func get() -> Observable<Results<UserInfo>> {
+        Observable.collection(from: realm.objects(UserInfo.self))
     }
 }

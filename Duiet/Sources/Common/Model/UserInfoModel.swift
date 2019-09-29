@@ -29,27 +29,15 @@ final class UserInfoModel: UserInfoModelProtocol {
     init(repository: UserInfoRepositoryProtocol) {
         self.repository = repository
 
-        let userInfoResults = repository.get()
-        observe(userInfoResults: userInfoResults)
+        repository.get()
+            .compactMap { $0.first }
+            .bind(to: userInfo)
+            .disposed(by: disposeBag)
     }
 
     var addUserInfo: Binder<UserInfo> {
         Binder(self) { me, userInfo in
             me.repository.add(userInfo: userInfo)
         }
-    }
-
-    /// Observe changes in userinfo
-    ///
-    /// - Parameter userInfoResults: UserInfo results find from repository
-    private func observe(userInfoResults: Results<UserInfo>) {
-        Observable.array(from: userInfoResults)
-            .map { $0.first }
-            .compactMap { $0 }
-            .subscribe(onNext: { [weak self] userInfo in
-                guard let me = self else { return }
-                me.userInfo.accept(userInfo)
-            })
-            .disposed(by: disposeBag)
     }
 }
