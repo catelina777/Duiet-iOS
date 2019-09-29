@@ -13,9 +13,7 @@ import RxRealm
 import RxRelay
 import RxSwift
 
-protocol UserInfoModelInput {
-    var addUserInfo: AnyObserver<UserInfo> { get }
-}
+protocol UserInfoModelInput {}
 
 protocol UserInfoModelOutput {
     var userInfo: BehaviorRelay<UserInfo> { get }
@@ -23,6 +21,8 @@ protocol UserInfoModelOutput {
 
 protocol UserInfoModelState {
     var userInfoValue: UserInfo { get }
+
+    func add(userInfo: UserInfo)
 }
 
 protocol UserInfoModelProtocol {
@@ -39,6 +39,7 @@ final class UserInfoModel: UserInfoModelProtocol, UserInfoModelState {
     let output: UserInfoModelOutput
     var state: UserInfoModelState { return self }
 
+    private let repository: UserInfoRepositoryProtocol
     private let disposeBag = DisposeBag()
 
     // MARK: - State
@@ -49,6 +50,7 @@ final class UserInfoModel: UserInfoModelProtocol, UserInfoModelState {
     private let userInfo = BehaviorRelay<UserInfo>(value: UserInfo())
 
     init(repository: UserInfoRepositoryProtocol) {
+        self.repository = repository
         let addUserInfo = PublishRelay<UserInfo>()
         input = Input(addUserInfo: addUserInfo.asObserver())
 
@@ -58,6 +60,10 @@ final class UserInfoModel: UserInfoModelProtocol, UserInfoModelState {
             .compactMap { $0.first }
             .bind(to: userInfo)
             .disposed(by: disposeBag)
+    }
+
+    func add(userInfo: UserInfo) {
+        repository.add(userInfo: userInfo)
     }
 }
 
