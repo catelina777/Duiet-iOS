@@ -117,7 +117,7 @@ final class FillInformationViewModel: FillInformationViewModelProtocol {
                         TDEE: TDEE)
 
         didTapComplete.withLatestFrom(userInfo)
-            .bind(to: userInfoModel.addUserInfo)
+            .bind(to: userInfoModel.input.addUserInfo)
             .disposed(by: disposeBag)
     }
 

@@ -60,7 +60,7 @@ final class MonthSummaryViewModel: MonthSummaryViewModelProtocol, MonthSummaryVi
         var days: [Day?] = .init(repeating: nil, count: daysNum)
         month.days.forEach { days[$0.createdAt.index() + compensationNum] = $0 }
 
-        let tdee = userInfoModel.userInfo.value.TDEE
+        let tdee = userInfoModel.state.userInfoValue.TDEE
         let progress = days.map { day -> ProgressType in
             if let day = day {
                 if day.totalCalorie < tdee {
@@ -72,7 +72,7 @@ final class MonthSummaryViewModel: MonthSummaryViewModelProtocol, MonthSummaryVi
             return ProgressType.none
         }
         self.progress = progress
-        userInfo = userInfoModel.userInfo.value
+        userInfo = userInfoModel.state.userInfoValue
         input = Input()
         output = Output()
     }

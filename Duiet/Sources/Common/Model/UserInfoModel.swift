@@ -13,31 +13,60 @@ import RxRealm
 import RxRelay
 import RxSwift
 
-protocol UserInfoModelProtocol {
-    var userInfo: BehaviorRelay<UserInfo> { get }
-    var addUserInfo: Binder<UserInfo> { get }
+protocol UserInfoModelInput {
+    var addUserInfo: AnyObserver<UserInfo> { get }
 }
 
-final class UserInfoModel: UserInfoModelProtocol {
+protocol UserInfoModelOutput {
+    var userInfo: BehaviorRelay<UserInfo> { get }
+}
+
+protocol UserInfoModelState {
+    var userInfoValue: UserInfo { get }
+}
+
+protocol UserInfoModelProtocol {
+    var input: UserInfoModelInput { get }
+    var output: UserInfoModelOutput { get }
+    var state: UserInfoModelState { get }
+}
+
+final class UserInfoModel: UserInfoModelProtocol, UserInfoModelState {
+    // MARK: - Singleton
     static let shared = UserInfoModel(repository: UserInfoRepository.shared)
 
-    let userInfo = BehaviorRelay<UserInfo>(value: UserInfo())
+    let input: UserInfoModelInput
+    let output: UserInfoModelOutput
+    var state: UserInfoModelState { return self }
 
-    private let repository: UserInfoRepositoryProtocol
     private let disposeBag = DisposeBag()
 
+    // MARK: - State
+    var userInfoValue: UserInfo {
+        userInfo.value
+    }
+
+    private let userInfo = BehaviorRelay<UserInfo>(value: UserInfo())
+
     init(repository: UserInfoRepositoryProtocol) {
-        self.repository = repository
+        let addUserInfo = PublishRelay<UserInfo>()
+        input = Input(addUserInfo: addUserInfo.asObserver())
+
+        output = Output(userInfo: userInfo)
 
         repository.get()
             .compactMap { $0.first }
             .bind(to: userInfo)
             .disposed(by: disposeBag)
     }
+}
 
-    var addUserInfo: Binder<UserInfo> {
-        Binder(self) { me, userInfo in
-            me.repository.add(userInfo: userInfo)
-        }
+extension UserInfoModel {
+    struct Input: UserInfoModelInput {
+        var addUserInfo: AnyObserver<UserInfo>
+    }
+
+    struct Output: UserInfoModelOutput {
+        let userInfo: BehaviorRelay<UserInfo>
     }
 }

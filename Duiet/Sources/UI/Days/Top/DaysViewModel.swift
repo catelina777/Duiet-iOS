@@ -78,7 +78,7 @@ extension DaysViewModel {
     }
 
     var userInfo: UserInfo {
-        userInfoModel.userInfo.value
+        userInfoModel.state.userInfoValue
     }
 
     var title: String {
