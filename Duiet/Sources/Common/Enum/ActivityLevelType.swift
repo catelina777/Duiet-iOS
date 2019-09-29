@@ -9,11 +9,11 @@
 import Foundation
 
 enum ActivityLevelType: CaseIterable {
+    case none
     case sedentary
     case lightly
     case moderately
     case veryActive
-    case none
 
     var text: String? {
         switch self {
