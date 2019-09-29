@@ -81,7 +81,7 @@ final class TodayViewModel: TodayViewModelProtocol, TodayViewModelData {
             .share()
 
         /// I also added meals because I want to detect the update of meal information
-        let progress = Observable.combineLatest(todayModel.day, userInfoModel.userInfo)
+        let progress = Observable.combineLatest(todayModel.day, userInfoModel.output.userInfo)
 
         output = Output(viewDidAppear: _viewDidAppear.asObservable(),
                         didLoadData: didLoadData,

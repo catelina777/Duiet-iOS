@@ -24,6 +24,8 @@ final class TopTodayViewController: TodayViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        title = R.string.localizable.today()
+
         tabViewModel.output.showDetailDay
             .bind(to: viewModel.input.showDetailDay)
             .disposed(by: disposeBag)
