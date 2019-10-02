@@ -54,6 +54,23 @@ final class InputMealViewController: BaseTableViewController, KeyboardFrameTrack
             .disposed(by: disposeBag)
     }
 
+    // MARK: - Processing to make viewWillAppear of the original screen called when returning from this screen
+    override func viewWillAppear(_ animated: Bool) {
+        presentingViewController?.beginAppearanceTransition(false, animated: animated)
+        super.viewWillAppear(animated)
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        presentingViewController?.endAppearanceTransition()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        presentingViewController?.beginAppearanceTransition(true, animated: animated)
+        presentingViewController?.endAppearanceTransition()
+    }
+
     deinit {
         print("🧹🧹🧹 Input Meal View controller parge 🧹🧹🧹")
     }

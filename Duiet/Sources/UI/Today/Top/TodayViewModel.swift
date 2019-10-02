@@ -22,9 +22,7 @@ protocol TodayViewModelInput {
 }
 
 protocol TodayViewModelOutput {
-    var viewDidAppear: Observable<Void> { get }
     var didLoadData: Observable<Void> { get }
-    var changeData: Observable<RealmChangeset?> { get }
     var progress: Observable<(Day, UserInfo)> { get }
 }
 
@@ -83,9 +81,7 @@ final class TodayViewModel: TodayViewModelProtocol, TodayViewModelData {
         /// I also added meals because I want to detect the update of meal information
         let progress = Observable.combineLatest(todayModel.day, userInfoModel.output.userInfo)
 
-        output = Output(viewDidAppear: _viewDidAppear.asObservable(),
-                        didLoadData: didLoadData,
-                        changeData: todayModel.changeData.asObservable(),
+        output = Output(didLoadData: didLoadData,
                         progress: progress)
 
         let mealWillAdd = pickedImage
@@ -140,9 +136,7 @@ extension TodayViewModel {
     }
 
     struct Output: TodayViewModelOutput {
-        let viewDidAppear: Observable<Void>
         let didLoadData: Observable<Void>
-        let changeData: Observable<RealmChangeset?>
         let progress: Observable<(Day, UserInfo)>
     }
 
