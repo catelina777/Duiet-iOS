@@ -7,49 +7,49 @@
 //
 
 import Foundation
-import RealmSwift
 import RxCocoa
-import RxRealm
 import RxRelay
 import RxSwift
 
-protocol TodayModelProtocol {
-    var changeData: PublishRelay<RealmChangeset?> { get }
-    var contentDidDelete: PublishRelay<Void> { get }
-    var day: BehaviorRelay<Day> { get }
-    var meals: [Meal] { get }
-    var addMeal: Binder<Meal> { get }
-    var title: String { get }
-    var date: Date { get }
+protocol TodayModelInput {}
 
-    func loadMealData(date: Date)
+protocol TodayModelOutput {
+    var day: Observable<Day> { get }
 }
 
-final class TodayModel: TodayModelProtocol {
-    let changeData = PublishRelay<RealmChangeset?>()
-    let contentDidDelete = PublishRelay<Void>()
-    let day: BehaviorRelay<Day>
-    private let _meals = BehaviorRelay<[Meal]>(value: [])
-    private let _mealResults = PublishRelay<Results<Meal>>()
+protocol TodayModelState {
+    var meals: [Meal] { get }
+    var title: String { get }
+    var date: Date { get }
+    var add: Binder<Meal> { get }
+
+    func reloadData(date: Date)
+}
+
+protocol TodayModelProtocol {
+    var input: TodayModelInput { get }
+    var output: TodayModelOutput { get }
+    var state: TodayModelState { get }
+}
+
+final class TodayModel: TodayModelProtocol, TodayModelState {
+    let input: TodayModelInput
+    let output: TodayModelOutput
+    var state: TodayModelState { self }
 
     var meals: [Meal] {
-        _meals.value
+        day.value.meals.toArray()
     }
 
-    lazy var title: String = {
-        let now = Date()
-        let date = day.value.createdAt
-        let different = Calendar.current.dateComponents([.day], from: date, to: now).day
-        if different == 0 {
-            return SceneType.today.title
-        } else {
-            return  date.toString()
-        }
-    }()
+    var title: String {
+        date.toString()
+    }
 
     var date: Date {
         day.value.createdAt
     }
+
+    let day = BehaviorRelay<Day>(value: .init(date: Date()))
 
     private let repository: DayRepositoryProtocol
     private let disposeBag = DisposeBag()
@@ -57,44 +57,35 @@ final class TodayModel: TodayModelProtocol {
     init(repository: DayRepositoryProtocol = DayRepository.shared,
          date: Date = Date()) {
         self.repository = repository
-        day = BehaviorRelay<Day>(value: .init(date: date))
 
-        /// Use the difference of the meal model to detect changes in child elements of the day model
-        changeData.withLatestFrom(day)
-            .bind(to: day)
-            .disposed(by: disposeBag)
+        input = Input()
 
-        /// Detect change of meals
-        _mealResults
-            .flatMapLatest { Observable.array(from: $0) }
-            .bind(to: _meals)
-            .disposed(by: disposeBag)
+        let day = BehaviorRelay<Day>(value: .init(date: Date()))
+        output = Output(day: day.asObservable())
 
-        /// Detect changes in meals difference
-        _mealResults
-            .flatMapLatest { Observable.changeset(from: $0) }
-            .map { $1 }
-            .bind(to: changeData)
-            .disposed(by: disposeBag)
-
-        loadMealData(date: date)
+        reloadData(date: date)
     }
 
     deinit {
         print("🧹🧹🧹 Day Model Parge 🧹🧹🧹")
     }
 
-    var addMeal: Binder<Meal> {
+    var add: Binder<Meal> {
         Binder(self) { me, meal in
             me.repository.add(meal: meal, to: me.day.value)
         }
     }
 
-    func loadMealData(date: Date) {
+    func reloadData(date: Date) {
         let dayObject = repository.findOrCreate(day: date)
         day.accept(dayObject)
+    }
+}
 
-        let mealResults = repository.find(meals: date)
-        _mealResults.accept(mealResults)
+extension TodayModel {
+    struct Input: TodayModelInput {}
+
+    struct Output: TodayModelOutput {
+        let day: Observable<Day>
     }
 }

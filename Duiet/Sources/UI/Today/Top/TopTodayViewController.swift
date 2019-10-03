@@ -24,7 +24,7 @@ final class TopTodayViewController: TodayViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = R.string.localizable.today()
+        title = SceneType.today.title
 
         tabViewModel.output.showDetailDay
             .bind(to: viewModel.input.showDetailDay)

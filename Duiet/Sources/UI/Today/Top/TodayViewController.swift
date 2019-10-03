@@ -33,7 +33,7 @@ class TodayViewController: BaseCollectionViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         dataSource.configure(with: collectionView)
 
-        rx.methodInvoked(#selector(self.viewDidAppear(_:)))
+        rx.methodInvoked(#selector(viewDidAppear(_:)))
             .map { _ in }
             .bind(to: viewModel.input.viewDidAppear)
             .disposed(by: disposeBag)
@@ -44,24 +44,9 @@ class TodayViewController: BaseCollectionViewController {
             .map { self }
             .bind(to: viewModel.input.addButtonTap)
             .disposed(by: disposeBag)
-
-        viewModel.output.changeData
-            .bind(to: applyChange)
-            .disposed(by: disposeBag)
     }
 
-    private var applyChange: Binder<RealmChangeset?> {
-        Binder(self) { me, changes in
-            if let changes = changes {
-                let inserted = changes.inserted.map { IndexPath(row: $0 + 1, section: 0) }
-                let updated = changes.updated.map { IndexPath(row: $0 + 1, section: 0) }
-                let deleted = changes.deleted.map { IndexPath(row: $0 + 1, section: 0) }
-                me.collectionView.insertItems(at: inserted)
-                me.collectionView.reloadItems(at: updated)
-                me.collectionView.deleteItems(at: deleted)
-            } else {
-                me.collectionView.reloadData()
-            }
-        }
+    override func viewWillAppear(_ animated: Bool) {
+        collectionView.reloadData()
     }
 }
