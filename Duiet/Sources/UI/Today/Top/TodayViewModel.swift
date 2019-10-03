@@ -67,7 +67,7 @@ final class TodayViewModel: TodayViewModelProtocol, TodayViewModelData {
 
         /// Reload the data to be displayed when the screen is displayed to correspond to the date
         let didLoadData = _willLoadData
-            .do(onNext: { todayModel.loadMealData(date: Date()) })
+            .do(onNext: { todayModel.reloadData(date: Date()) })
 
         let pickedImage = _addButtonTap
             .flatMapLatest {
