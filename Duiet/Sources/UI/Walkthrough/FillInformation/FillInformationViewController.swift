@@ -30,9 +30,10 @@ final class FillInformationViewController: BaseTableViewController, KeyboardFram
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        dataSource.configure(with: tableView)
 
         title = PageType.calculate.title
+        navigationController?.navigationBar.prefersLargeTitles = true
+        dataSource.configure(with: tableView)
 
         keyboardTrackViewModel.output.difference
             .bind(to: updateScroll)
