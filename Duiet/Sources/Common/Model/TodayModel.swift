@@ -11,37 +11,45 @@ import RxCocoa
 import RxRelay
 import RxSwift
 
-protocol TodayModelProtocol {
-    var day: BehaviorRelay<Day> { get }
+protocol TodayModelInput {}
+
+protocol TodayModelOutput {
+    var day: Observable<Day> { get }
+}
+
+protocol TodayModelState {
     var meals: [Meal] { get }
-    var addMeal: Binder<Meal> { get }
     var title: String { get }
     var date: Date { get }
+    var add: Binder<Meal> { get }
 
     func reloadData(date: Date)
 }
 
-final class TodayModel: TodayModelProtocol {
-    let day = BehaviorRelay<Day>(value: .init(date: Date()))
+protocol TodayModelProtocol {
+    var input: TodayModelInput { get }
+    var output: TodayModelOutput { get }
+    var state: TodayModelState { get }
+}
+
+final class TodayModel: TodayModelProtocol, TodayModelState {
+    let input: TodayModelInput
+    let output: TodayModelOutput
+    var state: TodayModelState { self }
 
     var meals: [Meal] {
         day.value.meals.toArray()
     }
 
-    lazy var title: String = {
-        let now = Date()
-        let date = day.value.createdAt
-        let different = Calendar.current.dateComponents([.day], from: date, to: now).day
-        if different == 0 {
-            return SceneType.today.title
-        } else {
-            return  date.toString()
-        }
-    }()
+    var title: String {
+        date.toString()
+    }
 
     var date: Date {
         day.value.createdAt
     }
+
+    let day = BehaviorRelay<Day>(value: .init(date: Date()))
 
     private let repository: DayRepositoryProtocol
     private let disposeBag = DisposeBag()
@@ -50,6 +58,11 @@ final class TodayModel: TodayModelProtocol {
          date: Date = Date()) {
         self.repository = repository
 
+        input = Input()
+
+        let day = BehaviorRelay<Day>(value: .init(date: Date()))
+        output = Output(day: day.asObservable())
+
         reloadData(date: date)
     }
 
@@ -57,7 +70,7 @@ final class TodayModel: TodayModelProtocol {
         print("🧹🧹🧹 Day Model Parge 🧹🧹🧹")
     }
 
-    var addMeal: Binder<Meal> {
+    var add: Binder<Meal> {
         Binder(self) { me, meal in
             me.repository.add(meal: meal, to: me.day.value)
         }
@@ -66,5 +79,13 @@ final class TodayModel: TodayModelProtocol {
     func reloadData(date: Date) {
         let dayObject = repository.findOrCreate(day: date)
         day.accept(dayObject)
+    }
+}
+
+extension TodayModel {
+    struct Input: TodayModelInput {}
+
+    struct Output: TodayModelOutput {
+        let day: Observable<Day>
     }
 }

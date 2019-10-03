@@ -67,7 +67,7 @@ final class TodayViewModel: TodayViewModelProtocol, TodayViewModelData {
 
         /// Reload the data to be displayed when the screen is displayed to correspond to the date
         let didLoadData = _willLoadData
-            .do(onNext: { todayModel.reloadData(date: Date()) })
+            .do(onNext: { todayModel.state.reloadData(date: Date()) })
 
         let pickedImage = _addButtonTap
             .flatMapLatest {
@@ -79,7 +79,7 @@ final class TodayViewModel: TodayViewModelProtocol, TodayViewModelData {
             .share()
 
         /// I also added meals because I want to detect the update of meal information
-        let progress = Observable.combineLatest(todayModel.day, userInfoModel.output.userInfo)
+        let progress = Observable.combineLatest(todayModel.output.day, userInfoModel.output.userInfo)
 
         output = Output(didLoadData: didLoadData,
                         progress: progress)
@@ -88,12 +88,12 @@ final class TodayViewModel: TodayViewModelProtocol, TodayViewModelData {
             .compactMap { $0 }
             .flatMapLatest { PhotoRepository.shared.save(image: $0) }
             .observeOn(MainScheduler.instance)
-            .map { Meal(imagePath: $0, date: todayModel.date) }
+            .map { Meal(imagePath: $0, date: todayModel.state.date) }
             .share()
 
         mealWillAdd
             .map { $0 }
-            .bind(to: todayModel.addMeal)
+            .bind(to: todayModel.state.add)
             .disposed(by: disposeBag)
 
         /// Screen transition can't be made without viewDidAppear or later
@@ -141,10 +141,10 @@ extension TodayViewModel {
     }
 
     var meals: [Meal] {
-        todayModel.meals
+        todayModel.state.meals
     }
 
     var title: String {
-        todayModel.title
+        todayModel.state.title
     }
 }
