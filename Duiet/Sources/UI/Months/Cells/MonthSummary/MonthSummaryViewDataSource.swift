@@ -40,7 +40,7 @@ extension MonthSummaryViewDataSource: UICollectionViewDataSource {
         default:
             let row = indexPath.row - WeekType.allCases.count
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "kusa", for: indexPath)
-            cell.backgroundColor = viewModel.data.progress[row].color
+            cell.backgroundColor = viewModel.data.progress[row]?.color ?? UIColor.clear
             return cell
         }
     }

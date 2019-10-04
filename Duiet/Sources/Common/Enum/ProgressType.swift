@@ -22,7 +22,7 @@ enum ProgressType {
             return .systemBlue
 
         case .none:
-            return UIColor.systemBackground
+            return R.color.monthSummaryCellNone()!
         }
     }
 

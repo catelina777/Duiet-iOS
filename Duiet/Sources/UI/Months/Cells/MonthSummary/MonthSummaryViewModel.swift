@@ -13,7 +13,7 @@ protocol MonthSummaryViewModelInput {}
 protocol MonthSummaryViewModelOutput {}
 
 protocol MonthSummaryViewModelData {
-    var progress: [ProgressType] { get }
+    var progress: [ProgressType?] { get }
     var userInfo: UserInfo { get }
 }
 
@@ -28,7 +28,7 @@ final class MonthSummaryViewModel: MonthSummaryViewModelProtocol, MonthSummaryVi
     let output: MonthSummaryViewModelOutput
     var data: MonthSummaryViewModelData { return self }
 
-    let progress: [ProgressType]
+    let progress: [ProgressType?]
     let userInfo: UserInfo
 
     init(month: Month,
@@ -56,12 +56,15 @@ final class MonthSummaryViewModel: MonthSummaryViewModelProtocol, MonthSummaryVi
 
         let weekDay = calendar.component(.weekday, from: firstDate)
         let compensationNum = weekDay - 1
-        let daysNum = lastDate.day() + compensationNum
+
+        let compensationProgress: [ProgressType?] = .init(repeating: nil, count: compensationNum)
+
+        let daysNum = lastDate.day()
         var days: [Day?] = .init(repeating: nil, count: daysNum)
-        month.days.forEach { days[$0.createdAt.index() + compensationNum] = $0 }
+        month.days.forEach { days[$0.createdAt.index()] = $0 }
 
         let tdee = userInfoModel.state.userInfoValue.TDEE
-        let progress = days.map { day -> ProgressType in
+        let progress: [ProgressType?] = days.map { day -> ProgressType in
             if let day = day {
                 if day.totalCalorie < tdee {
                     return ProgressType.less
@@ -71,7 +74,8 @@ final class MonthSummaryViewModel: MonthSummaryViewModelProtocol, MonthSummaryVi
             }
             return ProgressType.none
         }
-        self.progress = progress
+
+        self.progress = compensationProgress + progress
         userInfo = userInfoModel.state.userInfoValue
         input = Input()
         output = Output()
