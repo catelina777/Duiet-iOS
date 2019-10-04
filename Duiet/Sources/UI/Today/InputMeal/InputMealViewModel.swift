@@ -29,7 +29,7 @@ protocol InputMealViewModelOutput {
     var reloadData: Observable<Void> { get }
 }
 
-protocol InputMealViewModelData {
+protocol InputMealViewModelState {
     var contentCount: Int { get }
     var foodImage: UIImage? { get }
 }
@@ -37,15 +37,21 @@ protocol InputMealViewModelData {
 protocol InputMealViewModelProtocol {
     var input: InputMealViewModelInput { get }
     var output: InputMealViewModelOutput { get }
-    var data: InputMealViewModelData { get }
+    var state: InputMealViewModelState { get }
 }
 
-final class InputMealViewModel: InputMealViewModelProtocol, InputMealViewModelData {
+final class InputMealViewModel: InputMealViewModelProtocol, InputMealViewModelState {
     let input: InputMealViewModelInput
     let output: InputMealViewModelOutput
-    var data: InputMealViewModelData { return self }
+    var state: InputMealViewModelState { return self }
+
+    // MARK: - State
+    var contentCount: Int {
+        inputMealModel.state.mealValue.contents.count
+    }
 
     let foodImage: UIImage?
+
     private let inputMealModel: InputMealModelProtocol
     private let disposeBag = DisposeBag()
 
@@ -71,18 +77,18 @@ final class InputMealViewModel: InputMealViewModelProtocol, InputMealViewModelDa
                       contentWillDelete: contentWillDelete.asObserver(),
                       dismiss: dismiss.asObserver())
 
-        let showLabelsOnce = model.meal
+        let showLabelsOnce = model.output.meal
             .map { $0.contents.toArray() }
             .take(1)
 
         let selectedContent = selectedLabelViewModel.map { $0.data.contentValue }
 
         let updateTextFields = selectedContent.compactMap { $0 }
-        let reloadData = model.contentDidAdd
+        let reloadData = model.output.contentDidAdd
 
         output = Output(showLabelsOnce: showLabelsOnce,
-                        contentDidUpdate: model.contentDidUpdate.asObservable(),
-                        contentDidDelete: model.contentDidDelete.asObservable(),
+                        contentDidUpdate: model.output.contentDidUpdate.asObservable(),
+                        contentDidDelete: model.output.contentDidDelete.asObservable(),
                         updateTextFields: updateTextFields.asObservable(),
                         reloadData: reloadData.asObservable())
 
@@ -104,38 +110,38 @@ final class InputMealViewModel: InputMealViewModelProtocol, InputMealViewModelDa
             .map { $0 ?? "" }
 
         // MARK: - Save processing
-        contentWillAdd.withLatestFrom(model.meal) { ($1, $0) }
-            .bind(to: model.addContent)
+        contentWillAdd.withLatestFrom(model.output.meal) { ($1, $0) }
+            .bind(to: model.state.addContent)
             .disposed(by: disposeBag)
 
         calorie.withLatestFrom(selectedContent) { ($1, $0) }
-            .bind(to: model.saveCalorie)
+            .bind(to: model.state.saveCalorie)
             .disposed(by: disposeBag)
 
         multiple.withLatestFrom(selectedContent) { ($1, $0) }
-            .bind(to: model.saveMultiple)
+            .bind(to: model.state.saveMultiple)
             .disposed(by: disposeBag)
 
         name.withLatestFrom(selectedContent) { ($1, $0) }
-            .bind(to: model.saveName)
+            .bind(to: model.state.saveName)
             .disposed(by: disposeBag)
 
         // MARK: - Label processing
         // Notify label of a change in value
-        model.contentDidUpdate.withLatestFrom(selectedLabelViewModel) { ($0, $1) }
+        model.output.contentDidUpdate.withLatestFrom(selectedLabelViewModel) { ($0, $1) }
             .subscribe(onNext: {
                 $0.1.input.contentDidUpdate.on(.next($0.0))
             })
             .disposed(by: disposeBag)
 
         // Delete content
-        let deleteTarget = Observable.combineLatest(model.meal, selectedContent)
+        let deleteTarget = Observable.combineLatest(model.output.meal, selectedContent)
         contentWillDelete.withLatestFrom(deleteTarget)
-            .bind(to: model.deleteContent)
+            .bind(to: model.state.deleteContent)
             .disposed(by: disposeBag)
 
         // Notify label of content deleted
-        model.contentDidDelete.withLatestFrom(selectedLabelViewModel)
+        model.output.contentDidDelete.withLatestFrom(selectedLabelViewModel)
             .subscribe(onNext: {
                 $0.input.contentDidDelete.on(.next(()))
             })
@@ -170,9 +176,5 @@ extension InputMealViewModel {
         let contentDidDelete: Observable<Void>
         let updateTextFields: Observable<Content>
         let reloadData: Observable<Void>
-    }
-
-    var contentCount: Int {
-        inputMealModel.meal.value.contents.count
     }
 }
