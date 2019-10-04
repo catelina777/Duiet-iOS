@@ -13,14 +13,18 @@ import RxRealm
 import RxRelay
 import RxSwift
 
-protocol InputMealModelProtocol {
-    var contentDidAdd: PublishRelay<Void> { get }
-    var contentDidUpdate: PublishRelay<Content> { get }
-    var contentDidDelete: PublishRelay<Void> { get }
-    var meal: BehaviorRelay<Meal> { get }
-    var meals: PublishRelay<[Meal]> { get }
-    var day: BehaviorRelay<Day> { get }
-    var addMeal: Binder<Meal> { get }
+protocol InputMealModelInput {}
+
+protocol InputMealModelOutput {
+    var contentDidAdd: Observable<Void> { get }
+    var contentDidDelete: Observable<Void> { get }
+    var contentDidUpdate: Observable<Content> { get }
+    var day: Observable<Day> { get }
+    var meal: Observable<Meal> { get }
+}
+
+protocol InputMealModelState {
+    var mealValue: Meal { get }
     var addContent: Binder<(Meal, Content)> { get }
     var saveName: Binder<(Content, String)> { get }
     var saveCalorie: Binder<(Content, Double)> { get }
@@ -28,13 +32,27 @@ protocol InputMealModelProtocol {
     var deleteContent: Binder<(Meal, Content)> { get }
 }
 
-internal final class InputMealModel: InputMealModelProtocol {
-    let contentDidAdd = PublishRelay<Void>()
-    let contentDidUpdate = PublishRelay<Content>()
-    let contentDidDelete = PublishRelay<Void>()
-    let meal: BehaviorRelay<Meal>
-    let meals = PublishRelay<[Meal]>()
-    let day = BehaviorRelay<Day>(value: Day(date: Date()))
+protocol InputMealModelProtocol {
+    var input: InputMealModelInput { get }
+    var output: InputMealModelOutput { get }
+    var state: InputMealModelState { get }
+}
+
+internal final class InputMealModel: InputMealModelProtocol, InputMealModelState {
+    let input: InputMealModelInput
+    let output: InputMealModelOutput
+    var state: InputMealModelState { self }
+
+    private let contentDidAdd = PublishRelay<Void>()
+    private let contentDidUpdate = PublishRelay<Content>()
+    private let contentDidDelete = PublishRelay<Void>()
+    private let meal: BehaviorRelay<Meal>
+    private let day = BehaviorRelay<Day>(value: Day(date: Date()))
+
+    // MARK: State
+    var mealValue: Meal {
+        meal.value
+    }
 
     private let repository: DayRepositoryProtocol
     private let disposeBag = DisposeBag()
@@ -44,10 +62,12 @@ internal final class InputMealModel: InputMealModelProtocol {
          date: Date = Date()) {
         self.repository = repository
         self.meal = BehaviorRelay<Meal>(value: meal)
-    }
-
-    deinit {
-        print("🧹🧹🧹 InputMealModel Parge 🧹🧹🧹")
+        input = Input()
+        output = Output(contentDidAdd: contentDidAdd.asObservable(),
+                        contentDidDelete: contentDidDelete.asObservable(),
+                        contentDidUpdate: contentDidUpdate.asObservable(),
+                        day: day.asObservable(),
+                        meal: self.meal.asObservable())
     }
 
     var addMeal: Binder<Meal> {
@@ -99,21 +119,19 @@ internal final class InputMealModel: InputMealModelProtocol {
         }
     }
 
-    private func observe(day: Day) {
-        Observable.from(object: day)
-            .subscribe(onNext: { [weak self] day in
-                guard let me = self else { return }
-                me.day.accept(day)
-            })
-            .disposed(by: disposeBag)
+    deinit {
+        print("🧹🧹🧹 InputMealModel Parge 🧹🧹🧹")
     }
+}
 
-    private func observe(mealResults: Results<Meal>) {
-        Observable.array(from: mealResults)
-            .subscribe(onNext: { [weak self] meals in
-                guard let me = self else { return }
-                me.meals.accept(meals)
-            })
-            .disposed(by: disposeBag)
+extension InputMealModel {
+    struct Input: InputMealModelInput {}
+
+    struct Output: InputMealModelOutput {
+        let contentDidAdd: Observable<Void>
+        let contentDidDelete: Observable<Void>
+        let contentDidUpdate: Observable<Content>
+        let day: Observable<Day>
+        let meal: Observable<Meal>
     }
 }

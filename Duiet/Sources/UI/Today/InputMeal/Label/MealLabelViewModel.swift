@@ -21,7 +21,7 @@ protocol MealLabelViewModelOutput {
 }
 
 protocol MealLabelViewModelData {
-    var content: Content { get }
+    var contentValue: Content { get }
 }
 
 protocol MealLabelViewModelProtocol {
@@ -35,25 +35,29 @@ final class MealLabelViewModel: MealLabelViewModelProtocol, MealLabelViewModelDa
     let output: MealLabelViewModelOutput
     var data: MealLabelViewModelData { return self }
 
-    private let _content: BehaviorRelay<Content>
+    var contentValue: Content {
+        content.value
+    }
+
+    private let content: BehaviorRelay<Content>
     private let disposeBag = DisposeBag()
 
     init(content: Content) {
-        _content = BehaviorRelay<Content>(value: content)
+        self.content = BehaviorRelay<Content>(value: content)
 
-        let _contentDidUpdate = PublishRelay<Content>()
-        let _contentDidDelete = PublishRelay<Void>()
-        input = Input(contentDidUpdate: _contentDidUpdate.asObserver(),
-                      contentDidDelete: _contentDidDelete.asObserver())
+        let contentDidUpdate = PublishRelay<Content>()
+        let contentDidDelete = PublishRelay<Void>()
+        input = Input(contentDidUpdate: contentDidUpdate.asObserver(),
+                      contentDidDelete: contentDidDelete.asObserver())
 
-        let hideView = _contentDidDelete
-        output = Output(contentDidUpdate: _contentDidUpdate.asObservable(),
+        let hideView = contentDidDelete
+        output = Output(contentDidUpdate: contentDidUpdate.asObservable(),
                         hideView: hideView.asObservable())
 
-        _contentDidUpdate
+        contentDidUpdate
             .subscribe(onNext: { [weak self] content in
                 guard let me = self else { return }
-                me._content.accept(content)
+                me.content.accept(content)
             })
             .disposed(by: disposeBag)
     }
@@ -68,9 +72,5 @@ extension MealLabelViewModel {
     struct Output: MealLabelViewModelOutput {
         let contentDidUpdate: Observable<Content>
         let hideView: Observable<Void>
-    }
-
-    var content: Content {
-        _content.value
     }
 }

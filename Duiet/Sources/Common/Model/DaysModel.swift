@@ -21,10 +21,10 @@ protocol DaysModelProtocol {
 final class DaysModel: DaysModelProtocol {
     let changeData = PublishRelay<RealmChangeset?>()
     let days = BehaviorRelay<[Day]>(value: [])
-    private let _month: BehaviorRelay<Month?>
+    private let month: BehaviorRelay<Month?>
 
     lazy var title: String = {
-        if let month = _month.value {
+        if let month = month.value {
             return month.createdAt.toYearMonthString()
         } else {
             return SceneType.days.title
@@ -37,34 +37,18 @@ final class DaysModel: DaysModelProtocol {
     init(repository: DaysRepositoryProtocol = DaysRepository.shared,
          month: Month? = nil) {
         self.repository = repository
-        _month = BehaviorRelay<Month?>(value: month)
+        self.month = BehaviorRelay<Month?>(value: month)
 
         if let month = month {
-            let monthObject = repository.find(month: month)
-            observe(monthObject: monthObject)
+            repository.find(month: month)
+                .map { $0.days.toArray() }
+                .bind(to: days)
+                .disposed(by: disposeBag)
         } else {
-            let dayResults = repository.findAll()
-            observe(dayResults: dayResults)
+            repository.findAll()
+                .map { $0.toArray() }
+                .bind(to: days)
+                .disposed(by: disposeBag)
         }
-    }
-
-    private func observe(dayResults: Results<Day>) {
-        Observable.array(from: dayResults)
-            .subscribe(onNext: { [weak self] days in
-                guard let me = self else { return }
-                me.days.accept(days)
-            })
-            .disposed(by: disposeBag)
-    }
-
-    private func observe(monthObject: Month?) {
-        guard let monthObject = monthObject else { return }
-        Observable.from(object: monthObject)
-            .subscribe(onNext: { [weak self] month in
-                guard let me = self else { return }
-                let days = month.days.toArray()
-                me.days.accept(days)
-            })
-            .disposed(by: disposeBag)
     }
 }

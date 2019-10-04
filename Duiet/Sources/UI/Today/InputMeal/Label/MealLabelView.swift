@@ -32,7 +32,7 @@ final class MealLabelView: UIView {
             .when(.recognized)
             .subscribe(onNext: { [weak self] _ in
                 guard let me = self else { return }
-                viewModel.input.selectedViewModel.on(.next(me.viewModel))
+                viewModel.input.selectedLabelViewModel.on(.next(me.viewModel))
             })
             .disposed(by: disposeBag)
 
@@ -49,8 +49,8 @@ final class MealLabelView: UIView {
 
     func initialize(with content: Content) {
         viewModel = MealLabelViewModel(content: content)
-        let calorie = viewModel.content.calorie
-        let multiple = viewModel.content.multiple
+        let calorie = viewModel.contentValue.calorie
+        let multiple = viewModel.contentValue.multiple
         self.mealLabel.text = "\(Int(calorie * (multiple == 0 ? 1 : multiple)))"
     }
 
