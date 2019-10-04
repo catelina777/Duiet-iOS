@@ -19,7 +19,7 @@ protocol DaysViewModelOutput {
     var showDetailDay: Observable<Day> { get }
 }
 
-protocol DaysViewModelData {
+protocol DaysViewModelState {
     var days: [Day] { get }
     var userInfo: UserInfo { get }
     var title: String { get }
@@ -28,13 +28,13 @@ protocol DaysViewModelData {
 protocol DaysViewModelProtocol {
     var input: DaysViewModelInput { get }
     var output: DaysViewModelOutput { get }
-    var data: DaysViewModelData { get }
+    var state: DaysViewModelState { get }
 }
 
-final class DaysViewModel: DaysViewModelProtocol, DaysViewModelData {
+final class DaysViewModel: DaysViewModelProtocol, DaysViewModelState {
     let input: DaysViewModelInput
     let output: DaysViewModelOutput
-    var data: DaysViewModelData { return self }
+    var state: DaysViewModelState { return self }
 
     private let daysModel: DaysModelProtocol
     private let userInfoModel: UserInfoModelProtocol

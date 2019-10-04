@@ -25,15 +25,15 @@ final class DaysViewDataSource: NSObject {
 extension DaysViewDataSource: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        viewModel.data.days.count
+        viewModel.state.days.count
     }
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.daySummaryViewCell,
                                                       for: indexPath)!
-        cell.configure(with: viewModel.data.days[indexPath.row],
-                       userInfo: viewModel.data.userInfo)
+        cell.configure(with: viewModel.state.days[indexPath.row],
+                       userInfo: viewModel.state.userInfo)
         return cell
     }
 }
@@ -41,7 +41,7 @@ extension DaysViewDataSource: UICollectionViewDataSource {
 extension DaysViewDataSource: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
-        let day = viewModel.data.days[indexPath.row]
+        let day = viewModel.state.days[indexPath.row]
         viewModel.input.selectedDay.on(.next(day))
     }
 }
