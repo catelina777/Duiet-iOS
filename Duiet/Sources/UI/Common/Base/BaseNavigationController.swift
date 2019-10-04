@@ -12,9 +12,8 @@ import UIKit
 class BaseNavigationController: UINavigationController {
     let disposeBag = DisposeBag()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         bindAppearance()
     }
 
