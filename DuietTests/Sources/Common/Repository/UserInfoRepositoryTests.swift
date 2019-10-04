@@ -8,6 +8,7 @@
 
 @testable import Duiet
 import RealmSwift
+import RxBlocking
 import XCTest
 
 class UserInfoRepositoryTests: DBUnitTestCase {
@@ -21,7 +22,6 @@ class UserInfoRepositoryTests: DBUnitTestCase {
 
     func testAddGet() {
         let mock1 = MockUserInfo(gender: true, age: 23, height: 168, weight: 62, activityLevel: .none)
-        let mock2 = MockUserInfo(gender: false, age: 28, height: 168, weight: 62, activityLevel: .moderately)
         let mockUserInfo1 = UserInfo(gender: mock1.gender,
                                      age: mock1.age,
                                      height: mock1.height,
@@ -29,11 +29,17 @@ class UserInfoRepositoryTests: DBUnitTestCase {
                                      activityLevel: mock1.activityLevel)
 
         let userInfo = UserInfoRepository.shared.get()
-        XCTAssertEqual(userInfo.count, 0)
+        let emptyResult = try! userInfo
+            .toBlocking()
+            .first()
+        XCTAssertEqual(emptyResult?.count, 0)
+
         UserInfoRepository.shared.add(userInfo: mockUserInfo1)
-        XCTAssertEqual(userInfo.count, 1)
-        XCTAssertTrue(userInfo.first?.gender == mock1.gender)
-        XCTAssertFalse(userInfo.first?.gender == mock2.gender)
+        let thereIsOneResult = try! userInfo
+            .toBlocking()
+            .first()
+        XCTAssertEqual(thereIsOneResult?.count, 1)
+        XCTAssertTrue(thereIsOneResult?.first?.gender == mock1.gender)
     }
 
     func testAddUpdate() {
@@ -52,17 +58,24 @@ class UserInfoRepositoryTests: DBUnitTestCase {
 
         //　Test whether the expected UserInfo has been added
         let userInfo = UserInfoRepository.shared.get()
-        XCTAssertEqual(userInfo.count, 0)
+        let emptyResult = try! userInfo
+            .toBlocking()
+            .first()
+        XCTAssertEqual(emptyResult?.count, 0)
         UserInfoRepository.shared.add(userInfo: mockUserInfo1)
-        XCTAssertTrue(userInfo.first?.gender == mock1.gender)
-        XCTAssertFalse(userInfo.first?.gender == mock2.gender)
-        XCTAssertEqual(userInfo.count, 1)
+        let thereIsOneResult = try! userInfo
+            .toBlocking()
+            .first()
+        XCTAssertTrue(thereIsOneResult?.first?.gender == mock1.gender)
+        XCTAssertEqual(thereIsOneResult?.count, 1)
 
         // Test if the expected UserInfo has been updated
         UserInfoRepository.shared.add(userInfo: mockUserInfo2)
-        XCTAssertFalse(userInfo.first?.gender == mock1.gender)
-        XCTAssertTrue(userInfo.first?.gender == mock2.gender)
-        XCTAssertEqual(userInfo.count, 1)
+        let updatedOneResult = try! userInfo
+            .toBlocking()
+            .first()
+        XCTAssertTrue(updatedOneResult?.first?.gender == mock2.gender)
+        XCTAssertEqual(updatedOneResult?.count, 1)
     }
 
     struct MockUserInfo {
