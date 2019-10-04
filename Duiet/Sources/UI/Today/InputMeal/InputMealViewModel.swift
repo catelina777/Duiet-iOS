@@ -15,7 +15,7 @@ protocol InputMealViewModelInput {
     var nameTextInput: AnyObserver<String?> { get }
     var calorieTextInput: AnyObserver<String?> { get }
     var multipleTextInput: AnyObserver<String?> { get }
-    var selectedViewModel: AnyObserver<MealLabelViewModelProtocol> { get }
+    var selectedLabelViewModel: AnyObserver<MealLabelViewModelProtocol> { get }
     var contentWillAdd: AnyObserver<Content> { get }
     var contentWillDelete: AnyObserver<Void> { get }
     var dismiss: AnyObserver<Void> { get }
@@ -55,27 +55,27 @@ final class InputMealViewModel: InputMealViewModelProtocol, InputMealViewModelDa
         inputMealModel = model
         self.foodImage = foodImage
 
-        let _nameTextInput = PublishRelay<String?>()
-        let _calorieTextInput = PublishRelay<String?>()
-        let _multipleTextInput = PublishRelay<String?>()
-        let _selectedViewModel = PublishRelay<MealLabelViewModelProtocol>()
-        let _contentWillAdd = PublishRelay<Content>()
-        let _contentWillDelete = PublishRelay<Void>()
-        let _dismiss = PublishRelay<Void>()
+        let nameTextInput = PublishRelay<String?>()
+        let calorieTextInput = PublishRelay<String?>()
+        let multipleTextInput = PublishRelay<String?>()
+        let selectedLabelViewModel = PublishRelay<MealLabelViewModelProtocol>()
+        let contentWillAdd = PublishRelay<Content>()
+        let contentWillDelete = PublishRelay<Void>()
+        let dismiss = PublishRelay<Void>()
 
-        input = Input(nameTextInput: _nameTextInput.asObserver(),
-                      calorieTextInput: _calorieTextInput.asObserver(),
-                      multipleTextInput: _multipleTextInput.asObserver(),
-                      selectedViewModel: _selectedViewModel.asObserver(),
-                      contentWillAdd: _contentWillAdd.asObserver(),
-                      contentWillDelete: _contentWillDelete.asObserver(),
-                      dismiss: _dismiss.asObserver())
+        input = Input(nameTextInput: nameTextInput.asObserver(),
+                      calorieTextInput: calorieTextInput.asObserver(),
+                      multipleTextInput: multipleTextInput.asObserver(),
+                      selectedLabelViewModel: selectedLabelViewModel.asObserver(),
+                      contentWillAdd: contentWillAdd.asObserver(),
+                      contentWillDelete: contentWillDelete.asObserver(),
+                      dismiss: dismiss.asObserver())
 
         let showLabelsOnce = model.meal
             .map { $0.contents.toArray() }
             .take(1)
 
-        let selectedContent = _selectedViewModel.map { $0.data.content }
+        let selectedContent = selectedLabelViewModel.map { $0.data.contentValue }
 
         let updateTextFields = selectedContent.compactMap { $0 }
         let reloadData = model.contentDidAdd
@@ -86,27 +86,27 @@ final class InputMealViewModel: InputMealViewModelProtocol, InputMealViewModelDa
                         updateTextFields: updateTextFields.asObservable(),
                         reloadData: reloadData.asObservable())
 
-        // MARK: - Save content
-        _contentWillAdd.withLatestFrom(model.meal) { ($1, $0) }
-            .bind(to: model.addContent)
-            .disposed(by: disposeBag)
-
-        // MARK: - Save value by text input
-        let calorie = _calorieTextInput
+        // MARK: - Process of manipulate input from textfield
+        let calorie = calorieTextInput
             .compactMap { $0 }
             .map { Double($0) ?? 0 }
             .distinctUntilChanged()
             .share()
 
-        let multiple = _multipleTextInput
+        let multiple = multipleTextInput
             .compactMap { $0 }
             .map { Double($0) ?? 0 }
             .distinctUntilChanged()
             .share()
 
-        let name = _nameTextInput
+        let name = nameTextInput
             .distinctUntilChanged()
             .map { $0 ?? "" }
+
+        // MARK: - Save processing
+        contentWillAdd.withLatestFrom(model.meal) { ($1, $0) }
+            .bind(to: model.addContent)
+            .disposed(by: disposeBag)
 
         calorie.withLatestFrom(selectedContent) { ($1, $0) }
             .bind(to: model.saveCalorie)
@@ -120,28 +120,29 @@ final class InputMealViewModel: InputMealViewModelProtocol, InputMealViewModelDa
             .bind(to: model.saveName)
             .disposed(by: disposeBag)
 
-        // MARK: - Notify label of a change in value
-        model.contentDidUpdate.withLatestFrom(_selectedViewModel) { ($0, $1) }
+        // MARK: - Label processing
+        // Notify label of a change in value
+        model.contentDidUpdate.withLatestFrom(selectedLabelViewModel) { ($0, $1) }
             .subscribe(onNext: {
                 $0.1.input.contentDidUpdate.on(.next($0.0))
             })
             .disposed(by: disposeBag)
 
-        // MARK: - Delete content
+        // Delete content
         let deleteTarget = Observable.combineLatest(model.meal, selectedContent)
-        _contentWillDelete.withLatestFrom(deleteTarget)
+        contentWillDelete.withLatestFrom(deleteTarget)
             .bind(to: model.deleteContent)
             .disposed(by: disposeBag)
 
-        // MARK: - Notify label of content deleted
-        model.contentDidDelete.withLatestFrom(_selectedViewModel)
+        // Notify label of content deleted
+        model.contentDidDelete.withLatestFrom(selectedLabelViewModel)
             .subscribe(onNext: {
                 $0.input.contentDidDelete.on(.next(()))
             })
             .disposed(by: disposeBag)
 
         // MARK: - Transition
-        _dismiss
+        dismiss
             .subscribe(onNext: {
                 coordinator.dismiss()
             })
@@ -158,7 +159,7 @@ extension InputMealViewModel {
         let nameTextInput: AnyObserver<String?>
         let calorieTextInput: AnyObserver<String?>
         let multipleTextInput: AnyObserver<String?>
-        let selectedViewModel: AnyObserver<MealLabelViewModelProtocol>
+        let selectedLabelViewModel: AnyObserver<MealLabelViewModelProtocol>
         let contentWillAdd: AnyObserver<Content>
         let contentWillDelete: AnyObserver<Void>
         let dismiss: AnyObserver<Void>

@@ -59,8 +59,6 @@ final class TodayModel: TodayModelProtocol, TodayModelState {
         self.repository = repository
 
         input = Input()
-
-        let day = BehaviorRelay<Day>(value: .init(date: Date()))
         output = Output(day: day.asObservable())
 
         reloadData(date: date)

@@ -21,8 +21,8 @@ final class LabelCanvasViewCell: BaseTableViewCell {
                 let width = me.frame.width
                 let height = me.frame.height
                 labels.forEach { label in
-                    let centerX = CGFloat(label.viewModel.content.relativeX) * width
-                    let centerY = CGFloat(label.viewModel.content.relativeY) * height
+                    let centerX = CGFloat(label.viewModel.contentValue.relativeX) * width
+                    let centerY = CGFloat(label.viewModel.contentValue.relativeY) * height
                     let labelWidth = width * 0.3
                     let labelHeight = labelWidth * 0.4
                     let labelFrame = CGRect(x: centerX - labelWidth / 2,
@@ -60,8 +60,8 @@ final class LabelCanvasViewCell: BaseTableViewCell {
             }
             .compactMap { $0 }
             .subscribe(onNext: { mealLabel in
-                viewModel.input.selectedViewModel.on(.next(mealLabel.viewModel))
-                viewModel.input.contentWillAdd.on(.next(mealLabel.viewModel.content))
+                viewModel.input.selectedLabelViewModel.on(.next(mealLabel.viewModel))
+                viewModel.input.contentWillAdd.on(.next(mealLabel.viewModel.contentValue))
             })
             .disposed(by: disposeBag)
     }
