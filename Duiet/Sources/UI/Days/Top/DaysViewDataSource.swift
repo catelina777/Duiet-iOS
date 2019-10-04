@@ -59,10 +59,10 @@ extension DaysViewDataSource: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
-        let space = collectionView.frame.width * 0.1 / 2
-        let edgeInset = UIEdgeInsets(top: space,
+        let margin = collectionView.frame.width * 0.1 / 2
+        let edgeInset = UIEdgeInsets(top: margin,
                                      left: 0,
-                                     bottom: space,
+                                     bottom: margin,
                                      right: 0)
         return edgeInset
     }

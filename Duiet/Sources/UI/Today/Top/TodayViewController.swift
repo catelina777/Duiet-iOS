@@ -29,7 +29,7 @@ class TodayViewController: BaseCollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = viewModel.data.title
+        title = viewModel.state.title
         navigationController?.navigationBar.prefersLargeTitles = true
         dataSource.configure(with: collectionView)
 

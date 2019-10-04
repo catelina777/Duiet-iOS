@@ -18,6 +18,7 @@ protocol TodayModelOutput {
 }
 
 protocol TodayModelState {
+    var dayValue: Day { get }
     var meals: [Meal] { get }
     var title: String { get }
     var date: Date { get }
@@ -36,6 +37,10 @@ final class TodayModel: TodayModelProtocol, TodayModelState {
     let input: TodayModelInput
     let output: TodayModelOutput
     var state: TodayModelState { self }
+
+    var dayValue: Day {
+        day.value
+    }
 
     var meals: [Meal] {
         day.value.meals.toArray()

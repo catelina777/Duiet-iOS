@@ -36,6 +36,19 @@ final class DaysViewModel: DaysViewModelProtocol, DaysViewModelState {
     let output: DaysViewModelOutput
     var state: DaysViewModelState { return self }
 
+    // MARK: - State
+    var days: [Day] {
+        daysModel.days.value
+    }
+
+    var userInfo: UserInfo {
+        userInfoModel.state.userInfoValue
+    }
+
+    var title: String {
+        daysModel.title
+    }
+
     private let daysModel: DaysModelProtocol
     private let userInfoModel: UserInfoModelProtocol
     private let coordinator: DaysCoordinator
@@ -71,17 +84,5 @@ extension DaysViewModel {
 
     struct Output: DaysViewModelOutput {
         let showDetailDay: Observable<Day>
-    }
-
-    var days: [Day] {
-        daysModel.days.value
-    }
-
-    var userInfo: UserInfo {
-        userInfoModel.state.userInfoValue
-    }
-
-    var title: String {
-        daysModel.title
     }
 }

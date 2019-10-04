@@ -26,7 +26,9 @@ protocol TodayViewModelOutput {
     var progress: Observable<(Day, UserInfo)> { get }
 }
 
-protocol TodayViewModelData {
+protocol TodayViewModelState {
+    var userInfoValue: UserInfo { get }
+    var dayValue: Day { get }
     var meals: [Meal] { get }
     var title: String { get }
 }
@@ -34,13 +36,30 @@ protocol TodayViewModelData {
 protocol TodayViewModelProtocol {
     var input: TodayViewModelInput { get }
     var output: TodayViewModelOutput { get }
-    var data: TodayViewModelData { get }
+    var state: TodayViewModelState { get }
 }
 
-final class TodayViewModel: TodayViewModelProtocol, TodayViewModelData {
+final class TodayViewModel: TodayViewModelProtocol, TodayViewModelState {
     let input: TodayViewModelInput
     let output: TodayViewModelOutput
-    var data: TodayViewModelData { return self }
+    var state: TodayViewModelState { return self }
+
+    // MARK: - State
+    var userInfoValue: UserInfo {
+        userInfoModel.state.userInfoValue
+    }
+
+    var dayValue: Day {
+        todayModel.state.dayValue
+    }
+
+    var meals: [Meal] {
+        todayModel.state.meals
+    }
+
+    var title: String {
+        todayModel.state.title
+    }
 
     let userInfoModel: UserInfoModelProtocol
     let todayModel: TodayModelProtocol
@@ -138,13 +157,5 @@ extension TodayViewModel {
     struct Output: TodayViewModelOutput {
         let didLoadData: Observable<Void>
         let progress: Observable<(Day, UserInfo)>
-    }
-
-    var meals: [Meal] {
-        todayModel.state.meals
-    }
-
-    var title: String {
-        todayModel.state.title
     }
 }

@@ -19,30 +19,31 @@ final class TodayViewDataSource: NSObject {
     func configure(with collectionView: UICollectionView) {
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.register(R.nib.progressCardViewCell)
+        collectionView.register(R.nib.daySummaryViewCell)
         collectionView.register(R.nib.mealCardViewCell)
     }
 }
 
 extension TodayViewDataSource: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        viewModel.data.meals.count + 1
+        viewModel.state.meals.count + 1
     }
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.row {
         case 0:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.progressCardViewCell,
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.daySummaryViewCell,
                                                           for: indexPath)!
-            cell.configure(with: viewModel.output.progress)
+            cell.configure(with: viewModel.state.dayValue,
+                           userInfo: viewModel.state.userInfoValue)
             return cell
 
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.mealCardViewCell,
                                                           for: indexPath)!
             let mealIndex = indexPath.row - 1
-            let meal = viewModel.data.meals[mealIndex]
+            let meal = viewModel.state.meals[mealIndex]
             cell.configure(with: meal)
             return cell
         }
@@ -57,7 +58,7 @@ extension TodayViewDataSource: UICollectionViewDelegate {
             let cardCell = cell as? MealCardViewCell
         else { return }
         let mealIndex = indexPath.row - 1
-        let meal = viewModel.data.meals[mealIndex]
+        let meal = viewModel.state.meals[mealIndex]
         viewModel.input.selectedItem.on(.next((cardCell, meal, mealIndex)))
     }
 }
@@ -68,7 +69,7 @@ extension TodayViewDataSource: UICollectionViewDelegateFlowLayout {
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch indexPath.row {
         case 0:
-            let width = collectionView.frame.width
+            let width = collectionView.frame.width * 0.9
             let height = width * 0.5
             let size = CGSize(width: width, height: height)
             return size
@@ -85,9 +86,10 @@ extension TodayViewDataSource: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
-        let edgeInset = UIEdgeInsets(top: collectionView.frame.width * 0.1 / 2,
+        let margin = collectionView.frame.width * 0.1 / 2
+        let edgeInset = UIEdgeInsets(top: margin,
                                      left: 0,
-                                     bottom: 0,
+                                     bottom: margin,
                                      right: 0)
         return edgeInset
     }
@@ -96,6 +98,6 @@ extension TodayViewDataSource: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        0.01
+        collectionView.frame.width * 0.1 / 2
     }
 }
