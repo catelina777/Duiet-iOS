@@ -64,10 +64,6 @@ final class TodayModel: TodayModelProtocol, TodayModelState {
         reloadData(date: date)
     }
 
-    deinit {
-        print("🧹🧹🧹 Day Model Parge 🧹🧹🧹")
-    }
-
     var add: Binder<Meal> {
         Binder(self) { me, meal in
             me.repository.add(meal: meal, to: me.day.value)
@@ -77,6 +73,10 @@ final class TodayModel: TodayModelProtocol, TodayModelState {
     func reloadData(date: Date) {
         let dayObject = repository.findOrCreate(day: date)
         day.accept(dayObject)
+    }
+
+    deinit {
+        print("🧹🧹🧹 TodayModel Parge 🧹🧹🧹")
     }
 }
 

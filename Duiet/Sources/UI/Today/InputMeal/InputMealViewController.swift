@@ -49,9 +49,18 @@ final class InputMealViewController: BaseTableViewController, KeyboardFrameTrack
             .bind(to: updateScroll)
             .disposed(by: disposeBag)
 
+        // After adding the label, reload to initialize the textfields
         viewModel.output.reloadData
             .bind(to: reloadData)
             .disposed(by: disposeBag)
+    }
+
+    private var reloadData: Binder<Void> {
+        Binder(self) { me, _ in
+            me.tableView.beginUpdates()
+            me.tableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .automatic)
+            me.tableView.endUpdates()
+        }
     }
 
     // MARK: - Processing to make viewWillAppear of the original screen called when returning from this screen
@@ -72,14 +81,6 @@ final class InputMealViewController: BaseTableViewController, KeyboardFrameTrack
     }
 
     deinit {
-        print("🧹🧹🧹 Input Meal View controller parge 🧹🧹🧹")
-    }
-
-    private var reloadData: Binder<Void> {
-        Binder(self) { me, _ in
-            me.tableView.beginUpdates()
-            me.tableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .automatic)
-            me.tableView.endUpdates()
-        }
+        print("🧹🧹🧹 \(InputMealViewController.className) parge 🧹🧹🧹")
     }
 }
