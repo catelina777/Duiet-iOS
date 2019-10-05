@@ -1,0 +1,10 @@
+/* 
+  InfoPlist.strings
+  Duiet
+
+  Created by Ryuhei Kaminishi on 2019/10/05.
+  Copyright © 2019 duiet. All rights reserved.
+*/
+
+"NSCameraUsageDescription"       = "このアプリが写真を撮影するために使用します";
+"NSPhotoLibraryUsageDescription" = "このアプリが写真を取得するために使用します";

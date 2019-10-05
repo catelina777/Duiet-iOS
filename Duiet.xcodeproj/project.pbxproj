@@ -113,6 +113,7 @@
 		405D24BA22F5D25B009FC5C2 /* DBUnitTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405D24B922F5D25B009FC5C2 /* DBUnitTestCase.swift */; };
 		405E3A1D229929D500ECEA9E /* EmptyContentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405E3A1C229929D500ECEA9E /* EmptyContentViewCell.swift */; };
 		405E3A1F229929E900ECEA9E /* EmptyContentViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 405E3A1E229929E900ECEA9E /* EmptyContentViewCell.xib */; };
+		406B4A30234894E000CFFC27 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 406B4A32234894E000CFFC27 /* InfoPlist.strings */; };
 		407869C02323D19500C46C94 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407869BF2323D19500C46C94 /* BaseTabBarController.swift */; };
 		407D2E7A22EF2537001EC701 /* RealmMigrationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407D2E7922EF2537001EC701 /* RealmMigrationHelper.swift */; };
 		40A7383223365BB400A3E605 /* PryntTrimmerView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40A7383123365BB400A3E605 /* PryntTrimmerView.framework */; };
@@ -296,6 +297,9 @@
 		405D24B922F5D25B009FC5C2 /* DBUnitTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBUnitTestCase.swift; sourceTree = "<group>"; };
 		405E3A1C229929D500ECEA9E /* EmptyContentViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyContentViewCell.swift; sourceTree = "<group>"; };
 		405E3A1E229929E900ECEA9E /* EmptyContentViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyContentViewCell.xib; sourceTree = "<group>"; };
+		406B4A31234894E000CFFC27 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		406B4A33234894E400CFFC27 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		406B4A34234894E500CFFC27 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		407869BF2323D19500C46C94 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		407D2E7922EF2537001EC701 /* RealmMigrationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmMigrationHelper.swift; sourceTree = "<group>"; };
 		40A7383123365BB400A3E605 /* PryntTrimmerView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PryntTrimmerView.framework; path = Carthage/Build/iOS/PryntTrimmerView.framework; sourceTree = "<group>"; };
@@ -535,6 +539,7 @@
 				401161142301728B00D522CC /* Settings */,
 				0641AD2B2264A1BC00CEDAE7 /* LaunchScreen.storyboard */,
 				40DC407F232E6593002BB82D /* Localizable.strings */,
+				406B4A32234894E000CFFC27 /* InfoPlist.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1207,6 +1212,7 @@
 				4001F70222ABB44A0009CDA1 /* SettingViewController.xib in Resources */,
 				0622E9FD226A1B6B00E87F22 /* FillInformationViewController.xib in Resources */,
 				0641AD2A2264A1BC00CEDAE7 /* Assets.xcassets in Resources */,
+				406B4A30234894E000CFFC27 /* InfoPlist.strings in Resources */,
 				069AD43C227728050075E711 /* Placeholder.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1575,6 +1581,16 @@
 				0641AD2C2264A1BC00CEDAE7 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		406B4A32234894E000CFFC27 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				406B4A31234894E000CFFC27 /* en */,
+				406B4A33234894E400CFFC27 /* zh-Hans */,
+				406B4A34234894E500CFFC27 /* ja */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 		40DC407F232E6593002BB82D /* Localizable.strings */ = {
