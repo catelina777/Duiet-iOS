@@ -58,7 +58,6 @@
 		06B2FD05227222600078C7F1 /* InputActivityLevelViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B2FD03227222600078C7F1 /* InputActivityLevelViewCell.swift */; };
 		06B2FD08227222670078C7F1 /* CompleteButtonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B2FD06227222670078C7F1 /* CompleteButtonViewCell.swift */; };
 		06B2FD09227222670078C7F1 /* CompleteButtonViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06B2FD07227222670078C7F1 /* CompleteButtonViewCell.xib */; };
-		06F615D1227AF1080074089B /* Splash.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06F615D0227AF1080074089B /* Splash.xcassets */; };
 		3D663033B554173C7AFF58FC /* Pods_Duiet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6911E39E3468EB910D0358F5 /* Pods_Duiet.framework */; };
 		4001F6FA22ABA3720009CDA1 /* SceneType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4001F6F922ABA3720009CDA1 /* SceneType.swift */; };
 		4001F70022ABB43B0009CDA1 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4001F6FF22ABB43B0009CDA1 /* SettingViewController.swift */; };
@@ -239,7 +238,6 @@
 		06B2FD03227222600078C7F1 /* InputActivityLevelViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputActivityLevelViewCell.swift; sourceTree = "<group>"; };
 		06B2FD06227222670078C7F1 /* CompleteButtonViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompleteButtonViewCell.swift; sourceTree = "<group>"; };
 		06B2FD07227222670078C7F1 /* CompleteButtonViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CompleteButtonViewCell.xib; sourceTree = "<group>"; };
-		06F615D0227AF1080074089B /* Splash.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Splash.xcassets; sourceTree = "<group>"; };
 		1D64453EF3A64E5B58A308B8 /* Pods-Duiet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Duiet.debug.xcconfig"; path = "Target Support Files/Pods-Duiet/Pods-Duiet.debug.xcconfig"; sourceTree = "<group>"; };
 		4001F6F922ABA3720009CDA1 /* SceneType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneType.swift; sourceTree = "<group>"; };
 		4001F6FF22ABB43B0009CDA1 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -1038,7 +1036,6 @@
 				0641AD292264A1BC00CEDAE7 /* Assets.xcassets */,
 				061F279B22735BD900FDCB17 /* Icons.xcassets */,
 				069AD43B227728050075E711 /* Placeholder.xcassets */,
-				06F615D0227AF1080074089B /* Splash.xcassets */,
 				40D97C9122ED52A10069B5F2 /* Colors.xcassets */,
 			);
 			path = Assets;
@@ -1203,7 +1200,6 @@
 				40B2142222B636000040EA9E /* DaysViewController.xib in Resources */,
 				405E3A1F229929E900ECEA9E /* EmptyContentViewCell.xib in Resources */,
 				4001F71122ABF0EB0009CDA1 /* MonthsViewController.xib in Resources */,
-				06F615D1227AF1080074089B /* Splash.xcassets in Resources */,
 				069AD4392277246A0075E711 /* MealCardViewCell.xib in Resources */,
 				06B2FD09227222670078C7F1 /* CompleteButtonViewCell.xib in Resources */,
 				0630D499227490B900224EC9 /* ShowTDEEViewCell.xib in Resources */,
