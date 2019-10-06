@@ -7,4 +7,4 @@
 */
 
 "NSCameraUsageDescription"       = "用于与此应用拍照";
-"NSPhotoLibraryUsageDescription" = "使用此应用从您的照片库中获取照片"
+"NSPhotoLibraryUsageDescription" = "使用此应用从您的照片库中获取照片";

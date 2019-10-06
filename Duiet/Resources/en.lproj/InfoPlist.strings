@@ -7,4 +7,4 @@
 */
 
 "NSCameraUsageDescription"       = "Use to take photos with this app";
-"NSPhotoLibraryUsageDescription" = "Use to get photos from your library with this app"
+"NSPhotoLibraryUsageDescription" = "Use to get photos from your library with this app";
