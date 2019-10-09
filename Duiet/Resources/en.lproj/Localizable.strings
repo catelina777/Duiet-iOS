@@ -12,7 +12,18 @@
 "setting" = "Setting";
 
 // WalkthroughView
-"get photo" = "Get photo";
+"top title"             = "How to use 🤔";
+"calculate title"       = "Calculate";
+"get photo title"       = "Get photo";
+"record calories title" = "Record calories";
+"control weight title"  = "Control weight";
+
+"calculate content"       = "Calculate how many calories you burn by entering your height, weight, etc...";
+"get photo content"       = "Take meal photos or get from your library";
+"record calories content" = "Enter and record calories in photo";
+"control weight content"  = "Human beings are not moving by magic, so controlling calories can give you the ideal weight like magic";
+
+"next button" = "Continue 💪";
 
 // FillInformationView
 "calculate"      = "Calculate";

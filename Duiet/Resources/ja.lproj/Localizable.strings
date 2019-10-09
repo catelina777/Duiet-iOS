@@ -12,7 +12,18 @@
 "setting" = "設定";
 
 // WalkthroughView
-"get photo" = "写真撮影";
+"top title"             = "使い方 🤔";
+"calculate title"       = "消費カロリーを計算";
+"get photo title"       = "食事の写真を取得";
+"record calories title" = "カロリーを記録";
+"control weight title"  = "体重をコントロールする";
+
+"calculate content"       = "消費するカロリーを身長や体重などを入力することによって計算します";
+"get photo content"       = "食事の写真を撮影したり、自分のライブラリから取得します";
+"record calories content" = "取得した写真にカロリーを入力し記録します";
+"control weight content"  = "人間は魔法で動いていません。そのためカロリーを記録しコントロールすることで、体重を操ることができるようになります";
+
+"next button" = "続ける 💪";
 
 // FillInformationView
 "calculate"      = "計算";
