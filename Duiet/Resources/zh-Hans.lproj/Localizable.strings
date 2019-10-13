@@ -36,8 +36,6 @@
 "activity level" = "活动量";
 "calc..."        = "计算...";
 "complete"       = "完成";
-"cm"             = "厘米";
-"kg"             = "千克";
 "bmr"            = "基础代谢";
 
 "sedentary text"  = "不要运动";
@@ -56,10 +54,8 @@
 "calorie intake" = "热量摄入";
 "difference"     = "与基础代谢的区别";
 "weight change"  = "体重变化";
-"kcal"           = "千卡";
 "up"             = "增重";
 "down"           = "減";
-"g"              = "克";
 
 // SettingView
 "edit user information" = "编辑用户信息";

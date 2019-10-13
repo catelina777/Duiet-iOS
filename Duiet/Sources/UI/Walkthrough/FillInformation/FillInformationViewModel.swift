@@ -92,13 +92,16 @@ final class FillInformationViewModel: FillInformationViewModelProtocol {
             }
             .share()
 
+        /// If initialize everything finish in init, cant't refer to self and cant's use UnitLocalizable
+        /// Therefore, generates a useless formatter
+        let unitFormatter = MeasurementFormatter()
         let BMR = BMRWithActivityLevel
             .map { bmr, activityLevel -> String in
                 guard
                     bmr != 0,
                     activityLevel != .none
                 else { return R.string.localizable.calc() }
-                return "\(Int(bmr)) \(R.string.localizable.kcal())"
+                return "\(Int(bmr)) \(unitFormatter.string(from: UnitEnergy.kilocalories))"
             }
 
         let TDEE = BMRWithActivityLevel
@@ -107,7 +110,7 @@ final class FillInformationViewModel: FillInformationViewModelProtocol {
                     bmr != 0,
                     activityLevel != .none
                 else { return R.string.localizable.calc() }
-                return "\(Int(bmr * activityLevel.magnification)) \(R.string.localizable.kcal())"
+                return "\(Int(bmr * activityLevel.magnification)) \(unitFormatter.string(from: UnitEnergy.kilocalories))"
             }
 
         output = Output(gender: gender,

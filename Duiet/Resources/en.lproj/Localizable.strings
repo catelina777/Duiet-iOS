@@ -36,8 +36,6 @@
 "activity level" = "Activity Level";
 "calc..."        = "calc...";
 "complete"       = "Complete";
-"cm"             = "cm";
-"kg"             = "kg";
 "bmr"            = "BMR";
 
 "sedentary text"  = "No exercise";
@@ -56,10 +54,8 @@
 "calorie intake" = "Calorie intake";
 "difference"     = "Difference";
 "weight change"  = "Weight Change";
-"kcal"           = "kcal";
 "up"             = "UP";
 "down"           = "DOWN";
-"g"              = "g";
 
 // SettingView
 "edit user information" = "Edit user information";

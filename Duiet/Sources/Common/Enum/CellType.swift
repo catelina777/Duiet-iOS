@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum CellType: String {
+enum CellType: String, UnitLocalizable {
     case gender
     case age
     case height
@@ -25,10 +25,10 @@ enum CellType: String {
             return R.string.localizable.age()
 
         case .height:
-            return R.string.localizable.height() + "(" + R.string.localizable.cm() + ")"
+            return R.string.localizable.height() + "(" + unitSymbol(UnitLength.centimeters, style: .short) + ")"
 
         case .weight:
-            return R.string.localizable.weight() + "(" + R.string.localizable.kg() + ")"
+            return R.string.localizable.weight() + "(" + unitSymbol(UnitMass.kilograms, style: .short) + ")"
 
         case .activityLevel:
             return R.string.localizable.activityLevel()

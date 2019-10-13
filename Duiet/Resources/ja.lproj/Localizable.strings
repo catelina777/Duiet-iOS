@@ -36,8 +36,6 @@
 "activity level" = "活動量";
 "calc..."        = "計算中";
 "complete"       = "完了";
-"cm"             = "cm";
-"kg"             = "kg";
 "bmr"            = "基礎代謝";
 
 "sedentary text"  = "運動をしない";
@@ -56,10 +54,8 @@
 "calorie intake" = "摂取したカロリー";
 "difference"     = "基礎代謝との差";
 "weight change"  = "体重変化量";
-"kcal"           = "kcal";
 "up"             = "増量";
 "down"           = "減量";
-"g"              = "g";
 
 // SettingView
 "edit user information" = "ユーザ情報編集";

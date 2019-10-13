@@ -9,7 +9,7 @@
 import RxSwift
 import UIKit
 
-final class InputNumberViewCell: InputPickerViewCell, CellFrameTrackkable {
+final class InputNumberViewCell: InputPickerViewCell, CellFrameTrackkable, UnitLocalizable {
     func configure(with viewModel: KeyboardTrackViewModel) {
         guard
             let appDelegate = UIApplication.shared.delegate,
@@ -28,7 +28,7 @@ final class InputNumberViewCell: InputPickerViewCell, CellFrameTrackkable {
             let list = [Double].init(repeating: 0, count: 215)
                 .enumerated()
                 .map { Double($0.offset) }
-            let unit = " " + R.string.localizable.cm()
+            let unit = " " + unitSymbol(UnitLength.centimeters, style: .short)
             let defaultRow = 140
 
             Observable.just(list.map { String($0) + unit })
@@ -52,7 +52,7 @@ final class InputNumberViewCell: InputPickerViewCell, CellFrameTrackkable {
             let list = [Double].init(repeating: 0, count: 150)
                 .enumerated()
                 .map { Double($0.offset) * 0.5 + 20 }
-            let unit = " " + R.string.localizable.kg()
+            let unit = " " + unitSymbol(UnitMass.kilograms, style: .short)
             let defaultRow = 80
 
             Observable.just(list.map { String($0) + unit })

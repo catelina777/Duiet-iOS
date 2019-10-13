@@ -115,6 +115,7 @@
 		406B4A30234894E000CFFC27 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 406B4A32234894E000CFFC27 /* InfoPlist.strings */; };
 		407869C02323D19500C46C94 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407869BF2323D19500C46C94 /* BaseTabBarController.swift */; };
 		407D2E7A22EF2537001EC701 /* RealmMigrationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407D2E7922EF2537001EC701 /* RealmMigrationHelper.swift */; };
+		408C79D723536ABE00FC4BB4 /* UnitLocalizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408C79D623536ABE00FC4BB4 /* UnitLocalizable.swift */; };
 		40A7383223365BB400A3E605 /* PryntTrimmerView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40A7383123365BB400A3E605 /* PryntTrimmerView.framework */; };
 		40A7383723365BCA00A3E605 /* YPImagePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40A7383523365BCA00A3E605 /* YPImagePicker.framework */; };
 		40A7383923365BCA00A3E605 /* Stevia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40A7383623365BCA00A3E605 /* Stevia.framework */; };
@@ -300,6 +301,7 @@
 		406B4A34234894E500CFFC27 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		407869BF2323D19500C46C94 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		407D2E7922EF2537001EC701 /* RealmMigrationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmMigrationHelper.swift; sourceTree = "<group>"; };
+		408C79D623536ABE00FC4BB4 /* UnitLocalizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitLocalizable.swift; sourceTree = "<group>"; };
 		40A7383123365BB400A3E605 /* PryntTrimmerView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PryntTrimmerView.framework; path = Carthage/Build/iOS/PryntTrimmerView.framework; sourceTree = "<group>"; };
 		40A7383523365BCA00A3E605 /* YPImagePicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YPImagePicker.framework; path = Carthage/Build/iOS/YPImagePicker.framework; sourceTree = "<group>"; };
 		40A7383623365BCA00A3E605 /* Stevia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stevia.framework; path = Carthage/Build/iOS/Stevia.framework; sourceTree = "<group>"; };
@@ -439,6 +441,7 @@
 		0622E9FE226A1C5700E87F22 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
+				408C79D623536ABE00FC4BB4 /* UnitLocalizable.swift */,
 				403E953922CF939300EFF459 /* Coordinator.swift */,
 				5E9C28B3228E475E004ABF3B /* KeyboardFrameTrackkable.swift */,
 				5E9C28B5228E4E99004ABF3B /* CellFrameTrackkable.swift */,
@@ -1521,6 +1524,7 @@
 				40B214DC22BF23D00040EA9E /* UserInfoModel.swift in Sources */,
 				4001F70622ABB4BA0009CDA1 /* SettingViewDataSource.swift in Sources */,
 				069AD42B2277224A0075E711 /* TodayViewController.swift in Sources */,
+				408C79D723536ABE00FC4BB4 /* UnitLocalizable.swift in Sources */,
 				0622EA06226A1E0100E87F22 /* FillInformationViewModel.swift in Sources */,
 				405A9F5022ACFB1300454412 /* MonthsViewModel.swift in Sources */,
 				4001F70922ABD98A0009CDA1 /* PageType.swift in Sources */,
