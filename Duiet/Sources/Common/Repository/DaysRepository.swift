@@ -16,8 +16,7 @@ enum DaysRepositoryError: Error {
 }
 
 protocol DaysRepositoryProtocol {
-    func findAll() -> Observable<Results<Day>>
-    func find(month: Month) -> Observable<Month>
+    func findAll() -> Results<Day>
 }
 
 final class DaysRepository: DaysRepositoryProtocol {
@@ -29,17 +28,7 @@ final class DaysRepository: DaysRepositoryProtocol {
         realm = try! Realm()
     }
 
-    func findAll() -> Observable<Results<Day>> {
-        Observable.collection(from: realm.objects(Day.self).sorted(byKeyPath: "createdAt"))
-    }
-
-    func find(month: Month) -> Observable<Month> {
-        let date = month.createdAt
-        let monthPrimaryKey = date.toMonthKeyString()
-        let monthObject = realm.object(ofType: Month.self, forPrimaryKey: monthPrimaryKey)
-        if let monthObject = monthObject {
-            return Observable.from(object: monthObject)
-        }
-        return Observable.error(DaysRepositoryError.findMonthFailed)
+    func findAll() -> Results<Day> {
+        realm.objects(Day.self).sorted(byKeyPath: "createdAt")
     }
 }

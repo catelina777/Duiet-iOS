@@ -28,5 +28,12 @@ class DaysViewController: BaseCollectionViewController {
         title = viewModel.state.title
         navigationController?.navigationBar.prefersLargeTitles = true
         dataSource.configure(with: collectionView)
+
+        bindRefreshThenReloadData()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        collectionView.reloadData()
     }
 }

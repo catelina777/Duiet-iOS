@@ -38,7 +38,7 @@ final class DaysViewModel: DaysViewModelProtocol, DaysViewModelState {
 
     // MARK: - State
     var days: [Day] {
-        daysModel.days.value
+        daysModel.state.daysValue
     }
 
     var userInfo: UserInfo {
@@ -46,7 +46,7 @@ final class DaysViewModel: DaysViewModelProtocol, DaysViewModelState {
     }
 
     var title: String {
-        daysModel.title
+        daysModel.state.title
     }
 
     private let daysModel: DaysModelProtocol

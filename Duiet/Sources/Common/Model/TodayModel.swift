@@ -23,8 +23,6 @@ protocol TodayModelState {
     var title: String { get }
     var date: Date { get }
     var add: Binder<Meal> { get }
-
-    func reloadData()
 }
 
 protocol TodayModelProtocol {
@@ -38,6 +36,7 @@ final class TodayModel: TodayModelProtocol, TodayModelState {
     let output: TodayModelOutput
     var state: TodayModelState { self }
 
+    // MARK: - State
     var dayValue: Day {
         day.value
     }
@@ -51,8 +50,8 @@ final class TodayModel: TodayModelProtocol, TodayModelState {
     }
 
     let date: Date
-    let day: BehaviorRelay<Day>
 
+    private let day: BehaviorRelay<Day>
     private let repository: DayRepositoryProtocol
     private let disposeBag = DisposeBag()
 
@@ -65,18 +64,14 @@ final class TodayModel: TodayModelProtocol, TodayModelState {
         input = Input()
         output = Output(day: day.asObservable())
 
-        reloadData()
+        let dayObject = repository.findOrCreate(day: date)
+        day.accept(dayObject)
     }
 
     var add: Binder<Meal> {
         Binder(self) { me, meal in
             me.repository.add(meal: meal, to: me.day.value)
         }
-    }
-
-    func reloadData() {
-        let dayObject = repository.findOrCreate(day: date)
-        day.accept(dayObject)
     }
 
     deinit {

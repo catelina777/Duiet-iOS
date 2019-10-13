@@ -15,14 +15,12 @@ import UIKit
 
 protocol TodayViewModelInput {
     var viewDidAppear: AnyObserver<Void> { get }
-    var willLoadData: AnyObserver<Void> { get }
     var addButtonTap: AnyObserver<TodayViewController> { get }
     var selectedItem: AnyObserver<(MealCardViewCell, Meal, Int)> { get }
     var showDetailDay: AnyObserver<Day> { get }
 }
 
 protocol TodayViewModelOutput {
-    var didLoadData: Observable<Void> { get }
     var progress: Observable<(Day, UserInfo)> { get }
 }
 
@@ -73,20 +71,14 @@ final class TodayViewModel: TodayViewModelProtocol, TodayViewModelState {
         self.todayModel = todayModel
 
         let _viewDidAppear = PublishRelay<Void>()
-        let _willLoadData = PublishRelay<Void>()
         let _addButtonTap = PublishRelay<TodayViewController>()
         let _selectedItem = PublishRelay<(MealCardViewCell, Meal, Int)>()
         let _showDetailDay = PublishRelay<Day>()
 
         input = Input(viewDidAppear: _viewDidAppear.asObserver(),
-                      willLoadData: _willLoadData.asObserver(),
                       addButtonTap: _addButtonTap.asObserver(),
                       selectedItem: _selectedItem.asObserver(),
                       showDetailDay: _showDetailDay.asObserver())
-
-        /// Reload the data to be displayed when the screen is displayed to correspond to the date
-        let didLoadData = _willLoadData
-            .do(onNext: { todayModel.state.reloadData() })
 
         let pickedImage = _addButtonTap
             .flatMapLatest {
@@ -99,9 +91,7 @@ final class TodayViewModel: TodayViewModelProtocol, TodayViewModelState {
 
         /// I also added meals because I want to detect the update of meal information
         let progress = Observable.combineLatest(todayModel.output.day, userInfoModel.output.userInfo)
-
-        output = Output(didLoadData: didLoadData,
-                        progress: progress)
+        output = Output(progress: progress)
 
         let mealWillAdd = pickedImage
             .compactMap { $0 }
@@ -148,14 +138,12 @@ final class TodayViewModel: TodayViewModelProtocol, TodayViewModelState {
 extension TodayViewModel {
     struct Input: TodayViewModelInput {
         let viewDidAppear: AnyObserver<Void>
-        let willLoadData: AnyObserver<Void>
         let addButtonTap: AnyObserver<TodayViewController>
         let selectedItem: AnyObserver<(MealCardViewCell, Meal, Int)>
         let showDetailDay: AnyObserver<Day>
     }
 
     struct Output: TodayViewModelOutput {
-        let didLoadData: Observable<Void>
         let progress: Observable<(Day, UserInfo)>
     }
 }

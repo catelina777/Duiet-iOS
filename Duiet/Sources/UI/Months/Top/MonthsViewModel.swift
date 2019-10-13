@@ -33,6 +33,11 @@ final class MonthsViewModel: MonthsViewModelProtocol, MonthsViewModelData {
     let output: MonthsViewModelOutput
     var data: MonthsViewModelData { return self }
 
+    // MARK: State
+    var months: [Month] {
+        monthsModel.months.value
+    }
+
     private let monthsModel: MonthsModelProtocol
     private let coordinator: MonthsCoordinator
     private let disposeBag = DisposeBag()
@@ -55,9 +60,5 @@ extension MonthsViewModel {
 
     struct Output: MonthsViewModelOutput {
         let showSelectedMonth: Observable<Month>
-    }
-
-    var months: [Month] {
-        monthsModel.months.value
     }
 }
