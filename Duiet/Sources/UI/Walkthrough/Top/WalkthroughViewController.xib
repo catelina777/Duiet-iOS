@@ -24,8 +24,17 @@
                 <outlet property="firstImageView" destination="J9j-FC-F9b" id="dfZ-bp-yLv"/>
                 <outlet property="fourthImageView" destination="l9k-uM-7KP" id="8NK-Xt-cQ0"/>
                 <outlet property="nextButton" destination="qC3-zs-81y" id="z26-Ma-ntZ"/>
+                <outlet property="row1TextView" destination="L6R-3U-8Ul" id="U1R-CP-L4L"/>
+                <outlet property="row1TitleLabel" destination="r0M-pa-3le" id="h0V-V1-lFQ"/>
+                <outlet property="row2TextView" destination="HcM-Vh-ZKI" id="epG-cB-Lcp"/>
+                <outlet property="row2TitleLabel" destination="gQ2-x5-lGl" id="O0v-nv-zaj"/>
+                <outlet property="row3TextView" destination="J81-3O-hLH" id="Sny-ko-SgK"/>
+                <outlet property="row3TitleLabel" destination="6CL-9M-TMm" id="MyD-7I-erq"/>
+                <outlet property="row4TextView" destination="4tb-y4-Jnb" id="Vt7-qX-Cd3"/>
+                <outlet property="row4TitleLabel" destination="Ijg-Wu-SL6" id="uha-do-rL6"/>
                 <outlet property="secondImageView" destination="zOj-Jg-FyD" id="Lvr-9w-abO"/>
                 <outlet property="thirdImageView" destination="Okg-Qb-Soo" id="LOE-Bu-p5s"/>
+                <outlet property="topTitleLabel" destination="f1B-Zr-Zow" id="C1H-9t-TZS"/>
                 <outlet property="view" destination="iN0-l3-epB" id="blU-Kw-Sok"/>
             </connections>
         </placeholder>
@@ -41,7 +50,7 @@
                             <rect key="frame" x="0.0" y="44" width="414" height="120"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How to use 🧐" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f1B-Zr-Zow">
-                                    <rect key="frame" x="92.5" y="48" width="229.5" height="42"/>
+                                    <rect key="frame" x="76" y="48" width="262" height="44"/>
                                     <fontDescription key="fontDescription" name="Montserrat-ExtraBold" family="Montserrat" pointSize="36"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -85,7 +94,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="290" height="42"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Caluculate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r0M-pa-3le">
-                                                            <rect key="frame" x="0.0" y="18.5" width="95" height="23.5"/>
+                                                            <rect key="frame" x="0.0" y="17.5" width="112" height="24.5"/>
                                                             <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="20"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -98,7 +107,7 @@
                                                     </constraints>
                                                 </view>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Calculate your daily calorie consumption by entering your height, weight, etc..." selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L6R-3U-8Ul">
-                                                    <rect key="frame" x="-4" y="38" width="258" height="73.5"/>
+                                                    <rect key="frame" x="-4" y="38" width="258" height="75"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
@@ -157,7 +166,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="290" height="33.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get photo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gQ2-x5-lGl">
-                                                            <rect key="frame" x="0.0" y="10" width="90.5" height="23.5"/>
+                                                            <rect key="frame" x="0.0" y="9" width="105" height="24.5"/>
                                                             <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="20"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -170,7 +179,7 @@
                                                     </constraints>
                                                 </view>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Take a picture of a meal or get it from your library" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HcM-Vh-ZKI">
-                                                    <rect key="frame" x="-4" y="29.5" width="258" height="54.5"/>
+                                                    <rect key="frame" x="-4" y="29.5" width="258" height="55.5"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
@@ -229,7 +238,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="290" height="38"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Record calories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6CL-9M-TMm">
-                                                            <rect key="frame" x="0.0" y="14.5" width="140" height="23.5"/>
+                                                            <rect key="frame" x="0.0" y="13.5" width="161.5" height="24.5"/>
                                                             <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="20"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -242,7 +251,7 @@
                                                     </constraints>
                                                 </view>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Tap the picture of the meal and fill in the calories one by one" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J81-3O-hLH">
-                                                    <rect key="frame" x="-4" y="34" width="258" height="54.5"/>
+                                                    <rect key="frame" x="-4" y="34" width="258" height="75"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
@@ -301,7 +310,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="290" height="51"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Control weight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ijg-Wu-SL6">
-                                                            <rect key="frame" x="0.0" y="27.5" width="130.5" height="23.5"/>
+                                                            <rect key="frame" x="0.0" y="26.5" width="157" height="24.5"/>
                                                             <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="20"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -314,7 +323,7 @@
                                                     </constraints>
                                                 </view>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Human beings are not moving by magic, so controlling calories can give you the ideal weight like magic" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4tb-y4-Jnb">
-                                                    <rect key="frame" x="-4" y="47" width="258" height="92.5"/>
+                                                    <rect key="frame" x="-4" y="47" width="258" height="94.5"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
