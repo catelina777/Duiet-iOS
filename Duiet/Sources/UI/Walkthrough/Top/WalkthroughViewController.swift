@@ -107,13 +107,19 @@ final class WalkthroughViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        nextButton.rx.tap
-            .bind(to: viewModel.input.didTapNextButton)
-            .disposed(by: disposeBag)
+        bindNextButton()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+}
+
+extension WalkthroughViewController {
+    private func bindNextButton() {
+        nextButton.rx.tap
+        .bind(to: viewModel.input.didTapNextButton)
+        .disposed(by: disposeBag)
     }
 }

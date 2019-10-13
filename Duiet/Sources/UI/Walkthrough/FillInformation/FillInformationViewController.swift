@@ -35,13 +35,19 @@ final class FillInformationViewController: BaseTableViewController, KeyboardFram
         navigationController?.navigationBar.prefersLargeTitles = true
         dataSource.configure(with: tableView)
 
-        keyboardTrackViewModel.output.difference
-            .bind(to: updateScroll)
-            .disposed(by: disposeBag)
+        bindKeyboardDifference()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+}
+
+extension FillInformationViewController {
+    private func bindKeyboardDifference() {
+        keyboardTrackViewModel.output.difference
+            .bind(to: updateScroll)
+            .disposed(by: disposeBag)
     }
 }
