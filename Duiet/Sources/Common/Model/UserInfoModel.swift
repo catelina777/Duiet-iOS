@@ -16,7 +16,7 @@ import RxSwift
 protocol UserInfoModelInput {}
 
 protocol UserInfoModelOutput {
-    var userInfo: BehaviorRelay<UserInfo> { get }
+    var userInfo: Observable<UserInfo> { get }
 }
 
 protocol UserInfoModelState {
@@ -39,27 +39,21 @@ final class UserInfoModel: UserInfoModelProtocol, UserInfoModelState {
     let output: UserInfoModelOutput
     var state: UserInfoModelState { return self }
 
-    private let repository: UserInfoRepositoryProtocol
-    private let disposeBag = DisposeBag()
-
     // MARK: - State
     var userInfoValue: UserInfo {
         userInfo.value
     }
 
-    private let userInfo = BehaviorRelay<UserInfo>(value: UserInfo())
+    private let userInfo: BehaviorRelay<UserInfo>
+    private let repository: UserInfoRepositoryProtocol
+    private let disposeBag = DisposeBag()
 
     init(repository: UserInfoRepositoryProtocol) {
         self.repository = repository
-        let addUserInfo = PublishRelay<UserInfo>()
-        input = Input(addUserInfo: addUserInfo.asObserver())
+        userInfo = BehaviorRelay<UserInfo>(value: repository.get())
 
-        output = Output(userInfo: userInfo)
-
-        repository.get()
-            .compactMap { $0.first }
-            .bind(to: userInfo)
-            .disposed(by: disposeBag)
+        input = Input()
+        output = Output(userInfo: userInfo.asObservable())
     }
 
     func add(userInfo: UserInfo) {
@@ -68,11 +62,9 @@ final class UserInfoModel: UserInfoModelProtocol, UserInfoModelState {
 }
 
 extension UserInfoModel {
-    struct Input: UserInfoModelInput {
-        var addUserInfo: AnyObserver<UserInfo>
-    }
+    struct Input: UserInfoModelInput {}
 
     struct Output: UserInfoModelOutput {
-        let userInfo: BehaviorRelay<UserInfo>
+        let userInfo: Observable<UserInfo>
     }
 }
