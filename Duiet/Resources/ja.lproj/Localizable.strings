@@ -30,7 +30,8 @@
 "gender"         = "性別";
 "male"           = "男";
 "female"         = "女";
-"age"            = "歳";
+"age"            = "年齢";
+"years old"      = "歳";
 "height"         = "身長";
 "weight"         = "体重";
 "activity level" = "活動量";
