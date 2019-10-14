@@ -25,11 +25,9 @@ final class InputNumberViewCell: InputPickerViewCell, CellFrameTrackkable, UnitL
     func configure(with viewModel: FillInformationViewModelProtocol, type: CellType) {
         super.configure(with: type)
         if type == .height {
-            let list = [Double].init(repeating: 0, count: 215)
-                .enumerated()
-                .map { Double($0.offset) }
+            let list = Array(stride(from: 50.0, to: 230.0, by: 1.0))
             let unit = " " + unitSymbol(UnitLength.centimeters, style: .short)
-            let defaultRow = 140
+            let defaultRow = 160 - 50
 
             Observable.just(list.map { String($0) + unit })
                 .bind(to: pickerView.rx.itemTitles) { $1 }
