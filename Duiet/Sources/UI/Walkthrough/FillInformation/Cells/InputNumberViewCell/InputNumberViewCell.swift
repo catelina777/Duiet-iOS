@@ -26,7 +26,7 @@ final class InputNumberViewCell: InputPickerViewCell, CellFrameTrackkable, UnitL
         super.configure(with: type)
         if type == .height {
             let list = Array(stride(from: 50.0, to: 230.0, by: 1.0))
-            let unit = " " + unitSymbol(UnitLength.centimeters, style: .short)
+            let unit = " " + unitSymbol(UnitLength.centimeters, style: .medium)
             let defaultRow = 160 - 50
 
             Observable.just(list.map { String($0) + unit })
@@ -47,10 +47,8 @@ final class InputNumberViewCell: InputPickerViewCell, CellFrameTrackkable, UnitL
         }
 
         if type == .weight {
-            let list = [Double].init(repeating: 0, count: 150)
-                .enumerated()
-                .map { Double($0.offset) * 0.5 + 20 }
-            let unit = " " + unitSymbol(UnitMass.kilograms, style: .short)
+            let list = Array(stride(from: 20, to: 150, by: 0.5))
+            let unit = " " + unitSymbol(UnitMass.kilograms, style: .medium)
             let defaultRow = 80
 
             Observable.just(list.map { String($0) + unit })
@@ -71,10 +69,8 @@ final class InputNumberViewCell: InputPickerViewCell, CellFrameTrackkable, UnitL
         }
 
         if type == .age {
-            let list =  [Int].init(repeating: 0, count: 120)
-                .enumerated()
-                .map { $0.offset }
-            let unit = " years old"
+            let list = Array(stride(from: 0, to: 121, by: 1))
+            let unit = " " + R.string.localizable.yearsOld()
             let defaultRow = 30
 
             Observable.just(list.map { String($0) })
