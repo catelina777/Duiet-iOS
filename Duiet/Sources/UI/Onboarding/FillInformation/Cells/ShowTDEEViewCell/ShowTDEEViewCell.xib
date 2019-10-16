@@ -27,19 +27,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="461" height="54.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BMR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fSR-de-n6I">
-                                <rect key="frame" x="32" y="11.5" width="64.5" height="32"/>
+                                <rect key="frame" x="16" y="11.5" width="64.5" height="32"/>
                                 <fontDescription key="fontDescription" name="Montserrat-ExtraBold" family="Montserrat" pointSize="26"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="=" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AZo-af-qCc">
-                                <rect key="frame" x="113" y="11.5" width="16" height="32"/>
+                                <rect key="frame" x="97" y="11.5" width="16" height="32"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="26"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="calc..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xoK-qb-nmi">
-                                <rect key="frame" x="137" y="11.5" width="78.5" height="32"/>
+                                <rect key="frame" x="121" y="11.5" width="78.5" height="32"/>
                                 <fontDescription key="fontDescription" name="Montserrat-ExtraBold" family="Montserrat" pointSize="26"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -50,26 +50,26 @@
                             <constraint firstItem="AZo-af-qCc" firstAttribute="centerY" secondItem="fSR-de-n6I" secondAttribute="centerY" id="1ma-nR-4dX"/>
                             <constraint firstItem="fSR-de-n6I" firstAttribute="centerY" secondItem="b5B-OK-4W4" secondAttribute="centerY" id="7uC-SQ-Iua"/>
                             <constraint firstItem="xoK-qb-nmi" firstAttribute="centerY" secondItem="fSR-de-n6I" secondAttribute="centerY" id="jEb-mX-11f"/>
-                            <constraint firstItem="fSR-de-n6I" firstAttribute="leading" secondItem="b5B-OK-4W4" secondAttribute="leading" constant="32" id="nqk-HW-r7y"/>
+                            <constraint firstItem="fSR-de-n6I" firstAttribute="leading" secondItem="b5B-OK-4W4" secondAttribute="leading" constant="16" id="nqk-HW-r7y"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7qX-P1-g9J">
                         <rect key="frame" x="0.0" y="54.5" width="461" height="54.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TDEE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QG4-bN-W2i">
-                                <rect key="frame" x="32" y="11.5" width="73" height="32"/>
+                                <rect key="frame" x="16" y="11.5" width="73" height="32"/>
                                 <fontDescription key="fontDescription" name="Montserrat-ExtraBold" family="Montserrat" pointSize="26"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="=" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ROf-f8-k3n">
-                                <rect key="frame" x="113" y="11.5" width="16" height="32"/>
+                                <rect key="frame" x="97" y="11.5" width="16" height="32"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="26"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="calc..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rkz-DE-FCv">
-                                <rect key="frame" x="137" y="11.5" width="78.5" height="32"/>
+                                <rect key="frame" x="121" y="11.5" width="78.5" height="32"/>
                                 <fontDescription key="fontDescription" name="Montserrat-ExtraBold" family="Montserrat" pointSize="26"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
