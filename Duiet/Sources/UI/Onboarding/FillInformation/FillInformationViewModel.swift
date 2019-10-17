@@ -126,7 +126,7 @@ final class FillInformationViewModel: FillInformationViewModelProtocol {
             .disposed(by: disposeBag)
     }
 
-    convenience init(coordinator: WalkthrouthCoordinator) {
+    convenience init(coordinator: OnboardingCoordinator) {
         self.init()
 
         // MARK: - Processing to transition

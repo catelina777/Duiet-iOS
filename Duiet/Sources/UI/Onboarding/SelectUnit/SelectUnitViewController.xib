@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SelectUnitViewController" customModule="Duiet" customModuleProvider="target">
             <connections>
                 <outlet property="tableView" destination="ptB-Bk-Rdm" id="KyZ-kj-8Wb"/>
+                <outlet property="view" destination="lRK-kd-oJg" id="wdr-o9-pt3"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

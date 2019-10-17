@@ -7,8 +7,15 @@
 //
 
 import Foundation
+import RxRelay
+import RxSwift
 
-protocol SelectUnitViewModelInput {}
+protocol SelectUnitViewModelInput {
+    var heightUnitRow: AnyObserver<Int> { get }
+    var weightUnitRow: AnyObserver<Int> { get }
+    var energyUnitRow: AnyObserver<Int> { get }
+    var didTapNextButton: AnyObserver<Void> { get }
+}
 
 protocol SelectUnitViewModelOutput {}
 
@@ -25,14 +32,35 @@ class SelectUnitViewModel: SelectUnitViewModelProtocol, SelectUnitViewModelState
     let output: SelectUnitViewModelOutput
     var state: SelectUnitViewModelState { self }
 
-    init() {
-        input = Input()
+    private let disposeBag = DisposeBag()
+
+    init(coordinator: OnboardingCoordinator) {
+        let heightUnitRow = PublishRelay<Int>()
+        let weightUnitRow = PublishRelay<Int>()
+        let energyUnitRow = PublishRelay<Int>()
+        let didTapNextButton = PublishRelay<Void>()
+        input = Input(heightUnitRow: heightUnitRow.asObserver(),
+                      weightUnitRow: weightUnitRow.asObserver(),
+                      energyUnitRow: energyUnitRow.asObserver(),
+                      didTapNextButton: didTapNextButton.asObserver())
         output = Output()
+
+        didTapNextButton
+            .asDriver(onErrorDriveWith: .empty())
+            .drive(onNext: {
+                coordinator.showFillInformation()
+            })
+            .disposed(by: disposeBag)
     }
 }
 
 extension SelectUnitViewModel {
-    struct Input: SelectUnitViewModelInput {}
+    struct Input: SelectUnitViewModelInput {
+        let heightUnitRow: AnyObserver<Int>
+        let weightUnitRow: AnyObserver<Int>
+        let energyUnitRow: AnyObserver<Int>
+        let didTapNextButton: AnyObserver<Void>
+    }
 
     struct Output: SelectUnitViewModelOutput {}
 }

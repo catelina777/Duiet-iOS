@@ -1,5 +1,5 @@
 //
-//  WalkthrouthCoordinator.swift
+//  OnboardingCoordinator.swift
 //  Duiet
 //
 //  Created by Ryuhei Kaminishi on 2019/07/05.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class WalkthrouthCoordinator: Coordinator {
+final class OnboardingCoordinator: Coordinator {
     private let topTabBarCoordinator: TopTabBarCoordinator
     private let navigator: BaseNavigationController
 
@@ -22,6 +22,12 @@ final class WalkthrouthCoordinator: Coordinator {
         let vm = WalkthroughViewModel(coordinator: self)
         let vc = WalkthroughViewController(viewModel: vm)
         navigator.pushViewController(vc, animated: false)
+    }
+
+    func showSelectUnit() {
+        let vm = SelectUnitViewModel(coordinator: self)
+        let vc = SelectUnitViewController(viewModel: vm)
+        navigator.pushViewController(vc, animated: true)
     }
 
     func showFillInformation() {

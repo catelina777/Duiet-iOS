@@ -10,9 +10,11 @@ import UIKit
 
 final class SelectUnitViewController: BaseTableViewController {
     private let viewModel: SelectUnitViewModelProtocol
+    private let dataSource: SelectUnitViewDataSource
 
     init(viewModel: SelectUnitViewModelProtocol) {
         self.viewModel = viewModel
+        dataSource = SelectUnitViewDataSource(viewModel: viewModel)
         super.init(nibName: SelectUnitViewController.className, bundle: nil)
     }
 
@@ -22,5 +24,14 @@ final class SelectUnitViewController: BaseTableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        title = "Select Unit"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        dataSource.configure(with: tableView)
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: true)
     }
 }

@@ -21,4 +21,16 @@ final class UnitCollection: Object {
     override static func primaryKey() -> String? {
         "id"
     }
+
+    var heightUnit: Unit {
+        HeightUnitType.get(heightUnitRow).unit
+    }
+
+    var weightUnit: Unit {
+        WeightUnitType.get(weightUnitRow).unit
+    }
+
+    var energyUnit: Unit {
+        EnergyUnitType.get(energyUnitRow).unit
+    }
 }

@@ -11,7 +11,7 @@ import UIKit
 final class AppCoordinator {
     private let window: UIWindow
 
-    private var walkthroughCoordinator: WalkthrouthCoordinator!
+    private var walkthroughCoordinator: OnboardingCoordinator!
     private let walkthroughNavigator: BaseNavigationController
     private var topTabBarCoordinator: TopTabBarCoordinator!
     private let topTabBarNavigator: BaseNavigationController
@@ -37,7 +37,7 @@ final class AppCoordinator {
                                                     viewModel: viewModel,
                                                     navigationControllers: [dayNC, monthNC, yearNC, settingNC])
 
-        walkthroughCoordinator = WalkthrouthCoordinator(navigator: walkthroughNavigator,
+        walkthroughCoordinator = OnboardingCoordinator(navigator: walkthroughNavigator,
                                                         topTabBarCoordinator: topTabBarCoordinator)
     }
 

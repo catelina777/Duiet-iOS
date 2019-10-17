@@ -9,7 +9,7 @@
 import UIKit
 
 extension UIButton {
-    func configureGender() {
+    func makeRoundCornersAndColorEdges() {
         layer.cornerRadius = 10
         layer.borderWidth = 4
         layer.borderColor = UIColor.clear.cgColor

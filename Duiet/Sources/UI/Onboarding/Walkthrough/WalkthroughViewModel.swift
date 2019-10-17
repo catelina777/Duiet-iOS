@@ -28,16 +28,16 @@ final class WalkthroughViewModel: WalkthroughViewModelProtocol {
 
     private let disposeBag = DisposeBag()
 
-    init(coordinator: WalkthrouthCoordinator) {
-        let _didTapNextButton = PublishRelay<Void>()
-        input = Input(didTapNextButton: _didTapNextButton.asObserver())
+    init(coordinator: OnboardingCoordinator) {
+        let didTapNextButton = PublishRelay<Void>()
+        input = Input(didTapNextButton: didTapNextButton.asObserver())
         output = Output()
 
-        // MARK: - Processing to transition
-        _didTapNextButton
+        // MARK: - Processing to transitions
+        didTapNextButton
             .asDriver(onErrorDriveWith: .empty())
             .drive(onNext: {
-                coordinator.showFillInformation()
+                coordinator.showSelectUnit()
             })
             .disposed(by: disposeBag)
     }
