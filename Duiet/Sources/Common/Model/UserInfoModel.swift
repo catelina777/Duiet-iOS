@@ -44,16 +44,19 @@ final class UserInfoModel: UserInfoModelProtocol, UserInfoModelState {
         userInfo.value
     }
 
-    private let userInfo: BehaviorRelay<UserInfo>
+    private let userInfo = BehaviorRelay<UserInfo>(value: UserInfo())
     private let repository: UserInfoRepositoryProtocol
     private let disposeBag = DisposeBag()
 
     init(repository: UserInfoRepositoryProtocol) {
         self.repository = repository
-        userInfo = BehaviorRelay<UserInfo>(value: repository.get())
 
         input = Input()
         output = Output(userInfo: userInfo.asObservable())
+
+        repository.get()
+            .bind(to: userInfo)
+            .disposed(by: disposeBag)
     }
 
     func add(userInfo: UserInfo) {

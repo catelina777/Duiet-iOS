@@ -22,6 +22,13 @@ final class UnitCollection: Object {
         "id"
     }
 
+    required convenience init(heightUnitRow: Int, weightUnitRow: Int, energyUnitRow: Int) {
+        self.init()
+        self.heightUnitRow = heightUnitRow
+        self.weightUnitRow = weightUnitRow
+        self.energyUnitRow = energyUnitRow
+    }
+
     var heightUnit: Unit {
         HeightUnitType.get(heightUnitRow).unit
     }

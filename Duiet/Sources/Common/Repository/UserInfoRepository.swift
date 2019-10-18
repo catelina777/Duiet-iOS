@@ -15,7 +15,7 @@ protocol UserInfoRepositoryProtocol {
     func add(userInfo: UserInfo)
 
     /// Use on the premise that there is always an acquisition target
-    func get() -> UserInfo
+    func get() -> Observable<UserInfo>
 }
 
 final class UserInfoRepository: UserInfoRepositoryProtocol {
@@ -33,7 +33,8 @@ final class UserInfoRepository: UserInfoRepositoryProtocol {
         }
     }
 
-    func get() -> UserInfo {
-        realm.object(ofType: UserInfo.self, forPrimaryKey: 0)!
+    func get() -> Observable<UserInfo> {
+        Observable.collection(from: realm.objects(UserInfo.self))
+            .compactMap { $0.first }
     }
 }

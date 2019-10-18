@@ -38,11 +38,11 @@ final class SelectElementViewCell: BaseTableViewCell {
     }
 
     func configure(with cellType: SelectUnitCellType,
-                   isSelectedLeft: AnyObserver<Int>) {
+                   isSelectedLeft: AnyObserver<Int?>) {
         titleLabel.text = cellType.title
         leftButton.setTitle(cellType.pairedUniTypes.0.abbr, for: .normal)
         rightButton.setTitle(cellType.pairedUniTypes.1.abbr, for: .normal)
-        let didSelectLeft = PublishRelay<Int>()
+        let didSelectLeft = PublishRelay<Int?>()
         leftButton.rx.tap
             .map { 0 }
             .bind(to: isSelectedLeft,
@@ -56,6 +56,7 @@ final class SelectElementViewCell: BaseTableViewCell {
             .disposed(by: disposeBag)
 
         didSelectLeft
+            .compactMap { $0 }
             .bind(to: switchSelectedButton)
             .disposed(by: disposeBag)
     }

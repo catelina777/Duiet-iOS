@@ -10,8 +10,6 @@ import RxSwift
 import UIKit
 
 class BaseNavigationController: UINavigationController {
-    let disposeBag = DisposeBag()
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         bindAppearance()

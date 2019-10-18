@@ -11,7 +11,7 @@ import UIKit
 
 final class SelectUnitViewDataSource: NSObject {
     private let viewModel: SelectUnitViewModelProtocol
-    private let unitInputs: [AnyObserver<Int>]
+    private let unitInputs: [AnyObserver<Int?>]
 
     init(viewModel: SelectUnitViewModelProtocol) {
         self.viewModel = viewModel

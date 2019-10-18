@@ -8,6 +8,7 @@
 
 import Foundation
 import RealmSwift
+import RxSwift
 
 protocol UnitCollectionRepositoryProtocol {
     /// Save UnitCollection
@@ -15,7 +16,7 @@ protocol UnitCollectionRepositoryProtocol {
     func add(unitCollection: UnitCollection)
 
     /// Use on the premise that there is always an acquisition target
-    func get() -> UnitCollection
+    func get() -> Observable<UnitCollection>
 }
 
 final class UnitCollectionRepository: UnitCollectionRepositoryProtocol {
@@ -33,7 +34,8 @@ final class UnitCollectionRepository: UnitCollectionRepositoryProtocol {
         }
     }
 
-    func get() -> UnitCollection {
-        realm.object(ofType: UnitCollection.self, forPrimaryKey: 0)!
+    func get() -> Observable<UnitCollection> {
+        Observable.collection(from: realm.objects(UnitCollection.self))
+            .compactMap { $0.first }
     }
 }

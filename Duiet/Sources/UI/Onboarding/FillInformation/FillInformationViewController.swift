@@ -37,11 +37,6 @@ final class FillInformationViewController: BaseTableViewController, KeyboardFram
 
         bindKeyboardDifference()
     }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: true)
-    }
 }
 
 extension FillInformationViewController {

@@ -41,16 +41,19 @@ final class UnitCollectionModel: UnitCollectionModelProtocol, UnitCollectionMode
         unitCollection.value
     }
 
-    private let unitCollection: BehaviorRelay<UnitCollection>
+    private let unitCollection = BehaviorRelay<UnitCollection>(value: UnitCollection())
     private let repository: UnitCollectionRepositoryProtocol
     private let disposeBag = DisposeBag()
 
     init(repository: UnitCollectionRepositoryProtocol) {
         self.repository = repository
-        unitCollection = BehaviorRelay<UnitCollection>(value: repository.get())
 
         input = Input()
         output = Output(unitCollection: unitCollection.asObservable())
+
+        repository.get()
+            .bind(to: unitCollection)
+            .disposed(by: disposeBag)
     }
 
     func add(unitCollection: UnitCollection) {

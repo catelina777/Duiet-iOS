@@ -44,7 +44,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MKE-U8-b4L">
                         <rect key="frame" x="0.0" y="48" width="414" height="77"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vR1-SS-EAE" customClass="MyTextField" customModule="Duiet" customModuleProvider="target">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vR1-SS-EAE" customClass="RoundedTextField" customModule="Duiet" customModuleProvider="target">
                                 <rect key="frame" x="16" y="12" width="382" height="49"/>
                                 <color key="backgroundColor" name="cellBackground"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
