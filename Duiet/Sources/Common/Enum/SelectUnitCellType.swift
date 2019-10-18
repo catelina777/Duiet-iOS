@@ -16,11 +16,13 @@ enum SelectUnitCellType: CaseIterable {
     var title: String {
         switch self {
         case .height:
-            return "Height"
+            return R.string.localizable.height()
+
         case .weight:
-            return "Weight"
+            return R.string.localizable.weight()
+
         case .energy:
-            return "Energy"
+            return R.string.localizable.energy()
         }
     }
 

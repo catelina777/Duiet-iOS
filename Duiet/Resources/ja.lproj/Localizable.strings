@@ -11,6 +11,10 @@
 "months"  = "月";
 "setting" = "設定";
 
+// SelectUnitView
+"select unit" = "単位を選択する";
+"energy"      = "エネルギー";
+
 // WalkthroughView
 "top title"             = "使い方 🤔";
 "calculate title"       = "消費カロリーを計算";

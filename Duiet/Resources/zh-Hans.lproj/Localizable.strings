@@ -11,6 +11,10 @@
 "months"  = "月";
 "setting" = "设置";
 
+// SelectUnitView
+"select unit" = "选择单位";
+"energy"      = "能源";
+
 // WalkthroughView
 "top title"             = "如何使用 🤔";
 "calculate title"       = "计算";

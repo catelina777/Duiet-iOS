@@ -31,7 +31,7 @@ final class SelectUnitViewController: BaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Select Unit"
+        title = R.string.localizable.selectUnit()
         navigationController?.navigationBar.prefersLargeTitles = true
         dataSource.configure(with: tableView)
 

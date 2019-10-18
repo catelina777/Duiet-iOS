@@ -11,6 +11,10 @@
 "months"  = "Months";
 "setting" = "Setting";
 
+// SelectUnitView
+"select unit" = "Select Unit";
+"energy"      = "Energy";
+
 // WalkthroughView
 "top title"             = "How to use 🤔";
 "calculate title"       = "Calculate";
