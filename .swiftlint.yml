@@ -3,6 +3,7 @@ excluded:
   - Pods
   - Duiet/Sources/Common/R.generated.swift
 
+line_length: 130
 function_body_length: 80
 large_tuple: 3
 
