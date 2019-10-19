@@ -49,15 +49,19 @@ final class MealLabelView: UIView {
 
     func initialize(with content: Content) {
         viewModel = MealLabelViewModel(content: content)
-        let calorie = viewModel.contentValue.calorie
+        let calorie = UnitBabel.shared.convert(value: content.calorie,
+                                               from: .kilocalories,
+                                               to: UnitCollectionModel.shared.state.unitCollectionValue.energyUnit)
         let multiple = viewModel.contentValue.multiple
         self.mealLabel.text = "\(Int(calorie * (multiple == 0 ? 1 : multiple)))"
     }
 
     var updateLabelText: Binder<Content> {
-        Binder(self) { me, content in
+        Binder<Content>(self) { me, content in
             guard !content.isInvalidated else { return }
-            let calorie = content.calorie
+            let calorie = UnitBabel.shared.convert(value: content.calorie,
+                                                   from: .kilocalories,
+                                                   to: UnitCollectionModel.shared.state.unitCollectionValue.energyUnit)
             let multiple = content.multiple
             me.mealLabel.text = "\(Int(calorie * (multiple == 0 ? 1 : multiple)))"
         }

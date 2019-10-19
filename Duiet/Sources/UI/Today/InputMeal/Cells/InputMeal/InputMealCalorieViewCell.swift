@@ -92,7 +92,10 @@ final class InputMealCalorieViewCell: BaseTableViewCell, CellFrameTrackkable {
             me.nameTextField.text = content.name
             me.calorieTextField.text = ""
             me.multipleTextField.text = ""
-            me.calorieTextField.placeholder = "\(content.calorie)"
+            let calorie = UnitBabel.shared.convert(value: content.calorie,
+                                                   from: .kilocalories,
+                                                   to: UnitCollectionModel.shared.state.unitCollectionValue.energyUnit)
+            me.calorieTextField.placeholder = "\(calorie)"
             me.multipleTextField.placeholder = "\(content.multiple)"
         }
     }
