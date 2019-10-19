@@ -81,7 +81,9 @@
 "saturday abbr"  = "S";
 
 // InputMealView
-"calorie"  = "Calorie";
+"energy"   = "Energy";
 "multiple" = "Multiple";
 "name"     = "Name";
 "delete"   = "Delete";
+
+"input introduction" = "You can add meal information by long-pressing a photo🍴";

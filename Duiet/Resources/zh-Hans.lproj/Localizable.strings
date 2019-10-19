@@ -81,7 +81,9 @@
 "saturday abbr"  = "六";
 
 // InputMealView
-"calorie"  = "卡路里";
+"energy"   = "熱量";
 "multiple" = "放大率";
 "name"     = "食物名称";
 "delete"   = "删除";
+
+"input introduction" = "您可以通过长按照片添加进餐信息🍴";

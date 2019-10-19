@@ -9,4 +9,7 @@
 import UIKit
 
 final class EmptyContentViewCell: BaseTableViewCell {
+    @IBOutlet private weak var placeholderLabel: UILabel! {
+        didSet { placeholderLabel.text = R.string.localizable.inputIntroduction() }
+    }
 }

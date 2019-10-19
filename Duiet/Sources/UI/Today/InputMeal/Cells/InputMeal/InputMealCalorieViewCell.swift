@@ -13,7 +13,7 @@ import UIKit
 
 final class InputMealCalorieViewCell: BaseTableViewCell, CellFrameTrackkable {
     @IBOutlet weak var calorieTitleLabel: UILabel! {
-        didSet { calorieTitleLabel.text = R.string.localizable.calorie() }
+        didSet { calorieTitleLabel.text = R.string.localizable.energy() }
     }
 
     @IBOutlet weak var multipleTitleLabel: UILabel! {
