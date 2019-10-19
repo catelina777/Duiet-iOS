@@ -70,6 +70,7 @@
 
 // SettingView
 "edit user information" = "编辑用户信息";
+"reselect units"        = "重新选择单位";
 
 // MonthSummaryView
 "sunday abbr"    = "日";

@@ -30,6 +30,12 @@ final class SettingCoordinator: Coordinator {
         navigator.pushViewController(vc, animated: true)
     }
 
+    func showSelectUnit() {
+        let vm = SelectUnitViewModel(coordinator: self)
+        let vc = SelectUnitViewController(viewModel: vm)
+        navigator.pushViewController(vc, animated: true)
+    }
+
     func pop() {
         navigator.popViewController(animated: true)
     }

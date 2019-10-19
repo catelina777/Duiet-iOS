@@ -70,6 +70,7 @@
 
 // SettingView
 "edit user information" = "Edit user information";
+"reselect units"        = "Reselect units";
 
 // MonthSummaryView
 "sunday abbr"    = "S";

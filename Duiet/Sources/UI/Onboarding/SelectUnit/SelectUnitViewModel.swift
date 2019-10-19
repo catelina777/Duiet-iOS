@@ -34,14 +34,14 @@ class SelectUnitViewModel: SelectUnitViewModelProtocol, SelectUnitViewModelState
     let output: SelectUnitViewModelOutput
     var state: SelectUnitViewModelState { self }
 
+    private let didTapNextButton = PublishRelay<Void>()
+    private let unitCollection = PublishRelay<UnitCollection>()
     private let disposeBag = DisposeBag()
 
-    init(coordinator: OnboardingCoordinator,
-         repository: UnitCollectionRepositoryProtocol = UnitCollectionRepository.shared) {
+    init() {
         let heightUnitRow = PublishRelay<Int?>()
         let weightUnitRow = PublishRelay<Int?>()
         let energyUnitRow = PublishRelay<Int?>()
-        let didTapNextButton = PublishRelay<Void>()
         input = Input(heightUnitRow: heightUnitRow.asObserver(),
                       weightUnitRow: weightUnitRow.asObserver(),
                       energyUnitRow: energyUnitRow.asObserver(),
@@ -51,16 +51,36 @@ class SelectUnitViewModel: SelectUnitViewModelProtocol, SelectUnitViewModelState
             .map { $0 != nil && $1 != nil && $2 != nil }
         output = Output(isValidateComplete: isValidateComplete)
 
-        let unitCollection = Observable.combineLatest(heightUnitRow.compactMap { $0 },
-                                                      weightUnitRow.compactMap { $0 },
-                                                      energyUnitRow.compactMap { $0 })
+        Observable.combineLatest(heightUnitRow.compactMap { $0 },
+                                 weightUnitRow.compactMap { $0 },
+                                 energyUnitRow.compactMap { $0 })
             .map { UnitCollection(heightUnitRow: $0, weightUnitRow: $1, energyUnitRow: $2) }
+            .bind(to: unitCollection)
+            .disposed(by: disposeBag)
+    }
+
+    convenience init(coordinator: OnboardingCoordinator,
+                     repository: UnitCollectionRepositoryProtocol = UnitCollectionRepository.shared) {
+        self.init()
 
         didTapNextButton.withLatestFrom(unitCollection)
             .asDriver(onErrorDriveWith: .empty())
             .drive(onNext: {
                 repository.add(unitCollection: $0)
                 coordinator.showFillInformation()
+            })
+            .disposed(by: disposeBag)
+    }
+
+    convenience init(coordinator: SettingCoordinator,
+                     repository: UnitCollectionRepositoryProtocol = UnitCollectionRepository.shared) {
+        self.init()
+
+        didTapNextButton.withLatestFrom(unitCollection)
+            .asDriver(onErrorDriveWith: .empty())
+            .drive(onNext: {
+                repository.add(unitCollection: $0)
+                coordinator.pop()
             })
             .disposed(by: disposeBag)
     }
