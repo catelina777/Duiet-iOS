@@ -16,6 +16,7 @@ protocol HeightUnitLocalizable {
 protocol WeightUnitLocalizable {
     func convert(value: Double, from fromUnitType: WeightUnitType, to toUnitType: WeightUnitType) -> Double
     func convertWithSymbol(value: Double, from fromUnitType: WeightUnitType, to toUnitType: WeightUnitType) -> String
+    func convertRoundedWithSymbol(value: Double, from fromUnitType: WeightUnitType, to toUnitType: WeightUnitType) -> String
 }
 
 protocol EnergyUnitLocalizable {
@@ -46,6 +47,11 @@ final class UnitLocalizeHelper: HeightUnitLocalizable, WeightUnitLocalizable, En
 
     func convertWithSymbol(value: Double, from fromUnitType: WeightUnitType, to toUnitType: WeightUnitType) -> String {
         "\(Int(convert(value: value, from: fromUnitType, to: toUnitType))) \(toUnitType.symbol)"
+    }
+
+    func convertRoundedWithSymbol(value: Double, from fromUnitType: WeightUnitType, to toUnitType: WeightUnitType) -> String {
+        let convertedValue = convert(value: value, from: fromUnitType, to: toUnitType)
+        return "\(abs(round(convertedValue * 1_000) / 1_000)) \(toUnitType.symbol)"
     }
 
     func convert(value: Double, from fromUnitType: EnergyUnitType, to toUnitType: EnergyUnitType) -> Double {

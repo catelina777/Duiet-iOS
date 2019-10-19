@@ -32,13 +32,13 @@ final class DaySummaryViewCell: RoundedCollectionViewCell {
         let tdee = userInfo.TDEE
         let totalCalorie = day.totalCalorie
         let difference = totalCalorie - tdee
-        let weightChange = difference / (9 * 0.8)
-        let localizeWeightChangeValueWithSymbol = UnitLocalizeHelper.shared.convertWithSymbol(value: abs(weightChange),
-                                                                                              from: .kilograms,
-                                                                                              to: .kilograms)
+        let weightChange = difference / (9 * 0.8) / 1_000
+        let localizedWeightChangeValueWithSymbol = UnitLocalizeHelper.shared.convertRoundedWithSymbol(value: abs(weightChange),
+                                                                                                      from: .kilograms,
+                                                                                                      to: .kilograms)
         let weightChangeText = weightChange > 0 ?
-            "\(localizeWeightChangeValueWithSymbol) \(R.string.localizable.up()) 💪" :
-            "\(localizeWeightChangeValueWithSymbol) \(R.string.localizable.down()) ⬇️"
+            "\(localizedWeightChangeValueWithSymbol) \(R.string.localizable.up()) 💪" :
+            "\(localizedWeightChangeValueWithSymbol) \(R.string.localizable.down()) ⬇️"
 
         dayValueLabel.text = day.createdAt.toString()
         tdeeValueLabel.text = UnitLocalizeHelper.shared.convertWithSymbol(value: tdee,
