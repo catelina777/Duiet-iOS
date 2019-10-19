@@ -12,13 +12,13 @@ enum WeightUnitType: String, UnitType {
     case kilograms
     case pounds
 
-    var unit: Unit {
+    var symbol: String {
         switch self {
         case .kilograms:
-            return UnitMass.kilograms
+            return R.string.localizable.kilograms()
 
         case .pounds:
-            return UnitMass.pounds
+            return R.string.localizable.pounds()
         }
     }
 

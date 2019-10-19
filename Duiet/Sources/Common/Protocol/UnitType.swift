@@ -9,7 +9,7 @@
 import Foundation
 
 protocol UnitType {
-    var unit: Unit { get }
+    var symbol: String { get }
     var row: Int { get }
 
     static func get(_ row: Int) -> UnitType

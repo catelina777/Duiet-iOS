@@ -12,8 +12,14 @@
 "setting" = "设置";
 
 // SelectUnitView
-"select unit" = "选择单位";
-"energy"      = "能源";
+"select unit"  = "选择单位";
+"energy"       = "能源";
+"centimeters"  = "厘米";
+"feets"        = "英尺";
+"kilograms"    = "千克";
+"pounds"       = "磅";
+"kilocalories" = "千卡";
+"kilojoules"   = "千焦";
 
 // WalkthroughView
 "top title"             = "如何使用 🤔";

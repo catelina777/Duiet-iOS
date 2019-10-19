@@ -12,13 +12,13 @@ enum EnergyUnitType: String, UnitType {
     case kilocalories
     case kilojoules
 
-    var unit: Unit {
+    var symbol: String {
         switch self {
         case .kilocalories:
-            return UnitEnergy.kilocalories
+            return R.string.localizable.kilocalories()
 
         case .kilojoules:
-            return UnitEnergy.kilojoules
+            return R.string.localizable.kilojoules()
         }
     }
 

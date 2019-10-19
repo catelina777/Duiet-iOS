@@ -12,8 +12,14 @@
 "setting" = "設定";
 
 // SelectUnitView
-"select unit" = "単位を選択する";
-"energy"      = "エネルギー";
+"select unit"  = "単位を選択する";
+"energy"       = "エネルギー";
+"centimeters"  = "cm";
+"feets"        = "ft";
+"kilograms"    = "kg";
+"pounds"       = "lb";
+"kilocalories" = "kcal";
+"kilojoules"   = "kJ";
 
 // WalkthroughView
 "top title"             = "使い方 🤔";

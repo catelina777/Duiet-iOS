@@ -12,13 +12,13 @@ enum HeightUnitType: String, UnitType {
     case centimeters
     case feet
 
-    var unit: Unit {
+    var symbol: String {
         switch self {
         case .centimeters:
-            return UnitLength.centimeters
+            return R.string.localizable.centimeters()
 
         case .feet:
-            return UnitLength.feet
+            return R.string.localizable.feets()
         }
     }
 

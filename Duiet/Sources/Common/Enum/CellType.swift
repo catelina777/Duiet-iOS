@@ -25,10 +25,10 @@ enum CellType: String {
             return R.string.localizable.age()
 
         case .height:
-            return R.string.localizable.height() + "(" + HeightUnitType.centimeters.unit.symbol + ")"
+            return R.string.localizable.height() + "(" + HeightUnitType.centimeters.symbol + ")"
 
         case .weight:
-            return R.string.localizable.weight() + "(" + WeightUnitType.kilograms.unit.symbol + ")"
+            return R.string.localizable.weight() + "(" + WeightUnitType.kilograms.symbol + ")"
 
         case .activityLevel:
             return R.string.localizable.activityLevel()

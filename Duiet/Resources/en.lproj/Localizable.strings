@@ -12,8 +12,14 @@
 "setting" = "Setting";
 
 // SelectUnitView
-"select unit" = "Select Unit";
-"energy"      = "Energy";
+"select unit"  = "Select Unit";
+"energy"       = "Energy";
+"centimeters"  = "cm";
+"feets"        = "ft";
+"kilograms"    = "kg";
+"pounds"       = "lb";
+"kilocalories" = "kcal";
+"kilojoules"   = "kJ";
 
 // WalkthroughView
 "top title"             = "How to use 🤔";

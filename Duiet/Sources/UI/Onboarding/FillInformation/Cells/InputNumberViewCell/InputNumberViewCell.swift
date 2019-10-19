@@ -45,7 +45,8 @@ final class InputNumberViewCell: InputPickerViewCell, CellFrameTrackkable {
             pickerView.rx.itemSelected
                 .map { UnitLocalizeHelper.shared.convertWithSymbol(value: heightCollectionInCentimeters[$0.row],
                                                                    from: .centimeters,
-                                                                   to: .centimeters) }
+                                                                   to: .centimeters)
+                }
                 .bind(to: textField.rx.text)
                 .disposed(by: disposeBag)
         }
@@ -71,7 +72,8 @@ final class InputNumberViewCell: InputPickerViewCell, CellFrameTrackkable {
             pickerView.rx.itemSelected
                 .map { UnitLocalizeHelper.shared.convertWithSymbol(value: weightCollectionInKilograms[$0.row],
                                                                    from: .kilograms,
-                                                                   to: .kilograms) }
+                                                                   to: .kilograms)
+                }
                 .bind(to: textField.rx.text)
                 .disposed(by: disposeBag)
         }

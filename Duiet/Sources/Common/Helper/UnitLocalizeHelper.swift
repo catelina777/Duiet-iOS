@@ -35,7 +35,7 @@ final class UnitLocalizeHelper: HeightUnitLocalizable, WeightUnitLocalizable, En
     }
 
     func convertWithSymbol(value: Double, from fromUnitType: HeightUnitType, to toUnitType: HeightUnitType) -> String {
-        "\(Int(convert(value: value, from: fromUnitType, to: toUnitType))) \(toUnitType.unit.symbol)"
+        "\(Int(convert(value: value, from: fromUnitType, to: toUnitType))) \(toUnitType.symbol)"
     }
 
     func convert(value: Double, from fromUnitType: WeightUnitType, to toUnitType: WeightUnitType) -> Double {
@@ -45,7 +45,7 @@ final class UnitLocalizeHelper: HeightUnitLocalizable, WeightUnitLocalizable, En
     }
 
     func convertWithSymbol(value: Double, from fromUnitType: WeightUnitType, to toUnitType: WeightUnitType) -> String {
-        "\(Int(convert(value: value, from: fromUnitType, to: toUnitType))) \(toUnitType.unit.symbol)"
+        "\(Int(convert(value: value, from: fromUnitType, to: toUnitType))) \(toUnitType.symbol)"
     }
 
     func convert(value: Double, from fromUnitType: EnergyUnitType, to toUnitType: EnergyUnitType) -> Double {
@@ -55,6 +55,6 @@ final class UnitLocalizeHelper: HeightUnitLocalizable, WeightUnitLocalizable, En
     }
 
     func convertWithSymbol(value: Double, from fromUnitType: EnergyUnitType, to toUnitType: EnergyUnitType) -> String {
-        "\(Int(convert(value: value, from: fromUnitType, to: toUnitType))) \(toUnitType.unit.symbol)"
+        "\(Int(convert(value: value, from: fromUnitType, to: toUnitType))) \(toUnitType.symbol)"
     }
 }
