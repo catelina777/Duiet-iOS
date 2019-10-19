@@ -23,10 +23,10 @@ final class MonthSummaryViewCell: RoundedCollectionViewCell {
         let tdee = viewModel.data.userInfo.TDEE
         let totalDifferenceGram = month.days.reduce(into: 0) { $0 += $1.totalCalorie - tdee }
         let weightChange = totalDifferenceGram / (9 * 0.8) / 1_000
-        let localizedWeightChangeValue = UnitLocalizeHelper.shared.convertRoundedWithSymbol(value: weightChange,
-                                                                                            from: .kilograms,
-                                                                                            to: .kilograms,
-                                                                                            significantDigits: 3)
+        let localizedWeightChangeValue = UnitBabel.shared.convertRoundedWithSymbol(value: weightChange,
+                                                                                   from: .kilograms,
+                                                                                   to: .kilograms,
+                                                                                   significantDigits: 3)
         let weightChangeText = weightChange > 0 ?
             "+\(localizedWeightChangeValue) 💪" :
             "-\(localizedWeightChangeValue) ⬇️"

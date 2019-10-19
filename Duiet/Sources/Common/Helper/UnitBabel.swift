@@ -1,5 +1,5 @@
 //
-//  UnitLocalizeHelper.swift
+//  UnitBabel.swift
 //  Duiet
 //
 //  Created by Ryuhei Kaminishi on 2019/10/19.
@@ -57,8 +57,8 @@ protocol EnergyUnitLocalizable {
     func convertWithSymbol(value: Double, from fromUnitType: EnergyUnitType, to toUnitType: EnergyUnitType) -> String
 }
 
-final class UnitLocalizeHelper: HeightUnitLocalizable, WeightUnitLocalizable, EnergyUnitLocalizable {
-    static let shared = UnitLocalizeHelper()
+final class UnitBabel: HeightUnitLocalizable, WeightUnitLocalizable, EnergyUnitLocalizable {
+    static let shared = UnitBabel()
 
     private init() {}
 

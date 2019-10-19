@@ -33,24 +33,24 @@ final class DaySummaryViewCell: RoundedCollectionViewCell {
         let totalCalorie = day.totalCalorie
         let difference = totalCalorie - tdee
         let weightChange = difference / (9 * 0.8) / 1_000
-        let weightChangeValueWithSymbol = UnitLocalizeHelper.shared.convertRoundedWithSymbol(value: abs(weightChange),
-                                                                                             from: .kilograms,
-                                                                                             to: unitCollection.weightUnit,
-                                                                                             significantDigits: 3)
+        let weightChangeValueWithSymbol = UnitBabel.shared.convertRoundedWithSymbol(value: abs(weightChange),
+                                                                                    from: .kilograms,
+                                                                                    to: unitCollection.weightUnit,
+                                                                                    significantDigits: 3)
         let weightChangeText = weightChange > 0 ?
             "\(weightChangeValueWithSymbol) \(R.string.localizable.up()) 💪" :
             "\(weightChangeValueWithSymbol) \(R.string.localizable.down()) ⬇️"
 
         dayValueLabel.text = day.createdAt.toString()
-        tdeeValueLabel.text = UnitLocalizeHelper.shared.convertWithSymbol(value: tdee,
-                                                                          from: .kilocalories,
-                                                                          to: unitCollection.energyUnit)
-        totalValueLabel.text = UnitLocalizeHelper.shared.convertWithSymbol(value: totalCalorie,
-                                                                           from: .kilocalories,
-                                                                           to: unitCollection.energyUnit)
-        differenceValueLabel.text = UnitLocalizeHelper.shared.convertWithSymbol(value: difference,
-                                                                                from: .kilocalories,
-                                                                                to: unitCollection.energyUnit)
+        tdeeValueLabel.text = UnitBabel.shared.convertWithSymbol(value: tdee,
+                                                                 from: .kilocalories,
+                                                                 to: unitCollection.energyUnit)
+        totalValueLabel.text = UnitBabel.shared.convertWithSymbol(value: totalCalorie,
+                                                                  from: .kilocalories,
+                                                                  to: unitCollection.energyUnit)
+        differenceValueLabel.text = UnitBabel.shared.convertWithSymbol(value: difference,
+                                                                       from: .kilocalories,
+                                                                       to: unitCollection.energyUnit)
         weightChangeValueLabel.text = weightChangeText
     }
 }

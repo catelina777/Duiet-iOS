@@ -112,9 +112,9 @@ final class FillInformationViewModel: FillInformationViewModelProtocol, FillInfo
                     bmr != 0,
                     activityLevel != .none
                 else { return R.string.localizable.calc() }
-                return UnitLocalizeHelper.shared.convertWithSymbol(value: bmr,
-                                                                   from: .kilocalories,
-                                                                   to: unitCollectionModel.state.unitCollectionValue.energyUnit)
+                return UnitBabel.shared.convertWithSymbol(value: bmr,
+                                                          from: .kilocalories,
+                                                          to: unitCollectionModel.state.unitCollectionValue.energyUnit)
             }
 
         let TDEE = BMRWithActivityLevel
@@ -123,9 +123,9 @@ final class FillInformationViewModel: FillInformationViewModelProtocol, FillInfo
                     bmr != 0,
                     activityLevel != .none
                 else { return R.string.localizable.calc() }
-                return UnitLocalizeHelper.shared.convertWithSymbol(value: bmr * activityLevel.magnification,
-                                                                   from: .kilocalories,
-                                                                   to: unitCollectionModel.state.unitCollectionValue.energyUnit)
+                return UnitBabel.shared.convertWithSymbol(value: bmr * activityLevel.magnification,
+                                                          from: .kilocalories,
+                                                          to: unitCollectionModel.state.unitCollectionValue.energyUnit)
             }
 
         output = Output(gender: gender.asObservable(),
