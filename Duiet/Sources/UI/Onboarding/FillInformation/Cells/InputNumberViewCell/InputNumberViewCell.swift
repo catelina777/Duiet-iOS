@@ -30,7 +30,7 @@ final class InputNumberViewCell: InputPickerViewCell, CellFrameTrackkable {
             configureHeightCell(with: viewModel, type: type)
 
         case .weight:
-            configureHeightCell(with: viewModel, type: type)
+            configureWeightCell(with: viewModel, type: type)
 
         case .age:
             configureAgeCell(with: viewModel, type: type)
