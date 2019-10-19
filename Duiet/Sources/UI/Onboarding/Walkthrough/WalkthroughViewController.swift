@@ -119,7 +119,7 @@ final class WalkthroughViewController: BaseViewController {
 extension WalkthroughViewController {
     private func bindNextButton() {
         nextButton.rx.tap
-        .bind(to: viewModel.input.didTapNextButton)
-        .disposed(by: disposeBag)
+            .bind(to: viewModel.input.didTapNextButton)
+            .disposed(by: disposeBag)
     }
 }

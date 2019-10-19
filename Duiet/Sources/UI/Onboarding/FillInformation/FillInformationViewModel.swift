@@ -42,24 +42,22 @@ final class FillInformationViewModel: FillInformationViewModelProtocol {
     private let disposeBag = DisposeBag()
 
     init(userInfoModel: UserInfoModelProtocol = UserInfoModel.shared) {
-        let _gender = BehaviorRelay<Bool?>(value: nil)
-        let _age = BehaviorRelay<Int?>(value: nil)
-        let _height = BehaviorRelay<Double?>(value: nil)
-        let _weight = BehaviorRelay<Double?>(value: nil)
-        let _activityLevel = BehaviorRelay<ActivityLevelType>(value: .none)
-        let _didTapCompleteButton = PublishRelay<Void>()
+        let gender = BehaviorRelay<Bool?>(value: nil)
+        let age = BehaviorRelay<Int?>(value: nil)
+        let height = BehaviorRelay<Double?>(value: nil)
+        let weight = BehaviorRelay<Double?>(value: nil)
+        let activityLevel = BehaviorRelay<ActivityLevelType>(value: .none)
+        let didTapCompleteButton = PublishRelay<Void>()
 
-        input = Input(gender: _gender.asObserver(),
-                      age: _age.asObserver(),
-                      height: _height.asObserver(),
-                      weight: _weight.asObserver(),
-                      activityLevel: _activityLevel.asObserver(),
-                      didTapCompleteButton: _didTapCompleteButton.asObserver())
-
-        let gender = _gender.asObservable()
+        input = Input(gender: gender.asObserver(),
+                      age: age.asObserver(),
+                      height: height.asObserver(),
+                      weight: weight.asObserver(),
+                      activityLevel: activityLevel.asObserver(),
+                      didTapCompleteButton: didTapCompleteButton.asObserver())
 
         let combinedInfo = Observable
-            .combineLatest(_gender, _age, _height, _weight, _activityLevel)
+            .combineLatest(gender, age, height, weight, activityLevel)
             .share()
 
         let isValidateComplete = combinedInfo
@@ -71,7 +69,7 @@ final class FillInformationViewModel: FillInformationViewModelProtocol {
             .distinctUntilChanged()
 
         let userInfo = PublishRelay<UserInfo>()
-        let didTapComplete = _didTapCompleteButton
+        let didTapComplete = didTapCompleteButton
 
         let BMRWithActivityLevel = combinedInfo
             .map { v0, v1, v2, v3, v4 -> (Double, ActivityLevelType) in
@@ -113,7 +111,7 @@ final class FillInformationViewModel: FillInformationViewModelProtocol {
                 return "\(Int(bmr * activityLevel.magnification)) \(unitFormatter.string(from: UnitEnergy.kilocalories))"
             }
 
-        output = Output(gender: gender,
+        output = Output(gender: gender.asObservable(),
                         isValidateComplete: isValidateComplete,
                         didTapComplete: didTapComplete.asObservable(),
                         BMR: BMR,
