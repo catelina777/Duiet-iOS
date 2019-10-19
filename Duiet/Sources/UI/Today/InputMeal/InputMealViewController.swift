@@ -41,26 +41,9 @@ final class InputMealViewController: BaseTableViewController, KeyboardFrameTrack
         super.viewDidLoad()
         dataSource.configure(with: tableView)
 
-        cancelButton.rx.tap
-            .bind(to: viewModel.input.dismiss)
-            .disposed(by: disposeBag)
-
-        keyboardTrackViewModel.output.difference
-            .bind(to: updateScroll)
-            .disposed(by: disposeBag)
-
-        // After adding the label, reload to initialize the textfields
-        viewModel.output.reloadData
-            .bind(to: reloadData)
-            .disposed(by: disposeBag)
-    }
-
-    private var reloadData: Binder<Void> {
-        Binder(self) { me, _ in
-            me.tableView.beginUpdates()
-            me.tableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .automatic)
-            me.tableView.endUpdates()
-        }
+        bindCancelButton()
+        bindKeyboardDifference()
+        bindReloadData()
     }
 
     // MARK: - Processing to make viewWillAppear of the original screen called when returning from this screen
@@ -82,5 +65,34 @@ final class InputMealViewController: BaseTableViewController, KeyboardFrameTrack
 
     deinit {
         print("🧹🧹🧹 \(InputMealViewController.className) parge 🧹🧹🧹")
+    }
+}
+
+extension InputMealViewController {
+    private func bindCancelButton() {
+        cancelButton.rx.tap
+            .bind(to: viewModel.input.dismiss)
+            .disposed(by: disposeBag)
+    }
+
+    private func bindKeyboardDifference() {
+        keyboardTrackViewModel.output.difference
+            .bind(to: updateScroll)
+            .disposed(by: disposeBag)
+    }
+
+    /// Reload to initialize the textfields affter adding the label.
+    private func bindReloadData() {
+        viewModel.output.reloadData
+            .bind(to: reloadData)
+            .disposed(by: disposeBag)
+    }
+
+    private var reloadData: Binder<Void> {
+        Binder(self) { me, _ in
+            me.tableView.beginUpdates()
+            me.tableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .automatic)
+            me.tableView.endUpdates()
+        }
     }
 }

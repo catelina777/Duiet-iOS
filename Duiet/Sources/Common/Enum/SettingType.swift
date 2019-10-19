@@ -10,11 +10,15 @@ import Foundation
 
 enum SettingType: CaseIterable {
     case editInfo
+    case editUnit
 
     var contentText: String {
         switch self {
         case .editInfo:
             return "✍️ " + R.string.localizable.editUserInformation()
+
+        case .editUnit:
+            return "📏 " + R.string.localizable.reselectUnits()
         }
     }
 }

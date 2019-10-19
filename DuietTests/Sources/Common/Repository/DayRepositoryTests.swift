@@ -23,7 +23,6 @@ class DayRepositoryTests: DBUnitTestCase {
     }
 
     var mockDate: Date!
-    var realm: Realm!
 
     override func setUp() {
         mockDate = MockDate.shared.create(year: MockData.year, month: MockData.month, day: MockData.date)

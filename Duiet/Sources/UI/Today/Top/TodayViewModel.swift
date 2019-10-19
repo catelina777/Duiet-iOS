@@ -15,61 +15,80 @@ import UIKit
 
 protocol TodayViewModelInput {
     var viewDidAppear: AnyObserver<Void> { get }
-    var willLoadData: AnyObserver<Void> { get }
     var addButtonTap: AnyObserver<TodayViewController> { get }
     var selectedItem: AnyObserver<(MealCardViewCell, Meal, Int)> { get }
     var showDetailDay: AnyObserver<Day> { get }
 }
 
 protocol TodayViewModelOutput {
-    var didLoadData: Observable<Void> { get }
     var progress: Observable<(Day, UserInfo)> { get }
 }
 
-protocol TodayViewModelData {
+protocol TodayViewModelState {
+    var userInfoValue: UserInfo { get }
+    var dayValue: Day { get }
     var meals: [Meal] { get }
     var title: String { get }
+    var unitCollectionValue: UnitCollection { get }
 }
 
 protocol TodayViewModelProtocol {
     var input: TodayViewModelInput { get }
     var output: TodayViewModelOutput { get }
-    var data: TodayViewModelData { get }
+    var state: TodayViewModelState { get }
 }
 
-final class TodayViewModel: TodayViewModelProtocol, TodayViewModelData {
+final class TodayViewModel: TodayViewModelProtocol, TodayViewModelState {
     let input: TodayViewModelInput
     let output: TodayViewModelOutput
-    var data: TodayViewModelData { return self }
+    var state: TodayViewModelState { return self }
 
-    let userInfoModel: UserInfoModelProtocol
-    let todayModel: TodayModelProtocol
+    // MARK: - State
+    var userInfoValue: UserInfo {
+        userInfoModel.state.userInfoValue
+    }
+
+    var dayValue: Day {
+        todayModel.state.dayValue
+    }
+
+    var meals: [Meal] {
+        todayModel.state.meals
+    }
+
+    var title: String {
+        todayModel.state.title
+    }
+
+    var unitCollectionValue: UnitCollection {
+        unitCollectionModel.state.unitCollectionValue
+    }
+
+    private let userInfoModel: UserInfoModelProtocol
+    private let todayModel: TodayModelProtocol
+    private let unitCollectionModel: UnitCollectionModelProtocol
 
     private let disposeBag = DisposeBag()
 
     init(coordinator: TodayCoordinator,
          userInfoModel: UserInfoModelProtocol,
-         todayModel: TodayModelProtocol) {
+         todayModel: TodayModelProtocol,
+         unitCollectionModel: UnitCollectionModelProtocol = UnitCollectionModel.shared) {
         self.userInfoModel = userInfoModel
         self.todayModel = todayModel
+        self.unitCollectionModel = unitCollectionModel
 
-        let _viewDidAppear = PublishRelay<Void>()
-        let _willLoadData = PublishRelay<Void>()
-        let _addButtonTap = PublishRelay<TodayViewController>()
-        let _selectedItem = PublishRelay<(MealCardViewCell, Meal, Int)>()
-        let _showDetailDay = PublishRelay<Day>()
+        let viewDidAppear = PublishRelay<Void>()
+        let addButtonTap = PublishRelay<TodayViewController>()
+        let selectedItem = PublishRelay<(MealCardViewCell, Meal, Int)>()
+        let showDetailDay = PublishRelay<Day>()
 
-        input = Input(viewDidAppear: _viewDidAppear.asObserver(),
-                      willLoadData: _willLoadData.asObserver(),
-                      addButtonTap: _addButtonTap.asObserver(),
-                      selectedItem: _selectedItem.asObserver(),
-                      showDetailDay: _showDetailDay.asObserver())
+        input = Input(viewDidAppear: viewDidAppear.asObserver(),
+                      addButtonTap: addButtonTap.asObserver(),
+                      selectedItem: selectedItem.asObserver(),
+                      showDetailDay: showDetailDay.asObserver())
 
-        /// Reload the data to be displayed when the screen is displayed to correspond to the date
-        let didLoadData = _willLoadData
-            .do(onNext: { todayModel.state.reloadData(date: Date()) })
-
-        let pickedImage = _addButtonTap
+        let pickedImage = addButtonTap
             .flatMapLatest {
                 RxYPImagePicker.rx
                     .create($0)
@@ -80,9 +99,7 @@ final class TodayViewModel: TodayViewModelProtocol, TodayViewModelData {
 
         /// I also added meals because I want to detect the update of meal information
         let progress = Observable.combineLatest(todayModel.output.day, userInfoModel.output.userInfo)
-
-        output = Output(didLoadData: didLoadData,
-                        progress: progress)
+        output = Output(progress: progress)
 
         let mealWillAdd = pickedImage
             .compactMap { $0 }
@@ -98,7 +115,7 @@ final class TodayViewModel: TodayViewModelProtocol, TodayViewModelData {
 
         /// Screen transition can't be made without viewDidAppear or later
         let showDetail = mealWillAdd.withLatestFrom(pickedImage) { ($1, $0) }
-            .withLatestFrom(_viewDidAppear) { ($0, $1) }
+            .withLatestFrom(viewDidAppear) { ($0, $1) }
             .map { ($0.0.0, $0.0.1) }
             .share()
 
@@ -110,14 +127,14 @@ final class TodayViewModel: TodayViewModelProtocol, TodayViewModelData {
             })
             .disposed(by: disposeBag)
 
-        _selectedItem
+        selectedItem
             .asDriver(onErrorDriveWith: .empty())
             .drive(onNext: {
                 coordinator.showEdit(mealCard: $0.0, meal: $0.1, row: $0.2)
             })
             .disposed(by: disposeBag)
 
-        _showDetailDay
+        showDetailDay
             .asDriver(onErrorDriveWith: .empty())
             .drive(onNext: {
                 coordinator.showDetailDay(day: $0)
@@ -129,22 +146,12 @@ final class TodayViewModel: TodayViewModelProtocol, TodayViewModelData {
 extension TodayViewModel {
     struct Input: TodayViewModelInput {
         let viewDidAppear: AnyObserver<Void>
-        let willLoadData: AnyObserver<Void>
         let addButtonTap: AnyObserver<TodayViewController>
         let selectedItem: AnyObserver<(MealCardViewCell, Meal, Int)>
         let showDetailDay: AnyObserver<Day>
     }
 
     struct Output: TodayViewModelOutput {
-        let didLoadData: Observable<Void>
         let progress: Observable<(Day, UserInfo)>
-    }
-
-    var meals: [Meal] {
-        todayModel.state.meals
-    }
-
-    var title: String {
-        todayModel.state.title
     }
 }

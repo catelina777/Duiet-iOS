@@ -28,5 +28,12 @@ class MonthsViewController: BaseCollectionViewController {
         title = SceneType.months.title
         navigationController?.navigationBar.prefersLargeTitles = true
         dataSource.configure(with: collectionView)
+
+        bindRefreshThenReloadData()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        collectionView.reloadData()
     }
 }

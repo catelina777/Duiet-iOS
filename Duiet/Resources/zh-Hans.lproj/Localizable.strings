@@ -11,8 +11,29 @@
 "months"  = "月";
 "setting" = "设置";
 
+// SelectUnitView
+"select unit"  = "选择单位";
+"energy"       = "能源";
+"centimeters"  = "厘米";
+"feets"        = "英尺";
+"kilograms"    = "千克";
+"pounds"       = "磅";
+"kilocalories" = "千卡";
+"kilojoules"   = "千焦";
+
 // WalkthroughView
-"get photo" = "摄影";
+"top title"             = "如何使用 🤔";
+"calculate title"       = "计算";
+"get photo title"       = "摄影";
+"record calories title" = "记录卡路里";
+"control weight title"  = "控制体重";
+
+"calculate content"       = "通过输入身高，体重等来计算每日的卡路里消耗量";
+"get photo content"       = "拍摄美食照片或从照片库中获取照片";
+"record calories content" = "在照片中输入并记录卡路里";
+"control weight content"  = "人类并不会因为魔术而动弹，所以控制卡路里可以给您理想的体重，就像魔术一样";
+
+"next button" = "继续 💪";
 
 // FillInformationView
 "calculate"      = "计算";
@@ -20,13 +41,12 @@
 "male"           = "男";
 "female"         = "女";
 "age"            = "年龄";
+"years old"      = "岁";
 "height"         = "身高";
 "weight"         = "体重";
 "activity level" = "活动量";
 "calc..."        = "计算...";
 "complete"       = "完成";
-"cm"             = "厘米";
-"kg"             = "千克";
 "bmr"            = "基础代谢";
 
 "sedentary text"  = "不要运动";
@@ -45,13 +65,12 @@
 "calorie intake" = "热量摄入";
 "difference"     = "与基础代谢的区别";
 "weight change"  = "体重变化";
-"kcal"           = "千卡";
 "up"             = "增重";
 "down"           = "減";
-"g"              = "克";
 
 // SettingView
 "edit user information" = "编辑用户信息";
+"reselect units"        = "重新选择单位";
 
 // MonthSummaryView
 "sunday abbr"    = "日";
@@ -63,7 +82,9 @@
 "saturday abbr"  = "六";
 
 // InputMealView
-"calorie"  = "卡路里";
+"energy"   = "熱量";
 "multiple" = "放大率";
 "name"     = "食物名称";
 "delete"   = "删除";
+
+"input introduction" = "您可以通过长按照片添加进餐信息🍴";

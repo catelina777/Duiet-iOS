@@ -93,6 +93,9 @@ enum ActivityLevelType: CaseIterable {
 
     var row: Int {
         switch self {
+        case .none:
+            return 0
+
         case .sedentary:
             return 1
 
@@ -104,9 +107,6 @@ enum ActivityLevelType: CaseIterable {
 
         case .veryActive:
             return 4
-
-        case .none:
-            return 0
         }
     }
 }

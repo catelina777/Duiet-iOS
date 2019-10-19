@@ -25,15 +25,16 @@ final class DaysViewDataSource: NSObject {
 extension DaysViewDataSource: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        viewModel.data.days.count
+        viewModel.state.daysValue.count
     }
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.daySummaryViewCell,
                                                       for: indexPath)!
-        cell.configure(with: viewModel.data.days[indexPath.row],
-                       userInfo: viewModel.data.userInfo)
+        cell.configure(with: viewModel.state.daysValue[indexPath.row],
+                       userInfo: viewModel.state.userInfoValue,
+                       unitCollection: viewModel.state.unitCollectionValue)
         return cell
     }
 }
@@ -41,7 +42,7 @@ extension DaysViewDataSource: UICollectionViewDataSource {
 extension DaysViewDataSource: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
-        let day = viewModel.data.days[indexPath.row]
+        let day = viewModel.state.daysValue[indexPath.row]
         viewModel.input.selectedDay.on(.next(day))
     }
 }
@@ -59,10 +60,10 @@ extension DaysViewDataSource: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
-        let space = collectionView.frame.width * 0.1 / 2
-        let edgeInset = UIEdgeInsets(top: space,
+        let margin = collectionView.frame.width * 0.1 / 2
+        let edgeInset = UIEdgeInsets(top: margin,
                                      left: 0,
-                                     bottom: space,
+                                     bottom: margin,
                                      right: 0)
         return edgeInset
     }

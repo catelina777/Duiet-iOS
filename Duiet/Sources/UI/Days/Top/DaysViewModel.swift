@@ -19,34 +19,55 @@ protocol DaysViewModelOutput {
     var showDetailDay: Observable<Day> { get }
 }
 
-protocol DaysViewModelData {
-    var days: [Day] { get }
-    var userInfo: UserInfo { get }
+protocol DaysViewModelState {
+    var daysValue: [Day] { get }
+    var userInfoValue: UserInfo { get }
     var title: String { get }
+    var unitCollectionValue: UnitCollection { get }
 }
 
 protocol DaysViewModelProtocol {
     var input: DaysViewModelInput { get }
     var output: DaysViewModelOutput { get }
-    var data: DaysViewModelData { get }
+    var state: DaysViewModelState { get }
 }
 
-final class DaysViewModel: DaysViewModelProtocol, DaysViewModelData {
+final class DaysViewModel: DaysViewModelProtocol, DaysViewModelState {
     let input: DaysViewModelInput
     let output: DaysViewModelOutput
-    var data: DaysViewModelData { return self }
+    var state: DaysViewModelState { self }
+
+    // MARK: - State
+    var daysValue: [Day] {
+        daysModel.state.daysValue
+    }
+
+    var userInfoValue: UserInfo {
+        userInfoModel.state.userInfoValue
+    }
+
+    var title: String {
+        daysModel.state.title
+    }
+
+    var unitCollectionValue: UnitCollection {
+        unitCollectionModel.state.unitCollectionValue
+    }
 
     private let daysModel: DaysModelProtocol
     private let userInfoModel: UserInfoModelProtocol
+    private let unitCollectionModel: UnitCollectionModelProtocol
     private let coordinator: DaysCoordinator
     private let disposeBag = DisposeBag()
 
     init(coordinator: DaysCoordinator,
          userInfoModel: UserInfoModelProtocol,
-         daysModel: DaysModelProtocol) {
+         daysModel: DaysModelProtocol,
+         unitCollectionModel: UnitCollectionModelProtocol = UnitCollectionModel.shared) {
         self.coordinator = coordinator
         self.daysModel = daysModel
         self.userInfoModel = userInfoModel
+        self.unitCollectionModel = unitCollectionModel
 
         let _selectedDay = PublishRelay<Day>()
         let _selectedMonth = PublishRelay<Month>()
@@ -71,17 +92,5 @@ extension DaysViewModel {
 
     struct Output: DaysViewModelOutput {
         let showDetailDay: Observable<Day>
-    }
-
-    var days: [Day] {
-        daysModel.days.value
-    }
-
-    var userInfo: UserInfo {
-        userInfoModel.state.userInfoValue
-    }
-
-    var title: String {
-        daysModel.title
     }
 }

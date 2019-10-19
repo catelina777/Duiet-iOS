@@ -13,7 +13,9 @@ import RxSwift
 
 protocol UserInfoRepositoryProtocol {
     func add(userInfo: UserInfo)
-    func get() -> Observable<Results<UserInfo>>
+
+    /// Use on the premise that there is always an acquisition target
+    func get() -> Observable<UserInfo>
 }
 
 final class UserInfoRepository: UserInfoRepositoryProtocol {
@@ -31,7 +33,8 @@ final class UserInfoRepository: UserInfoRepositoryProtocol {
         }
     }
 
-    func get() -> Observable<Results<UserInfo>> {
+    func get() -> Observable<UserInfo> {
         Observable.collection(from: realm.objects(UserInfo.self))
+            .compactMap { $0.first }
     }
 }

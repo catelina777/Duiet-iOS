@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,18 +16,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="duiet" translatesAutoresizingMaskIntoConstraints="NO" id="S30-7H-nzm">
-                                <rect key="frame" x="-517.5" y="148" width="1449" height="600"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="S30-7H-nzm" secondAttribute="height" multiplier="420:174" id="CyY-io-QlB"/>
-                                </constraints>
-                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duiet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DDY-4L-ajU">
+                                <rect key="frame" x="143.5" y="415" width="127.5" height="66"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="48"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" name="systemBackgroundMain"/>
                         <constraints>
-                            <constraint firstItem="S30-7H-nzm" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="2gH-2K-bBq"/>
-                            <constraint firstItem="S30-7H-nzm" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="S0p-tM-icx"/>
-                            <constraint firstItem="S30-7H-nzm" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="3.5" id="URv-9g-9Px"/>
+                            <constraint firstItem="DDY-4L-ajU" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="mK7-p4-usf"/>
+                            <constraint firstItem="DDY-4L-ajU" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="ove-8R-Ryg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -40,6 +36,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="duiet" width="596" height="842"/>
+        <namedColor name="systemBackgroundMain">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
     </resources>
 </document>

@@ -82,6 +82,8 @@ final class MealCardViewCell: BaseCollectionViewCell {
     }
 
     private func set(totalCalorie: Double) {
-        caloriesLabel.text = "\(Int(totalCalorie))"
+        caloriesLabel.text = UnitBabel.shared.convertWithSymbol(value: totalCalorie,
+                                                                from: .kilocalories,
+                                                                to: UnitCollectionModel.shared.state.unitCollectionValue.energyUnit)
     }
 }

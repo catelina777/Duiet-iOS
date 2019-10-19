@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -23,23 +20,17 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="277"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NbL-XJ-1Lu" id="Qfh-8X-tBl">
-                <rect key="frame" x="0.0" y="0.0" width="414" height="276.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="414" height="277"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Long tap to add" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhn-mG-Jmv">
-                        <rect key="frame" x="90.5" y="59" width="233" height="34.5"/>
-                        <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="28"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="your meal info🍴" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Sv-Ft-HJI">
-                        <rect key="frame" x="87.5" y="101.5" width="239.5" height="34.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Long tap to add" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhn-mG-Jmv">
+                        <rect key="frame" x="52" y="86.5" width="310.5" height="34.5"/>
                         <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="28"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="👆" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GOI-Jk-e0z">
-                        <rect key="frame" x="335.5" y="16" width="60" height="73.5"/>
+                        <rect key="frame" x="338" y="16" width="60" height="73.5"/>
                         <fontDescription key="fontDescription" name="Montserrat-ExtraBold" family="Montserrat" pointSize="60"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -48,14 +39,16 @@
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="GOI-Jk-e0z" firstAttribute="top" secondItem="Qfh-8X-tBl" secondAttribute="top" constant="16" id="2Fe-ps-MGt"/>
+                    <constraint firstAttribute="trailing" secondItem="GOI-Jk-e0z" secondAttribute="trailing" constant="16" id="Ep6-ji-YfW"/>
                     <constraint firstItem="mhn-mG-Jmv" firstAttribute="centerX" secondItem="Qfh-8X-tBl" secondAttribute="centerX" id="GbP-Fa-hrP"/>
-                    <constraint firstItem="GOI-Jk-e0z" firstAttribute="leading" secondItem="mhn-mG-Jmv" secondAttribute="trailing" constant="12" id="e4a-t0-mRn"/>
-                    <constraint firstItem="2Sv-Ft-HJI" firstAttribute="centerX" secondItem="Qfh-8X-tBl" secondAttribute="centerX" id="oLP-uc-Wdj"/>
-                    <constraint firstItem="2Sv-Ft-HJI" firstAttribute="top" secondItem="mhn-mG-Jmv" secondAttribute="bottom" constant="8" id="y3r-XC-ONw"/>
-                    <constraint firstItem="mhn-mG-Jmv" firstAttribute="centerY" secondItem="Qfh-8X-tBl" secondAttribute="centerY" multiplier="0.55" id="yLG-Iy-gap"/>
+                    <constraint firstItem="mhn-mG-Jmv" firstAttribute="width" secondItem="Qfh-8X-tBl" secondAttribute="width" multiplier="0.75" id="Yq2-PU-KtD"/>
+                    <constraint firstItem="mhn-mG-Jmv" firstAttribute="centerY" secondItem="Qfh-8X-tBl" secondAttribute="centerY" multiplier="0.75" id="yLG-Iy-gap"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="placeholderLabel" destination="mhn-mG-Jmv" id="B52-fM-isI"/>
+            </connections>
             <point key="canvasLocation" x="47.826086956521742" y="112.83482142857142"/>
         </tableViewCell>
     </objects>

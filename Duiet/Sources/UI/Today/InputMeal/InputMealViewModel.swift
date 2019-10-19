@@ -96,6 +96,7 @@ final class InputMealViewModel: InputMealViewModelProtocol, InputMealViewModelSt
         let calorie = calorieTextInput
             .compactMap { $0 }
             .map { Double($0) ?? 0 }
+            .map { UnitBabel.shared.convert(value: $0, from: UnitCollectionModel.shared.unitCollectionValue.energyUnit, to: .kilocalories) }
             .distinctUntilChanged()
             .share()
 

@@ -11,11 +11,5 @@ import UIKit
 class RoundedTextFieldViewCell: BaseTableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
 
-    @IBOutlet weak var textField: MyTextField! {
-        didSet {
-            textField.font = R.font.montserratExtraBold(size: 24)
-            textField.layer.cornerRadius = 10
-            textField.layer.masksToBounds = true
-        }
-    }
+    @IBOutlet weak var textField: RoundedTextField!
 }

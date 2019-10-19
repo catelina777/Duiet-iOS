@@ -13,7 +13,7 @@ import UIKit
 
 final class InputMealCalorieViewCell: BaseTableViewCell, CellFrameTrackkable {
     @IBOutlet weak var calorieTitleLabel: UILabel! {
-        didSet { calorieTitleLabel.text = R.string.localizable.calorie() }
+        didSet { calorieTitleLabel.text = R.string.localizable.energy() }
     }
 
     @IBOutlet weak var multipleTitleLabel: UILabel! {
@@ -24,31 +24,19 @@ final class InputMealCalorieViewCell: BaseTableViewCell, CellFrameTrackkable {
         didSet { nameTitleLabel.text = R.string.localizable.name() }
     }
 
-    @IBOutlet weak var calorieTextField: MyTextField! {
+    @IBOutlet weak var calorieTextField: RoundedTextField! {
         didSet {
-            calorieTextField.font = R.font.montserratExtraBold(size: 24)
-            calorieTextField.layer.cornerRadius = 10
-            calorieTextField.layer.masksToBounds = true
             calorieTextField.keyboardType = .decimalPad
         }
     }
 
-    @IBOutlet weak var multipleTextField: MyTextField! {
+    @IBOutlet weak var multipleTextField: RoundedTextField! {
         didSet {
-            multipleTextField.font = R.font.montserratExtraBold(size: 24)
-            multipleTextField.layer.cornerRadius = 10
-            multipleTextField.layer.masksToBounds = true
             multipleTextField.keyboardType = .decimalPad
         }
     }
 
-    @IBOutlet weak var nameTextField: MyTextField! {
-        didSet {
-            nameTextField.font = R.font.montserratExtraBold(size: 24)
-            nameTextField.layer.cornerRadius = 10
-            nameTextField.layer.masksToBounds = true
-        }
-    }
+    @IBOutlet weak var nameTextField: RoundedTextField!
 
     @IBOutlet weak var deleteMealButton: UIButton! {
         didSet { deleteMealButton.setTitle("🗑 " + R.string.localizable.delete(), for: .normal) }
@@ -104,7 +92,10 @@ final class InputMealCalorieViewCell: BaseTableViewCell, CellFrameTrackkable {
             me.nameTextField.text = content.name
             me.calorieTextField.text = ""
             me.multipleTextField.text = ""
-            me.calorieTextField.placeholder = "\(content.calorie)"
+            let calorie = UnitBabel.shared.convert(value: content.calorie,
+                                                   from: .kilocalories,
+                                                   to: UnitCollectionModel.shared.state.unitCollectionValue.energyUnit)
+            me.calorieTextField.placeholder = "\(calorie)"
             me.multipleTextField.placeholder = "\(content.multiple)"
         }
     }

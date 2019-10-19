@@ -11,8 +11,29 @@
 "months"  = "Months";
 "setting" = "Setting";
 
+// SelectUnitView
+"select unit"  = "Select Unit";
+"energy"       = "Energy";
+"centimeters"  = "cm";
+"feets"        = "ft";
+"kilograms"    = "kg";
+"pounds"       = "lb";
+"kilocalories" = "kcal";
+"kilojoules"   = "kJ";
+
 // WalkthroughView
-"get photo" = "Get photo";
+"top title"             = "How to use 🤔";
+"calculate title"       = "Calculate";
+"get photo title"       = "Get photo";
+"record calories title" = "Record calories";
+"control weight title"  = "Control weight";
+
+"calculate content"       = "Calculate how many calories you burn by entering your height, weight, etc...";
+"get photo content"       = "Take meal photos or get from your library";
+"record calories content" = "Enter and record calories in photo";
+"control weight content"  = "Human beings are not moving by magic, so controlling calories can give you the ideal weight like magic";
+
+"next button" = "Continue 💪";
 
 // FillInformationView
 "calculate"      = "Calculate";
@@ -20,13 +41,12 @@
 "male"           = "Male";
 "female"         = "Female";
 "age"            = "Age";
+"years old"      = "years old";
 "height"         = "Height";
 "weight"         = "Weight";
 "activity level" = "Activity Level";
 "calc..."        = "calc...";
 "complete"       = "Complete";
-"cm"             = "cm";
-"kg"             = "kg";
 "bmr"            = "BMR";
 
 "sedentary text"  = "No exercise";
@@ -45,13 +65,12 @@
 "calorie intake" = "Calorie intake";
 "difference"     = "Difference";
 "weight change"  = "Weight Change";
-"kcal"           = "kcal";
 "up"             = "UP";
 "down"           = "DOWN";
-"g"              = "g";
 
 // SettingView
 "edit user information" = "Edit user information";
+"reselect units"        = "Reselect units";
 
 // MonthSummaryView
 "sunday abbr"    = "S";
@@ -63,7 +82,9 @@
 "saturday abbr"  = "S";
 
 // InputMealView
-"calorie"  = "Calorie";
+"energy"   = "Energy";
 "multiple" = "Multiple";
 "name"     = "Name";
 "delete"   = "Delete";
+
+"input introduction" = "You can add meal information by long-pressing a photo🍴";

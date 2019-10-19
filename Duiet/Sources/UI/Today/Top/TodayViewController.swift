@@ -29,24 +29,34 @@ class TodayViewController: BaseCollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = viewModel.data.title
+        title = viewModel.state.title
         navigationController?.navigationBar.prefersLargeTitles = true
         dataSource.configure(with: collectionView)
 
+        bindViewDidAppear()
+        bindAddButton()
+        bindRefreshThenReloadData()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        collectionView.reloadData()
+    }
+}
+
+extension TodayViewController {
+    private func bindViewDidAppear() {
         rx.methodInvoked(#selector(viewDidAppear(_:)))
             .map { _ in }
             .bind(to: viewModel.input.viewDidAppear)
             .disposed(by: disposeBag)
+    }
 
+    private func bindAddButton() {
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
         navigationItem.rightBarButtonItem = addButton
         addButton.rx.tap
             .map { self }
             .bind(to: viewModel.input.addButtonTap)
             .disposed(by: disposeBag)
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        collectionView.reloadData()
     }
 }
