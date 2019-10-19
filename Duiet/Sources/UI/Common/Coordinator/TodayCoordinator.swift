@@ -20,7 +20,8 @@ final class TodayCoordinator: Coordinator {
         let model = TodayModel(repository: DayRepository.shared)
         let vm = TodayViewModel(coordinator: self,
                                 userInfoModel: UserInfoModel.shared,
-                                todayModel: model)
+                                todayModel: model,
+                                unitCollectionModel: UnitCollectionModel.shared)
         viewController = TopTodayViewController(viewModel: vm,
                                                 tabViewModel: tabViewModel)
     }
@@ -51,7 +52,8 @@ final class TodayCoordinator: Coordinator {
         let model = TodayModel(repository: DayRepository.shared, date: day.createdAt)
         let vm = TodayViewModel(coordinator: self,
                                 userInfoModel: UserInfoModel.shared,
-                                todayModel: model)
+                                todayModel: model,
+                                unitCollectionModel: UnitCollectionModel.shared)
         let vc = TodayViewController(viewModel: vm)
         navigator.pushViewController(vc, animated: true)
     }

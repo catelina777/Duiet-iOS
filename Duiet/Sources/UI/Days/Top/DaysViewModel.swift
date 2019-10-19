@@ -20,9 +20,10 @@ protocol DaysViewModelOutput {
 }
 
 protocol DaysViewModelState {
-    var days: [Day] { get }
-    var userInfo: UserInfo { get }
+    var daysValue: [Day] { get }
+    var userInfoValue: UserInfo { get }
     var title: String { get }
+    var unitCollectionValue: UnitCollection { get }
 }
 
 protocol DaysViewModelProtocol {
@@ -34,14 +35,14 @@ protocol DaysViewModelProtocol {
 final class DaysViewModel: DaysViewModelProtocol, DaysViewModelState {
     let input: DaysViewModelInput
     let output: DaysViewModelOutput
-    var state: DaysViewModelState { return self }
+    var state: DaysViewModelState { self }
 
     // MARK: - State
-    var days: [Day] {
+    var daysValue: [Day] {
         daysModel.state.daysValue
     }
 
-    var userInfo: UserInfo {
+    var userInfoValue: UserInfo {
         userInfoModel.state.userInfoValue
     }
 
@@ -49,17 +50,24 @@ final class DaysViewModel: DaysViewModelProtocol, DaysViewModelState {
         daysModel.state.title
     }
 
+    var unitCollectionValue: UnitCollection {
+        unitCollectionModel.state.unitCollectionValue
+    }
+
     private let daysModel: DaysModelProtocol
     private let userInfoModel: UserInfoModelProtocol
+    private let unitCollectionModel: UnitCollectionModelProtocol
     private let coordinator: DaysCoordinator
     private let disposeBag = DisposeBag()
 
     init(coordinator: DaysCoordinator,
          userInfoModel: UserInfoModelProtocol,
-         daysModel: DaysModelProtocol) {
+         daysModel: DaysModelProtocol,
+         unitCollectionModel: UnitCollectionModelProtocol = UnitCollectionModel.shared) {
         self.coordinator = coordinator
         self.daysModel = daysModel
         self.userInfoModel = userInfoModel
+        self.unitCollectionModel = unitCollectionModel
 
         let _selectedDay = PublishRelay<Day>()
         let _selectedMonth = PublishRelay<Month>()

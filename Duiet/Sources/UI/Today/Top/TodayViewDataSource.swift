@@ -36,7 +36,8 @@ extension TodayViewDataSource: UICollectionViewDataSource {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.daySummaryViewCell,
                                                           for: indexPath)!
             cell.configure(with: viewModel.state.dayValue,
-                           userInfo: viewModel.state.userInfoValue)
+                           userInfo: viewModel.state.userInfoValue,
+                           unitCollection: viewModel.state.unitCollectionValue)
             return cell
 
         default:

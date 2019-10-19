@@ -25,7 +25,8 @@ final class MonthSummaryViewCell: RoundedCollectionViewCell {
         let weightChange = totalDifferenceGram / (9 * 0.8) / 1_000
         let localizedWeightChangeValue = UnitLocalizeHelper.shared.convertRoundedWithSymbol(value: weightChange,
                                                                                             from: .kilograms,
-                                                                                            to: .kilograms)
+                                                                                            to: .kilograms,
+                                                                                            significantDigits: 3)
         let weightChangeText = weightChange > 0 ?
             "+\(localizedWeightChangeValue) 💪" :
             "-\(localizedWeightChangeValue) ⬇️"

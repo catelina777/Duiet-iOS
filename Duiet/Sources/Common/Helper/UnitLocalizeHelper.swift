@@ -9,18 +9,51 @@
 import Foundation
 
 protocol HeightUnitLocalizable {
-    func convert(value: Double, from fromUnitType: HeightUnitType, to toUnitType: HeightUnitType) -> Double
-    func convertWithSymbol(value: Double, from fromUnitType: HeightUnitType, to toUnitType: HeightUnitType) -> String
+    /// Convert a unit of height
+    /// - Parameter value: The value to convert
+    /// - Parameter fromUnit: Unit before conversion
+    /// - Parameter toUnit: Unit after conversion
+    func convert(value: Double, from fromUnit: HeightUnitType, to toUnit: HeightUnitType) -> Double
+
+    /// Convert a unit of height and give it a unit symbol. In the case of feet, the value including the decimal point is output.
+    /// - Parameter value: The value to convert
+    /// - Parameter fromUnit: Unit before conversion
+    /// - Parameter toUnit: Unit after conversion
+    func convertWithSymbol(value: Double, from fromUnit: HeightUnitType, to toUnit: HeightUnitType) -> String
 }
 
 protocol WeightUnitLocalizable {
-    func convert(value: Double, from fromUnitType: WeightUnitType, to toUnitType: WeightUnitType) -> Double
-    func convertWithSymbol(value: Double, from fromUnitType: WeightUnitType, to toUnitType: WeightUnitType) -> String
-    func convertRoundedWithSymbol(value: Double, from fromUnitType: WeightUnitType, to toUnitType: WeightUnitType) -> String
+    /// Convert a unit of height
+    /// - Parameter value: The value to convert
+    /// - Parameter fromUnit: Unit before conversion
+    /// - Parameter toUnit: Unit after conversion
+    func convert(value: Double, from fromUnit: WeightUnitType, to toUnit: WeightUnitType) -> Double
+
+    /// Convert a unit of height and give it a unit symbol. A small number of values are rounded.
+    /// - Parameter value: The value to convert
+    /// - Parameter fromUnit: Unit before conversion
+    /// - Parameter toUnitType: Unit after conversion
+    func convertWithSymbol(value: Double, from fromUnit: WeightUnitType, to toUnit: WeightUnitType) -> String
+
+    /// Convert a unit of height and give it a unit symbol. The value is displayed to the third decimal place.
+    /// - Parameter value: The value to convert
+    /// - Parameter fromUnit: Unit before conversion
+    /// - Parameter toUnit: Unit after conversion
+    /// - Parameter significantDigits: Significant digits
+    func convertRoundedWithSymbol(value: Double, from fromUnit: WeightUnitType, to toUnit: WeightUnitType, significantDigits: Double) -> String
 }
 
 protocol EnergyUnitLocalizable {
+    /// Convert a unit of height
+    /// - Parameter value: The value to convert
+    /// - Parameter fromUnitType: Unit before conversion
+    /// - Parameter toUnitType: Unit after conversion
     func convert(value: Double, from fromUnitType: EnergyUnitType, to toUnitType: EnergyUnitType) -> Double
+
+    /// Convert a unit of height and give it a unit symbol. A small number of values are rounded.
+    /// - Parameter value: The value to convert
+    /// - Parameter fromUnitType: Unit before conversion
+    /// - Parameter toUnitType: Unit after conversion
     func convertWithSymbol(value: Double, from fromUnitType: EnergyUnitType, to toUnitType: EnergyUnitType) -> String
 }
 
@@ -29,19 +62,23 @@ final class UnitLocalizeHelper: HeightUnitLocalizable, WeightUnitLocalizable, En
 
     private init() {}
 
-    func convert(value: Double, from fromUnitType: HeightUnitType, to toUnitType: HeightUnitType) -> Double {
-        let fromUnit: UnitLength = fromUnitType == .centimeters ? .centimeters : .feet
-        let toUnit: UnitLength = toUnitType == .centimeters ? .centimeters : .feet
+    func convert(value: Double, from fromUnit: HeightUnitType, to toUnit: HeightUnitType) -> Double {
+        let fromUnit: UnitLength = fromUnit == .centimeters ? .centimeters : .feet
+        let toUnit: UnitLength = toUnit == .centimeters ? .centimeters : .feet
         return Measurement(value: value, unit: fromUnit).converted(to: toUnit).value
     }
 
-    func convertWithSymbol(value: Double, from fromUnitType: HeightUnitType, to toUnitType: HeightUnitType) -> String {
-        "\(Int(convert(value: value, from: fromUnitType, to: toUnitType))) \(toUnitType.symbol)"
+    func convertWithSymbol(value: Double, from fromUnit: HeightUnitType, to toUnit: HeightUnitType) -> String {
+        if toUnit == .centimeters {
+            return "\(Int(convert(value: value, from: fromUnit, to: toUnit))) \(toUnit.symbol)"
+        }
+        let convertedValue = convert(value: value, from: fromUnit, to: toUnit)
+        return "\(abs(round(convertedValue * 1_000) / 1_000)) \(toUnit.symbol)"
     }
 
-    func convert(value: Double, from fromUnitType: WeightUnitType, to toUnitType: WeightUnitType) -> Double {
-        let fromUnit: UnitMass = fromUnitType == .kilograms ? .kilograms : .pounds
-        let toUnit: UnitMass = toUnitType == .kilograms ? .kilograms : .pounds
+    func convert(value: Double, from fromUnit: WeightUnitType, to toUnit: WeightUnitType) -> Double {
+        let fromUnit: UnitMass = fromUnit == .kilograms ? .kilograms : .pounds
+        let toUnit: UnitMass = toUnit == .kilograms ? .kilograms : .pounds
         return Measurement(value: value, unit: fromUnit).converted(to: toUnit).value
     }
 
@@ -49,14 +86,15 @@ final class UnitLocalizeHelper: HeightUnitLocalizable, WeightUnitLocalizable, En
         "\(Int(convert(value: value, from: fromUnitType, to: toUnitType))) \(toUnitType.symbol)"
     }
 
-    func convertRoundedWithSymbol(value: Double, from fromUnitType: WeightUnitType, to toUnitType: WeightUnitType) -> String {
-        let convertedValue = convert(value: value, from: fromUnitType, to: toUnitType)
-        return "\(abs(round(convertedValue * 1_000) / 1_000)) \(toUnitType.symbol)"
+    func convertRoundedWithSymbol(value: Double, from fromUnit: WeightUnitType, to toUnit: WeightUnitType, significantDigits: Double) -> String {
+        let convertedValue = convert(value: value, from: fromUnit, to: toUnit)
+        let power = pow(10, significantDigits)
+        return "\(abs(round(convertedValue * power) / power)) \(toUnit.symbol)"
     }
 
-    func convert(value: Double, from fromUnitType: EnergyUnitType, to toUnitType: EnergyUnitType) -> Double {
-        let fromUnit: UnitEnergy = fromUnitType == .kilocalories ? .kilocalories : .kilojoules
-        let toUnit: UnitEnergy = toUnitType == .kilocalories ? .kilocalories : .kilojoules
+    func convert(value: Double, from fromUnit: EnergyUnitType, to toUnit: EnergyUnitType) -> Double {
+        let fromUnit: UnitEnergy = fromUnit == .kilocalories ? .kilocalories : .kilojoules
+        let toUnit: UnitEnergy = toUnit == .kilocalories ? .kilocalories : .kilojoules
         return Measurement(value: value, unit: fromUnit).converted(to: toUnit).value
     }
 

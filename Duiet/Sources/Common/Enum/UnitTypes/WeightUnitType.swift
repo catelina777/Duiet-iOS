@@ -32,7 +32,7 @@ enum WeightUnitType: String, UnitType {
         }
     }
 
-    static func get(_ row: Int) -> UnitType {
+    static func get(_ row: Int) -> WeightUnitType {
         switch row {
         case 0:
             return kilograms

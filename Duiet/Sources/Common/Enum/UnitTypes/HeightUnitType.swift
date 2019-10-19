@@ -32,7 +32,7 @@ enum HeightUnitType: String, UnitType {
         }
     }
 
-    static func get(_ row: Int) -> UnitType {
+    static func get(_ row: Int) -> HeightUnitType {
         switch row {
         case 0:
             return centimeters

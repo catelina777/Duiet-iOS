@@ -30,7 +30,7 @@
 		0630D49422742FE800224EC9 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0630D49322742FD400224EC9 /* Montserrat-Regular.ttf */; };
 		0630D497227490B200224EC9 /* ShowTDEEViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630D496227490B200224EC9 /* ShowTDEEViewCell.swift */; };
 		0630D499227490B900224EC9 /* ShowTDEEViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0630D498227490B900224EC9 /* ShowTDEEViewCell.xib */; };
-		0630D49B227495EB00224EC9 /* CellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630D49A227495EB00224EC9 /* CellType.swift */; };
+		0630D49B227495EB00224EC9 /* FillInformationCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0630D49A227495EB00224EC9 /* FillInformationCellType.swift */; };
 		063FCBBF227D8164007C191F /* InputMealViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 063FCBBB227D8164007C191F /* InputMealViewController.xib */; };
 		063FCBC0227D8164007C191F /* InputMealDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063FCBBC227D8164007C191F /* InputMealDataSource.swift */; };
 		063FCBC2227D8164007C191F /* InputMealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063FCBBE227D8164007C191F /* InputMealViewController.swift */; };
@@ -220,7 +220,7 @@
 		0630D49322742FD400224EC9 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		0630D496227490B200224EC9 /* ShowTDEEViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTDEEViewCell.swift; sourceTree = "<group>"; };
 		0630D498227490B900224EC9 /* ShowTDEEViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowTDEEViewCell.xib; sourceTree = "<group>"; };
-		0630D49A227495EB00224EC9 /* CellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellType.swift; sourceTree = "<group>"; };
+		0630D49A227495EB00224EC9 /* FillInformationCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillInformationCellType.swift; sourceTree = "<group>"; };
 		063FCBBB227D8164007C191F /* InputMealViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InputMealViewController.xib; sourceTree = "<group>"; };
 		063FCBBC227D8164007C191F /* InputMealDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputMealDataSource.swift; sourceTree = "<group>"; };
 		063FCBBE227D8164007C191F /* InputMealViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputMealViewController.swift; sourceTree = "<group>"; };
@@ -690,7 +690,7 @@
 			children = (
 				408A4E832354672E004D2FFE /* UnitTypes */,
 				0622EA36226A29D600E87F22 /* ActivityLevelType.swift */,
-				0630D49A227495EB00224EC9 /* CellType.swift */,
+				0630D49A227495EB00224EC9 /* FillInformationCellType.swift */,
 				4001F70822ABD98A0009CDA1 /* PageType.swift */,
 				405A9F6022AE91C700454412 /* ProgressType.swift */,
 				4001F6F922ABA3720009CDA1 /* SceneType.swift */,
@@ -1607,7 +1607,7 @@
 				40B2142922B638820040EA9E /* DaySummaryViewCell.swift in Sources */,
 				069AD434227722E50075E711 /* MealCardViewCell.swift in Sources */,
 				403E953022CE3EAA00EFF459 /* TopDaysViewController.swift in Sources */,
-				0630D49B227495EB00224EC9 /* CellType.swift in Sources */,
+				0630D49B227495EB00224EC9 /* FillInformationCellType.swift in Sources */,
 				40B2142422B636120040EA9E /* DaysViewModel.swift in Sources */,
 				403E952E22CE3D7800EFF459 /* TopTodayViewController.swift in Sources */,
 				4001F6FA22ABA3720009CDA1 /* SceneType.swift in Sources */,

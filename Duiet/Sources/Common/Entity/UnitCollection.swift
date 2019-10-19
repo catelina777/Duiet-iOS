@@ -28,4 +28,16 @@ final class UnitCollection: Object {
         self.weightUnitRow = weightUnitRow
         self.energyUnitRow = energyUnitRow
     }
+
+    var heightUnit: HeightUnitType {
+        HeightUnitType.get(heightUnitRow)
+    }
+
+    var weightUnit: WeightUnitType {
+        WeightUnitType.get(weightUnitRow)
+    }
+
+    var energyUnit: EnergyUnitType {
+        EnergyUnitType.get(energyUnitRow)
+    }
 }

@@ -29,6 +29,7 @@ protocol TodayViewModelState {
     var dayValue: Day { get }
     var meals: [Meal] { get }
     var title: String { get }
+    var unitCollectionValue: UnitCollection { get }
 }
 
 protocol TodayViewModelProtocol {
@@ -59,28 +60,35 @@ final class TodayViewModel: TodayViewModelProtocol, TodayViewModelState {
         todayModel.state.title
     }
 
-    let userInfoModel: UserInfoModelProtocol
-    let todayModel: TodayModelProtocol
+    var unitCollectionValue: UnitCollection {
+        unitCollectionModel.state.unitCollectionValue
+    }
+
+    private let userInfoModel: UserInfoModelProtocol
+    private let todayModel: TodayModelProtocol
+    private let unitCollectionModel: UnitCollectionModelProtocol
 
     private let disposeBag = DisposeBag()
 
     init(coordinator: TodayCoordinator,
          userInfoModel: UserInfoModelProtocol,
-         todayModel: TodayModelProtocol) {
+         todayModel: TodayModelProtocol,
+         unitCollectionModel: UnitCollectionModelProtocol = UnitCollectionModel.shared) {
         self.userInfoModel = userInfoModel
         self.todayModel = todayModel
+        self.unitCollectionModel = unitCollectionModel
 
-        let _viewDidAppear = PublishRelay<Void>()
-        let _addButtonTap = PublishRelay<TodayViewController>()
-        let _selectedItem = PublishRelay<(MealCardViewCell, Meal, Int)>()
-        let _showDetailDay = PublishRelay<Day>()
+        let viewDidAppear = PublishRelay<Void>()
+        let addButtonTap = PublishRelay<TodayViewController>()
+        let selectedItem = PublishRelay<(MealCardViewCell, Meal, Int)>()
+        let showDetailDay = PublishRelay<Day>()
 
-        input = Input(viewDidAppear: _viewDidAppear.asObserver(),
-                      addButtonTap: _addButtonTap.asObserver(),
-                      selectedItem: _selectedItem.asObserver(),
-                      showDetailDay: _showDetailDay.asObserver())
+        input = Input(viewDidAppear: viewDidAppear.asObserver(),
+                      addButtonTap: addButtonTap.asObserver(),
+                      selectedItem: selectedItem.asObserver(),
+                      showDetailDay: showDetailDay.asObserver())
 
-        let pickedImage = _addButtonTap
+        let pickedImage = addButtonTap
             .flatMapLatest {
                 RxYPImagePicker.rx
                     .create($0)
@@ -107,7 +115,7 @@ final class TodayViewModel: TodayViewModelProtocol, TodayViewModelState {
 
         /// Screen transition can't be made without viewDidAppear or later
         let showDetail = mealWillAdd.withLatestFrom(pickedImage) { ($1, $0) }
-            .withLatestFrom(_viewDidAppear) { ($0, $1) }
+            .withLatestFrom(viewDidAppear) { ($0, $1) }
             .map { ($0.0.0, $0.0.1) }
             .share()
 
@@ -119,14 +127,14 @@ final class TodayViewModel: TodayViewModelProtocol, TodayViewModelState {
             })
             .disposed(by: disposeBag)
 
-        _selectedItem
+        selectedItem
             .asDriver(onErrorDriveWith: .empty())
             .drive(onNext: {
                 coordinator.showEdit(mealCard: $0.0, meal: $0.1, row: $0.2)
             })
             .disposed(by: disposeBag)
 
-        _showDetailDay
+        showDetailDay
             .asDriver(onErrorDriveWith: .empty())
             .drive(onNext: {
                 coordinator.showDetailDay(day: $0)

@@ -11,6 +11,4 @@ import Foundation
 protocol UnitType {
     var symbol: String { get }
     var row: Int { get }
-
-    static func get(_ row: Int) -> UnitType
 }

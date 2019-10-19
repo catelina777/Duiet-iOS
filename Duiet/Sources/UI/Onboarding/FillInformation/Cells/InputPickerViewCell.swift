@@ -11,7 +11,7 @@ import UIKit
 class InputPickerViewCell: RoundedTextFieldViewCell {
     let pickerView = UIPickerView()
 
-    func configure(with cellType: CellType) {
+    func configure(with cellType: FillInformationCellType) {
         titleLabel.text = cellType.title
         configurePickerView()
         configureToolBar()

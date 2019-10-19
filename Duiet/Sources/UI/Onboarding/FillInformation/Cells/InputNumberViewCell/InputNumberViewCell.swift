@@ -22,14 +22,18 @@ final class InputNumberViewCell: InputPickerViewCell, CellFrameTrackkable {
                   window: window)
     }
 
-    func configure(with viewModel: FillInformationViewModelProtocol, type: CellType) {
+    func configure(with viewModel: FillInformationViewModelProtocol, type: FillInformationCellType) {
         super.configure(with: type)
         if type == .height {
             let heightCollectionInCentimeters = Array(stride(from: 50.0, to: 230.0, by: 1.0))
             let defaultRow = 160 - 50
 
             let heightCollectionWithSymbol = heightCollectionInCentimeters
-                .map { UnitLocalizeHelper.shared.convertWithSymbol(value: $0, from: .centimeters, to: .centimeters) }
+                .map {
+                    UnitLocalizeHelper.shared.convertWithSymbol(value: $0,
+                                                                from: .centimeters,
+                                                                to: viewModel.state.unitCollectionValue.heightUnit)
+                }
 
             Observable.just(heightCollectionWithSymbol)
                 .bind(to: pickerView.rx.itemTitles) { $1 }
@@ -43,9 +47,10 @@ final class InputNumberViewCell: InputPickerViewCell, CellFrameTrackkable {
                 .disposed(by: disposeBag)
 
             pickerView.rx.itemSelected
-                .map { UnitLocalizeHelper.shared.convertWithSymbol(value: heightCollectionInCentimeters[$0.row],
-                                                                   from: .centimeters,
-                                                                   to: .centimeters)
+                .map {
+                    UnitLocalizeHelper.shared.convertWithSymbol(value: heightCollectionInCentimeters[$0.row],
+                                                                from: .centimeters,
+                                                                to: viewModel.state.unitCollectionValue.heightUnit)
                 }
                 .bind(to: textField.rx.text)
                 .disposed(by: disposeBag)
@@ -56,7 +61,12 @@ final class InputNumberViewCell: InputPickerViewCell, CellFrameTrackkable {
             let defaultRow = 80 - 20
 
             let weightCollectionWithSymbol = weightCollectionInKilograms
-                .map { UnitLocalizeHelper.shared.convertWithSymbol(value: $0, from: .kilograms, to: .kilograms) }
+                .map {
+                    UnitLocalizeHelper.shared.convertRoundedWithSymbol(value: $0,
+                                                                       from: .kilograms,
+                                                                       to: viewModel.state.unitCollectionValue.weightUnit,
+                                                                       significantDigits: 1)
+                }
 
             Observable.just(weightCollectionWithSymbol)
                 .bind(to: pickerView.rx.itemTitles) { $1 }
@@ -70,9 +80,11 @@ final class InputNumberViewCell: InputPickerViewCell, CellFrameTrackkable {
                 .disposed(by: disposeBag)
 
             pickerView.rx.itemSelected
-                .map { UnitLocalizeHelper.shared.convertWithSymbol(value: weightCollectionInKilograms[$0.row],
-                                                                   from: .kilograms,
-                                                                   to: .kilograms)
+                .map {
+                    UnitLocalizeHelper.shared.convertRoundedWithSymbol(value: weightCollectionInKilograms[$0.row],
+                                                                       from: .kilograms,
+                                                                       to: viewModel.state.unitCollectionValue.weightUnit,
+                                                                       significantDigits: 1)
                 }
                 .bind(to: textField.rx.text)
                 .disposed(by: disposeBag)

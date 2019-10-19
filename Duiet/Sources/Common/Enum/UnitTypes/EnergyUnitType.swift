@@ -32,7 +32,7 @@ enum EnergyUnitType: String, UnitType {
         }
     }
 
-    static func get(_ row: Int) -> UnitType {
+    static func get(_ row: Int) -> EnergyUnitType {
         switch row {
         case 0:
             return kilocalories

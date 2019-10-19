@@ -1,5 +1,5 @@
 //
-//  CellType.swift
+//  FillInformationCellType.swift
 //  Duiet
 //
 //  Created by Ryuhei Kaminishi on 2019/04/27.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum CellType: String {
+enum FillInformationCellType: String {
     case gender
     case age
     case height
@@ -25,10 +25,10 @@ enum CellType: String {
             return R.string.localizable.age()
 
         case .height:
-            return R.string.localizable.height() + "(" + HeightUnitType.centimeters.symbol + ")"
+            return R.string.localizable.height() + "(" + UnitCollectionModel.shared.state.unitCollectionValue.heightUnit.symbol + ")"
 
         case .weight:
-            return R.string.localizable.weight() + "(" + WeightUnitType.kilograms.symbol + ")"
+            return R.string.localizable.weight() + "(" + UnitCollectionModel.shared.state.unitCollectionValue.weightUnit.symbol + ")"
 
         case .activityLevel:
             return R.string.localizable.activityLevel()

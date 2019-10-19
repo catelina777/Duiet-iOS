@@ -29,19 +29,33 @@ protocol FillInformationViewModelOutput {
     var TDEE: Observable<String> { get }
 }
 
+protocol FillInformationViewModelState {
+    var unitCollectionValue: UnitCollection { get }
+}
+
 protocol FillInformationViewModelProtocol {
     var input: FillInformationViewModelInput { get }
     var output: FillInformationViewModelOutput { get }
+    var state: FillInformationViewModelState { get }
 }
 
 // TODO: Separate domain logic into model
-final class FillInformationViewModel: FillInformationViewModelProtocol {
+final class FillInformationViewModel: FillInformationViewModelProtocol, FillInformationViewModelState {
     let input: FillInformationViewModelInput
     let output: FillInformationViewModelOutput
+    var state: FillInformationViewModelState { self }
 
+    var unitCollectionValue: UnitCollection {
+        unitCollectionModel.state.unitCollectionValue
+    }
+
+    private let unitCollectionModel: UnitCollectionModelProtocol
     private let disposeBag = DisposeBag()
 
-    init(userInfoModel: UserInfoModelProtocol = UserInfoModel.shared) {
+    init(userInfoModel: UserInfoModelProtocol = UserInfoModel.shared,
+         unitCollectionModel: UnitCollectionModelProtocol = UnitCollectionModel.shared) {
+        self.unitCollectionModel = unitCollectionModel
+
         let gender = BehaviorRelay<Bool?>(value: nil)
         let age = BehaviorRelay<Int?>(value: nil)
         let height = BehaviorRelay<Double?>(value: nil)
@@ -92,14 +106,15 @@ final class FillInformationViewModel: FillInformationViewModelProtocol {
 
         /// If initialize everything finish in init, cant't refer to self and cant's use UnitLocalizable
         /// Therefore, generates a useless formatter
-        let unitFormatter = MeasurementFormatter()
         let BMR = BMRWithActivityLevel
             .map { bmr, activityLevel -> String in
                 guard
                     bmr != 0,
                     activityLevel != .none
                 else { return R.string.localizable.calc() }
-                return "\(Int(bmr)) \(unitFormatter.string(from: UnitEnergy.kilocalories))"
+                return UnitLocalizeHelper.shared.convertWithSymbol(value: bmr,
+                                                                   from: .kilocalories,
+                                                                   to: unitCollectionModel.state.unitCollectionValue.energyUnit)
             }
 
         let TDEE = BMRWithActivityLevel
@@ -108,7 +123,9 @@ final class FillInformationViewModel: FillInformationViewModelProtocol {
                     bmr != 0,
                     activityLevel != .none
                 else { return R.string.localizable.calc() }
-                return "\(Int(bmr * activityLevel.magnification)) \(unitFormatter.string(from: UnitEnergy.kilocalories))"
+                return UnitLocalizeHelper.shared.convertWithSymbol(value: bmr * activityLevel.magnification,
+                                                                   from: .kilocalories,
+                                                                   to: unitCollectionModel.state.unitCollectionValue.energyUnit)
             }
 
         output = Output(gender: gender.asObservable(),
