@@ -11,6 +11,9 @@ import RealmSwift
 import XCTest
 
 class DBUnitTestCase: XCTestCase {
+
+    var realm: Realm!
+
     override func setUp() {
         reset()
     }
@@ -20,7 +23,7 @@ class DBUnitTestCase: XCTestCase {
     }
 
     func reset() {
-        let realm = try! Realm()
+        realm = try! Realm()
         try! realm.write {
             realm.deleteAll()
         }

@@ -27,19 +27,16 @@ class UserInfoRepositoryTests: DBUnitTestCase {
                                      height: mock1.height,
                                      weight: mock1.weight,
                                      activityLevel: mock1.activityLevel)
-
         let userInfo = UserInfoRepository.shared.get()
-        let emptyResult = try! userInfo
-            .toBlocking()
-            .first()
-        XCTAssertEqual(emptyResult?.count, 0)
+        let emptyResults = realm.objects(UserInfo.self)
+        XCTAssertEqual(emptyResults.count, 0)
 
         UserInfoRepository.shared.add(userInfo: mockUserInfo1)
         let thereIsOneResult = try! userInfo
             .toBlocking()
             .first()
-        XCTAssertEqual(thereIsOneResult?.count, 1)
-        XCTAssertTrue(thereIsOneResult?.first?.gender == mock1.gender)
+        XCTAssertNotNil(thereIsOneResult)
+        XCTAssertTrue(thereIsOneResult?.gender == mock1.gender)
     }
 
     func testAddUpdate() {
@@ -58,24 +55,22 @@ class UserInfoRepositoryTests: DBUnitTestCase {
 
         //　Test whether the expected UserInfo has been added
         let userInfo = UserInfoRepository.shared.get()
-        let emptyResult = try! userInfo
-            .toBlocking()
-            .first()
-        XCTAssertEqual(emptyResult?.count, 0)
+        let emptyResults = realm.objects(UserInfo.self)
+        XCTAssertEqual(emptyResults.count, 0)
         UserInfoRepository.shared.add(userInfo: mockUserInfo1)
         let thereIsOneResult = try! userInfo
             .toBlocking()
             .first()
-        XCTAssertTrue(thereIsOneResult?.first?.gender == mock1.gender)
-        XCTAssertEqual(thereIsOneResult?.count, 1)
+        XCTAssertTrue(thereIsOneResult?.gender == mock1.gender)
+        XCTAssertNotNil(thereIsOneResult)
 
         // Test if the expected UserInfo has been updated
         UserInfoRepository.shared.add(userInfo: mockUserInfo2)
         let updatedOneResult = try! userInfo
             .toBlocking()
             .first()
-        XCTAssertTrue(updatedOneResult?.first?.gender == mock2.gender)
-        XCTAssertEqual(updatedOneResult?.count, 1)
+        XCTAssertTrue(updatedOneResult?.gender == mock2.gender)
+        XCTAssertNotNil(updatedOneResult)
     }
 
     struct MockUserInfo {

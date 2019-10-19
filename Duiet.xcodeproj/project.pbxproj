@@ -131,6 +131,7 @@
 		408A4EA12357527E004D2FFE /* SelectUnitCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408A4EA02357527E004D2FFE /* SelectUnitCellType.swift */; };
 		4097C2CB2359F74100DC0686 /* ValidatableRoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4097C2CA2359F74100DC0686 /* ValidatableRoundedButton.swift */; };
 		4097C2CD235AE93900DC0686 /* UnitBabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4097C2CC235AE93900DC0686 /* UnitBabel.swift */; };
+		40A70D1D235B8BE000A2E025 /* UnitCollectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A70D1C235B8BE000A2E025 /* UnitCollectionTests.swift */; };
 		40A7383223365BB400A3E605 /* PryntTrimmerView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40A7383123365BB400A3E605 /* PryntTrimmerView.framework */; };
 		40A7383723365BCA00A3E605 /* YPImagePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40A7383523365BCA00A3E605 /* YPImagePicker.framework */; };
 		40A7383923365BCA00A3E605 /* Stevia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40A7383623365BCA00A3E605 /* Stevia.framework */; };
@@ -332,6 +333,7 @@
 		408A4EA02357527E004D2FFE /* SelectUnitCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectUnitCellType.swift; sourceTree = "<group>"; };
 		4097C2CA2359F74100DC0686 /* ValidatableRoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatableRoundedButton.swift; sourceTree = "<group>"; };
 		4097C2CC235AE93900DC0686 /* UnitBabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitBabel.swift; sourceTree = "<group>"; };
+		40A70D1C235B8BE000A2E025 /* UnitCollectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitCollectionTests.swift; sourceTree = "<group>"; };
 		40A7383123365BB400A3E605 /* PryntTrimmerView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PryntTrimmerView.framework; path = Carthage/Build/iOS/PryntTrimmerView.framework; sourceTree = "<group>"; };
 		40A7383523365BCA00A3E605 /* YPImagePicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YPImagePicker.framework; path = Carthage/Build/iOS/YPImagePicker.framework; sourceTree = "<group>"; };
 		40A7383623365BCA00A3E605 /* Stevia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stevia.framework; path = Carthage/Build/iOS/Stevia.framework; sourceTree = "<group>"; };
@@ -855,6 +857,7 @@
 				40DF0D3322F5676A005005C8 /* DayRepositoryTests.swift */,
 				40DF0D3522F5677C005005C8 /* DaysRepositoryTests.swift */,
 				405D24B922F5D25B009FC5C2 /* DBUnitTestCase.swift */,
+				40A70D1C235B8BE000A2E025 /* UnitCollectionTests.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -1640,6 +1643,7 @@
 				4022F2DA22F47B0D006F5D49 /* UserInfoRepositoryTests.swift in Sources */,
 				4022F2D622F47022006F5D49 /* Date.extension.test.swift in Sources */,
 				405D24BA22F5D25B009FC5C2 /* DBUnitTestCase.swift in Sources */,
+				40A70D1D235B8BE000A2E025 /* UnitCollectionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
