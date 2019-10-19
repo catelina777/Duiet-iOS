@@ -12,16 +12,6 @@ enum WeightUnitType: String, UnitType {
     case kilograms
     case pounds
 
-    var abbr: String {
-        switch self {
-        case .kilograms:
-            return "kg"
-
-        case .pounds:
-            return "lb"
-        }
-    }
-
     var unit: Unit {
         switch self {
         case .kilograms:

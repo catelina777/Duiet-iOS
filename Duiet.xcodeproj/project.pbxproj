@@ -129,8 +129,8 @@
 		408A4E9D23574206004D2FFE /* SelectElementViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 408A4E9C23574206004D2FFE /* SelectElementViewCell.xib */; };
 		408A4E9F2357420F004D2FFE /* SelectElementViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408A4E9E2357420F004D2FFE /* SelectElementViewCell.swift */; };
 		408A4EA12357527E004D2FFE /* SelectUnitCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408A4EA02357527E004D2FFE /* SelectUnitCellType.swift */; };
-		408C79D723536ABE00FC4BB4 /* UnitLocalizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408C79D623536ABE00FC4BB4 /* UnitLocalizable.swift */; };
 		4097C2CB2359F74100DC0686 /* ValidatableRoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4097C2CA2359F74100DC0686 /* ValidatableRoundedButton.swift */; };
+		4097C2CD235AE93900DC0686 /* UnitLocalizeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4097C2CC235AE93900DC0686 /* UnitLocalizeHelper.swift */; };
 		40A7383223365BB400A3E605 /* PryntTrimmerView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40A7383123365BB400A3E605 /* PryntTrimmerView.framework */; };
 		40A7383723365BCA00A3E605 /* YPImagePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40A7383523365BCA00A3E605 /* YPImagePicker.framework */; };
 		40A7383923365BCA00A3E605 /* Stevia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40A7383623365BCA00A3E605 /* Stevia.framework */; };
@@ -330,8 +330,8 @@
 		408A4E9C23574206004D2FFE /* SelectElementViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectElementViewCell.xib; sourceTree = "<group>"; };
 		408A4E9E2357420F004D2FFE /* SelectElementViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectElementViewCell.swift; sourceTree = "<group>"; };
 		408A4EA02357527E004D2FFE /* SelectUnitCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectUnitCellType.swift; sourceTree = "<group>"; };
-		408C79D623536ABE00FC4BB4 /* UnitLocalizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitLocalizable.swift; sourceTree = "<group>"; };
 		4097C2CA2359F74100DC0686 /* ValidatableRoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatableRoundedButton.swift; sourceTree = "<group>"; };
+		4097C2CC235AE93900DC0686 /* UnitLocalizeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitLocalizeHelper.swift; sourceTree = "<group>"; };
 		40A7383123365BB400A3E605 /* PryntTrimmerView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PryntTrimmerView.framework; path = Carthage/Build/iOS/PryntTrimmerView.framework; sourceTree = "<group>"; };
 		40A7383523365BCA00A3E605 /* YPImagePicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YPImagePicker.framework; path = Carthage/Build/iOS/YPImagePicker.framework; sourceTree = "<group>"; };
 		40A7383623365BCA00A3E605 /* Stevia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stevia.framework; path = Carthage/Build/iOS/Stevia.framework; sourceTree = "<group>"; };
@@ -472,7 +472,6 @@
 		0622E9FE226A1C5700E87F22 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				408C79D623536ABE00FC4BB4 /* UnitLocalizable.swift */,
 				403E953922CF939300EFF459 /* Coordinator.swift */,
 				5E9C28B3228E475E004ABF3B /* KeyboardFrameTrackkable.swift */,
 				5E9C28B5228E4E99004ABF3B /* CellFrameTrackkable.swift */,
@@ -957,6 +956,7 @@
 			isa = PBXGroup;
 			children = (
 				407D2E7922EF2537001EC701 /* RealmMigrationHelper.swift */,
+				4097C2CC235AE93900DC0686 /* UnitLocalizeHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -1545,6 +1545,7 @@
 				402D9BFC22E214FA003676C3 /* SettingType.swift in Sources */,
 				405A9F6122AE91C700454412 /* ProgressType.swift in Sources */,
 				0622EA47226A2AB900E87F22 /* PublishRelay.extension.swift in Sources */,
+				4097C2CD235AE93900DC0686 /* UnitLocalizeHelper.swift in Sources */,
 				0622EA2B226A21A400E87F22 /* UIButton.extension.swift in Sources */,
 				405A9F5D22AD0A3D00454412 /* MonthSummaryViewModel.swift in Sources */,
 				061F278F22733DA100FDCB17 /* WalkthroughViewController.swift in Sources */,
@@ -1614,7 +1615,6 @@
 				40B214DC22BF23D00040EA9E /* UserInfoModel.swift in Sources */,
 				4001F70622ABB4BA0009CDA1 /* SettingViewDataSource.swift in Sources */,
 				069AD42B2277224A0075E711 /* TodayViewController.swift in Sources */,
-				408C79D723536ABE00FC4BB4 /* UnitLocalizable.swift in Sources */,
 				0622EA06226A1E0100E87F22 /* FillInformationViewModel.swift in Sources */,
 				405A9F5022ACFB1300454412 /* MonthsViewModel.swift in Sources */,
 				4001F70922ABD98A0009CDA1 /* PageType.swift in Sources */,

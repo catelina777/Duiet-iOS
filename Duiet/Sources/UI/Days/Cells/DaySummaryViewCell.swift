@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class DaySummaryViewCell: RoundedCollectionViewCell, UnitLocalizable {
+final class DaySummaryViewCell: RoundedCollectionViewCell {
     @IBOutlet weak var tdeeLabel: UILabel! {
         didSet { tdeeLabel.text = R.string.localizable.tdee() }
     }
@@ -29,18 +29,27 @@ final class DaySummaryViewCell: RoundedCollectionViewCell, UnitLocalizable {
     @IBOutlet weak var weightChangeValueLabel: UILabel!
 
     func configure(with day: Day, userInfo: UserInfo) {
-        let tdee = Int(userInfo.TDEE)
-        let totalCalorie = Int(day.totalCalorie)
-        let difference = Double(totalCalorie - tdee)
-        let weightChange = Int(difference / (9 * 0.8))
+        let tdee = userInfo.TDEE
+        let totalCalorie = day.totalCalorie
+        let difference = totalCalorie - tdee
+        let weightChange = difference / (9 * 0.8)
+        let localizeWeightChangeValueWithSymbol = UnitLocalizeHelper.shared.convertWithSymbol(value: abs(weightChange),
+                                                                                              from: .kilograms,
+                                                                                              to: .kilograms)
         let weightChangeText = weightChange > 0 ?
-            "\(abs(weightChange)) \(unitSymbol(UnitMass.grams, style: .short)) \(R.string.localizable.up()) 💪" :
-            "\(abs(weightChange)) \(unitSymbol(UnitMass.grams, style: .short)) \(R.string.localizable.down()) ⬇️"
-        dayValueLabel.text = "\(day.createdAt.toString())"
-        let kcalSymbol = unitSymbol(UnitEnergy.kilocalories, style: .medium)
-        tdeeValueLabel.text = "\(tdee) \(kcalSymbol)"
-        totalValueLabel.text = "\(totalCalorie) \(kcalSymbol)"
-        differenceValueLabel.text = "\(difference) \(kcalSymbol)"
+            "\(localizeWeightChangeValueWithSymbol) \(R.string.localizable.up()) 💪" :
+            "\(localizeWeightChangeValueWithSymbol) \(R.string.localizable.down()) ⬇️"
+
+        dayValueLabel.text = day.createdAt.toString()
+        tdeeValueLabel.text = UnitLocalizeHelper.shared.convertWithSymbol(value: tdee,
+                                                                          from: .kilocalories,
+                                                                          to: .kilocalories)
+        totalValueLabel.text = UnitLocalizeHelper.shared.convertWithSymbol(value: totalCalorie,
+                                                                           from: .kilocalories,
+                                                                           to: .kilocalories)
+        differenceValueLabel.text = UnitLocalizeHelper.shared.convertWithSymbol(value: difference,
+                                                                                from: .kilocalories,
+                                                                                to: .kilocalories)
         weightChangeValueLabel.text = weightChangeText
     }
 }

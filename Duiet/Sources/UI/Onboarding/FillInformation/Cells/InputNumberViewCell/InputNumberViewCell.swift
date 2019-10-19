@@ -9,7 +9,7 @@
 import RxSwift
 import UIKit
 
-final class InputNumberViewCell: InputPickerViewCell, CellFrameTrackkable, UnitLocalizable {
+final class InputNumberViewCell: InputPickerViewCell, CellFrameTrackkable {
     func configure(with viewModel: KeyboardTrackViewModel) {
         guard
             let appDelegate = UIApplication.shared.delegate,
@@ -25,67 +25,75 @@ final class InputNumberViewCell: InputPickerViewCell, CellFrameTrackkable, UnitL
     func configure(with viewModel: FillInformationViewModelProtocol, type: CellType) {
         super.configure(with: type)
         if type == .height {
-            let list = Array(stride(from: 50.0, to: 230.0, by: 1.0))
-            let unit = " " + unitSymbol(UnitLength.centimeters, style: .medium)
+            let heightCollectionInCentimeters = Array(stride(from: 50.0, to: 230.0, by: 1.0))
             let defaultRow = 160 - 50
 
-            Observable.just(list.map { String($0) + unit })
+            let heightCollectionWithSymbol = heightCollectionInCentimeters
+                .map { UnitLocalizeHelper.shared.convertWithSymbol(value: $0, from: .centimeters, to: .centimeters) }
+
+            Observable.just(heightCollectionWithSymbol)
                 .bind(to: pickerView.rx.itemTitles) { $1 }
                 .disposed(by: disposeBag)
 
             pickerView.selectRow(defaultRow, inComponent: 0, animated: true)
 
             pickerView.rx.itemSelected
-                .map { list[$0.row] }
+                .map { heightCollectionInCentimeters[$0.row] }
                 .bind(to: viewModel.input.height)
                 .disposed(by: disposeBag)
 
             pickerView.rx.itemSelected
-                .map { String(list[$0.row]) + unit }
+                .map { UnitLocalizeHelper.shared.convertWithSymbol(value: heightCollectionInCentimeters[$0.row],
+                                                                   from: .centimeters,
+                                                                   to: .centimeters) }
                 .bind(to: textField.rx.text)
                 .disposed(by: disposeBag)
         }
 
         if type == .weight {
-            let list = Array(stride(from: 20, to: 150, by: 0.5))
-            let unit = " " + unitSymbol(UnitMass.kilograms, style: .medium)
-            let defaultRow = 80
+            let weightCollectionInKilograms = Array(stride(from: 20, to: 150, by: 0.5))
+            let defaultRow = 80 - 20
 
-            Observable.just(list.map { String($0) + unit })
+            let weightCollectionWithSymbol = weightCollectionInKilograms
+                .map { UnitLocalizeHelper.shared.convertWithSymbol(value: $0, from: .kilograms, to: .kilograms) }
+
+            Observable.just(weightCollectionWithSymbol)
                 .bind(to: pickerView.rx.itemTitles) { $1 }
                 .disposed(by: disposeBag)
 
             pickerView.selectRow(defaultRow, inComponent: 0, animated: true)
 
             pickerView.rx.itemSelected
-                .map { list[$0.row] }
+                .map { weightCollectionInKilograms[$0.row] }
                 .bind(to: viewModel.input.weight)
                 .disposed(by: disposeBag)
 
             pickerView.rx.itemSelected
-                .map { String(list[$0.row]) + unit }
+                .map { UnitLocalizeHelper.shared.convertWithSymbol(value: weightCollectionInKilograms[$0.row],
+                                                                   from: .kilograms,
+                                                                   to: .kilograms) }
                 .bind(to: textField.rx.text)
                 .disposed(by: disposeBag)
         }
 
         if type == .age {
-            let list = Array(stride(from: 0, to: 121, by: 1))
+            let ageCollection = Array(stride(from: 0, to: 121, by: 1))
             let unit = " " + R.string.localizable.yearsOld()
             let defaultRow = 30
 
-            Observable.just(list.map { String($0) })
+            Observable.just(ageCollection.map { String($0) + unit })
                 .bind(to: pickerView.rx.itemTitles) { $1 }
                 .disposed(by: disposeBag)
 
             pickerView.selectRow(defaultRow, inComponent: 0, animated: true)
 
             pickerView.rx.itemSelected
-                .map { list[$0.row] }
+                .map { ageCollection[$0.row] }
                 .bind(to: viewModel.input.age)
                 .disposed(by: disposeBag)
 
             pickerView.rx.itemSelected
-                .map { String(list[$0.row]) + unit }
+                .map { String(ageCollection[$0.row]) + unit }
                 .bind(to: textField.rx.text)
                 .disposed(by: disposeBag)
         }

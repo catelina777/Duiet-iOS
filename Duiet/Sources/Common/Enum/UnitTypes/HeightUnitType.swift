@@ -12,16 +12,6 @@ enum HeightUnitType: String, UnitType {
     case centimeters
     case feet
 
-    var abbr: String {
-        switch self {
-        case .centimeters:
-            return "cm"
-
-        case .feet:
-            return "feet"
-        }
-    }
-
     var unit: Unit {
         switch self {
         case .centimeters:

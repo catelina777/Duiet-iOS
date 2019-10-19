@@ -9,7 +9,6 @@
 import Foundation
 
 protocol UnitType {
-    var abbr: String { get }
     var unit: Unit { get }
     var row: Int { get }
 

@@ -12,16 +12,6 @@ enum EnergyUnitType: String, UnitType {
     case kilocalories
     case kilojoules
 
-    var abbr: String {
-        switch self {
-        case .kilocalories:
-            return "kcal"
-
-        case .kilojoules:
-            return "kj"
-        }
-    }
-
     var unit: Unit {
         switch self {
         case .kilocalories:
