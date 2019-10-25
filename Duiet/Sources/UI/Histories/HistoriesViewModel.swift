@@ -14,7 +14,9 @@ protocol HistoriesViewModelInput {
     var selectedIndex: AnyObserver<Int> { get }
 }
 
-protocol HistoriesViewModelOutput {}
+protocol HistoriesViewModelOutput {
+    var selectedIndex: Observable<Int> { get }
+}
 
 protocol HistoriesViewModelState {}
 
@@ -34,13 +36,7 @@ final class HistoriesViewModel: HistoriesViewModelProtocol, HistoriesViewModelSt
     init() {
         let selectedIndex = PublishRelay<Int>()
         input = Input(selectedIndex: selectedIndex.asObserver())
-
-        selectedIndex
-            .subscribe(onNext: {
-                print($0)
-            })
-            .disposed(by: disposeBag)
-        output = Output()
+        output = Output(selectedIndex: selectedIndex.asObservable())
     }
 }
 
@@ -48,5 +44,7 @@ extension HistoriesViewModel {
     struct Input: HistoriesViewModelInput {
         let selectedIndex: AnyObserver<Int>
     }
-    struct Output: HistoriesViewModelOutput {}
+    struct Output: HistoriesViewModelOutput {
+        let selectedIndex: Observable<Int>
+    }
 }

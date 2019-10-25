@@ -24,7 +24,7 @@ final class TopTodayViewController: TodayViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = SceneType.today.title
+        title = HistoryType.today.title
 
         bindShowDetailDay()
     }

@@ -43,7 +43,7 @@ final class DaysModel: DaysModelProtocol, DaysModelState {
         if let month = month.value {
             return month.createdAt.toYearMonthString()
         } else {
-            return SceneType.days.title
+            return HistoryType.days.title
         }
     }()
 

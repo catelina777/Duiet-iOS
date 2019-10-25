@@ -3,13 +3,17 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HistoriesViewController" customModule="Duiet" customModuleProvider="target">
             <connections>
+                <outlet property="daysView" destination="4bO-Gn-r5r" id="0ru-Gg-Y1n"/>
+                <outlet property="monthsView" destination="uiT-Ah-9QO" id="kXz-FF-WC0"/>
                 <outlet property="segmentedControl" destination="C8g-I8-hsg" id="SvY-gn-kBK"/>
+                <outlet property="todayView" destination="wPM-SV-gDv" id="coB-Ej-cr2"/>
                 <outlet property="view" destination="iN0-l3-epB" id="5B8-ky-QtQ"/>
             </connections>
         </placeholder>
@@ -18,6 +22,18 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wPM-SV-gDv" userLabel="TodayView">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                    <color key="backgroundColor" name="systemBackgroundMain"/>
+                </view>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4bO-Gn-r5r" userLabel="DaysView">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                    <color key="backgroundColor" name="systemBackgroundMain"/>
+                </view>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uiT-Ah-9QO" userLabel="MonthsView">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                    <color key="backgroundColor" name="systemBackgroundMain"/>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C8g-I8-hsg" customClass="FloatingSegmentedControl" customModule="FloatingSegmentedControl">
                     <rect key="frame" x="62" y="814" width="290" height="32"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -26,14 +42,31 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <color key="backgroundColor" name="systemBackgroundMain"/>
             <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="4bO-Gn-r5r" secondAttribute="bottom" id="0Ui-Wu-yog"/>
                 <constraint firstItem="C8g-I8-hsg" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.7" id="1qz-Ak-xK8"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="uiT-Ah-9QO" secondAttribute="bottom" id="9Uu-J6-Nca"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="C8g-I8-hsg" secondAttribute="bottom" constant="16" id="CrC-Yh-yfh"/>
+                <constraint firstItem="4bO-Gn-r5r" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="E1Q-qZ-L5z"/>
                 <constraint firstItem="C8g-I8-hsg" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="I4G-KK-YpE"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="uiT-Ah-9QO" secondAttribute="trailing" id="Ll9-BS-Ocr"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="wPM-SV-gDv" secondAttribute="trailing" id="TvY-la-D1D"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="4bO-Gn-r5r" secondAttribute="trailing" id="Uf8-PS-WR3"/>
+                <constraint firstItem="wPM-SV-gDv" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="ZMb-ty-N7w"/>
+                <constraint firstItem="uiT-Ah-9QO" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="aEq-gJ-p2n"/>
+                <constraint firstItem="4bO-Gn-r5r" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="b90-S9-hDx"/>
+                <constraint firstItem="uiT-Ah-9QO" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="f1U-d3-d4v"/>
+                <constraint firstItem="wPM-SV-gDv" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="lUu-0Q-XLo"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="wPM-SV-gDv" secondAttribute="bottom" id="vZb-iK-Qxw"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="141" y="154"/>
+            <point key="canvasLocation" x="140.57971014492756" y="153.34821428571428"/>
         </view>
     </objects>
+    <resources>
+        <namedColor name="systemBackgroundMain">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+    </resources>
 </document>

@@ -7,23 +7,26 @@
 //
 
 import FloatingSegmentedControl
+import RxCocoa
+import RxSwift
 import UIKit
 
 final class HistoriesViewController: UIViewController {
     @IBOutlet private weak var segmentedControl: FloatingSegmentedControl!
+    @IBOutlet private weak var todayView: UIView!
+    @IBOutlet private weak var daysView: UIView!
+    @IBOutlet private weak var monthsView: UIView!
+    private let navigationControllers: [UIViewController]
+    private var views: [UIView]!
 
     private let viewModel: HistoriesViewModelProtocol
+    private let disposeBag = DisposeBag()
 
     init(viewModel: HistoriesViewModelProtocol,
-         viewControllers: [UIViewController]) {
+         navigationControllers: [UIViewController]) {
         self.viewModel = viewModel
+        self.navigationControllers = navigationControllers
         super.init(nibName: HistoriesViewController.className, bundle: nil)
-
-        viewControllers.forEach {
-            addChild($0)
-            view.addSubview($0.view)
-            $0.didMove(toParent: self)
-        }
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -33,10 +36,19 @@ final class HistoriesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        views = [todayView, daysView, monthsView]
+        navigationControllers.enumerated().forEach { index, viewController in
+            views[index].addSubview(viewController.view)
+            addChild(viewController)
+        }
+
+        navigationController?.setNavigationBarHidden(true, animated: false)
+
         configureSegmentedControl()
+        bindSegmentedControl()
     }
 
-    func configureSegmentedControl() {
+    private func configureSegmentedControl() {
         segmentedControl.setSegments(with: [
             "Today", "Days", "Months"
         ])
@@ -47,5 +59,20 @@ final class HistoriesViewController: UIViewController {
     @objc
     func didTapSegmentedControl(_ sender: FloatingSegmentedControl) {
         viewModel.input.selectedIndex.on(.next(sender.focusedIndex))
+    }
+
+    private func bindSegmentedControl() {
+        viewModel.output.selectedIndex
+            .bind(to: switchTab)
+            .disposed(by: disposeBag)
+    }
+
+    var switchTab: Binder<Int> {
+        Binder<Int>(self) { me, index in
+            guard index < 3 else { return }
+            me.views
+                .enumerated()
+                .forEach { $0.element.isHidden = $0.offset == index ? false : true }
+        }
     }
 }

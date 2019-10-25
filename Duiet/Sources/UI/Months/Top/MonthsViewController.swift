@@ -25,7 +25,7 @@ class MonthsViewController: BaseCollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = SceneType.months.title
+        title = HistoryType.months.title
         navigationController?.navigationBar.prefersLargeTitles = true
         dataSource.configure(with: collectionView)
 

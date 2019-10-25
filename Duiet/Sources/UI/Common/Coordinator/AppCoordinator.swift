@@ -21,21 +21,17 @@ final class AppCoordinator {
         topTabBarNavigator = BaseNavigationController()
         onboardingNavigator = BaseNavigationController()
 
-        let dayNC = get(type: .today)
-        let monthNC = get(type: .days)
-        let yearNC = get(type: .months)
+        let historiesNC = get(type: .histories)
         let settingNC = get(type: .setting)
 
         let viewModel = TopTabBarViewModel()
 
-        navigatorInit(type: .today, navigationController: dayNC, tabViewModel: viewModel)
-        navigatorInit(type: .days, navigationController: monthNC, tabViewModel: viewModel)
-        navigatorInit(type: .months, navigationController: yearNC, tabViewModel: viewModel)
+        navigatorInit(type: .histories, navigationController: historiesNC, tabViewModel: viewModel)
         navigatorInit(type: .setting, navigationController: settingNC, tabViewModel: viewModel)
 
         topTabBarCoordinator = TopTabBarCoordinator(navigator: topTabBarNavigator,
                                                     viewModel: viewModel,
-                                                    navigationControllers: [dayNC, monthNC, yearNC, settingNC])
+                                                    navigationControllers: [historiesNC, settingNC])
 
         onboardingCoordinator = OnboardingCoordinator(navigator: onboardingNavigator,
                                                       topTabBarCoordinator: topTabBarCoordinator)
@@ -64,14 +60,8 @@ final class AppCoordinator {
                                tabViewModel: TopTabBarViewModel) {
         let coordinator: Coordinator
         switch type {
-        case .today:
-            coordinator = TodayCoordinator(navigator: navigationController, tabViewModel: tabViewModel)
-
-        case .days:
-            coordinator = DaysCoordinator(navigator: navigationController, tabViewModel: tabViewModel)
-
-        case .months:
-            coordinator = MonthsCoordinator(navigator: navigationController, tabViewModel: tabViewModel)
+        case .histories:
+            coordinator = HistoriesCoordinator(navigator: navigationController, tabViewModel: tabViewModel)
 
         case .setting:
             coordinator = SettingCoordinator(navigator: navigationController, tabViewModel: tabViewModel)

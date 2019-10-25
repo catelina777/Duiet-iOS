@@ -101,6 +101,7 @@
 		405147C82291498100C9AF8C /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405147C72291498100C9AF8C /* Meal.swift */; };
 		405147CA2291498800C9AF8C /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405147C92291498800C9AF8C /* Content.swift */; };
 		4054D0C9235EDB0500BA4064 /* HistoriesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4054D0C8235EDB0500BA4064 /* HistoriesCoordinator.swift */; };
+		4054D0CD2363387900BA4064 /* HistoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4054D0CC2363387900BA4064 /* HistoryType.swift */; };
 		405A9F5022ACFB1300454412 /* MonthsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405A9F4F22ACFB1300454412 /* MonthsViewModel.swift */; };
 		405A9F5222ACFB2E00454412 /* MonthsViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405A9F5122ACFB2E00454412 /* MonthsViewDataSource.swift */; };
 		405A9F5522AD006100454412 /* MonthSummaryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405A9F5422AD006100454412 /* MonthSummaryViewCell.swift */; };
@@ -306,6 +307,7 @@
 		405147C72291498100C9AF8C /* Meal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		405147C92291498800C9AF8C /* Content.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		4054D0C8235EDB0500BA4064 /* HistoriesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoriesCoordinator.swift; sourceTree = "<group>"; };
+		4054D0CC2363387900BA4064 /* HistoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryType.swift; sourceTree = "<group>"; };
 		405A9F4F22ACFB1300454412 /* MonthsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthsViewModel.swift; sourceTree = "<group>"; };
 		405A9F5122ACFB2E00454412 /* MonthsViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthsViewDataSource.swift; sourceTree = "<group>"; };
 		405A9F5422AD006100454412 /* MonthSummaryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthSummaryViewCell.swift; sourceTree = "<group>"; };
@@ -708,6 +710,7 @@
 				4001F70822ABD98A0009CDA1 /* PageType.swift */,
 				405A9F6022AE91C700454412 /* ProgressType.swift */,
 				4001F6F922ABA3720009CDA1 /* SceneType.swift */,
+				4054D0CC2363387900BA4064 /* HistoryType.swift */,
 				402D9BFB22E214FA003676C3 /* SettingType.swift */,
 				40B2141422B4D5B00040EA9E /* WeekType.swift */,
 				40EADBF1231AACFD00D6E9E1 /* UserDefaultsKey.swift */,
@@ -1558,6 +1561,7 @@
 				5E9EE7D122C4980E00AF5D82 /* Month.swift in Sources */,
 				408A4E8B235467DB004D2FFE /* UnitType.swift in Sources */,
 				403E953522CF747E00EFF459 /* DaysRepository.swift in Sources */,
+				4054D0CD2363387900BA4064 /* HistoryType.swift in Sources */,
 				40B2141322B4A1FE0040EA9E /* RoundedWrapperView.swift in Sources */,
 				40D8999722FE750400B6DA6D /* RoundedCollectionViewCell.swift in Sources */,
 				063FCBC0227D8164007C191F /* InputMealDataSource.swift in Sources */,
