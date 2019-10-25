@@ -17,7 +17,7 @@ final class HistoriesViewController: UIViewController {
     @IBOutlet private weak var daysView: UIView!
     @IBOutlet private weak var monthsView: UIView!
     private let navigationControllers: [UIViewController]
-    private var views: [UIView]!
+    private var views: [UIView]! // To make it easy to handle childViews
 
     private let viewModel: HistoriesViewModelProtocol
     private let disposeBag = DisposeBag()
@@ -36,16 +36,22 @@ final class HistoriesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationController?.setNavigationBarHidden(true, animated: false)
+
+        configureChildViews()
+        configureSegmentedControl()
+        bindSegmentedControl()
+    }
+
+    private func configureChildViews() {
         views = [todayView, daysView, monthsView]
         navigationControllers.enumerated().forEach { index, viewController in
+            views[index].layoutIfNeeded()
+            let frame = views[index].frame
+            viewController.view.frame = frame
             views[index].addSubview(viewController.view)
             addChild(viewController)
         }
-
-        navigationController?.setNavigationBarHidden(true, animated: false)
-
-        configureSegmentedControl()
-        bindSegmentedControl()
     }
 
     private func configureSegmentedControl() {
