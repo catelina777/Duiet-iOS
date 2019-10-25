@@ -11,15 +11,15 @@ import UIKit
 final class AppCoordinator {
     private let window: UIWindow
 
-    private var walkthroughCoordinator: OnboardingCoordinator!
-    private let walkthroughNavigator: BaseNavigationController
+    private var onboardingCoordinator: OnboardingCoordinator!
+    private let onboardingNavigator: BaseNavigationController
     private var topTabBarCoordinator: TopTabBarCoordinator!
     private let topTabBarNavigator: BaseNavigationController
 
     init(window: UIWindow) {
         self.window = window
         topTabBarNavigator = BaseNavigationController()
-        walkthroughNavigator = BaseNavigationController()
+        onboardingNavigator = BaseNavigationController()
 
         let dayNC = get(type: .today)
         let monthNC = get(type: .days)
@@ -37,13 +37,13 @@ final class AppCoordinator {
                                                     viewModel: viewModel,
                                                     navigationControllers: [dayNC, monthNC, yearNC, settingNC])
 
-        walkthroughCoordinator = OnboardingCoordinator(navigator: walkthroughNavigator,
-                                                        topTabBarCoordinator: topTabBarCoordinator)
+        onboardingCoordinator = OnboardingCoordinator(navigator: onboardingNavigator,
+                                                      topTabBarCoordinator: topTabBarCoordinator)
     }
 
     func initialStart() {
-        window.rootViewController = walkthroughNavigator
-        walkthroughCoordinator.start()
+        window.rootViewController = onboardingNavigator
+        onboardingCoordinator.start()
         window.makeKeyAndVisible()
     }
 
