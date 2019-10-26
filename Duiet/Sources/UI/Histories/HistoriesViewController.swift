@@ -38,9 +38,12 @@ final class HistoriesViewController: UIViewController {
 
         navigationController?.setNavigationBarHidden(true, animated: false)
 
-        configureChildViews()
         configureSegmentedControl()
         bindSegmentedControl()
+    }
+
+    override func viewWillLayoutSubviews() {
+        configureChildViews()
     }
 
     private func configureChildViews() {
