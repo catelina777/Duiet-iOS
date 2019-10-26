@@ -73,4 +73,3 @@ class UnitCollectionTests: DBUnitTestCase {
         let testRow3: Int
     }
 }
-

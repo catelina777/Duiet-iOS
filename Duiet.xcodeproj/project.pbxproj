@@ -704,14 +704,11 @@
 		06B2FCF0227221980078C7F1 /* Enum */ = {
 			isa = PBXGroup;
 			children = (
+				4010E8432363ECB4008DD2A4 /* ViewTypes */,
 				408A4E832354672E004D2FFE /* UnitTypes */,
 				0622EA36226A29D600E87F22 /* ActivityLevelType.swift */,
 				0630D49A227495EB00224EC9 /* FillInformationCellType.swift */,
-				4001F70822ABD98A0009CDA1 /* PageType.swift */,
 				405A9F6022AE91C700454412 /* ProgressType.swift */,
-				4001F6F922ABA3720009CDA1 /* SceneType.swift */,
-				4054D0CC2363387900BA4064 /* HistoryType.swift */,
-				402D9BFB22E214FA003676C3 /* SettingType.swift */,
 				40B2141422B4D5B00040EA9E /* WeekType.swift */,
 				40EADBF1231AACFD00D6E9E1 /* UserDefaultsKey.swift */,
 				408A4EA02357527E004D2FFE /* SelectUnitCellType.swift */,
@@ -819,6 +816,17 @@
 				4001F70C22ABDC5A0009CDA1 /* SettingViewCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		4010E8432363ECB4008DD2A4 /* ViewTypes */ = {
+			isa = PBXGroup;
+			children = (
+				4001F70822ABD98A0009CDA1 /* PageType.swift */,
+				4001F6F922ABA3720009CDA1 /* SceneType.swift */,
+				4054D0CC2363387900BA4064 /* HistoryType.swift */,
+				402D9BFB22E214FA003676C3 /* SettingType.swift */,
+			);
+			path = ViewTypes;
 			sourceTree = "<group>";
 		};
 		401161142301728B00D522CC /* Settings */ = {
