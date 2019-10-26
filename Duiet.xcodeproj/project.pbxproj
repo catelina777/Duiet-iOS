@@ -84,7 +84,7 @@
 		4022F2DA22F47B0D006F5D49 /* UserInfoRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4022F2D922F47B0D006F5D49 /* UserInfoRepositoryTests.swift */; };
 		402D9BFC22E214FA003676C3 /* SettingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402D9BFB22E214FA003676C3 /* SettingType.swift */; };
 		402FBE9F22C8D019000BBFA3 /* TopTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402FBE9E22C8D019000BBFA3 /* TopTabBarController.swift */; };
-		402FBEA222C8E63D000BBFA3 /* TopTabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402FBEA122C8E63D000BBFA3 /* TopTabBarViewModel.swift */; };
+		402FBEA222C8E63D000BBFA3 /* SegmentedControlViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402FBEA122C8E63D000BBFA3 /* SegmentedControlViewModel.swift */; };
 		403E952E22CE3D7800EFF459 /* TopTodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403E952D22CE3D7800EFF459 /* TopTodayViewController.swift */; };
 		403E953022CE3EAA00EFF459 /* TopDaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403E952F22CE3EAA00EFF459 /* TopDaysViewController.swift */; };
 		403E953222CE40CC00EFF459 /* TopMonthsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403E953122CE40CC00EFF459 /* TopMonthsViewController.swift */; };
@@ -290,7 +290,7 @@
 		4022F2D922F47B0D006F5D49 /* UserInfoRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoRepositoryTests.swift; sourceTree = "<group>"; };
 		402D9BFB22E214FA003676C3 /* SettingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingType.swift; sourceTree = "<group>"; };
 		402FBE9E22C8D019000BBFA3 /* TopTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTabBarController.swift; sourceTree = "<group>"; };
-		402FBEA122C8E63D000BBFA3 /* TopTabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTabBarViewModel.swift; sourceTree = "<group>"; };
+		402FBEA122C8E63D000BBFA3 /* SegmentedControlViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlViewModel.swift; sourceTree = "<group>"; };
 		403E952D22CE3D7800EFF459 /* TopTodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTodayViewController.swift; sourceTree = "<group>"; };
 		403E952F22CE3EAA00EFF459 /* TopDaysViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopDaysViewController.swift; sourceTree = "<group>"; };
 		403E953122CE40CC00EFF459 /* TopMonthsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopMonthsViewController.swift; sourceTree = "<group>"; };
@@ -904,7 +904,7 @@
 			isa = PBXGroup;
 			children = (
 				402FBE9E22C8D019000BBFA3 /* TopTabBarController.swift */,
-				402FBEA122C8E63D000BBFA3 /* TopTabBarViewModel.swift */,
+				402FBEA122C8E63D000BBFA3 /* SegmentedControlViewModel.swift */,
 			);
 			path = TopTabBar;
 			sourceTree = "<group>";
@@ -1611,7 +1611,7 @@
 				408A4E9123547B62004D2FFE /* UnitCollectionModel.swift in Sources */,
 				060A7982227C967100F02B30 /* RxYPImagePicker.swift in Sources */,
 				403E953E22CF93FE00EFF459 /* MonthsCoordinator.swift in Sources */,
-				402FBEA222C8E63D000BBFA3 /* TopTabBarViewModel.swift in Sources */,
+				402FBEA222C8E63D000BBFA3 /* SegmentedControlViewModel.swift in Sources */,
 				4005BDDA22D8EE8B001A7C9D /* UserInfoRepository.swift in Sources */,
 				408A4E9B23573DFF004D2FFE /* SelectUnitViewDataSource.swift in Sources */,
 				405147CA2291498800C9AF8C /* Content.swift in Sources */,

@@ -20,11 +20,14 @@ final class HistoriesViewController: UIViewController {
     private var views: [UIView]! // To make it easy to handle childViews
 
     private let viewModel: HistoriesViewModelProtocol
+    private let segmentedViewModel: SegmentedControlViewModel
     private let disposeBag = DisposeBag()
 
     init(viewModel: HistoriesViewModelProtocol,
+         segmentedViewModel: SegmentedControlViewModel,
          navigationControllers: [UIViewController]) {
         self.viewModel = viewModel
+        self.segmentedViewModel = segmentedViewModel
         self.navigationControllers = navigationControllers
         super.init(nibName: HistoriesViewController.className, bundle: nil)
     }
@@ -46,6 +49,22 @@ final class HistoriesViewController: UIViewController {
         configureChildViews()
     }
 
+    @objc
+    func didTapSegmentedControl(_ sender: FloatingSegmentedControl) {
+        viewModel.input.selectedIndex.on(.next(sender.focusedIndex))
+    }
+
+    var switchTab: Binder<Int> {
+        Binder<Int>(self) { me, index in
+            guard index < HistoryType.allCases.count else { return }
+            me.views
+                .enumerated()
+                .forEach { $0.element.isHidden = $0.offset == index ? false : true }
+        }
+    }
+}
+
+extension HistoriesViewController {
     private func configureChildViews() {
         views = [todayView, daysView, monthsView]
         navigationControllers.enumerated().forEach { index, viewController in
@@ -58,30 +77,14 @@ final class HistoriesViewController: UIViewController {
     }
 
     private func configureSegmentedControl() {
-        segmentedControl.setSegments(with: [
-            "Today", "Days", "Months"
-        ])
+        segmentedControl.setSegments(with: HistoryType.allCases.map { $0.title })
         segmentedControl.addTarget(self, action: #selector(didTapSegmentedControl(_:)))
         segmentedControl.isAnimateFocusMoving = true
-    }
-
-    @objc
-    func didTapSegmentedControl(_ sender: FloatingSegmentedControl) {
-        viewModel.input.selectedIndex.on(.next(sender.focusedIndex))
     }
 
     private func bindSegmentedControl() {
         viewModel.output.selectedIndex
             .bind(to: switchTab)
             .disposed(by: disposeBag)
-    }
-
-    var switchTab: Binder<Int> {
-        Binder<Int>(self) { me, index in
-            guard index < 3 else { return }
-            me.views
-                .enumerated()
-                .forEach { $0.element.isHidden = $0.offset == index ? false : true }
-        }
     }
 }

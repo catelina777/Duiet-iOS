@@ -24,10 +24,10 @@ final class AppCoordinator {
         let historiesNC = get(type: .histories)
         let settingNC = get(type: .setting)
 
-        let viewModel = TopTabBarViewModel()
+        let viewModel = SegmentedControlViewModel()
 
-        navigatorInit(type: .histories, navigationController: historiesNC, tabViewModel: viewModel)
-        navigatorInit(type: .setting, navigationController: settingNC, tabViewModel: viewModel)
+        navigatorInit(type: .histories, navigationController: historiesNC, segmentedViewModel: viewModel)
+        navigatorInit(type: .setting, navigationController: settingNC, segmentedViewModel: viewModel)
 
         topTabBarCoordinator = TopTabBarCoordinator(navigator: topTabBarNavigator,
                                                     viewModel: viewModel,
@@ -57,14 +57,14 @@ final class AppCoordinator {
 
     private func navigatorInit(type: SceneType,
                                navigationController: BaseNavigationController,
-                               tabViewModel: TopTabBarViewModel) {
+                               segmentedViewModel: SegmentedControlViewModel) {
         let coordinator: Coordinator
         switch type {
         case .histories:
-            coordinator = HistoriesCoordinator(navigator: navigationController, tabViewModel: tabViewModel)
+            coordinator = HistoriesCoordinator(navigator: navigationController, segmentedViewModel: segmentedViewModel)
 
         case .setting:
-            coordinator = SettingCoordinator(navigator: navigationController, tabViewModel: tabViewModel)
+            coordinator = SettingCoordinator(navigator: navigationController, segmentedViewModel: segmentedViewModel)
         }
         coordinator.start()
     }

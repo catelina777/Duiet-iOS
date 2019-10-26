@@ -9,11 +9,11 @@
 import UIKit
 
 final class TopDaysViewController: DaysViewController {
-    private let tabViewModel: TopTabBarViewModel
+    private let segmentedViewModel: SegmentedControlViewModel
 
     init(viewModel: DaysViewModel,
-         tabViewModel: TopTabBarViewModel) {
-        self.tabViewModel = tabViewModel
+         segmentedViewModel: SegmentedControlViewModel) {
+        self.segmentedViewModel = segmentedViewModel
         super.init(viewModel: viewModel)
     }
 
@@ -25,10 +25,10 @@ final class TopDaysViewController: DaysViewController {
         super.viewDidLoad()
 
         viewModel.output.showDetailDay
-            .bind(to: tabViewModel.input.itemDidSelect)
+            .bind(to: segmentedViewModel.input.itemDidSelect)
             .disposed(by: disposeBag)
 
-        tabViewModel.output.showDays
+        segmentedViewModel.output.showDays
             .bind(to: viewModel.input.selectedMonth)
             .disposed(by: disposeBag)
     }

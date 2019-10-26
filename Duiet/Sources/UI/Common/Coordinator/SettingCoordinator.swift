@@ -10,12 +10,12 @@ import UIKit
 
 final class SettingCoordinator: Coordinator {
     private let navigator: BaseNavigationController
-    private let tabViewModel: TopTabBarViewModel
+    private let segmentedViewModel: SegmentedControlViewModel
 
     init(navigator: BaseNavigationController,
-         tabViewModel: TopTabBarViewModel) {
+         segmentedViewModel: SegmentedControlViewModel) {
         self.navigator = navigator
-        self.tabViewModel = tabViewModel
+        self.segmentedViewModel = segmentedViewModel
     }
 
     func start() {

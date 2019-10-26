@@ -1,5 +1,5 @@
 //
-//  TopTabBarViewModel.swift
+//  SegmentedControlViewModel.swift
 //  Duiet
 //
 //  Created by Ryuhei Kaminishi on 2019/06/30.
@@ -10,7 +10,7 @@ import Foundation
 import RxRelay
 import RxSwift
 
-final class TopTabBarViewModel {
+final class SegmentedControlViewModel {
     let input: Input
     let output: Output
 
@@ -26,7 +26,7 @@ final class TopTabBarViewModel {
     }
 }
 
-extension TopTabBarViewModel {
+extension SegmentedControlViewModel {
     struct Input {
         let itemDidSelect: AnyObserver<Day>
         let showDays: AnyObserver<Month>

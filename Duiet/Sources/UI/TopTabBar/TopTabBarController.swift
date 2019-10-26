@@ -11,9 +11,9 @@ import RxSwift
 import UIKit
 
 class TopTabBarController: BaseTabBarController {
-    private let viewModel: TopTabBarViewModel
+    private let viewModel: SegmentedControlViewModel
 
-    init(viewModel: TopTabBarViewModel,
+    init(viewModel: SegmentedControlViewModel,
          navigationControllers: [UIViewController]) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)

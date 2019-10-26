@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum HistoryType: String {
+enum HistoryType: String, CaseIterable {
     case today
     case days
     case months

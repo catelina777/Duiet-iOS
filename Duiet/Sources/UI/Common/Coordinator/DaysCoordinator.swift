@@ -10,12 +10,12 @@ import UIKit
 
 final class DaysCoordinator: Coordinator {
     private let navigator: BaseNavigationController
-    private let tabViewModel: TopTabBarViewModel
+    private let segmentedViewModel: SegmentedControlViewModel
 
     init(navigator: BaseNavigationController,
-         tabViewModel: TopTabBarViewModel) {
+         segmentedViewModel: SegmentedControlViewModel) {
         self.navigator = navigator
-        self.tabViewModel = tabViewModel
+        self.segmentedViewModel = segmentedViewModel
     }
 
     func start() {
@@ -23,7 +23,7 @@ final class DaysCoordinator: Coordinator {
         let vc = TopDaysViewController(viewModel: .init(coordinator: self,
                                                         userInfoModel: UserInfoModel.shared,
                                                         daysModel: model),
-                                        tabViewModel: tabViewModel)
+                                        segmentedViewModel: segmentedViewModel)
         navigator.pushViewController(vc, animated: false)
     }
 
@@ -32,7 +32,7 @@ final class DaysCoordinator: Coordinator {
         let vc = TopDaysViewController(viewModel: .init(coordinator: self,
                                                         userInfoModel: UserInfoModel.shared,
                                                         daysModel: model),
-                                        tabViewModel: tabViewModel)
+                                        segmentedViewModel: segmentedViewModel)
         navigator.pushViewController(vc, animated: false)
     }
 }

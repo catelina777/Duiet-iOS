@@ -10,20 +10,20 @@ import UIKit
 
 final class TodayCoordinator: Coordinator {
     private let navigator: UINavigationController
-    private let tabViewModel: TopTabBarViewModel
+    private let segmentedViewModel: SegmentedControlViewModel
     private var viewController: TopTodayViewController!
 
     init(navigator: UINavigationController,
-         tabViewModel: TopTabBarViewModel) {
+         segmentedViewModel: SegmentedControlViewModel) {
         self.navigator = navigator
-        self.tabViewModel = tabViewModel
+        self.segmentedViewModel = segmentedViewModel
         let model = TodayModel(repository: DayRepository.shared)
         let vm = TodayViewModel(coordinator: self,
                                 userInfoModel: UserInfoModel.shared,
                                 todayModel: model,
                                 unitCollectionModel: UnitCollectionModel.shared)
         viewController = TopTodayViewController(viewModel: vm,
-                                                tabViewModel: tabViewModel)
+                                                segmentedViewModel: segmentedViewModel)
     }
 
     func start() {

@@ -10,22 +10,24 @@ import UIKit
 
 final class HistoriesCoordinator: Coordinator {
     private let navigator: BaseNavigationController
-    private let tabViewModel: TopTabBarViewModel
+    private let segmentedViewModel: SegmentedControlViewModel
     private var viewController: HistoriesViewController!
 
     init(navigator: BaseNavigationController,
-         tabViewModel: TopTabBarViewModel) {
+         segmentedViewModel: SegmentedControlViewModel) {
         self.navigator = navigator
-        self.tabViewModel = tabViewModel
+        self.segmentedViewModel = segmentedViewModel
         let todayNC = BaseNavigationController()
         let daysNC = BaseNavigationController()
         let monthsNC = BaseNavigationController()
 
-        navigationInit(type: .today, navigationController: todayNC, tabViewModel: tabViewModel)
-        navigationInit(type: .days, navigationController: daysNC, tabViewModel: tabViewModel)
-        navigationInit(type: .months, navigationController: monthsNC, tabViewModel: tabViewModel)
+        navigationInit(type: .today, navigationController: todayNC, segmentedViewModel: segmentedViewModel)
+        navigationInit(type: .days, navigationController: daysNC, segmentedViewModel: segmentedViewModel)
+        navigationInit(type: .months, navigationController: monthsNC, segmentedViewModel: segmentedViewModel)
         let vm = HistoriesViewModel()
-        viewController = HistoriesViewController(viewModel: vm, navigationControllers: [todayNC, daysNC, monthsNC])
+        viewController = HistoriesViewController(viewModel: vm,
+                                                 segmentedViewModel: segmentedViewModel,
+                                                 navigationControllers: [todayNC, daysNC, monthsNC])
     }
 
     func start() {
@@ -34,17 +36,17 @@ final class HistoriesCoordinator: Coordinator {
 
     private func navigationInit(type: HistoryType,
                                 navigationController: BaseNavigationController,
-                                tabViewModel: TopTabBarViewModel) {
+                                segmentedViewModel: SegmentedControlViewModel) {
         let coordinator: Coordinator
         switch type {
         case .today:
-            coordinator = TodayCoordinator(navigator: navigationController, tabViewModel: tabViewModel)
+            coordinator = TodayCoordinator(navigator: navigationController, segmentedViewModel: segmentedViewModel)
 
         case .days:
-            coordinator = DaysCoordinator(navigator: navigationController, tabViewModel: tabViewModel)
+            coordinator = DaysCoordinator(navigator: navigationController, segmentedViewModel: segmentedViewModel)
 
         case .months:
-            coordinator = MonthsCoordinator(navigator: navigationController, tabViewModel: tabViewModel)
+            coordinator = MonthsCoordinator(navigator: navigationController, segmentedViewModel: segmentedViewModel)
         }
         coordinator.start()
     }

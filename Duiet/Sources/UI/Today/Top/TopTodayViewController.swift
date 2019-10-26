@@ -9,11 +9,11 @@
 import UIKit
 
 final class TopTodayViewController: TodayViewController {
-    private let tabViewModel: TopTabBarViewModel
+    private let segmentedViewModel: SegmentedControlViewModel
 
     init(viewModel: TodayViewModelProtocol,
-         tabViewModel: TopTabBarViewModel) {
-        self.tabViewModel = tabViewModel
+         segmentedViewModel: SegmentedControlViewModel) {
+        self.segmentedViewModel = segmentedViewModel
         super.init(viewModel: viewModel)
     }
 
@@ -32,7 +32,7 @@ final class TopTodayViewController: TodayViewController {
 
 extension TopTodayViewController {
     private func bindShowDetailDay() {
-        tabViewModel.output.showDetailDay
+        segmentedViewModel.output.showDetailDay
             .bind(to: viewModel.input.showDetailDay)
             .disposed(by: disposeBag)
     }
