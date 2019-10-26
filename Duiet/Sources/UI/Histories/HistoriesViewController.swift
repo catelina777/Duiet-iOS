@@ -62,6 +62,13 @@ final class HistoriesViewController: UIViewController {
                 .forEach { $0.element.isHidden = $0.offset == index ? false : true }
         }
     }
+
+    var moveIndex: Binder<Int> {
+        Binder<Int>(self) { me, index in
+            guard index < HistoryType.allCases.count else { return }
+            me.segmentedControl.move(to: index)
+        }
+    }
 }
 
 extension HistoriesViewController {
@@ -85,6 +92,11 @@ extension HistoriesViewController {
     private func bindSegmentedControl() {
         viewModel.output.selectedIndex
             .bind(to: switchTab)
+            .disposed(by: disposeBag)
+
+        segmentedViewModel.output.showIndex
+            .bind(to: switchTab,
+                  moveIndex)
             .disposed(by: disposeBag)
     }
 }

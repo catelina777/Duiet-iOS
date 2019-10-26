@@ -25,7 +25,7 @@ final class TopMonthsViewController: MonthsViewController {
         super.viewDidLoad()
 
         viewModel.output.showSelectedMonth
-            .bind(to: segmentedViewModel.input.showDays)
+            .bind(to: segmentedViewModel.input.didSelectMonthItem)
             .disposed(by: disposeBag)
     }
 }

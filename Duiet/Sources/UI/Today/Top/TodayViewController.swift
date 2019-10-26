@@ -22,7 +22,7 @@ class TodayViewController: BaseCollectionViewController {
     }()
 
     private let editButton: UIBarButtonItem! = {
-        let button = UIBarButtonItem(barButtonSystemItem: .edit, target: nil, action: nil)
+        let button = UIBarButtonItem(image: UIImage(systemName: "ellipsis.circle.fill"), style: .plain, target: nil, action: nil)
         button.tintColor = R.color.componentMain()
         return button
     }()
@@ -35,6 +35,7 @@ class TodayViewController: BaseCollectionViewController {
 
     private let trashButton: UIBarButtonItem! = {
         let button = UIBarButtonItem(image: UIImage(systemName: "trash"), style: .plain, target: nil, action: nil)
+        button.tintColor = R.color.componentMain()
         return button
     }()
 
@@ -55,8 +56,12 @@ class TodayViewController: BaseCollectionViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         dataSource.configure(with: collectionView)
 
+        configureButtons()
         bindViewDidAppear()
         bindAddButton()
+        bindEditButton()
+        bindTrashButton()
+        bindDoneButton()
         bindRefreshThenReloadData()
     }
 
@@ -73,18 +78,30 @@ extension TodayViewController {
             .disposed(by: disposeBag)
     }
 
+    private func configureButtons() {
+        navigationItem.rightBarButtonItems = [addButton, editButton]
+    }
+
     private func bindAddButton() {
-        navigationItem.rightBarButtonItem = addButton
-        navigationItem.leftBarButtonItem = editButton
         addButton.rx.tap
             .map { self }
             .bind(to: viewModel.input.addButtonTap)
             .disposed(by: disposeBag)
+    }
 
+    private func bindEditButton() {
         editButton.rx.tap
             .bind(to: didTapEditButton)
             .disposed(by: disposeBag)
+    }
 
+    private func bindTrashButton() {
+        trashButton.rx.tap
+            .bind(to: didTapTrashButton)
+            .disposed(by: disposeBag)
+    }
+
+    private func bindDoneButton() {
         doneButton.rx.tap
             .bind(to: didTapDoneButton)
             .disposed(by: disposeBag)
@@ -92,18 +109,32 @@ extension TodayViewController {
 
     var didTapEditButton: Binder<Void> {
         Binder<Void>(self) { me, _ in
-            me.navigationItem.leftBarButtonItem = me.doneButton
+            me.navigationItem.rightBarButtonItems = [me.trashButton, me.doneButton]
 
             me.trashButton.isEnabled = false
             me.trashButton.tintColor = .systemGray
-            me.navigationItem.rightBarButtonItem = me.trashButton
         }
     }
 
     var didTapDoneButton: Binder<Void> {
         Binder<Void>(self) { me, _ in
-            me.navigationItem.leftBarButtonItem = me.editButton
-            me.navigationItem.rightBarButtonItem = me.addButton
+            me.navigationItem.rightBarButtonItems = [me.addButton, me.editButton]
+        }
+    }
+
+    var didTapTrashButton: Binder<Void> {
+        Binder<Void>(self) { me, _ in
+            let title = "This content will be deleted form your device"
+            let delete = "Delete content"
+            let cancelTitle = "Cancel"
+            let alertView = UIAlertController(title: title, message: nil, preferredStyle: .actionSheet)
+            let deleteAction = UIAlertAction(title: delete, style: .destructive) { _ in }
+
+            let cancelAction = UIAlertAction(title: cancelTitle, style: .cancel) { _ in }
+            alertView.addAction(deleteAction)
+            alertView.addAction(cancelAction)
+
+            me.present(alertView, animated: true, completion: nil)
         }
     }
 }

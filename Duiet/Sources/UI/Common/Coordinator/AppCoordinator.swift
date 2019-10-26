@@ -30,7 +30,6 @@ final class AppCoordinator {
         navigatorInit(type: .setting, navigationController: settingNC, segmentedViewModel: viewModel)
 
         topTabBarCoordinator = TopTabBarCoordinator(navigator: topTabBarNavigator,
-                                                    viewModel: viewModel,
                                                     navigationControllers: [historiesNC, settingNC])
 
         onboardingCoordinator = OnboardingCoordinator(navigator: onboardingNavigator,

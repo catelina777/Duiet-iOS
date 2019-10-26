@@ -25,7 +25,7 @@ final class TopDaysViewController: DaysViewController {
         super.viewDidLoad()
 
         viewModel.output.showDetailDay
-            .bind(to: segmentedViewModel.input.itemDidSelect)
+            .bind(to: segmentedViewModel.input.didSelectDayItem)
             .disposed(by: disposeBag)
 
         segmentedViewModel.output.showDays

@@ -55,7 +55,7 @@ final class TodayCoordinator: Coordinator {
                                 todayModel: model,
                                 unitCollectionModel: UnitCollectionModel.shared)
         let vc = TodayViewController(viewModel: vm)
-        navigator.pushViewController(vc, animated: true)
+        navigator.pushViewController(vc, animated: false)
     }
 
     func dismiss() {

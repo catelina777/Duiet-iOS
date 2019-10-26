@@ -10,12 +10,8 @@ import RxCocoa
 import RxSwift
 import UIKit
 
-class TopTabBarController: BaseTabBarController {
-    private let viewModel: SegmentedControlViewModel
-
-    init(viewModel: SegmentedControlViewModel,
-         navigationControllers: [UIViewController]) {
-        self.viewModel = viewModel
+final class TopTabBarController: BaseTabBarController {
+    init(navigationControllers: [UIViewController]) {
         super.init(nibName: nil, bundle: nil)
         viewControllers = navigationControllers
     }
@@ -26,28 +22,6 @@ class TopTabBarController: BaseTabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        viewModel.output.showDetailDay
-            .map { _ in }
-            .bind(to: showDetailDay)
-            .disposed(by: disposeBag)
-
-        viewModel.output.showDays
-            .map { _ in }
-            .bind(to: showDays)
-            .disposed(by: disposeBag)
-    }
-
-    var showDetailDay: Binder<Void> {
-        Binder(self) { me, _ in
-            me.selectedIndex = 0
-        }
-    }
-
-    var showDays: Binder<Void> {
-        Binder(self) { me, _ in
-            me.selectedIndex = 1
-        }
     }
 
     override func viewWillLayoutSubviews() {
