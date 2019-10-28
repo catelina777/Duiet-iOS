@@ -63,14 +63,23 @@ final class MealCardViewCell: BaseCollectionViewCell {
         }
     }
 
-    @IBOutlet weak var caloriesLabel: UILabel! {
+    @IBOutlet private weak var caloriesLabel: UILabel! {
         didSet {
             caloriesLabel.layer.cornerRadius = 12
             caloriesLabel.clipsToBounds = true
         }
     }
 
-    func configure(with meal: Meal) {
+    @IBOutlet private weak var checkmarkBackground: UIVisualEffectView! {
+        didSet {
+            checkmarkBackground.clipsToBounds = true
+            checkmarkBackground.layer.cornerRadius = checkmarkBackground.bounds.width / 2
+        }
+    }
+
+    @IBOutlet private weak var checkButton: UIButton!
+
+    func configure(input: TodayViewModelInput, output: TodayViewModelOutput, meal: Meal) {
         set(image: meal.imagePath)
         set(totalCalorie: meal.totalCalorie)
     }

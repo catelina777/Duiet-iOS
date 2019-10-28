@@ -10,36 +10,55 @@ import RxRelay
 import RxSwift
 import UIKit
 
-final class KeyboardTrackViewModel {
-    let input: Input
-    let output: Output
+protocol KeyboardTrackViewModelInput {
+    var inputFieldFrame: AnyObserver<CGRect> { get }
+}
+
+protocol KeyboardTrackViewModelOutput {
+    var keyboardFrame: Observable<CGRect> { get }
+    var inputFieldFrame: Observable<CGRect> { get }
+    var difference: Observable<CGFloat> { get }
+}
+
+protocol KeyboardTrackViewModelState {}
+
+protocol KeyboardTrackViewModelProtocol {
+    var input: KeyboardTrackViewModelInput { get }
+    var output: KeyboardTrackViewModelOutput { get }
+    var state: KeyboardTrackViewModelState { get }
+}
+
+final class KeyboardTrackViewModel: KeyboardTrackViewModelProtocol, KeyboardTrackViewModelState {
+    let input: KeyboardTrackViewModelInput
+    let output: KeyboardTrackViewModelOutput
+    var state: KeyboardTrackViewModelState { self }
 
     init() {
-        let _inputFieldFrame = PublishRelay<CGRect>()
-        input = Input(inputFieldFrame: _inputFieldFrame.asObserver())
+        let inputFieldFrame = PublishRelay<CGRect>()
+        input = Input(inputFieldFrame: inputFieldFrame.asObserver())
 
-        let _keyboardFrame = NotificationCenter.default.rx.notification(UIResponder.keyboardWillShowNotification)
+        let keyboardFrame = NotificationCenter.default.rx.notification(UIResponder.keyboardWillShowNotification)
             .map { ($0.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue }
             .compactMap { $0 }
             .share()
 
-        let _difference = Observable.combineLatest(_inputFieldFrame, _keyboardFrame)
-            .filter { ($0.0.maxY - $0.1.minY) > 0 }
+        let difference = Observable.combineLatest(inputFieldFrame, keyboardFrame)
             .map { $0.0.maxY - $0.1.minY }
+            .filter { $0 > 0 }
             .share()
 
-        output = Output(keyboardFrame: _keyboardFrame,
-                        inputFieldFrame: _inputFieldFrame.asObservable(),
-                        difference: _difference)
+        output = Output(keyboardFrame: keyboardFrame,
+                        inputFieldFrame: inputFieldFrame.asObservable(),
+                        difference: difference)
     }
 }
 
 extension KeyboardTrackViewModel {
-    struct Input {
+    struct Input: KeyboardTrackViewModelInput {
         let inputFieldFrame: AnyObserver<CGRect>
     }
 
-    struct Output {
+    struct Output: KeyboardTrackViewModelOutput {
         let keyboardFrame: Observable<CGRect>
         let inputFieldFrame: Observable<CGRect>
         let difference: Observable<CGFloat>

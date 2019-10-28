@@ -10,16 +10,14 @@ import RxSwift
 import UIKit
 
 final class InputNumberViewCell: InputPickerViewCell, CellFrameTrackkable {
-    func configure(with viewModel: KeyboardTrackViewModel) {
+    func configure(input: KeyboardTrackViewModelInput, output: KeyboardTrackViewModelOutput) {
         guard
             let appDelegate = UIApplication.shared.delegate,
             let optionalWindow = appDelegate.window,
             let window = optionalWindow
         else { return }
 
-        configure(for: textField,
-                  viewModel: viewModel,
-                  window: window)
+        configure(textField: textField, input: input, output: output, window: window)
     }
 
     func configure(with viewModel: FillInformationViewModelProtocol, type: FillInformationCellType) {

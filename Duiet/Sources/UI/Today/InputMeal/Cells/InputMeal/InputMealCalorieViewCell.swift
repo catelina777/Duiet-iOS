@@ -49,7 +49,7 @@ final class InputMealCalorieViewCell: BaseTableViewCell, CellFrameTrackkable {
         multipleTextField.text = nil
     }
 
-    func configure(with viewModel: KeyboardTrackViewModel) {
+    func configure(input: KeyboardTrackViewModelInput, output: KeyboardTrackViewModelOutput) {
         guard
             let appDelegate = UIApplication.shared.delegate,
             let optionalWindow = appDelegate.window,
@@ -59,30 +59,28 @@ final class InputMealCalorieViewCell: BaseTableViewCell, CellFrameTrackkable {
         [nameTextField,
          calorieTextField,
          multipleTextField].forEach {
-            configure(for: $0!,
-                      viewModel: viewModel,
-                      window: window)
+            configure(textField: $0!, input: input, output: output, window: window)
         }
     }
 
-    func configure(with viewModel: InputMealViewModelProtocol) {
+    func configureTextFIeld(input: InputMealViewModelInput, output: InputMealViewModelOutput) {
         calorieTextField.rx.text
-            .bind(to: viewModel.input.calorieTextInput)
+            .bind(to: input.calorieTextInput)
             .disposed(by: disposeBag)
 
         multipleTextField.rx.text
-            .bind(to: viewModel.input.multipleTextInput)
+            .bind(to: input.multipleTextInput)
             .disposed(by: disposeBag)
 
         nameTextField.rx.text
-            .bind(to: viewModel.input.nameTextInput)
+            .bind(to: input.nameTextInput)
             .disposed(by: disposeBag)
 
         deleteMealButton.rx.tap
-            .bind(to: viewModel.input.contentWillDelete)
+            .bind(to: input.contentWillDelete)
             .disposed(by: disposeBag)
 
-        viewModel.output.updateTextFields
+        output.updateTextFields
             .bind(to: updateTextFields)
             .disposed(by: disposeBag)
     }

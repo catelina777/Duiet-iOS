@@ -81,7 +81,7 @@ final class InputMealViewModel: InputMealViewModelProtocol, InputMealViewModelSt
             .map { $0.contents.toArray() }
             .take(1)
 
-        let selectedContent = selectedLabelViewModel.map { $0.data.contentValue }
+        let selectedContent = selectedLabelViewModel.map { $0.state.contentValue }
 
         let updateTextFields = selectedContent.compactMap { $0 }
         let reloadData = model.output.contentDidAdd

@@ -51,29 +51,33 @@ extension FillInformationViewDataSource: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.inputNumberViewCell,
                                                      for: indexPath)!
             cell.configure(with: viewModel, type: .age)
-            cell.configure(with: keyboardTrackViewModel)
+            cell.configure(input: keyboardTrackViewModel.input,
+                           output: keyboardTrackViewModel.output)
             return cell
 
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.inputNumberViewCell,
                                                      for: indexPath)!
             cell.configure(with: viewModel, type: .height)
-            cell.configure(with: keyboardTrackViewModel)
+            cell.configure(input: keyboardTrackViewModel.input,
+                           output: keyboardTrackViewModel.output)
             return cell
 
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.inputNumberViewCell,
                                                      for: indexPath)!
             cell.configure(with: viewModel, type: .weight)
-            cell.configure(with: keyboardTrackViewModel)
+            cell.configure(input: keyboardTrackViewModel.input,
+                           output: keyboardTrackViewModel.output)
             return cell
 
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.inputActivityLevelViewCell,
                                                      for: indexPath)!
             cell.configure(with: .activityLevel)
-            cell.configure(with: viewModel)
-            cell.configure(with: keyboardTrackViewModel)
+            cell.configure(input: viewModel.input)
+            cell.configure(input: keyboardTrackViewModel.input,
+                           output: keyboardTrackViewModel.output)
             return cell
 
         case 5:

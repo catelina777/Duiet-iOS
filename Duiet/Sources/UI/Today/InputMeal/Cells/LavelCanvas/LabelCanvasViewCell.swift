@@ -12,17 +12,17 @@ import RxSwift
 import UIKit
 
 final class LabelCanvasViewCell: BaseTableViewCell {
-    func configure(with viewModel: InputMealViewModelProtocol) {
+    func configure(input: InputMealViewModelInput, output: InputMealViewModelOutput) {
         // MARK: - Show labels from stored contents
-        viewModel.output.showLabelsOnce
+        output.showLabelsOnce
             .map { $0.map { $0.convert() } }
             .subscribe(onNext: { [weak self] labels in
                 guard let me = self else { return }
                 let width = me.frame.width
                 let height = me.frame.height
                 labels.forEach { label in
-                    let centerX = CGFloat(label.viewModel.contentValue.relativeX) * width
-                    let centerY = CGFloat(label.viewModel.contentValue.relativeY) * height
+                    let centerX = CGFloat(label.viewModel.state.contentValue.relativeX) * width
+                    let centerY = CGFloat(label.viewModel.state.contentValue.relativeY) * height
                     let labelWidth = width * 0.3
                     let labelHeight = labelWidth * 0.4
                     let labelFrame = CGRect(x: centerX - labelWidth / 2,
@@ -30,7 +30,7 @@ final class LabelCanvasViewCell: BaseTableViewCell {
                                             width: labelWidth,
                                             height: labelHeight)
                     label.frame = labelFrame
-                    label.configure(with: viewModel)
+                    label.configure(input: input)
                     me.addSubview(label)
                 }
             })
@@ -54,14 +54,14 @@ final class LabelCanvasViewCell: BaseTableViewCell {
                 let content = Content(relativeX: relativeX, relativeY: relativeY)
                 mealLabel.initialize(with: content)
                 mealLabel.frame = labelFrame
-                mealLabel.configure(with: viewModel)
+                mealLabel.configure(input: input)
                 me.addSubview(mealLabel)
                 return mealLabel
             }
             .compactMap { $0 }
             .subscribe(onNext: { mealLabel in
-                viewModel.input.selectedLabelViewModel.on(.next(mealLabel.viewModel))
-                viewModel.input.contentWillAdd.on(.next(mealLabel.viewModel.contentValue))
+                input.selectedLabelViewModel.on(.next(mealLabel.viewModel))
+                input.contentWillAdd.on(.next(mealLabel.viewModel.state.contentValue))
             })
             .disposed(by: disposeBag)
     }

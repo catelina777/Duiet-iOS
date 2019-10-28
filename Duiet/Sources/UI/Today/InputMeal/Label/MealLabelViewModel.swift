@@ -27,13 +27,13 @@ protocol MealLabelViewModelData {
 protocol MealLabelViewModelProtocol {
     var input: MealLabelViewModelInput { get }
     var output: MealLabelViewModelOutput { get }
-    var data: MealLabelViewModelData { get }
+    var state: MealLabelViewModelData { get }
 }
 
 final class MealLabelViewModel: MealLabelViewModelProtocol, MealLabelViewModelData {
     let input: MealLabelViewModelInput
     let output: MealLabelViewModelOutput
-    var data: MealLabelViewModelData { return self }
+    var state: MealLabelViewModelData { return self }
 
     var contentValue: Content {
         content.value

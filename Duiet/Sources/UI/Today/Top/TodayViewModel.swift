@@ -18,10 +18,12 @@ protocol TodayViewModelInput {
     var addButtonTap: AnyObserver<TodayViewController> { get }
     var selectedItem: AnyObserver<(MealCardViewCell, Meal, Int)> { get }
     var showDetailDay: AnyObserver<Day> { get }
+    var isEditMode: AnyObserver<Bool> { get }
 }
 
 protocol TodayViewModelOutput {
     var progress: Observable<(Day, UserInfo)> { get }
+    var isEditMode: Observable<Bool> { get }
 }
 
 protocol TodayViewModelState {
@@ -82,11 +84,13 @@ final class TodayViewModel: TodayViewModelProtocol, TodayViewModelState {
         let addButtonTap = PublishRelay<TodayViewController>()
         let selectedItem = PublishRelay<(MealCardViewCell, Meal, Int)>()
         let showDetailDay = PublishRelay<Day>()
+        let isEditMode = PublishRelay<Bool>()
 
         input = Input(viewDidAppear: viewDidAppear.asObserver(),
                       addButtonTap: addButtonTap.asObserver(),
                       selectedItem: selectedItem.asObserver(),
-                      showDetailDay: showDetailDay.asObserver())
+                      showDetailDay: showDetailDay.asObserver(),
+                      isEditMode: isEditMode.asObserver())
 
         let pickedImage = addButtonTap
             .flatMapLatest {
@@ -99,7 +103,8 @@ final class TodayViewModel: TodayViewModelProtocol, TodayViewModelState {
 
         /// I also added meals because I want to detect the update of meal information
         let progress = Observable.combineLatest(todayModel.output.day, userInfoModel.output.userInfo)
-        output = Output(progress: progress)
+        output = Output(progress: progress,
+                        isEditMode: isEditMode.asObservable())
 
         let mealWillAdd = pickedImage
             .compactMap { $0 }
@@ -149,9 +154,11 @@ extension TodayViewModel {
         let addButtonTap: AnyObserver<TodayViewController>
         let selectedItem: AnyObserver<(MealCardViewCell, Meal, Int)>
         let showDetailDay: AnyObserver<Day>
+        let isEditMode: AnyObserver<Bool>
     }
 
     struct Output: TodayViewModelOutput {
         let progress: Observable<(Day, UserInfo)>
+        let isEditMode: Observable<Bool>
     }
 }
