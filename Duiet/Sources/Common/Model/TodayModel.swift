@@ -23,6 +23,7 @@ protocol TodayModelState {
     var title: String { get }
     var date: Date { get }
     var add: Binder<Meal> { get }
+    var delete: Binder<[Meal]> { get }
 }
 
 protocol TodayModelProtocol {
@@ -69,8 +70,18 @@ final class TodayModel: TodayModelProtocol, TodayModelState {
     }
 
     var add: Binder<Meal> {
-        Binder(self) { me, meal in
+        Binder<Meal>(self) { me, meal in
             me.repository.add(meal: meal, to: me.day.value)
+        }
+    }
+
+    var delete: Binder<[Meal]> {
+        Binder<[Meal]>(self) { me, meals in
+            let isInvalidate = meals
+                .map { $0.isInvalidated }
+                .contains(true)
+            guard !isInvalidate else { return }
+            me.repository.delete(meals: meals, of: me.day.value)
         }
     }
 

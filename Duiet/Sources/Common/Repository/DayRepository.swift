@@ -19,6 +19,8 @@ protocol DayRepositoryProtocol {
     func update(calorie: Double, of content: Content)
     func update(multiple: Double, of content: Content)
     func delete(content: Content, of meal: Meal)
+    func delete(meal: Meal, of day: Day)
+    func delete(meals: [Meal], of day: Day)
 }
 
 final class DayRepository: DayRepositoryProtocol {
@@ -117,6 +119,27 @@ final class DayRepository: DayRepositoryProtocol {
             }
         } else {
             print("Nothing \(content)")
+        }
+    }
+
+    func delete(meal: Meal, of day: Day) {
+        if let deleteTargetIndex = day.meals.index(of: meal) {
+            try! realm.write {
+                day.meals.forEach {
+                    realm.delete($0.contents)
+                }
+                day.meals.remove(at: deleteTargetIndex)
+                realm.delete(meal)
+                day.updatedAt = Date()
+            }
+        } else {
+            print("Nothing \(meal)")
+        }
+    }
+
+    func delete(meals: [Meal], of day: Day) {
+        meals.forEach { meal in
+            delete(meal: meal, of: day)
         }
     }
 }

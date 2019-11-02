@@ -15,7 +15,8 @@ import UIKit
 
 protocol TodayViewModelInput {
     var viewDidAppear: AnyObserver<Void> { get }
-    var addButtonTap: AnyObserver<TodayViewController> { get }
+    var didTapAddButton: AnyObserver<TodayViewController> { get }
+    var didTapDeleteButton: AnyObserver<Void> { get }
     var selectedItem: AnyObserver<(MealCardViewCell, Meal, Int)> { get }
     var showDetailDay: AnyObserver<Day> { get }
     var isEditMode: AnyObserver<Bool> { get }
@@ -24,6 +25,7 @@ protocol TodayViewModelInput {
 protocol TodayViewModelOutput {
     var progress: Observable<(Day, UserInfo)> { get }
     var isEditMode: Observable<Bool> { get }
+    var isEnableTrashButton: Observable<Bool> { get }
 }
 
 protocol TodayViewModelState {
@@ -32,6 +34,7 @@ protocol TodayViewModelState {
     var meals: [Meal] { get }
     var title: String { get }
     var unitCollectionValue: UnitCollection { get }
+    var deletionTargetMeals: BehaviorRelay<[Meal]> { get }
 }
 
 protocol TodayViewModelProtocol {
@@ -66,6 +69,8 @@ final class TodayViewModel: TodayViewModelProtocol, TodayViewModelState {
         unitCollectionModel.state.unitCollectionValue
     }
 
+    let deletionTargetMeals = BehaviorRelay<[Meal]>(value: [])
+
     private let userInfoModel: UserInfoModelProtocol
     private let todayModel: TodayModelProtocol
     private let unitCollectionModel: UnitCollectionModelProtocol
@@ -81,18 +86,20 @@ final class TodayViewModel: TodayViewModelProtocol, TodayViewModelState {
         self.unitCollectionModel = unitCollectionModel
 
         let viewDidAppear = PublishRelay<Void>()
-        let addButtonTap = PublishRelay<TodayViewController>()
+        let didTapAddButton = PublishRelay<TodayViewController>()
+        let didTapDeleteButton = PublishRelay<Void>()
         let selectedItem = PublishRelay<(MealCardViewCell, Meal, Int)>()
         let showDetailDay = PublishRelay<Day>()
         let isEditMode = PublishRelay<Bool>()
 
         input = Input(viewDidAppear: viewDidAppear.asObserver(),
-                      addButtonTap: addButtonTap.asObserver(),
+                      didTapAddButton: didTapAddButton.asObserver(),
+                      didTapDeleteButton: didTapDeleteButton.asObserver(),
                       selectedItem: selectedItem.asObserver(),
                       showDetailDay: showDetailDay.asObserver(),
                       isEditMode: isEditMode.asObserver())
 
-        let pickedImage = addButtonTap
+        let pickedImage = didTapAddButton
             .flatMapLatest {
                 RxYPImagePicker.rx
                     .create($0)
@@ -103,8 +110,14 @@ final class TodayViewModel: TodayViewModelProtocol, TodayViewModelState {
 
         /// I also added meals because I want to detect the update of meal information
         let progress = Observable.combineLatest(todayModel.output.day, userInfoModel.output.userInfo)
+
+        let isEnableTrashButton = deletionTargetMeals
+            .map { $0.isEmpty }
+            .share()
+
         output = Output(progress: progress,
-                        isEditMode: isEditMode.asObservable())
+                        isEditMode: isEditMode.asObservable(),
+                        isEnableTrashButton: isEnableTrashButton)
 
         let mealWillAdd = pickedImage
             .compactMap { $0 }
@@ -123,6 +136,11 @@ final class TodayViewModel: TodayViewModelProtocol, TodayViewModelState {
             .withLatestFrom(viewDidAppear) { ($0, $1) }
             .map { ($0.0.0, $0.0.1) }
             .share()
+
+        /// Delete meals
+        didTapDeleteButton.withLatestFrom(deletionTargetMeals)
+            .bind(to: todayModel.state.delete)
+            .disposed(by: disposeBag)
 
         // MARK: - Processing to transition
         showDetail
@@ -151,7 +169,8 @@ final class TodayViewModel: TodayViewModelProtocol, TodayViewModelState {
 extension TodayViewModel {
     struct Input: TodayViewModelInput {
         let viewDidAppear: AnyObserver<Void>
-        let addButtonTap: AnyObserver<TodayViewController>
+        let didTapAddButton: AnyObserver<TodayViewController>
+        let didTapDeleteButton: AnyObserver<Void>
         let selectedItem: AnyObserver<(MealCardViewCell, Meal, Int)>
         let showDetailDay: AnyObserver<Day>
         let isEditMode: AnyObserver<Bool>
@@ -160,5 +179,6 @@ extension TodayViewModel {
     struct Output: TodayViewModelOutput {
         let progress: Observable<(Day, UserInfo)>
         let isEditMode: Observable<Bool>
+        let isEnableTrashButton: Observable<Bool>
     }
 }

@@ -85,7 +85,7 @@ extension TodayViewController {
     private func bindAddButton() {
         addButton.rx.tap
             .map { self }
-            .bind(to: viewModel.input.addButtonTap)
+            .bind(to: viewModel.input.didTapAddButton)
             .disposed(by: disposeBag)
     }
 
@@ -99,6 +99,10 @@ extension TodayViewController {
         trashButton.rx.tap
             .bind(to: didTapTrashButton)
             .disposed(by: disposeBag)
+
+        viewModel.output.isEnableTrashButton
+            .bind(to: isEnableTrashButton)
+            .disposed(by: disposeBag)
     }
 
     private func bindDoneButton() {
@@ -107,18 +111,32 @@ extension TodayViewController {
             .disposed(by: disposeBag)
     }
 
+    var isEnableTrashButton: Binder<Bool> {
+        Binder<Bool>(self) { me, isEnable in
+            if isEnable {
+                me.trashButton.isEnabled = false
+                me.trashButton.tintColor = .systemGray
+            } else {
+                me.trashButton.isEnabled = true
+                me.trashButton.tintColor = R.color.componentMain()
+            }
+        }
+    }
+
     var didTapEditButton: Binder<Void> {
         Binder<Void>(self) { me, _ in
             me.navigationItem.rightBarButtonItems = [me.trashButton, me.doneButton]
 
-            me.trashButton.isEnabled = false
-            me.trashButton.tintColor = .systemGray
+            me.viewModel.input.isEditMode.on(.next(true))
         }
     }
 
     var didTapDoneButton: Binder<Void> {
         Binder<Void>(self) { me, _ in
             me.navigationItem.rightBarButtonItems = [me.addButton, me.editButton]
+
+            me.viewModel.input.isEditMode.on(.next(false))
+            me.viewModel.state.deletionTargetMeals.accept([])
         }
     }
 
@@ -128,8 +146,11 @@ extension TodayViewController {
             let delete = "Delete content"
             let cancelTitle = "Cancel"
             let alertView = UIAlertController(title: title, message: nil, preferredStyle: .actionSheet)
-            let deleteAction = UIAlertAction(title: delete, style: .destructive) { _ in }
-
+            let deleteAction = UIAlertAction(title: delete, style: .destructive) { _ in
+                me.viewModel.input.didTapDeleteButton.on(.next(()))
+                me.viewModel.state.deletionTargetMeals.accept([])
+                me.collectionView.reloadData()
+            }
             let cancelAction = UIAlertAction(title: cancelTitle, style: .cancel) { _ in }
             alertView.addAction(deleteAction)
             alertView.addAction(cancelAction)
