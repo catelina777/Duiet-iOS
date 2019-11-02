@@ -159,6 +159,7 @@ platform :ios do
   desc 'Download build dependencies and expand it'
   lane :download_build_cache do
     Dir.chdir("#{ENV['PWD']}") do
+      puts deps_hash
       github.download_asset(deps_hash)
       system "tar xf #{build_cache_file}"
       clean_build_cache
