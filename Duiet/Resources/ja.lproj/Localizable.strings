@@ -60,6 +60,14 @@
 "veryActive description" = "高強度（週に6-7日）";
 "none description"       = "以下から選んでください";
 
+// TodayView
+"delete content action title"  = "お使いのデバイスからこのコンテンツが削除されます。";
+"delete content title"         = "コンテンツを削除";
+"delete contents action title" = "お使いのデバイスからこれらのコンテンツが削除されます。";
+"delete contents title"        = "%@個のコンテンツを削除";
+"cancel"                       = "キャンセル";
+
+
 // ProgressCardView
 "tdee"           = "総消費カロリー";
 "calorie intake" = "摂取したカロリー";

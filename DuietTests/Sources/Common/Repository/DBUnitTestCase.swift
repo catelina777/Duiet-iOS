@@ -11,7 +11,6 @@ import RealmSwift
 import XCTest
 
 class DBUnitTestCase: XCTestCase {
-
     var realm: Realm!
 
     override func setUp() {

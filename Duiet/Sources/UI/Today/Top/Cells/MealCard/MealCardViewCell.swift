@@ -6,6 +6,7 @@
 //  Copyright © 2019 duiet. All rights reserved.
 //
 
+import RxCocoa
 import RxSwift
 import UIKit
 
@@ -63,16 +64,74 @@ final class MealCardViewCell: BaseCollectionViewCell {
         }
     }
 
-    @IBOutlet weak var caloriesLabel: UILabel! {
+    @IBOutlet private weak var caloriesLabel: UILabel! {
         didSet {
             caloriesLabel.layer.cornerRadius = 12
             caloriesLabel.clipsToBounds = true
         }
     }
 
-    func configure(with meal: Meal) {
+    @IBOutlet private weak var checkmarkBackground: UIVisualEffectView! {
+        didSet {
+            checkmarkBackground.clipsToBounds = true
+            checkmarkBackground.layer.cornerRadius = checkmarkBackground.bounds.width / 2
+        }
+    }
+
+    @IBOutlet private weak var checkButton: UIButton!
+
+    var isChecked: Bool = false {
+        willSet {
+            if newValue {
+                checkButton.setBackgroundImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
+                checkButton.tintColor = .systemRed
+            } else {
+                checkButton.setBackgroundImage(UIImage(systemName: "checkmark.circle"), for: .normal)
+                checkButton.tintColor = R.color.componentMain()
+            }
+        }
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        isChecked = false
+    }
+
+    func configure(input: TodayViewModelInput, output: TodayViewModelOutput, state: TodayViewModelState, meal: Meal) {
+        bindCheckButton(input: input, output: output, state: state, meal: meal)
         set(image: meal.imagePath)
         set(totalCalorie: meal.totalCalorie)
+    }
+
+    private func bindCheckButton(input: TodayViewModelInput, output: TodayViewModelOutput, state: TodayViewModelState, meal: Meal) {
+        let isEditing =  checkButton.rx.tap
+            .map { true }
+            .share()
+
+        isEditing
+            .bind(to: input.isEditMode)
+            .disposed(by: disposeBag)
+
+        output.isEditMode
+            .map { !$0 }
+            .bind(to: checkmarkBackground.rx.isHidden)
+            .disposed(by: disposeBag)
+
+        checkButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                guard let me = self else { return }
+                if me.isChecked {
+                    // MARK: The amount of computation here is O (N)
+                    let newMeals = state.deletionTargetMeals.value.filter { $0 != meal }
+                    state.deletionTargetMeals.accept(newMeals)
+                    me.isChecked.toggle()
+                } else {
+                    let newMeals = state.deletionTargetMeals.value + [meal]
+                    state.deletionTargetMeals.accept(newMeals)
+                    me.isChecked.toggle()
+                }
+            })
+            .disposed(by: disposeBag)
     }
 
     private func set(image path: String) {

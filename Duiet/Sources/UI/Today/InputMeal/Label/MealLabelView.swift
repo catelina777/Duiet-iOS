@@ -23,26 +23,26 @@ final class MealLabelView: UIView {
         }
     }
 
-    var viewModel: MealLabelViewModel!
+    var viewModel: MealLabelViewModelProtocol!
     private let disposeBag = DisposeBag()
 
-    func configure(with viewModel: InputMealViewModelProtocol) {
+    func configure(input: InputMealViewModelInput) {
         // MARK: - Send ViewModel of selected MealLabel
         rx.tapGesture()
             .when(.recognized)
             .subscribe(onNext: { [weak self] _ in
                 guard let me = self else { return }
-                viewModel.input.selectedLabelViewModel.on(.next(me.viewModel))
+                input.selectedLabelViewModel.on(.next(me.viewModel))
             })
             .disposed(by: disposeBag)
 
         // MARK: - Update text and notify new content
-        self.viewModel.output.contentDidUpdate
+        viewModel.output.contentDidUpdate
             .bind(to: updateLabelText)
             .disposed(by: disposeBag)
 
         // MARK: - Hide myself when content is deleted
-        self.viewModel.output.hideView
+        viewModel.output.hideView
             .bind(to: hideMealLabel)
             .disposed(by: disposeBag)
     }
@@ -52,7 +52,7 @@ final class MealLabelView: UIView {
         let calorie = UnitBabel.shared.convert(value: content.calorie,
                                                from: .kilocalories,
                                                to: UnitCollectionModel.shared.state.unitCollectionValue.energyUnit)
-        let multiple = viewModel.contentValue.multiple
+        let multiple = viewModel.state.contentValue.multiple
         self.mealLabel.text = "\(Int(calorie * (multiple == 0 ? 1 : multiple)))"
     }
 

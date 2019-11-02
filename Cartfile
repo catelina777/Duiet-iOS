@@ -3,3 +3,4 @@ github "RxSwiftCommunity/RxGesture" ~> 3.0
 github "RxSwiftCommunity/RxRealm"
 github "realm/realm-cocoa"
 github "catelina777/YPImagePicker"
+github "catelina777/FloatingSegmentedControl"

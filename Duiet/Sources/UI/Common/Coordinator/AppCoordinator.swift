@@ -11,39 +11,34 @@ import UIKit
 final class AppCoordinator {
     private let window: UIWindow
 
-    private var walkthroughCoordinator: OnboardingCoordinator!
-    private let walkthroughNavigator: BaseNavigationController
+    private var onboardingCoordinator: OnboardingCoordinator!
+    private let onboardingNavigator: BaseNavigationController
     private var topTabBarCoordinator: TopTabBarCoordinator!
     private let topTabBarNavigator: BaseNavigationController
 
     init(window: UIWindow) {
         self.window = window
         topTabBarNavigator = BaseNavigationController()
-        walkthroughNavigator = BaseNavigationController()
+        onboardingNavigator = BaseNavigationController()
 
-        let dayNC = get(type: .today)
-        let monthNC = get(type: .days)
-        let yearNC = get(type: .months)
+        let historiesNC = get(type: .histories)
         let settingNC = get(type: .setting)
 
-        let viewModel = TopTabBarViewModel()
+        let viewModel = SegmentedControlViewModel()
 
-        navigatorInit(type: .today, navigationController: dayNC, tabViewModel: viewModel)
-        navigatorInit(type: .days, navigationController: monthNC, tabViewModel: viewModel)
-        navigatorInit(type: .months, navigationController: yearNC, tabViewModel: viewModel)
-        navigatorInit(type: .setting, navigationController: settingNC, tabViewModel: viewModel)
+        navigatorInit(type: .histories, navigationController: historiesNC, segmentedViewModel: viewModel)
+        navigatorInit(type: .setting, navigationController: settingNC, segmentedViewModel: viewModel)
 
         topTabBarCoordinator = TopTabBarCoordinator(navigator: topTabBarNavigator,
-                                                    viewModel: viewModel,
-                                                    navigationControllers: [dayNC, monthNC, yearNC, settingNC])
+                                                    navigationControllers: [historiesNC, settingNC])
 
-        walkthroughCoordinator = OnboardingCoordinator(navigator: walkthroughNavigator,
-                                                        topTabBarCoordinator: topTabBarCoordinator)
+        onboardingCoordinator = OnboardingCoordinator(navigator: onboardingNavigator,
+                                                      topTabBarCoordinator: topTabBarCoordinator)
     }
 
     func initialStart() {
-        window.rootViewController = walkthroughNavigator
-        walkthroughCoordinator.start()
+        window.rootViewController = onboardingNavigator
+        onboardingCoordinator.start()
         window.makeKeyAndVisible()
     }
 
@@ -61,20 +56,14 @@ final class AppCoordinator {
 
     private func navigatorInit(type: SceneType,
                                navigationController: BaseNavigationController,
-                               tabViewModel: TopTabBarViewModel) {
+                               segmentedViewModel: SegmentedControlViewModel) {
         let coordinator: Coordinator
         switch type {
-        case .today:
-            coordinator = TodayCoordinator(navigator: navigationController, tabViewModel: tabViewModel)
-
-        case .days:
-            coordinator = DaysCoordinator(navigator: navigationController, tabViewModel: tabViewModel)
-
-        case .months:
-            coordinator = MonthsCoordinator(navigator: navigationController, tabViewModel: tabViewModel)
+        case .histories:
+            coordinator = HistoriesCoordinator(navigator: navigationController, segmentedViewModel: segmentedViewModel)
 
         case .setting:
-            coordinator = SettingCoordinator(navigator: navigationController, tabViewModel: tabViewModel)
+            coordinator = SettingCoordinator(navigator: navigationController, segmentedViewModel: segmentedViewModel)
         }
         coordinator.start()
     }

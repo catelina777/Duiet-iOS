@@ -10,18 +10,18 @@ import UIKit
 
 final class MonthsCoordinator: Coordinator {
     private let navigator: BaseNavigationController
-    private let tabViewModel: TopTabBarViewModel
+    private let segmentedViewModel: SegmentedControlViewModel
 
     init(navigator: BaseNavigationController,
-         tabViewModel: TopTabBarViewModel) {
+         segmentedViewModel: SegmentedControlViewModel) {
         self.navigator = navigator
-        self.tabViewModel = tabViewModel
+        self.segmentedViewModel = segmentedViewModel
     }
 
     func start() {
         let model = MonthsModel(repository: MonthsRepository.shared)
         let vc = TopMonthsViewController(viewModel: .init(coordinator: self, monthsModel: model),
-                                         tabViewModel: tabViewModel)
+                                         segmentedViewModel: segmentedViewModel)
         navigator.pushViewController(vc, animated: false)
     }
 }

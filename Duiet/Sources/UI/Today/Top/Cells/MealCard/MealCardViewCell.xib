@@ -40,6 +40,31 @@
                                         <fontDescription key="fontDescription" name="Montserrat-ExtraBold" family="Montserrat" pointSize="28"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <visualEffectView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="80N-Tq-Dju">
+                                        <rect key="frame" x="278" y="16" width="48" height="48"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Z0i-aT-QlT">
+                                            <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SMf-tt-pGX">
+                                                    <rect key="frame" x="0.0" y="0.5" width="48" height="47"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                    <state key="normal" backgroundImage="checkmark.circle" catalog="system"/>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="SMf-tt-pGX" secondAttribute="bottom" id="Q3b-nQ-t3q"/>
+                                                <constraint firstAttribute="trailing" secondItem="SMf-tt-pGX" secondAttribute="trailing" id="o5B-u8-7MT"/>
+                                                <constraint firstItem="SMf-tt-pGX" firstAttribute="top" secondItem="Z0i-aT-QlT" secondAttribute="top" id="oIY-s4-u95"/>
+                                                <constraint firstItem="SMf-tt-pGX" firstAttribute="leading" secondItem="Z0i-aT-QlT" secondAttribute="leading" id="vHe-nh-QPV"/>
+                                            </constraints>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="48" id="gzd-nT-Fkr"/>
+                                            <constraint firstAttribute="width" secondItem="80N-Tq-Dju" secondAttribute="height" multiplier="1:1" id="npd-uO-JMe"/>
+                                        </constraints>
+                                        <blurEffect style="regular"/>
+                                    </visualEffectView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -50,6 +75,8 @@
                                     <constraint firstItem="4F6-x7-8Ho" firstAttribute="top" secondItem="zKH-mN-EUf" secondAttribute="top" id="hGw-Px-ZQp"/>
                                     <constraint firstAttribute="bottom" secondItem="Q7y-xA-2z7" secondAttribute="bottom" constant="8" id="kwg-4C-3oR"/>
                                     <constraint firstItem="Q7y-xA-2z7" firstAttribute="centerX" secondItem="zKH-mN-EUf" secondAttribute="centerX" id="qBR-hN-BaK"/>
+                                    <constraint firstItem="80N-Tq-Dju" firstAttribute="top" secondItem="zKH-mN-EUf" secondAttribute="top" constant="16" id="tjd-aW-GIL"/>
+                                    <constraint firstAttribute="trailing" secondItem="80N-Tq-Dju" secondAttribute="trailing" constant="16" id="xXK-Ke-oCL"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -77,12 +104,15 @@
             <size key="customSize" width="380" height="370"/>
             <connections>
                 <outlet property="caloriesLabel" destination="Q7y-xA-2z7" id="7Q7-aj-2sl"/>
+                <outlet property="checkButton" destination="SMf-tt-pGX" id="xI9-OJ-7Z6"/>
+                <outlet property="checkmarkBackground" destination="80N-Tq-Dju" id="JFA-O4-yhU"/>
                 <outlet property="imageView" destination="4F6-x7-8Ho" id="0fe-2p-xgF"/>
             </connections>
             <point key="canvasLocation" x="-243.47826086956525" y="169.41964285714286"/>
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="checkmark.circle" catalog="system" width="64" height="60"/>
         <image name="placeholder" width="2700" height="2700"/>
         <namedColor name="cellBackground">
             <color red="0.10999999940395355" green="0.10999999940395355" blue="0.11800000071525574" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

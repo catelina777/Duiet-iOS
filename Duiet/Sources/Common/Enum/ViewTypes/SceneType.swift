@@ -9,21 +9,13 @@
 import UIKit
 
 enum SceneType: String {
-    case today
-    case days
-    case months
+    case histories
     case setting
 
     var tabBarItem: UITabBarItem {
         switch self {
-        case .today:
+        case .histories:
             return UITabBarItem(title: title, image: UIImage(systemName: "calendar"), selectedImage: nil)
-
-        case .days:
-            return UITabBarItem(title: title, image: UIImage(systemName: "square.split.1x2.fill"), selectedImage: nil)
-
-        case .months:
-            return UITabBarItem(title: title, image: UIImage(systemName: "square.split.2x2.fill"), selectedImage: nil)
 
         case .setting:
             return UITabBarItem(title: title, image: UIImage(systemName: "gear"), selectedImage: nil)
@@ -32,14 +24,8 @@ enum SceneType: String {
 
     var title: String {
         switch self {
-        case .today:
-            return R.string.localizable.today()
-
-        case .days:
-            return R.string.localizable.days()
-
-        case .months:
-            return R.string.localizable.months()
+        case .histories:
+            return "Histories"
 
         case .setting:
             return R.string.localizable.setting()

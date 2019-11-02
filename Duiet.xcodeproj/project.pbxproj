@@ -84,7 +84,7 @@
 		4022F2DA22F47B0D006F5D49 /* UserInfoRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4022F2D922F47B0D006F5D49 /* UserInfoRepositoryTests.swift */; };
 		402D9BFC22E214FA003676C3 /* SettingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402D9BFB22E214FA003676C3 /* SettingType.swift */; };
 		402FBE9F22C8D019000BBFA3 /* TopTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402FBE9E22C8D019000BBFA3 /* TopTabBarController.swift */; };
-		402FBEA222C8E63D000BBFA3 /* TopTabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402FBEA122C8E63D000BBFA3 /* TopTabBarViewModel.swift */; };
+		402FBEA222C8E63D000BBFA3 /* SegmentedControlViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402FBEA122C8E63D000BBFA3 /* SegmentedControlViewModel.swift */; };
 		403E952E22CE3D7800EFF459 /* TopTodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403E952D22CE3D7800EFF459 /* TopTodayViewController.swift */; };
 		403E953022CE3EAA00EFF459 /* TopDaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403E952F22CE3EAA00EFF459 /* TopDaysViewController.swift */; };
 		403E953222CE40CC00EFF459 /* TopMonthsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403E953122CE40CC00EFF459 /* TopMonthsViewController.swift */; };
@@ -100,6 +100,8 @@
 		403E954C22CFA78900EFF459 /* WalkthroughViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403E954B22CFA78900EFF459 /* WalkthroughViewModel.swift */; };
 		405147C82291498100C9AF8C /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405147C72291498100C9AF8C /* Meal.swift */; };
 		405147CA2291498800C9AF8C /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405147C92291498800C9AF8C /* Content.swift */; };
+		4054D0C9235EDB0500BA4064 /* HistoriesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4054D0C8235EDB0500BA4064 /* HistoriesCoordinator.swift */; };
+		4054D0CD2363387900BA4064 /* HistoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4054D0CC2363387900BA4064 /* HistoryType.swift */; };
 		405A9F5022ACFB1300454412 /* MonthsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405A9F4F22ACFB1300454412 /* MonthsViewModel.swift */; };
 		405A9F5222ACFB2E00454412 /* MonthsViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405A9F5122ACFB2E00454412 /* MonthsViewDataSource.swift */; };
 		405A9F5522AD006100454412 /* MonthSummaryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405A9F5422AD006100454412 /* MonthSummaryViewCell.swift */; };
@@ -155,6 +157,10 @@
 		40EADBF2231AACFD00D6E9E1 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EADBF1231AACFD00D6E9E1 /* UserDefaultsKey.swift */; };
 		40EADBF623234A3500D6E9E1 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EADBF523234A3500D6E9E1 /* BaseViewController.swift */; };
 		40EADBFA2323512500D6E9E1 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EADBF92323512500D6E9E1 /* BaseNavigationController.swift */; };
+		40FB69A7235DF923003565F4 /* FloatingSegmentedControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40FB69A6235DF923003565F4 /* FloatingSegmentedControl.framework */; };
+		40FB69AC235E0060003565F4 /* HistoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FB69AB235E0060003565F4 /* HistoriesViewController.swift */; };
+		40FB69AE235E00B7003565F4 /* HistoriesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40FB69AD235E00B7003565F4 /* HistoriesViewController.xib */; };
+		40FB69B0235E010C003565F4 /* HistoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FB69AF235E010C003565F4 /* HistoriesViewModel.swift */; };
 		5E17F981228BE4980046F68D /* RoundedTextFieldViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E17F980228BE4980046F68D /* RoundedTextFieldViewCell.swift */; };
 		5E35CF8622D7280E00C9CFC3 /* InputMealViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E35CF8522D7280E00C9CFC3 /* InputMealViewModel.swift */; };
 		5E35CF8822D728AE00C9CFC3 /* InputMealModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E35CF8722D728AE00C9CFC3 /* InputMealModel.swift */; };
@@ -284,7 +290,7 @@
 		4022F2D922F47B0D006F5D49 /* UserInfoRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoRepositoryTests.swift; sourceTree = "<group>"; };
 		402D9BFB22E214FA003676C3 /* SettingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingType.swift; sourceTree = "<group>"; };
 		402FBE9E22C8D019000BBFA3 /* TopTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTabBarController.swift; sourceTree = "<group>"; };
-		402FBEA122C8E63D000BBFA3 /* TopTabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTabBarViewModel.swift; sourceTree = "<group>"; };
+		402FBEA122C8E63D000BBFA3 /* SegmentedControlViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlViewModel.swift; sourceTree = "<group>"; };
 		403E952D22CE3D7800EFF459 /* TopTodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTodayViewController.swift; sourceTree = "<group>"; };
 		403E952F22CE3EAA00EFF459 /* TopDaysViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopDaysViewController.swift; sourceTree = "<group>"; };
 		403E953122CE40CC00EFF459 /* TopMonthsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopMonthsViewController.swift; sourceTree = "<group>"; };
@@ -300,6 +306,8 @@
 		403E954B22CFA78900EFF459 /* WalkthroughViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughViewModel.swift; sourceTree = "<group>"; };
 		405147C72291498100C9AF8C /* Meal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		405147C92291498800C9AF8C /* Content.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
+		4054D0C8235EDB0500BA4064 /* HistoriesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoriesCoordinator.swift; sourceTree = "<group>"; };
+		4054D0CC2363387900BA4064 /* HistoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryType.swift; sourceTree = "<group>"; };
 		405A9F4F22ACFB1300454412 /* MonthsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthsViewModel.swift; sourceTree = "<group>"; };
 		405A9F5122ACFB2E00454412 /* MonthsViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthsViewDataSource.swift; sourceTree = "<group>"; };
 		405A9F5422AD006100454412 /* MonthSummaryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthSummaryViewCell.swift; sourceTree = "<group>"; };
@@ -359,6 +367,10 @@
 		40EADBF1231AACFD00D6E9E1 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 		40EADBF523234A3500D6E9E1 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		40EADBF92323512500D6E9E1 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
+		40FB69A6235DF923003565F4 /* FloatingSegmentedControl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FloatingSegmentedControl.framework; path = Carthage/Build/iOS/FloatingSegmentedControl.framework; sourceTree = "<group>"; };
+		40FB69AB235E0060003565F4 /* HistoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoriesViewController.swift; sourceTree = "<group>"; };
+		40FB69AD235E00B7003565F4 /* HistoriesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoriesViewController.xib; sourceTree = "<group>"; };
+		40FB69AF235E010C003565F4 /* HistoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoriesViewModel.swift; sourceTree = "<group>"; };
 		5E17F980228BE4980046F68D /* RoundedTextFieldViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedTextFieldViewCell.swift; sourceTree = "<group>"; };
 		5E35CF8522D7280E00C9CFC3 /* InputMealViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputMealViewModel.swift; sourceTree = "<group>"; };
 		5E35CF8722D728AE00C9CFC3 /* InputMealModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputMealModel.swift; sourceTree = "<group>"; };
@@ -404,6 +416,7 @@
 				401D54BF23012C7B0089E2F7 /* RxRelay.framework in Frameworks */,
 				3D663033B554173C7AFF58FC /* Pods_Duiet.framework in Frameworks */,
 				40A7383723365BCA00A3E605 /* YPImagePicker.framework in Frameworks */,
+				40FB69A7235DF923003565F4 /* FloatingSegmentedControl.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -610,8 +623,9 @@
 			isa = PBXGroup;
 			children = (
 				0641AD602264ADC100CEDAE7 /* Common */,
-				402FBEA022C8D23D000BBFA3 /* TabBar */,
 				06516ABB2272D5520092DE3B /* Onboarding */,
+				402FBEA022C8D23D000BBFA3 /* TopTabBar */,
+				40FB69AA235DFD7C003565F4 /* Histories */,
 				069AD424227720700075E711 /* Today */,
 				40B2141E22B635DF0040EA9E /* Days */,
 				4001F6FE22ABB3A40009CDA1 /* Months */,
@@ -690,13 +704,11 @@
 		06B2FCF0227221980078C7F1 /* Enum */ = {
 			isa = PBXGroup;
 			children = (
+				4010E8432363ECB4008DD2A4 /* ViewTypes */,
 				408A4E832354672E004D2FFE /* UnitTypes */,
 				0622EA36226A29D600E87F22 /* ActivityLevelType.swift */,
 				0630D49A227495EB00224EC9 /* FillInformationCellType.swift */,
-				4001F70822ABD98A0009CDA1 /* PageType.swift */,
 				405A9F6022AE91C700454412 /* ProgressType.swift */,
-				4001F6F922ABA3720009CDA1 /* SceneType.swift */,
-				402D9BFB22E214FA003676C3 /* SettingType.swift */,
 				40B2141422B4D5B00040EA9E /* WeekType.swift */,
 				40EADBF1231AACFD00D6E9E1 /* UserDefaultsKey.swift */,
 				408A4EA02357527E004D2FFE /* SelectUnitCellType.swift */,
@@ -806,6 +818,17 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		4010E8432363ECB4008DD2A4 /* ViewTypes */ = {
+			isa = PBXGroup;
+			children = (
+				4001F70822ABD98A0009CDA1 /* PageType.swift */,
+				4001F6F922ABA3720009CDA1 /* SceneType.swift */,
+				4054D0CC2363387900BA4064 /* HistoryType.swift */,
+				402D9BFB22E214FA003676C3 /* SettingType.swift */,
+			);
+			path = ViewTypes;
+			sourceTree = "<group>";
+		};
 		401161142301728B00D522CC /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -877,13 +900,13 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		402FBEA022C8D23D000BBFA3 /* TabBar */ = {
+		402FBEA022C8D23D000BBFA3 /* TopTabBar */ = {
 			isa = PBXGroup;
 			children = (
 				402FBE9E22C8D019000BBFA3 /* TopTabBarController.swift */,
-				402FBEA122C8E63D000BBFA3 /* TopTabBarViewModel.swift */,
+				402FBEA122C8E63D000BBFA3 /* SegmentedControlViewModel.swift */,
 			);
-			path = TabBar;
+			path = TopTabBar;
 			sourceTree = "<group>";
 		};
 		403E953322CF745E00EFF459 /* Repository */ = {
@@ -905,6 +928,7 @@
 				403E953B22CF93AA00EFF459 /* AppCoordinator.swift */,
 				403E954122CF94C500EFF459 /* OnboardingCoordinator.swift */,
 				403E954922CF9C9B00EFF459 /* TopTabBarCoordinator.swift */,
+				4054D0C8235EDB0500BA4064 /* HistoriesCoordinator.swift */,
 				403E954322CF94CF00EFF459 /* TodayCoordinator.swift */,
 				5E83E9FB22E1665800B8F584 /* DaysCoordinator.swift */,
 				403E953D22CF93FE00EFF459 /* MonthsCoordinator.swift */,
@@ -1055,9 +1079,20 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		40FB69AA235DFD7C003565F4 /* Histories */ = {
+			isa = PBXGroup;
+			children = (
+				40FB69AB235E0060003565F4 /* HistoriesViewController.swift */,
+				40FB69AF235E010C003565F4 /* HistoriesViewModel.swift */,
+				40FB69AD235E00B7003565F4 /* HistoriesViewController.xib */,
+			);
+			path = Histories;
+			sourceTree = "<group>";
+		};
 		4B312EFBEE0174A408F8814E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				40FB69A6235DF923003565F4 /* FloatingSegmentedControl.framework */,
 				40A7383623365BCA00A3E605 /* Stevia.framework */,
 				40A7383523365BCA00A3E605 /* YPImagePicker.framework */,
 				40A7383123365BB400A3E605 /* PryntTrimmerView.framework */,
@@ -1283,6 +1318,7 @@
 				40D97C9222ED52A10069B5F2 /* Colors.xcassets in Resources */,
 				06B2FD04227222600078C7F1 /* InputActivityLevelViewCell.xib in Resources */,
 				40B2142222B636000040EA9E /* DaysViewController.xib in Resources */,
+				40FB69AE235E00B7003565F4 /* HistoriesViewController.xib in Resources */,
 				405E3A1F229929E900ECEA9E /* EmptyContentViewCell.xib in Resources */,
 				4001F71122ABF0EB0009CDA1 /* MonthsViewController.xib in Resources */,
 				069AD4392277246A0075E711 /* MealCardViewCell.xib in Resources */,
@@ -1533,6 +1569,7 @@
 				5E9EE7D122C4980E00AF5D82 /* Month.swift in Sources */,
 				408A4E8B235467DB004D2FFE /* UnitType.swift in Sources */,
 				403E953522CF747E00EFF459 /* DaysRepository.swift in Sources */,
+				4054D0CD2363387900BA4064 /* HistoryType.swift in Sources */,
 				40B2141322B4A1FE0040EA9E /* RoundedWrapperView.swift in Sources */,
 				40D8999722FE750400B6DA6D /* RoundedCollectionViewCell.swift in Sources */,
 				063FCBC0227D8164007C191F /* InputMealDataSource.swift in Sources */,
@@ -1560,6 +1597,7 @@
 				06932AC822801AEB00CFA05C /* MealLabelView.swift in Sources */,
 				06B2FD05227222600078C7F1 /* InputActivityLevelViewCell.swift in Sources */,
 				5E92570E228D3E2D0076CCEE /* KeyboardTrackViewModel.swift in Sources */,
+				40FB69B0235E010C003565F4 /* HistoriesViewModel.swift in Sources */,
 				405D24B822F5CC15009FC5C2 /* UnitTestAppDelegate.swift in Sources */,
 				0622EA04226A1DFC00E87F22 /* FillInformationViewDataSource.swift in Sources */,
 				40EADBF2231AACFD00D6E9E1 /* UserDefaultsKey.swift in Sources */,
@@ -1573,7 +1611,7 @@
 				408A4E9123547B62004D2FFE /* UnitCollectionModel.swift in Sources */,
 				060A7982227C967100F02B30 /* RxYPImagePicker.swift in Sources */,
 				403E953E22CF93FE00EFF459 /* MonthsCoordinator.swift in Sources */,
-				402FBEA222C8E63D000BBFA3 /* TopTabBarViewModel.swift in Sources */,
+				402FBEA222C8E63D000BBFA3 /* SegmentedControlViewModel.swift in Sources */,
 				4005BDDA22D8EE8B001A7C9D /* UserInfoRepository.swift in Sources */,
 				408A4E9B23573DFF004D2FFE /* SelectUnitViewDataSource.swift in Sources */,
 				405147CA2291498800C9AF8C /* Content.swift in Sources */,
@@ -1583,10 +1621,12 @@
 				40B2142022B635F80040EA9E /* DaysViewController.swift in Sources */,
 				0622EA27226A20CE00E87F22 /* BaseTableViewCell.swift in Sources */,
 				40B2141B22B55D640040EA9E /* DayViewCell.swift in Sources */,
+				40FB69AC235E0060003565F4 /* HistoriesViewController.swift in Sources */,
 				5E83E9F822E1628E00B8F584 /* TodayModel.swift in Sources */,
 				405A9F5222ACFB2E00454412 /* MonthsViewDataSource.swift in Sources */,
 				4097C2CB2359F74100DC0686 /* ValidatableRoundedButton.swift in Sources */,
 				403E954A22CF9C9B00EFF459 /* TopTabBarCoordinator.swift in Sources */,
+				4054D0C9235EDB0500BA4064 /* HistoriesCoordinator.swift in Sources */,
 				5E83E9FC22E1665800B8F584 /* DaysCoordinator.swift in Sources */,
 				408A4E8523546753004D2FFE /* HeightUnitType.swift in Sources */,
 				405A9F5522AD006100454412 /* MonthSummaryViewCell.swift in Sources */,

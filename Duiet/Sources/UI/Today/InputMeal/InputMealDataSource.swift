@@ -43,7 +43,8 @@ extension InputMealDataSource: UITableViewDataSource {
             // MARK: Place an empty cell on the back of the header to avoid problems with tableview scrolling
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.labelCanvasViewCell,
                                                      for: indexPath)!
-            cell.configure(with: viewModel)
+            cell.configure(input: viewModel.input,
+                           output: viewModel.output)
             cell.configure(with: viewModel.state.foodImage)
             return cell
 
@@ -57,8 +58,8 @@ extension InputMealDataSource: UITableViewDataSource {
 
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.inputMealCalorieViewCell,
                                                      for: indexPath)!
-            cell.configure(with: keyboardTrackViewModel)
-            cell.configure(with: viewModel)
+            cell.configure(input: keyboardTrackViewModel.input, output: keyboardTrackViewModel.output)
+            cell.configureTextFIeld(input: viewModel.input, output: viewModel.output)
             return cell
         }
     }
