@@ -68,6 +68,13 @@
 "up"             = "UP";
 "down"           = "DOWN";
 
+// TodayView
+"delete content action title"  = "This content will be deleted from your device.";
+"delete content title"         = "Delete Content";
+"delete contents action title" = "These contents will be deleted from your device.";
+"delete contents title"        = "Delete %@ Contents";
+"cancel"                       = "Cancel";
+
 // SettingView
 "edit user information" = "Edit user information";
 "reselect units"        = "Reselect units";

@@ -142,9 +142,17 @@ extension TodayViewController {
 
     var didTapTrashButton: Binder<Void> {
         Binder<Void>(self) { me, _ in
-            let title = "This content will be deleted form your device"
-            let delete = "Delete content"
-            let cancelTitle = "Cancel"
+            let count = me.viewModel.state.deletionTargetMeals.value.count
+
+            let title = count == 1 ?
+                R.string.localizable.deleteContentActionTitle() :
+                R.string.localizable.deleteContentsActionTitle()
+
+            let delete = count == 1 ?
+                R.string.localizable.deleteContentTitle() :
+                R.string.localizable.deleteContentsTitle("\(count)")
+
+            let cancelTitle = R.string.localizable.cancel()
             let alertView = UIAlertController(title: title, message: nil, preferredStyle: .actionSheet)
             let deleteAction = UIAlertAction(title: delete, style: .destructive) { _ in
                 me.viewModel.input.didTapDeleteButton.on(.next(()))
