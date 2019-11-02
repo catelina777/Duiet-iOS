@@ -12,6 +12,7 @@ import RxSwift
 import UIKit
 
 final class LabelCanvasViewCell: BaseTableViewCell {
+    // TODO: This code is terrible and should be refactored
     func configure(input: InputMealViewModelInput, output: InputMealViewModelOutput) {
         // MARK: - Show labels from stored contents
         output.showLabelsOnce
@@ -62,6 +63,7 @@ final class LabelCanvasViewCell: BaseTableViewCell {
             .subscribe(onNext: { mealLabel in
                 input.selectedLabelViewModel.on(.next(mealLabel.viewModel))
                 input.contentWillAdd.on(.next(mealLabel.viewModel.state.contentValue))
+                Haptic.impact(.medium).generate()
             })
             .disposed(by: disposeBag)
     }

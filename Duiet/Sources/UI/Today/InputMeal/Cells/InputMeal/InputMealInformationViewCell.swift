@@ -1,5 +1,5 @@
 //
-//  InputMealCalorieViewCell.swift
+//  InputMealInformationViewCell.swift
 //  Duiet
 //
 //  Created by Ryuhei Kaminishi on 2019/05/06.
@@ -11,7 +11,7 @@ import RxGesture
 import RxSwift
 import UIKit
 
-final class InputMealCalorieViewCell: BaseTableViewCell, CellFrameTrackkable {
+final class InputMealInformationViewCell: BaseTableViewCell, CellFrameTrackkable {
     @IBOutlet weak var calorieTitleLabel: UILabel! {
         didSet { calorieTitleLabel.text = R.string.localizable.energy() }
     }
@@ -77,7 +77,10 @@ final class InputMealCalorieViewCell: BaseTableViewCell, CellFrameTrackkable {
             .disposed(by: disposeBag)
 
         deleteMealButton.rx.tap
-            .bind(to: input.contentWillDelete)
+            .subscribe(onNext: {
+                input.contentWillDelete.on(.next(()))
+                Haptic.notification(.success).generate()
+            })
             .disposed(by: disposeBag)
 
         output.updateTextFields

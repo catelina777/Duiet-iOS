@@ -33,6 +33,7 @@ final class MealLabelView: UIView {
             .subscribe(onNext: { [weak self] _ in
                 guard let me = self else { return }
                 input.selectedLabelViewModel.on(.next(me.viewModel))
+                Haptic.impact(.light).generate()
             })
             .disposed(by: disposeBag)
 
