@@ -24,7 +24,7 @@ final class InputMealDataSource: NSObject {
         tableView.keyboardDismissMode = .onDrag
         tableView.register(R.nib.emptyContentViewCell)
         tableView.register(R.nib.labelCanvasViewCell)
-        tableView.register(R.nib.inputMealCalorieViewCell)
+        tableView.register(R.nib.inputMealInformationViewCell)
     }
 
     deinit {
@@ -56,7 +56,7 @@ extension InputMealDataSource: UITableViewDataSource {
                 return cell
             }
 
-            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.inputMealCalorieViewCell,
+            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.inputMealInformationViewCell,
                                                      for: indexPath)!
             cell.configure(input: keyboardTrackViewModel.input, output: keyboardTrackViewModel.output)
             cell.configureTextFIeld(input: viewModel.input, output: viewModel.output)

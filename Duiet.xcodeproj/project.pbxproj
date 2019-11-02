@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0603293D227F3C22009A67A4 /* InputMealCalorieViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0603293C227F3C22009A67A4 /* InputMealCalorieViewCell.xib */; };
-		0603293F227F3C37009A67A4 /* InputMealCalorieViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0603293E227F3C37009A67A4 /* InputMealCalorieViewCell.swift */; };
+		0603293D227F3C22009A67A4 /* InputMealInformationViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0603293C227F3C22009A67A4 /* InputMealInformationViewCell.xib */; };
+		0603293F227F3C37009A67A4 /* InputMealInformationViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0603293E227F3C37009A67A4 /* InputMealInformationViewCell.swift */; };
 		060A7982227C967100F02B30 /* RxYPImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A7981227C967100F02B30 /* RxYPImagePicker.swift */; };
 		061F278D22733D9800FDCB17 /* WalkthroughViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 061F278C22733D9800FDCB17 /* WalkthroughViewController.xib */; };
 		061F278F22733DA100FDCB17 /* WalkthroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061F278E22733DA100FDCB17 /* WalkthroughViewController.swift */; };
@@ -85,6 +85,7 @@
 		402D9BFC22E214FA003676C3 /* SettingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402D9BFB22E214FA003676C3 /* SettingType.swift */; };
 		402FBE9F22C8D019000BBFA3 /* TopTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402FBE9E22C8D019000BBFA3 /* TopTabBarController.swift */; };
 		402FBEA222C8E63D000BBFA3 /* SegmentedControlViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402FBEA122C8E63D000BBFA3 /* SegmentedControlViewModel.swift */; };
+		403649ED236D71550020018E /* Haptic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403649EC236D71550020018E /* Haptic.swift */; };
 		403E952E22CE3D7800EFF459 /* TopTodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403E952D22CE3D7800EFF459 /* TopTodayViewController.swift */; };
 		403E953022CE3EAA00EFF459 /* TopDaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403E952F22CE3EAA00EFF459 /* TopDaysViewController.swift */; };
 		403E953222CE40CC00EFF459 /* TopMonthsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403E953122CE40CC00EFF459 /* TopMonthsViewController.swift */; };
@@ -204,8 +205,8 @@
 
 /* Begin PBXFileReference section */
 		006839574F440A78C2631C92 /* Pods_DuietUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DuietUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		0603293C227F3C22009A67A4 /* InputMealCalorieViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InputMealCalorieViewCell.xib; sourceTree = "<group>"; };
-		0603293E227F3C37009A67A4 /* InputMealCalorieViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputMealCalorieViewCell.swift; sourceTree = "<group>"; };
+		0603293C227F3C22009A67A4 /* InputMealInformationViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InputMealInformationViewCell.xib; sourceTree = "<group>"; };
+		0603293E227F3C37009A67A4 /* InputMealInformationViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputMealInformationViewCell.swift; sourceTree = "<group>"; };
 		060A7981227C967100F02B30 /* RxYPImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxYPImagePicker.swift; sourceTree = "<group>"; };
 		061F278C22733D9800FDCB17 /* WalkthroughViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalkthroughViewController.xib; sourceTree = "<group>"; };
 		061F278E22733DA100FDCB17 /* WalkthroughViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughViewController.swift; sourceTree = "<group>"; };
@@ -291,6 +292,7 @@
 		402D9BFB22E214FA003676C3 /* SettingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingType.swift; sourceTree = "<group>"; };
 		402FBE9E22C8D019000BBFA3 /* TopTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTabBarController.swift; sourceTree = "<group>"; };
 		402FBEA122C8E63D000BBFA3 /* SegmentedControlViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlViewModel.swift; sourceTree = "<group>"; };
+		403649EC236D71550020018E /* Haptic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptic.swift; sourceTree = "<group>"; };
 		403E952D22CE3D7800EFF459 /* TopTodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTodayViewController.swift; sourceTree = "<group>"; };
 		403E952F22CE3EAA00EFF459 /* TopDaysViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopDaysViewController.swift; sourceTree = "<group>"; };
 		403E953122CE40CC00EFF459 /* TopMonthsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopMonthsViewController.swift; sourceTree = "<group>"; };
@@ -712,6 +714,7 @@
 				40B2141422B4D5B00040EA9E /* WeekType.swift */,
 				40EADBF1231AACFD00D6E9E1 /* UserDefaultsKey.swift */,
 				408A4EA02357527E004D2FFE /* SelectUnitCellType.swift */,
+				403649EC236D71550020018E /* Haptic.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -1116,8 +1119,8 @@
 		5E79D5682283FAD50073CD98 /* InputMeal */ = {
 			isa = PBXGroup;
 			children = (
-				0603293E227F3C37009A67A4 /* InputMealCalorieViewCell.swift */,
-				0603293C227F3C22009A67A4 /* InputMealCalorieViewCell.xib */,
+				0603293E227F3C37009A67A4 /* InputMealInformationViewCell.swift */,
+				0603293C227F3C22009A67A4 /* InputMealInformationViewCell.xib */,
 			);
 			path = InputMeal;
 			sourceTree = "<group>";
@@ -1305,7 +1308,7 @@
 				069AD4292277224A0075E711 /* TodayViewController.xib in Resources */,
 				4001F70D22ABDC5A0009CDA1 /* SettingViewCell.xib in Resources */,
 				40116116230172BC00D522CC /* Settings.bundle in Resources */,
-				0603293D227F3C22009A67A4 /* InputMealCalorieViewCell.xib in Resources */,
+				0603293D227F3C22009A67A4 /* InputMealInformationViewCell.xib in Resources */,
 				405A9F5722AD007200454412 /* MonthSummaryViewCell.xib in Resources */,
 				408A4E9D23574206004D2FFE /* SelectElementViewCell.xib in Resources */,
 				40B2142B22B638970040EA9E /* DaySummaryViewCell.xib in Resources */,
@@ -1574,7 +1577,7 @@
 				40D8999722FE750400B6DA6D /* RoundedCollectionViewCell.swift in Sources */,
 				063FCBC0227D8164007C191F /* InputMealDataSource.swift in Sources */,
 				0622EA29226A213B00E87F22 /* RoundedTextField.swift in Sources */,
-				0603293F227F3C37009A67A4 /* InputMealCalorieViewCell.swift in Sources */,
+				0603293F227F3C37009A67A4 /* InputMealInformationViewCell.swift in Sources */,
 				403E953222CE40CC00EFF459 /* TopMonthsViewController.swift in Sources */,
 				06B2FCF5227222010078C7F1 /* InputPickerViewCell.swift in Sources */,
 				069AD42A2277224A0075E711 /* TodayViewDataSource.swift in Sources */,
@@ -1634,6 +1637,7 @@
 				5E9C28B6228E4E99004ABF3B /* CellFrameTrackkable.swift in Sources */,
 				5E9C28B4228E475E004ABF3B /* KeyboardFrameTrackkable.swift in Sources */,
 				0622EA08226A1EF200E87F22 /* NSObjectProtocol.extension.swift in Sources */,
+				403649ED236D71550020018E /* Haptic.swift in Sources */,
 				40B2142622B6361E0040EA9E /* DaysViewDataSource.swift in Sources */,
 				5E83EA0022E1680E00B8F584 /* MonthsRepository.swift in Sources */,
 				0641AD232264A1BA00CEDAE7 /* AppDelegate.swift in Sources */,
