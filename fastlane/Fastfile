@@ -187,6 +187,6 @@ platform :ios do
   end
 
   def deps_hash
-    %x[cat Cartfile.resolved Podfile.lock | perl -le 'use Digest::SHA qw(sha256_hex); print sha256_hex(<>);'].strip
+    %x[cat Cartfile.resolved Podfile.lock | openssl sha256].strip
   end
 end
