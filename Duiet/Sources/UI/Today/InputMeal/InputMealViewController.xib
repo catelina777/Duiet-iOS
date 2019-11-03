@@ -21,11 +21,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="80M-bE-qux">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ob7-Ka-Xc4">
-                    <rect key="frame" x="362" y="36" width="36" height="36"/>
+                    <rect key="frame" x="362" y="52" width="36" height="36"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="36" id="atr-GN-tDR"/>
                         <constraint firstAttribute="width" secondItem="Ob7-Ka-Xc4" secondAttribute="height" multiplier="1:1" id="grm-mU-36I"/>
@@ -35,12 +35,12 @@
             </subviews>
             <color key="backgroundColor" name="systemBackgroundMain"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="80M-bE-qux" secondAttribute="bottom" id="BSX-wS-5VL"/>
+                <constraint firstItem="mF0-vP-syh" firstAttribute="bottom" secondItem="80M-bE-qux" secondAttribute="bottom" id="BSX-wS-5VL"/>
                 <constraint firstItem="mF0-vP-syh" firstAttribute="trailing" secondItem="80M-bE-qux" secondAttribute="trailing" id="DBr-gR-eAa"/>
-                <constraint firstItem="80M-bE-qux" firstAttribute="top" secondItem="Ab2-xj-0yE" secondAttribute="top" id="j0h-XO-puA"/>
+                <constraint firstItem="80M-bE-qux" firstAttribute="top" secondItem="mF0-vP-syh" secondAttribute="top" id="j0h-XO-puA"/>
                 <constraint firstAttribute="trailing" secondItem="Ob7-Ka-Xc4" secondAttribute="trailing" constant="16" id="rfL-SM-wez"/>
                 <constraint firstItem="80M-bE-qux" firstAttribute="leading" secondItem="mF0-vP-syh" secondAttribute="leading" id="sUf-Ev-s0H"/>
-                <constraint firstItem="Ob7-Ka-Xc4" firstAttribute="top" secondItem="Ab2-xj-0yE" secondAttribute="top" constant="36" id="spZ-UQ-KaL"/>
+                <constraint firstItem="Ob7-Ka-Xc4" firstAttribute="top" secondItem="mF0-vP-syh" secondAttribute="top" constant="8" id="spZ-UQ-KaL"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="mF0-vP-syh"/>
             <point key="canvasLocation" x="137.68115942028987" y="153.34821428571428"/>

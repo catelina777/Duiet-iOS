@@ -11,11 +11,17 @@ import RxSwift
 import UIKit
 
 protocol CellFrameTrackkable {
-    func configure(textField: RoundedTextField, input: KeyboardTrackViewModelInput, output: KeyboardTrackViewModelOutput, window: UIWindow)
+    func configure(textField: RoundedTextField, input: KeyboardTrackViewModelInput, output: KeyboardTrackViewModelOutput)
 }
 
 extension CellFrameTrackkable where Self: BaseTableViewCell {
-    func configure(textField: RoundedTextField, input: KeyboardTrackViewModelInput, output: KeyboardTrackViewModelOutput, window: UIWindow) {
+    func configure(textField: RoundedTextField, input: KeyboardTrackViewModelInput, output: KeyboardTrackViewModelOutput) {
+        guard
+            let appDelegate = UIApplication.shared.delegate,
+            let optionalWindow = appDelegate.window,
+            let window = optionalWindow
+        else { return }
+
         textField.rx.controlEvent(.editingDidBegin)
             .subscribe(onNext: { _ in
                 let frame = textField.convert(textField.frame, to: window)

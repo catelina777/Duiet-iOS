@@ -458,7 +458,7 @@
 			isa = PBXGroup;
 			children = (
 				405E3A1B229929BA00ECEA9E /* Empty */,
-				5E79D5682283FAD50073CD98 /* InputMeal */,
+				5E79D5682283FAD50073CD98 /* InputMealInformation */,
 				5E79D5692283FAE00073CD98 /* LavelCanvas */,
 			);
 			path = Cells;
@@ -1116,13 +1116,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		5E79D5682283FAD50073CD98 /* InputMeal */ = {
+		5E79D5682283FAD50073CD98 /* InputMealInformation */ = {
 			isa = PBXGroup;
 			children = (
 				0603293E227F3C37009A67A4 /* InputMealInformationViewCell.swift */,
 				0603293C227F3C22009A67A4 /* InputMealInformationViewCell.xib */,
 			);
-			path = InputMeal;
+			path = InputMealInformation;
 			sourceTree = "<group>";
 		};
 		5E79D5692283FAE00073CD98 /* LavelCanvas */ = {

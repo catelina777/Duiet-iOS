@@ -22,7 +22,6 @@ protocol InputMealViewModelInput {
 }
 
 protocol InputMealViewModelOutput {
-    var showLabelsOnce: Observable<[Content]> { get }
     var contentDidUpdate: Observable<Content> { get }
     var contentDidDelete: Observable<Void> { get }
     var updateTextFields: Observable<Content> { get }
@@ -30,7 +29,8 @@ protocol InputMealViewModelOutput {
 }
 
 protocol InputMealViewModelState {
-    var contentCount: Int { get }
+    var isShowedContents: BehaviorRelay<Bool> { get }
+    var contents: [Content] { get }
     var foodImage: UIImage? { get }
 }
 
@@ -43,14 +43,16 @@ protocol InputMealViewModelProtocol {
 final class InputMealViewModel: InputMealViewModelProtocol, InputMealViewModelState {
     let input: InputMealViewModelInput
     let output: InputMealViewModelOutput
-    var state: InputMealViewModelState { return self }
+    var state: InputMealViewModelState { self }
 
     // MARK: - State
-    var contentCount: Int {
-        inputMealModel.state.mealValue.contents.count
+    var contents: [Content] {
+        inputMealModel.state.mealValue.contents.toArray()
     }
 
     let foodImage: UIImage?
+
+    let isShowedContents = BehaviorRelay<Bool>(value: false)
 
     private let inputMealModel: InputMealModelProtocol
     private let disposeBag = DisposeBag()
@@ -77,17 +79,12 @@ final class InputMealViewModel: InputMealViewModelProtocol, InputMealViewModelSt
                       contentWillDelete: contentWillDelete.asObserver(),
                       dismiss: dismiss.asObserver())
 
-        let showLabelsOnce = model.output.meal
-            .map { $0.contents.toArray() }
-            .take(1)
-
         let selectedContent = selectedLabelViewModel.map { $0.state.contentValue }
 
         let updateTextFields = selectedContent.compactMap { $0 }
         let reloadData = model.output.contentDidAdd
 
-        output = Output(showLabelsOnce: showLabelsOnce,
-                        contentDidUpdate: model.output.contentDidUpdate.asObservable(),
+        output = Output(contentDidUpdate: model.output.contentDidUpdate.asObservable(),
                         contentDidDelete: model.output.contentDidDelete.asObservable(),
                         updateTextFields: updateTextFields.asObservable(),
                         reloadData: reloadData.asObservable())
@@ -172,7 +169,6 @@ extension InputMealViewModel {
         let dismiss: AnyObserver<Void>
     }
     struct Output: InputMealViewModelOutput {
-        let showLabelsOnce: Observable<[Content]>
         let contentDidUpdate: Observable<Content>
         let contentDidDelete: Observable<Void>
         let updateTextFields: Observable<Content>

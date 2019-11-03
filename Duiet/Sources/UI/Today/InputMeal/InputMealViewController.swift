@@ -89,10 +89,8 @@ extension InputMealViewController {
     }
 
     private var reloadData: Binder<Void> {
-        Binder(self) { me, _ in
-            me.tableView.beginUpdates()
-            me.tableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .automatic)
-            me.tableView.endUpdates()
+        Binder<Void>(self) { me, _ in
+            me.tableView.reloadData()
         }
     }
 }
