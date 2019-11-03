@@ -44,13 +44,12 @@ extension InputMealDataSource: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.labelCanvasViewCell,
                                                      for: indexPath)!
             cell.configure(input: viewModel.input,
-                           output: viewModel.output)
-            cell.configure(with: viewModel.state.foodImage)
+                           state: viewModel.state)
             return cell
 
         default:
             // Display when mealLabelviews are empty
-            if viewModel.state.contentCount == 0 {
+            if viewModel.state.contents.count == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.emptyContentViewCell,
                                                          for: indexPath)!
                 return cell
@@ -59,7 +58,7 @@ extension InputMealDataSource: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.inputMealInformationViewCell,
                                                      for: indexPath)!
             cell.configure(input: keyboardTrackViewModel.input, output: keyboardTrackViewModel.output)
-            cell.configureTextFIeld(input: viewModel.input, output: viewModel.output)
+            cell.configureTextField(input: viewModel.input, output: viewModel.output)
             return cell
         }
     }

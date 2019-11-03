@@ -50,20 +50,14 @@ final class InputMealInformationViewCell: BaseTableViewCell, CellFrameTrackkable
     }
 
     func configure(input: KeyboardTrackViewModelInput, output: KeyboardTrackViewModelOutput) {
-        guard
-            let appDelegate = UIApplication.shared.delegate,
-            let optionalWindow = appDelegate.window,
-            let window = optionalWindow
-        else { return }
-
         [nameTextField,
          calorieTextField,
          multipleTextField].forEach {
-            configure(textField: $0!, input: input, output: output, window: window)
+            configure(textField: $0!, input: input, output: output)
         }
     }
 
-    func configureTextFIeld(input: InputMealViewModelInput, output: InputMealViewModelOutput) {
+    func configureTextField(input: InputMealViewModelInput, output: InputMealViewModelOutput) {
         calorieTextField.rx.text
             .bind(to: input.calorieTextInput)
             .disposed(by: disposeBag)
