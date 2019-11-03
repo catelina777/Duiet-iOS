@@ -459,7 +459,7 @@
 			children = (
 				405E3A1B229929BA00ECEA9E /* Empty */,
 				5E79D5682283FAD50073CD98 /* InputMealInformation */,
-				5E79D5692283FAE00073CD98 /* LavelCanvas */,
+				5E79D5692283FAE00073CD98 /* LabelCanvas */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1125,13 +1125,13 @@
 			path = InputMealInformation;
 			sourceTree = "<group>";
 		};
-		5E79D5692283FAE00073CD98 /* LavelCanvas */ = {
+		5E79D5692283FAE00073CD98 /* LabelCanvas */ = {
 			isa = PBXGroup;
 			children = (
 				5E79D5662283FAC90073CD98 /* LabelCanvasViewCell.swift */,
 				5E79D56A2283FB0B0073CD98 /* LabelCanvasViewCell.xib */,
 			);
-			path = LavelCanvas;
+			path = LabelCanvas;
 			sourceTree = "<group>";
 		};
 		5E9C28B0228E4717004ABF3B /* Base */ = {
