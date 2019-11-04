@@ -15,13 +15,13 @@ final class SelectElementViewCell: BaseTableViewCell {
 
     @IBOutlet weak var leftButton: UIButton! {
         didSet {
-            leftButton.makeRoundCornersAndColorEdges()
+            leftButton.makeEdges(cornerRadius: 10, borderWidth: 4)
         }
     }
 
     @IBOutlet weak var rightButton: UIButton! {
         didSet {
-            rightButton.makeRoundCornersAndColorEdges()
+            rightButton.makeEdges(cornerRadius: 10, borderWidth: 4)
         }
     }
 

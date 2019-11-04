@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SuggestionLabelViewCell" id="jd4-Y0-nXl" customClass="SuggestionLabelViewCell" customModule="Duiet" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="120" height="48"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="23G-J2-DQq" customClass="SuggestionLabelViewCell" customModule="Duiet" customModuleProvider="target">
+                <rect key="frame" x="0.0" y="0.0" width="120" height="48"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SYN-4E-CcY">
+                        <rect key="frame" x="8" y="8" width="104" height="32"/>
+                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" name="cellBackground"/>
+                <constraints>
+                    <constraint firstItem="SYN-4E-CcY" firstAttribute="leading" secondItem="23G-J2-DQq" secondAttribute="leading" constant="8" id="97C-gW-te6"/>
+                    <constraint firstItem="SYN-4E-CcY" firstAttribute="top" secondItem="23G-J2-DQq" secondAttribute="top" constant="8" id="IfH-mE-mYM"/>
+                    <constraint firstAttribute="bottom" secondItem="SYN-4E-CcY" secondAttribute="bottom" constant="8" id="XSy-Gi-iNU"/>
+                    <constraint firstAttribute="trailing" secondItem="SYN-4E-CcY" secondAttribute="trailing" constant="8" id="xwb-eJ-cYe"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <size key="customSize" width="193" height="72"/>
+            <connections>
+                <outlet property="suggestionName" destination="SYN-4E-CcY" id="0ZK-zK-GEe"/>
+            </connections>
+            <point key="canvasLocation" x="167.39130434782609" y="141.96428571428569"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <namedColor name="cellBackground">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

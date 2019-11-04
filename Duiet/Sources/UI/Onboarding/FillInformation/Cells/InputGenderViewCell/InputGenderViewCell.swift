@@ -14,14 +14,14 @@ final class InputGenderViewCell: BaseTableViewCell {
 
     @IBOutlet weak var maleButton: UIButton! {
         didSet {
-            maleButton.makeRoundCornersAndColorEdges()
+            maleButton.makeEdges(cornerRadius: 10, borderWidth: 4)
             maleButton.setTitle(R.string.localizable.male(), for: .normal)
         }
     }
 
     @IBOutlet weak var femaleButton: UIButton! {
         didSet {
-            femaleButton.makeRoundCornersAndColorEdges()
+            femaleButton.makeEdges(cornerRadius: 10, borderWidth: 4)
             femaleButton.setTitle(R.string.localizable.female(), for: .normal)
         }
     }

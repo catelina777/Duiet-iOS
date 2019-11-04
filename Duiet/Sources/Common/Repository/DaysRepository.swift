@@ -11,10 +11,6 @@ import RealmSwift
 import RxRealm
 import RxSwift
 
-enum DaysRepositoryError: Error {
-    case findMonthFailed
-}
-
 protocol DaysRepositoryProtocol {
     func findAll() -> Results<Day>
 }

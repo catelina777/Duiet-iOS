@@ -26,6 +26,7 @@ protocol InputMealViewModelOutput {
     var contentDidDelete: Observable<Void> { get }
     var updateTextFields: Observable<Content> { get }
     var reloadData: Observable<Void> { get }
+    var inputKeyword: Observable<String> { get }
 }
 
 protocol InputMealViewModelState {
@@ -84,10 +85,15 @@ final class InputMealViewModel: InputMealViewModelProtocol, InputMealViewModelSt
         let updateTextFields = selectedContent.compactMap { $0 }
         let reloadData = model.output.contentDidAdd
 
+        let name = nameTextInput
+            .distinctUntilChanged()
+            .map { $0 ?? "" }
+
         output = Output(contentDidUpdate: model.output.contentDidUpdate.asObservable(),
                         contentDidDelete: model.output.contentDidDelete.asObservable(),
                         updateTextFields: updateTextFields.asObservable(),
-                        reloadData: reloadData.asObservable())
+                        reloadData: reloadData.asObservable(),
+                        inputKeyword: name)
 
         // MARK: - Process of manipulate input from textfield
         let calorie = calorieTextInput
@@ -102,10 +108,6 @@ final class InputMealViewModel: InputMealViewModelProtocol, InputMealViewModelSt
             .map { Double($0) ?? 0 }
             .distinctUntilChanged()
             .share()
-
-        let name = nameTextInput
-            .distinctUntilChanged()
-            .map { $0 ?? "" }
 
         // MARK: - Save processing
         contentWillAdd.withLatestFrom(model.output.meal) { ($1, $0) }
@@ -173,5 +175,6 @@ extension InputMealViewModel {
         let contentDidDelete: Observable<Void>
         let updateTextFields: Observable<Content>
         let reloadData: Observable<Void>
+        let inputKeyword: Observable<String>
     }
 }
