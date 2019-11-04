@@ -12,12 +12,20 @@ import RxSwift
 import UIKit
 
 final class LabelCanvasViewCell: BaseTableViewCell {
+    @IBOutlet private weak var mealImageView: UIImageView!
+    @IBOutlet private(set) weak var suggestionCollectionView: UICollectionView!
+
+    private(set) var viewModel: LabelCanvasViewModelProtocol!
+    private(set) var suggestionDataSource: SuggestionDataSource!
+
     // TODO: This code is terrible and should be refactored
-    func configure(input: InputMealViewModelInput, state: InputMealViewModelState) {
+    func configure(input: InputMealViewModelInput, output: InputMealViewModelOutput, state: InputMealViewModelState) {
         if !state.isShowedContents.value {
             show(contents: state.contents, input: input)
             state.isShowedContents.accept(true)
         }
+        bindSuggestedContent(output: output)
+        suggestionDataSource.configure(with: suggestionCollectionView)
         bindAddContent(input: input)
         configure(with: state.foodImage)
     }
@@ -77,10 +85,29 @@ final class LabelCanvasViewCell: BaseTableViewCell {
             .disposed(by: disposeBag)
     }
 
+    private func bindSuggestedContent(output: InputMealViewModelOutput) {
+        viewModel = LabelCanvasViewModel()
+        suggestionDataSource = SuggestionDataSource(viewModel: viewModel)
+        output.inputKeyword
+            .bind(to: viewModel.input.inputKeyword)
+            .disposed(by: disposeBag)
+
+        viewModel.output.suggestedContentResults
+            .map { _ in }
+            .bind(to: reloadData)
+            .disposed(by: disposeBag)
+    }
+
+    var reloadData: Binder<Void> {
+        Binder<Void>(self) { me, _ in
+            me.suggestionCollectionView.reloadData()
+        }
+    }
+
+    /// If UIImageView of IBOutlet is installed then image is displayed,
+    /// size calculation fails, so UIImageView is installed by program
+    /// - Parameter image: Meal image
     private func configure(with image: UIImage?) {
-        let headerImageView = UIImageView(frame: contentView.frame)
-        headerImageView.image = image
-        headerImageView.clipsToBounds = true
-        contentView.addSubview(headerImageView)
+        mealImageView.image = image
     }
 }

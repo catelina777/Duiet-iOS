@@ -44,6 +44,7 @@ extension InputMealDataSource: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.labelCanvasViewCell,
                                                      for: indexPath)!
             cell.configure(input: viewModel.input,
+                           output: viewModel.output,
                            state: viewModel.state)
             return cell
 
