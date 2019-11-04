@@ -44,17 +44,20 @@ extension SuggestionDataSource: UICollectionViewDataSource {
 extension SuggestionDataSource: UICollectionViewDelegate {}
 
 extension SuggestionDataSource: UICollectionViewDelegateFlowLayout {
+    /// Change the size of the label according to the length of the characters to be displayed
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         guard
-            let contents = viewModel.state.suggestedContents,
-            contents.count >= indexPath.row
-        else { return .zero }
-
-        let content = contents[indexPath.row]
-        let nameLength = content.name.count
-        let size = CGSize(width: 40 + (nameLength - 2) * 12, height: 32)
-        return size
+            let cell = Bundle.main.loadNibNamed(SuggestionLabelViewCell.className,
+                                                owner: self,
+                                                options: nil)?.first as? SuggestionLabelViewCell,
+            let contents = viewModel.state.suggestedContents
+        else { return CGSize.zero }
+        cell.configure(with: contents[indexPath.row])
+        cell.setNeedsLayout()
+        cell.layoutIfNeeded()
+        let size = cell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+        return CGSize(width: size.width, height: 30)
     }
 }

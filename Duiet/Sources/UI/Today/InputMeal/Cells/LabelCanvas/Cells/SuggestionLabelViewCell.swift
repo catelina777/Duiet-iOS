@@ -14,6 +14,6 @@ final class SuggestionLabelViewCell: UICollectionViewCell {
     func configure(with content: Content) {
         suggestionName.text = content.name
         contentView.makeEdges(cornerRadius: 15, borderWidth: 1)
-        contentView.layer.borderColor = R.color.componentMain()?.cgColor
+        contentView.layer.borderColor = UIColor.label.cgColor
     }
 }

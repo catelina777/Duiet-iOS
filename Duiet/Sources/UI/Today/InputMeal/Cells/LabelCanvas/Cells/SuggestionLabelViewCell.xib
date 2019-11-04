@@ -23,7 +23,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SYN-4E-CcY">
-                        <rect key="frame" x="8" y="8" width="104" height="32"/>
+                        <rect key="frame" x="8" y="4" width="104" height="40"/>
                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -32,8 +32,8 @@
                 <color key="backgroundColor" name="cellBackground"/>
                 <constraints>
                     <constraint firstItem="SYN-4E-CcY" firstAttribute="leading" secondItem="23G-J2-DQq" secondAttribute="leading" constant="8" id="97C-gW-te6"/>
-                    <constraint firstItem="SYN-4E-CcY" firstAttribute="top" secondItem="23G-J2-DQq" secondAttribute="top" constant="8" id="IfH-mE-mYM"/>
-                    <constraint firstAttribute="bottom" secondItem="SYN-4E-CcY" secondAttribute="bottom" constant="8" id="XSy-Gi-iNU"/>
+                    <constraint firstItem="SYN-4E-CcY" firstAttribute="top" secondItem="23G-J2-DQq" secondAttribute="top" constant="4" id="IfH-mE-mYM"/>
+                    <constraint firstAttribute="bottom" secondItem="SYN-4E-CcY" secondAttribute="bottom" constant="4" id="XSy-Gi-iNU"/>
                     <constraint firstAttribute="trailing" secondItem="SYN-4E-CcY" secondAttribute="trailing" constant="8" id="xwb-eJ-cYe"/>
                 </constraints>
             </collectionViewCellContentView>

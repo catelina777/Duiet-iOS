@@ -3,7 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -22,27 +21,46 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NZf-aC-eCU">
                                 <rect key="frame" x="0.0" y="0.0" width="430" height="419"/>
                             </imageView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="6GV-EW-32N">
-                                <rect key="frame" x="0.0" y="371" width="430" height="48"/>
-                                <color key="backgroundColor" name="systemBackgroundMain"/>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S8T-NF-xiA">
+                                <rect key="frame" x="0.0" y="355" width="430" height="64"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="9Cx-bh-0S7">
+                                    <rect key="frame" x="0.0" y="0.0" width="430" height="64"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="6GV-EW-32N">
+                                            <rect key="frame" x="0.0" y="0.0" width="430" height="64"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="64" id="PtN-H2-pGe"/>
+                                            </constraints>
+                                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="8" minimumInteritemSpacing="8" id="WHY-Rc-vjF">
+                                                <size key="itemSize" width="50" height="50"/>
+                                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                <inset key="sectionInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
+                                            </collectionViewFlowLayout>
+                                        </collectionView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="6GV-EW-32N" secondAttribute="trailing" id="Eyw-1K-gUE"/>
+                                        <constraint firstItem="6GV-EW-32N" firstAttribute="top" secondItem="9Cx-bh-0S7" secondAttribute="top" id="I2O-0Z-z5f"/>
+                                        <constraint firstItem="6GV-EW-32N" firstAttribute="leading" secondItem="9Cx-bh-0S7" secondAttribute="leading" id="Kne-rh-7EG"/>
+                                        <constraint firstAttribute="bottom" secondItem="6GV-EW-32N" secondAttribute="bottom" id="adg-2Z-Cd1"/>
+                                    </constraints>
+                                </view>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="48" id="PtN-H2-pGe"/>
+                                    <constraint firstAttribute="height" constant="64" id="XML-5c-UCD"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="8" minimumInteritemSpacing="8" id="WHY-Rc-vjF">
-                                    <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                            </collectionView>
+                                <blurEffect style="regular"/>
+                            </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="NZf-aC-eCU" secondAttribute="bottom" id="B37-5r-v7T"/>
-                            <constraint firstAttribute="trailing" secondItem="6GV-EW-32N" secondAttribute="trailing" id="J9z-iH-y4Y"/>
                             <constraint firstAttribute="trailing" secondItem="NZf-aC-eCU" secondAttribute="trailing" id="Lhw-Vt-H0X"/>
-                            <constraint firstAttribute="bottom" secondItem="6GV-EW-32N" secondAttribute="bottom" id="SmR-0e-TEo"/>
-                            <constraint firstItem="6GV-EW-32N" firstAttribute="leading" secondItem="4Fb-FL-Hy6" secondAttribute="leading" id="Ynz-kY-zm6"/>
+                            <constraint firstAttribute="trailing" secondItem="S8T-NF-xiA" secondAttribute="trailing" id="Qey-GC-2Bg"/>
+                            <constraint firstAttribute="bottom" secondItem="S8T-NF-xiA" secondAttribute="bottom" id="Rrs-ZF-8aL"/>
+                            <constraint firstItem="S8T-NF-xiA" firstAttribute="leading" secondItem="4Fb-FL-Hy6" secondAttribute="leading" id="ei7-j6-8jS"/>
                             <constraint firstItem="NZf-aC-eCU" firstAttribute="leading" secondItem="4Fb-FL-Hy6" secondAttribute="leading" id="fIY-TF-9jY"/>
                             <constraint firstItem="NZf-aC-eCU" firstAttribute="top" secondItem="4Fb-FL-Hy6" secondAttribute="top" id="pdU-XZ-SaW"/>
                         </constraints>
@@ -64,9 +82,4 @@
             <point key="canvasLocation" x="-26.086956521739133" y="144.30803571428569"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <namedColor name="systemBackgroundMain">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-    </resources>
 </document>
