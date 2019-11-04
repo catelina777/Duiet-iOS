@@ -15,5 +15,6 @@ final class SuggestionLabelViewCell: UICollectionViewCell {
         suggestionName.text = content.name
         contentView.makeEdges(cornerRadius: 15, borderWidth: 1)
         contentView.layer.borderColor = UIColor.label.cgColor
+        contentView.translatesAutoresizingMaskIntoConstraints = false
     }
 }
