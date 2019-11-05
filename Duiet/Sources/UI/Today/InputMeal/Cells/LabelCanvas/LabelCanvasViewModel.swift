@@ -10,6 +10,7 @@ import Foundation
 import RealmSwift
 import RxRelay
 import RxSwift
+import RxRealm
 
 protocol LabelCanvasViewModelInput {
     var inputKeyword: AnyObserver<String> { get }
@@ -52,6 +53,8 @@ final class LabelCanvasViewModel: LabelCanvasViewModelProtocol, LabelCanvasViewM
             .disposed(by: disposeBag)
 
         suggestionModel.output.suggestedContentResults
+            .compactMap { $0 }
+            .flatMap { Observable.collection(from: $0) }
             .bind(to: suggestedContentResults)
             .disposed(by: disposeBag)
     }
