@@ -1,15 +1,18 @@
 platform :ios, '13.0'
 
-target 'Duiet' do
-  use_frameworks!
-  inhibit_all_warnings!
+use_frameworks!
+inhibit_all_warnings!
 
-  pod 'LicensePlist'
-  pod 'R.swift'
-
+def firebase_pods
   pod 'Fabric'
   pod 'Crashlytics'  
   pod 'Firebase/Analytics'
+end
+
+target 'Duiet' do
+  pod 'LicensePlist'
+  pod 'R.swift'
+  firebase_pods
 
   target 'DuietTests' do
     inherit! :search_paths
@@ -19,6 +22,7 @@ target 'Duiet' do
   target 'DuietUITests' do
     inherit! :search_paths
     pod 'R.swift'
+    firebase_pods
   end
 
 end
