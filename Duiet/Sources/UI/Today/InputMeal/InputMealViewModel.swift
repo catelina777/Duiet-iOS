@@ -16,21 +16,25 @@ protocol InputMealViewModelInput {
     var calorieTextInput: AnyObserver<String?> { get }
     var multipleTextInput: AnyObserver<String?> { get }
     var selectedLabelViewModel: AnyObserver<MealLabelViewModelProtocol> { get }
+    var suggestionDidSelect: AnyObserver<Content> { get }
+    var contentWillUpdate: AnyObserver<Content> { get }
     var contentWillAdd: AnyObserver<Content> { get }
     var contentWillDelete: AnyObserver<Void> { get }
     var dismiss: AnyObserver<Void> { get }
 }
 
 protocol InputMealViewModelOutput {
-    var showLabelsOnce: Observable<[Content]> { get }
     var contentDidUpdate: Observable<Content> { get }
     var contentDidDelete: Observable<Void> { get }
     var updateTextFields: Observable<Content> { get }
     var reloadData: Observable<Void> { get }
+    var inputKeyword: Observable<String> { get }
+    var suggestionDidSelect: Observable<Content> { get }
 }
 
 protocol InputMealViewModelState {
-    var contentCount: Int { get }
+    var isShowedContents: BehaviorRelay<Bool> { get }
+    var contents: [Content] { get }
     var foodImage: UIImage? { get }
 }
 
@@ -43,14 +47,16 @@ protocol InputMealViewModelProtocol {
 final class InputMealViewModel: InputMealViewModelProtocol, InputMealViewModelState {
     let input: InputMealViewModelInput
     let output: InputMealViewModelOutput
-    var state: InputMealViewModelState { return self }
+    var state: InputMealViewModelState { self }
 
     // MARK: - State
-    var contentCount: Int {
-        inputMealModel.state.mealValue.contents.count
+    var contents: [Content] {
+        inputMealModel.state.mealValue.contents.toArray()
     }
 
     let foodImage: UIImage?
+
+    let isShowedContents = BehaviorRelay<Bool>(value: false)
 
     private let inputMealModel: InputMealModelProtocol
     private let disposeBag = DisposeBag()
@@ -66,31 +72,36 @@ final class InputMealViewModel: InputMealViewModelProtocol, InputMealViewModelSt
         let multipleTextInput = PublishRelay<String?>()
         let selectedLabelViewModel = PublishRelay<MealLabelViewModelProtocol>()
         let contentWillAdd = PublishRelay<Content>()
+        let contentWillUpdate = PublishRelay<Content>()
         let contentWillDelete = PublishRelay<Void>()
         let dismiss = PublishRelay<Void>()
+        let suggestionDidSelect = PublishRelay<Content>()
 
         input = Input(nameTextInput: nameTextInput.asObserver(),
                       calorieTextInput: calorieTextInput.asObserver(),
                       multipleTextInput: multipleTextInput.asObserver(),
                       selectedLabelViewModel: selectedLabelViewModel.asObserver(),
                       contentWillAdd: contentWillAdd.asObserver(),
+                      contentWillUpdate: contentWillUpdate.asObserver(),
                       contentWillDelete: contentWillDelete.asObserver(),
-                      dismiss: dismiss.asObserver())
-
-        let showLabelsOnce = model.output.meal
-            .map { $0.contents.toArray() }
-            .take(1)
+                      dismiss: dismiss.asObserver(),
+                      suggestionDidSelect: suggestionDidSelect.asObserver())
 
         let selectedContent = selectedLabelViewModel.map { $0.state.contentValue }
 
         let updateTextFields = selectedContent.compactMap { $0 }
         let reloadData = model.output.contentDidAdd
 
-        output = Output(showLabelsOnce: showLabelsOnce,
-                        contentDidUpdate: model.output.contentDidUpdate.asObservable(),
+        let name = nameTextInput
+            .distinctUntilChanged()
+            .map { $0 ?? "" }
+
+        output = Output(contentDidUpdate: model.output.contentDidUpdate.asObservable(),
                         contentDidDelete: model.output.contentDidDelete.asObservable(),
                         updateTextFields: updateTextFields.asObservable(),
-                        reloadData: reloadData.asObservable())
+                        reloadData: reloadData.asObservable(),
+                        inputKeyword: name,
+                        suggestionDidSelect: suggestionDidSelect.asObservable())
 
         // MARK: - Process of manipulate input from textfield
         let calorie = calorieTextInput
@@ -105,10 +116,6 @@ final class InputMealViewModel: InputMealViewModelProtocol, InputMealViewModelSt
             .map { Double($0) ?? 0 }
             .distinctUntilChanged()
             .share()
-
-        let name = nameTextInput
-            .distinctUntilChanged()
-            .map { $0 ?? "" }
 
         // MARK: - Save processing
         contentWillAdd.withLatestFrom(model.output.meal) { ($1, $0) }
@@ -125,6 +132,10 @@ final class InputMealViewModel: InputMealViewModelProtocol, InputMealViewModelSt
 
         name.withLatestFrom(selectedContent) { ($1, $0) }
             .bind(to: model.state.saveName)
+            .disposed(by: disposeBag)
+
+        contentWillUpdate.withLatestFrom(selectedContent) { ($0, $1) }
+            .bind(to: model.state.updateContent)
             .disposed(by: disposeBag)
 
         // MARK: - Label processing
@@ -168,14 +179,17 @@ extension InputMealViewModel {
         let multipleTextInput: AnyObserver<String?>
         let selectedLabelViewModel: AnyObserver<MealLabelViewModelProtocol>
         let contentWillAdd: AnyObserver<Content>
+        let contentWillUpdate: AnyObserver<Content>
         let contentWillDelete: AnyObserver<Void>
         let dismiss: AnyObserver<Void>
+        let suggestionDidSelect: AnyObserver<Content>
     }
     struct Output: InputMealViewModelOutput {
-        let showLabelsOnce: Observable<[Content]>
         let contentDidUpdate: Observable<Content>
         let contentDidDelete: Observable<Void>
         let updateTextFields: Observable<Content>
         let reloadData: Observable<Void>
+        let inputKeyword: Observable<String>
+        let suggestionDidSelect: Observable<Content>
     }
 }

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Bold.ttf">
+            <string>Montserrat-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="145" id="vwa-L2-RFO">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="145"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vwa-L2-RFO" id="zvU-AP-i0y">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="145"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kIq-pO-dZx">
+                        <rect key="frame" x="16" y="8" width="45" height="28"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="28" id="sIO-Mk-Ucc"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="24"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nPg-hd-gwX" customClass="RoundedTextField" customModule="Duiet" customModuleProvider="target">
+                        <rect key="frame" x="16" y="52" width="382" height="77"/>
+                        <color key="backgroundColor" name="cellBackground"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="nPg-hd-gwX" secondAttribute="trailing" constant="16" id="D9q-hV-pN5"/>
+                    <constraint firstItem="kIq-pO-dZx" firstAttribute="leading" secondItem="zvU-AP-i0y" secondAttribute="leading" constant="16" id="DzQ-ht-itJ"/>
+                    <constraint firstItem="kIq-pO-dZx" firstAttribute="top" secondItem="zvU-AP-i0y" secondAttribute="top" constant="8" id="LkD-IL-cOa"/>
+                    <constraint firstItem="nPg-hd-gwX" firstAttribute="top" secondItem="kIq-pO-dZx" secondAttribute="bottom" constant="16" id="Zei-Il-EcZ"/>
+                    <constraint firstItem="nPg-hd-gwX" firstAttribute="leading" secondItem="zvU-AP-i0y" secondAttribute="leading" constant="16" id="jZU-Ib-QOv"/>
+                    <constraint firstAttribute="bottom" secondItem="nPg-hd-gwX" secondAttribute="bottom" constant="16" id="pot-R0-pMt"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <point key="canvasLocation" x="137.68115942028987" y="184.48660714285714"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="cellBackground">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

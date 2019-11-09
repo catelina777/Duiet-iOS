@@ -11,15 +11,7 @@ import UIKit
 
 final class InputActivityLevelViewCell: InputPickerViewCell, CellFrameTrackkable {
     func configure(input: KeyboardTrackViewModelInput, output: KeyboardTrackViewModelOutput) {
-        guard
-            let appDelegate = UIApplication.shared.delegate,
-            let optionalWindow = appDelegate.window,
-            let window = optionalWindow
-        else { return }
-        configure(textField: textField,
-                  input: input,
-                  output: output,
-                  window: window)
+        configure(textField: textField, input: input, output: output)
     }
 
     func configure(input: FillInformationViewModelInput) {

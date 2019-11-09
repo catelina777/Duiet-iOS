@@ -9,11 +9,11 @@
 import UIKit
 
 final class MonthSummaryViewCell: RoundedCollectionViewCell {
-    var viewModel: MonthSummaryViewModelProtocol!
-    var dataSource: MonthSummaryViewDataSource!
+    private(set) var viewModel: MonthSummaryViewModelProtocol!
+    private(set) var dataSource: MonthSummaryViewDataSource!
     @IBOutlet private(set) weak var collectionView: UICollectionView!
-    @IBOutlet weak var dayLabel: UILabel!
-    @IBOutlet weak var weightChangeLabel: UILabel!
+    @IBOutlet private weak var dayLabel: UILabel!
+    @IBOutlet private weak var weightChangeLabel: UILabel!
 
     func configure(with month: Month) {
         viewModel = MonthSummaryViewModel(month: month, userInfoModel: UserInfoModel.shared)

@@ -1,5 +1,5 @@
 //
-//  UIButton.extension.swift
+//  UIView.extension.swift
 //  Duiet
 //
 //  Created by 上西 隆平 on 2019/04/18.
@@ -8,10 +8,10 @@
 
 import UIKit
 
-extension UIButton {
-    func makeRoundCornersAndColorEdges() {
-        layer.cornerRadius = 10
-        layer.borderWidth = 4
+extension UIView {
+    func makeEdges(cornerRadius: CGFloat, borderWidth: CGFloat) {
+        layer.cornerRadius = cornerRadius
+        layer.borderWidth = borderWidth
         layer.borderColor = UIColor.clear.cgColor
         layer.masksToBounds = true
     }

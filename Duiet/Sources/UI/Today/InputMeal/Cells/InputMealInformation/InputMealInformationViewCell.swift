@@ -50,20 +50,14 @@ final class InputMealInformationViewCell: BaseTableViewCell, CellFrameTrackkable
     }
 
     func configure(input: KeyboardTrackViewModelInput, output: KeyboardTrackViewModelOutput) {
-        guard
-            let appDelegate = UIApplication.shared.delegate,
-            let optionalWindow = appDelegate.window,
-            let window = optionalWindow
-        else { return }
-
         [nameTextField,
          calorieTextField,
          multipleTextField].forEach {
-            configure(textField: $0!, input: input, output: output, window: window)
+            configure(textField: $0!, input: input, output: output)
         }
     }
 
-    func configureTextFIeld(input: InputMealViewModelInput, output: InputMealViewModelOutput) {
+    func configureTextField(input: InputMealViewModelInput, output: InputMealViewModelOutput) {
         calorieTextField.rx.text
             .bind(to: input.calorieTextInput)
             .disposed(by: disposeBag)
@@ -86,10 +80,19 @@ final class InputMealInformationViewCell: BaseTableViewCell, CellFrameTrackkable
         output.updateTextFields
             .bind(to: updateTextFields)
             .disposed(by: disposeBag)
+
+        /// Save selected candidate values to input
+        output.suggestionDidSelect
+            .subscribe(onNext: { [weak self] content in
+                guard let me = self else { return }
+                input.contentWillUpdate.onNext(content)
+                me.updateTextFields.onNext(content)
+            })
+            .disposed(by: disposeBag)
     }
 
-    var updateTextFields: Binder<Content> {
-        Binder(self) { me, content in
+    private var updateTextFields: Binder<Content> {
+        Binder<Content>(self) { me, content in
             me.nameTextField.text = content.name
             me.calorieTextField.text = ""
             me.multipleTextField.text = ""
