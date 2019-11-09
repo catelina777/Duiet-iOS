@@ -104,7 +104,6 @@ final class LabelCanvasViewCell: BaseTableViewCell {
 
     private var reloadData: Binder<Void> {
         Binder<Void>(self) { me, _ in
-            print("reload")
             me.suggestionCollectionView.reloadData()
         }
     }
