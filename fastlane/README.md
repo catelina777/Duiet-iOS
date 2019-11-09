@@ -36,6 +36,11 @@ fastlane ios update_tools
 fastlane ios update_license_list
 ```
 
+### ios sync_bitrise_yml
+```
+fastlane ios sync_bitrise_yml
+```
+
 ### ios upload_build_cache
 ```
 fastlane ios upload_build_cache
