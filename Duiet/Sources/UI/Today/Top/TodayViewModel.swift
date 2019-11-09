@@ -15,8 +15,9 @@ import UIKit
 
 protocol TodayViewModelInput {
     var viewDidAppear: AnyObserver<Void> { get }
-    var didTapAddButton: AnyObserver<TodayViewController> { get }
     var didTapDeleteButton: AnyObserver<Void> { get }
+    var addButtonDidTap: AnyObserver<Void> { get }
+    var pickedImage: AnyObserver<UIImage?> { get }
     var selectedItem: AnyObserver<(MealCardViewCell, Meal, Int)> { get }
     var showDetailDay: AnyObserver<Day> { get }
     var isEditMode: AnyObserver<Bool> { get }
@@ -26,6 +27,7 @@ protocol TodayViewModelOutput {
     var progress: Observable<(Day, UserInfo)> { get }
     var isEditMode: Observable<Bool> { get }
     var isEnableTrashButton: Observable<Bool> { get }
+    var addButtonDidTap: Observable<Void> { get }
 }
 
 protocol TodayViewModelState {
@@ -86,27 +88,20 @@ final class TodayViewModel: TodayViewModelProtocol, TodayViewModelState {
         self.unitCollectionModel = unitCollectionModel
 
         let viewDidAppear = PublishRelay<Void>()
-        let didTapAddButton = PublishRelay<TodayViewController>()
+        let addButtonDidTap = PublishRelay<Void>()
+        let pickedImage = PublishRelay<UIImage?>()
         let didTapDeleteButton = PublishRelay<Void>()
         let selectedItem = PublishRelay<(MealCardViewCell, Meal, Int)>()
         let showDetailDay = PublishRelay<Day>()
         let isEditMode = PublishRelay<Bool>()
 
         input = Input(viewDidAppear: viewDidAppear.asObserver(),
-                      didTapAddButton: didTapAddButton.asObserver(),
                       didTapDeleteButton: didTapDeleteButton.asObserver(),
+                      addButtonDidTap: addButtonDidTap.asObserver(),
+                      pickedImage: pickedImage.asObserver(),
                       selectedItem: selectedItem.asObserver(),
                       showDetailDay: showDetailDay.asObserver(),
                       isEditMode: isEditMode.asObserver())
-
-        let pickedImage = didTapAddButton
-            .flatMapLatest {
-                RxYPImagePicker.rx
-                    .create($0)
-                    .flatMap { $0.pickedImage }
-                    .take(1)
-            }
-            .share()
 
         /// I also added meals because I want to detect the update of meal information
         let progress = Observable.combineLatest(todayModel.output.day, userInfoModel.output.userInfo)
@@ -117,7 +112,8 @@ final class TodayViewModel: TodayViewModelProtocol, TodayViewModelState {
 
         output = Output(progress: progress,
                         isEditMode: isEditMode.asObservable(),
-                        isEnableTrashButton: isEnableTrashButton)
+                        isEnableTrashButton: isEnableTrashButton,
+                        addButtonDidTap: addButtonDidTap.asObservable())
 
         let mealWillAdd = pickedImage
             .compactMap { $0 }
@@ -169,8 +165,9 @@ final class TodayViewModel: TodayViewModelProtocol, TodayViewModelState {
 extension TodayViewModel {
     struct Input: TodayViewModelInput {
         let viewDidAppear: AnyObserver<Void>
-        let didTapAddButton: AnyObserver<TodayViewController>
         let didTapDeleteButton: AnyObserver<Void>
+        let addButtonDidTap: AnyObserver<Void>
+        let pickedImage: AnyObserver<UIImage?>
         let selectedItem: AnyObserver<(MealCardViewCell, Meal, Int)>
         let showDetailDay: AnyObserver<Day>
         let isEditMode: AnyObserver<Bool>
@@ -180,5 +177,6 @@ extension TodayViewModel {
         let progress: Observable<(Day, UserInfo)>
         let isEditMode: Observable<Bool>
         let isEnableTrashButton: Observable<Bool>
+        let addButtonDidTap: Observable<Void>
     }
 }

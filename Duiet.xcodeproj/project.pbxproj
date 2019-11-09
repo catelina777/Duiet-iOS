@@ -72,6 +72,8 @@
 		4001F71322ABF1AC0009CDA1 /* BaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4001F71222ABF1AC0009CDA1 /* BaseCollectionViewController.swift */; };
 		4005BDDA22D8EE8B001A7C9D /* UserInfoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4005BDD922D8EE8B001A7C9D /* UserInfoRepository.swift */; };
 		4008707923766FA1001B8DB5 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4008707823766FA1001B8DB5 /* Logger.swift */; };
+		4008707C23769E5A001B8DB5 /* AddMealCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4008707B23769E5A001B8DB5 /* AddMealCardViewCell.swift */; };
+		4008707E23769E65001B8DB5 /* AddMealCardViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4008707D23769E65001B8DB5 /* AddMealCardViewCell.xib */; };
 		40116116230172BC00D522CC /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 40116115230172BC00D522CC /* Settings.bundle */; };
 		401D54B823012C7B0089E2F7 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 401D54B023012C7B0089E2F7 /* RealmSwift.framework */; };
 		401D54B923012C7B0089E2F7 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 401D54B123012C7B0089E2F7 /* RxCocoa.framework */; };
@@ -283,6 +285,8 @@
 		4001F71222ABF1AC0009CDA1 /* BaseCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewController.swift; sourceTree = "<group>"; };
 		4005BDD922D8EE8B001A7C9D /* UserInfoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoRepository.swift; sourceTree = "<group>"; };
 		4008707823766FA1001B8DB5 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		4008707B23769E5A001B8DB5 /* AddMealCardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMealCardViewCell.swift; sourceTree = "<group>"; };
+		4008707D23769E65001B8DB5 /* AddMealCardViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddMealCardViewCell.xib; sourceTree = "<group>"; };
 		40116115230172BC00D522CC /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		401D54B023012C7B0089E2F7 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		401D54B123012C7B0089E2F7 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
@@ -705,6 +709,7 @@
 			isa = PBXGroup;
 			children = (
 				069AD43D227731730075E711 /* MealCard */,
+				4008707A23769E3B001B8DB5 /* AddMealCard */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -834,6 +839,15 @@
 				4001F70C22ABDC5A0009CDA1 /* SettingViewCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		4008707A23769E3B001B8DB5 /* AddMealCard */ = {
+			isa = PBXGroup;
+			children = (
+				4008707B23769E5A001B8DB5 /* AddMealCardViewCell.swift */,
+				4008707D23769E65001B8DB5 /* AddMealCardViewCell.xib */,
+			);
+			path = AddMealCard;
 			sourceTree = "<group>";
 		};
 		4010E8432363ECB4008DD2A4 /* ViewTypes */ = {
@@ -1354,6 +1368,7 @@
 				40FA52F7236FEEE800C58BC3 /* SuggestionLabelViewCell.xib in Resources */,
 				405E3A1F229929E900ECEA9E /* EmptyContentViewCell.xib in Resources */,
 				4001F71122ABF0EB0009CDA1 /* MonthsViewController.xib in Resources */,
+				4008707E23769E65001B8DB5 /* AddMealCardViewCell.xib in Resources */,
 				069AD4392277246A0075E711 /* MealCardViewCell.xib in Resources */,
 				06B2FD09227222670078C7F1 /* CompleteButtonViewCell.xib in Resources */,
 				0630D499227490B900224EC9 /* ShowTDEEViewCell.xib in Resources */,
@@ -1685,6 +1700,7 @@
 				5E35CF8622D7280E00C9CFC3 /* InputMealViewModel.swift in Sources */,
 				408A4E8D23547317004D2FFE /* UnitCollection.swift in Sources */,
 				06B2FD08227222670078C7F1 /* CompleteButtonViewCell.swift in Sources */,
+				4008707C23769E5A001B8DB5 /* AddMealCardViewCell.swift in Sources */,
 				40B2142922B638820040EA9E /* DaySummaryViewCell.swift in Sources */,
 				069AD434227722E50075E711 /* MealCardViewCell.swift in Sources */,
 				403E953022CE3EAA00EFF459 /* TopDaysViewController.swift in Sources */,
