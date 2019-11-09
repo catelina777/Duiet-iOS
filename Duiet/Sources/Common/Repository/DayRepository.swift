@@ -32,11 +32,6 @@ final class DayRepository: DayRepositoryProtocol {
         realm = try! Realm()
     }
 
-    deinit {
-        let test = ""
-        Logger.shared.info(test)
-    }
-
     func find(meals date: Date) -> Results<Meal> {
         let dayStart = Calendar.current.startOfDay(for: date)
         let dayEnd = Date(timeInterval: 60 * 60 * 24, since: dayStart)

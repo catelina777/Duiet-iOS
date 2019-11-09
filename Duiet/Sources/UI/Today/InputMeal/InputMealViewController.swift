@@ -62,10 +62,6 @@ final class InputMealViewController: BaseTableViewController, KeyboardFrameTrack
         presentingViewController?.beginAppearanceTransition(true, animated: animated)
         presentingViewController?.endAppearanceTransition()
     }
-
-    deinit {
-        Logger.shared.info("🧹memory released🧹")
-    }
 }
 
 extension InputMealViewController {

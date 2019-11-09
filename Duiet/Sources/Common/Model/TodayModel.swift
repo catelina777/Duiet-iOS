@@ -84,10 +84,6 @@ final class TodayModel: TodayModelProtocol, TodayModelState {
             me.repository.delete(meals: meals, of: me.day.value)
         }
     }
-
-    deinit {
-        Logger.shared.info("🧹memory released🧹")
-    }
 }
 
 extension TodayModel {

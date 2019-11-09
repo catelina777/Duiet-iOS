@@ -7,6 +7,10 @@ target 'Duiet' do
   pod 'LicensePlist'
   pod 'R.swift'
 
+  pod 'Fabric'
+  pod 'Crashlytics'  
+  pod 'Firebase/Analytics'
+
   target 'DuietTests' do
     inherit! :search_paths
     pod 'R.swift'

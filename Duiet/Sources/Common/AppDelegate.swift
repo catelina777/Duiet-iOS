@@ -6,6 +6,7 @@
 //  Copyright © 2019 duiet. All rights reserved.
 //
 
+import Firebase
 import RealmSwift
 import UIKit
 
@@ -15,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        FirebaseApp.configure()
         RealmMigrationHelper.shared.doMigration()
 
         let window = UIWindow(frame: UIScreen.main.bounds)
@@ -27,11 +29,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         case false:
             UserDefaults.standard.set(true, forKey: UserDefaultsKey.isLaunchedBefore)
             appCoordinator?.initialStart()
-            Logger.shared.info("Is first launch 🍻🍻🍻")
 
         case true:
             appCoordinator?.start()
-            Logger.shared.info("Is not first launch 🍣🍣🍣")
         }
 
         #if DEBUG
