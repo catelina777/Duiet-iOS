@@ -36,7 +36,10 @@ extension SuggestionDataSource: UICollectionViewDataSource {
             contents.count >= indexPath.row
         else { return cell }
 
-        cell.configure(with: contents[indexPath.row])
+        cell.configure(content: contents[indexPath.row])
+        cell.bindIsChecked(input: viewModel.input,
+                           output: viewModel.output,
+                           content: contents[indexPath.row])
         return cell
     }
 }
@@ -54,7 +57,7 @@ extension SuggestionDataSource: UICollectionViewDelegateFlowLayout {
                                                 options: nil)?.first as? SuggestionLabelViewCell,
             let contents = viewModel.state.suggestedContents
         else { return CGSize.zero }
-        cell.configure(with: contents[indexPath.row])
+        cell.configure(content: contents[indexPath.row])
         cell.setNeedsLayout()
         cell.layoutIfNeeded()
         let size = cell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)

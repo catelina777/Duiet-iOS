@@ -26,6 +26,7 @@ protocol InputMealModelOutput {
 protocol InputMealModelState {
     var mealValue: Meal { get }
     var addContent: Binder<(Meal, Content)> { get }
+    var updateContent: Binder<(Content, Content)> { get }
     var saveName: Binder<(Content, String)> { get }
     var saveCalorie: Binder<(Content, Double)> { get }
     var saveMultiple: Binder<(Content, Double)> { get }
@@ -80,6 +81,19 @@ internal final class InputMealModel: InputMealModelProtocol, InputMealModelState
         Binder(self) { me, tuple in
             me.repository.add(content: tuple.1, to: tuple.0)
             me.contentDidAdd.accept(())
+        }
+    }
+
+    var updateContent: Binder<(Content, Content)> {
+        Binder<(Content, Content)>(self) { me, tuple in
+            guard
+                !tuple.0.isInvalidated,
+                !tuple.1.isInvalidated
+            else { return }
+            me.repository.update(name: tuple.0.name, of: tuple.1)
+            me.repository.update(calorie: tuple.0.calorie, of: tuple.1)
+            me.repository.update(multiple: tuple.0.multiple, of: tuple.1)
+            me.contentDidUpdate.accept(tuple.1)
         }
     }
 

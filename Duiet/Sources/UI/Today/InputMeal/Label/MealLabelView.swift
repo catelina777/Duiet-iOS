@@ -57,7 +57,7 @@ final class MealLabelView: UIView {
         self.mealLabel.text = "\(Int(calorie * (multiple == 0 ? 1 : multiple)))"
     }
 
-    var updateLabelText: Binder<Content> {
+    private var updateLabelText: Binder<Content> {
         Binder<Content>(self) { me, content in
             guard !content.isInvalidated else { return }
             let calorie = UnitBabel.shared.convert(value: content.calorie,
@@ -68,7 +68,7 @@ final class MealLabelView: UIView {
         }
     }
 
-    var hideMealLabel: Binder<Void> {
+    private var hideMealLabel: Binder<Void> {
         Binder(self) { me, _ in
             me.isHidden = true
         }
