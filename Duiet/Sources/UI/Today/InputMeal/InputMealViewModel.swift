@@ -168,7 +168,7 @@ final class InputMealViewModel: InputMealViewModelProtocol, InputMealViewModelSt
     }
 
     deinit {
-        print("🧹🧹🧹 InputMealViewModel parge 🧹🧹🧹")
+        Logger.shared.info("🧹memory released🧹")
     }
 }
 

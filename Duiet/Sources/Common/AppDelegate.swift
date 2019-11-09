@@ -20,27 +20,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let window = UIWindow(frame: UIScreen.main.bounds)
         self.window = window
 
-        self.appCoordinator = AppCoordinator(window: window)
-
-        /* insert seed data
-        let seedmanager = SeedManager()
-        seedmanager.generate()
-        */
-
+        appCoordinator = AppCoordinator(window: window)
         let isLaunchedBefore = UserDefaults.standard.bool(forKey: UserDefaultsKey.isLaunchedBefore)
 
         switch isLaunchedBefore {
         case false:
             UserDefaults.standard.set(true, forKey: UserDefaultsKey.isLaunchedBefore)
             appCoordinator?.initialStart()
-            print("is first launch 🍻🍻🍻")
+            Logger.shared.info("Is first launch 🍻🍻🍻")
 
         case true:
             appCoordinator?.start()
-            print("is not first launch 🍣🍣🍣")
+            Logger.shared.info("Is not first launch 🍣🍣🍣")
         }
 
-        print(RealmMigrationHelper.shared.defaultURL)
+        #if DEBUG
+        Logger.shared.debug(RealmMigrationHelper.shared.defaultURL)
+        #endif
 
         return true
     }

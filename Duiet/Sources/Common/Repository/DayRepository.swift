@@ -33,7 +33,8 @@ final class DayRepository: DayRepositoryProtocol {
     }
 
     deinit {
-        print("🧹🧹🧹 Day Repository Parge 🧹🧹🧹")
+        let test = ""
+        Logger.shared.info(test)
     }
 
     func find(meals date: Date) -> Results<Meal> {
@@ -118,7 +119,7 @@ final class DayRepository: DayRepositoryProtocol {
                 meal.updatedAt = Date()
             }
         } else {
-            print("Nothing \(content)")
+            Logger.shared.error("Nothing \(content)")
         }
     }
 
@@ -133,7 +134,7 @@ final class DayRepository: DayRepositoryProtocol {
                 day.updatedAt = Date()
             }
         } else {
-            print("Nothing \(meal)")
+            Logger.shared.error("Nothing \(meal)")
         }
     }
 

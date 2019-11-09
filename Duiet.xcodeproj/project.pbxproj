@@ -71,6 +71,7 @@
 		4001F71122ABF0EB0009CDA1 /* MonthsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4001F71022ABF0EB0009CDA1 /* MonthsViewController.xib */; };
 		4001F71322ABF1AC0009CDA1 /* BaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4001F71222ABF1AC0009CDA1 /* BaseCollectionViewController.swift */; };
 		4005BDDA22D8EE8B001A7C9D /* UserInfoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4005BDD922D8EE8B001A7C9D /* UserInfoRepository.swift */; };
+		4008707923766FA1001B8DB5 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4008707823766FA1001B8DB5 /* Logger.swift */; };
 		40116116230172BC00D522CC /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 40116115230172BC00D522CC /* Settings.bundle */; };
 		401D54B823012C7B0089E2F7 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 401D54B023012C7B0089E2F7 /* RealmSwift.framework */; };
 		401D54B923012C7B0089E2F7 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 401D54B123012C7B0089E2F7 /* RxCocoa.framework */; };
@@ -281,6 +282,7 @@
 		4001F71022ABF0EB0009CDA1 /* MonthsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MonthsViewController.xib; sourceTree = "<group>"; };
 		4001F71222ABF1AC0009CDA1 /* BaseCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewController.swift; sourceTree = "<group>"; };
 		4005BDD922D8EE8B001A7C9D /* UserInfoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoRepository.swift; sourceTree = "<group>"; };
+		4008707823766FA1001B8DB5 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		40116115230172BC00D522CC /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		401D54B023012C7B0089E2F7 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		401D54B123012C7B0089E2F7 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
@@ -625,6 +627,7 @@
 				40E7699A229953E000E9D5DA /* Model */,
 				0622E9FE226A1C5700E87F22 /* Protocol */,
 				403E953322CF745E00EFF459 /* Repository */,
+				4008707823766FA1001B8DB5 /* Logger.swift */,
 				0622EA2F226A251500E87F22 /* R.generated.swift */,
 				405D24B722F5CC15009FC5C2 /* UnitTestAppDelegate.swift */,
 				0641AD222264A1BA00CEDAE7 /* AppDelegate.swift */,
@@ -1676,6 +1679,7 @@
 				5E79D5672283FAC90073CD98 /* LabelCanvasViewCell.swift in Sources */,
 				408A4E8723546760004D2FFE /* WeightUnitType.swift in Sources */,
 				408A4E8F2354758F004D2FFE /* UnitCollectionRepository.swift in Sources */,
+				4008707923766FA1001B8DB5 /* Logger.swift in Sources */,
 				063FCBC7227DCDBA007C191F /* PhotoRepository.swift in Sources */,
 				407869C02323D19500C46C94 /* BaseTabBarController.swift in Sources */,
 				5E35CF8622D7280E00C9CFC3 /* InputMealViewModel.swift in Sources */,

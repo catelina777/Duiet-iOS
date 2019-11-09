@@ -64,7 +64,7 @@ final class InputMealViewController: BaseTableViewController, KeyboardFrameTrack
     }
 
     deinit {
-        print("🧹🧹🧹 \(InputMealViewController.className) parge 🧹🧹🧹")
+        Logger.shared.info("🧹memory released🧹")
     }
 }
 

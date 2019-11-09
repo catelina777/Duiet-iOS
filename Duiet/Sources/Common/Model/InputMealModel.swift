@@ -134,7 +134,7 @@ internal final class InputMealModel: InputMealModelProtocol, InputMealModelState
     }
 
     deinit {
-        print("🧹🧹🧹 InputMealModel Parge 🧹🧹🧹")
+        Logger.shared.info("🧹memory released🧹")
     }
 }
 

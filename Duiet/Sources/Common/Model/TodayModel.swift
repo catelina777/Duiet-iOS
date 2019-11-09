@@ -86,7 +86,7 @@ final class TodayModel: TodayModelProtocol, TodayModelState {
     }
 
     deinit {
-        print("🧹🧹🧹 TodayModel Parge 🧹🧹🧹")
+        Logger.shared.info("🧹memory released🧹")
     }
 }
 
