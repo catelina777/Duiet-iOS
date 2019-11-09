@@ -6,6 +6,7 @@
 //  Copyright © 2019 duiet. All rights reserved.
 //
 
+@testable import Duiet
 import Foundation
 import RealmSwift
 import XCTest
@@ -26,6 +27,6 @@ class DBUnitTestCase: XCTestCase {
         try! realm.write {
             realm.deleteAll()
         }
-        print("🗑🗑🗑 DB reset 🗑🗑🗑")
+        Logger.shared.debug("🗑🗑🗑 DB reset 🗑🗑🗑")
     }
 }

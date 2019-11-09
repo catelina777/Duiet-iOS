@@ -28,7 +28,7 @@ final class InputMealDataSource: NSObject {
     }
 
     deinit {
-        print("🧹🧹🧹 Input Meal Datasource parge 🧹🧹🧹")
+        Logger.shared.info("🧹memory released🧹")
     }
 }
 
