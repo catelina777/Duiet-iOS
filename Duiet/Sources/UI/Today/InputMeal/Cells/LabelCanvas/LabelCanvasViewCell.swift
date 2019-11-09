@@ -24,7 +24,7 @@ final class LabelCanvasViewCell: BaseTableViewCell {
             show(contents: state.contents, input: input)
             state.isShowedContents.accept(true)
         }
-        bindSuggestedContent(output: output)
+        bindSuggestedContent(input: input, output: output)
         suggestionDataSource.configure(with: suggestionCollectionView)
         bindAddContent(input: input)
         configure(with: state.foodImage)
@@ -85,11 +85,15 @@ final class LabelCanvasViewCell: BaseTableViewCell {
             .disposed(by: disposeBag)
     }
 
-    private func bindSuggestedContent(output: InputMealViewModelOutput) {
+    private func bindSuggestedContent(input: InputMealViewModelInput, output: InputMealViewModelOutput) {
         viewModel = LabelCanvasViewModel()
         suggestionDataSource = SuggestionDataSource(viewModel: viewModel)
         output.inputKeyword
             .bind(to: viewModel.input.inputKeyword)
+            .disposed(by: disposeBag)
+
+        viewModel.output.suggestionDidSelect
+            .bind(to: input.suggestionDidSelect)
             .disposed(by: disposeBag)
 
         viewModel.output.suggestedContentResults
@@ -98,15 +102,13 @@ final class LabelCanvasViewCell: BaseTableViewCell {
             .disposed(by: disposeBag)
     }
 
-    var reloadData: Binder<Void> {
+    private var reloadData: Binder<Void> {
         Binder<Void>(self) { me, _ in
+            print("reload")
             me.suggestionCollectionView.reloadData()
         }
     }
 
-    /// If UIImageView of IBOutlet is installed then image is displayed,
-    /// size calculation fails, so UIImageView is installed by program
-    /// - Parameter image: Meal image
     private func configure(with image: UIImage?) {
         mealImageView.image = image
     }

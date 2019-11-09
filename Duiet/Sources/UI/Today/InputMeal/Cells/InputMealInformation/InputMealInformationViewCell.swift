@@ -80,10 +80,19 @@ final class InputMealInformationViewCell: BaseTableViewCell, CellFrameTrackkable
         output.updateTextFields
             .bind(to: updateTextFields)
             .disposed(by: disposeBag)
+
+        /// Save selected candidate values to input
+        output.suggestionDidSelect
+            .subscribe(onNext: { [weak self] content in
+                guard let me = self else { return }
+                input.contentWillUpdate.onNext(content)
+                me.updateTextFields.onNext(content)
+            })
+            .disposed(by: disposeBag)
     }
 
-    var updateTextFields: Binder<Content> {
-        Binder(self) { me, content in
+    private var updateTextFields: Binder<Content> {
+        Binder<Content>(self) { me, content in
             me.nameTextField.text = content.name
             me.calorieTextField.text = ""
             me.multipleTextField.text = ""

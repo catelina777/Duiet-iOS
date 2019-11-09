@@ -8,16 +8,18 @@
 
 import Foundation
 import RealmSwift
+import RxRealm
 import RxRelay
 import RxSwift
-import RxRealm
 
 protocol LabelCanvasViewModelInput {
     var inputKeyword: AnyObserver<String> { get }
+    var suggestionDidSelect: AnyObserver<Content> { get }
 }
 
 protocol LabelCanvasViewModelOutput {
     var suggestedContentResults: Observable<Results<Content>?> { get }
+    var suggestionDidSelect: Observable<Content> { get }
 }
 
 protocol LabelCanvasViewModelState {
@@ -45,8 +47,12 @@ final class LabelCanvasViewModel: LabelCanvasViewModelProtocol, LabelCanvasViewM
 
     init(suggestionModel: SuggestionModelProtocol = SuggestionModel.shared) {
         let inputKeyword = PublishRelay<String>()
-        input = Input(inputKeyword: inputKeyword.asObserver())
-        output = Output(suggestedContentResults: suggestedContentResults.asObservable())
+        let suggestionDidSelect = PublishRelay<Content>()
+        input = Input(inputKeyword: inputKeyword.asObserver(),
+                      suggestionDidSelect: suggestionDidSelect.asObserver())
+
+        output = Output(suggestedContentResults: suggestedContentResults.asObservable(),
+                        suggestionDidSelect: suggestionDidSelect.asObservable())
 
         inputKeyword
             .bind(to: suggestionModel.input.inputKeyword)
@@ -55,6 +61,7 @@ final class LabelCanvasViewModel: LabelCanvasViewModelProtocol, LabelCanvasViewM
         suggestionModel.output.suggestedContentResults
             .compactMap { $0 }
             .flatMap { Observable.collection(from: $0) }
+            .distinctUntilChanged()
             .bind(to: suggestedContentResults)
             .disposed(by: disposeBag)
     }
@@ -63,9 +70,11 @@ final class LabelCanvasViewModel: LabelCanvasViewModelProtocol, LabelCanvasViewM
 extension LabelCanvasViewModel {
     struct Input: LabelCanvasViewModelInput {
         let inputKeyword: AnyObserver<String>
+        var suggestionDidSelect: AnyObserver<Content>
     }
 
     struct Output: LabelCanvasViewModelOutput {
         let suggestedContentResults: Observable<Results<Content>?>
+        let suggestionDidSelect: Observable<Content>
     }
 }
