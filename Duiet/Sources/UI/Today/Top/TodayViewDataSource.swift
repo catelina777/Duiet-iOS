@@ -21,18 +21,24 @@ final class TodayViewDataSource: NSObject {
         collectionView.delegate = self
         collectionView.register(R.nib.daySummaryViewCell)
         collectionView.register(R.nib.mealCardViewCell)
+        collectionView.register(R.nib.addMealCardViewCell)
     }
 }
 
 extension TodayViewDataSource: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        viewModel.state.meals.count + 1
+        if viewModel.state.meals.isEmpty {
+            // progress + addMealView
+            return 1 + 1
+        }
+        // progress + meals
+        return 1 + viewModel.state.meals.count
     }
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.row {
-        case 0:
+        case 0: // progressView
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.daySummaryViewCell,
                                                           for: indexPath)!
             cell.configure(with: viewModel.state.dayValue,
@@ -40,7 +46,13 @@ extension TodayViewDataSource: UICollectionViewDataSource {
                            unitCollection: viewModel.state.unitCollectionValue)
             return cell
 
-        default:
+        case 1 + (viewModel.state.meals.count - 1) + 1: // addMealView
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.addMealCardViewCell,
+                                                          for: indexPath)!
+            cell.configure(input: viewModel.input)
+            return cell
+
+        default: // mealView
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.mealCardViewCell,
                                                           for: indexPath)!
             let mealIndex = indexPath.row - 1
@@ -75,6 +87,12 @@ extension TodayViewDataSource: UICollectionViewDelegateFlowLayout {
         case 0:
             let width = collectionView.frame.width * 0.9
             let height = width * 0.5
+            let size = CGSize(width: width, height: height)
+            return size
+
+        case 1 + (viewModel.state.meals.count - 1) + 1:
+            let width = collectionView.frame.width * 0.9
+            let height = width * 0.25
             let size = CGSize(width: width, height: height)
             return size
 

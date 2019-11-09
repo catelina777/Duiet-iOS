@@ -84,8 +84,17 @@ extension TodayViewController {
 
     private func bindAddButton() {
         addButton.rx.tap
-            .map { self }
-            .bind(to: viewModel.input.didTapAddButton)
+            .bind(to: viewModel.input.addButtonDidTap)
+            .disposed(by: disposeBag)
+
+        viewModel.output.addButtonDidTap
+            .flatMapLatest {
+                RxYPImagePicker.rx
+                    .create(self)
+                    .flatMap { $0.pickedImage }
+                    .take(1)
+            }
+            .bind(to: viewModel.input.pickedImage)
             .disposed(by: disposeBag)
     }
 
