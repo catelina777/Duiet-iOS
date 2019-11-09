@@ -26,10 +26,6 @@ final class InputMealDataSource: NSObject {
         tableView.register(R.nib.labelCanvasViewCell)
         tableView.register(R.nib.inputMealInformationViewCell)
     }
-
-    deinit {
-        Logger.shared.info("🧹memory released🧹")
-    }
 }
 
 extension InputMealDataSource: UITableViewDataSource {

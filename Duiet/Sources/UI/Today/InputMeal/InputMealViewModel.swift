@@ -166,10 +166,6 @@ final class InputMealViewModel: InputMealViewModelProtocol, InputMealViewModelSt
             })
             .disposed(by: disposeBag)
     }
-
-    deinit {
-        Logger.shared.info("🧹memory released🧹")
-    }
 }
 
 extension InputMealViewModel {

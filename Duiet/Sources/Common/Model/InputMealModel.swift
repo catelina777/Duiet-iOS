@@ -132,10 +132,6 @@ internal final class InputMealModel: InputMealModelProtocol, InputMealModelState
             me.contentDidDelete.accept(())
         }
     }
-
-    deinit {
-        Logger.shared.info("🧹memory released🧹")
-    }
 }
 
 extension InputMealModel {
