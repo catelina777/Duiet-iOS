@@ -13,11 +13,11 @@ import YPImagePicker
 
 final class RxYPImagePicker: YPImagePicker {
     var didCancel: PublishRelay<Bool>
-    var pickedImage: PublishRelay<UIImage?>
+    var pickedImage: PublishRelay<UIImage>
 
     init(config: YPImagePickerConfiguration) {
         didCancel = PublishRelay<Bool>()
-        pickedImage = PublishRelay<UIImage?>()
+        pickedImage = PublishRelay<UIImage>()
         super.init(configuration: config)
 
         didFinishPicking {[weak self] items, cancel in

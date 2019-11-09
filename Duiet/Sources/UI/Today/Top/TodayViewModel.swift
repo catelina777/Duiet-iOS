@@ -17,7 +17,7 @@ protocol TodayViewModelInput {
     var viewDidAppear: AnyObserver<Void> { get }
     var didTapDeleteButton: AnyObserver<Void> { get }
     var addButtonDidTap: AnyObserver<Void> { get }
-    var pickedImage: AnyObserver<UIImage?> { get }
+    var pickedImage: AnyObserver<UIImage> { get }
     var selectedItem: AnyObserver<(MealCardViewCell, Meal, Int)> { get }
     var showDetailDay: AnyObserver<Day> { get }
     var isEditMode: AnyObserver<Bool> { get }
@@ -89,7 +89,7 @@ final class TodayViewModel: TodayViewModelProtocol, TodayViewModelState {
 
         let viewDidAppear = PublishRelay<Void>()
         let addButtonDidTap = PublishRelay<Void>()
-        let pickedImage = PublishRelay<UIImage?>()
+        let pickedImage = PublishRelay<UIImage>()
         let didTapDeleteButton = PublishRelay<Void>()
         let selectedItem = PublishRelay<(MealCardViewCell, Meal, Int)>()
         let showDetailDay = PublishRelay<Day>()
@@ -116,7 +116,6 @@ final class TodayViewModel: TodayViewModelProtocol, TodayViewModelState {
                         addButtonDidTap: addButtonDidTap.asObservable())
 
         let mealWillAdd = pickedImage
-            .compactMap { $0 }
             .flatMapLatest { PhotoRepository.shared.save(image: $0) }
             .observeOn(MainScheduler.instance)
             .map { Meal(imagePath: $0, date: todayModel.state.date) }
@@ -167,7 +166,7 @@ extension TodayViewModel {
         let viewDidAppear: AnyObserver<Void>
         let didTapDeleteButton: AnyObserver<Void>
         let addButtonDidTap: AnyObserver<Void>
-        let pickedImage: AnyObserver<UIImage?>
+        let pickedImage: AnyObserver<UIImage>
         let selectedItem: AnyObserver<(MealCardViewCell, Meal, Int)>
         let showDetailDay: AnyObserver<Day>
         let isEditMode: AnyObserver<Bool>
