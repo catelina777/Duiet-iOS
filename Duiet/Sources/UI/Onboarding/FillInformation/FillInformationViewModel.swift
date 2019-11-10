@@ -52,7 +52,7 @@ final class FillInformationViewModel: FillInformationViewModelProtocol, FillInfo
     private let unitCollectionModel: UnitCollectionModelProtocol
     private let disposeBag = DisposeBag()
 
-    init(userInfoModel: UserInfoModelProtocol = UserInfoModel.shared,
+    init(userProfileModel: UserProfileModelProtocol = UserProfileModel.shared,
          unitCollectionModel: UnitCollectionModelProtocol = UnitCollectionModel.shared) {
         self.unitCollectionModel = unitCollectionModel
 
@@ -82,7 +82,7 @@ final class FillInformationViewModel: FillInformationViewModelProtocol, FillInfo
             }
             .distinctUntilChanged()
 
-        let userInfo = PublishRelay<UserInfo>()
+        let userProfile = PublishRelay<UserProfile>()
         let didTapComplete = didTapCompleteButton
 
         let BMRWithActivityLevel = combinedInfo
@@ -94,13 +94,16 @@ final class FillInformationViewModel: FillInformationViewModelProtocol, FillInfo
                     let v3 = v3,
                     v4 != .none
                 else { return (0, v4) }
-                let _userInfo = UserInfo(gender: v0,
-                                         age: v1,
-                                         height: v2,
-                                         weight: v3,
-                                         activityLevel: v4)
-                userInfo.accept(_userInfo)
-                return (_userInfo.BMR, v4)
+                let userProfileEntity = UserProfile(id: UUID(),
+                                                age: Int16(v1),
+                                                biologicalSex: "\(v0)",
+                                                height: v2,
+                                                weight: v3,
+                                                activityLevel: "\(v4)",
+                                                createdAt: Date(),
+                                                updatedAt: Date())
+                userProfile.accept(userProfileEntity)
+                return (userProfileEntity.BMR, v4)
             }
             .share()
 
@@ -134,9 +137,9 @@ final class FillInformationViewModel: FillInformationViewModelProtocol, FillInfo
                         BMR: BMR,
                         TDEE: TDEE)
 
-        didTapComplete.withLatestFrom(userInfo)
+        didTapComplete.withLatestFrom(userProfile)
             .subscribe(onNext: {
-                userInfoModel.state.add(userInfo: $0)
+                userProfileModel.state.add(userProfile: $0)
             })
             .disposed(by: disposeBag)
     }

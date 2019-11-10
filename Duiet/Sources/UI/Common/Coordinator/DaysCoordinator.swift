@@ -21,7 +21,7 @@ final class DaysCoordinator: Coordinator {
     func start() {
         let model = DaysModel()
         let vc = TopDaysViewController(viewModel: .init(coordinator: self,
-                                                        userInfoModel: UserInfoModel.shared,
+                                                        userProfileModel: UserProfileModel.shared,
                                                         daysModel: model),
                                         segmentedViewModel: segmentedViewModel)
         navigator.pushViewController(vc, animated: false)
@@ -30,7 +30,7 @@ final class DaysCoordinator: Coordinator {
     func show(month: Month) {
         let model = DaysModel(month: month)
         let vc = TopDaysViewController(viewModel: .init(coordinator: self,
-                                                        userInfoModel: UserInfoModel.shared,
+                                                        userProfileModel: UserProfileModel.shared,
                                                         daysModel: model),
                                         segmentedViewModel: segmentedViewModel)
         navigator.pushViewController(vc, animated: false)

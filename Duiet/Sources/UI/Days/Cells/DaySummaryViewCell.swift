@@ -28,8 +28,8 @@ final class DaySummaryViewCell: RoundedCollectionViewCell {
     @IBOutlet weak var differenceValueLabel: UILabel!
     @IBOutlet weak var weightChangeValueLabel: UILabel!
 
-    func configure(with day: Day, userInfo: UserInfo, unitCollection: UnitCollection) {
-        let tdee = userInfo.TDEE
+    func configure(with day: Day, userProfile: UserProfile, unitCollection: UnitCollection) {
+        let tdee = userProfile.TDEE
         let totalCalorie = day.totalCalorie
         let difference = totalCalorie - tdee
         let weightChange = difference / (9 * 0.8) / 1_000

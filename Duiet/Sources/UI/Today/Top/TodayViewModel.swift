@@ -24,14 +24,14 @@ protocol TodayViewModelInput {
 }
 
 protocol TodayViewModelOutput {
-    var progress: Observable<(Day, UserInfo)> { get }
+    var progress: Observable<(Day, UserProfile)> { get }
     var isEditMode: Observable<Bool> { get }
     var isEnableTrashButton: Observable<Bool> { get }
     var addButtonDidTap: Observable<Void> { get }
 }
 
 protocol TodayViewModelState {
-    var userInfoValue: UserInfo { get }
+    var userProfileValue: UserProfile { get }
     var dayValue: Day { get }
     var meals: [Meal] { get }
     var title: String { get }
@@ -51,8 +51,8 @@ final class TodayViewModel: TodayViewModelProtocol, TodayViewModelState {
     var state: TodayViewModelState { return self }
 
     // MARK: - State
-    var userInfoValue: UserInfo {
-        userInfoModel.state.userInfoValue
+    var userProfileValue: UserProfile {
+        userProfileModel.state.userProfileValue
     }
 
     var dayValue: Day {
@@ -73,17 +73,17 @@ final class TodayViewModel: TodayViewModelProtocol, TodayViewModelState {
 
     let deletionTargetMeals = BehaviorRelay<[Meal]>(value: [])
 
-    private let userInfoModel: UserInfoModelProtocol
+    private let userProfileModel: UserProfileModelProtocol
     private let todayModel: TodayModelProtocol
     private let unitCollectionModel: UnitCollectionModelProtocol
 
     private let disposeBag = DisposeBag()
 
     init(coordinator: TodayCoordinator,
-         userInfoModel: UserInfoModelProtocol,
+         userProfileModel: UserProfileModelProtocol,
          todayModel: TodayModelProtocol,
          unitCollectionModel: UnitCollectionModelProtocol = UnitCollectionModel.shared) {
-        self.userInfoModel = userInfoModel
+        self.userProfileModel = userProfileModel
         self.todayModel = todayModel
         self.unitCollectionModel = unitCollectionModel
 
@@ -104,7 +104,8 @@ final class TodayViewModel: TodayViewModelProtocol, TodayViewModelState {
                       isEditMode: isEditMode.asObserver())
 
         /// I also added meals because I want to detect the update of meal information
-        let progress = Observable.combineLatest(todayModel.output.day, userInfoModel.output.userInfo)
+        let progress = Observable.combineLatest(todayModel.output.day,
+                                                userProfileModel.output.userProfile.compactMap { $0 })
 
         let isEnableTrashButton = deletionTargetMeals
             .map { $0.isEmpty }
@@ -173,7 +174,7 @@ extension TodayViewModel {
     }
 
     struct Output: TodayViewModelOutput {
-        let progress: Observable<(Day, UserInfo)>
+        let progress: Observable<(Day, UserProfile)>
         let isEditMode: Observable<Bool>
         let isEnableTrashButton: Observable<Bool>
         let addButtonDidTap: Observable<Void>

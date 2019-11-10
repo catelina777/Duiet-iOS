@@ -33,7 +33,7 @@ extension DaysViewDataSource: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.daySummaryViewCell,
                                                       for: indexPath)!
         cell.configure(with: viewModel.state.daysValue[indexPath.row],
-                       userInfo: viewModel.state.userInfoValue,
+                       userProfile: viewModel.state.userProfileValue,
                        unitCollection: viewModel.state.unitCollectionValue)
         return cell
     }

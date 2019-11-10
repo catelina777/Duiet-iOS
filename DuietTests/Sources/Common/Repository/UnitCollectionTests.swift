@@ -46,7 +46,7 @@ class UnitCollectionTests: DBUnitTestCase {
         let mockUnitCollection2 = UnitCollection(heightUnitRow: mock2.testRow1,
                                                  weightUnitRow: mock2.testRow2,
                                                  energyUnitRow: mock2.testRow3)
-        //　Test whether the expected UserInfo has been added
+        //　Test whether the expected UnitCollection has been added
         let unitCollection = UnitCollectionRepository.shared.get()
         let emptyResults = realm.objects(UnitCollection.self)
         XCTAssertEqual(emptyResults.count, 0)
@@ -58,7 +58,7 @@ class UnitCollectionTests: DBUnitTestCase {
         XCTAssertNotNil(thereIsOneResult)
         XCTAssertTrue(thereIsOneResult?.heightUnitRow == mock1.testRow1)
 
-        // Test if the expected UserInfo has been updated
+        // Test if the expected UnitCollection has been updated
         UnitCollectionRepository.shared.add(unitCollection: mockUnitCollection2)
         let updatedResult = try! unitCollection
             .toBlocking()
