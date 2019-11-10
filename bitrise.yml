@@ -1,0 +1,165 @@
+app:
+  envs:
+  - BITRISE_PROJECT_PATH: Duiet.xcworkspace
+    opts:
+      is_expand: false
+  - BITRISE_SCHEME: Duiet
+    opts:
+      is_expand: false
+  - BITRISE_EXPORT_METHOD: development
+    opts:
+      is_expand: false
+  - DUIET_APP_REPOSITORY_NAME: catelina777/Duiet-iOS
+    opts:
+      is_expand: false
+  - GITHUB_OWNER: catelina777
+    opts:
+      is_expand: false
+  - GITHUB_CACHE_REPO: Duiet-Cache
+    opts:
+      is_expand: false
+default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
+format_version: "8"
+meta:
+  bitrise.io:
+    machine_type: performance
+project_type: ios
+trigger_map:
+- push_branch: master
+  workflow: test
+- pull_request_source_branch: '*'
+  workflow: test
+workflows:
+  _prepare:
+    steps:
+    - activate-ssh-key@4.0.3: {}
+    - git-clone@4.0.17:
+        inputs:
+        - update_submodules: "no"
+    - cache-pull@2.1.1: {}
+    - script@1.1.5:
+        inputs:
+        - content: |-
+            #!/bin/bash
+            set -ex
+            gem install bundler --force
+            bundle install --path=vendor/bundle --binstubs=vendor/bin
+            bundle exec fastlane download_build_cache
+
+            shouldUpload=false
+            if [ ! -d "Carthage" ]; then
+              Scripts/build_carthage
+              shouldUpload=true
+            fi
+
+            if [ ! -d "Pods" ]; then
+              Scripts/build_pods
+              shouldUpload=true
+            fi
+
+            if "${shouldUpload}"; then
+              bundle exec fastlane upload_build_cache
+            fi
+        title: Install dependencies
+  deploy:
+    steps:
+    - activate-ssh-key@4.0.3:
+        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
+    - git-clone@4.0.14: {}
+    - cache-pull@2.0.1: {}
+    - script@1.1.5:
+        title: Do anything with Script step
+    - certificate-and-profile-installer@1.10.1: {}
+    - cocoapods-install@1.7.2: {}
+    - xcode-test@2.3.2:
+        inputs:
+        - project_path: $BITRISE_PROJECT_PATH
+        - scheme: $BITRISE_SCHEME
+    - xcode-archive@2.5.0:
+        inputs:
+        - project_path: $BITRISE_PROJECT_PATH
+        - scheme: $BITRISE_SCHEME
+        - export_method: $BITRISE_EXPORT_METHOD
+    - deploy-to-bitrise-io@1.6.0: {}
+    - cache-push@2.2.0: {}
+  nightly-build: {}
+  primary:
+    steps:
+    - activate-ssh-key@4.0.3:
+        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
+    - git-clone@4.0.14: {}
+    - cache-pull@2.0.1: {}
+    - script@1.1.5:
+        title: Do anything with Script step
+    - certificate-and-profile-installer@1.10.1: {}
+    - cocoapods-install@1.7.2: {}
+    - carthage@3.2.1: {}
+    - cache-push@2.2.0:
+        inputs:
+        - cache_paths: $BITRISE_CACHE_DIR
+    - xcode-test@2.3.2:
+        inputs:
+        - project_path: $BITRISE_PROJECT_PATH
+        - scheme: $BITRISE_SCHEME
+    - deploy-to-bitrise-io@1.6.0: {}
+  sync-bitrise-yml:
+    before_run:
+    - _prepare
+    steps:
+    - script@1.1.5:
+        inputs:
+        - content: |-
+            #!/usr/bin/env bash
+            set -ex
+            bundle exec fastlane sync_bitrise_yml
+        title: Sync bitrise.yml
+  test:
+    before_run:
+    - _prepare
+    steps:
+    - script@1.1.5:
+        inputs:
+        - content: |-
+            #!/bin/bash
+            # fail if any commands fails
+            set -ex
+            bundle exec fastlane duiet_tests
+        title: Test
+    - cache-push@2.2.1: {}
+    - deploy-to-bitrise-io@1.9.2:
+        inputs:
+        - is_enable_public_page: "false"
+    - slack@3.1.3:
+        inputs:
+        - api_token: $SLACK_API_TOKEN
+        - channel: '#duiet_ci'
+        - pretext: '*Test Succeeded!*'
+        - channel_on_error: '#duiet_ci'
+        - emoji_on_error: ""
+        - text: ""
+        - text_on_error: $BITRISE_GIT_MESSAGE
+        - pretext_on_error: '*Test Failed!*'
+        - webhook_url: $SLACK_WEBHOOK_URL
+  update-dependencies:
+    before_run:
+    - _prepare
+    steps:
+    - script@1.1.5:
+        inputs:
+        - content: |-
+            #!/bin/bash
+            set -ex
+            bundle exec fastlane update_dependencies
+            bundle exec fastlane update_license_list
+        title: Update Dependencies
+  update-tools:
+    before_run:
+    - _prepare
+    steps:
+    - script@1.1.5:
+        inputs:
+        - content: |-
+            #!/bin/bash
+            set -ex
+            bundle exec fastlane update_tools
+        title: Update Developer Tools
