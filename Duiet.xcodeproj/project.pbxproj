@@ -106,6 +106,16 @@
 		403E954A22CF9C9B00EFF459 /* TopTabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403E954922CF9C9B00EFF459 /* TopTabBarCoordinator.swift */; };
 		403E954C22CFA78900EFF459 /* WalkthroughViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403E954B22CFA78900EFF459 /* WalkthroughViewModel.swift */; };
 		405040FE2377E219006731B1 /* Schemes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 405040FC2377E219006731B1 /* Schemes.xcdatamodeld */; };
+		4050416123780629006731B1 /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4050416023780629006731B1 /* CoreDataRepository.swift */; };
+		40504167237813D4006731B1 /* RxCoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40504166237813D4006731B1 /* RxCoreData.framework */; };
+		40504182237815BB006731B1 /* NewMeal+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4050417A237815BB006731B1 /* NewMeal+CoreDataProperties.swift */; };
+		40504183237815BB006731B1 /* UserUnit+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4050417B237815BB006731B1 /* UserUnit+CoreDataProperties.swift */; };
+		40504184237815BB006731B1 /* UserProfile+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4050417C237815BB006731B1 /* UserProfile+CoreDataClass.swift */; };
+		40504185237815BB006731B1 /* UserProfile+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4050417D237815BB006731B1 /* UserProfile+CoreDataProperties.swift */; };
+		40504186237815BB006731B1 /* UserUnit+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4050417E237815BB006731B1 /* UserUnit+CoreDataClass.swift */; };
+		40504187237815BB006731B1 /* Food+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4050417F237815BB006731B1 /* Food+CoreDataClass.swift */; };
+		40504188237815BB006731B1 /* Food+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40504180237815BB006731B1 /* Food+CoreDataProperties.swift */; };
+		40504189237815BB006731B1 /* NewMeal+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40504181237815BB006731B1 /* NewMeal+CoreDataClass.swift */; };
 		405147C82291498100C9AF8C /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405147C72291498100C9AF8C /* Meal.swift */; };
 		405147CA2291498800C9AF8C /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405147C92291498800C9AF8C /* Content.swift */; };
 		4054D0C9235EDB0500BA4064 /* HistoriesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4054D0C8235EDB0500BA4064 /* HistoriesCoordinator.swift */; };
@@ -324,6 +334,16 @@
 		403E954922CF9C9B00EFF459 /* TopTabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTabBarCoordinator.swift; sourceTree = "<group>"; };
 		403E954B22CFA78900EFF459 /* WalkthroughViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughViewModel.swift; sourceTree = "<group>"; };
 		405040FD2377E219006731B1 /* Schemes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Schemes.xcdatamodel; sourceTree = "<group>"; };
+		4050416023780629006731B1 /* CoreDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRepository.swift; sourceTree = "<group>"; };
+		40504166237813D4006731B1 /* RxCoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCoreData.framework; path = Carthage/Build/iOS/RxCoreData.framework; sourceTree = "<group>"; };
+		4050417A237815BB006731B1 /* NewMeal+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NewMeal+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		4050417B237815BB006731B1 /* UserUnit+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserUnit+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		4050417C237815BB006731B1 /* UserProfile+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserProfile+CoreDataClass.swift"; sourceTree = "<group>"; };
+		4050417D237815BB006731B1 /* UserProfile+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserProfile+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		4050417E237815BB006731B1 /* UserUnit+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserUnit+CoreDataClass.swift"; sourceTree = "<group>"; };
+		4050417F237815BB006731B1 /* Food+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Food+CoreDataClass.swift"; sourceTree = "<group>"; };
+		40504180237815BB006731B1 /* Food+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Food+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		40504181237815BB006731B1 /* NewMeal+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NewMeal+CoreDataClass.swift"; sourceTree = "<group>"; };
 		405147C72291498100C9AF8C /* Meal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		405147C92291498800C9AF8C /* Content.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		4054D0C8235EDB0500BA4064 /* HistoriesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoriesCoordinator.swift; sourceTree = "<group>"; };
@@ -434,6 +454,7 @@
 				401D54B823012C7B0089E2F7 /* RealmSwift.framework in Frameworks */,
 				401D54B923012C7B0089E2F7 /* RxCocoa.framework in Frameworks */,
 				401D54BA23012C7B0089E2F7 /* RxRealm.framework in Frameworks */,
+				40504167237813D4006731B1 /* RxCoreData.framework in Frameworks */,
 				40A7383223365BB400A3E605 /* PryntTrimmerView.framework in Frameworks */,
 				40A7383923365BCA00A3E605 /* Stevia.framework in Frameworks */,
 				401D54BC23012C7B0089E2F7 /* RxSwift.framework in Frameworks */,
@@ -468,6 +489,7 @@
 		0603293A227F3837009A67A4 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				4050414E2377FECA006731B1 /* Core Data */,
 				5E9C28BE228E6254004ABF3B /* UserInfo.swift */,
 				408A4E8C23547317004D2FFE /* UnitCollection.swift */,
 				5E9EE7D022C4980E00AF5D82 /* Month.swift */,
@@ -960,6 +982,7 @@
 		403E953322CF745E00EFF459 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				4050415F237805EA006731B1 /* Core Data */,
 				403E953622CF7B1000EFF459 /* DayRepository.swift */,
 				403E953422CF747E00EFF459 /* DaysRepository.swift */,
 				5E83E9FF22E1680E00B8F584 /* MonthsRepository.swift */,
@@ -1016,6 +1039,29 @@
 				405040FC2377E219006731B1 /* Schemes.xcdatamodeld */,
 			);
 			path = Schemes;
+			sourceTree = "<group>";
+		};
+		4050414E2377FECA006731B1 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				4050417F237815BB006731B1 /* Food+CoreDataClass.swift */,
+				40504180237815BB006731B1 /* Food+CoreDataProperties.swift */,
+				40504181237815BB006731B1 /* NewMeal+CoreDataClass.swift */,
+				4050417A237815BB006731B1 /* NewMeal+CoreDataProperties.swift */,
+				4050417C237815BB006731B1 /* UserProfile+CoreDataClass.swift */,
+				4050417D237815BB006731B1 /* UserProfile+CoreDataProperties.swift */,
+				4050417E237815BB006731B1 /* UserUnit+CoreDataClass.swift */,
+				4050417B237815BB006731B1 /* UserUnit+CoreDataProperties.swift */,
+			);
+			path = "Core Data";
+			sourceTree = "<group>";
+		};
+		4050415F237805EA006731B1 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				4050416023780629006731B1 /* CoreDataRepository.swift */,
+			);
+			path = "Core Data";
 			sourceTree = "<group>";
 		};
 		405A9F5322ACFFDC00454412 /* Cells */ = {
@@ -1159,6 +1205,7 @@
 		4B312EFBEE0174A408F8814E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				40504166237813D4006731B1 /* RxCoreData.framework */,
 				40FB69A6235DF923003565F4 /* FloatingSegmentedControl.framework */,
 				40A7383623365BCA00A3E605 /* Stevia.framework */,
 				40A7383523365BCA00A3E605 /* YPImagePicker.framework */,
@@ -1695,17 +1742,22 @@
 				06B2FCFC227222530078C7F1 /* InputGenderViewCell.swift in Sources */,
 				5E83E9FE22E167D400B8F584 /* MonthsModel.swift in Sources */,
 				403E953A22CF939300EFF459 /* Coordinator.swift in Sources */,
+				40504182237815BB006731B1 /* NewMeal+CoreDataProperties.swift in Sources */,
 				402D9BFC22E214FA003676C3 /* SettingType.swift in Sources */,
+				40504187237815BB006731B1 /* Food+CoreDataClass.swift in Sources */,
 				40FA52EC236F382700C58BC3 /* SuggestionDataSource.swift in Sources */,
+				40504188237815BB006731B1 /* Food+CoreDataProperties.swift in Sources */,
 				405A9F6122AE91C700454412 /* ProgressType.swift in Sources */,
 				0622EA47226A2AB900E87F22 /* PublishRelay.extension.swift in Sources */,
 				4097C2CD235AE93900DC0686 /* UnitBabel.swift in Sources */,
 				0622EA2B226A21A400E87F22 /* UIView.extension.swift in Sources */,
+				40504186237815BB006731B1 /* UserUnit+CoreDataClass.swift in Sources */,
 				405A9F5D22AD0A3D00454412 /* MonthSummaryViewModel.swift in Sources */,
 				061F278F22733DA100FDCB17 /* WalkthroughViewController.swift in Sources */,
 				403E954422CF94CF00EFF459 /* TodayCoordinator.swift in Sources */,
 				4001F71322ABF1AC0009CDA1 /* BaseCollectionViewController.swift in Sources */,
 				408A4E962354A407004D2FFE /* SelectUnitViewModel.swift in Sources */,
+				4050416123780629006731B1 /* CoreDataRepository.swift in Sources */,
 				5E9EE7D822C5CEAD00AF5D82 /* SeedManager.swift in Sources */,
 				40B2141522B4D5B00040EA9E /* WeekType.swift in Sources */,
 				06932AC822801AEB00CFA05C /* MealLabelView.swift in Sources */,
@@ -1732,6 +1784,7 @@
 				405147CA2291498800C9AF8C /* Content.swift in Sources */,
 				407D2E7A22EF2537001EC701 /* RealmMigrationHelper.swift in Sources */,
 				408A4EA12357527E004D2FFE /* SelectUnitCellType.swift in Sources */,
+				40504183237815BB006731B1 /* UserUnit+CoreDataProperties.swift in Sources */,
 				403E953722CF7B1000EFF459 /* DayRepository.swift in Sources */,
 				40B2142022B635F80040EA9E /* DaysViewController.swift in Sources */,
 				0622EA27226A20CE00E87F22 /* BaseTableViewCell.swift in Sources */,
@@ -1763,6 +1816,7 @@
 				4008707923766FA1001B8DB5 /* Logger.swift in Sources */,
 				063FCBC7227DCDBA007C191F /* PhotoRepository.swift in Sources */,
 				407869C02323D19500C46C94 /* BaseTabBarController.swift in Sources */,
+				40504185237815BB006731B1 /* UserProfile+CoreDataProperties.swift in Sources */,
 				5E35CF8622D7280E00C9CFC3 /* InputMealViewModel.swift in Sources */,
 				408A4E8D23547317004D2FFE /* UnitCollection.swift in Sources */,
 				06B2FD08227222670078C7F1 /* CompleteButtonViewCell.swift in Sources */,
@@ -1788,8 +1842,10 @@
 				408A4E892354676C004D2FFE /* EnergyUnitType.swift in Sources */,
 				408A4E9F2357420F004D2FFE /* SelectElementViewCell.swift in Sources */,
 				4001F70022ABB43B0009CDA1 /* SettingViewController.swift in Sources */,
+				40504189237815BB006731B1 /* NewMeal+CoreDataClass.swift in Sources */,
 				5E9EE7CD22C45FAD00AF5D82 /* Date.extension.swift in Sources */,
 				0622EA37226A29D600E87F22 /* ActivityLevelType.swift in Sources */,
+				40504184237815BB006731B1 /* UserProfile+CoreDataClass.swift in Sources */,
 				402260E322D615F50057BC9E /* MealLabelViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
