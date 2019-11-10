@@ -105,6 +105,7 @@
 		403E954822CF958600EFF459 /* SettingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403E954722CF958600EFF459 /* SettingCoordinator.swift */; };
 		403E954A22CF9C9B00EFF459 /* TopTabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403E954922CF9C9B00EFF459 /* TopTabBarCoordinator.swift */; };
 		403E954C22CFA78900EFF459 /* WalkthroughViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403E954B22CFA78900EFF459 /* WalkthroughViewModel.swift */; };
+		405040FE2377E219006731B1 /* Schemes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 405040FC2377E219006731B1 /* Schemes.xcdatamodeld */; };
 		405147C82291498100C9AF8C /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405147C72291498100C9AF8C /* Meal.swift */; };
 		405147CA2291498800C9AF8C /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405147C92291498800C9AF8C /* Content.swift */; };
 		4054D0C9235EDB0500BA4064 /* HistoriesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4054D0C8235EDB0500BA4064 /* HistoriesCoordinator.swift */; };
@@ -322,6 +323,7 @@
 		403E954722CF958600EFF459 /* SettingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCoordinator.swift; sourceTree = "<group>"; };
 		403E954922CF9C9B00EFF459 /* TopTabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTabBarCoordinator.swift; sourceTree = "<group>"; };
 		403E954B22CFA78900EFF459 /* WalkthroughViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughViewModel.swift; sourceTree = "<group>"; };
+		405040FD2377E219006731B1 /* Schemes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Schemes.xcdatamodel; sourceTree = "<group>"; };
 		405147C72291498100C9AF8C /* Meal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		405147C92291498800C9AF8C /* Content.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		4054D0C8235EDB0500BA4064 /* HistoriesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoriesCoordinator.swift; sourceTree = "<group>"; };
@@ -607,6 +609,7 @@
 				5E9EE7D522C5CE5A00AF5D82 /* Assets */,
 				0622EA2C226A237C00E87F22 /* Fonts */,
 				5E9EE7D622C5CE7D00AF5D82 /* Seeds */,
+				405040FB2377E1FE006731B1 /* Schemes */,
 				401161142301728B00D522CC /* Settings */,
 				400870A523771B88001B8DB5 /* Localize */,
 				0641AD2B2264A1BC00CEDAE7 /* LaunchScreen.storyboard */,
@@ -1005,6 +1008,14 @@
 				403E953122CE40CC00EFF459 /* TopMonthsViewController.swift */,
 			);
 			path = Top;
+			sourceTree = "<group>";
+		};
+		405040FB2377E1FE006731B1 /* Schemes */ = {
+			isa = PBXGroup;
+			children = (
+				405040FC2377E219006731B1 /* Schemes.xcdatamodeld */,
+			);
+			path = Schemes;
 			sourceTree = "<group>";
 		};
 		405A9F5322ACFFDC00454412 /* Cells */ = {
@@ -1706,6 +1717,7 @@
 				40EADBF2231AACFD00D6E9E1 /* UserDefaultsKey.swift in Sources */,
 				5E3E860622C305BD004E1676 /* Day.swift in Sources */,
 				405A9F5F22AD0A4700454412 /* MonthSummaryViewDataSource.swift in Sources */,
+				405040FE2377E219006731B1 /* Schemes.xcdatamodeld in Sources */,
 				405D24B622F5CBAB009FC5C2 /* main.swift in Sources */,
 				06B2FD002272225A0078C7F1 /* InputNumberViewCell.swift in Sources */,
 				405E3A1D229929D500ECEA9E /* EmptyContentViewCell.swift in Sources */,
@@ -2179,6 +2191,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		405040FC2377E219006731B1 /* Schemes.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				405040FD2377E219006731B1 /* Schemes.xcdatamodel */,
+			);
+			currentVersion = 405040FD2377E219006731B1 /* Schemes.xcdatamodel */;
+			path = Schemes.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 0641AD172264A1BA00CEDAE7 /* Project object */;
 }
