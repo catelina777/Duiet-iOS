@@ -1,4 +1,6 @@
 github "ReactiveX/RxSwift" "5.0.1"
+github "RxSwiftCommunity/RxCoreData" "1.0.0"
+github "RxSwiftCommunity/RxDatasources" "4.0.1"
 github "RxSwiftCommunity/RxGesture" "3.0.1"
 github "catelina777/FloatingSegmentedControl" "1.0.2"
 github "catelina777/PryntTrimmerView" "4.1.0"
