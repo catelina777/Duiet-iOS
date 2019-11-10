@@ -19,7 +19,7 @@ final class TodayCoordinator: Coordinator {
         self.segmentedViewModel = segmentedViewModel
         let model = TodayModel(repository: DayRepository.shared)
         let vm = TodayViewModel(coordinator: self,
-                                userInfoModel: UserInfoModel.shared,
+                                userProfileModel: UserProfileModel.shared,
                                 todayModel: model,
                                 unitCollectionModel: UnitCollectionModel.shared)
         viewController = TopTodayViewController(viewModel: vm,
@@ -51,7 +51,7 @@ final class TodayCoordinator: Coordinator {
     func showDetailDay(day: Day) {
         let model = TodayModel(repository: DayRepository.shared, date: day.createdAt)
         let vm = TodayViewModel(coordinator: self,
-                                userInfoModel: UserInfoModel.shared,
+                                userProfileModel: UserProfileModel.shared,
                                 todayModel: model,
                                 unitCollectionModel: UnitCollectionModel.shared)
         let vc = TodayViewController(viewModel: vm)

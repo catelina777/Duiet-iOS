@@ -23,6 +23,7 @@ disabled_rules:
   - file_header
   - file_name
   - force_unwrapping
+  - force_cast
   - implicitly_unwrapped_optional
   - multiline_arguments_brackets
   - multiline_literal_brackets
@@ -40,6 +41,8 @@ disabled_rules:
   - vertical_parameter_alignment_on_call
   - operator_usage_whitespace
   - file_types_order
+  - type_name
+  - untyped_error_in_catch
 
 opt_in_rules:
   - anyobject_protocol

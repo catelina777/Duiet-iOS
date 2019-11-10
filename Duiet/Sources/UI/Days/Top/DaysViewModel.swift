@@ -21,7 +21,7 @@ protocol DaysViewModelOutput {
 
 protocol DaysViewModelState {
     var daysValue: [Day] { get }
-    var userInfoValue: UserInfo { get }
+    var userProfileValue: UserProfile { get }
     var title: String { get }
     var unitCollectionValue: UnitCollection { get }
 }
@@ -42,8 +42,8 @@ final class DaysViewModel: DaysViewModelProtocol, DaysViewModelState {
         daysModel.state.daysValue
     }
 
-    var userInfoValue: UserInfo {
-        userInfoModel.state.userInfoValue
+    var userProfileValue: UserProfile {
+        userProfileModel.state.userProfileValue
     }
 
     var title: String {
@@ -55,18 +55,18 @@ final class DaysViewModel: DaysViewModelProtocol, DaysViewModelState {
     }
 
     private let daysModel: DaysModelProtocol
-    private let userInfoModel: UserInfoModelProtocol
+    private let userProfileModel: UserProfileModelProtocol
     private let unitCollectionModel: UnitCollectionModelProtocol
     private let coordinator: DaysCoordinator
     private let disposeBag = DisposeBag()
 
     init(coordinator: DaysCoordinator,
-         userInfoModel: UserInfoModelProtocol,
+         userProfileModel: UserProfileModelProtocol,
          daysModel: DaysModelProtocol,
          unitCollectionModel: UnitCollectionModelProtocol = UnitCollectionModel.shared) {
         self.coordinator = coordinator
         self.daysModel = daysModel
-        self.userInfoModel = userInfoModel
+        self.userProfileModel = userProfileModel
         self.unitCollectionModel = unitCollectionModel
 
         let _selectedDay = PublishRelay<Day>()
