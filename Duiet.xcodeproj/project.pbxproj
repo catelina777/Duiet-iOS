@@ -109,6 +109,7 @@
 		4050418B23781EBA006731B1 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4050418A23781EBA006731B1 /* UserProfile.swift */; };
 		4050418D23781F89006731B1 /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4050418C23781F89006731B1 /* RxDataSources.framework */; };
 		40504191237822B9006731B1 /* UserUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40504190237822B9006731B1 /* UserUnit.swift */; };
+		405041B723797A6F006731B1 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 405041B623797A6E006731B1 /* CloudKit.framework */; };
 		405147C82291498100C9AF8C /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405147C72291498100C9AF8C /* Meal.swift */; };
 		405147CA2291498800C9AF8C /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405147C92291498800C9AF8C /* Content.swift */; };
 		4054D0C9235EDB0500BA4064 /* HistoriesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4054D0C8235EDB0500BA4064 /* HistoriesCoordinator.swift */; };
@@ -328,6 +329,8 @@
 		4050418A23781EBA006731B1 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		4050418C23781F89006731B1 /* RxDataSources.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxDataSources.framework; path = Carthage/Build/iOS/RxDataSources.framework; sourceTree = "<group>"; };
 		40504190237822B9006731B1 /* UserUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUnit.swift; sourceTree = "<group>"; };
+		405041B523797A6B006731B1 /* Duiet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Duiet.entitlements; sourceTree = "<group>"; };
+		405041B623797A6E006731B1 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		405147C72291498100C9AF8C /* Meal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		405147C92291498800C9AF8C /* Content.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		4054D0C8235EDB0500BA4064 /* HistoriesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoriesCoordinator.swift; sourceTree = "<group>"; };
@@ -433,6 +436,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				405041B723797A6F006731B1 /* CloudKit.framework in Frameworks */,
 				401D54B823012C7B0089E2F7 /* RealmSwift.framework in Frameworks */,
 				401D54B923012C7B0089E2F7 /* RxCocoa.framework in Frameworks */,
 				401D54BA23012C7B0089E2F7 /* RxRealm.framework in Frameworks */,
@@ -883,6 +887,7 @@
 		401161142301728B00D522CC /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				405041B523797A6B006731B1 /* Duiet.entitlements */,
 				400870A023771120001B8DB5 /* GoogleService-Info.plist */,
 				0641AD2E2264A1BC00CEDAE7 /* Info.plist */,
 				40116115230172BC00D522CC /* Settings.bundle */,
@@ -1179,6 +1184,7 @@
 		4B312EFBEE0174A408F8814E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				405041B623797A6E006731B1 /* CloudKit.framework */,
 				4050418C23781F89006731B1 /* RxDataSources.framework */,
 				40504166237813D4006731B1 /* RxCoreData.framework */,
 				40FB69A6235DF923003565F4 /* FloatingSegmentedControl.framework */,
@@ -2007,6 +2013,7 @@
 			baseConfigurationReference = 1D64453EF3A64E5B58A308B8 /* Pods-Duiet.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Duiet/Resources/Settings/Duiet.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -2037,6 +2044,7 @@
 			baseConfigurationReference = D6DEA4663663C3FEDB166E8A /* Pods-Duiet.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Duiet/Resources/Settings/Duiet.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
