@@ -6,6 +6,7 @@
 //  Copyright © 2019 duiet. All rights reserved.
 //
 
+import CloudKit
 import CoreData
 import Foundation
 import RxCoreData
@@ -25,8 +26,8 @@ protocol CoreDataRepositoryProtocol {
 class CoreDataRepository: CoreDataRepositoryProtocol {
     static let shared = CoreDataRepository()
 
-    lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "Schemes")
+    lazy var persistentContainer: NSPersistentCloudKitContainer = {
+        let container = NSPersistentCloudKitContainer(name: "Schemes")
         container.loadPersistentStores(completionHandler: { storeDescription, error in
             if let error = error as NSError? {
                 Logger.shared.error(error)
