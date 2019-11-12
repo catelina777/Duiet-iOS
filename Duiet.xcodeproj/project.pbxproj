@@ -616,7 +616,6 @@
 			children = (
 				5E9EE7D522C5CE5A00AF5D82 /* Assets */,
 				0622EA2C226A237C00E87F22 /* Fonts */,
-				5E9EE7D622C5CE7D00AF5D82 /* Seeds */,
 				405040FB2377E1FE006731B1 /* Schemes */,
 				401161142301728B00D522CC /* Settings */,
 				400870A523771B88001B8DB5 /* Localize */,
@@ -1255,13 +1254,6 @@
 				40D97C9122ED52A10069B5F2 /* Colors.xcassets */,
 			);
 			path = Assets;
-			sourceTree = "<group>";
-		};
-		5E9EE7D622C5CE7D00AF5D82 /* Seeds */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Seeds;
 			sourceTree = "<group>";
 		};
 		C78977283BBF1E6AD6DF25DA /* Pods */ = {
