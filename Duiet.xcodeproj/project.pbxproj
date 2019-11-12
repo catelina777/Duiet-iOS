@@ -1511,7 +1511,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cp \"${PROJECT_DIR}/${PROJECT_NAME}/Resources/Settings/GoogleService-Inf.plist\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist\"\necho \"GoogleService-Info copied.\"\n";
+			shellScript = "cp \"${PROJECT_DIR}/${PROJECT_NAME}/Resources/Settings/GoogleService-Info.plist\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist\"\necho \"GoogleService-Info copied.\"\n";
 		};
 		401161172301775500D522CC /* Settings.bundle */ = {
 			isa = PBXShellScriptBuildPhase;
