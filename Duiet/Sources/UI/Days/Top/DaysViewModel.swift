@@ -62,8 +62,8 @@ final class DaysViewModel: DaysViewModelProtocol, DaysViewModelState {
     private let disposeBag = DisposeBag()
 
     init(coordinator: DaysCoordinator,
-         userProfileModel: UserProfileModelProtocol,
          daysModel: DaysModelProtocol,
+         userProfileModel: UserProfileModelProtocol = UserProfileModel.shared,
          unitCollectionModel: UnitCollectionModelProtocol = UnitCollectionModel.shared) {
         self.coordinator = coordinator
         self.daysModel = daysModel

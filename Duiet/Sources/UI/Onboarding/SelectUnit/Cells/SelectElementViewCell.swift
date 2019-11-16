@@ -25,7 +25,7 @@ final class SelectElementViewCell: BaseTableViewCell {
         }
     }
 
-    var switchSelectedButton: Binder<Int> {
+    var switchSelectedButton: Binder<Int16> {
         Binder(self) { me, row in
             if row == 0 {
                 me.leftButton.layer.borderColor = R.color.componentMain()!.cgColor
@@ -37,12 +37,12 @@ final class SelectElementViewCell: BaseTableViewCell {
         }
     }
 
-    func configure(with cellType: SelectUnitCellType,
-                   isSelectedLeft: AnyObserver<Int?>) {
+    func configure(cellType: SelectUnitCellType,
+                   isSelectedLeft: AnyObserver<Int16?>) {
         titleLabel.text = cellType.title
         leftButton.setTitle(cellType.pairedUniTypes.0.symbol, for: .normal)
         rightButton.setTitle(cellType.pairedUniTypes.1.symbol, for: .normal)
-        let didSelectLeft = PublishRelay<Int?>()
+        let didSelectLeft = PublishRelay<Int16?>()
         leftButton.rx.tap
             .map { 0 }
             .bind(to: isSelectedLeft,

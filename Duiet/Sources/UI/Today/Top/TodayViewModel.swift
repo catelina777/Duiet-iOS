@@ -80,8 +80,8 @@ final class TodayViewModel: TodayViewModelProtocol, TodayViewModelState {
     private let disposeBag = DisposeBag()
 
     init(coordinator: TodayCoordinator,
-         userProfileModel: UserProfileModelProtocol,
          todayModel: TodayModelProtocol,
+         userProfileModel: UserProfileModelProtocol = UserProfileModel.shared,
          unitCollectionModel: UnitCollectionModelProtocol = UnitCollectionModel.shared) {
         self.userProfileModel = userProfileModel
         self.todayModel = todayModel

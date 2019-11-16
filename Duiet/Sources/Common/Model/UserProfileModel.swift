@@ -63,7 +63,6 @@ final class UserProfileModel: UserProfileModelProtocol, UserProfileModelState {
 
         repository.find(UserProfile.self, predicate: nil, sortDescriptors: [NSSortDescriptor(key: "createdAt", ascending: false)])
             .compactMap { $0.first }
-            .debug()
             .bind(to: userProfile)
             .disposed(by: disposeBag)
     }

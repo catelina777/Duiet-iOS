@@ -1,5 +1,5 @@
 //
-//  UserUnit.swift
+//  UnitCollection.swift
 //  Duiet
 //
 //  Created by Ryuhei Kaminishi on 2019/11/10.
@@ -11,7 +11,7 @@ import Foundation
 import RxCoreData
 import RxDataSources
 
-struct UserUnit {
+struct UnitCollection {
     var id: UUID
     var heightUnitRow: Int16
     var weightUnitRow: Int16
@@ -20,17 +20,17 @@ struct UserUnit {
     var updatedAt: Date
 }
 
-extension UserUnit: IdentifiableType {
+extension UnitCollection: IdentifiableType {
     typealias Identity = String
 
     var identity: String { id.uuidString }
 }
 
-extension UserUnit: Persistable {
+extension UnitCollection: Persistable {
     typealias T = NSManagedObject
 
     static var entityName: String {
-        "UserUnit"
+        "UnitCollection"
     }
 
     static var primaryAttributeName: String {
@@ -61,7 +61,7 @@ extension UserUnit: Persistable {
     }
 }
 
-extension UserUnit {
+extension UnitCollection {
     var heightUnit: HeightUnitType {
         HeightUnitType.get(Int(heightUnitRow))
     }

@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15508" systemVersion="19B88" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+    <entity name="UnitCollection" representedClassName="UnitCollection" syncable="YES">
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="energyUnitRow" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="heightUnitRow" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="weightUnitRow" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
     <entity name="UserProfile" representedClassName="UserProfile" syncable="YES">
         <attribute name="activityLevel" optional="YES" attributeType="String"/>
         <attribute name="age" attributeType="Integer 16" minValueString="0" defaultValueString="0" usesScalarValueType="YES"/>
@@ -10,16 +18,8 @@
         <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="weight" attributeType="Double" minValueString="0" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
-    <entity name="UserUnit" representedClassName="UserUnit" syncable="YES">
-        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="energyUnitRow" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="heightUnitRow" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="weightUnitRow" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-    </entity>
     <elements>
         <element name="UserProfile" positionX="-59.8125" positionY="-29.07421875" width="128" height="163"/>
-        <element name="UserUnit" positionX="189" positionY="99" width="128" height="133"/>
+        <element name="UnitCollection" positionX="189" positionY="99" width="128" height="133"/>
     </elements>
 </model>
