@@ -24,10 +24,10 @@ protocol TodayViewModelInput {
 }
 
 protocol TodayViewModelOutput {
-    var progress: Observable<(Day, UserProfile)> { get }
     var isEditMode: Observable<Bool> { get }
     var isEnableTrashButton: Observable<Bool> { get }
     var addButtonDidTap: Observable<Void> { get }
+    var reloadData: Observable<Void> { get }
 }
 
 protocol TodayViewModelState {
@@ -103,18 +103,17 @@ final class TodayViewModel: TodayViewModelProtocol, TodayViewModelState {
                       showDetailDay: showDetailDay.asObserver(),
                       isEditMode: isEditMode.asObserver())
 
-        /// I also added meals because I want to detect the update of meal information
-        let progress = Observable.combineLatest(todayModel.output.day,
-                                                userProfileModel.output.userProfile.compactMap { $0 })
-
         let isEnableTrashButton = deletionTargetMeals
             .map { $0.isEmpty }
             .share()
 
-        output = Output(progress: progress,
-                        isEditMode: isEditMode.asObservable(),
+        let reloadData = userProfileModel.output.userProfile
+            .map { _ in }
+
+        output = Output(isEditMode: isEditMode.asObservable(),
                         isEnableTrashButton: isEnableTrashButton,
-                        addButtonDidTap: addButtonDidTap.asObservable())
+                        addButtonDidTap: addButtonDidTap.asObservable(),
+                        reloadData: reloadData)
 
         let mealWillAdd = pickedImage
             .flatMapLatest { PhotoRepository.shared.save(image: $0) }
@@ -174,9 +173,9 @@ extension TodayViewModel {
     }
 
     struct Output: TodayViewModelOutput {
-        let progress: Observable<(Day, UserProfile)>
         let isEditMode: Observable<Bool>
         let isEnableTrashButton: Observable<Bool>
         let addButtonDidTap: Observable<Void>
+        var reloadData: Observable<Void>
     }
 }

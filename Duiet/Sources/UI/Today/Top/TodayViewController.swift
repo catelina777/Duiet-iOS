@@ -63,6 +63,10 @@ class TodayViewController: BaseCollectionViewController {
         bindTrashButton()
         bindDoneButton()
         bindRefreshThenReloadData()
+
+        viewModel.output.reloadData
+            .bind(to: reloadData)
+            .disposed(by: disposeBag)
     }
 
     override func viewWillAppear(_ animated: Bool) {

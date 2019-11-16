@@ -17,6 +17,7 @@ protocol DaysViewModelInput {
 
 protocol DaysViewModelOutput {
     var showDetailDay: Observable<Day> { get }
+    var reloadData: Observable<Void> { get }
 }
 
 protocol DaysViewModelState {
@@ -73,7 +74,11 @@ final class DaysViewModel: DaysViewModelProtocol, DaysViewModelState {
         let _selectedMonth = PublishRelay<Month>()
         input = Input(selectedDay: _selectedDay.asObserver(),
                       selectedMonth: _selectedMonth.asObserver())
-        output = Output(showDetailDay: _selectedDay.asObservable())
+
+        let reloadData = userProfileModel.output.userProfile
+            .map { _ in }
+        output = Output(showDetailDay: _selectedDay.asObservable(),
+                        reloadData: reloadData)
 
         _selectedMonth
             .asDriver(onErrorDriveWith: .empty())
@@ -92,5 +97,6 @@ extension DaysViewModel {
 
     struct Output: DaysViewModelOutput {
         let showDetailDay: Observable<Day>
+        let reloadData: Observable<Void>
     }
 }

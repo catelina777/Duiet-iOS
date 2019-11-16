@@ -24,7 +24,7 @@ class BaseCollectionViewController: UIViewController {
     }
 
     /// Reload CollectionView then end refreshing
-    private var reloadData: Binder<Void> {
+    var reloadData: Binder<Void> {
         Binder<Void>(self) { me, _ in
             me.collectionView.reloadData()
             me.collectionView.refreshControl?.endRefreshing()

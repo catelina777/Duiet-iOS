@@ -16,7 +16,7 @@ import RxSwift
 protocol UserProfileModelInput {}
 
 protocol UserProfileModelOutput {
-    var userProfile: Observable<UserProfile?> { get }
+    var userProfile: Observable<UserProfile> { get }
 }
 
 protocol UserProfileModelState {
@@ -59,7 +59,7 @@ final class UserProfileModel: UserProfileModelProtocol, UserProfileModelState {
         self.repository = repository
 
         input = Input()
-        output = Output(userProfile: userProfile.asObservable())
+        output = Output(userProfile: userProfile.compactMap { $0 })
 
         repository.find(UserProfile.self, predicate: nil, sortDescriptors: [NSSortDescriptor(key: "createdAt", ascending: false)])
             .compactMap { $0.first }
@@ -77,6 +77,6 @@ extension UserProfileModel {
     struct Input: UserProfileModelInput {}
 
     struct Output: UserProfileModelOutput {
-        let userProfile: Observable<UserProfile?>
+        let userProfile: Observable<UserProfile>
     }
 }

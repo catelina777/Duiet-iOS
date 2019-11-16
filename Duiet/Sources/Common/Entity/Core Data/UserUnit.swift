@@ -60,3 +60,17 @@ extension UserUnit: Persistable {
         }
     }
 }
+
+extension UserUnit {
+    var heightUnit: HeightUnitType {
+        HeightUnitType.get(Int(heightUnitRow))
+    }
+
+    var weightUnit: WeightUnitType {
+        WeightUnitType.get(Int(weightUnitRow))
+    }
+
+    var energyUnit: EnergyUnitType {
+        EnergyUnitType.get(Int(energyUnitRow))
+    }
+}

@@ -16,6 +16,7 @@ protocol MonthsViewModelInput {
 
 protocol MonthsViewModelOutput {
     var showSelectedMonth: Observable<Month> { get }
+    var reloadData: Observable<Void> { get }
 }
 
 protocol MonthsViewModelData {
@@ -43,13 +44,18 @@ final class MonthsViewModel: MonthsViewModelProtocol, MonthsViewModelData {
     private let disposeBag = DisposeBag()
 
     init(coordinator: MonthsCoordinator,
-         monthsModel: MonthsModelProtocol) {
+         monthsModel: MonthsModelProtocol,
+         userProfileModel: UserProfileModelProtocol = UserProfileModel.shared) {
         self.coordinator = coordinator
         self.monthsModel = monthsModel
 
-        let _itemDidSelect = PublishRelay<Month>()
-        input = Input(itemDidSelect: _itemDidSelect.asObserver())
-        output = Output(showSelectedMonth: _itemDidSelect.asObservable())
+        let itemDidSelect = PublishRelay<Month>()
+        input = Input(itemDidSelect: itemDidSelect.asObserver())
+
+        let reloadData = userProfileModel.output.userProfile
+            .map { _ in }
+        output = Output(showSelectedMonth: itemDidSelect.asObservable(),
+                        reloadData: reloadData)
     }
 }
 
@@ -60,5 +66,6 @@ extension MonthsViewModel {
 
     struct Output: MonthsViewModelOutput {
         let showSelectedMonth: Observable<Month>
+        let reloadData: Observable<Void>
     }
 }

@@ -30,6 +30,9 @@ class DaysViewController: BaseCollectionViewController {
         dataSource.configure(with: collectionView)
 
         bindRefreshThenReloadData()
+        viewModel.output.reloadData
+            .bind(to: reloadData)
+            .disposed(by: disposeBag)
     }
 
     override func viewWillAppear(_ animated: Bool) {
