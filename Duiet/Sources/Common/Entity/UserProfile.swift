@@ -29,10 +29,10 @@ extension UserProfile: IdentifiableType {
 }
 
 extension UserProfile: Persistable {
-    typealias T = NSManagedObject
+    typealias T = UserProfileEntity
 
     static var entityName: String {
-        "UserProfile"
+        "UserProfileEntity"
     }
 
     static var primaryAttributeName: String {
@@ -40,25 +40,25 @@ extension UserProfile: Persistable {
     }
 
     init(entity: Self.T) {
-        id = entity.value(forKey: "id") as! UUID
-        age = entity.value(forKey: "age") as! Int16
-        biologicalSex = entity.value(forKey: "biologicalSex") as! String
-        height = entity.value(forKey: "height") as! Double
-        weight = entity.value(forKey: "weight") as! Double
-        activityLevel = entity.value(forKey: "activityLevel") as! String
-        createdAt = entity.value(forKey: "createdAt") as! Date
-        updatedAt = entity.value(forKey: "updatedAt") as! Date
+        id = entity.id!
+        age = entity.age
+        biologicalSex = entity.biologicalSex!
+        height = entity.height
+        weight = entity.weight
+        activityLevel = entity.activityLevel!
+        createdAt = entity.createdAt!
+        updatedAt = entity.updatedAt!
     }
 
-    func update(_ entity: NSManagedObject) {
-        entity.setValue(id, forKey: "id")
-        entity.setValue(age, forKey: "age")
-        entity.setValue(biologicalSex, forKey: "biologicalSex")
-        entity.setValue(height, forKey: "height")
-        entity.setValue(weight, forKey: "weight")
-        entity.setValue(activityLevel, forKey: "activityLevel")
-        entity.setValue(createdAt, forKey: "createdAt")
-        entity.setValue(updatedAt, forKey: "updatedAt")
+    func update(_ entity: UserProfileEntity) {
+        entity.id = id
+        entity.age = age
+        entity.biologicalSex = biologicalSex
+        entity.height = height
+        entity.weight = weight
+        entity.activityLevel = activityLevel
+        entity.createdAt = createdAt
+        entity.updatedAt = updatedAt
         do {
             try entity.managedObjectContext?.save()
         } catch let error {
@@ -82,22 +82,5 @@ extension UserProfile {
 
     private func genderVariable(type: BiologicalSexType) -> Double {
         type == .male ? 5 : -161
-    }
-}
-
-enum BiologicalSexType: String {
-    case male, female, other
-
-    static func get(_ type: String) -> BiologicalSexType {
-        switch type {
-        case "male":
-            return .male
-
-        case "female":
-            return .female
-
-        default:
-            return .other
-        }
     }
 }

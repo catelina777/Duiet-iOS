@@ -13,7 +13,7 @@ import RxRelay
 import RxSwift
 
 protocol FillInformationViewModelInput {
-    var gender: AnyObserver<Bool?> { get }
+    var biologicalSex: AnyObserver<BiologicalSexType?> { get }
     var age: AnyObserver<Int?> { get }
     var height: AnyObserver<Double?> { get }
     var weight: AnyObserver<Double?> { get }
@@ -22,7 +22,7 @@ protocol FillInformationViewModelInput {
 }
 
 protocol FillInformationViewModelOutput {
-    var gender: Observable<Bool?> { get }
+    var biologicalSex: Observable<BiologicalSexType?> { get }
     var isValidateComplete: Observable<Bool> { get }
     var didTapComplete: Observable<Void> { get }
     var BMR: Observable<String> { get }
@@ -56,14 +56,14 @@ final class FillInformationViewModel: FillInformationViewModelProtocol, FillInfo
          unitCollectionModel: UnitCollectionModelProtocol = UnitCollectionModel.shared) {
         self.unitCollectionModel = unitCollectionModel
 
-        let gender = BehaviorRelay<Bool?>(value: nil)
-        let age = BehaviorRelay<Int?>(value: nil)
-        let height = BehaviorRelay<Double?>(value: nil)
-        let weight = BehaviorRelay<Double?>(value: nil)
-        let activityLevel = BehaviorRelay<ActivityLevelType>(value: .none)
+        let biologicalSex = PublishRelay<BiologicalSexType?>()
+        let age = PublishRelay<Int?>()
+        let height = PublishRelay<Double?>()
+        let weight = PublishRelay<Double?>()
+        let activityLevel = PublishRelay<ActivityLevelType>()
         let didTapCompleteButton = PublishRelay<Void>()
 
-        input = Input(gender: gender.asObserver(),
+        input = Input(biologicalSex: biologicalSex.asObserver(),
                       age: age.asObserver(),
                       height: height.asObserver(),
                       weight: weight.asObserver(),
@@ -71,7 +71,7 @@ final class FillInformationViewModel: FillInformationViewModelProtocol, FillInfo
                       didTapCompleteButton: didTapCompleteButton.asObserver())
 
         let combinedInfo = Observable
-            .combineLatest(gender, age, height, weight, activityLevel)
+            .combineLatest(biologicalSex, age, height, weight, activityLevel)
             .share()
 
         let isValidateComplete = combinedInfo
@@ -95,13 +95,13 @@ final class FillInformationViewModel: FillInformationViewModelProtocol, FillInfo
                     v4 != .none
                 else { return (0, v4) }
                 let userProfileEntity = UserProfile(id: UUID(),
-                                                age: Int16(v1),
-                                                biologicalSex: "\(v0)",
-                                                height: v2,
-                                                weight: v3,
-                                                activityLevel: "\(v4)",
-                                                createdAt: Date(),
-                                                updatedAt: Date())
+                                                    age: Int16(v1),
+                                                    biologicalSex: "\(v0.rawValue)",
+                                                    height: v2,
+                                                    weight: v3,
+                                                    activityLevel: "\(v4)",
+                                                    createdAt: Date(),
+                                                    updatedAt: Date())
                 userProfile.accept(userProfileEntity)
                 return (userProfileEntity.BMR, v4)
             }
@@ -131,7 +131,7 @@ final class FillInformationViewModel: FillInformationViewModelProtocol, FillInfo
                                                           to: unitCollectionModel.state.unitCollectionValue.energyUnit)
             }
 
-        output = Output(gender: gender.asObservable(),
+        output = Output(biologicalSex: biologicalSex.asObservable(),
                         isValidateComplete: isValidateComplete,
                         didTapComplete: didTapComplete.asObservable(),
                         BMR: BMR,
@@ -171,7 +171,7 @@ final class FillInformationViewModel: FillInformationViewModelProtocol, FillInfo
 
 extension FillInformationViewModel {
     struct Input: FillInformationViewModelInput {
-        let gender: AnyObserver<Bool?>
+        let biologicalSex: AnyObserver<BiologicalSexType?>
         let age: AnyObserver<Int?>
         let height: AnyObserver<Double?>
         let weight: AnyObserver<Double?>
@@ -180,7 +180,7 @@ extension FillInformationViewModel {
     }
 
     struct Output: FillInformationViewModelOutput {
-        let gender: Observable<Bool?>
+        let biologicalSex: Observable<BiologicalSexType?>
         let isValidateComplete: Observable<Bool>
         let didTapComplete: Observable<Void>
         let BMR: Observable<String>

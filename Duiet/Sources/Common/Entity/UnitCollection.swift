@@ -27,10 +27,10 @@ extension UnitCollection: IdentifiableType {
 }
 
 extension UnitCollection: Persistable {
-    typealias T = NSManagedObject
+    typealias T = UnitCollectionEntity
 
     static var entityName: String {
-        "UnitCollection"
+        "UnitCollectionEntity"
     }
 
     static var primaryAttributeName: String {
@@ -38,21 +38,21 @@ extension UnitCollection: Persistable {
     }
 
     init(entity: Self.T) {
-        id = entity.value(forKey: "id") as! UUID
-        heightUnitRow = entity.value(forKey: "heightUnitRow") as! Int16
-        weightUnitRow = entity.value(forKey: "weightUnitRow") as! Int16
-        energyUnitRow = entity.value(forKey: "energyUnitRow") as! Int16
-        createdAt = entity.value(forKey: "createdAt") as! Date
-        updatedAt = entity.value(forKey: "updatedAt") as! Date
+        id = entity.id!
+        heightUnitRow = entity.heightUnitRow
+        weightUnitRow = entity.weightUnitRow
+        energyUnitRow = entity.energyUnitRow
+        createdAt = entity.createdAt!
+        updatedAt = entity.updatedAt!
     }
 
-    func update(_ entity: NSManagedObject) {
-        entity.setValue(id, forKey: "id")
-        entity.setValue(heightUnitRow, forKey: "heightUnitRow")
-        entity.setValue(weightUnitRow, forKey: "weightUnitRow")
-        entity.setValue(energyUnitRow, forKey: "energyUnitRow")
-        entity.setValue(createdAt, forKey: "createdAt")
-        entity.setValue(updatedAt, forKey: "updatedAt")
+    func update(_ entity: UnitCollectionEntity) {
+        entity.id = id
+        entity.heightUnitRow = heightUnitRow
+        entity.weightUnitRow = weightUnitRow
+        entity.energyUnitRow = energyUnitRow
+        entity.createdAt = createdAt
+        entity.updatedAt = updatedAt
         do {
             try entity.managedObjectContext?.save()
         } catch let error {
