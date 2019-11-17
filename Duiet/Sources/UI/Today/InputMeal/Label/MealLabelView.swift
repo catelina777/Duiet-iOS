@@ -26,6 +26,21 @@ final class MealLabelView: UIView {
     var viewModel: MealLabelViewModelProtocol!
     private let disposeBag = DisposeBag()
 
+    static func build(food: Food) -> MealLabelView {
+         let label = R.nib.mealLabelView.firstView(owner: nil)!
+        label.initialize(with: food)
+        return label
+    }
+
+    func initialize(with food: Food) {
+        viewModel = MealLabelViewModel(food: food)
+        let calorie = UnitBabel.shared.convert(value: food.calorie,
+                                               from: .kilocalories,
+                                               to: UnitCollectionModel.shared.state.unitCollectionValue.energyUnit)
+        let multiple = viewModel.state.foodValue.multiple
+        self.mealLabel.text = "\(Int(calorie * (multiple == 0 ? 1 : multiple)))"
+    }
+
     func configure(input: InputMealViewModelInput) {
         // MARK: - Send ViewModel of selected MealLabel
         rx.tapGesture()
@@ -48,22 +63,12 @@ final class MealLabelView: UIView {
             .disposed(by: disposeBag)
     }
 
-    func initialize(with content: Content) {
-        viewModel = MealLabelViewModel(content: content)
-        let calorie = UnitBabel.shared.convert(value: content.calorie,
-                                               from: .kilocalories,
-                                               to: UnitCollectionModel.shared.state.unitCollectionValue.energyUnit)
-        let multiple = viewModel.state.contentValue.multiple
-        self.mealLabel.text = "\(Int(calorie * (multiple == 0 ? 1 : multiple)))"
-    }
-
-    private var updateLabelText: Binder<Content> {
-        Binder<Content>(self) { me, content in
-            guard !content.isInvalidated else { return }
-            let calorie = UnitBabel.shared.convert(value: content.calorie,
+    private var updateLabelText: Binder<Food> {
+        Binder<Food>(self) { me, food in
+            let calorie = UnitBabel.shared.convert(value: food.calorie,
                                                    from: .kilocalories,
                                                    to: UnitCollectionModel.shared.state.unitCollectionValue.energyUnit)
-            let multiple = content.multiple
+            let multiple = food.multiple
             me.mealLabel.text = "\(Int(calorie * (multiple == 0 ? 1 : multiple)))"
         }
     }

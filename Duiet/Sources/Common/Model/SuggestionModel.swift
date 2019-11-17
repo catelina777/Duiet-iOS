@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import RealmSwift
 import RxRelay
 import RxSwift
 
@@ -16,11 +15,11 @@ protocol SuggestionModelInput {
 }
 
 protocol SuggestionModelOutput {
-    var suggestedContentResults: Observable<Results<Content>?> { get }
+    var suggestedContentResults: Observable<[Food]> { get }
 }
 
 protocol SuggestionModelState {
-    var suggestedContents: Results<Content>? { get }
+    var suggestedContents: [Food] { get }
 }
 
 protocol SuggestionModelProtocol {
@@ -35,20 +34,21 @@ final class SuggestionModel: SuggestionModelProtocol, SuggestionModelState {
     let output: SuggestionModelOutput
     var state: SuggestionModelState { self }
 
-    var suggestedContents: Results<Content>? {
+    var suggestedContents: [Food] {
         suggestedContentResults.value
     }
 
-    private let suggestedContentResults = BehaviorRelay<Results<Content>?>(value: nil)
+    private let suggestedContentResults = BehaviorRelay<[Food]>(value: [])
     private let disposeBag = DisposeBag()
 
-    init(contentRepository: ContentRepositoryProtocol = ContentRepository.shared) {
+    init(service: FoodServiceProtocol = FoodService.shared) {
         let inputKeyword = PublishRelay<String>()
         input = Input(inputKeyword: inputKeyword.asObserver())
 
         inputKeyword
             .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
-            .map { $0.isEmpty ? contentRepository.findAll() : contentRepository.find(name: $0) }
+            .flatMap { $0.isEmpty ? service.findAll() : service.find(by: $0) }
+            .map { $0.map { Food(entity: $0) } }
             .bind(to: suggestedContentResults)
             .disposed(by: disposeBag)
 
@@ -62,6 +62,6 @@ extension SuggestionModel {
     }
 
     struct Output: SuggestionModelOutput {
-        let suggestedContentResults: Observable<Results<Content>?>
+        let suggestedContentResults: Observable<[Food]>
     }
 }

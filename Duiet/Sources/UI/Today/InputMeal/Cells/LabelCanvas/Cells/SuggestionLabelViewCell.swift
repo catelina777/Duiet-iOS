@@ -24,21 +24,21 @@ final class SuggestionLabelViewCell: BaseCollectionViewCell {
         }
     }
 
-    func configure(content: Content) {
-        suggestionName.text = content.name
+    func configure(food: Food) {
+        suggestionName.text = food.name
         contentView.translatesAutoresizingMaskIntoConstraints = false
         switchSelected.on(.next(false))
     }
 
-    func bindIsChecked(input: LabelCanvasViewModelInput, output: LabelCanvasViewModelOutput, content: Content) {
+    func bindIsChecked(input: LabelCanvasViewModelInput, output: LabelCanvasViewModelOutput, food: Food) {
         rx.tapGesture()
             .when(.ended)
-            .map { _ in content }
+            .map { _ in food }
             .bind(to: input.suggestionDidSelect)
             .disposed(by: disposeBag)
 
         output.suggestionDidSelect
-            .map { $0 == content }
+            .map { $0 == food }
             .bind(to: switchSelected)
             .disposed(by: disposeBag)
     }

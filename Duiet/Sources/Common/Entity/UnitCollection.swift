@@ -30,7 +30,7 @@ extension UnitCollection: Persistable {
     typealias T = UnitCollectionEntity
 
     static var entityName: String {
-        "UnitCollectionEntity"
+        T.className
     }
 
     static var primaryAttributeName: String {

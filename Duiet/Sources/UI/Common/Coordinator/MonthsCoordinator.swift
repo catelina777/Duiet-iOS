@@ -19,7 +19,7 @@ final class MonthsCoordinator: Coordinator {
     }
 
     func start() {
-        let model = MonthsModel(repository: MonthsRepository.shared)
+        let model = MonthsModel()
         let vc = TopMonthsViewController(viewModel: .init(coordinator: self, monthsModel: model),
                                          segmentedViewModel: segmentedViewModel)
         navigator.pushViewController(vc, animated: false)

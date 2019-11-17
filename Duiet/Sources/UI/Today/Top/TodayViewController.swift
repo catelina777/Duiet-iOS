@@ -6,9 +6,7 @@
 //  Copyright © 2019 duiet. All rights reserved.
 //
 
-import RealmSwift
 import RxCocoa
-import RxRealm
 import RxSwift
 import UIKit
 

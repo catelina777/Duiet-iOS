@@ -7,9 +7,7 @@
 //
 
 import Foundation
-import RealmSwift
 import RxCocoa
-import RxRealm
 import RxRelay
 import RxSwift
 

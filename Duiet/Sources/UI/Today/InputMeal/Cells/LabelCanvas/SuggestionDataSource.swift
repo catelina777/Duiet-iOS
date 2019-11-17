@@ -24,22 +24,20 @@ final class SuggestionDataSource: NSObject {
 
 extension SuggestionDataSource: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.state.suggestedContents?.count ?? 0
+        return viewModel.state.suggestedContents.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.suggestionLabelViewCell,
                                                       for: indexPath)!
-
         guard
-            let contents = viewModel.state.suggestedContents,
-            contents.count >= indexPath.row
+            viewModel.state.suggestedContents.count >= indexPath.row
         else { return cell }
 
-        cell.configure(content: contents[indexPath.row])
+        cell.configure(food: viewModel.state.suggestedContents[indexPath.row])
         cell.bindIsChecked(input: viewModel.input,
                            output: viewModel.output,
-                           content: contents[indexPath.row])
+                           food: viewModel.state.suggestedContents[indexPath.row])
         return cell
     }
 }
@@ -54,10 +52,9 @@ extension SuggestionDataSource: UICollectionViewDelegateFlowLayout {
         guard
             let cell = Bundle.main.loadNibNamed(SuggestionLabelViewCell.className,
                                                 owner: self,
-                                                options: nil)?.first as? SuggestionLabelViewCell,
-            let contents = viewModel.state.suggestedContents
+                                                options: nil)?.first as? SuggestionLabelViewCell
         else { return CGSize.zero }
-        cell.configure(content: contents[indexPath.row])
+        cell.configure(food: viewModel.state.suggestedContents[indexPath.row])
         cell.setNeedsLayout()
         cell.layoutIfNeeded()
         let size = cell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)

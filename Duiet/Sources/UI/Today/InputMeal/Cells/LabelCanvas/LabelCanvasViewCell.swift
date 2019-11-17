@@ -21,7 +21,7 @@ final class LabelCanvasViewCell: BaseTableViewCell {
     // TODO: This code is terrible and should be refactored
     func configure(input: InputMealViewModelInput, output: InputMealViewModelOutput, state: InputMealViewModelState) {
         if !state.isShowedContents.value {
-            show(contents: state.contents, input: input)
+            show(foods: state.foods.map { Food(entity: $0) }, input: input)
             state.isShowedContents.accept(true)
         }
         bindSuggestedContent(input: input, output: output)
@@ -30,15 +30,11 @@ final class LabelCanvasViewCell: BaseTableViewCell {
         configure(with: state.foodImage)
     }
 
-    /// Show labels from stored contents
-    /// - Parameters:
-    ///   - contents: stored contents
-    ///   - input: ViewModel input
-    private func show(contents: [Content], input: InputMealViewModelInput) {
-        contents.map { $0.convert() }.forEach { label in
-            let content = label.viewModel.state.contentValue
-            let centerX = CGFloat(content.relativeX) * frame.width
-            let centerY = CGFloat(content.relativeY) * frame.height
+    private func show(foods: [Food], input: InputMealViewModelInput) {
+        foods.map { MealLabelView.build(food: $0) }.forEach { label in
+            let food = label.viewModel.state.foodValue
+            let centerX = CGFloat(food.relativeX) * frame.width
+            let centerY = CGFloat(food.relativeY) * frame.height
             let labelWidth = frame.width * 0.3
             let labelHeight = labelWidth * 0.4
             let labelFrame = CGRect(x: centerX - labelWidth / 2,
@@ -69,8 +65,8 @@ final class LabelCanvasViewCell: BaseTableViewCell {
                                     height: labelHeight)
                 let relativeX = Double(point.x / me.frame.width)
                 let relativeY = Double(point.y / me.frame.height)
-                let content = Content(relativeX: relativeX, relativeY: relativeY)
-                mealLabel.initialize(with: content)
+                let food = Food(relativeX: relativeX, relativeY: relativeY)
+                mealLabel.initialize(with: food)
                 mealLabel.frame = labelFrame
                 mealLabel.configure(input: input)
                 me.addSubview(mealLabel)
@@ -79,7 +75,7 @@ final class LabelCanvasViewCell: BaseTableViewCell {
             .compactMap { $0 }
             .subscribe(onNext: { mealLabel in
                 input.selectedLabelViewModel.on(.next(mealLabel.viewModel))
-                input.contentWillAdd.on(.next(mealLabel.viewModel.state.contentValue))
+                input.contentWillAdd.on(.next(mealLabel.viewModel.state.foodValue))
                 Haptic.impact(.medium).generate()
             })
             .disposed(by: disposeBag)

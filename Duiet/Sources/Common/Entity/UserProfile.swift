@@ -32,7 +32,7 @@ extension UserProfile: Persistable {
     typealias T = UserProfileEntity
 
     static var entityName: String {
-        "UserProfileEntity"
+        T.className
     }
 
     static var primaryAttributeName: String {

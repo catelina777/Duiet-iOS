@@ -91,16 +91,16 @@ final class InputMealInformationViewCell: BaseTableViewCell, CellFrameTrackkable
             .disposed(by: disposeBag)
     }
 
-    private var updateTextFields: Binder<Content> {
-        Binder<Content>(self) { me, content in
-            me.nameTextField.text = content.name
+    private var updateTextFields: Binder<Food> {
+        Binder<Food>(self) { me, food in
+            me.nameTextField.text = food.name
             me.calorieTextField.text = ""
             me.multipleTextField.text = ""
-            let calorie = UnitBabel.shared.convert(value: content.calorie,
+            let calorie = UnitBabel.shared.convert(value: food.calorie,
                                                    from: .kilocalories,
                                                    to: UnitCollectionModel.shared.state.unitCollectionValue.energyUnit)
             me.calorieTextField.placeholder = "\(calorie)"
-            me.multipleTextField.placeholder = "\(content.multiple)"
+            me.multipleTextField.placeholder = "\(food.multiple)"
         }
     }
 }

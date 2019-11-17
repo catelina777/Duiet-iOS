@@ -41,7 +41,7 @@ extension TodayViewDataSource: UICollectionViewDataSource {
         case 0: // progressView
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.daySummaryViewCell,
                                                           for: indexPath)!
-            cell.configure(with: viewModel.state.dayValue,
+            cell.configure(day: Day(entity: viewModel.state.dayEntityValue),
                            userProfile: viewModel.state.userProfileValue,
                            unitCollection: viewModel.state.unitCollectionValue)
             return cell
@@ -75,7 +75,7 @@ extension TodayViewDataSource: UICollectionViewDelegate {
         else { return }
         let mealIndex = indexPath.row - 1
         let meal = viewModel.state.meals[mealIndex]
-        viewModel.input.selectedItem.on(.next((cardCell, meal, mealIndex)))
+        viewModel.input.selectedItem.on(.next((cardCell, meal)))
     }
 }
 

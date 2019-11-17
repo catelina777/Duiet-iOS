@@ -6,9 +6,7 @@
 //  Copyright © 2019 duiet. All rights reserved.
 //
 
-import RealmSwift
 import RxCocoa
-import RxRealm
 import RxRelay
 import RxSwift
 import UIKit
@@ -18,7 +16,7 @@ protocol TodayViewModelInput {
     var didTapDeleteButton: AnyObserver<Void> { get }
     var addButtonDidTap: AnyObserver<Void> { get }
     var pickedImage: AnyObserver<UIImage> { get }
-    var selectedItem: AnyObserver<(MealCardViewCell, Meal, Int)> { get }
+    var selectedItem: AnyObserver<(MealCardViewCell, MealEntity)> { get }
     var showDetailDay: AnyObserver<Day> { get }
     var isEditMode: AnyObserver<Bool> { get }
 }
@@ -32,11 +30,11 @@ protocol TodayViewModelOutput {
 
 protocol TodayViewModelState {
     var userProfileValue: UserProfile { get }
-    var dayValue: Day { get }
-    var meals: [Meal] { get }
+    var dayEntityValue: DayEntity { get }
+    var meals: [MealEntity] { get }
     var title: String { get }
     var unitCollectionValue: UnitCollection { get }
-    var deletionTargetMeals: BehaviorRelay<[Meal]> { get }
+    var deletionTargetMeals: BehaviorRelay<[MealEntity]> { get }
 }
 
 protocol TodayViewModelProtocol {
@@ -55,11 +53,11 @@ final class TodayViewModel: TodayViewModelProtocol, TodayViewModelState {
         userProfileModel.state.userProfileValue
     }
 
-    var dayValue: Day {
-        todayModel.state.dayValue
+    var dayEntityValue: DayEntity {
+        todayModel.state.dayEntityValue
     }
 
-    var meals: [Meal] {
+    var meals: [MealEntity] {
         todayModel.state.meals
     }
 
@@ -71,7 +69,7 @@ final class TodayViewModel: TodayViewModelProtocol, TodayViewModelState {
         unitCollectionModel.state.unitCollectionValue
     }
 
-    let deletionTargetMeals = BehaviorRelay<[Meal]>(value: [])
+    let deletionTargetMeals = BehaviorRelay<[MealEntity]>(value: [])
 
     private let userProfileModel: UserProfileModelProtocol
     private let todayModel: TodayModelProtocol
@@ -91,7 +89,7 @@ final class TodayViewModel: TodayViewModelProtocol, TodayViewModelState {
         let addButtonDidTap = PublishRelay<Void>()
         let pickedImage = PublishRelay<UIImage>()
         let didTapDeleteButton = PublishRelay<Void>()
-        let selectedItem = PublishRelay<(MealCardViewCell, Meal, Int)>()
+        let selectedItem = PublishRelay<(MealCardViewCell, MealEntity)>()
         let showDetailDay = PublishRelay<Day>()
         let isEditMode = PublishRelay<Bool>()
 
@@ -118,22 +116,22 @@ final class TodayViewModel: TodayViewModelProtocol, TodayViewModelState {
         let mealWillAdd = pickedImage
             .flatMapLatest { PhotoRepository.shared.save(image: $0) }
             .observeOn(MainScheduler.instance)
-            .map { Meal(imagePath: $0, date: todayModel.state.date) }
+            .map { Meal(imageId: $0, date: todayModel.state.date) }
             .share()
 
-        mealWillAdd
-            .map { $0 }
-            .bind(to: todayModel.state.add)
-            .disposed(by: disposeBag)
+        let mealDidAdd = mealWillAdd
+            .map { todayModel.state.add($0) }
+            .compactMap { $0 }
 
         /// Screen transition can't be made without viewDidAppear or later
-        let showDetail = mealWillAdd.withLatestFrom(pickedImage) { ($1, $0) }
+        let showDetail = mealDidAdd.withLatestFrom(pickedImage) { ($1, $0) }
             .withLatestFrom(viewDidAppear) { ($0, $1) }
             .map { ($0.0.0, $0.0.1) }
             .share()
 
         /// Delete meals
         didTapDeleteButton.withLatestFrom(deletionTargetMeals)
+            .map { $0.map { Meal(entity: $0) } }
             .bind(to: todayModel.state.delete)
             .disposed(by: disposeBag)
 
@@ -141,14 +139,14 @@ final class TodayViewModel: TodayViewModelProtocol, TodayViewModelState {
         showDetail
             .asDriver(onErrorDriveWith: .empty())
             .drive(onNext: {
-                coordinator.showDetail(image: $0.0, meal: $0.1)
+                coordinator.showDetail(image: $0.0, mealEntity: $0.1, dayEntity: todayModel.state.dayEntityValue)
             })
             .disposed(by: disposeBag)
 
         selectedItem
             .asDriver(onErrorDriveWith: .empty())
             .drive(onNext: {
-                coordinator.showEdit(mealCard: $0.0, meal: $0.1, row: $0.2)
+                coordinator.showEdit(mealCard: $0.0, mealEntity: $0.1, dayEntity: todayModel.state.dayEntityValue)
             })
             .disposed(by: disposeBag)
 
@@ -167,7 +165,7 @@ extension TodayViewModel {
         let didTapDeleteButton: AnyObserver<Void>
         let addButtonDidTap: AnyObserver<Void>
         let pickedImage: AnyObserver<UIImage>
-        let selectedItem: AnyObserver<(MealCardViewCell, Meal, Int)>
+        let selectedItem: AnyObserver<(MealCardViewCell, MealEntity)>
         let showDetailDay: AnyObserver<Day>
         let isEditMode: AnyObserver<Bool>
     }

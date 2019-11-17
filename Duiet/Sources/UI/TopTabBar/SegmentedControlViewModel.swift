@@ -11,13 +11,13 @@ import RxRelay
 import RxSwift
 
 protocol SegmentedControlViewModelInput {
-    var didSelectMonthItem: AnyObserver<Month> { get }
+    var didSelectMonthItem: AnyObserver<MonthEntity> { get }
     var didSelectDayItem: AnyObserver<Day> { get }
 }
 
 protocol SegmentedControlViewModelOutput {
     var showDetailDay: Observable<Day> { get }
-    var showDays: Observable<Month> { get }
+    var showDays: Observable<MonthEntity> { get }
     var showIndex: Observable<Int> { get }
 }
 
@@ -38,7 +38,7 @@ final class SegmentedControlViewModel: SegmentedControlViewModelProtocol, Segmen
 
     init() {
         let didSelectDayItem = PublishRelay<Day>()
-        let didSelectMonthItem = PublishRelay<Month>()
+        let didSelectMonthItem = PublishRelay<MonthEntity>()
         input = Input(didSelectMonthItem: didSelectMonthItem.asObserver(),
                       didSelectDayItem: didSelectDayItem.asObserver())
 
@@ -61,13 +61,13 @@ final class SegmentedControlViewModel: SegmentedControlViewModelProtocol, Segmen
 
 extension SegmentedControlViewModel {
     struct Input: SegmentedControlViewModelInput {
-        let didSelectMonthItem: AnyObserver<Month>
+        let didSelectMonthItem: AnyObserver<MonthEntity>
         let didSelectDayItem: AnyObserver<Day>
     }
 
     struct Output: SegmentedControlViewModelOutput {
         let showDetailDay: Observable<Day>
-        let showDays: Observable<Month>
+        let showDays: Observable<MonthEntity>
         let showIndex: Observable<Int>
     }
 }

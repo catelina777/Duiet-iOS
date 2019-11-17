@@ -25,15 +25,15 @@ final class MonthsViewDataSource: NSObject {
 extension MonthsViewDataSource: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        viewModel.data.months.count
+        viewModel.state.monthsValue.count
     }
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.monthSummaryViewCell,
                                                       for: indexPath)!
-        let month = viewModel.data.months[indexPath.row]
-        cell.configure(with: month)
+        let monthEntity = viewModel.state.monthsValue[indexPath.row]
+        cell.configure(month: Month(entity: monthEntity))
         return cell
     }
 }
@@ -41,7 +41,7 @@ extension MonthsViewDataSource: UICollectionViewDataSource {
 extension MonthsViewDataSource: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
-        let month = viewModel.data.months[indexPath.row]
+        let month = viewModel.state.monthsValue[indexPath.row]
         viewModel.input.itemDidSelect.on(.next(month))
     }
 }

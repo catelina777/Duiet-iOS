@@ -11,41 +11,41 @@ import RxRelay
 import RxSwift
 
 protocol MealLabelViewModelInput {
-    var contentDidUpdate: AnyObserver<Content> { get }
+    var contentDidUpdate: AnyObserver<Food> { get }
     var contentDidDelete: AnyObserver<Void> { get }
 }
 
 protocol MealLabelViewModelOutput {
-    var contentDidUpdate: Observable<Content> { get }
+    var contentDidUpdate: Observable<Food> { get }
     var hideView: Observable<Void> { get }
 }
 
-protocol MealLabelViewModelData {
-    var contentValue: Content { get }
+protocol MealLabelViewModelState {
+    var foodValue: Food { get }
 }
 
 protocol MealLabelViewModelProtocol {
     var input: MealLabelViewModelInput { get }
     var output: MealLabelViewModelOutput { get }
-    var state: MealLabelViewModelData { get }
+    var state: MealLabelViewModelState { get }
 }
 
-final class MealLabelViewModel: MealLabelViewModelProtocol, MealLabelViewModelData {
+final class MealLabelViewModel: MealLabelViewModelProtocol, MealLabelViewModelState {
     let input: MealLabelViewModelInput
     let output: MealLabelViewModelOutput
-    var state: MealLabelViewModelData { return self }
+    var state: MealLabelViewModelState { self }
 
-    var contentValue: Content {
-        content.value
+    var foodValue: Food {
+        food.value
     }
 
-    private let content: BehaviorRelay<Content>
+    private let food: BehaviorRelay<Food>
     private let disposeBag = DisposeBag()
 
-    init(content: Content) {
-        self.content = BehaviorRelay<Content>(value: content)
+    init(food: Food) {
+        self.food = BehaviorRelay<Food>(value: food)
 
-        let contentDidUpdate = PublishRelay<Content>()
+        let contentDidUpdate = PublishRelay<Food>()
         let contentDidDelete = PublishRelay<Void>()
         input = Input(contentDidUpdate: contentDidUpdate.asObserver(),
                       contentDidDelete: contentDidDelete.asObserver())
@@ -55,9 +55,9 @@ final class MealLabelViewModel: MealLabelViewModelProtocol, MealLabelViewModelDa
                         hideView: hideView.asObservable())
 
         contentDidUpdate
-            .subscribe(onNext: { [weak self] content in
+            .subscribe(onNext: { [weak self] food in
                 guard let me = self else { return }
-                me.content.accept(content)
+                me.food.accept(food)
             })
             .disposed(by: disposeBag)
     }
@@ -65,12 +65,12 @@ final class MealLabelViewModel: MealLabelViewModelProtocol, MealLabelViewModelDa
 
 extension MealLabelViewModel {
     struct Input: MealLabelViewModelInput {
-        let contentDidUpdate: AnyObserver<Content>
+        let contentDidUpdate: AnyObserver<Food>
         let contentDidDelete: AnyObserver<Void>
     }
 
     struct Output: MealLabelViewModelOutput {
-        let contentDidUpdate: Observable<Content>
+        let contentDidUpdate: Observable<Food>
         let hideView: Observable<Void>
     }
 }

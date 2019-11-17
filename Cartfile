@@ -1,7 +1,5 @@
 github "ReactiveX/RxSwift" ~> 5.0
 github "RxSwiftCommunity/RxGesture" ~> 3.0
 github "RxSwiftCommunity/RxCoreData" ~> 1.0.0
-github "catelina777/RxRealm"
-github "realm/realm-cocoa"
 github "catelina777/YPImagePicker"
 github "catelina777/FloatingSegmentedControl"

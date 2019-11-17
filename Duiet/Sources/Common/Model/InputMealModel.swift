@@ -7,9 +7,7 @@
 //
 
 import Foundation
-import RealmSwift
 import RxCocoa
-import RxRealm
 import RxRelay
 import RxSwift
 
@@ -18,19 +16,19 @@ protocol InputMealModelInput {}
 protocol InputMealModelOutput {
     var contentDidAdd: Observable<Void> { get }
     var contentDidDelete: Observable<Void> { get }
-    var contentDidUpdate: Observable<Content> { get }
-    var day: Observable<Day> { get }
-    var meal: Observable<Meal> { get }
+    var contentDidUpdate: Observable<Food> { get }
+    var meal: Observable<MealEntity> { get }
+    var dayEntity: Observable<DayEntity> { get }
 }
 
 protocol InputMealModelState {
-    var mealValue: Meal { get }
-    var addContent: Binder<(Meal, Content)> { get }
-    var updateContent: Binder<(Content, Content)> { get }
-    var saveName: Binder<(Content, String)> { get }
-    var saveCalorie: Binder<(Content, Double)> { get }
-    var saveMultiple: Binder<(Content, Double)> { get }
-    var deleteContent: Binder<(Meal, Content)> { get }
+    var mealEntityValue: MealEntity { get }
+    var addFood: Binder<(Food, MealEntity)> { get }
+    var updateContent: Binder<(Food, Food)> { get }
+    var saveName: Binder<(Food, String)> { get }
+    var saveCalorie: Binder<(Food, Double)> { get }
+    var saveMultiple: Binder<(Food, Double)> { get }
+    var deleteFood: Binder<Food> { get }
 }
 
 protocol InputMealModelProtocol {
@@ -45,90 +43,99 @@ internal final class InputMealModel: InputMealModelProtocol, InputMealModelState
     var state: InputMealModelState { self }
 
     private let contentDidAdd = PublishRelay<Void>()
-    private let contentDidUpdate = PublishRelay<Content>()
+    private let contentDidUpdate = PublishRelay<Food>()
     private let contentDidDelete = PublishRelay<Void>()
-    private let meal: BehaviorRelay<Meal>
-    private let day = BehaviorRelay<Day>(value: Day(date: Date()))
+    private let meal: BehaviorRelay<MealEntity>
+    private let dayEntity: BehaviorRelay<DayEntity>
 
     // MARK: State
-    var mealValue: Meal {
+    var mealEntityValue: MealEntity {
         meal.value
     }
 
-    private let repository: DayRepositoryProtocol
+    var dayEntityValue: DayEntity {
+        dayEntity.value
+    }
+
+    private let foodService: FoodServiceProtocol
+    private let mealService: MealServiceProtocol
     private let disposeBag = DisposeBag()
 
-    init(repository: DayRepositoryProtocol,
-         meal: Meal,
-         date: Date = Date()) {
-        self.repository = repository
-        self.meal = BehaviorRelay<Meal>(value: meal)
+    init(mealEntity: MealEntity,
+         dayEntity: DayEntity,
+         foodService: FoodServiceProtocol = FoodService.shared,
+         mealService: MealServiceProtocol = MealService.shared) {
+        self.foodService = foodService
+        self.mealService = mealService
+        self.meal = BehaviorRelay<MealEntity>(value: mealEntity)
+        self.dayEntity = BehaviorRelay<DayEntity>(value: dayEntity)
         input = Input()
         output = Output(contentDidAdd: contentDidAdd.asObservable(),
                         contentDidDelete: contentDidDelete.asObservable(),
                         contentDidUpdate: contentDidUpdate.asObservable(),
-                        day: day.asObservable(),
-                        meal: self.meal.asObservable())
+                        meal: self.meal.asObservable(),
+                        dayEntity: self.dayEntity.asObservable())
     }
 
     var addMeal: Binder<Meal> {
-        Binder(self) { me, meal in
-            me.repository.add(meal: meal, to: me.day.value)
+        Binder<Meal>(self) { me, meal in
+            me.mealService.add(meal, to: me.dayEntityValue)
         }
     }
 
-    var addContent: Binder<(Meal, Content)> {
-        Binder(self) { me, tuple in
-            me.repository.add(content: tuple.1, to: tuple.0)
-            me.contentDidAdd.accept(())
+    var addFood: Binder<(Food, MealEntity)> {
+        Binder<(Food, MealEntity)>(self) { me, tuple in
+            me.foodService.add(tuple.0, mealEntity: tuple.1)
         }
     }
 
-    var updateContent: Binder<(Content, Content)> {
-        Binder<(Content, Content)>(self) { me, tuple in
-            guard
-                !tuple.0.isInvalidated,
-                !tuple.1.isInvalidated
-            else { return }
-            me.repository.update(name: tuple.0.name, of: tuple.1)
-            me.repository.update(calorie: tuple.0.calorie, of: tuple.1)
-            me.repository.update(multiple: tuple.0.multiple, of: tuple.1)
-            me.contentDidUpdate.accept(tuple.1)
+    var updateContent: Binder<(Food, Food)> {
+        Binder<(Food, Food)>(self) { me, tuple in
+            let updatedFood = me.foodService.update(tuple.0,
+                                                    name: tuple.1.name,
+                                                    calorie: tuple.1.calorie,
+                                                    multiple: tuple.1.multiple,
+                                                    updatedAt: Date())
+            me.contentDidUpdate.accept(updatedFood)
         }
     }
 
-    var saveName: Binder<(Content, String)> {
-        Binder(self) { me, tuple in
-            let content = tuple.0
-            guard !content.isInvalidated else { return }
-            me.repository.update(name: tuple.1, of: content)
-            me.contentDidUpdate.accept(content)
+    var saveName: Binder<(Food, String)> {
+        Binder<(Food, String)>(self) { me, tuple in
+            let updatedFood = me.foodService.update(tuple.0,
+                                                    name: tuple.1,
+                                                    calorie: tuple.0.calorie,
+                                                    multiple: tuple.0.multiple,
+                                                    updatedAt: Date())
+            me.contentDidUpdate.accept(updatedFood)
         }
     }
 
-    var saveCalorie: Binder<(Content, Double)> {
-        Binder(self) { me, tuple in
-            let content = tuple.0
-            guard !content.isInvalidated else { return }
-            me.repository.update(calorie: tuple.1, of: content)
-            me.contentDidUpdate.accept(content)
+    var saveCalorie: Binder<(Food, Double)> {
+        Binder<(Food, Double)>(self) { me, tuple in
+            let updatedFood = me.foodService.update(tuple.0,
+                                                    name: tuple.0.name,
+                                                    calorie: tuple.1,
+                                                    multiple: tuple.0.multiple,
+                                                    updatedAt: Date())
+            me.contentDidUpdate.accept(updatedFood)
         }
     }
 
-    var saveMultiple: Binder<(Content, Double)> {
-        Binder(self) { me, tuple in
-            let content = tuple.0
-            guard !content.isInvalidated else { return }
-            me.repository.update(multiple: tuple.1, of: content)
-            me.contentDidUpdate.accept(content)
+    var saveMultiple: Binder<(Food, Double)> {
+        Binder<(Food, Double)>(self) { me, tuple in
+            let updatedFood = me.foodService.update(tuple.0,
+                                                    name: tuple.0.name,
+                                                    calorie: tuple.0.calorie,
+                                                    multiple: tuple.1,
+                                                    updatedAt: Date())
+            me.contentDidUpdate.accept(updatedFood)
         }
     }
 
-    var deleteContent: Binder<(Meal, Content)> {
-        Binder(self) { me, tuple in
-            let content = tuple.1
-            guard !content.isInvalidated else { return }
-            me.repository.delete(content: tuple.1, of: tuple.0)
+    var deleteFood: Binder<Food> {
+        Binder<Food>(self) { me, food in
+            me.foodService.delete(food)
             me.contentDidDelete.accept(())
         }
     }
@@ -140,8 +147,8 @@ extension InputMealModel {
     struct Output: InputMealModelOutput {
         let contentDidAdd: Observable<Void>
         let contentDidDelete: Observable<Void>
-        let contentDidUpdate: Observable<Content>
-        let day: Observable<Day>
-        let meal: Observable<Meal>
+        let contentDidUpdate: Observable<Food>
+        let meal: Observable<MealEntity>
+        let dayEntity: Observable<DayEntity>
     }
 }

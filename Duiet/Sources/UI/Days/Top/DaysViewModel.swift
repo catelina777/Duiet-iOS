@@ -12,7 +12,7 @@ import RxSwift
 
 protocol DaysViewModelInput {
     var selectedDay: AnyObserver<Day> { get }
-    var selectedMonth: AnyObserver<Month> { get }
+    var selectedMonth: AnyObserver<MonthEntity> { get }
 }
 
 protocol DaysViewModelOutput {
@@ -71,7 +71,7 @@ final class DaysViewModel: DaysViewModelProtocol, DaysViewModelState {
         self.unitCollectionModel = unitCollectionModel
 
         let _selectedDay = PublishRelay<Day>()
-        let _selectedMonth = PublishRelay<Month>()
+        let _selectedMonth = PublishRelay<MonthEntity>()
         input = Input(selectedDay: _selectedDay.asObserver(),
                       selectedMonth: _selectedMonth.asObserver())
 
@@ -83,7 +83,7 @@ final class DaysViewModel: DaysViewModelProtocol, DaysViewModelState {
         _selectedMonth
             .asDriver(onErrorDriveWith: .empty())
             .drive(onNext: { month in
-                coordinator.show(month: month)
+                coordinator.show(monthEntity: month)
             })
             .disposed(by: disposeBag)
     }
@@ -92,7 +92,7 @@ final class DaysViewModel: DaysViewModelProtocol, DaysViewModelState {
 extension DaysViewModel {
     struct Input: DaysViewModelInput {
         let selectedDay: AnyObserver<Day>
-        let selectedMonth: AnyObserver<Month>
+        let selectedMonth: AnyObserver<MonthEntity>
     }
 
     struct Output: DaysViewModelOutput {

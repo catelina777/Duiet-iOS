@@ -13,12 +13,14 @@ import RxCoreData
 import RxSwift
 
 protocol CoreDataRepositoryProtocol {
+    func create<E: Persistable>(_ type: E.Type) -> E.T
     func find<E: Persistable>(_ type: E.Type,
                               predicate: NSPredicate?,
                               sortDescriptors: [NSSortDescriptor]?) -> Observable<[E]>
     func find<E: Persistable>(type: E.Type,
                               predicate: NSPredicate?,
                               sortDescriptors: [NSSortDescriptor]?) -> Observable<[E.T]>
+    func find<E: Persistable>(_ type: E.Type, key: String, value: String) -> E.T?
     func update<E: Persistable>(entity: E)
     func delete<E: Persistable>(entity: E)
 }
@@ -39,6 +41,10 @@ class CoreDataRepository: CoreDataRepositoryProtocol {
 
     private init() {}
 
+    func create<E: Persistable>(_ type: E.Type = E.self) -> E.T {
+        NSEntityDescription.insertNewObject(forEntityName: E.entityName, into: persistentContainer.viewContext) as! E.T
+    }
+
     func find<E>(type: E.Type,
                  predicate: NSPredicate? = nil,
                  sortDescriptors: [NSSortDescriptor]? = nil) -> Observable<[E.T]> where E: Persistable {
@@ -52,6 +58,18 @@ class CoreDataRepository: CoreDataRepositoryProtocol {
                  predicate: NSPredicate? = nil,
                  sortDescriptors: [NSSortDescriptor]? = nil) -> Observable<[E]> where E: Persistable {
         persistentContainer.viewContext.rx.entities(type, predicate: predicate, sortDescriptors: sortDescriptors)
+    }
+
+    func find<E>(_ type: E.Type, key: String, value: String) -> E.T? where E: Persistable {
+        let predicate = NSPredicate(format: "\(key) == %@", argumentArray: [value])
+        let fetchRequest = buildFetchRequest(type: type, predicate: predicate, sortDescriptors: nil)
+        do {
+            let result = try persistentContainer.viewContext.execute(fetchRequest) as? NSAsynchronousFetchResult<E.T>
+            return result?.finalResult?.first
+        } catch let error {
+            Logger.shared.error(error)
+            return nil
+        }
     }
 
     private func buildFetchRequest<E>(type: E.Type,

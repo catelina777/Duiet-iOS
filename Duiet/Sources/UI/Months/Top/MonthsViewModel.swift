@@ -11,32 +11,32 @@ import RxRelay
 import RxSwift
 
 protocol MonthsViewModelInput {
-    var itemDidSelect: AnyObserver<Month> { get }
+    var itemDidSelect: AnyObserver<MonthEntity> { get }
 }
 
 protocol MonthsViewModelOutput {
-    var showSelectedMonth: Observable<Month> { get }
+    var showSelectedMonth: Observable<MonthEntity> { get }
     var reloadData: Observable<Void> { get }
 }
 
-protocol MonthsViewModelData {
-    var months: [Month] { get }
+protocol MonthsViewModelState {
+    var monthsValue: [MonthEntity] { get }
 }
 
 protocol MonthsViewModelProtocol {
     var input: MonthsViewModelInput { get }
     var output: MonthsViewModelOutput { get }
-    var data: MonthsViewModelData { get }
+    var state: MonthsViewModelState { get }
 }
 
-final class MonthsViewModel: MonthsViewModelProtocol, MonthsViewModelData {
+final class MonthsViewModel: MonthsViewModelProtocol, MonthsViewModelState {
     let input: MonthsViewModelInput
     let output: MonthsViewModelOutput
-    var data: MonthsViewModelData { return self }
+    var state: MonthsViewModelState { self }
 
     // MARK: State
-    var months: [Month] {
-        monthsModel.months.value
+    var monthsValue: [MonthEntity] {
+        monthsModel.state.monthsValue
     }
 
     private let monthsModel: MonthsModelProtocol
@@ -49,7 +49,7 @@ final class MonthsViewModel: MonthsViewModelProtocol, MonthsViewModelData {
         self.coordinator = coordinator
         self.monthsModel = monthsModel
 
-        let itemDidSelect = PublishRelay<Month>()
+        let itemDidSelect = PublishRelay<MonthEntity>()
         input = Input(itemDidSelect: itemDidSelect.asObserver())
 
         let reloadData = userProfileModel.output.userProfile
@@ -61,11 +61,11 @@ final class MonthsViewModel: MonthsViewModelProtocol, MonthsViewModelData {
 
 extension MonthsViewModel {
     struct Input: MonthsViewModelInput {
-        let itemDidSelect: AnyObserver<Month>
+        let itemDidSelect: AnyObserver<MonthEntity>
     }
 
     struct Output: MonthsViewModelOutput {
-        let showSelectedMonth: Observable<Month>
+        let showSelectedMonth: Observable<MonthEntity>
         let reloadData: Observable<Void>
     }
 }

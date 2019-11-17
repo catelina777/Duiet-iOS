@@ -26,8 +26,8 @@ final class DaysCoordinator: Coordinator {
         navigator.pushViewController(vc, animated: false)
     }
 
-    func show(month: Month) {
-        let model = DaysModel(month: month)
+    func show(monthEntity: MonthEntity) {
+        let model = DaysModel(monthEntity: monthEntity)
         let vc = TopDaysViewController(viewModel: .init(coordinator: self,
                                                         daysModel: model),
                                        segmentedViewModel: segmentedViewModel)

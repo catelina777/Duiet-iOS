@@ -1,0 +1,107 @@
+//
+//  Food.swift
+//  Duiet
+//
+//  Created by Ryuhei Kaminishi on 2019/11/17.
+//  Copyright © 2019 duiet. All rights reserved.
+//
+
+import CoreData
+import Foundation
+import RxCoreData
+import RxDataSources
+
+struct Food {
+    var id: UUID
+    var name: String
+    var calorie: Double
+    var multiple: Double
+    var relativeX: Double
+    var relativeY: Double
+    var createdAt: Date
+    var updatedAt: Date
+    var meal: MealEntity?
+
+    init(relativeX: Double, relativeY: Double) {
+        id = UUID()
+        name = ""
+        calorie = 0
+        multiple = 0
+        self.relativeX = relativeX
+        self.relativeY = relativeY
+        createdAt = Date()
+        updatedAt = Date()
+    }
+
+    init(from: Food, name: String, calorie: Double, multiple: Double, updatedAt: Date) {
+        id = from.id
+        self.name = name
+        self.calorie = calorie
+        self.multiple = multiple
+        relativeX = from.relativeX
+        relativeY = from.relativeY
+        createdAt = from.createdAt
+        self.updatedAt = updatedAt
+        meal = from.meal
+    }
+
+    init(food: Food, mealEntity: MealEntity, updatedAt: Date) {
+        id = food.id
+        name = food.name
+        calorie = food.calorie
+        multiple = food.multiple
+        relativeX = food.relativeX
+        relativeY = food.relativeY
+        createdAt = food.createdAt
+        self.updatedAt = updatedAt
+        meal = mealEntity
+    }
+}
+
+extension Food: Equatable {}
+
+extension Food: IdentifiableType {
+    typealias Identity = String
+
+    var identity: String { id.uuidString }
+}
+
+extension Food: Persistable {
+    typealias T = FoodEntity
+
+    static var entityName: String {
+        T.className
+    }
+
+    static var primaryAttributeName: String {
+        "id"
+    }
+
+    init(entity: FoodEntity) {
+        id = entity.id!
+        name = entity.name!
+        calorie = entity.calorie
+        multiple = entity.multiple
+        relativeX = entity.relativeX
+        relativeY = entity.relativeY
+        createdAt = entity.createdAt!
+        updatedAt = entity.updatedAt!
+        meal = entity.meal!
+    }
+
+    func update(_ entity: FoodEntity) {
+        entity.id = id
+        entity.name = name
+        entity.calorie = calorie
+        entity.multiple = multiple
+        entity.relativeX = relativeX
+        entity.relativeY = relativeY
+        entity.createdAt = createdAt
+        entity.meal = meal
+        do {
+            try entity.managedObjectContext?.save()
+        } catch let error {
+            Logger.shared.error(error)
+        }
+    }
+}
