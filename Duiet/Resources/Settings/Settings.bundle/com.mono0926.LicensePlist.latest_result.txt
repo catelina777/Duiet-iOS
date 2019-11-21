@@ -45,12 +45,12 @@ version: 6.4.0
 name: FirebaseCoreDiagnostics, nameSpecified: 
 body: 
                    …
-version: 1.1.1
+version: 1.1.2
 
 name: FirebaseCoreDiagnostics, nameSpecified: 
 body: 
                    …
-version: 1.1.1
+version: 1.1.2
 
 name: FirebaseCoreDiagnosticsInterop, nameSpecified: 
 body: 
@@ -83,22 +83,22 @@ version: 6.1.6
 name: GoogleDataTransport, nameSpecified: 
 body: 
                    …
-version: 3.1.0
+version: 3.2.0
 
 name: GoogleDataTransport, nameSpecified: 
 body: 
                    …
-version: 3.1.0
+version: 3.2.0
 
 name: GoogleDataTransportCCTSupport, nameSpecified: 
 body: 
                    …
-version: 1.2.1
+version: 1.2.2
 
 name: GoogleDataTransportCCTSupport, nameSpecified: 
 body: 
                    …
-version: 1.2.1
+version: 1.2.2
 
 name: GoogleUtilities, nameSpecified: 
 body: 
