@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15508" systemVersion="19B88" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+    <entity name="DayEntity" representedClassName="DayEntity" syncable="YES">
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="date" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="meals" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="MealEntity" inverseName="day" inverseEntity="MealEntity"/>
+        <relationship name="month" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MonthEntity" inverseName="days" inverseEntity="MonthEntity"/>
+    </entity>
+    <entity name="FoodEntity" representedClassName="FoodEntity" syncable="YES">
+        <attribute name="calorie" attributeType="Double" minValueString="0" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="multiple" attributeType="Double" minValueString="0" defaultValueString="1" usesScalarValueType="YES"/>
+        <attribute name="name" attributeType="String" defaultValueString=""/>
+        <attribute name="relativeX" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="relativeY" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="meal" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MealEntity" inverseName="foods" inverseEntity="MealEntity"/>
+    </entity>
+    <entity name="MealEntity" representedClassName="MealEntity" syncable="YES">
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="imageId" optional="YES" attributeType="String"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="day" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DayEntity" inverseName="meals" inverseEntity="DayEntity"/>
+        <relationship name="foods" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="FoodEntity" inverseName="meal" inverseEntity="FoodEntity"/>
+    </entity>
+    <entity name="MonthEntity" representedClassName="MonthEntity" syncable="YES">
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="date" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="days" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="DayEntity" inverseName="month" inverseEntity="DayEntity"/>
+    </entity>
+    <entity name="UnitCollectionEntity" representedClassName="UnitCollectionEntity" syncable="YES">
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="energyUnitRow" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="heightUnitRow" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="weightUnitRow" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="UserProfileEntity" representedClassName="UserProfileEntity" syncable="YES">
+        <attribute name="activityLevel" attributeType="String" defaultValueString="none"/>
+        <attribute name="age" attributeType="Integer 16" minValueString="0" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="biologicalSex" attributeType="String" defaultValueString="other"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="height" attributeType="Double" minValueString="0" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="weight" attributeType="Double" minValueString="0" defaultValueString="0.0" usesScalarValueType="YES"/>
+    </entity>
+    <elements>
+        <element name="DayEntity" positionX="72" positionY="99" width="128" height="133"/>
+        <element name="FoodEntity" positionX="99" positionY="126" width="128" height="178"/>
+        <element name="MealEntity" positionX="81" positionY="108" width="128" height="133"/>
+        <element name="MonthEntity" positionX="63" positionY="90" width="128" height="28"/>
+        <element name="UnitCollectionEntity" positionX="189" positionY="99" width="128" height="133"/>
+        <element name="UserProfileEntity" positionX="-59.8125" positionY="-29.07421875" width="128" height="28"/>
+    </elements>
+</model>

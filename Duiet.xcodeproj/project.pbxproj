@@ -384,6 +384,7 @@
 		40B2142822B638820040EA9E /* DaySummaryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaySummaryViewCell.swift; sourceTree = "<group>"; };
 		40B2142A22B638970040EA9E /* DaySummaryViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DaySummaryViewCell.xib; sourceTree = "<group>"; };
 		40B214DB22BF23D00040EA9E /* UserProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileModel.swift; sourceTree = "<group>"; };
+		40C1775F23885891007F2D57 /* Schemes_ver1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Schemes_ver1.xcdatamodel; sourceTree = "<group>"; };
 		40C43AC02380247900465551 /* UserProfileEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileEntity.swift; sourceTree = "<group>"; };
 		40C43AC22380248400465551 /* UnitCollectionEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitCollectionEntity.swift; sourceTree = "<group>"; };
 		40D8999622FE750400B6DA6D /* RoundedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -2210,9 +2211,10 @@
 		405040FC2377E219006731B1 /* Schemes.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				40C1775F23885891007F2D57 /* Schemes_ver1.xcdatamodel */,
 				405040FD2377E219006731B1 /* Schemes.xcdatamodel */,
 			);
-			currentVersion = 405040FD2377E219006731B1 /* Schemes.xcdatamodel */;
+			currentVersion = 40C1775F23885891007F2D57 /* Schemes_ver1.xcdatamodel */;
 			path = Schemes.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
