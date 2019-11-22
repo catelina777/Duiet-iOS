@@ -11,11 +11,8 @@ import RxSwift
 
 protocol DayServiceProtocol {
     func findAll() -> Observable<[Day]>
-    func get(date: Date) -> Observable<DayEntity>
     func findOrCreate(day date: Date) -> DayEntity
-    func findOrCreate(month date: Date) -> MonthEntity
-    func add(_ meal: Meal, to dayEntity: DayEntity) -> MealEntity?
-    func delete(_ meals: [Meal])
+    func delete(_ meals: [MealEntity])
 }
 
 final class DayService: DayServiceProtocol {
@@ -29,11 +26,7 @@ final class DayService: DayServiceProtocol {
     func findAll() -> Observable<[Day]> {
         repository.find(Day.self,
                         predicate: nil,
-                        sortDescriptors: [NSSortDescriptor(key: "createdAt", ascending: false)])
-    }
-
-    func get(date: Date) -> Observable<DayEntity> {
-        repository.find(type: Day.self, key: "date", value: date.toDayKeyString())
+                        sortDescriptors: [NSSortDescriptor(key: "createdAt", ascending: true)])
     }
 
     func findOrCreate(day date: Date) -> DayEntity {
@@ -59,7 +52,7 @@ final class DayService: DayServiceProtocol {
         }
     }
 
-    func findOrCreate(month date: Date) -> MonthEntity {
+    private func findOrCreate(month date: Date) -> MonthEntity {
         let monthEntity = repository.find(Month.self, key: "date", value: date.toMonthKeyString())
         if let monthEntity = monthEntity {
             return monthEntity
@@ -80,25 +73,7 @@ final class DayService: DayServiceProtocol {
         }
     }
 
-    func add(_ meal: Meal, to dayEntity: DayEntity) -> MealEntity? {
-        let target = repository.create(Meal.self)
-        target.id = meal.id
-        target.imageId = meal.imageId
-        target.createdAt = meal.createdAt
-        target.updatedAt = meal.updatedAt
-        target.day = dayEntity
-        target.foods = meal.foods
-        do {
-            try target.managedObjectContext?.save()
-            Logger.shared.info(meal)
-            return target
-        } catch let error {
-            Logger.shared.error(error)
-            return nil
-        }
-    }
-
-    func delete(_ meals: [Meal]) {
+    func delete(_ meals: [MealEntity]) {
         meals.forEach {
             repository.delete($0)
         }

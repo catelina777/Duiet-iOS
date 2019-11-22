@@ -75,7 +75,8 @@ final class DaysViewModel: DaysViewModelProtocol, DaysViewModelState {
         input = Input(selectedDay: _selectedDay.asObserver(),
                       selectedMonth: _selectedMonth.asObserver())
 
-        let reloadData = userProfileModel.output.userProfile
+        let reloadData = Observable.combineLatest(userProfileModel.output.userProfile,
+                                                  unitCollectionModel.output.unitCollection)
             .map { _ in }
         output = Output(showDetailDay: _selectedDay.asObservable(),
                         reloadData: reloadData)

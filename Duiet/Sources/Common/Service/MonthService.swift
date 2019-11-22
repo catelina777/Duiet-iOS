@@ -24,6 +24,6 @@ final class MonthService: MonthServiceProtocol {
     func findAll() -> Observable<[MonthEntity]> {
         repository.find(type: Month.self,
                         predicate: nil,
-                        sortDescriptors: [NSSortDescriptor(key: "createdAt", ascending: false)])
+                        sortDescriptors: [NSSortDescriptor(key: "createdAt", ascending: true)])
     }
 }

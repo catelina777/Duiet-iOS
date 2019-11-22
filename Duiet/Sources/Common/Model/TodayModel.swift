@@ -22,7 +22,7 @@ protocol TodayModelState {
     var meals: [MealEntity] { get }
     var title: String { get }
     var date: Date { get }
-    var delete: Binder<[Meal]> { get }
+    var delete: Binder<[MealEntity]> { get }
 
     func add(_ meal: Meal) -> MealEntity?
 }
@@ -55,11 +55,14 @@ final class TodayModel: TodayModelProtocol, TodayModelState {
 
     private let day: BehaviorRelay<DayEntity>
     private let dayService: DayServiceProtocol
+    private let mealService: MealServiceProtocol
     private let disposeBag = DisposeBag()
 
-    init(dayService: DayServiceProtocol = DayService.shared,
-         date: Date = Date()) {
+    init(date: Date = Date(),
+         dayService: DayServiceProtocol = DayService.shared,
+         mealService: MealServiceProtocol = MealService.shared) {
         self.dayService = dayService
+        self.mealService = mealService
         self.date = date
         day = BehaviorRelay<DayEntity>(value: dayService.findOrCreate(day: date))
 
@@ -68,11 +71,11 @@ final class TodayModel: TodayModelProtocol, TodayModelState {
     }
 
     func add(_ meal: Meal) -> MealEntity? {
-        dayService.add(meal, to: dayEntityValue)
+        mealService.add(meal, to: dayEntityValue)
     }
 
-    var delete: Binder<[Meal]> {
-        Binder<[Meal]>(self) { me, meals in
+    var delete: Binder<[MealEntity]> {
+        Binder<[MealEntity]>(self) { me, meals in
             me.dayService.delete(meals)
         }
     }

@@ -24,7 +24,6 @@ protocol CoreDataRepositoryProtocol {
     func find<E: Persistable>(type: E.Type, key: String, value: String) -> Observable<E.T>
     func update<E: Persistable>(_ entity: E)
     func update<E: NSManagedObject>(_ entity: E)
-    func delete<E: Persistable>(_ entity: E)
     func delete<E: NSManagedObject>(_ entity: E)
 }
 

@@ -45,14 +45,16 @@ final class MonthsViewModel: MonthsViewModelProtocol, MonthsViewModelState {
 
     init(coordinator: MonthsCoordinator,
          monthsModel: MonthsModelProtocol,
-         userProfileModel: UserProfileModelProtocol = UserProfileModel.shared) {
+         userProfileModel: UserProfileModelProtocol = UserProfileModel.shared,
+         unitCollectionModel: UnitCollectionModelProtocol = UnitCollectionModel.shared) {
         self.coordinator = coordinator
         self.monthsModel = monthsModel
 
         let itemDidSelect = PublishRelay<MonthEntity>()
         input = Input(itemDidSelect: itemDidSelect.asObserver())
 
-        let reloadData = userProfileModel.output.userProfile
+        let reloadData = Observable.combineLatest(userProfileModel.output.userProfile,
+                                                  unitCollectionModel.output.unitCollection)
             .map { _ in }
         output = Output(showSelectedMonth: itemDidSelect.asObservable(),
                         reloadData: reloadData)

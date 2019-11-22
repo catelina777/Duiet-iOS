@@ -13,7 +13,6 @@ protocol FoodServiceProtocol {
     func findAll() -> Observable<[FoodEntity]>
     func find(by name: String) -> Observable<[FoodEntity]>
     func update(_ foodEntity: FoodEntity)
-    func delete(_ food: Food)
     func delete(_ foodEntity: FoodEntity)
 }
 
@@ -37,17 +36,8 @@ final class FoodService: FoodServiceProtocol {
                         sortDescriptors: [NSSortDescriptor(key: "createdAt", ascending: false)])
     }
 
-    func add(_ food: Food, mealEntity: MealEntity) {
-        let updatedEntity = Food(food: food, mealEntity: mealEntity, updatedAt: Date())
-        repository.update(updatedEntity)
-    }
-
     func update(_ foodEntity: FoodEntity) {
         repository.update(foodEntity)
-    }
-
-    func delete(_ food: Food) {
-        repository.delete(food)
     }
 
     func delete(_ foodEntity: FoodEntity) {

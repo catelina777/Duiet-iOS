@@ -105,7 +105,8 @@ final class TodayViewModel: TodayViewModelProtocol, TodayViewModelState {
             .map { $0.isEmpty }
             .share()
 
-        let reloadData = userProfileModel.output.userProfile
+        let reloadData = Observable.combineLatest(userProfileModel.output.userProfile,
+                                                  unitCollectionModel.output.unitCollection)
             .map { _ in }
 
         output = Output(isEditMode: isEditMode.asObservable(),
@@ -131,7 +132,6 @@ final class TodayViewModel: TodayViewModelProtocol, TodayViewModelState {
 
         /// Delete meals
         didTapDeleteButton.withLatestFrom(deletionTargetMeals)
-            .map { $0.map { Meal(entity: $0) } }
             .bind(to: todayModel.state.delete)
             .disposed(by: disposeBag)
 

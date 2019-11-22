@@ -55,15 +55,12 @@ internal final class InputMealModel: InputMealModelProtocol, InputMealModelState
     }
 
     private let foodService: FoodServiceProtocol
-    private let mealService: MealServiceProtocol
     private let disposeBag = DisposeBag()
 
     init(mealEntity: MealEntity,
          dayEntity: DayEntity,
-         foodService: FoodServiceProtocol = FoodService.shared,
-         mealService: MealServiceProtocol = MealService.shared) {
+         foodService: FoodServiceProtocol = FoodService.shared) {
         self.foodService = foodService
-        self.mealService = mealService
         meal = BehaviorRelay<MealEntity>(value: mealEntity)
         self.dayEntity = BehaviorRelay<DayEntity>(value: dayEntity)
         input = Input()
