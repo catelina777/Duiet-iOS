@@ -12,9 +12,7 @@ import RxSwift
 
 protocol MonthsModelInput {}
 
-protocol MonthsModelOutput {
-    var months: Observable<[MonthEntity]> { get }
-}
+protocol MonthsModelOutput {}
 
 protocol MonthsModelState {
     var monthsValue: [MonthEntity] { get }
@@ -41,14 +39,16 @@ final class MonthsModel: MonthsModelProtocol, MonthsModelState {
 
     init(monthService: MonthServiceProtocol = MonthService.shared) {
         input = Input()
-        output = Output(months: monthService.findAll())
+        output = Output()
+
+        monthService.findAll()
+            .bind(to: months)
+            .disposed(by: disposeBag)
     }
 }
 
 extension MonthsModel {
     struct Input: MonthsModelInput {}
 
-    struct Output: MonthsModelOutput {
-        var months: Observable<[MonthEntity]>
-    }
+    struct Output: MonthsModelOutput {}
 }
