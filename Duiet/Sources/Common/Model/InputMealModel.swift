@@ -14,9 +14,9 @@ import RxSwift
 protocol InputMealModelInput {}
 
 protocol InputMealModelOutput {
-    var contentDidAdd: Observable<Void> { get }
-    var contentDidDelete: Observable<Void> { get }
-    var contentDidUpdate: Observable<FoodEntity> { get }
+    var foodDidAdd: Observable<Void> { get }
+    var foodDidDelete: Observable<Void> { get }
+    var foodDidUpdate: Observable<FoodEntity> { get }
     var meal: Observable<MealEntity> { get }
     var dayEntity: Observable<DayEntity> { get }
 }
@@ -39,9 +39,9 @@ internal final class InputMealModel: InputMealModelProtocol, InputMealModelState
     let output: InputMealModelOutput
     var state: InputMealModelState { self }
 
-    private let contentDidAdd = PublishRelay<Void>()
-    private let contentDidUpdate = PublishRelay<FoodEntity>()
-    private let contentDidDelete = PublishRelay<Void>()
+    private let foodDidAdd = PublishRelay<Void>()
+    private let foodDidUpdate = PublishRelay<FoodEntity>()
+    private let foodDidDelete = PublishRelay<Void>()
     private let meal: BehaviorRelay<MealEntity>
     private let dayEntity: BehaviorRelay<DayEntity>
 
@@ -64,9 +64,9 @@ internal final class InputMealModel: InputMealModelProtocol, InputMealModelState
         meal = BehaviorRelay<MealEntity>(value: mealEntity)
         self.dayEntity = BehaviorRelay<DayEntity>(value: dayEntity)
         input = Input()
-        output = Output(contentDidAdd: contentDidAdd.asObservable(),
-                        contentDidDelete: contentDidDelete.asObservable(),
-                        contentDidUpdate: contentDidUpdate.asObservable(),
+        output = Output(foodDidAdd: foodDidAdd.asObservable(),
+                        foodDidDelete: foodDidDelete.asObservable(),
+                        foodDidUpdate: foodDidUpdate.asObservable(),
                         meal: self.meal.asObservable(),
                         dayEntity: self.dayEntity.asObservable())
     }
@@ -74,21 +74,21 @@ internal final class InputMealModel: InputMealModelProtocol, InputMealModelState
     var add: Binder<FoodEntity> {
         Binder<FoodEntity>(self) { me, foodEntity in
             me.foodService.update(foodEntity)
-            me.contentDidAdd.accept(())
+            me.foodDidAdd.accept(())
         }
     }
 
     var update: Binder<FoodEntity> {
         Binder<FoodEntity>(self) { me, foodEntity in
             me.foodService.update(foodEntity)
-            me.contentDidUpdate.accept(foodEntity)
+            me.foodDidUpdate.accept(foodEntity)
         }
     }
 
     var delete: Binder<FoodEntity> {
         Binder<FoodEntity>(self) { me, foodEntity in
             me.foodService.delete(foodEntity)
-            me.contentDidDelete.accept(())
+            me.foodDidDelete.accept(())
         }
     }
 }
@@ -97,9 +97,9 @@ extension InputMealModel {
     struct Input: InputMealModelInput {}
 
     struct Output: InputMealModelOutput {
-        let contentDidAdd: Observable<Void>
-        let contentDidDelete: Observable<Void>
-        let contentDidUpdate: Observable<FoodEntity>
+        let foodDidAdd: Observable<Void>
+        let foodDidDelete: Observable<Void>
+        let foodDidUpdate: Observable<FoodEntity>
         let meal: Observable<MealEntity>
         let dayEntity: Observable<DayEntity>
     }

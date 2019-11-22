@@ -11,12 +11,12 @@ import RxRelay
 import RxSwift
 
 protocol MealLabelViewModelInput {
-    var contentDidUpdate: AnyObserver<FoodEntity> { get }
-    var contentDidDelete: AnyObserver<Void> { get }
+    var foodDidUpdate: AnyObserver<FoodEntity> { get }
+    var foodDidDelete: AnyObserver<Void> { get }
 }
 
 protocol MealLabelViewModelOutput {
-    var contentDidUpdate: Observable<FoodEntity> { get }
+    var foodDidUpdate: Observable<FoodEntity> { get }
     var hideView: Observable<Void> { get }
 }
 
@@ -45,16 +45,16 @@ final class MealLabelViewModel: MealLabelViewModelProtocol, MealLabelViewModelSt
     init(foodEntity: FoodEntity) {
         self.foodEntity = BehaviorRelay<FoodEntity>(value: foodEntity)
 
-        let contentDidUpdate = PublishRelay<FoodEntity>()
-        let contentDidDelete = PublishRelay<Void>()
-        input = Input(contentDidUpdate: contentDidUpdate.asObserver(),
-                      contentDidDelete: contentDidDelete.asObserver())
+        let foodDidUpdate = PublishRelay<FoodEntity>()
+        let foodDidDelete = PublishRelay<Void>()
+        input = Input(foodDidUpdate: foodDidUpdate.asObserver(),
+                      foodDidDelete: foodDidDelete.asObserver())
 
-        let hideView = contentDidDelete
-        output = Output(contentDidUpdate: contentDidUpdate.asObservable(),
+        let hideView = foodDidDelete
+        output = Output(foodDidUpdate: foodDidUpdate.asObservable(),
                         hideView: hideView.asObservable())
 
-        contentDidUpdate
+        foodDidUpdate
             .subscribe(onNext: { [weak self] foodEntity in
                 guard let me = self else { return }
                 me.foodEntity.accept(foodEntity)
@@ -65,12 +65,12 @@ final class MealLabelViewModel: MealLabelViewModelProtocol, MealLabelViewModelSt
 
 extension MealLabelViewModel {
     struct Input: MealLabelViewModelInput {
-        let contentDidUpdate: AnyObserver<FoodEntity>
-        let contentDidDelete: AnyObserver<Void>
+        let foodDidUpdate: AnyObserver<FoodEntity>
+        let foodDidDelete: AnyObserver<Void>
     }
 
     struct Output: MealLabelViewModelOutput {
-        let contentDidUpdate: Observable<FoodEntity>
+        let foodDidUpdate: Observable<FoodEntity>
         let hideView: Observable<Void>
     }
 }

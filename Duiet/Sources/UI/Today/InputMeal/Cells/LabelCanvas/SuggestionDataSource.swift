@@ -24,20 +24,20 @@ final class SuggestionDataSource: NSObject {
 
 extension SuggestionDataSource: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.state.suggestedContents.count
+        return viewModel.state.suggestedFoods.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.suggestionLabelViewCell,
                                                       for: indexPath)!
         guard
-            viewModel.state.suggestedContents.count >= indexPath.row
+            viewModel.state.suggestedFoods.count >= indexPath.row
         else { return cell }
 
-        cell.configure(foodEntity: viewModel.state.suggestedContents[indexPath.row])
+        cell.configure(foodEntity: viewModel.state.suggestedFoods[indexPath.row])
         cell.bindIsChecked(input: viewModel.input,
                            output: viewModel.output,
-                           foodEntity: viewModel.state.suggestedContents[indexPath.row])
+                           foodEntity: viewModel.state.suggestedFoods[indexPath.row])
         return cell
     }
 }
@@ -54,7 +54,7 @@ extension SuggestionDataSource: UICollectionViewDelegateFlowLayout {
                                                 owner: self,
                                                 options: nil)?.first as? SuggestionLabelViewCell
         else { return CGSize.zero }
-        cell.configure(foodEntity: viewModel.state.suggestedContents[indexPath.row])
+        cell.configure(foodEntity: viewModel.state.suggestedFoods[indexPath.row])
         cell.setNeedsLayout()
         cell.layoutIfNeeded()
         let size = cell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)

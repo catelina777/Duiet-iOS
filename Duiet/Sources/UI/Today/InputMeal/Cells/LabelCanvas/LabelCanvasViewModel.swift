@@ -16,12 +16,12 @@ protocol LabelCanvasViewModelInput {
 }
 
 protocol LabelCanvasViewModelOutput {
-    var suggestedContentResults: Observable<[FoodEntity]> { get }
+    var suggestedFoodResults: Observable<[FoodEntity]> { get }
     var suggestionDidSelect: Observable<FoodEntity> { get }
 }
 
 protocol LabelCanvasViewModelState {
-    var suggestedContents: [FoodEntity] { get }
+    var suggestedFoods: [FoodEntity] { get }
 }
 
 protocol LabelCanvasViewModelProtocol {
@@ -35,11 +35,11 @@ final class LabelCanvasViewModel: LabelCanvasViewModelProtocol, LabelCanvasViewM
     let output: LabelCanvasViewModelOutput
     var state: LabelCanvasViewModelState { self }
 
-    var suggestedContents: [FoodEntity] {
-        suggestedContentResults.value
+    var suggestedFoods: [FoodEntity] {
+        suggestedFoodResults.value
     }
 
-    private let suggestedContentResults = BehaviorRelay<[FoodEntity]>(value: [])
+    private let suggestedFoodResults = BehaviorRelay<[FoodEntity]>(value: [])
 
     private let disposeBag = DisposeBag()
 
@@ -49,17 +49,17 @@ final class LabelCanvasViewModel: LabelCanvasViewModelProtocol, LabelCanvasViewM
         input = Input(inputKeyword: inputKeyword.asObserver(),
                       suggestionDidSelect: suggestionDidSelect.asObserver())
 
-        output = Output(suggestedContentResults: suggestedContentResults.asObservable(),
+        output = Output(suggestedFoodResults: suggestedFoodResults.asObservable(),
                         suggestionDidSelect: suggestionDidSelect.asObservable())
 
         inputKeyword
             .bind(to: suggestionModel.input.inputKeyword)
             .disposed(by: disposeBag)
 
-        suggestionModel.output.suggestedContentResults
+        suggestionModel.output.suggestedFoodResults
             .compactMap { $0 }
             .distinctUntilChanged()
-            .bind(to: suggestedContentResults)
+            .bind(to: suggestedFoodResults)
             .disposed(by: disposeBag)
     }
 }
@@ -71,7 +71,7 @@ extension LabelCanvasViewModel {
     }
 
     struct Output: LabelCanvasViewModelOutput {
-        let suggestedContentResults: Observable<[FoodEntity]>
+        let suggestedFoodResults: Observable<[FoodEntity]>
         let suggestionDidSelect: Observable<FoodEntity>
     }
 }

@@ -53,7 +53,7 @@ final class MealLabelView: UIView {
             .disposed(by: disposeBag)
 
         // MARK: - Update text and notify new content
-        viewModel.output.contentDidUpdate
+        viewModel.output.foodDidUpdate
             .bind(to: updateLabelText)
             .disposed(by: disposeBag)
 

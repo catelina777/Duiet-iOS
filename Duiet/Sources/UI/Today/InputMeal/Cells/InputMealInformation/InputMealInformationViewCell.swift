@@ -72,7 +72,7 @@ final class InputMealInformationViewCell: BaseTableViewCell, CellFrameTrackkable
 
         deleteMealButton.rx.tap
             .subscribe(onNext: {
-                input.contentWillDelete.on(.next(()))
+                input.foodWillDelete.on(.next(()))
                 Haptic.notification(.success).generate()
             })
             .disposed(by: disposeBag)
@@ -85,7 +85,7 @@ final class InputMealInformationViewCell: BaseTableViewCell, CellFrameTrackkable
         output.suggestionDidSelect
             .subscribe(onNext: { [weak self] foodEntity in
                 guard let me = self else { return }
-                input.contentWillUpdate.onNext(foodEntity)
+                input.foodWillUpdate.onNext(foodEntity)
                 me.updateTextFields.onNext(foodEntity)
             })
             .disposed(by: disposeBag)
