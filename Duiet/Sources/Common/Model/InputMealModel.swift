@@ -67,7 +67,7 @@ internal final class InputMealModel: InputMealModelProtocol, InputMealModelState
          mealService: MealServiceProtocol = MealService.shared) {
         self.foodService = foodService
         self.mealService = mealService
-        self.meal = BehaviorRelay<MealEntity>(value: mealEntity)
+        meal = BehaviorRelay<MealEntity>(value: mealEntity)
         self.dayEntity = BehaviorRelay<DayEntity>(value: dayEntity)
         input = Input()
         output = Output(contentDidAdd: contentDidAdd.asObservable(),
@@ -86,6 +86,7 @@ internal final class InputMealModel: InputMealModelProtocol, InputMealModelState
     var addFood: Binder<(Food, MealEntity)> {
         Binder<(Food, MealEntity)>(self) { me, tuple in
             me.foodService.add(tuple.0, mealEntity: tuple.1)
+            me.contentDidAdd.accept(())
         }
     }
 

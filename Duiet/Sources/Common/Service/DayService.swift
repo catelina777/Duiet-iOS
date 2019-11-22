@@ -11,6 +11,7 @@ import RxSwift
 
 protocol DayServiceProtocol {
     func findAll() -> Observable<[Day]>
+    func get(date: Date) -> Observable<DayEntity>
     func findOrCreate(day date: Date) -> DayEntity
     func findOrCreate(month date: Date) -> MonthEntity
     func add(_ meal: Meal, to dayEntity: DayEntity) -> MealEntity?
@@ -31,6 +32,10 @@ final class DayService: DayServiceProtocol {
                         sortDescriptors: [NSSortDescriptor(key: "createdAt", ascending: false)])
     }
 
+    func get(date: Date) -> Observable<DayEntity> {
+        repository.find(type: Day.self, key: "date", value: date.toDayKeyString())
+    }
+
     func findOrCreate(day date: Date) -> DayEntity {
         let dayEntity = repository.find(Day.self, key: "date", value: date.toDayKeyString())
         if let dayEntity = dayEntity {
@@ -38,9 +43,15 @@ final class DayService: DayServiceProtocol {
         } else {
             let dayEntity = repository.create(Day.self)
             let monthEntity = findOrCreate(month: date)
+            dayEntity.id = UUID()
+            dayEntity.date = date.toDayKeyString()
+            dayEntity.createdAt = date
+            dayEntity.updatedAt = date
             dayEntity.month = monthEntity
+            dayEntity.meals = Set<MealEntity>()
             do {
                 try dayEntity.managedObjectContext?.save()
+                Logger.shared.info(dayEntity)
             } catch let error {
                 Logger.shared.error(error)
             }
@@ -54,8 +65,14 @@ final class DayService: DayServiceProtocol {
             return monthEntity
         } else {
             let monthEntity = repository.create(Month.self)
+            monthEntity.id = UUID()
+            monthEntity.date = date.toMonthKeyString()
+            monthEntity.createdAt = date
+            monthEntity.updatedAt = date
+            monthEntity.days = Set<DayEntity>()
             do {
                 try monthEntity.managedObjectContext?.save()
+                Logger.shared.info(monthEntity)
             } catch let error {
                 Logger.shared.error(error)
             }
@@ -69,10 +86,11 @@ final class DayService: DayServiceProtocol {
         target.imageId = meal.imageId
         target.createdAt = meal.createdAt
         target.updatedAt = meal.updatedAt
-        target.day = meal.day
+        target.day = dayEntity
         target.foods = meal.foods
         do {
             try target.managedObjectContext?.save()
+            Logger.shared.info(meal)
             return target
         } catch let error {
             Logger.shared.error(error)
@@ -84,5 +102,6 @@ final class DayService: DayServiceProtocol {
         meals.forEach {
             repository.delete(entity: $0)
         }
+        Logger.shared.info(meals)
     }
 }

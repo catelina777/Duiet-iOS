@@ -64,7 +64,7 @@ extension Meal: Persistable {
     }
 
     init(entity: Self.T) {
-        id = entity.id!
+        id = entity.id
         imageId = entity.imageId!
         createdAt = entity.createdAt!
         updatedAt = entity.updatedAt!

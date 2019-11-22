@@ -14,7 +14,7 @@ final class MealEntity: NSManagedObject {
     @NSManaged var createdAt: Date?
     @NSManaged var updatedAt: Date?
     @NSManaged var imageId: String?
-    @NSManaged var id: UUID?
+    @NSManaged var id: UUID
     @NSManaged var day: DayEntity?
     @NSManaged var foods: Set<FoodEntity>?
 }

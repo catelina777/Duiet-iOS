@@ -21,6 +21,7 @@ protocol CoreDataRepositoryProtocol {
                               predicate: NSPredicate?,
                               sortDescriptors: [NSSortDescriptor]?) -> Observable<[E.T]>
     func find<E: Persistable>(_ type: E.Type, key: String, value: String) -> E.T?
+    func find<E: Persistable>(type: E.Type, key: String, value: String) -> Observable<E.T>
     func update<E: Persistable>(entity: E)
     func delete<E: Persistable>(entity: E)
 }
@@ -70,6 +71,13 @@ class CoreDataRepository: CoreDataRepositoryProtocol {
             Logger.shared.error(error)
             return nil
         }
+    }
+
+    func find<E>(type: E.Type, key: String, value: String) -> Observable<E.T> where E: Persistable {
+        let predicate = NSPredicate(format: "\(key) == %@", argumentArray: [value])
+        let fetchRequest = buildFetchRequest(type: type, predicate: predicate, sortDescriptors: nil)
+        return persistentContainer.viewContext.rx.entities(fetchRequest: fetchRequest)
+            .compactMap { $0.first }
     }
 
     private func buildFetchRequest<E>(type: E.Type,

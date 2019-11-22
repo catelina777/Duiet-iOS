@@ -36,6 +36,7 @@ protocol InputMealViewModelState {
     var isShowedContents: BehaviorRelay<Bool> { get }
     var foods: [FoodEntity] { get }
     var foodImage: UIImage? { get }
+    var mealEntityValue: MealEntity { get }
 }
 
 protocol InputMealViewModelProtocol {
@@ -57,6 +58,10 @@ final class InputMealViewModel: InputMealViewModelProtocol, InputMealViewModelSt
     let foodImage: UIImage?
 
     let isShowedContents = BehaviorRelay<Bool>(value: false)
+
+    var mealEntityValue: MealEntity {
+        inputMealModel.state.mealEntityValue
+    }
 
     private let inputMealModel: InputMealModelProtocol
     private let disposeBag = DisposeBag()
@@ -113,7 +118,7 @@ final class InputMealViewModel: InputMealViewModelProtocol, InputMealViewModelSt
 
         let multiple = multipleTextInput
             .compactMap { $0 }
-            .map { Double($0) ?? 0 }
+            .map { Double($0) ?? 1 }
             .distinctUntilChanged()
             .share()
 

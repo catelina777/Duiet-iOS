@@ -26,7 +26,7 @@ final class LabelCanvasViewCell: BaseTableViewCell {
         }
         bindSuggestedContent(input: input, output: output)
         suggestionDataSource.configure(with: suggestionCollectionView)
-        bindAddContent(input: input)
+        bindAddContent(input: input, state: state)
         configure(with: state.foodImage)
     }
 
@@ -49,7 +49,7 @@ final class LabelCanvasViewCell: BaseTableViewCell {
 
     /// Monitor screen presses and add content
     /// - Parameter input: ViewModel input
-    private func bindAddContent(input: InputMealViewModelInput) {
+    private func bindAddContent(input: InputMealViewModelInput, state: InputMealViewModelState) {
         rx
             .longPressGesture()
             .when(.began)
@@ -65,15 +65,18 @@ final class LabelCanvasViewCell: BaseTableViewCell {
                                     height: labelHeight)
                 let relativeX = Double(point.x / me.frame.width)
                 let relativeY = Double(point.y / me.frame.height)
-                let food = Food(relativeX: relativeX, relativeY: relativeY)
+                let food = Food(relativeX: relativeX,
+                                relativeY: relativeY,
+                                mealEntity: state.mealEntityValue)
                 mealLabel.initialize(with: food)
                 mealLabel.frame = labelFrame
                 mealLabel.configure(input: input)
-                me.addSubview(mealLabel)
                 return mealLabel
             }
             .compactMap { $0 }
-            .subscribe(onNext: { mealLabel in
+            .subscribe(onNext: { [weak self] mealLabel in
+                guard let me = self else { return }
+                me.addSubview(mealLabel)
                 input.selectedLabelViewModel.on(.next(mealLabel.viewModel))
                 input.contentWillAdd.on(.next(mealLabel.viewModel.state.foodValue))
                 Haptic.impact(.medium).generate()

@@ -22,15 +22,16 @@ struct Food {
     var updatedAt: Date
     var meal: MealEntity?
 
-    init(relativeX: Double, relativeY: Double) {
+    init(relativeX: Double, relativeY: Double, mealEntity: MealEntity) {
         id = UUID()
         name = ""
         calorie = 0
-        multiple = 0
+        multiple = 1
         self.relativeX = relativeX
         self.relativeY = relativeY
         createdAt = Date()
         updatedAt = Date()
+        meal = mealEntity
     }
 
     init(from: Food, name: String, calorie: Double, multiple: Double, updatedAt: Date) {
@@ -78,14 +79,14 @@ extension Food: Persistable {
     }
 
     init(entity: FoodEntity) {
-        id = entity.id!
+        id = entity.id
         name = entity.name!
         calorie = entity.calorie
         multiple = entity.multiple
         relativeX = entity.relativeX
         relativeY = entity.relativeY
-        createdAt = entity.createdAt!
-        updatedAt = entity.updatedAt!
+        createdAt = entity.createdAt ?? Date()
+        updatedAt = entity.updatedAt ?? Date()
         meal = entity.meal!
     }
 

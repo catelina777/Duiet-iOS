@@ -18,6 +18,6 @@ final class FoodEntity: NSManagedObject {
     @NSManaged var multiple: Double
     @NSManaged var relativeX: Double
     @NSManaged var relativeY: Double
-    @NSManaged var id: UUID?
+    @NSManaged var id: UUID
     @NSManaged var meal: MealEntity?
 }

@@ -854,10 +854,10 @@
 		40020B3E2380E7060078A978 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				40020B3F2380E7350078A978 /* FoodService.swift */,
-				40020B4323810A7F0078A978 /* MealService.swift */,
-				40020B452381193F0078A978 /* DayService.swift */,
 				40020B4723811C0E0078A978 /* MonthService.swift */,
+				40020B452381193F0078A978 /* DayService.swift */,
+				40020B4323810A7F0078A978 /* MealService.swift */,
+				40020B3F2380E7350078A978 /* FoodService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
