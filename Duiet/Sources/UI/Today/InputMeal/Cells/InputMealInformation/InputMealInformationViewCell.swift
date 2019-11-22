@@ -83,16 +83,16 @@ final class InputMealInformationViewCell: BaseTableViewCell, CellFrameTrackkable
 
         /// Save selected candidate values to input
         output.suggestionDidSelect
-            .subscribe(onNext: { [weak self] content in
+            .subscribe(onNext: { [weak self] foodEntity in
                 guard let me = self else { return }
-                input.contentWillUpdate.onNext(content)
-                me.updateTextFields.onNext(content)
+                input.contentWillUpdate.onNext(foodEntity)
+                me.updateTextFields.onNext(foodEntity)
             })
             .disposed(by: disposeBag)
     }
 
-    private var updateTextFields: Binder<Food> {
-        Binder<Food>(self) { me, food in
+    private var updateTextFields: Binder<FoodEntity> {
+        Binder<FoodEntity>(self) { me, food in
             me.nameTextField.text = food.name
             me.calorieTextField.text = ""
             me.multipleTextField.text = ""

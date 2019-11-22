@@ -63,7 +63,7 @@ final class UnitCollectionModel: UnitCollectionModelProtocol, UnitCollectionMode
     }
 
     func add(unitCollection: UnitCollection) {
-        repository.update(entity: unitCollection)
+        repository.update(unitCollection)
     }
 }
 

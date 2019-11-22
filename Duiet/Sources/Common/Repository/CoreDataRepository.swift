@@ -22,8 +22,10 @@ protocol CoreDataRepositoryProtocol {
                               sortDescriptors: [NSSortDescriptor]?) -> Observable<[E.T]>
     func find<E: Persistable>(_ type: E.Type, key: String, value: String) -> E.T?
     func find<E: Persistable>(type: E.Type, key: String, value: String) -> Observable<E.T>
-    func update<E: Persistable>(entity: E)
-    func delete<E: Persistable>(entity: E)
+    func update<E: Persistable>(_ entity: E)
+    func update<E: NSManagedObject>(_ entity: E)
+    func delete<E: Persistable>(_ entity: E)
+    func delete<E: NSManagedObject>(_ entity: E)
 }
 
 class CoreDataRepository: CoreDataRepositoryProtocol {
@@ -89,7 +91,7 @@ class CoreDataRepository: CoreDataRepositoryProtocol {
         return fetchRequest
     }
 
-    func update<E: Persistable>(entity: E) {
+    func update<E: Persistable>(_ entity: E) {
         do {
             try persistentContainer.viewContext.rx.update(entity)
         } catch let error {
@@ -97,11 +99,23 @@ class CoreDataRepository: CoreDataRepositoryProtocol {
         }
     }
 
-    func delete<E: Persistable>(entity: E) {
+    func update<E>(_ entity: E) where E: NSManagedObject {
+        do {
+            try entity.managedObjectContext?.save()
+        } catch let error {
+            Logger.shared.error(error)
+        }
+    }
+
+    func delete<E: Persistable>(_ entity: E) {
         do {
             try persistentContainer.viewContext.rx.delete(entity)
         } catch let error {
             Logger.shared.error(error)
         }
+    }
+
+    func delete<E>(_ entity: E) where E: NSManagedObject {
+        persistentContainer.viewContext.delete(entity)
     }
 }

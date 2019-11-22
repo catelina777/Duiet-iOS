@@ -12,9 +12,9 @@ import RxSwift
 protocol FoodServiceProtocol {
     func findAll() -> Observable<[FoodEntity]>
     func find(by name: String) -> Observable<[FoodEntity]>
-    func add(_ food: Food, mealEntity: MealEntity)
-    func update(_ food: Food, name: String, calorie: Double, multiple: Double, updatedAt: Date) -> Food
+    func update(_ foodEntity: FoodEntity)
     func delete(_ food: Food)
+    func delete(_ foodEntity: FoodEntity)
 }
 
 final class FoodService: FoodServiceProtocol {
@@ -39,16 +39,18 @@ final class FoodService: FoodServiceProtocol {
 
     func add(_ food: Food, mealEntity: MealEntity) {
         let updatedEntity = Food(food: food, mealEntity: mealEntity, updatedAt: Date())
-        repository.update(entity: updatedEntity)
+        repository.update(updatedEntity)
     }
 
-    func update(_ food: Food, name: String, calorie: Double, multiple: Double, updatedAt: Date) -> Food {
-        let updatedEntity = Food(from: food, name: name, calorie: calorie, multiple: multiple, updatedAt: updatedAt)
-        repository.update(entity: updatedEntity)
-        return updatedEntity
+    func update(_ foodEntity: FoodEntity) {
+        repository.update(foodEntity)
     }
 
     func delete(_ food: Food) {
-        repository.delete(entity: food)
+        repository.delete(food)
+    }
+
+    func delete(_ foodEntity: FoodEntity) {
+        repository.delete(foodEntity)
     }
 }

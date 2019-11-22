@@ -15,11 +15,11 @@ protocol SuggestionModelInput {
 }
 
 protocol SuggestionModelOutput {
-    var suggestedContentResults: Observable<[Food]> { get }
+    var suggestedContentResults: Observable<[FoodEntity]> { get }
 }
 
 protocol SuggestionModelState {
-    var suggestedContents: [Food] { get }
+    var suggestedContents: [FoodEntity] { get }
 }
 
 protocol SuggestionModelProtocol {
@@ -34,21 +34,20 @@ final class SuggestionModel: SuggestionModelProtocol, SuggestionModelState {
     let output: SuggestionModelOutput
     var state: SuggestionModelState { self }
 
-    var suggestedContents: [Food] {
+    var suggestedContents: [FoodEntity] {
         suggestedContentResults.value
     }
 
-    private let suggestedContentResults = BehaviorRelay<[Food]>(value: [])
+    private let suggestedContentResults = BehaviorRelay<[FoodEntity]>(value: [])
     private let disposeBag = DisposeBag()
 
-    init(service: FoodServiceProtocol = FoodService.shared) {
+    init(foodService: FoodServiceProtocol = FoodService.shared) {
         let inputKeyword = PublishRelay<String>()
         input = Input(inputKeyword: inputKeyword.asObserver())
 
         inputKeyword
             .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
-            .flatMap { $0.isEmpty ? service.findAll() : service.find(by: $0) }
-            .map { $0.map { Food(entity: $0) } }
+            .flatMap { $0.isEmpty ? foodService.findAll() : foodService.find(by: $0) }
             .bind(to: suggestedContentResults)
             .disposed(by: disposeBag)
 
@@ -62,6 +61,6 @@ extension SuggestionModel {
     }
 
     struct Output: SuggestionModelOutput {
-        let suggestedContentResults: Observable<[Food]>
+        let suggestedContentResults: Observable<[FoodEntity]>
     }
 }

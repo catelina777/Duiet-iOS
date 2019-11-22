@@ -85,8 +85,8 @@ extension Food: Persistable {
         multiple = entity.multiple
         relativeX = entity.relativeX
         relativeY = entity.relativeY
-        createdAt = entity.createdAt ?? Date()
-        updatedAt = entity.updatedAt ?? Date()
+        createdAt = entity.createdAt!
+        updatedAt = entity.updatedAt!
         meal = entity.meal!
     }
 
@@ -98,11 +98,26 @@ extension Food: Persistable {
         entity.relativeX = relativeX
         entity.relativeY = relativeY
         entity.createdAt = createdAt
+        entity.updatedAt = updatedAt
         entity.meal = meal
         do {
             try entity.managedObjectContext?.save()
         } catch let error {
             Logger.shared.error(error)
         }
+    }
+
+    func build(coreDataRepository: CoreDataRepositoryProtocol = CoreDataRepository.shared) -> FoodEntity {
+        let entity = coreDataRepository.create(type(of: self))
+        entity.id = id
+        entity.name = name
+        entity.calorie = calorie
+        entity.multiple = multiple
+        entity.relativeX = relativeX
+        entity.relativeY = relativeY
+        entity.createdAt = createdAt
+        entity.updatedAt = updatedAt
+        entity.meal = meal
+        return entity
     }
 }

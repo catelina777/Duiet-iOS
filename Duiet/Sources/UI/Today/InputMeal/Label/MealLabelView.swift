@@ -26,18 +26,18 @@ final class MealLabelView: UIView {
     var viewModel: MealLabelViewModelProtocol!
     private let disposeBag = DisposeBag()
 
-    static func build(food: Food) -> MealLabelView {
+    static func build(foodEntity: FoodEntity) -> MealLabelView {
          let label = R.nib.mealLabelView.firstView(owner: nil)!
-        label.initialize(with: food)
+        label.initialize(foodEntity: foodEntity)
         return label
     }
 
-    func initialize(with food: Food) {
-        viewModel = MealLabelViewModel(food: food)
-        let calorie = UnitBabel.shared.convert(value: food.calorie,
+    func initialize(foodEntity: FoodEntity) {
+        viewModel = MealLabelViewModel(foodEntity: foodEntity)
+        let calorie = UnitBabel.shared.convert(value: foodEntity.calorie,
                                                from: .kilocalories,
                                                to: UnitCollectionModel.shared.state.unitCollectionValue.energyUnit)
-        let multiple = viewModel.state.foodValue.multiple
+        let multiple = viewModel.state.foodEntityValue.multiple
         self.mealLabel.text = "\(Int(calorie * (multiple == 0 ? 1 : multiple)))"
     }
 
@@ -63,18 +63,18 @@ final class MealLabelView: UIView {
             .disposed(by: disposeBag)
     }
 
-    private var updateLabelText: Binder<Food> {
-        Binder<Food>(self) { me, food in
-            let calorie = UnitBabel.shared.convert(value: food.calorie,
+    private var updateLabelText: Binder<FoodEntity> {
+        Binder<FoodEntity>(self) { me, foodEntity in
+            let calorie = UnitBabel.shared.convert(value: foodEntity.calorie,
                                                    from: .kilocalories,
                                                    to: UnitCollectionModel.shared.state.unitCollectionValue.energyUnit)
-            let multiple = food.multiple
+            let multiple = foodEntity.multiple
             me.mealLabel.text = "\(Int(calorie * (multiple == 0 ? 1 : multiple)))"
         }
     }
 
     private var hideMealLabel: Binder<Void> {
-        Binder(self) { me, _ in
+        Binder<Void>(self) { me, _ in
             me.isHidden = true
         }
     }

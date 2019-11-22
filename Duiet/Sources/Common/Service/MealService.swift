@@ -22,6 +22,6 @@ final class MealService: MealServiceProtocol {
 
     func add(_ meal: Meal, to day: DayEntity) {
         let entity = Meal(meal: meal, dayEntity: day)
-        repository.update(entity: entity)
+        repository.update(entity)
     }
 }

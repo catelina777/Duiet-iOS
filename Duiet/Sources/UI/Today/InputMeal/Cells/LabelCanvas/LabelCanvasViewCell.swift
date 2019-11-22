@@ -21,7 +21,7 @@ final class LabelCanvasViewCell: BaseTableViewCell {
     // TODO: This code is terrible and should be refactored
     func configure(input: InputMealViewModelInput, output: InputMealViewModelOutput, state: InputMealViewModelState) {
         if !state.isShowedContents.value {
-            show(foods: state.foods.map { Food(entity: $0) }, input: input)
+            show(foods: state.foods, input: input)
             state.isShowedContents.accept(true)
         }
         bindSuggestedContent(input: input, output: output)
@@ -30,9 +30,9 @@ final class LabelCanvasViewCell: BaseTableViewCell {
         configure(with: state.foodImage)
     }
 
-    private func show(foods: [Food], input: InputMealViewModelInput) {
-        foods.map { MealLabelView.build(food: $0) }.forEach { label in
-            let food = label.viewModel.state.foodValue
+    private func show(foods: [FoodEntity], input: InputMealViewModelInput) {
+        foods.map { MealLabelView.build(foodEntity: $0) }.forEach { label in
+            let food = label.viewModel.state.foodEntityValue
             let centerX = CGFloat(food.relativeX) * frame.width
             let centerY = CGFloat(food.relativeY) * frame.height
             let labelWidth = frame.width * 0.3
@@ -68,7 +68,7 @@ final class LabelCanvasViewCell: BaseTableViewCell {
                 let food = Food(relativeX: relativeX,
                                 relativeY: relativeY,
                                 mealEntity: state.mealEntityValue)
-                mealLabel.initialize(with: food)
+                mealLabel.initialize(foodEntity: food.build())
                 mealLabel.frame = labelFrame
                 mealLabel.configure(input: input)
                 return mealLabel
@@ -78,7 +78,7 @@ final class LabelCanvasViewCell: BaseTableViewCell {
                 guard let me = self else { return }
                 me.addSubview(mealLabel)
                 input.selectedLabelViewModel.on(.next(mealLabel.viewModel))
-                input.contentWillAdd.on(.next(mealLabel.viewModel.state.foodValue))
+                input.contentWillAdd.on(.next(mealLabel.viewModel.state.foodEntityValue))
                 Haptic.impact(.medium).generate()
             })
             .disposed(by: disposeBag)

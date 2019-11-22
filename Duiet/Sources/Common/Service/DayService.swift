@@ -100,7 +100,7 @@ final class DayService: DayServiceProtocol {
 
     func delete(_ meals: [Meal]) {
         meals.forEach {
-            repository.delete(entity: $0)
+            repository.delete($0)
         }
         Logger.shared.info(meals)
     }

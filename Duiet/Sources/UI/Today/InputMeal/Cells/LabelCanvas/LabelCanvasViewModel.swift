@@ -12,16 +12,16 @@ import RxSwift
 
 protocol LabelCanvasViewModelInput {
     var inputKeyword: AnyObserver<String> { get }
-    var suggestionDidSelect: AnyObserver<Food> { get }
+    var suggestionDidSelect: AnyObserver<FoodEntity> { get }
 }
 
 protocol LabelCanvasViewModelOutput {
-    var suggestedContentResults: Observable<[Food]> { get }
-    var suggestionDidSelect: Observable<Food> { get }
+    var suggestedContentResults: Observable<[FoodEntity]> { get }
+    var suggestionDidSelect: Observable<FoodEntity> { get }
 }
 
 protocol LabelCanvasViewModelState {
-    var suggestedContents: [Food] { get }
+    var suggestedContents: [FoodEntity] { get }
 }
 
 protocol LabelCanvasViewModelProtocol {
@@ -35,17 +35,17 @@ final class LabelCanvasViewModel: LabelCanvasViewModelProtocol, LabelCanvasViewM
     let output: LabelCanvasViewModelOutput
     var state: LabelCanvasViewModelState { self }
 
-    var suggestedContents: [Food] {
+    var suggestedContents: [FoodEntity] {
         suggestedContentResults.value
     }
 
-    private let suggestedContentResults = BehaviorRelay<[Food]>(value: [])
+    private let suggestedContentResults = BehaviorRelay<[FoodEntity]>(value: [])
 
     private let disposeBag = DisposeBag()
 
     init(suggestionModel: SuggestionModelProtocol = SuggestionModel.shared) {
         let inputKeyword = PublishRelay<String>()
-        let suggestionDidSelect = PublishRelay<Food>()
+        let suggestionDidSelect = PublishRelay<FoodEntity>()
         input = Input(inputKeyword: inputKeyword.asObserver(),
                       suggestionDidSelect: suggestionDidSelect.asObserver())
 
@@ -67,11 +67,11 @@ final class LabelCanvasViewModel: LabelCanvasViewModelProtocol, LabelCanvasViewM
 extension LabelCanvasViewModel {
     struct Input: LabelCanvasViewModelInput {
         let inputKeyword: AnyObserver<String>
-        var suggestionDidSelect: AnyObserver<Food>
+        var suggestionDidSelect: AnyObserver<FoodEntity>
     }
 
     struct Output: LabelCanvasViewModelOutput {
-        let suggestedContentResults: Observable<[Food]>
-        let suggestionDidSelect: Observable<Food>
+        let suggestedContentResults: Observable<[FoodEntity]>
+        let suggestionDidSelect: Observable<FoodEntity>
     }
 }

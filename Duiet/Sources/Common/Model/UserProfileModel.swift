@@ -66,7 +66,7 @@ final class UserProfileModel: UserProfileModelProtocol, UserProfileModelState {
     }
 
     func add(userProfile: UserProfile) {
-        repository.update(entity: userProfile)
+        repository.update(userProfile)
     }
 }
 
