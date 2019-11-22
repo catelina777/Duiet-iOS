@@ -143,7 +143,7 @@ final class InputMealViewModel: InputMealViewModelProtocol, InputMealViewModelSt
             .bind(to: inputMealModel.state.update)
             .disposed(by: disposeBag)
 
-        contentWillUpdate.withLatestFrom(selectedContent) { ($0, $1) }
+        contentWillUpdate.withLatestFrom(selectedContent) { ($1, $0) }
             .map { from, to in
                 from.name = to.name
                 from.calorie = to.calorie
