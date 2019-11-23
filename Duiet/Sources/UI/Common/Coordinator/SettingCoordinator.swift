@@ -36,6 +36,12 @@ final class SettingCoordinator: Coordinator {
         navigator.pushViewController(vc, animated: true)
     }
 
+    func showManageData() {
+        let vm = ManageDataViewModel()
+        let vc = ManageDataViewController(viewModel: vm)
+        navigator.pushViewController(vc, animated: true)
+    }
+
     func pop() {
         navigator.popViewController(animated: true)
     }

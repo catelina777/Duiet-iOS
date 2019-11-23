@@ -78,6 +78,11 @@
 // SettingView
 "edit user information" = "Edit user information";
 "reselect units"        = "Reselect units";
+"manage data"           = "Manage data";
+"export title"          = "Export Data";
+"export description"    = "Back up photos and records to iCloud Drive. We recommend that you do it regularly to keep your data safe.";
+"import title"          = "Import Data";
+"import description"    = "Import photos and records backed up to iCloud Drive.";
 
 // MonthSummaryView
 "sunday abbr"    = "S";
