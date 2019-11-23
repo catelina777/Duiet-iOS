@@ -152,11 +152,11 @@ name: FloatingSegmentedControl, nameSpecified: , owner: catelina777, version: 1.
 
 name: PryntTrimmerView, nameSpecified: , owner: catelina777, version: 4.1.0
 
-name: realm-cocoa, nameSpecified: , owner: realm, version: v4.1.1
+name: RxCoreData, nameSpecified: , owner: RxSwiftCommunity, version: 1.0.0
+
+name: RxDatasources, nameSpecified: , owner: RxSwiftCommunity, version: 4.0.1
 
 name: RxGesture, nameSpecified: , owner: RxSwiftCommunity, version: 3.0.1
-
-name: RxRealm, nameSpecified: , owner: catelina777, version: 2.0.0
 
 name: RxSwift, nameSpecified: , owner: ReactiveX, version: 5.0.1
 
