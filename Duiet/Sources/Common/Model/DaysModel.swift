@@ -7,8 +7,6 @@
 //
 
 import Foundation
-import RealmSwift
-import RxRealm
 import RxRelay
 import RxSwift
 
@@ -37,11 +35,11 @@ final class DaysModel: DaysModelProtocol, DaysModelState {
     }
 
     private let days = BehaviorRelay<[Day]>(value: [])
-    private let month: BehaviorRelay<Month?>
+    private let month: BehaviorRelay<MonthEntity?>
 
     lazy var title: String = {
         if let month = month.value {
-            return month.createdAt.toYearMonthString()
+            return month.createdAt?.toYearMonthString() ?? ""
         } else {
             return HistoryType.days.title
         }
@@ -49,19 +47,20 @@ final class DaysModel: DaysModelProtocol, DaysModelState {
 
     private let disposeBag = DisposeBag()
 
-    init(repository: DaysRepositoryProtocol = DaysRepository.shared,
-         month: Month? = nil) {
-        self.month = BehaviorRelay<Month?>(value: month)
+    init(dayService: DayServiceProtocol = DayService.shared,
+         monthEntity: MonthEntity? = nil) {
+        self.month = BehaviorRelay<MonthEntity?>(value: monthEntity)
 
         input = Input()
         output = Output()
 
-        if let month = month {
-            self.month.accept(month)
-            self.days.accept(month.days.toArray())
+        if let monthEntity = monthEntity {
+            self.month.accept(monthEntity)
+            self.days.accept(monthEntity.days.map { $0.map { Day(entity: $0) } } ?? [] )
         } else {
-            let days = repository.findAll().toArray()
-            self.days.accept(days)
+            dayService.findAll()
+                .bind(to: days)
+                .disposed(by: disposeBag)
         }
     }
 }

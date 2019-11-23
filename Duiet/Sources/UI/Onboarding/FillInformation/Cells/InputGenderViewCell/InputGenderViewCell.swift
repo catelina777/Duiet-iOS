@@ -31,31 +31,37 @@ final class InputGenderViewCell: BaseTableViewCell {
 
         maleButton.rx.tap
             .subscribe(onNext: { _ in
-                viewModel.input.gender.on(.next(true))
+                viewModel.input.biologicalSex.onNext(.male)
             })
             .disposed(by: disposeBag)
 
         femaleButton.rx.tap
             .subscribe(onNext: { _ in
-                viewModel.input.gender.on(.next(false))
+                viewModel.input.biologicalSex.onNext(.female)
             })
             .disposed(by: disposeBag)
 
-        viewModel.output.gender
+        viewModel.output.biologicalSex
             .bind(to: switchSelectedButton)
             .disposed(by: disposeBag)
     }
 
-    var switchSelectedButton: Binder<Bool?> {
-        Binder(self) { me, bool in
-            guard let bool = bool else { return }
+    var switchSelectedButton: Binder<BiologicalSexType?> {
+        Binder<BiologicalSexType?>(self) { me, biologicalSex in
+            guard let biologicalSex = biologicalSex else { return }
             let borderColor = R.color.componentMain()!.cgColor
-            if bool {
+            switch biologicalSex {
+            case .male:
                 me.maleButton.layer.borderColor = borderColor
                 me.femaleButton.layer.borderColor = UIColor.clear.cgColor
-            } else {
+
+            case .female:
                 me.femaleButton.layer.borderColor = borderColor
                 me.maleButton.layer.borderColor = UIColor.clear.cgColor
+
+            case .other:
+                me.maleButton.layer.borderColor = UIColor.clear.cgColor
+                me.femaleButton.layer.borderColor = UIColor.clear.cgColor
             }
         }
     }

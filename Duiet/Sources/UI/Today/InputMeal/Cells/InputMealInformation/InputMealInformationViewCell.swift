@@ -72,7 +72,7 @@ final class InputMealInformationViewCell: BaseTableViewCell, CellFrameTrackkable
 
         deleteMealButton.rx.tap
             .subscribe(onNext: {
-                input.contentWillDelete.on(.next(()))
+                input.foodWillDelete.on(.next(()))
                 Haptic.notification(.success).generate()
             })
             .disposed(by: disposeBag)
@@ -83,24 +83,24 @@ final class InputMealInformationViewCell: BaseTableViewCell, CellFrameTrackkable
 
         /// Save selected candidate values to input
         output.suggestionDidSelect
-            .subscribe(onNext: { [weak self] content in
+            .subscribe(onNext: { [weak self] foodEntity in
                 guard let me = self else { return }
-                input.contentWillUpdate.onNext(content)
-                me.updateTextFields.onNext(content)
+                input.foodWillUpdate.onNext(foodEntity)
+                me.updateTextFields.onNext(foodEntity)
             })
             .disposed(by: disposeBag)
     }
 
-    private var updateTextFields: Binder<Content> {
-        Binder<Content>(self) { me, content in
-            me.nameTextField.text = content.name
+    private var updateTextFields: Binder<FoodEntity> {
+        Binder<FoodEntity>(self) { me, food in
+            me.nameTextField.text = food.name
             me.calorieTextField.text = ""
             me.multipleTextField.text = ""
-            let calorie = UnitBabel.shared.convert(value: content.calorie,
+            let calorie = UnitBabel.shared.convert(value: food.calorie,
                                                    from: .kilocalories,
                                                    to: UnitCollectionModel.shared.state.unitCollectionValue.energyUnit)
             me.calorieTextField.placeholder = "\(calorie)"
-            me.multipleTextField.placeholder = "\(content.multiple)"
+            me.multipleTextField.placeholder = "\(food.multiple)"
         }
     }
 }

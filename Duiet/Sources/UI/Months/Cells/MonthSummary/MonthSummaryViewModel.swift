@@ -14,7 +14,7 @@ protocol MonthSummaryViewModelOutput {}
 
 protocol MonthSummaryViewModelData {
     var progress: [ProgressType?] { get }
-    var userInfo: UserInfo { get }
+    var userProfile: UserProfile { get }
 }
 
 protocol MonthSummaryViewModelProtocol {
@@ -29,10 +29,10 @@ final class MonthSummaryViewModel: MonthSummaryViewModelProtocol, MonthSummaryVi
     var data: MonthSummaryViewModelData { return self }
 
     let progress: [ProgressType?]
-    let userInfo: UserInfo
+    let userProfile: UserProfile
 
     init(month: Month,
-         userInfoModel: UserInfoModelProtocol) {
+         userProfileModel: UserProfileModelProtocol = UserProfileModel.shared) {
         /*
          1.Monthの日数個のnilが入った[Day?]を作成する
          2.Monthの持っているDaysを[Day?]の対応した要素に挿入し，
@@ -60,12 +60,17 @@ final class MonthSummaryViewModel: MonthSummaryViewModelProtocol, MonthSummaryVi
         let compensationProgress: [ProgressType?] = .init(repeating: nil, count: compensationNum)
 
         let daysNum = lastDate.day()
-        var days: [Day?] = .init(repeating: nil, count: daysNum)
-        month.days.forEach { days[$0.createdAt.index()] = $0 }
+        var days: [DayEntity?] = .init(repeating: nil, count: daysNum)
+        month.days.forEach {
+            if let createdAt = $0.createdAt {
+                days[createdAt.index()] = $0
+            }
+        }
 
-        let tdee = userInfoModel.state.userInfoValue.TDEE
-        let progress: [ProgressType?] = days.map { day -> ProgressType in
-            if let day = day {
+        let tdee = userProfileModel.state.userProfileValue.TDEE
+        let progress: [ProgressType?] = days.map { dayEntity -> ProgressType in
+            if let dayEntity = dayEntity {
+                let day = Day(entity: dayEntity)
                 if day.totalCalorie < tdee {
                     return ProgressType.less
                 } else {
@@ -76,7 +81,7 @@ final class MonthSummaryViewModel: MonthSummaryViewModelProtocol, MonthSummaryVi
         }
 
         self.progress = compensationProgress + progress
-        userInfo = userInfoModel.state.userInfoValue
+        userProfile = userProfileModel.state.userProfileValue
         input = Input()
         output = Output()
     }

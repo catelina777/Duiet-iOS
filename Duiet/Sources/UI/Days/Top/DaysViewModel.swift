@@ -12,16 +12,17 @@ import RxSwift
 
 protocol DaysViewModelInput {
     var selectedDay: AnyObserver<Day> { get }
-    var selectedMonth: AnyObserver<Month> { get }
+    var selectedMonth: AnyObserver<MonthEntity> { get }
 }
 
 protocol DaysViewModelOutput {
     var showDetailDay: Observable<Day> { get }
+    var reloadData: Observable<Void> { get }
 }
 
 protocol DaysViewModelState {
     var daysValue: [Day] { get }
-    var userInfoValue: UserInfo { get }
+    var userProfileValue: UserProfile { get }
     var title: String { get }
     var unitCollectionValue: UnitCollection { get }
 }
@@ -42,8 +43,8 @@ final class DaysViewModel: DaysViewModelProtocol, DaysViewModelState {
         daysModel.state.daysValue
     }
 
-    var userInfoValue: UserInfo {
-        userInfoModel.state.userInfoValue
+    var userProfileValue: UserProfile {
+        userProfileModel.state.userProfileValue
     }
 
     var title: String {
@@ -55,30 +56,35 @@ final class DaysViewModel: DaysViewModelProtocol, DaysViewModelState {
     }
 
     private let daysModel: DaysModelProtocol
-    private let userInfoModel: UserInfoModelProtocol
+    private let userProfileModel: UserProfileModelProtocol
     private let unitCollectionModel: UnitCollectionModelProtocol
     private let coordinator: DaysCoordinator
     private let disposeBag = DisposeBag()
 
     init(coordinator: DaysCoordinator,
-         userInfoModel: UserInfoModelProtocol,
          daysModel: DaysModelProtocol,
+         userProfileModel: UserProfileModelProtocol = UserProfileModel.shared,
          unitCollectionModel: UnitCollectionModelProtocol = UnitCollectionModel.shared) {
         self.coordinator = coordinator
         self.daysModel = daysModel
-        self.userInfoModel = userInfoModel
+        self.userProfileModel = userProfileModel
         self.unitCollectionModel = unitCollectionModel
 
         let _selectedDay = PublishRelay<Day>()
-        let _selectedMonth = PublishRelay<Month>()
+        let _selectedMonth = PublishRelay<MonthEntity>()
         input = Input(selectedDay: _selectedDay.asObserver(),
                       selectedMonth: _selectedMonth.asObserver())
-        output = Output(showDetailDay: _selectedDay.asObservable())
+
+        let reloadData = Observable.combineLatest(userProfileModel.output.userProfile,
+                                                  unitCollectionModel.output.unitCollection)
+            .map { _ in }
+        output = Output(showDetailDay: _selectedDay.asObservable(),
+                        reloadData: reloadData)
 
         _selectedMonth
             .asDriver(onErrorDriveWith: .empty())
             .drive(onNext: { month in
-                coordinator.show(month: month)
+                coordinator.show(monthEntity: month)
             })
             .disposed(by: disposeBag)
     }
@@ -87,10 +93,11 @@ final class DaysViewModel: DaysViewModelProtocol, DaysViewModelState {
 extension DaysViewModel {
     struct Input: DaysViewModelInput {
         let selectedDay: AnyObserver<Day>
-        let selectedMonth: AnyObserver<Month>
+        let selectedMonth: AnyObserver<MonthEntity>
     }
 
     struct Output: DaysViewModelOutput {
         let showDetailDay: Observable<Day>
+        let reloadData: Observable<Void>
     }
 }

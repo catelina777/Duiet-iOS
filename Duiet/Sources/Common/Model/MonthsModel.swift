@@ -7,34 +7,48 @@
 //
 
 import Foundation
-import RealmSwift
-import RxRealm
 import RxRelay
 import RxSwift
 
-protocol MonthsModelProtocol {
-    var months: BehaviorRelay<[Month]> { get }
+protocol MonthsModelInput {}
+
+protocol MonthsModelOutput {}
+
+protocol MonthsModelState {
+    var monthsValue: [MonthEntity] { get }
 }
 
-final class MonthsModel: MonthsModelProtocol {
-    let months = BehaviorRelay<[Month]>(value: [])
+protocol MonthsModelProtocol {
+    var input: MonthsModelInput { get }
+    var output: MonthsModelOutput { get }
+    var state: MonthsModelState { get }
+}
 
-    private let repository: MonthsRepositoryProtocol
+final class MonthsModel: MonthsModelProtocol, MonthsModelState {
+    let input: MonthsModelInput
+    let output: MonthsModelOutput
+    var state: MonthsModelState { self }
+
+    var monthsValue: [MonthEntity] {
+        months.value
+    }
+
+    private let months = BehaviorRelay<[MonthEntity]>(value: [])
+
     private let disposeBag = DisposeBag()
 
-    init(repository: MonthsRepositoryProtocol) {
-        self.repository = repository
+    init(monthService: MonthServiceProtocol = MonthService.shared) {
+        input = Input()
+        output = Output()
 
-        let monthResults = repository.find()
-        observe(monthResults: monthResults)
-    }
-
-    func observe(monthResults: Results<Month>) {
-        Observable.array(from: monthResults)
-            .subscribe(onNext: { [weak self] months in
-                guard let me = self else { return }
-                me.months.accept(months)
-            })
+        monthService.findAll()
+            .bind(to: months)
             .disposed(by: disposeBag)
     }
+}
+
+extension MonthsModel {
+    struct Input: MonthsModelInput {}
+
+    struct Output: MonthsModelOutput {}
 }

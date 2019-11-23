@@ -17,11 +17,9 @@ final class TodayCoordinator: Coordinator {
          segmentedViewModel: SegmentedControlViewModel) {
         self.navigator = navigator
         self.segmentedViewModel = segmentedViewModel
-        let model = TodayModel(repository: DayRepository.shared)
+        let model = TodayModel()
         let vm = TodayViewModel(coordinator: self,
-                                userInfoModel: UserInfoModel.shared,
-                                todayModel: model,
-                                unitCollectionModel: UnitCollectionModel.shared)
+                                todayModel: model)
         viewController = TopTodayViewController(viewModel: vm,
                                                 segmentedViewModel: segmentedViewModel)
     }
@@ -30,18 +28,17 @@ final class TodayCoordinator: Coordinator {
         navigator.pushViewController(viewController, animated: false)
     }
 
-    func showDetail(image: UIImage?, meal: Meal) {
-        let model = InputMealModel(repository: DayRepository.shared, meal: meal)
-        let viewModel = InputMealViewModel(coordinator: self, model: model, foodImage: image)
+    func showDetail(image: UIImage?, mealEntity: MealEntity, dayEntity: DayEntity) {
+        let model = InputMealModel(mealEntity: mealEntity, dayEntity: dayEntity)
+        let viewModel = InputMealViewModel(coordinator: self, inputMealModel: model, foodImage: image)
         let vc = InputMealViewController(viewModel: viewModel, image: image)
         viewController.present(vc, animated: true, completion: nil)
     }
 
-    func showEdit(mealCard: MealCardViewCell, meal: Meal, row: Int) {
-        let model = InputMealModel(repository: DayRepository.shared,
-                                   meal: meal)
+    func showEdit(mealCard: MealCardViewCell, mealEntity: MealEntity, dayEntity: DayEntity) {
+        let model = InputMealModel(mealEntity: mealEntity, dayEntity: dayEntity)
         let viewModel = InputMealViewModel(coordinator: self,
-                                           model: model,
+                                           inputMealModel: model,
                                            foodImage: mealCard.imageView.image)
         let vc = InputMealViewController(viewModel: viewModel,
                                          image: mealCard.imageView.image)
@@ -49,11 +46,9 @@ final class TodayCoordinator: Coordinator {
     }
 
     func showDetailDay(day: Day) {
-        let model = TodayModel(repository: DayRepository.shared, date: day.createdAt)
+        let model = TodayModel(date: day.createdAt)
         let vm = TodayViewModel(coordinator: self,
-                                userInfoModel: UserInfoModel.shared,
-                                todayModel: model,
-                                unitCollectionModel: UnitCollectionModel.shared)
+                                todayModel: model)
         let vc = TodayViewController(viewModel: vm)
         navigator.pushViewController(vc, animated: false)
     }

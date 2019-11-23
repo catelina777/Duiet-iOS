@@ -11,7 +11,7 @@ import UIKit
 
 final class SelectUnitViewDataSource: NSObject {
     private let viewModel: SelectUnitViewModelProtocol
-    private let unitInputs: [AnyObserver<Int?>]
+    private let unitInputs: [AnyObserver<Int16?>]
 
     init(viewModel: SelectUnitViewModelProtocol) {
         self.viewModel = viewModel
@@ -36,7 +36,7 @@ extension SelectUnitViewDataSource: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let type = SelectUnitCellType.allCases[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: R.nib.selectElementViewCell, for: indexPath)!
-        cell.configure(with: type, isSelectedLeft: unitInputs[indexPath.row])
+        cell.configure(cellType: type, isSelectedLeft: unitInputs[indexPath.row])
         return cell
     }
 }

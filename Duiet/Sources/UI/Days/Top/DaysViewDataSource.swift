@@ -32,8 +32,8 @@ extension DaysViewDataSource: UICollectionViewDataSource {
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.daySummaryViewCell,
                                                       for: indexPath)!
-        cell.configure(with: viewModel.state.daysValue[indexPath.row],
-                       userInfo: viewModel.state.userInfoValue,
+        cell.configure(day: viewModel.state.daysValue[indexPath.row],
+                       userProfile: viewModel.state.userProfileValue,
                        unitCollection: viewModel.state.unitCollectionValue)
         return cell
     }

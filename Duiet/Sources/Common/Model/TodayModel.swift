@@ -14,16 +14,17 @@ import RxSwift
 protocol TodayModelInput {}
 
 protocol TodayModelOutput {
-    var day: Observable<Day> { get }
+    var day: Observable<DayEntity> { get }
 }
 
 protocol TodayModelState {
-    var dayValue: Day { get }
-    var meals: [Meal] { get }
+    var dayEntityValue: DayEntity { get }
+    var meals: [MealEntity] { get }
     var title: String { get }
     var date: Date { get }
-    var add: Binder<Meal> { get }
-    var delete: Binder<[Meal]> { get }
+    var delete: Binder<[MealEntity]> { get }
+
+    func add(_ meal: Meal) -> MealEntity?
 }
 
 protocol TodayModelProtocol {
@@ -38,50 +39,44 @@ final class TodayModel: TodayModelProtocol, TodayModelState {
     var state: TodayModelState { self }
 
     // MARK: - State
-    var dayValue: Day {
+    var dayEntityValue: DayEntity {
         day.value
     }
 
-    var meals: [Meal] {
-        day.value.meals.toArray()
+    var meals: [MealEntity] {
+        Array(day.value.meals ?? [])
     }
 
     var title: String {
-        date.toString()
+        day.value.createdAt?.toString() ?? ""
     }
 
     let date: Date
 
-    private let day: BehaviorRelay<Day>
-    private let repository: DayRepositoryProtocol
+    private let day: BehaviorRelay<DayEntity>
+    private let dayService: DayServiceProtocol
+    private let mealService: MealServiceProtocol
     private let disposeBag = DisposeBag()
 
-    init(repository: DayRepositoryProtocol = DayRepository.shared,
-         date: Date = Date()) {
-        self.repository = repository
+    init(date: Date = Date(),
+         dayService: DayServiceProtocol = DayService.shared,
+         mealService: MealServiceProtocol = MealService.shared) {
+        self.dayService = dayService
+        self.mealService = mealService
         self.date = date
-        day = BehaviorRelay<Day>(value: .init(date: date))
+        day = BehaviorRelay<DayEntity>(value: dayService.findOrCreate(day: date))
 
         input = Input()
         output = Output(day: day.asObservable())
-
-        let dayObject = repository.findOrCreate(day: date)
-        day.accept(dayObject)
     }
 
-    var add: Binder<Meal> {
-        Binder<Meal>(self) { me, meal in
-            me.repository.add(meal: meal, to: me.day.value)
-        }
+    func add(_ meal: Meal) -> MealEntity? {
+        mealService.add(meal, to: dayEntityValue)
     }
 
-    var delete: Binder<[Meal]> {
-        Binder<[Meal]>(self) { me, meals in
-            let isInvalidate = meals
-                .map { $0.isInvalidated }
-                .contains(true)
-            guard !isInvalidate else { return }
-            me.repository.delete(meals: meals, of: me.day.value)
+    var delete: Binder<[MealEntity]> {
+        Binder<[MealEntity]>(self) { me, meals in
+            me.dayService.delete(meals)
         }
     }
 }
@@ -90,6 +85,6 @@ extension TodayModel {
     struct Input: TodayModelInput {}
 
     struct Output: TodayModelOutput {
-        let day: Observable<Day>
+        let day: Observable<DayEntity>
     }
 }

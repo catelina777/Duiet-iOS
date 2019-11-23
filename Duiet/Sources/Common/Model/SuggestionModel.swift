@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import RealmSwift
 import RxRelay
 import RxSwift
 
@@ -16,11 +15,11 @@ protocol SuggestionModelInput {
 }
 
 protocol SuggestionModelOutput {
-    var suggestedContentResults: Observable<Results<Content>?> { get }
+    var suggestedFoodResults: Observable<[FoodEntity]> { get }
 }
 
 protocol SuggestionModelState {
-    var suggestedContents: Results<Content>? { get }
+    var suggestedFoods: [FoodEntity] { get }
 }
 
 protocol SuggestionModelProtocol {
@@ -35,24 +34,24 @@ final class SuggestionModel: SuggestionModelProtocol, SuggestionModelState {
     let output: SuggestionModelOutput
     var state: SuggestionModelState { self }
 
-    var suggestedContents: Results<Content>? {
-        suggestedContentResults.value
+    var suggestedFoods: [FoodEntity] {
+        suggestedFoodResults.value
     }
 
-    private let suggestedContentResults = BehaviorRelay<Results<Content>?>(value: nil)
+    private let suggestedFoodResults = BehaviorRelay<[FoodEntity]>(value: [])
     private let disposeBag = DisposeBag()
 
-    init(contentRepository: ContentRepositoryProtocol = ContentRepository.shared) {
+    init(foodService: FoodServiceProtocol = FoodService.shared) {
         let inputKeyword = PublishRelay<String>()
         input = Input(inputKeyword: inputKeyword.asObserver())
 
         inputKeyword
             .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
-            .map { $0.isEmpty ? contentRepository.findAll() : contentRepository.find(name: $0) }
-            .bind(to: suggestedContentResults)
+            .flatMap { $0.isEmpty ? foodService.findAll() : foodService.find(by: $0) }
+            .bind(to: suggestedFoodResults)
             .disposed(by: disposeBag)
 
-        output = Output(suggestedContentResults: suggestedContentResults.asObservable())
+        output = Output(suggestedFoodResults: suggestedFoodResults.asObservable())
     }
 }
 
@@ -62,6 +61,6 @@ extension SuggestionModel {
     }
 
     struct Output: SuggestionModelOutput {
-        let suggestedContentResults: Observable<Results<Content>?>
+        let suggestedFoodResults: Observable<[FoodEntity]>
     }
 }

@@ -11,9 +11,9 @@ import RxRelay
 import RxSwift
 
 protocol SelectUnitViewModelInput {
-    var heightUnitRow: AnyObserver<Int?> { get }
-    var weightUnitRow: AnyObserver<Int?> { get }
-    var energyUnitRow: AnyObserver<Int?> { get }
+    var heightUnitRow: AnyObserver<Int16?> { get }
+    var weightUnitRow: AnyObserver<Int16?> { get }
+    var energyUnitRow: AnyObserver<Int16?> { get }
     var didTapNextButton: AnyObserver<Void> { get }
 }
 
@@ -39,9 +39,9 @@ class SelectUnitViewModel: SelectUnitViewModelProtocol, SelectUnitViewModelState
     private let disposeBag = DisposeBag()
 
     init() {
-        let heightUnitRow = PublishRelay<Int?>()
-        let weightUnitRow = PublishRelay<Int?>()
-        let energyUnitRow = PublishRelay<Int?>()
+        let heightUnitRow = PublishRelay<Int16?>()
+        let weightUnitRow = PublishRelay<Int16?>()
+        let energyUnitRow = PublishRelay<Int16?>()
         input = Input(heightUnitRow: heightUnitRow.asObserver(),
                       weightUnitRow: weightUnitRow.asObserver(),
                       energyUnitRow: energyUnitRow.asObserver(),
@@ -54,32 +54,32 @@ class SelectUnitViewModel: SelectUnitViewModelProtocol, SelectUnitViewModelState
         Observable.combineLatest(heightUnitRow.compactMap { $0 },
                                  weightUnitRow.compactMap { $0 },
                                  energyUnitRow.compactMap { $0 })
-            .map { UnitCollection(heightUnitRow: $0, weightUnitRow: $1, energyUnitRow: $2) }
+            .map { UnitCollection(id: UUID(), heightUnitRow: $0, weightUnitRow: $1, energyUnitRow: $2, createdAt: Date(), updatedAt: Date()) }
             .bind(to: unitCollection)
             .disposed(by: disposeBag)
     }
 
     convenience init(coordinator: OnboardingCoordinator,
-                     repository: UnitCollectionRepositoryProtocol = UnitCollectionRepository.shared) {
+                     unitCollectionModel: UnitCollectionModelProtocol = UnitCollectionModel.shared) {
         self.init()
 
         didTapNextButton.withLatestFrom(unitCollection)
             .asDriver(onErrorDriveWith: .empty())
             .drive(onNext: {
-                repository.add(unitCollection: $0)
+                unitCollectionModel.state.add(unitCollection: $0)
                 coordinator.showFillInformation()
             })
             .disposed(by: disposeBag)
     }
 
     convenience init(coordinator: SettingCoordinator,
-                     repository: UnitCollectionRepositoryProtocol = UnitCollectionRepository.shared) {
+                     unitCollectionModel: UnitCollectionModelProtocol = UnitCollectionModel.shared) {
         self.init()
 
         didTapNextButton.withLatestFrom(unitCollection)
             .asDriver(onErrorDriveWith: .empty())
             .drive(onNext: {
-                repository.add(unitCollection: $0)
+                unitCollectionModel.state.add(unitCollection: $0)
                 coordinator.pop()
             })
             .disposed(by: disposeBag)
@@ -88,9 +88,9 @@ class SelectUnitViewModel: SelectUnitViewModelProtocol, SelectUnitViewModelState
 
 extension SelectUnitViewModel {
     struct Input: SelectUnitViewModelInput {
-        let heightUnitRow: AnyObserver<Int?>
-        let weightUnitRow: AnyObserver<Int?>
-        let energyUnitRow: AnyObserver<Int?>
+        let heightUnitRow: AnyObserver<Int16?>
+        let weightUnitRow: AnyObserver<Int16?>
+        let energyUnitRow: AnyObserver<Int16?>
         let didTapNextButton: AnyObserver<Void>
     }
 

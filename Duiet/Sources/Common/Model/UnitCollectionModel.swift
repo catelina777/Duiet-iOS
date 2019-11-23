@@ -30,7 +30,7 @@ protocol UnitCollectionModelProtocol {
 
 final class UnitCollectionModel: UnitCollectionModelProtocol, UnitCollectionModelState {
     // MARK: - Singleton
-    static let shared = UnitCollectionModel(repository: UnitCollectionRepository.shared)
+    static let shared = UnitCollectionModel(repository: CoreDataRepository.shared)
 
     let input: UnitCollectionModelInput
     let output: UnitCollectionModelOutput
@@ -38,26 +38,32 @@ final class UnitCollectionModel: UnitCollectionModelProtocol, UnitCollectionMode
 
     // MARK: - State
     var unitCollectionValue: UnitCollection {
-        unitCollection.value
+        unitCollection.value ?? UnitCollection(id: UUID(),
+                                         heightUnitRow: 0,
+                                         weightUnitRow: 0,
+                                         energyUnitRow: 0,
+                                         createdAt: Date(),
+                                         updatedAt: Date())
     }
 
-    private let unitCollection = BehaviorRelay<UnitCollection>(value: UnitCollection())
-    private let repository: UnitCollectionRepositoryProtocol
+    private let unitCollection = BehaviorRelay<UnitCollection?>(value: nil)
+    private let repository: CoreDataRepositoryProtocol
     private let disposeBag = DisposeBag()
 
-    init(repository: UnitCollectionRepositoryProtocol) {
+    init(repository: CoreDataRepositoryProtocol) {
         self.repository = repository
 
         input = Input()
-        output = Output(unitCollection: unitCollection.asObservable())
+        output = Output(unitCollection: unitCollection.compactMap { $0 })
 
-        repository.get()
+        repository.find(UnitCollection.self, predicate: nil, sortDescriptors: [NSSortDescriptor(key: "createdAt", ascending: false)])
+            .compactMap { $0.first }
             .bind(to: unitCollection)
             .disposed(by: disposeBag)
     }
 
     func add(unitCollection: UnitCollection) {
-        repository.add(unitCollection: unitCollection)
+        repository.update(unitCollection)
     }
 }
 

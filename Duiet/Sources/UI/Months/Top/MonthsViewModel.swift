@@ -11,31 +11,32 @@ import RxRelay
 import RxSwift
 
 protocol MonthsViewModelInput {
-    var itemDidSelect: AnyObserver<Month> { get }
+    var itemDidSelect: AnyObserver<MonthEntity> { get }
 }
 
 protocol MonthsViewModelOutput {
-    var showSelectedMonth: Observable<Month> { get }
+    var showSelectedMonth: Observable<MonthEntity> { get }
+    var reloadData: Observable<Void> { get }
 }
 
-protocol MonthsViewModelData {
-    var months: [Month] { get }
+protocol MonthsViewModelState {
+    var monthsValue: [MonthEntity] { get }
 }
 
 protocol MonthsViewModelProtocol {
     var input: MonthsViewModelInput { get }
     var output: MonthsViewModelOutput { get }
-    var data: MonthsViewModelData { get }
+    var state: MonthsViewModelState { get }
 }
 
-final class MonthsViewModel: MonthsViewModelProtocol, MonthsViewModelData {
+final class MonthsViewModel: MonthsViewModelProtocol, MonthsViewModelState {
     let input: MonthsViewModelInput
     let output: MonthsViewModelOutput
-    var data: MonthsViewModelData { return self }
+    var state: MonthsViewModelState { self }
 
     // MARK: State
-    var months: [Month] {
-        monthsModel.months.value
+    var monthsValue: [MonthEntity] {
+        monthsModel.state.monthsValue
     }
 
     private let monthsModel: MonthsModelProtocol
@@ -43,22 +44,30 @@ final class MonthsViewModel: MonthsViewModelProtocol, MonthsViewModelData {
     private let disposeBag = DisposeBag()
 
     init(coordinator: MonthsCoordinator,
-         monthsModel: MonthsModelProtocol) {
+         monthsModel: MonthsModelProtocol,
+         userProfileModel: UserProfileModelProtocol = UserProfileModel.shared,
+         unitCollectionModel: UnitCollectionModelProtocol = UnitCollectionModel.shared) {
         self.coordinator = coordinator
         self.monthsModel = monthsModel
 
-        let _itemDidSelect = PublishRelay<Month>()
-        input = Input(itemDidSelect: _itemDidSelect.asObserver())
-        output = Output(showSelectedMonth: _itemDidSelect.asObservable())
+        let itemDidSelect = PublishRelay<MonthEntity>()
+        input = Input(itemDidSelect: itemDidSelect.asObserver())
+
+        let reloadData = Observable.combineLatest(userProfileModel.output.userProfile,
+                                                  unitCollectionModel.output.unitCollection)
+            .map { _ in }
+        output = Output(showSelectedMonth: itemDidSelect.asObservable(),
+                        reloadData: reloadData)
     }
 }
 
 extension MonthsViewModel {
     struct Input: MonthsViewModelInput {
-        let itemDidSelect: AnyObserver<Month>
+        let itemDidSelect: AnyObserver<MonthEntity>
     }
 
     struct Output: MonthsViewModelOutput {
-        let showSelectedMonth: Observable<Month>
+        let showSelectedMonth: Observable<MonthEntity>
+        let reloadData: Observable<Void>
     }
 }

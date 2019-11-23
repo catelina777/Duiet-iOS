@@ -15,13 +15,15 @@ final class MonthSummaryViewCell: RoundedCollectionViewCell {
     @IBOutlet private weak var dayLabel: UILabel!
     @IBOutlet private weak var weightChangeLabel: UILabel!
 
-    func configure(with month: Month) {
-        viewModel = MonthSummaryViewModel(month: month, userInfoModel: UserInfoModel.shared)
+    func configure(month: Month) {
+        viewModel = MonthSummaryViewModel(month: month)
         dataSource = MonthSummaryViewDataSource(viewModel: viewModel)
         dataSource.configure(with: collectionView)
         dayLabel.text = month.createdAt.toYearMonthString()
-        let tdee = viewModel.data.userInfo.TDEE
-        let totalDifferenceGram = month.days.reduce(into: 0) { $0 += $1.totalCalorie - tdee }
+        let tdee = viewModel.data.userProfile.TDEE
+        let totalDifferenceGram = month.days
+            .map { Day(entity: $0) }
+            .reduce(into: 0) { $0 += $1.totalCalorie - tdee }
         let weightChange = totalDifferenceGram / (9 * 0.8) / 1_000
         let localizedWeightChangeValue = UnitBabel.shared.convertRoundedWithSymbol(value: weightChange,
                                                                                    from: .kilograms,

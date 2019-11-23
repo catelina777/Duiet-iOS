@@ -97,13 +97,13 @@ final class MealCardViewCell: BaseCollectionViewCell {
         isChecked = false
     }
 
-    func configure(input: TodayViewModelInput, output: TodayViewModelOutput, state: TodayViewModelState, meal: Meal) {
+    func configure(input: TodayViewModelInput, output: TodayViewModelOutput, state: TodayViewModelState, meal: MealEntity) {
         bindCheckButton(input: input, output: output, state: state, meal: meal)
-        set(image: meal.imagePath)
-        set(totalCalorie: meal.totalCalorie)
+        set(image: meal.imageId ?? "")
+        set(totalCalorie: meal.foods?.reduce(into: 0) { $0 += $1.calorie * $1.multiple } ?? 0)
     }
 
-    private func bindCheckButton(input: TodayViewModelInput, output: TodayViewModelOutput, state: TodayViewModelState, meal: Meal) {
+    private func bindCheckButton(input: TodayViewModelInput, output: TodayViewModelOutput, state: TodayViewModelState, meal: MealEntity) {
         let isEditing =  checkButton.rx.tap
             .map { true }
             .share()

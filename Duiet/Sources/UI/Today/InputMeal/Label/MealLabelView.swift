@@ -26,6 +26,21 @@ final class MealLabelView: UIView {
     var viewModel: MealLabelViewModelProtocol!
     private let disposeBag = DisposeBag()
 
+    static func build(foodEntity: FoodEntity) -> MealLabelView {
+         let label = R.nib.mealLabelView.firstView(owner: nil)!
+        label.initialize(foodEntity: foodEntity)
+        return label
+    }
+
+    func initialize(foodEntity: FoodEntity) {
+        viewModel = MealLabelViewModel(foodEntity: foodEntity)
+        let calorie = UnitBabel.shared.convert(value: foodEntity.calorie,
+                                               from: .kilocalories,
+                                               to: UnitCollectionModel.shared.state.unitCollectionValue.energyUnit)
+        let multiple = viewModel.state.foodEntityValue.multiple
+        self.mealLabel.text = "\(Int(calorie * (multiple == 0 ? 1 : multiple)))"
+    }
+
     func configure(input: InputMealViewModelInput) {
         // MARK: - Send ViewModel of selected MealLabel
         rx.tapGesture()
@@ -38,7 +53,7 @@ final class MealLabelView: UIView {
             .disposed(by: disposeBag)
 
         // MARK: - Update text and notify new content
-        viewModel.output.contentDidUpdate
+        viewModel.output.foodDidUpdate
             .bind(to: updateLabelText)
             .disposed(by: disposeBag)
 
@@ -48,28 +63,18 @@ final class MealLabelView: UIView {
             .disposed(by: disposeBag)
     }
 
-    func initialize(with content: Content) {
-        viewModel = MealLabelViewModel(content: content)
-        let calorie = UnitBabel.shared.convert(value: content.calorie,
-                                               from: .kilocalories,
-                                               to: UnitCollectionModel.shared.state.unitCollectionValue.energyUnit)
-        let multiple = viewModel.state.contentValue.multiple
-        self.mealLabel.text = "\(Int(calorie * (multiple == 0 ? 1 : multiple)))"
-    }
-
-    private var updateLabelText: Binder<Content> {
-        Binder<Content>(self) { me, content in
-            guard !content.isInvalidated else { return }
-            let calorie = UnitBabel.shared.convert(value: content.calorie,
+    private var updateLabelText: Binder<FoodEntity> {
+        Binder<FoodEntity>(self) { me, foodEntity in
+            let calorie = UnitBabel.shared.convert(value: foodEntity.calorie,
                                                    from: .kilocalories,
                                                    to: UnitCollectionModel.shared.state.unitCollectionValue.energyUnit)
-            let multiple = content.multiple
+            let multiple = foodEntity.multiple
             me.mealLabel.text = "\(Int(calorie * (multiple == 0 ? 1 : multiple)))"
         }
     }
 
     private var hideMealLabel: Binder<Void> {
-        Binder(self) { me, _ in
+        Binder<Void>(self) { me, _ in
             me.isHidden = true
         }
     }

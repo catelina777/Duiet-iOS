@@ -7,23 +7,21 @@
 //
 
 import Foundation
-import RealmSwift
-import RxRealm
 import RxRelay
 import RxSwift
 
 protocol LabelCanvasViewModelInput {
     var inputKeyword: AnyObserver<String> { get }
-    var suggestionDidSelect: AnyObserver<Content> { get }
+    var suggestionDidSelect: AnyObserver<FoodEntity> { get }
 }
 
 protocol LabelCanvasViewModelOutput {
-    var suggestedContentResults: Observable<Results<Content>?> { get }
-    var suggestionDidSelect: Observable<Content> { get }
+    var suggestedFoodResults: Observable<[FoodEntity]> { get }
+    var suggestionDidSelect: Observable<FoodEntity> { get }
 }
 
 protocol LabelCanvasViewModelState {
-    var suggestedContents: Results<Content>? { get }
+    var suggestedFoods: [FoodEntity] { get }
 }
 
 protocol LabelCanvasViewModelProtocol {
@@ -37,32 +35,31 @@ final class LabelCanvasViewModel: LabelCanvasViewModelProtocol, LabelCanvasViewM
     let output: LabelCanvasViewModelOutput
     var state: LabelCanvasViewModelState { self }
 
-    var suggestedContents: Results<Content>? {
-        suggestedContentResults.value
+    var suggestedFoods: [FoodEntity] {
+        suggestedFoodResults.value
     }
 
-    private let suggestedContentResults = BehaviorRelay<Results<Content>?>(value: nil)
+    private let suggestedFoodResults = BehaviorRelay<[FoodEntity]>(value: [])
 
     private let disposeBag = DisposeBag()
 
     init(suggestionModel: SuggestionModelProtocol = SuggestionModel.shared) {
         let inputKeyword = PublishRelay<String>()
-        let suggestionDidSelect = PublishRelay<Content>()
+        let suggestionDidSelect = PublishRelay<FoodEntity>()
         input = Input(inputKeyword: inputKeyword.asObserver(),
                       suggestionDidSelect: suggestionDidSelect.asObserver())
 
-        output = Output(suggestedContentResults: suggestedContentResults.asObservable(),
+        output = Output(suggestedFoodResults: suggestedFoodResults.asObservable(),
                         suggestionDidSelect: suggestionDidSelect.asObservable())
 
         inputKeyword
             .bind(to: suggestionModel.input.inputKeyword)
             .disposed(by: disposeBag)
 
-        suggestionModel.output.suggestedContentResults
+        suggestionModel.output.suggestedFoodResults
             .compactMap { $0 }
-            .flatMap { Observable.collection(from: $0) }
             .distinctUntilChanged()
-            .bind(to: suggestedContentResults)
+            .bind(to: suggestedFoodResults)
             .disposed(by: disposeBag)
     }
 }
@@ -70,11 +67,11 @@ final class LabelCanvasViewModel: LabelCanvasViewModelProtocol, LabelCanvasViewM
 extension LabelCanvasViewModel {
     struct Input: LabelCanvasViewModelInput {
         let inputKeyword: AnyObserver<String>
-        var suggestionDidSelect: AnyObserver<Content>
+        var suggestionDidSelect: AnyObserver<FoodEntity>
     }
 
     struct Output: LabelCanvasViewModelOutput {
-        let suggestedContentResults: Observable<Results<Content>?>
-        let suggestionDidSelect: Observable<Content>
+        let suggestedFoodResults: Observable<[FoodEntity]>
+        let suggestionDidSelect: Observable<FoodEntity>
     }
 }

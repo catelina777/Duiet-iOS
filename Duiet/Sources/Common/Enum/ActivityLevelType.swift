@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum ActivityLevelType: CaseIterable {
+enum ActivityLevelType: String, CaseIterable {
     case none
     case sedentary
     case lightly
@@ -69,6 +69,28 @@ enum ActivityLevelType: CaseIterable {
 
         case .none:
             return 0
+        }
+    }
+
+    static func get(_ type: String) -> ActivityLevelType {
+        switch type {
+        case "none":
+            return .none
+
+        case "sedentary":
+            return .sedentary
+
+        case "lightly":
+            return .lightly
+
+        case "moderately":
+            return .moderately
+
+        case "veryActive":
+            return .veryActive
+
+        default:
+            return .none
         }
     }
 

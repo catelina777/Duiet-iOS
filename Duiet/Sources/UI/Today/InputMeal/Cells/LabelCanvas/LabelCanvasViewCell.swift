@@ -20,25 +20,21 @@ final class LabelCanvasViewCell: BaseTableViewCell {
 
     // TODO: This code is terrible and should be refactored
     func configure(input: InputMealViewModelInput, output: InputMealViewModelOutput, state: InputMealViewModelState) {
-        if !state.isShowedContents.value {
-            show(contents: state.contents, input: input)
-            state.isShowedContents.accept(true)
+        if !state.isShowedFoods.value {
+            show(foods: state.foods, input: input)
+            state.isShowedFoods.accept(true)
         }
-        bindSuggestedContent(input: input, output: output)
+        bindSuggestedFood(input: input, output: output)
         suggestionDataSource.configure(with: suggestionCollectionView)
-        bindAddContent(input: input)
+        bindAddFood(input: input, state: state)
         configure(with: state.foodImage)
     }
 
-    /// Show labels from stored contents
-    /// - Parameters:
-    ///   - contents: stored contents
-    ///   - input: ViewModel input
-    private func show(contents: [Content], input: InputMealViewModelInput) {
-        contents.map { $0.convert() }.forEach { label in
-            let content = label.viewModel.state.contentValue
-            let centerX = CGFloat(content.relativeX) * frame.width
-            let centerY = CGFloat(content.relativeY) * frame.height
+    private func show(foods: [FoodEntity], input: InputMealViewModelInput) {
+        foods.map { MealLabelView.build(foodEntity: $0) }.forEach { label in
+            let food = label.viewModel.state.foodEntityValue
+            let centerX = CGFloat(food.relativeX) * frame.width
+            let centerY = CGFloat(food.relativeY) * frame.height
             let labelWidth = frame.width * 0.3
             let labelHeight = labelWidth * 0.4
             let labelFrame = CGRect(x: centerX - labelWidth / 2,
@@ -51,9 +47,9 @@ final class LabelCanvasViewCell: BaseTableViewCell {
         }
     }
 
-    /// Monitor screen presses and add content
+    /// Monitor screen presses and add food
     /// - Parameter input: ViewModel input
-    private func bindAddContent(input: InputMealViewModelInput) {
+    private func bindAddFood(input: InputMealViewModelInput, state: InputMealViewModelState) {
         rx
             .longPressGesture()
             .when(.began)
@@ -69,23 +65,26 @@ final class LabelCanvasViewCell: BaseTableViewCell {
                                     height: labelHeight)
                 let relativeX = Double(point.x / me.frame.width)
                 let relativeY = Double(point.y / me.frame.height)
-                let content = Content(relativeX: relativeX, relativeY: relativeY)
-                mealLabel.initialize(with: content)
+                let food = Food(relativeX: relativeX,
+                                relativeY: relativeY,
+                                mealEntity: state.mealEntityValue)
+                mealLabel.initialize(foodEntity: food.build())
                 mealLabel.frame = labelFrame
                 mealLabel.configure(input: input)
-                me.addSubview(mealLabel)
                 return mealLabel
             }
             .compactMap { $0 }
-            .subscribe(onNext: { mealLabel in
+            .subscribe(onNext: { [weak self] mealLabel in
+                guard let me = self else { return }
+                me.addSubview(mealLabel)
                 input.selectedLabelViewModel.on(.next(mealLabel.viewModel))
-                input.contentWillAdd.on(.next(mealLabel.viewModel.state.contentValue))
+                input.foodWillAdd.on(.next(mealLabel.viewModel.state.foodEntityValue))
                 Haptic.impact(.medium).generate()
             })
             .disposed(by: disposeBag)
     }
 
-    private func bindSuggestedContent(input: InputMealViewModelInput, output: InputMealViewModelOutput) {
+    private func bindSuggestedFood(input: InputMealViewModelInput, output: InputMealViewModelOutput) {
         viewModel = LabelCanvasViewModel()
         suggestionDataSource = SuggestionDataSource(viewModel: viewModel)
         output.inputKeyword
@@ -96,7 +95,7 @@ final class LabelCanvasViewCell: BaseTableViewCell {
             .bind(to: input.suggestionDidSelect)
             .disposed(by: disposeBag)
 
-        viewModel.output.suggestedContentResults
+        viewModel.output.suggestedFoodResults
             .map { _ in }
             .bind(to: reloadData)
             .disposed(by: disposeBag)

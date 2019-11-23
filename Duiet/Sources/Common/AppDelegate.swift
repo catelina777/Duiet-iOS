@@ -7,7 +7,6 @@
 //
 
 import Firebase
-import RealmSwift
 import UIKit
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,7 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
-        RealmMigrationHelper.shared.doMigration()
 
         let window = UIWindow(frame: UIScreen.main.bounds)
         self.window = window
@@ -33,10 +31,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         case true:
             appCoordinator?.start()
         }
-
-        #if DEBUG
-        Logger.shared.debug(RealmMigrationHelper.shared.defaultURL)
-        #endif
 
         return true
     }
