@@ -33,30 +33,6 @@ struct Food {
         updatedAt = Date()
         meal = mealEntity
     }
-
-    init(from: Food, name: String, calorie: Double, multiple: Double, updatedAt: Date) {
-        id = from.id
-        self.name = name
-        self.calorie = calorie
-        self.multiple = multiple
-        relativeX = from.relativeX
-        relativeY = from.relativeY
-        createdAt = from.createdAt
-        self.updatedAt = updatedAt
-        meal = from.meal
-    }
-
-    init(food: Food, mealEntity: MealEntity, updatedAt: Date) {
-        id = food.id
-        name = food.name
-        calorie = food.calorie
-        multiple = food.multiple
-        relativeX = food.relativeX
-        relativeY = food.relativeY
-        createdAt = food.createdAt
-        self.updatedAt = updatedAt
-        meal = mealEntity
-    }
 }
 
 extension Food: Equatable {}

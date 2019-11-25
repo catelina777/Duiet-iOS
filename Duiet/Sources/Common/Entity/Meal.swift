@@ -19,30 +19,12 @@ struct Meal {
     var day: DayEntity?
     var foods: Set<FoodEntity>
 
-    init(id: UUID, imageId: String, createdAt: Date, updatedAt: Date, day: DayEntity, foods: Set<FoodEntity>) {
-        self.id = id
-        self.imageId = imageId
-        self.createdAt = createdAt
-        self.updatedAt = updatedAt
-        self.day = day
-        self.foods = foods
-    }
-
     init(imageId: String, date: Date) {
         id = UUID()
         self.imageId = imageId
         self.createdAt = date
         self.updatedAt = date
         foods = Set<FoodEntity>()
-    }
-
-    init(meal: Meal, dayEntity: DayEntity) {
-        id = meal.id
-        imageId = meal.imageId
-        createdAt = meal.createdAt
-        foods = meal.foods
-        day = dayEntity
-        updatedAt = Date()
     }
 }
 
