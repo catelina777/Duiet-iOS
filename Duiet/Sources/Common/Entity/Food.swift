@@ -20,7 +20,7 @@ struct Food {
     var relativeY: Double
     var createdAt: Date
     var updatedAt: Date
-    var meal: MealEntity?
+    var meal: MealEntity
 
     init(relativeX: Double, relativeY: Double, mealEntity: MealEntity) {
         id = UUID()
@@ -56,14 +56,14 @@ extension Food: Persistable {
 
     init(entity: FoodEntity) {
         id = entity.id
-        name = entity.name!
+        name = entity.name
         calorie = entity.calorie
         multiple = entity.multiple
         relativeX = entity.relativeX
         relativeY = entity.relativeY
-        createdAt = entity.createdAt!
-        updatedAt = entity.updatedAt!
-        meal = entity.meal!
+        createdAt = entity.createdAt
+        updatedAt = entity.updatedAt
+        meal = entity.meal
     }
 
     func update(_ entity: FoodEntity) {

@@ -39,7 +39,7 @@ final class DaysModel: DaysModelProtocol, DaysModelState {
 
     lazy var title: String = {
         if let month = month.value {
-            return month.createdAt?.toYearMonthString() ?? ""
+            return month.createdAt.toYearMonthString()
         } else {
             return HistoryType.days.title
         }
@@ -56,7 +56,8 @@ final class DaysModel: DaysModelProtocol, DaysModelState {
 
         if let monthEntity = monthEntity {
             self.month.accept(monthEntity)
-            self.days.accept(monthEntity.days.map { $0.map { Day(entity: $0) } } ?? [] )
+            let days = monthEntity.days.map { Day(entity: $0) }
+            self.days.accept(days)
         } else {
             dayService.findAll()
                 .bind(to: days)

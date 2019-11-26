@@ -11,13 +11,13 @@ import Foundation
 
 @objc(FoodEntity)
 final class FoodEntity: NSManagedObject {
-    @NSManaged var createdAt: Date?
-    @NSManaged var updatedAt: Date?
-    @NSManaged var name: String?
+    @NSManaged var createdAt: Date
+    @NSManaged var updatedAt: Date
+    @NSManaged var name: String
     @NSManaged var calorie: Double
     @NSManaged var multiple: Double
     @NSManaged var relativeX: Double
     @NSManaged var relativeY: Double
     @NSManaged var id: UUID
-    @NSManaged var meal: MealEntity?
+    @NSManaged var meal: MealEntity
 }

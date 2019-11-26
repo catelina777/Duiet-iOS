@@ -38,12 +38,12 @@ extension UnitCollection: Persistable {
     }
 
     init(entity: Self.T) {
-        id = entity.id!
+        id = entity.id
         heightUnitRow = entity.heightUnitRow
         weightUnitRow = entity.weightUnitRow
         energyUnitRow = entity.energyUnitRow
-        createdAt = entity.createdAt!
-        updatedAt = entity.updatedAt!
+        createdAt = entity.createdAt
+        updatedAt = entity.updatedAt
     }
 
     func update(_ entity: UnitCollectionEntity) {

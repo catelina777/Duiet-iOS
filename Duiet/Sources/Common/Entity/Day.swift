@@ -16,7 +16,7 @@ struct Day {
     var date: String
     var createdAt: Date
     var updatedAt: Date
-    var month: MonthEntity?
+    var month: MonthEntity
     var meals: Set<MealEntity>
 }
 
@@ -38,12 +38,12 @@ extension Day: Persistable {
     }
 
     init(entity: Self.T) {
-        id = entity.id ?? UUID()
-        date = entity.date ?? Date().toDayKeyString()
-        createdAt = entity.createdAt ?? Date()
-        updatedAt = entity.updatedAt ?? Date()
+        id = entity.id
+        date = entity.date
+        createdAt = entity.createdAt
+        updatedAt = entity.updatedAt
         month = entity.month
-        meals = entity.meals ?? Set<MealEntity>()
+        meals = entity.meals
     }
 
     func update(_ entity: DayEntity) {
@@ -63,6 +63,6 @@ extension Day: Persistable {
 
 extension Day {
     var totalCalorie: Double {
-        meals.reduce(into: 0) { $0 += $1.foods?.reduce(into: 0) { $0 += $1.calorie * $1.multiple } ?? 0 }
+        meals.reduce(into: 0) { $0 += $1.foods.reduce(into: 0) { $0 += $1.calorie * $1.multiple } }
     }
 }

@@ -117,7 +117,7 @@ final class TodayViewModel: TodayViewModelProtocol, TodayViewModelState {
         let mealWillAdd = pickedImage
             .flatMapLatest { PhotoRepository.shared.save(image: $0) }
             .observeOn(MainScheduler.instance)
-            .map { Meal(imageId: $0, date: todayModel.state.date) }
+            .map { Meal(imageId: $0, dayEntity: todayModel.state.dayEntityValue, date: todayModel.state.date) }
             .share()
 
         let mealDidAdd = mealWillAdd

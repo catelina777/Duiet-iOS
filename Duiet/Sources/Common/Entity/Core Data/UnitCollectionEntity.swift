@@ -11,10 +11,10 @@ import Foundation
 
 @objc(UnitCollectionEntity)
 final class UnitCollectionEntity: NSManagedObject {
-    @NSManaged var createdAt: Date?
+    @NSManaged var createdAt: Date
     @NSManaged var energyUnitRow: Int16
     @NSManaged var heightUnitRow: Int16
-    @NSManaged var id: UUID?
-    @NSManaged var updatedAt: Date?
+    @NSManaged var id: UUID
+    @NSManaged var updatedAt: Date
     @NSManaged var weightUnitRow: Int16
 }

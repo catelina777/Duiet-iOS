@@ -45,11 +45,11 @@ extension Month: Persistable {
     }
 
     init(entity: Self.T) {
-        id = entity.id!
-        date = entity.date!
-        createdAt = entity.createdAt!
-        updatedAt = entity.updatedAt!
-        days = entity.days!
+        id = entity.id
+        date = entity.date
+        createdAt = entity.createdAt
+        updatedAt = entity.updatedAt
+        days = entity.days
     }
 
     func update(_ entity: MonthEntity) {

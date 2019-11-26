@@ -99,8 +99,8 @@ final class MealCardViewCell: BaseCollectionViewCell {
 
     func configure(input: TodayViewModelInput, output: TodayViewModelOutput, state: TodayViewModelState, meal: MealEntity) {
         bindCheckButton(input: input, output: output, state: state, meal: meal)
-        set(image: meal.imageId ?? "")
-        set(totalCalorie: meal.foods?.reduce(into: 0) { $0 += $1.calorie * $1.multiple } ?? 0)
+        set(image: meal.imageId)
+        set(totalCalorie: meal.foods.reduce(into: 0) { $0 += $1.calorie * $1.multiple })
     }
 
     private func bindCheckButton(input: TodayViewModelInput, output: TodayViewModelOutput, state: TodayViewModelState, meal: MealEntity) {

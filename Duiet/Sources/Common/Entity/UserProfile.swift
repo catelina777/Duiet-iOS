@@ -40,14 +40,14 @@ extension UserProfile: Persistable {
     }
 
     init(entity: Self.T) {
-        id = entity.id!
+        id = entity.id
         age = entity.age
-        biologicalSex = entity.biologicalSex!
+        biologicalSex = entity.biologicalSex
         height = entity.height
         weight = entity.weight
-        activityLevel = entity.activityLevel!
-        createdAt = entity.createdAt!
-        updatedAt = entity.updatedAt!
+        activityLevel = entity.activityLevel
+        createdAt = entity.createdAt
+        updatedAt = entity.updatedAt
     }
 
     func update(_ entity: UserProfileEntity) {

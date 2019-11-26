@@ -16,14 +16,15 @@ struct Meal {
     var imageId: String
     var createdAt: Date
     var updatedAt: Date
-    var day: DayEntity?
+    var day: DayEntity
     var foods: Set<FoodEntity>
 
-    init(imageId: String, date: Date) {
+    init(imageId: String, dayEntity: DayEntity, date: Date) {
         id = UUID()
         self.imageId = imageId
-        self.createdAt = date
-        self.updatedAt = date
+        createdAt = date
+        updatedAt = date
+        day = dayEntity
         foods = Set<FoodEntity>()
     }
 }
@@ -47,11 +48,11 @@ extension Meal: Persistable {
 
     init(entity: Self.T) {
         id = entity.id
-        imageId = entity.imageId!
-        createdAt = entity.createdAt!
-        updatedAt = entity.updatedAt!
-        day = entity.day!
-        foods = entity.foods!
+        imageId = entity.imageId
+        createdAt = entity.createdAt
+        updatedAt = entity.updatedAt
+        day = entity.day
+        foods = entity.foods
     }
 
     func update(_ entity: MealEntity) {

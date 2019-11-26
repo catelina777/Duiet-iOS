@@ -44,11 +44,11 @@ final class TodayModel: TodayModelProtocol, TodayModelState {
     }
 
     var meals: [MealEntity] {
-        Array(day.value.meals ?? [])
+        Array(day.value.meals)
     }
 
     var title: String {
-        day.value.createdAt?.toString() ?? ""
+        day.value.createdAt.toString()
     }
 
     let date: Date

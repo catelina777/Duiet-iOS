@@ -62,9 +62,7 @@ final class MonthSummaryViewModel: MonthSummaryViewModelProtocol, MonthSummaryVi
         let daysNum = lastDate.day()
         var days: [DayEntity?] = .init(repeating: nil, count: daysNum)
         month.days.forEach {
-            if let createdAt = $0.createdAt {
-                days[createdAt.index()] = $0
-            }
+            days[$0.createdAt.index()] = $0
         }
 
         let tdee = userProfileModel.state.userProfileValue.TDEE
