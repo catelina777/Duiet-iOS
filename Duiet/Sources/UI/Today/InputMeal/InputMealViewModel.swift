@@ -52,7 +52,7 @@ final class InputMealViewModel: InputMealViewModelProtocol, InputMealViewModelSt
 
     // MARK: - State
     var foods: [FoodEntity] {
-        Array(inputMealModel.state.mealEntityValue.foods ?? [])
+        Array(inputMealModel.state.mealEntityValue.foods)
     }
 
     let foodImage: UIImage?
