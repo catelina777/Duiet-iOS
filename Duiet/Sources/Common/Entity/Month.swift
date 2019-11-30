@@ -25,6 +25,14 @@ struct Month {
         self.updatedAt = date
         days = Set<DayEntity>()
     }
+
+    init(codableEntity: MonthCodable) {
+        id = UUID(uuidString: codableEntity.id) ?? UUID()
+        date = codableEntity.date
+        createdAt = codableEntity.createdAt
+        updatedAt = codableEntity.updatedAt
+        days = Set<DayEntity>()
+    }
 }
 
 extension Month: IdentifiableType {

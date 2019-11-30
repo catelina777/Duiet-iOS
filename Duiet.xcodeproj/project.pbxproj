@@ -120,6 +120,12 @@
 		405A9F5D22AD0A3D00454412 /* MonthSummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405A9F5C22AD0A3D00454412 /* MonthSummaryViewModel.swift */; };
 		405A9F5F22AD0A4700454412 /* MonthSummaryViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405A9F5E22AD0A4700454412 /* MonthSummaryViewDataSource.swift */; };
 		405A9F6122AE91C700454412 /* ProgressType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405A9F6022AE91C700454412 /* ProgressType.swift */; };
+		405BF3EF238AA61800893226 /* ManageDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405BF3EE238AA61800893226 /* ManageDataModel.swift */; };
+		405BF3F1238AB18000893226 /* ManageDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405BF3F0238AB18000893226 /* ManageDataService.swift */; };
+		405BF3F4238BF87000893226 /* FoodCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405BF3F3238BF87000893226 /* FoodCodable.swift */; };
+		405BF3F6238BF87800893226 /* MealCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405BF3F5238BF87800893226 /* MealCodable.swift */; };
+		405BF3F8238BF88500893226 /* DayCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405BF3F7238BF88500893226 /* DayCodable.swift */; };
+		405BF3FA238BF88F00893226 /* MonthCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405BF3F9238BF88F00893226 /* MonthCodable.swift */; };
 		405D24B622F5CBAB009FC5C2 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405D24B522F5CBAB009FC5C2 /* main.swift */; };
 		405D24B822F5CC15009FC5C2 /* UnitTestAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405D24B722F5CC15009FC5C2 /* UnitTestAppDelegate.swift */; };
 		405E3A1D229929D500ECEA9E /* EmptyContentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405E3A1C229929D500ECEA9E /* EmptyContentViewCell.swift */; };
@@ -304,13 +310,9 @@
 		4008707D23769E65001B8DB5 /* AddMealCardViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddMealCardViewCell.xib; sourceTree = "<group>"; };
 		400870A023771120001B8DB5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		40116115230172BC00D522CC /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
-		401D54B023012C7B0089E2F7 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		401D54B123012C7B0089E2F7 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
-		401D54B223012C7B0089E2F7 /* RxRealm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRealm.framework; path = Carthage/Build/iOS/RxRealm.framework; sourceTree = "<group>"; };
-		401D54B323012C7B0089E2F7 /* Hero.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hero.framework; path = Carthage/Build/iOS/Hero.framework; sourceTree = "<group>"; };
 		401D54B423012C7B0089E2F7 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		401D54B523012C7B0089E2F7 /* RxGesture.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxGesture.framework; path = Carthage/Build/iOS/RxGesture.framework; sourceTree = "<group>"; };
-		401D54B623012C7B0089E2F7 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		401D54B723012C7B0089E2F7 /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
 		401D54C923012CF10089E2F7 /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBlocking.framework; path = Carthage/Build/iOS/RxBlocking.framework; sourceTree = "<group>"; };
 		401D54CA23012CF10089E2F7 /* RxTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxTest.framework; path = Carthage/Build/iOS/RxTest.framework; sourceTree = "<group>"; };
@@ -348,6 +350,12 @@
 		405A9F5C22AD0A3D00454412 /* MonthSummaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthSummaryViewModel.swift; sourceTree = "<group>"; };
 		405A9F5E22AD0A4700454412 /* MonthSummaryViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthSummaryViewDataSource.swift; sourceTree = "<group>"; };
 		405A9F6022AE91C700454412 /* ProgressType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressType.swift; sourceTree = "<group>"; };
+		405BF3EE238AA61800893226 /* ManageDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageDataModel.swift; sourceTree = "<group>"; };
+		405BF3F0238AB18000893226 /* ManageDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageDataService.swift; sourceTree = "<group>"; };
+		405BF3F3238BF87000893226 /* FoodCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCodable.swift; sourceTree = "<group>"; };
+		405BF3F5238BF87800893226 /* MealCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCodable.swift; sourceTree = "<group>"; };
+		405BF3F7238BF88500893226 /* DayCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCodable.swift; sourceTree = "<group>"; };
+		405BF3F9238BF88F00893226 /* MonthCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthCodable.swift; sourceTree = "<group>"; };
 		405D24B522F5CBAB009FC5C2 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		405D24B722F5CC15009FC5C2 /* UnitTestAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTestAppDelegate.swift; sourceTree = "<group>"; };
 		405E3A1C229929D500ECEA9E /* EmptyContentViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyContentViewCell.swift; sourceTree = "<group>"; };
@@ -485,6 +493,7 @@
 		0603293A227F3837009A67A4 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				405BF3F2238BF7E100893226 /* Codable */,
 				4050414E2377FECA006731B1 /* Core Data */,
 				4050418A23781EBA006731B1 /* UserProfile.swift */,
 				40504190237822B9006731B1 /* UnitCollection.swift */,
@@ -990,6 +999,7 @@
 			children = (
 				4050416023780629006731B1 /* CoreDataRepository.swift */,
 				063FCBC6227DCDBA007C191F /* PhotoRepository.swift */,
+				405BF3F0238AB18000893226 /* ManageDataService.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -1061,6 +1071,17 @@
 				40B2141622B55B2B0040EA9E /* MonthSummary */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		405BF3F2238BF7E100893226 /* Codable */ = {
+			isa = PBXGroup;
+			children = (
+				405BF3F9238BF88F00893226 /* MonthCodable.swift */,
+				405BF3F7238BF88500893226 /* DayCodable.swift */,
+				405BF3F5238BF87800893226 /* MealCodable.swift */,
+				405BF3F3238BF87000893226 /* FoodCodable.swift */,
+			);
+			path = Codable;
 			sourceTree = "<group>";
 		};
 		405E3A1B229929BA00ECEA9E /* Empty */ = {
@@ -1189,6 +1210,7 @@
 				5E3E860722C334D3004E1676 /* DaysModel.swift */,
 				5E83E9FD22E167D400B8F584 /* MonthsModel.swift */,
 				40FA52EF236FCEE000C58BC3 /* SuggestionModel.swift */,
+				405BF3EE238AA61800893226 /* ManageDataModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1224,12 +1246,8 @@
 				40A7383123365BB400A3E605 /* PryntTrimmerView.framework */,
 				401D54C923012CF10089E2F7 /* RxBlocking.framework */,
 				401D54CA23012CF10089E2F7 /* RxTest.framework */,
-				401D54B323012C7B0089E2F7 /* Hero.framework */,
-				401D54B623012C7B0089E2F7 /* Realm.framework */,
-				401D54B023012C7B0089E2F7 /* RealmSwift.framework */,
 				401D54B123012C7B0089E2F7 /* RxCocoa.framework */,
 				401D54B523012C7B0089E2F7 /* RxGesture.framework */,
-				401D54B223012C7B0089E2F7 /* RxRealm.framework */,
 				401D54B723012C7B0089E2F7 /* RxRelay.framework */,
 				401D54B423012C7B0089E2F7 /* RxSwift.framework */,
 				6911E39E3468EB910D0358F5 /* Pods_Duiet.framework */,
@@ -1756,8 +1774,10 @@
 				402D9BFC22E214FA003676C3 /* SettingType.swift in Sources */,
 				40FA52EC236F382700C58BC3 /* SuggestionDataSource.swift in Sources */,
 				405A9F6122AE91C700454412 /* ProgressType.swift in Sources */,
+				405BF3F1238AB18000893226 /* ManageDataService.swift in Sources */,
 				0622EA47226A2AB900E87F22 /* PublishRelay.extension.swift in Sources */,
 				4097C2CD235AE93900DC0686 /* UnitBabel.swift in Sources */,
+				405BF3EF238AA61800893226 /* ManageDataModel.swift in Sources */,
 				0622EA2B226A21A400E87F22 /* UIView.extension.swift in Sources */,
 				405A9F5D22AD0A3D00454412 /* MonthSummaryViewModel.swift in Sources */,
 				061F278F22733DA100FDCB17 /* WalkthroughViewController.swift in Sources */,
@@ -1779,8 +1799,10 @@
 				405040FE2377E219006731B1 /* Schemes.xcdatamodeld in Sources */,
 				405D24B622F5CBAB009FC5C2 /* main.swift in Sources */,
 				40020B402380E7350078A978 /* FoodService.swift in Sources */,
+				405BF3F8238BF88500893226 /* DayCodable.swift in Sources */,
 				4090F8E823802C170085A6CB /* BiologicalSexType.swift in Sources */,
 				06B2FD002272225A0078C7F1 /* InputNumberViewCell.swift in Sources */,
+				405BF3FA238BF88F00893226 /* MonthCodable.swift in Sources */,
 				405E3A1D229929D500ECEA9E /* EmptyContentViewCell.swift in Sources */,
 				403E954222CF94C500EFF459 /* OnboardingCoordinator.swift in Sources */,
 				5E17F981228BE4980046F68D /* RoundedTextFieldViewCell.swift in Sources */,
@@ -1792,6 +1814,7 @@
 				4050418B23781EBA006731B1 /* UserProfile.swift in Sources */,
 				408A4E9B23573DFF004D2FFE /* SelectUnitViewDataSource.swift in Sources */,
 				408A4EA12357527E004D2FFE /* SelectUnitCellType.swift in Sources */,
+				405BF3F6238BF87800893226 /* MealCodable.swift in Sources */,
 				40B2142022B635F80040EA9E /* DaysViewController.swift in Sources */,
 				4090F90423805B9A0085A6CB /* Month.swift in Sources */,
 				0622EA27226A20CE00E87F22 /* BaseTableViewCell.swift in Sources */,
@@ -1807,6 +1830,7 @@
 				5E83E9FC22E1665800B8F584 /* DaysCoordinator.swift in Sources */,
 				408A4E8523546753004D2FFE /* HeightUnitType.swift in Sources */,
 				405A9F5522AD006100454412 /* MonthSummaryViewCell.swift in Sources */,
+				405BF3F4238BF87000893226 /* FoodCodable.swift in Sources */,
 				0622EA49226A2AC000E87F22 /* BehaviorRelay.extension.swift in Sources */,
 				5E9C28B6228E4E99004ABF3B /* CellFrameTrackkable.swift in Sources */,
 				5E9C28B4228E475E004ABF3B /* KeyboardFrameTrackkable.swift in Sources */,

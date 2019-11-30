@@ -7,15 +7,18 @@
 //
 
 import Foundation
+import RxRelay
+import RxSwift
 
 protocol ManageDataViewModelInput {
+    var itemDidSelect: AnyObserver<ManageDataType> { get }
+    var importStart: AnyObserver<Void> { get }
+    var exportStart: AnyObserver<Void> { get }
 }
 
-protocol ManageDataViewModelOutput {
-}
+protocol ManageDataViewModelOutput {}
 
-protocol ManageDataViewModelState {
-}
+protocol ManageDataViewModelState {}
 
 protocol ManageDataViewModelProtocol {
     var input: ManageDataViewModelInput { get }
@@ -28,14 +31,34 @@ final class ManageDataViewModel: ManageDataViewModelProtocol, ManageDataViewMode
     let output: ManageDataViewModelOutput
     var state: ManageDataViewModelState { self }
 
-    init() {
-        input = Input()
+    private let disposeBag = DisposeBag()
+
+    init(manageDataModel: ManageDataModelProtocol = ManageDataModel.default) {
+        let itemDidSelect = PublishRelay<ManageDataType>()
+        let importStart = PublishRelay<Void>()
+        let exportStart = PublishRelay<Void>()
+        input = Input(itemDidSelect: itemDidSelect.asObserver(),
+                      importStart: importStart.asObserver(),
+                      exportStart: exportStart.asObserver())
+
+        let importDidSelect = itemDidSelect
+            .filter { $0 == .import }
+            .map { _ in }
+
+        let exportDidSelect = itemDidSelect
+            .filter { $0 == .export }
+            .map { _ in }
+
         output = Output()
     }
 }
 
 extension ManageDataViewModel {
-    struct Input: ManageDataViewModelInput {}
+    struct Input: ManageDataViewModelInput {
+        var itemDidSelect: AnyObserver<ManageDataType>
+        var importStart: AnyObserver<Void>
+        var exportStart: AnyObserver<Void>
+    }
 
     struct Output: ManageDataViewModelOutput {}
 }

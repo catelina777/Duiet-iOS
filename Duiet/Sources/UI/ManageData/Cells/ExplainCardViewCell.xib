@@ -35,7 +35,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="319" height="48"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gut-hY-tcI">
-                                                <rect key="frame" x="24" y="16" width="56.5" height="29.5"/>
+                                                <rect key="frame" x="24" y="16" width="45" height="28"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-ExtraBold" family="Montserrat" pointSize="24"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -48,7 +48,7 @@
                                             <constraint firstAttribute="height" constant="48" id="keu-ky-kKw"/>
                                         </constraints>
                                     </view>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ki7-L3-emo">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ki7-L3-emo">
                                         <rect key="frame" x="16" y="48" width="287" height="101"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <string key="text">explain explain explain explain explain explain explain explain explain explain explain explain explain explain explain explain explain explain explain explain explain</string>

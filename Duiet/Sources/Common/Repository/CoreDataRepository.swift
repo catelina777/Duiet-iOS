@@ -20,8 +20,10 @@ protocol CoreDataRepositoryProtocol {
     func find<E: Persistable>(type: E.Type,
                               predicate: NSPredicate?,
                               sortDescriptors: [NSSortDescriptor]?) -> Observable<[E.T]>
-    func find<E: Persistable>(_ type: E.Type, key: String, value: String) -> E.T?
-    func find<E: Persistable>(type: E.Type, key: String, value: String) -> Observable<E.T>
+    func findAll<E: Persistable>(type: E.Type,
+                                 sortDescriptors: [NSSortDescriptor]) -> [E.T]
+    func get<E: Persistable>(_ type: E.Type, key: String, value: String) -> E.T?
+    func get<E: Persistable>(type: E.Type, key: String, value: String) -> Observable<E.T>
     func update<E: Persistable>(_ entity: E)
     func update<E: NSManagedObject>(_ entity: E)
     func delete<E: NSManagedObject>(_ entity: E)
@@ -30,8 +32,8 @@ protocol CoreDataRepositoryProtocol {
 class CoreDataRepository: CoreDataRepositoryProtocol {
     static let shared = CoreDataRepository()
 
-    lazy var persistentContainer: NSPersistentCloudKitContainer = {
-        let container = NSPersistentCloudKitContainer(name: "Schemes")
+    lazy var persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "Schemes")
         container.loadPersistentStores(completionHandler: { storeDescription, error in
             if let error = error as NSError? {
                 Logger.shared.error(error)
@@ -62,7 +64,20 @@ class CoreDataRepository: CoreDataRepositoryProtocol {
         persistentContainer.viewContext.rx.entities(type, predicate: predicate, sortDescriptors: sortDescriptors)
     }
 
-    func find<E>(_ type: E.Type, key: String, value: String) -> E.T? where E: Persistable {
+    func findAll<E>(type: E.Type,
+                    sortDescriptors: [NSSortDescriptor]) -> [E.T] where E: Persistable {
+        let fetchRequest = buildFetchRequest(type: type,
+                                             sortDescriptors: sortDescriptors)
+        do {
+            let entities = try persistentContainer.viewContext.fetch(fetchRequest)
+            return entities
+        } catch let error {
+            Logger.shared.error(error)
+            return []
+        }
+    }
+
+    func get<E>(_ type: E.Type, key: String, value: String) -> E.T? where E: Persistable {
         let predicate = NSPredicate(format: "\(key) == %@", argumentArray: [value])
         let fetchRequest = buildFetchRequest(type: type, predicate: predicate, sortDescriptors: nil)
         do {
@@ -74,7 +89,7 @@ class CoreDataRepository: CoreDataRepositoryProtocol {
         }
     }
 
-    func find<E>(type: E.Type, key: String, value: String) -> Observable<E.T> where E: Persistable {
+    func get<E>(type: E.Type, key: String, value: String) -> Observable<E.T> where E: Persistable {
         let predicate = NSPredicate(format: "\(key) == %@", argumentArray: [value])
         let fetchRequest = buildFetchRequest(type: type, predicate: predicate, sortDescriptors: nil)
         return persistentContainer.viewContext.rx.entities(fetchRequest: fetchRequest)

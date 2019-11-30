@@ -6,6 +6,7 @@
 //  Copyright © 2019 duiet. All rights reserved.
 //
 
+import RxCocoa
 import UIKit
 
 final class ManageDataViewController: BaseCollectionViewController {

@@ -30,7 +30,7 @@ final class DayService: DayServiceProtocol {
     }
 
     func findOrCreate(day date: Date) -> DayEntity {
-        let dayEntity = repository.find(Day.self, key: "date", value: date.toDayKeyString())
+        let dayEntity = repository.get(Day.self, key: "date", value: date.toDayKeyString())
         if let dayEntity = dayEntity {
             return dayEntity
         } else {
@@ -53,7 +53,7 @@ final class DayService: DayServiceProtocol {
     }
 
     private func findOrCreate(month date: Date) -> MonthEntity {
-        let monthEntity = repository.find(Month.self, key: "date", value: date.toMonthKeyString())
+        let monthEntity = repository.get(Month.self, key: "date", value: date.toMonthKeyString())
         if let monthEntity = monthEntity {
             return monthEntity
         } else {

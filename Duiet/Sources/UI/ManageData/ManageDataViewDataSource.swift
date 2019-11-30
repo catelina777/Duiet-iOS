@@ -35,7 +35,12 @@ extension ManageDataViewDataSource: UICollectionViewDataSource {
     }
 }
 
-extension ManageDataViewDataSource: UICollectionViewDelegate {}
+extension ManageDataViewDataSource: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView,
+                        didSelectItemAt indexPath: IndexPath) {
+        viewModel.input.itemDidSelect.onNext(ManageDataType.allCases[indexPath.row])
+    }
+}
 
 extension ManageDataViewDataSource: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
@@ -58,11 +63,7 @@ extension ManageDataViewDataSource: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
         let margin = collectionView.frame.width * 0.1 / 2
-        let edgeInset = UIEdgeInsets(top: margin,
-                                     left: 0,
-                                     bottom: margin,
-                                     right: 0)
-        return edgeInset
+        return UIEdgeInsets(top: margin, left: 0, bottom: margin, right: 0)
     }
 
     func collectionView(_ collectionView: UICollectionView,
