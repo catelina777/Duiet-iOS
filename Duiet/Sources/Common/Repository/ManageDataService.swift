@@ -53,7 +53,6 @@ final class ManageDataService: ManageDataServiceProtocol {
 
         return Observable.of(monthsWillLoad)
             .concat()
-            .debug()
             .map { _ in }
     }
 
@@ -90,7 +89,7 @@ final class ManageDataService: ManageDataServiceProtocol {
     private func write(_ data: Data, fileName: String) -> Single<Void> {
         Single<Void>.create { singleEvent in
             do {
-                if let folderURL = FileManager.default.url(forUbiquityContainerIdentifier: nil)?.appendingPathComponent("Duiet") {
+                if let folderURL = FileManager.default.url(forUbiquityContainerIdentifier: nil)?.appendingPathComponent("Documents") {
                     if !FileManager.default.fileExists(atPath: folderURL.path, isDirectory: nil) {
                         try FileManager.default.createDirectory(at: folderURL, withIntermediateDirectories: true, attributes: nil)
                     }
@@ -111,7 +110,7 @@ final class ManageDataService: ManageDataServiceProtocol {
     }
 
     private func read(_ fileName: String) -> Data? {
-        if let folderURL = FileManager.default.url(forUbiquityContainerIdentifier: nil)?.appendingPathComponent("Duiet") {
+        if let folderURL = FileManager.default.url(forUbiquityContainerIdentifier: nil)?.appendingPathComponent("Documents") {
             if FileManager.default.fileExists(atPath: folderURL.path) {
                 let fileURL = folderURL.appendingPathComponent(fileName)
                 if let data = FileManager.default.contents(atPath: fileURL.path) {
