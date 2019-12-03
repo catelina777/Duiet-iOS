@@ -114,7 +114,7 @@ name: LicensePlist, nameSpecified:
 body: MIT License
 
 Copyrig…
-version: 2.9.0
+version: 2.10.0
 
 name: nanopb, nameSpecified: 
 body: Copyright (c) 2011 P…
