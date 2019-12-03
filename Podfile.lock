@@ -62,7 +62,7 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (6.3.2):
     - GoogleUtilities/Logger
-  - LicensePlist (2.9.0)
+  - LicensePlist (2.10.0)
   - nanopb (0.3.9011):
     - nanopb/decode (= 0.3.9011)
     - nanopb/encode (= 0.3.9011)
@@ -111,7 +111,7 @@ SPEC CHECKSUMS:
   GoogleDataTransport: 8e9b210c97d55fbff306cc5468ff91b9cb32dcf5
   GoogleDataTransportCCTSupport: ef79a4728b864946a8aafdbab770d5294faf3b5f
   GoogleUtilities: 547a86735c6f0ee30ad17e94df4fc21f616b71cb
-  LicensePlist: 94c2f54bb9cc5427797addaeb716cfaba3544e89
+  LicensePlist: 7488dee92e6af33b0e0f07205d34d7f98df48fac
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   R.swift: 8cbc4fc69b740305b6a17c8a8ed968eb788962d9
   R.swift.Library: fa85ce1e0d0b7e818cd9e080df910ba54d2776cc
