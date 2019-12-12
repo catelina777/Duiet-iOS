@@ -13,7 +13,10 @@ protocol ManageDataInput {}
 
 protocol ManageDataOutput {}
 
-protocol ManageDataState {}
+protocol ManageDataState {
+    func restore() -> Observable<Void>
+    func backup() -> Observable<Void>
+}
 
 protocol ManageDataModelProtocol {
     var input: ManageDataInput { get }
@@ -33,6 +36,14 @@ final class ManageDataModel: ManageDataModelProtocol, ManageDataState {
         self.manageDataService = manageDataService
         input = Input()
         output = Output()
+    }
+
+    func restore() -> Observable<Void> {
+        manageDataService.restore()
+    }
+
+    func backup() -> Observable<Void> {
+        manageDataService.backup()
     }
 }
 

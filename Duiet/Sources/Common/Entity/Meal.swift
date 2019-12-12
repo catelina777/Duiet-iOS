@@ -27,6 +27,15 @@ struct Meal {
         day = dayEntity
         foods = Set<FoodEntity>()
     }
+
+    init(codableEntity: MealCodable, dayEntity: DayEntity) {
+        id = UUID(uuidString: codableEntity.id) ?? UUID()
+        imageId = codableEntity.imageId
+        createdAt = codableEntity.createdAt
+        updatedAt = codableEntity.updatedAt
+        day = dayEntity
+        foods = Set<FoodEntity>()
+    }
 }
 
 extension Meal: IdentifiableType {

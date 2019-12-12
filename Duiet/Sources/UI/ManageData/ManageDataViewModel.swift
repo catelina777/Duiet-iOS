@@ -50,6 +50,18 @@ final class ManageDataViewModel: ManageDataViewModelProtocol, ManageDataViewMode
             .map { _ in }
 
         output = Output()
+
+        importDidSelect
+            .flatMapLatest { manageDataModel.state.restore() }
+            .subscribe(onNext: {
+                print("import did finish")
+            })
+
+        exportDidSelect
+            .flatMapLatest { manageDataModel.state.backup() }
+            .subscribe(onNext: {
+                print("export did finish")
+            })
     }
 }
 

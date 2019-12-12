@@ -26,23 +26,48 @@ final class ManageDataService: ManageDataServiceProtocol {
 
     func backup() -> Observable<Void> {
         let monthsWillExport = export(Month.self, fileName: "months.json") {
-            $0.map { MonthCodable(id: $0.id.uuidString,
-                                  date: $0.date,
-                                  createdAt: $0.createdAt,
-                                  updatedAt: $0.updatedAt,
-                                  dayIds: $0.days.map { $0.id.uuidString })
+            $0.map {
+                MonthCodable(id: $0.id.uuidString,
+                             date: $0.date,
+                             createdAt: $0.createdAt,
+                             updatedAt: $0.updatedAt,
+                             dayIds: $0.days.map { $0.id.uuidString })
             }
         }
         let daysWillExport = export(Day.self, fileName: "days.json") {
-            $0.map { DayCodable(id: $0.id.uuidString,
-                                date: $0.date,
-                                createdAt: $0.createdAt,
-                                updatedAt: $0.updatedAt,
-                                monthId: $0.month.id.uuidString,
-                                mealIds: $0.meals.map { $0.id.uuidString })
+            $0.map {
+                DayCodable(id: $0.id.uuidString,
+                           date: $0.date,
+                           createdAt: $0.createdAt,
+                           updatedAt: $0.updatedAt,
+                           monthId: $0.month.id.uuidString,
+                           mealIds: $0.meals.map { $0.id.uuidString })
             }
         }
-        return Observable.of(monthsWillExport, daysWillExport)
+        let mealsWillExport = export(Meal.self, fileName: "meals.json") {
+            $0.map {
+                MealCodable(id: $0.id.uuidString,
+                            imageId: $0.imageId,
+                            createdAt: $0.createdAt,
+                            updatedAt: $0.updatedAt,
+                            dayId: $0.day.id.uuidString,
+                            foodIds: $0.foods.map { $0.id.uuidString })
+            }
+        }
+        let foodsWillExport = export(Food.self, fileName: "foods.json") {
+            $0.map {
+                FoodCodable(id: $0.id.uuidString,
+                            name: $0.name,
+                            calorie: $0.calorie,
+                            multiple: $0.multiple,
+                            relativeX: $0.relativeX,
+                            relativeY: $0.relativeY,
+                            createdAt: $0.createdAt,
+                            updatedAt: $0.updatedAt,
+                            mealId: $0.meal.id.uuidString)
+            }
+        }
+        return Observable.of(monthsWillExport, daysWillExport, mealsWillExport, foodsWillExport)
             .concat()
     }
 
@@ -56,7 +81,9 @@ final class ManageDataService: ManageDataServiceProtocol {
             .map { _ in }
     }
 
-    private func export<T: Persistable, E: Encodable>(_ entityType: T.Type, fileName: String, mapping: ( (_ entities: [T.T]) -> [E])) -> Single<Void> {
+    private func export<T: Persistable, E: Encodable>(_ entityType: T.Type,
+                                                      fileName: String,
+                                                      mapping: ( (_ entities: [T.T]) -> [E])) -> Single<Void> {
         let sortDescriptor = NSSortDescriptor(key: "createdAt", ascending: true)
         let entities = coreDataRepository.findAll(type: entityType,
                                                   sortDescriptors: [sortDescriptor])
@@ -71,7 +98,9 @@ final class ManageDataService: ManageDataServiceProtocol {
         }
     }
 
-    private func `import`<T: Persistable, D: Decodable>(_ entityType: T.Type, fileName: String, mapping: ((_ decodedEntities: [D]) -> [T])) -> Single<[T]> {
+    private func `import`<T: Persistable, D: Decodable>(_ entityType: T.Type,
+                                                        fileName: String,
+                                                        mapping: ((_ decodedEntities: [D]) -> [T])) -> Single<[T]> {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
         do {
