@@ -11,6 +11,7 @@ import CoreData
 import Foundation
 import RxCoreData
 import RxSwift
+import ToolKits
 
 protocol CoreDataRepositoryProtocol {
     func create<E: Persistable>(_ type: E.Type) -> E.T
@@ -36,9 +37,9 @@ class CoreDataRepository: CoreDataRepositoryProtocol {
         let container = NSPersistentContainer(name: "Schemes")
         container.loadPersistentStores(completionHandler: { storeDescription, error in
             if let error = error as NSError? {
-                Logger.shared.error(error)
+                logger.error(error)
             }
-            Logger.shared.info(storeDescription)
+            logger.info(storeDescription)
         })
         return container
     }()
@@ -72,7 +73,7 @@ class CoreDataRepository: CoreDataRepositoryProtocol {
             let entities = try persistentContainer.viewContext.fetch(fetchRequest)
             return entities
         } catch let error {
-            Logger.shared.error(error)
+            logger.error(error)
             return []
         }
     }
@@ -84,7 +85,7 @@ class CoreDataRepository: CoreDataRepositoryProtocol {
             let result = try persistentContainer.viewContext.execute(fetchRequest) as? NSAsynchronousFetchResult<E.T>
             return result?.finalResult?.first
         } catch let error {
-            Logger.shared.error(error)
+            logger.error(error)
             return nil
         }
     }
@@ -109,7 +110,7 @@ class CoreDataRepository: CoreDataRepositoryProtocol {
         do {
             try persistentContainer.viewContext.rx.update(entity)
         } catch let error {
-            Logger.shared.error(error)
+            logger.error(error)
         }
     }
 
@@ -117,7 +118,7 @@ class CoreDataRepository: CoreDataRepositoryProtocol {
         do {
             try entity.managedObjectContext?.save()
         } catch let error {
-            Logger.shared.error(error)
+            logger.error(error)
         }
     }
 
@@ -125,7 +126,7 @@ class CoreDataRepository: CoreDataRepositoryProtocol {
         do {
             try persistentContainer.viewContext.rx.delete(entity)
         } catch let error {
-            Logger.shared.error(error)
+            logger.error(error)
         }
     }
 

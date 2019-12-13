@@ -9,6 +9,7 @@
 import Foundation
 import RxCoreData
 import RxSwift
+import ToolKits
 
 protocol ManageDataServiceProtocol {
     func backup() -> Observable<Void>
@@ -129,7 +130,7 @@ final class ManageDataService: ManageDataServiceProtocol {
                     }
                     FileManager.default.createFile(atPath: fileURL.path, contents: data, attributes: nil)
                 }
-                Logger.shared.info("write \(fileName) success")
+                logger.info("write \(fileName) success")
                 singleEvent(.success(()))
             } catch let error {
                 singleEvent(.error(error))
@@ -143,7 +144,7 @@ final class ManageDataService: ManageDataServiceProtocol {
             if FileManager.default.fileExists(atPath: folderURL.path) {
                 let fileURL = folderURL.appendingPathComponent(fileName)
                 if let data = FileManager.default.contents(atPath: fileURL.path) {
-                    Logger.shared.info("read \(fileName) success")
+                    logger.info("read \(fileName) success")
                     return data
                 }
             }

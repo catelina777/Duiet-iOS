@@ -8,6 +8,7 @@
 
 import Foundation
 import RxSwift
+import ToolKits
 
 protocol DayServiceProtocol {
     func findAll() -> Observable<[Day]>
@@ -44,9 +45,9 @@ final class DayService: DayServiceProtocol {
             dayEntity.meals = Set<MealEntity>()
             do {
                 try dayEntity.managedObjectContext?.save()
-                Logger.shared.info(dayEntity)
+                logger.info(dayEntity)
             } catch let error {
-                Logger.shared.error(error)
+                logger.error(error)
             }
             return dayEntity
         }
@@ -65,9 +66,9 @@ final class DayService: DayServiceProtocol {
             monthEntity.days = Set<DayEntity>()
             do {
                 try monthEntity.managedObjectContext?.save()
-                Logger.shared.info(monthEntity)
+                logger.info(monthEntity)
             } catch let error {
-                Logger.shared.error(error)
+                logger.error(error)
             }
             return monthEntity
         }
@@ -77,6 +78,6 @@ final class DayService: DayServiceProtocol {
         meals.forEach {
             repository.delete($0)
         }
-        Logger.shared.info(meals)
+        logger.info(meals)
     }
 }

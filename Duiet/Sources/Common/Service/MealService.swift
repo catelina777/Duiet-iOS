@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ToolKits
 
 protocol MealServiceProtocol {
     func add(_ meal: Meal, to dayEntity: DayEntity) -> MealEntity?
@@ -30,10 +31,10 @@ final class MealService: MealServiceProtocol {
         target.foods = meal.foods
         do {
             try target.managedObjectContext?.save()
-            Logger.shared.info(meal)
+            logger.info(meal)
             return target
         } catch let error {
-            Logger.shared.error(error)
+            logger.error(error)
             return nil
         }
     }
