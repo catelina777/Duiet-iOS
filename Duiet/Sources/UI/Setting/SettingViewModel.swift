@@ -42,9 +42,6 @@ final class SettingViewModel: SettingViewModelProtocol {
 
                 case .editUnit:
                     coordinator.showSelectUnit()
-
-                case .manageData:
-                    coordinator.showManageData()
                 }
             })
             .disposed(by: disposeBag)

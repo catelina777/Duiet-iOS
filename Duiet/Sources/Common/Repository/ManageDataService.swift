@@ -12,90 +12,61 @@ import RxSwift
 import ToolKits
 
 protocol ManageDataServiceProtocol {
-    func backup() -> Observable<Void>
-    func restore() -> Observable<Void>
+    func backup() -> Single<Void>
 }
 
 final class ManageDataService: ManageDataServiceProtocol {
-    static let shared = ManageDataService()
-
     private let coreDataRepository: CoreDataRepositoryProtocol
 
     private init(coreDataRepository: CoreDataRepositoryProtocol = CoreDataRepository.shared) {
         self.coreDataRepository = coreDataRepository
     }
 
-    func backup() -> Observable<Void> {
-        let monthsWillExport = export(Month.self, fileName: "months.json") {
-            $0.map {
-                MonthCodable(id: $0.id.uuidString,
-                             date: $0.date,
-                             createdAt: $0.createdAt,
-                             updatedAt: $0.updatedAt,
-                             dayIds: $0.days.map { $0.id.uuidString })
-            }
-        }
-        let daysWillExport = export(Day.self, fileName: "days.json") {
-            $0.map {
-                DayCodable(id: $0.id.uuidString,
-                           date: $0.date,
-                           createdAt: $0.createdAt,
-                           updatedAt: $0.updatedAt,
-                           monthId: $0.month.id.uuidString,
-                           mealIds: $0.meals.map { $0.id.uuidString })
-            }
-        }
-        let mealsWillExport = export(Meal.self, fileName: "meals.json") {
-            $0.map {
-                MealCodable(id: $0.id.uuidString,
-                            imageId: $0.imageId,
-                            createdAt: $0.createdAt,
-                            updatedAt: $0.updatedAt,
-                            dayId: $0.day.id.uuidString,
-                            foodIds: $0.foods.map { $0.id.uuidString })
-            }
-        }
-        let foodsWillExport = export(Food.self, fileName: "foods.json") {
-            $0.map {
-                FoodCodable(id: $0.id.uuidString,
-                            name: $0.name,
-                            calorie: $0.calorie,
-                            multiple: $0.multiple,
-                            relativeX: $0.relativeX,
-                            relativeY: $0.relativeY,
-                            createdAt: $0.createdAt,
-                            updatedAt: $0.updatedAt,
-                            mealId: $0.meal.id.uuidString)
-            }
-        }
-        return Observable.of(monthsWillExport, daysWillExport, mealsWillExport, foodsWillExport)
-            .concat()
-    }
-
-    func restore() -> Observable<Void> {
-        let monthsWillLoad = `import`(Month.self, fileName: "months.json") { (months: [MonthCodable]) in
-            months.map { Month(codableEntity: $0) }
-        }
-
-        return Observable.of(monthsWillLoad)
-            .concat()
-            .map { _ in }
-    }
-
-    private func export<T: Persistable, E: Encodable>(_ entityType: T.Type,
-                                                      fileName: String,
-                                                      mapping: ( (_ entities: [T.T]) -> [E])) -> Single<Void> {
+    func backup() -> Single<Void> {
         let sortDescriptor = NSSortDescriptor(key: "createdAt", ascending: true)
-        let entities = coreDataRepository.findAll(type: entityType,
-                                                  sortDescriptors: [sortDescriptor])
-        let encodableEntities = mapping(entities)
+        let months = coreDataRepository.findAll(type: Month.self, sortDescriptors: [sortDescriptor])
+        let monthEntities = months.map { month -> MonthCodable in
+            let days = month.days.map { day -> DayCodable in
+                let meals = day.meals.map { meal -> MealCodable in
+                    let foods = meal.foods.map { food -> FoodCodable in
+                        FoodCodable(id: food.id.uuidString,
+                                    name: food.name,
+                                    calorie: food.calorie,
+                                    multiple: food.multiple,
+                                    relativeX: food.relativeX,
+                                    relativeY: food.relativeY,
+                                    createdAt: food.createdAt,
+                                    updatedAt: food.updatedAt)
+                    }
+                    return MealCodable(id: meal.id.uuidString,
+                                       imageId: meal.imageId,
+                                       createdAt: meal.createdAt,
+                                       updatedAt: meal.updatedAt,
+                                       foods: foods)
+                }
+                return DayCodable(id: day.id.uuidString,
+                                  date: day.date,
+                                  createdAt: day.createdAt,
+                                  updatedAt: day.updatedAt,
+                                  meals: meals)
+            }
+            return MonthCodable(id: month.id.uuidString,
+                                date: month.date,
+                                createdAt: month.createdAt,
+                                updatedAt: month.updatedAt,
+                                days: days)
+        }
+        return export(entities: monthEntities, fileName: "v1.json")
+    }
+
+    private func export<T: Codable>(entities: [T], fileName: String) -> Single<Void> {
         let encoder = JSONEncoder()
         encoder.dateEncodingStrategy = .iso8601
         do {
-            let data = try encoder.encode(encodableEntities)
+            let data = try encoder.encode(entities)
             return write(data, fileName: fileName)
         } catch let error {
-            return Single.error(error)
+            return Single<Void>.error(error)
         }
     }
 

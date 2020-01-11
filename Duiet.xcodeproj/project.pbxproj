@@ -116,7 +116,6 @@
 		405A9F5D22AD0A3D00454412 /* MonthSummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405A9F5C22AD0A3D00454412 /* MonthSummaryViewModel.swift */; };
 		405A9F5F22AD0A4700454412 /* MonthSummaryViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405A9F5E22AD0A4700454412 /* MonthSummaryViewDataSource.swift */; };
 		405A9F6122AE91C700454412 /* ProgressType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405A9F6022AE91C700454412 /* ProgressType.swift */; };
-		405BF3EF238AA61800893226 /* ManageDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405BF3EE238AA61800893226 /* ManageDataModel.swift */; };
 		405BF3F1238AB18000893226 /* ManageDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405BF3F0238AB18000893226 /* ManageDataService.swift */; };
 		405BF3F4238BF87000893226 /* FoodCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405BF3F3238BF87000893226 /* FoodCodable.swift */; };
 		405BF3F6238BF87800893226 /* MealCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405BF3F5238BF87800893226 /* MealCodable.swift */; };
@@ -163,13 +162,7 @@
 		40B2142922B638820040EA9E /* DaySummaryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B2142822B638820040EA9E /* DaySummaryViewCell.swift */; };
 		40B2142B22B638970040EA9E /* DaySummaryViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40B2142A22B638970040EA9E /* DaySummaryViewCell.xib */; };
 		40B214DC22BF23D00040EA9E /* UserProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B214DB22BF23D00040EA9E /* UserProfileModel.swift */; };
-		40C177632388D541007F2D57 /* ManageDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C177622388D541007F2D57 /* ManageDataViewController.swift */; };
-		40C177652388D549007F2D57 /* ManageDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40C177642388D549007F2D57 /* ManageDataViewController.xib */; };
-		40C177672388D563007F2D57 /* ManageDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C177662388D563007F2D57 /* ManageDataViewModel.swift */; };
-		40C177692388D57A007F2D57 /* ManageDataViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C177682388D57A007F2D57 /* ManageDataViewDataSource.swift */; };
 		40C1776B2388D8ED007F2D57 /* ManageDataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C1776A2388D8ED007F2D57 /* ManageDataType.swift */; };
-		40C1776D2388FE47007F2D57 /* ExplainCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C1776C2388FE47007F2D57 /* ExplainCardViewCell.swift */; };
-		40C1776F2388FE58007F2D57 /* ExplainCardViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40C1776E2388FE58007F2D57 /* ExplainCardViewCell.xib */; };
 		40C43AC12380247900465551 /* UserProfileEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C43AC02380247900465551 /* UserProfileEntity.swift */; };
 		40C43AC32380248400465551 /* UnitCollectionEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C43AC22380248400465551 /* UnitCollectionEntity.swift */; };
 		40D8999722FE750400B6DA6D /* RoundedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D8999622FE750400B6DA6D /* RoundedCollectionViewCell.swift */; };
@@ -342,7 +335,6 @@
 		405A9F5C22AD0A3D00454412 /* MonthSummaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthSummaryViewModel.swift; sourceTree = "<group>"; };
 		405A9F5E22AD0A4700454412 /* MonthSummaryViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthSummaryViewDataSource.swift; sourceTree = "<group>"; };
 		405A9F6022AE91C700454412 /* ProgressType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressType.swift; sourceTree = "<group>"; };
-		405BF3EE238AA61800893226 /* ManageDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageDataModel.swift; sourceTree = "<group>"; };
 		405BF3F0238AB18000893226 /* ManageDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageDataService.swift; sourceTree = "<group>"; };
 		405BF3F3238BF87000893226 /* FoodCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCodable.swift; sourceTree = "<group>"; };
 		405BF3F5238BF87800893226 /* MealCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCodable.swift; sourceTree = "<group>"; };
@@ -392,13 +384,7 @@
 		40B2142A22B638970040EA9E /* DaySummaryViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DaySummaryViewCell.xib; sourceTree = "<group>"; };
 		40B214DB22BF23D00040EA9E /* UserProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileModel.swift; sourceTree = "<group>"; };
 		40C1775F23885891007F2D57 /* Schemes_ver1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Schemes_ver1.xcdatamodel; sourceTree = "<group>"; };
-		40C177622388D541007F2D57 /* ManageDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageDataViewController.swift; sourceTree = "<group>"; };
-		40C177642388D549007F2D57 /* ManageDataViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ManageDataViewController.xib; sourceTree = "<group>"; };
-		40C177662388D563007F2D57 /* ManageDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageDataViewModel.swift; sourceTree = "<group>"; };
-		40C177682388D57A007F2D57 /* ManageDataViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageDataViewDataSource.swift; sourceTree = "<group>"; };
 		40C1776A2388D8ED007F2D57 /* ManageDataType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageDataType.swift; sourceTree = "<group>"; };
-		40C1776C2388FE47007F2D57 /* ExplainCardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplainCardViewCell.swift; sourceTree = "<group>"; };
-		40C1776E2388FE58007F2D57 /* ExplainCardViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExplainCardViewCell.xib; sourceTree = "<group>"; };
 		40C43AC02380247900465551 /* UserProfileEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileEntity.swift; sourceTree = "<group>"; };
 		40C43AC22380248400465551 /* UnitCollectionEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitCollectionEntity.swift; sourceTree = "<group>"; };
 		40D8999622FE750400B6DA6D /* RoundedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -674,7 +660,6 @@
 				40B2141E22B635DF0040EA9E /* Days */,
 				4001F6FE22ABB3A40009CDA1 /* Months */,
 				4001F6FD22ABB3950009CDA1 /* Setting */,
-				40C177602388D4AA007F2D57 /* ManageData */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1064,10 +1049,7 @@
 		405BF3F2238BF7E100893226 /* Codable */ = {
 			isa = PBXGroup;
 			children = (
-				405BF3F9238BF88F00893226 /* MonthCodable.swift */,
-				405BF3F7238BF88500893226 /* DayCodable.swift */,
-				405BF3F5238BF87800893226 /* MealCodable.swift */,
-				405BF3F3238BF87000893226 /* FoodCodable.swift */,
+				408E4F8623ADEDAE0060D036 /* V1 */,
 			);
 			path = Codable;
 			sourceTree = "<group>";
@@ -1120,6 +1102,17 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		408E4F8623ADEDAE0060D036 /* V1 */ = {
+			isa = PBXGroup;
+			children = (
+				405BF3F9238BF88F00893226 /* MonthCodable.swift */,
+				405BF3F7238BF88500893226 /* DayCodable.swift */,
+				405BF3F5238BF87800893226 /* MealCodable.swift */,
+				405BF3F3238BF87000893226 /* FoodCodable.swift */,
+			);
+			path = V1;
+			sourceTree = "<group>";
+		};
 		4097C2C92359F45B00DC0686 /* Component */ = {
 			isa = PBXGroup;
 			children = (
@@ -1167,27 +1160,6 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		40C177602388D4AA007F2D57 /* ManageData */ = {
-			isa = PBXGroup;
-			children = (
-				40C177612388D52E007F2D57 /* Cells */,
-				40C177622388D541007F2D57 /* ManageDataViewController.swift */,
-				40C177662388D563007F2D57 /* ManageDataViewModel.swift */,
-				40C177682388D57A007F2D57 /* ManageDataViewDataSource.swift */,
-				40C177642388D549007F2D57 /* ManageDataViewController.xib */,
-			);
-			path = ManageData;
-			sourceTree = "<group>";
-		};
-		40C177612388D52E007F2D57 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				40C1776C2388FE47007F2D57 /* ExplainCardViewCell.swift */,
-				40C1776E2388FE58007F2D57 /* ExplainCardViewCell.xib */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
 		40E7699A229953E000E9D5DA /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1198,7 +1170,6 @@
 				5E3E860722C334D3004E1676 /* DaysModel.swift */,
 				5E83E9FD22E167D400B8F584 /* MonthsModel.swift */,
 				40FA52EF236FCEE000C58BC3 /* SuggestionModel.swift */,
-				405BF3EE238AA61800893226 /* ManageDataModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1428,7 +1399,6 @@
 			files = (
 				0630D49422742FE800224EC9 /* Montserrat-Regular.ttf in Resources */,
 				0622EA34226A283A00E87F22 /* Montserrat-Bold.ttf in Resources */,
-				40C177652388D549007F2D57 /* ManageDataViewController.xib in Resources */,
 				0622EA35226A283A00E87F22 /* Montserrat-ExtraBold.ttf in Resources */,
 				0641AD2D2264A1BC00CEDAE7 /* LaunchScreen.storyboard in Resources */,
 				06932AC622801AC500CFA05C /* MealLabelView.xib in Resources */,
@@ -1448,7 +1418,6 @@
 				061F278D22733D9800FDCB17 /* WalkthroughViewController.xib in Resources */,
 				408A4E982354A417004D2FFE /* SelectUnitViewController.xib in Resources */,
 				40D97C9222ED52A10069B5F2 /* Colors.xcassets in Resources */,
-				40C1776F2388FE58007F2D57 /* ExplainCardViewCell.xib in Resources */,
 				06B2FD04227222600078C7F1 /* InputActivityLevelViewCell.xib in Resources */,
 				40B2142222B636000040EA9E /* DaysViewController.xib in Resources */,
 				40FB69AE235E00B7003565F4 /* HistoriesViewController.xib in Resources */,
@@ -1726,7 +1695,6 @@
 			files = (
 				0622EA30226A251500E87F22 /* R.generated.swift in Sources */,
 				4001F70F22ABF0D80009CDA1 /* MonthsViewController.swift in Sources */,
-				40C1776D2388FE47007F2D57 /* ExplainCardViewCell.swift in Sources */,
 				403E953C22CF93AA00EFF459 /* AppCoordinator.swift in Sources */,
 				5E83E9FA22E1640400B8F584 /* TodayViewModel.swift in Sources */,
 				4001F70B22ABDC4E0009CDA1 /* SettingViewCell.swift in Sources */,
@@ -1765,7 +1733,6 @@
 				405A9F6122AE91C700454412 /* ProgressType.swift in Sources */,
 				405BF3F1238AB18000893226 /* ManageDataService.swift in Sources */,
 				4097C2CD235AE93900DC0686 /* UnitBabel.swift in Sources */,
-				405BF3EF238AA61800893226 /* ManageDataModel.swift in Sources */,
 				0622EA2B226A21A400E87F22 /* UIView.extension.swift in Sources */,
 				405A9F5D22AD0A3D00454412 /* MonthSummaryViewModel.swift in Sources */,
 				061F278F22733DA100FDCB17 /* WalkthroughViewController.swift in Sources */,
@@ -1833,7 +1800,6 @@
 				5E35CF8622D7280E00C9CFC3 /* InputMealViewModel.swift in Sources */,
 				06B2FD08227222670078C7F1 /* CompleteButtonViewCell.swift in Sources */,
 				4008707C23769E5A001B8DB5 /* AddMealCardViewCell.swift in Sources */,
-				40C177692388D57A007F2D57 /* ManageDataViewDataSource.swift in Sources */,
 				40B2142922B638820040EA9E /* DaySummaryViewCell.swift in Sources */,
 				069AD434227722E50075E711 /* MealCardViewCell.swift in Sources */,
 				403E953022CE3EAA00EFF459 /* TopDaysViewController.swift in Sources */,
@@ -1859,8 +1825,6 @@
 				5E9EE7CD22C45FAD00AF5D82 /* Date.extension.swift in Sources */,
 				0622EA37226A29D600E87F22 /* ActivityLevelType.swift in Sources */,
 				402260E322D615F50057BC9E /* MealLabelViewModel.swift in Sources */,
-				40C177672388D563007F2D57 /* ManageDataViewModel.swift in Sources */,
-				40C177632388D541007F2D57 /* ManageDataViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

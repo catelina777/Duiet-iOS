@@ -13,6 +13,5 @@ struct MealCodable: Codable {
     var imageId: String
     var createdAt: Date
     var updatedAt: Date
-    var dayId: String
-    var foodIds: [String]
+    var foods: [FoodCodable]
 }

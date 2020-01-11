@@ -1,5 +1,5 @@
 //
-//  MonthCodable.swift
+//  FoodCodable.swift
 //  Duiet
 //
 //  Created by Ryuhei Kaminishi on 2019/11/25.
@@ -8,10 +8,13 @@
 
 import Foundation
 
-struct MonthCodable: Codable {
+struct FoodCodable: Codable {
     var id: String
-    var date: String
+    var name: String
+    var calorie: Double
+    var multiple: Double
+    var relativeX: Double
+    var relativeY: Double
     var createdAt: Date
     var updatedAt: Date
-    var dayIds: [String]
 }

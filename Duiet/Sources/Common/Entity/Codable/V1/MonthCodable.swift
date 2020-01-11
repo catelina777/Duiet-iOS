@@ -1,5 +1,5 @@
 //
-//  DayCodable.swift
+//  MonthCodable.swift
 //  Duiet
 //
 //  Created by Ryuhei Kaminishi on 2019/11/25.
@@ -8,11 +8,10 @@
 
 import Foundation
 
-struct DayCodable: Codable {
+struct MonthCodable: Codable {
     var id: String
     var date: String
     var createdAt: Date
     var updatedAt: Date
-    var monthId: String
-    var mealIds: [String]
+    var days: [DayCodable]
 }
