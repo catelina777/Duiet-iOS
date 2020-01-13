@@ -29,7 +29,7 @@ trigger_map:
   workflow: test
 - pull_request_source_branch: '*'
   workflow: PR-Test
-- pull_request_source_branch: _release/*
+- pull_request_source_branch: ci/_release/*
   workflow: deliver-external
 workflows:
   _prepare:
@@ -102,7 +102,7 @@ workflows:
     before_run:
     - _prepare
     steps:
-    - ios-auto-provision@1.4.1:
+    - ios-auto-provision@1.5.0:
         inputs:
         - distribution_type: app-store
         - generate_profiles: "yes"
