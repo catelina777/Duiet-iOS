@@ -21,6 +21,26 @@ or alternatively using `brew cask install fastlane`
 fastlane ios duiet_tests
 ```
 Run Duiet.app tests
+### ios release_with_increment_build_version
+```
+fastlane ios release_with_increment_build_version
+```
+
+### ios release_with_increment_patch_version
+```
+fastlane ios release_with_increment_patch_version
+```
+
+### ios release_with_increment_minor_version
+```
+fastlane ios release_with_increment_minor_version
+```
+
+### ios release_with_increment_major_version
+```
+fastlane ios release_with_increment_major_version
+```
+
 ### ios update_dependencies
 ```
 fastlane ios update_dependencies

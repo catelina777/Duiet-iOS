@@ -15,6 +15,29 @@ platform :ios do
     end
   end
 
+  lane :release_with_increment_build_version do
+    increment_build_number
+    commit_version_bump
+    commit_push_create_pr(branch_name: "ci/release-#{Time.now.to_i}", message: 'Release with increment build version')
+  end
+
+  lane :release_with_increment_patch_version do
+    increment_version_number(bump_type: "patch")
+    commit_version_bump
+    commit_push_create_pr(branch_name: "ci/release-#{Time.now.to_i}", message: 'Release with increment patch version')
+  end
+
+  lane :release_with_increment_minor_version do
+    increment_version_number(bump_type: "minor")
+    commit_version_bump
+    commit_push_create_pr(branch_name: "ci/release-#{Time.now.to_i}", message: 'Release with increment minor version')
+  end
+
+  lane :release_with_increment_major_version do
+    increment_version_number(bump_type: "major")
+    commit_version_bump
+    commit_push_create_pr(branch_name: "ci/release-#{Time.now.to_i}", message: 'Release with increment major version')
+  end
 
   desc 'Update dependencies managed by CocoaPods and Carthage'
   lane :update_dependencies do
