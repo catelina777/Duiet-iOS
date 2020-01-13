@@ -2019,7 +2019,7 @@
 				CODE_SIGN_ENTITLEMENTS = Duiet/Resources/Settings/Duiet.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 6MU2DV3MZ5;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2050,7 +2050,7 @@
 				CODE_SIGN_ENTITLEMENTS = Duiet/Resources/Settings/Duiet.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 6MU2DV3MZ5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2079,7 +2079,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 6MU2DV3MZ5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2107,7 +2107,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 6MU2DV3MZ5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2134,7 +2134,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 6MU2DV3MZ5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2161,7 +2161,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 6MU2DV3MZ5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
