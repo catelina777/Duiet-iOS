@@ -162,6 +162,8 @@ name: RxSwift, nameSpecified: , owner: ReactiveX, version: 5.0.1
 
 name: Stevia, nameSpecified: , owner: catelina777, version: 4.6.0
 
+name: ToolKits, nameSpecified: , owner: catelina777, version: 1.0.6
+
 name: YPImagePicker, nameSpecified: , owner: catelina777, version: 4.1.3
 
 add-version-numbers: false
