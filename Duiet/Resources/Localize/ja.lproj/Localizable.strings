@@ -79,6 +79,11 @@
 // SettingView
 "edit user information" = "ユーザ情報編集";
 "reselect units"        = "単位を選び直す";
+"manage data"           = "データを管理する";
+"export title"          = "データをバックアップする";
+"export description"    = "写真と記録をiCloud Driveにバックアップします。定期的に行いデータを安全に保つことをおすすめします。";
+"import title"          = "データをインポートする";
+"import description"    = "iCloud Driveにバックアップされた写真と記録をインポートします。";
 
 // MonthSummaryView
 "sunday abbr"    = "日";

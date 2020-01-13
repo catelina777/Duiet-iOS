@@ -10,6 +10,7 @@ import CoreData
 import Foundation
 import RxCoreData
 import RxDataSources
+import ToolKits
 
 struct UserProfile {
     var id: UUID
@@ -40,14 +41,14 @@ extension UserProfile: Persistable {
     }
 
     init(entity: Self.T) {
-        id = entity.id!
+        id = entity.id
         age = entity.age
-        biologicalSex = entity.biologicalSex!
+        biologicalSex = entity.biologicalSex
         height = entity.height
         weight = entity.weight
-        activityLevel = entity.activityLevel!
-        createdAt = entity.createdAt!
-        updatedAt = entity.updatedAt!
+        activityLevel = entity.activityLevel
+        createdAt = entity.createdAt
+        updatedAt = entity.updatedAt
     }
 
     func update(_ entity: UserProfileEntity) {
@@ -62,7 +63,7 @@ extension UserProfile: Persistable {
         do {
             try entity.managedObjectContext?.save()
         } catch let error {
-            Logger.shared.error(error)
+            logger.error(error)
         }
     }
 }

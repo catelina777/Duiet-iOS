@@ -11,12 +11,12 @@ import Foundation
 
 @objc(UserProfileEntity)
 final class UserProfileEntity: NSManagedObject {
-    @NSManaged var activityLevel: String?
+    @NSManaged var activityLevel: String
     @NSManaged var age: Int16
-    @NSManaged var biologicalSex: String?
-    @NSManaged var createdAt: Date?
+    @NSManaged var biologicalSex: String
+    @NSManaged var createdAt: Date
     @NSManaged var height: Double
-    @NSManaged var id: UUID?
-    @NSManaged var updatedAt: Date?
+    @NSManaged var id: UUID
+    @NSManaged var updatedAt: Date
     @NSManaged var weight: Double
 }

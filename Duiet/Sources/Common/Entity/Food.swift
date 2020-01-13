@@ -10,6 +10,7 @@ import CoreData
 import Foundation
 import RxCoreData
 import RxDataSources
+import ToolKits
 
 struct Food {
     var id: UUID
@@ -20,7 +21,7 @@ struct Food {
     var relativeY: Double
     var createdAt: Date
     var updatedAt: Date
-    var meal: MealEntity?
+    var meal: MealEntity
 
     init(relativeX: Double, relativeY: Double, mealEntity: MealEntity) {
         id = UUID()
@@ -31,30 +32,6 @@ struct Food {
         self.relativeY = relativeY
         createdAt = Date()
         updatedAt = Date()
-        meal = mealEntity
-    }
-
-    init(from: Food, name: String, calorie: Double, multiple: Double, updatedAt: Date) {
-        id = from.id
-        self.name = name
-        self.calorie = calorie
-        self.multiple = multiple
-        relativeX = from.relativeX
-        relativeY = from.relativeY
-        createdAt = from.createdAt
-        self.updatedAt = updatedAt
-        meal = from.meal
-    }
-
-    init(food: Food, mealEntity: MealEntity, updatedAt: Date) {
-        id = food.id
-        name = food.name
-        calorie = food.calorie
-        multiple = food.multiple
-        relativeX = food.relativeX
-        relativeY = food.relativeY
-        createdAt = food.createdAt
-        self.updatedAt = updatedAt
         meal = mealEntity
     }
 }
@@ -80,14 +57,14 @@ extension Food: Persistable {
 
     init(entity: FoodEntity) {
         id = entity.id
-        name = entity.name!
+        name = entity.name
         calorie = entity.calorie
         multiple = entity.multiple
         relativeX = entity.relativeX
         relativeY = entity.relativeY
-        createdAt = entity.createdAt!
-        updatedAt = entity.updatedAt!
-        meal = entity.meal!
+        createdAt = entity.createdAt
+        updatedAt = entity.updatedAt
+        meal = entity.meal
     }
 
     func update(_ entity: FoodEntity) {
@@ -103,7 +80,7 @@ extension Food: Persistable {
         do {
             try entity.managedObjectContext?.save()
         } catch let error {
-            Logger.shared.error(error)
+            logger.error(error)
         }
     }
 

@@ -11,11 +11,11 @@ import Foundation
 
 @objc(MonthEntity)
 final class MonthEntity: NSManagedObject {
-    @NSManaged var createdAt: Date?
-    @NSManaged var updatedAt: Date?
-    @NSManaged var id: UUID?
-    @NSManaged var date: String?
-    @NSManaged var days: Set<DayEntity>?
+    @NSManaged var createdAt: Date
+    @NSManaged var updatedAt: Date
+    @NSManaged var id: UUID
+    @NSManaged var date: String
+    @NSManaged var days: Set<DayEntity>
 }
 
 extension MonthEntity {

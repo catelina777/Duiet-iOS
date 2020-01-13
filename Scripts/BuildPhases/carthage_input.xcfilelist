@@ -10,4 +10,5 @@ $(SRCROOT)/Carthage/Build/iOS/RxRelay.framework
 $(SRCROOT)/Carthage/Build/iOS/RxSwift.framework
 $(SRCROOT)/Carthage/Build/iOS/RxTest.framework
 $(SRCROOT)/Carthage/Build/iOS/Stevia.framework
+$(SRCROOT)/Carthage/Build/iOS/ToolKits.framework
 $(SRCROOT)/Carthage/Build/iOS/YPImagePicker.framework

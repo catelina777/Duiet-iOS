@@ -10,6 +10,7 @@ import CoreData
 import Foundation
 import RxCoreData
 import RxDataSources
+import ToolKits
 
 struct Month {
     var id: UUID
@@ -23,6 +24,14 @@ struct Month {
         self.date = date.toMonthKeyString()
         self.createdAt = date
         self.updatedAt = date
+        days = Set<DayEntity>()
+    }
+
+    init(codableEntity: MonthCodable) {
+        id = UUID(uuidString: codableEntity.id) ?? UUID()
+        date = codableEntity.date
+        createdAt = codableEntity.createdAt
+        updatedAt = codableEntity.updatedAt
         days = Set<DayEntity>()
     }
 }
@@ -45,11 +54,11 @@ extension Month: Persistable {
     }
 
     init(entity: Self.T) {
-        id = entity.id!
-        date = entity.date!
-        createdAt = entity.createdAt!
-        updatedAt = entity.updatedAt!
-        days = entity.days!
+        id = entity.id
+        date = entity.date
+        createdAt = entity.createdAt
+        updatedAt = entity.updatedAt
+        days = entity.days
     }
 
     func update(_ entity: MonthEntity) {
@@ -61,7 +70,7 @@ extension Month: Persistable {
         do {
             try entity.managedObjectContext?.save()
         } catch let error {
-            Logger.shared.error(error)
+            logger.error(error)
         }
     }
 }

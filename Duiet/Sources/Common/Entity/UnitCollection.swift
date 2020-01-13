@@ -10,6 +10,7 @@ import CoreData
 import Foundation
 import RxCoreData
 import RxDataSources
+import ToolKits
 
 struct UnitCollection {
     var id: UUID
@@ -38,12 +39,12 @@ extension UnitCollection: Persistable {
     }
 
     init(entity: Self.T) {
-        id = entity.id!
+        id = entity.id
         heightUnitRow = entity.heightUnitRow
         weightUnitRow = entity.weightUnitRow
         energyUnitRow = entity.energyUnitRow
-        createdAt = entity.createdAt!
-        updatedAt = entity.updatedAt!
+        createdAt = entity.createdAt
+        updatedAt = entity.updatedAt
     }
 
     func update(_ entity: UnitCollectionEntity) {
@@ -56,7 +57,7 @@ extension UnitCollection: Persistable {
         do {
             try entity.managedObjectContext?.save()
         } catch let error {
-            Logger.shared.error(error)
+            logger.error(error)
         }
     }
 }

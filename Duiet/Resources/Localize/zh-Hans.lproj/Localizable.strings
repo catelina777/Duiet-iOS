@@ -78,6 +78,11 @@
 // SettingView
 "edit user information" = "编辑用户信息";
 "reselect units"        = "重新选择单位";
+"manage data"           = "管理数据";
+"export title"          = "汇出资料";
+"export description"    = "将照片和记录备份到iCloud Drive。 我们建议您定期进行操作以确保数据安全。";
+"import title"          = "汇入资料";
+"import description"    = "将备份的照片和记录导入到iCloud Drive。";
 
 // MonthSummaryView
 "sunday abbr"    = "日";

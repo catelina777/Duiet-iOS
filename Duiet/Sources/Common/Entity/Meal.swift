@@ -10,39 +10,32 @@ import CoreData
 import Foundation
 import RxCoreData
 import RxDataSources
+import ToolKits
 
 struct Meal {
     var id: UUID
     var imageId: String
     var createdAt: Date
     var updatedAt: Date
-    var day: DayEntity?
+    var day: DayEntity
     var foods: Set<FoodEntity>
 
-    init(id: UUID, imageId: String, createdAt: Date, updatedAt: Date, day: DayEntity, foods: Set<FoodEntity>) {
-        self.id = id
-        self.imageId = imageId
-        self.createdAt = createdAt
-        self.updatedAt = updatedAt
-        self.day = day
-        self.foods = foods
-    }
-
-    init(imageId: String, date: Date) {
+    init(imageId: String, dayEntity: DayEntity, date: Date) {
         id = UUID()
         self.imageId = imageId
-        self.createdAt = date
-        self.updatedAt = date
+        createdAt = date
+        updatedAt = date
+        day = dayEntity
         foods = Set<FoodEntity>()
     }
 
-    init(meal: Meal, dayEntity: DayEntity) {
-        id = meal.id
-        imageId = meal.imageId
-        createdAt = meal.createdAt
-        foods = meal.foods
+    init(codableEntity: MealCodable, dayEntity: DayEntity) {
+        id = UUID(uuidString: codableEntity.id) ?? UUID()
+        imageId = codableEntity.imageId
+        createdAt = codableEntity.createdAt
+        updatedAt = codableEntity.updatedAt
         day = dayEntity
-        updatedAt = Date()
+        foods = Set<FoodEntity>()
     }
 }
 
@@ -65,11 +58,11 @@ extension Meal: Persistable {
 
     init(entity: Self.T) {
         id = entity.id
-        imageId = entity.imageId!
-        createdAt = entity.createdAt!
-        updatedAt = entity.updatedAt!
-        day = entity.day!
-        foods = entity.foods!
+        imageId = entity.imageId
+        createdAt = entity.createdAt
+        updatedAt = entity.updatedAt
+        day = entity.day
+        foods = entity.foods
     }
 
     func update(_ entity: MealEntity) {
@@ -82,7 +75,7 @@ extension Meal: Persistable {
         do {
             try entity.managedObjectContext?.save()
         } catch let error {
-            Logger.shared.error(error)
+            logger.error(error)
         }
     }
 }
