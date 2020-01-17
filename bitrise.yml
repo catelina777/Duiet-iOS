@@ -29,7 +29,7 @@ trigger_map:
   workflow: test
 - pull_request_source_branch: '*'
   workflow: PR-Test
-- pull_request_source_branch: ci/_release/*
+- pull_request_source_branch: ci/release/*
   workflow: deliver-external
 workflows:
   _prepare:
