@@ -65,12 +65,12 @@ version: 1.2.0
 name: FirebaseInstallations, nameSpecified: 
 body: 
                    …
-version: 1.0.0
+version: 1.1.0
 
 name: FirebaseInstallations, nameSpecified: 
 body: 
                    …
-version: 1.0.0
+version: 1.1.0
 
 name: FirebaseInstanceID, nameSpecified: 
 body: 
