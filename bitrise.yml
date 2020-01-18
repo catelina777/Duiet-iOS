@@ -34,12 +34,12 @@ trigger_map:
 workflows:
   _prepare:
     steps:
-    - activate-ssh-key@4.0.3: {}
-    - git-clone@4.0.17:
+    - activate-ssh-key: {}
+    - git-clone:
         inputs:
         - update_submodules: "no"
-    - cache-pull@2.1.1: {}
-    - script@1.1.5:
+    - cache-pull: {}
+    - script:
         inputs:
         - content: |-
             #!/bin/bash
@@ -102,20 +102,22 @@ workflows:
     before_run:
     - _prepare
     steps:
-    - ios-auto-provision@1.5.0:
+    - ios-auto-provision:
         inputs:
         - distribution_type: app-store
         - generate_profiles: "yes"
         - team_id: 6MU2DV3MZ5
-    - xcode-archive@2.7.0:
+    - xcode-archive:
         inputs:
         - team_id: 6MU2DV3MZ5
         - export_method: app-store
-    - deploy-to-itunesconnect-deliver@2.16.3:
+    - deploy-to-itunesconnect-deliver:
         inputs:
         - password: $ITUNES_CONNECT_PASSWORD
+        - app_id: "1487406583"
+        - app_password: $FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD
         - itunescon_user: $ITUNES_CONNECT_APP_APPLE_ID
-    - deploy-to-bitrise-io@1.9.2:
+    - deploy-to-bitrise-io:
         inputs:
         - is_enable_public_page: "false"
     - slack@3.1.3:
