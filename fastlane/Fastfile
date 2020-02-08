@@ -127,7 +127,7 @@ platform :ios do
       pp response
       if response['assets']
         asset_id = response['assets'][0]['id']
-        Fastlane::Actions::sh "curl -sSfLJO -H 'Accept: application/octet-stream' -H 'Authorization: token #{access_token}' #{asset_url(asset_id)}"
+        Fastlane::Actions::sh "curl -sSfLJO -H 'Accept: application/octet-stream' -u :#{access_token} #{asset_url(asset_id)}"
       end
     end
 
@@ -138,7 +138,7 @@ platform :ios do
       pp response
       if response['assets']
         asset_id = response['assets'][0]['id']
-        Fastlane::Actions::sh "curl -sSfL -H 'Authorization: token #{access_token}' -X DELETE #{asset_url(asset_id)}"
+        Fastlane::Actions::sh "curl -sSfL -u :#{access_token} -X DELETE #{asset_url(asset_id)}"
 
         upload_release(filepath, response['id'])
       else
@@ -160,7 +160,7 @@ platform :ios do
       filename = File.basename(filepath)
       url = "https://uploads.github.com/repos/#{slug}/releases/#{release_id}/assets?name=#{filename}"
 
-      Fastlane::Actions::sh %[curl -sSL -H "Authorization: token #{access_token}" -X POST "#{url}" -H "Content-Type: application/gzip" --data-binary @"#{filepath}"]
+      Fastlane::Actions::sh %[curl -sSL -H -u :#{access_token} -X POST "#{url}" -H "Content-Type: application/gzip" --data-binary @"#{filepath}"]
     end
 
     def find_release(hash)
