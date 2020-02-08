@@ -160,7 +160,7 @@ platform :ios do
       filename = File.basename(filepath)
       url = "https://uploads.github.com/repos/#{slug}/releases/#{release_id}/assets?name=#{filename}"
 
-      Fastlane::Actions::sh %[curl -sSL -H -u :#{access_token} -X POST "#{url}" -H "Content-Type: application/gzip" --data-binary @"#{filepath}"]
+      Fastlane::Actions::sh %[curl -sSL -u :#{access_token} -X POST "#{url}" -H "Content-Type: application/gzip" --data-binary @"#{filepath}"]
     end
 
     def find_release(hash)
