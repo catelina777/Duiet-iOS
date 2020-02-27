@@ -17,40 +17,40 @@ version: 1.10.2
 name: Firebase, nameSpecified: 
 body: 
                    …
-version: 6.17.0
+version: 6.18.0
 
 name: Firebase, nameSpecified: 
 body: 
                    …
-version: 6.17.0
+version: 6.18.0
 
 name: FirebaseAnalytics, nameSpecified: 
 body: Copyright 2020 Googl…
-version: 6.2.2
+version: 6.3.0
 
 name: FirebaseAnalytics, nameSpecified: 
 body: Copyright 2020 Googl…
-version: 6.2.2
+version: 6.3.0
 
 name: FirebaseCore, nameSpecified: 
 body: 
                    …
-version: 6.6.2
+version: 6.6.3
 
 name: FirebaseCore, nameSpecified: 
 body: 
                    …
-version: 6.6.2
+version: 6.6.3
 
 name: FirebaseCoreDiagnostics, nameSpecified: 
 body: 
                    …
-version: 1.2.0
+version: 1.2.1
 
 name: FirebaseCoreDiagnostics, nameSpecified: 
 body: 
                    …
-version: 1.2.0
+version: 1.2.1
 
 name: FirebaseCoreDiagnosticsInterop, nameSpecified: 
 body: 
@@ -72,43 +72,33 @@ body:
                    …
 version: 1.1.0
 
-name: FirebaseInstanceID, nameSpecified: 
-body: 
-                   …
-version: 4.3.1
-
-name: FirebaseInstanceID, nameSpecified: 
-body: 
-                   …
-version: 4.3.1
+name: GoogleAppMeasurement, nameSpecified: 
+body: Copyright 2020 Googl…
+version: 6.3.0
 
 name: GoogleAppMeasurement, nameSpecified: 
 body: Copyright 2020 Googl…
-version: 6.2.2
-
-name: GoogleAppMeasurement, nameSpecified: 
-body: Copyright 2020 Googl…
-version: 6.2.2
+version: 6.3.0
 
 name: GoogleDataTransport, nameSpecified: 
 body: 
                    …
-version: 4.0.0
+version: 4.0.1
 
 name: GoogleDataTransport, nameSpecified: 
 body: 
                    …
-version: 4.0.0
+version: 4.0.1
 
 name: GoogleDataTransportCCTSupport, nameSpecified: 
 body: 
                    …
-version: 1.4.0
+version: 1.4.1
 
 name: GoogleDataTransportCCTSupport, nameSpecified: 
 body: 
                    …
-version: 1.4.0
+version: 1.4.1
 
 name: GoogleUtilities, nameSpecified: 
 body: 
