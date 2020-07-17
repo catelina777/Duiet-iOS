@@ -67,7 +67,7 @@ workflows:
     before_run:
     - _prepare
     steps:
-    - script@1.1.5:
+    - script@1:
         inputs:
         - content: |-
             #!/bin/bash
@@ -75,7 +75,7 @@ workflows:
             set -ex
             bundle exec fastlane run danger
         title: Danger
-    - script@1.1.5:
+    - script@1:
         inputs:
         - content: |-
             #!/bin/bash
@@ -83,11 +83,11 @@ workflows:
             set -ex
             bundle exec fastlane duiet_tests
         title: Test
-    - cache-push@2.2.1: {}
-    - deploy-to-bitrise-io@1.9.2:
+    - cache-push@2: {}
+    - deploy-to-bitrise-io@1:
         inputs:
         - is_enable_public_page: "false"
-    - slack@3.1.3:
+    - slack@3:
         inputs:
         - api_token: $SLACK_API_TOKEN
         - channel: '#duiet_ci'
@@ -142,7 +142,7 @@ workflows:
     before_run:
     - _prepare
     steps:
-    - script@1.1.5:
+    - script@1:
         inputs:
         - content: |-
             #!/bin/bash
@@ -150,11 +150,11 @@ workflows:
             set -ex
             bundle exec fastlane duiet_tests
         title: Test
-    - cache-push@2.2.1: {}
-    - deploy-to-bitrise-io@1.9.2:
+    - cache-push@2: {}
+    - deploy-to-bitrise-io@1:
         inputs:
         - is_enable_public_page: "false"
-    - slack@3.1.3:
+    - slack@3:
         inputs:
         - api_token: $SLACK_API_TOKEN
         - channel: '#duiet_ci'
