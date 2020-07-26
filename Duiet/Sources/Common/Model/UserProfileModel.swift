@@ -35,7 +35,7 @@ final class UserProfileModel: UserProfileModelProtocol, UserProfileModelState {
 
     let input: UserProfileModelInput
     let output: UserProfileModelOutput
-    var state: UserProfileModelState { return self }
+    var state: UserProfileModelState { self }
 
     // MARK: - State
     var userProfileValue: UserProfile {

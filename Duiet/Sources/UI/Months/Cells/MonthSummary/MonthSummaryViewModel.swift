@@ -26,7 +26,7 @@ protocol MonthSummaryViewModelProtocol {
 final class MonthSummaryViewModel: MonthSummaryViewModelProtocol, MonthSummaryViewModelData {
     let input: MonthSummaryViewModelInput
     let output: MonthSummaryViewModelOutput
-    var data: MonthSummaryViewModelData { return self }
+    var data: MonthSummaryViewModelData { self }
 
     let progress: [ProgressType?]
     let userProfile: UserProfile

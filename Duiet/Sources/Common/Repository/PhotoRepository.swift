@@ -22,7 +22,7 @@ final class PhotoRepository: PhotoRepositoryProtocol {
     private init() {}
 
     func save(image: UIImage) -> Observable<String> {
-        return Observable<String>.create { observer in
+        Observable<String>.create { observer in
             PHPhotoLibrary.shared().performChanges({
                 let requestAsset = PHAssetChangeRequest.creationRequestForAsset(from: image)
                 let placeholder = requestAsset.placeholderForCreatedAsset

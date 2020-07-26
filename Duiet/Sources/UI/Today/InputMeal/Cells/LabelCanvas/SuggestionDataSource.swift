@@ -24,7 +24,7 @@ final class SuggestionDataSource: NSObject {
 
 extension SuggestionDataSource: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.state.suggestedFoods.count
+        viewModel.state.suggestedFoods.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
