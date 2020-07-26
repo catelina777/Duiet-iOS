@@ -46,7 +46,7 @@ protocol TodayViewModelProtocol {
 final class TodayViewModel: TodayViewModelProtocol, TodayViewModelState {
     let input: TodayViewModelInput
     let output: TodayViewModelOutput
-    var state: TodayViewModelState { return self }
+    var state: TodayViewModelState { self }
 
     // MARK: - State
     var userProfileValue: UserProfile {

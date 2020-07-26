@@ -82,7 +82,7 @@ final class InputMealInformationViewCell: BaseTableViewCell, CellFrameTrackkable
             .bind(to: updateTextFields)
             .disposed(by: disposeBag)
 
-        /// Save selected candidate values to input
+        // Save selected candidate values to input
         output.suggestionDidSelect
             .subscribe(onNext: { [weak self] foodEntity in
                 guard let me = self else { return }

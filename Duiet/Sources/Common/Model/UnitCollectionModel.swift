@@ -34,7 +34,7 @@ final class UnitCollectionModel: UnitCollectionModelProtocol, UnitCollectionMode
 
     let input: UnitCollectionModelInput
     let output: UnitCollectionModelOutput
-    var state: UnitCollectionModelState { return self }
+    var state: UnitCollectionModelState { self }
 
     // MARK: - State
     var unitCollectionValue: UnitCollection {
