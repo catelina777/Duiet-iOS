@@ -17,30 +17,30 @@ version: 1.10.2
 name: Firebase, nameSpecified: 
 body: 
                    …
-version: 6.29.0
+version: 6.30.0
 
 name: Firebase, nameSpecified: 
 body: 
                    …
-version: 6.29.0
+version: 6.30.0
 
 name: FirebaseAnalytics, nameSpecified: 
 body: Copyright 2020 Googl…
-version: 6.7.0
+version: 6.7.2
 
 name: FirebaseAnalytics, nameSpecified: 
 body: Copyright 2020 Googl…
-version: 6.7.0
+version: 6.7.2
 
 name: FirebaseCore, nameSpecified: 
 body: 
                    …
-version: 6.9.2
+version: 6.10.0
 
 name: FirebaseCore, nameSpecified: 
 body: 
                    …
-version: 6.9.2
+version: 6.10.0
 
 name: FirebaseCoreDiagnostics, nameSpecified: 
 body: 
@@ -55,40 +55,40 @@ version: 1.5.0
 name: FirebaseInstallations, nameSpecified: 
 body: 
                    …
-version: 1.5.0
+version: 1.6.0
 
 name: FirebaseInstallations, nameSpecified: 
 body: 
                    …
-version: 1.5.0
+version: 1.6.0
 
 name: GoogleAppMeasurement, nameSpecified: 
 body: Copyright 2020 Googl…
-version: 6.7.0
+version: 6.7.2
 
 name: GoogleAppMeasurement, nameSpecified: 
 body: Copyright 2020 Googl…
-version: 6.7.0
+version: 6.7.2
 
 name: GoogleDataTransport, nameSpecified: 
 body: 
                    …
-version: 7.1.0
+version: 7.2.0
 
 name: GoogleDataTransport, nameSpecified: 
 body: 
                    …
-version: 7.1.0
+version: 7.2.0
 
 name: GoogleUtilities, nameSpecified: 
 body: 
                    …
-version: 6.7.1
+version: 6.7.2
 
 name: GoogleUtilities, nameSpecified: 
 body: 
                    …
-version: 6.7.1
+version: 6.7.2
 
 name: LicensePlist, nameSpecified: 
 body: MIT License
@@ -107,12 +107,12 @@ version: 1.30905.0
 name: PromisesObjC, nameSpecified: 
 body: 
                    …
-version: 1.2.9
+version: 1.2.10
 
 name: PromisesObjC, nameSpecified: 
 body: 
                    …
-version: 1.2.9
+version: 1.2.10
 
 name: R.swift, nameSpecified: 
 body: The MIT License (MIT…
