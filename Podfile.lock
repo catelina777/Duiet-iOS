@@ -2,12 +2,12 @@ PODS:
   - Crashlytics (3.14.0):
     - Fabric (~> 1.10.2)
   - Fabric (1.10.2)
-  - Firebase/Analytics (6.31.0):
+  - Firebase/Analytics (6.31.1):
     - Firebase/Core
-  - Firebase/Core (6.31.0):
+  - Firebase/Core (6.31.1):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 6.8.0)
-  - Firebase/CoreOnly (6.31.0):
+  - Firebase/CoreOnly (6.31.1):
     - FirebaseCore (= 6.10.1)
   - FirebaseAnalytics (6.8.0):
     - FirebaseCore (~> 6.10)
@@ -98,7 +98,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Crashlytics: 540b7e5f5da5a042647227a5e3ac51d85eed06df
   Fabric: 706c8b8098fff96c33c0db69cbf81f9c551d0d74
-  Firebase: 87483fa19acfdf99244523f2389e931927b91457
+  Firebase: 658370fa0181826a74b7cfca8d68c5856ca749ae
   FirebaseAnalytics: 0ca9aa2af7cc4dc92392b7a78bfc49feaa2eb60f
   FirebaseCore: 6fb954e350af0885803d5aa49865d15d9a6b264c
   FirebaseCoreDiagnostics: 7415bfb3883b3500c5a95c42b6ba66baae78f600
