@@ -17,12 +17,12 @@ version: 1.10.2
 name: Firebase, nameSpecified: 
 body: 
                    …
-version: 6.31.0
+version: 6.31.1
 
 name: Firebase, nameSpecified: 
 body: 
                    …
-version: 6.31.0
+version: 6.31.1
 
 name: FirebaseAnalytics, nameSpecified: 
 body: Copyright 2020 Googl…
