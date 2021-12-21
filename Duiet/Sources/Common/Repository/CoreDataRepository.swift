@@ -11,7 +11,6 @@ import CoreData
 import Foundation
 import RxCoreData
 import RxSwift
-import ToolKits
 
 protocol CoreDataRepositoryProtocol {
     func create<E: Persistable>(_ type: E.Type) -> E.T
