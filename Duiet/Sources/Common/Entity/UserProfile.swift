@@ -10,7 +10,6 @@ import CoreData
 import Foundation
 import RxCoreData
 import RxDataSources
-import ToolKits
 
 struct UserProfile {
     var id: UUID

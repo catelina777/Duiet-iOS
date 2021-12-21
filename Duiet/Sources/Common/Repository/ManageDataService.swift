@@ -9,7 +9,6 @@
 import Foundation
 import RxCoreData
 import RxSwift
-import ToolKits
 
 protocol ManageDataServiceProtocol {
     func backup() -> Single<Void>
@@ -104,7 +103,7 @@ final class ManageDataService: ManageDataServiceProtocol {
                 logger.info("write \(fileName) success")
                 singleEvent(.success(()))
             } catch let error {
-                singleEvent(.error(error))
+                singleEvent(.failure(error))
             }
             return Disposables.create()
         }

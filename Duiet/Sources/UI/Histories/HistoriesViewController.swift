@@ -6,7 +6,6 @@
 //  Copyright © 2019 duiet. All rights reserved.
 //
 
-import FloatingSegmentedControl
 import RxCocoa
 import RxSwift
 import UIKit

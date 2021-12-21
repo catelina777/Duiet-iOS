@@ -6,7 +6,7 @@
 //  Copyright © 2019 Duiet. All rights reserved.
 //
 
-import RxCocoa
+import RxSwift
 import UIKit
 
 final class InputGenderViewCell: BaseTableViewCell {

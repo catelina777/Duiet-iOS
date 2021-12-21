@@ -6,7 +6,6 @@
 //  Copyright © 2019 duiet. All rights reserved.
 //
 
-import ToolKits
 import UIKit
 
 class RoundedCollectionViewCell: BaseCollectionViewCell {

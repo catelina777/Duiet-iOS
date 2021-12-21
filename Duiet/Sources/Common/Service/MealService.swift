@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import ToolKits
 
 protocol MealServiceProtocol {
     func add(_ meal: Meal, to dayEntity: DayEntity) -> MealEntity?

@@ -6,7 +6,7 @@
 //  Copyright © 2019 duiet. All rights reserved.
 //
 
-import RxCocoa
+import RxSwift
 import UIKit
 
 final class SuggestionLabelViewCell: BaseCollectionViewCell {

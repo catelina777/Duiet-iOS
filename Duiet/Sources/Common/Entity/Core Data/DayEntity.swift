@@ -8,7 +8,6 @@
 
 import CoreData
 import Foundation
-import RxCoreData
 import RxDataSources
 
 @objc(DayEntity)
