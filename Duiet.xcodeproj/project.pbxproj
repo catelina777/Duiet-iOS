@@ -99,7 +99,6 @@
 		4050416123780629006731B1 /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4050416023780629006731B1 /* CoreDataRepository.swift */; };
 		4050418B23781EBA006731B1 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4050418A23781EBA006731B1 /* UserProfile.swift */; };
 		40504191237822B9006731B1 /* UnitCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40504190237822B9006731B1 /* UnitCollection.swift */; };
-		405041B723797A6F006731B1 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 405041B623797A6E006731B1 /* CloudKit.framework */; };
 		4054D0C9235EDB0500BA4064 /* HistoriesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4054D0C8235EDB0500BA4064 /* HistoriesCoordinator.swift */; };
 		4054D0CD2363387900BA4064 /* HistoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4054D0CC2363387900BA4064 /* HistoryType.swift */; };
 		405A9F5022ACFB1300454412 /* MonthsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405A9F4F22ACFB1300454412 /* MonthsViewModel.swift */; };
@@ -445,7 +444,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				405041B723797A6F006731B1 /* CloudKit.framework in Frameworks */,
 				3D663033B554173C7AFF58FC /* Pods_Duiet.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2019,7 +2017,7 @@
 				DEVELOPMENT_TEAM = 6MU2DV3MZ5;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Duiet/Resources/Settings/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2046,7 +2044,7 @@
 				DEVELOPMENT_TEAM = 6MU2DV3MZ5;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Duiet/Resources/Settings/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
